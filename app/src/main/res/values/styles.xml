@@ -12,4 +12,22 @@
         <item name="android:windowBackground">@drawable/bg_splash</item>
     </style>
 
+    <!-- Header text theme -->
+    <style name="headerText">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Content text theme -->
+    <style name="contentText">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/colorNeutral</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+    </style>
+
+
 </resources>

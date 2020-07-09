@@ -5,7 +5,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity (tableName = "User_Profile")
-public class UsersTable {
+public class UserTable {
 
     @PrimaryKey (autoGenerate = true)
     @ColumnInfo (name = "id")

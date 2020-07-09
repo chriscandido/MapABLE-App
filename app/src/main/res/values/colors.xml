@@ -13,5 +13,6 @@
     //Background
     <color name="colorBackground">#FFFFFF</color>
     <color name="colorError">#B00020</color>
+    <color name="colorNeutral">#757575</color>
 
 </resources>
