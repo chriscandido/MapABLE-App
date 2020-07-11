@@ -18,6 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity"/>
+        <activity android:name=".ui.Login"/>
+        <activity android:name=".ui.Register"/>
 
         <meta-data
             android:name="preloaded_fonts"
