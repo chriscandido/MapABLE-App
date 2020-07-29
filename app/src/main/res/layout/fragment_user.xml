@@ -41,7 +41,7 @@
         android:layout_gravity="center"
         android:text="Juan Dela Cruz"
         android:textSize="20sp"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorAccent"
         android:fontFamily="@font/montserrat_bold"/>
 
     <!-- Email address -->
