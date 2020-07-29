@@ -29,5 +29,12 @@
         <item name="android:fontFamily">@font/montserrat</item>
     </style>
 
+    <!-- Navigation text theme -->
+    <style name="navigationText">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/colorBackground</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:fontFamily">@font/montserrat_alternates</item>
+    </style>
 
 </resources>
