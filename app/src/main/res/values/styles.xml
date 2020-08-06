@@ -4,7 +4,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorSecondary</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
     <!-- Splash application theme -->
@@ -15,7 +15,7 @@
     <!-- Header text theme -->
     <style name="headerText">
         <item name="android:textSize">30sp</item>
-        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textAlignment">center</item>
         <item name="android:fontFamily">@font/montserrat</item>
         <item name="android:textStyle">bold</item>

@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.Report">
+    android:background="@color/colorBackground"
+    tools:context=".ui.home.ReportActivity">
 
     <!-- Top Navigation Menu -->
     <RelativeLayout
@@ -46,6 +47,7 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="10dp"
                 android:src="@drawable/ic_mainmenu_report"/>
 
             <TextView
@@ -61,10 +63,86 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_gravity="center"
-                android:text="Your information will be strictly confidential and will not be shared to the public."
+                android:text="@string/report_desc"
                 style="@style/contentText"/>
 
+            <!-- Button Choose Incident Type and Take Survey -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/bg_outlinedbutton">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_report_typeOfIncident"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="20dp"
+                    android:text="Type of Incident"
+                    android:textSize="12sp"
+                    android:textColor="@color/colorNeutral"
+                    android:fontFamily="@font/montserrat"
+                    android:backgroundTint="@color/colorBackground"
+                    app:icon="@drawable/ic_report_incident"
+                    app:iconTint="@color/colorPrimary"
+                    app:iconGravity="start"
+                    style="@style/Widget.AppCompat.Button.Borderless"/>
+
+            </LinearLayout>
+
+            <!-- Button Location of Incident -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/bg_outlinedbutton">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_report_locationOfIncident"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="20dp"
+                    android:text="Location"
+                    android:textSize="12sp"
+                    android:textColor="@color/colorNeutral"
+                    android:fontFamily="@font/montserrat"
+                    android:backgroundTint="@color/colorBackground"
+                    app:icon="@drawable/ic_report_location"
+                    app:iconTint="@color/colorPrimary"
+                    app:iconGravity="start"
+                    style="@style/Widget.AppCompat.Button.Borderless"/>
+
+            </LinearLayout>
+
+            <!-- Button Take Photo -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/bg_outlinedbutton">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_report_takePhoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="20dp"
+                    android:text="Take a Picture"
+                    android:textSize="12sp"
+                    android:textColor="@color/colorNeutral"
+                    android:fontFamily="@font/montserrat"
+                    android:backgroundTint="@color/colorBackground"
+                    app:icon="@drawable/ic_report_camera"
+                    app:iconTint="@color/colorPrimary"
+                    app:iconGravity="start"
+                    style="@style/Widget.AppCompat.Button.Borderless"/>
+
+            </LinearLayout>
+
         </LinearLayout>
+
 
     </androidx.core.widget.NestedScrollView>
 

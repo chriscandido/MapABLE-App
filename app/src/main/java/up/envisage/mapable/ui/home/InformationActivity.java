@@ -1,4 +1,4 @@
-package up.envisage.mapable.ui;
+package up.envisage.mapable.ui.home;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import up.envisage.mapable.R;
 
-public class Report extends AppCompatActivity {
+public class InformationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_report);
+        setContentView(R.layout.activity_information);
     }
 }

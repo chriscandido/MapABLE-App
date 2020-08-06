@@ -17,10 +17,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import up.envisage.mapable.adapter.MainMenuAdapter;
-import up.envisage.mapable.ui.AboutManilaBay;
-import up.envisage.mapable.ui.Feedback;
-import up.envisage.mapable.ui.Information;
-import up.envisage.mapable.ui.Report;
+import up.envisage.mapable.ui.home.AboutManilaBayActivity;
+import up.envisage.mapable.ui.home.FeedbackActivity;
+import up.envisage.mapable.ui.home.InformationActivity;
+import up.envisage.mapable.ui.home.ReportActivity;
 import up.envisage.mapable.ui.Tracker;
 import up.envisage.mapable.util.Constant;
 
@@ -70,12 +70,12 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
         Log.d("[ HomeFragment.java ]", "onMenuClick: clicked - " + position);
         switch (position) {
             case Constant.mainMenu_aboutManilaBay:
-                Intent aboutmanilabay = new Intent(listener, AboutManilaBay.class);
+                Intent aboutmanilabay = new Intent(listener, AboutManilaBayActivity.class);
                 startActivity(aboutmanilabay);
                 Log.d("[ HomeFragment.java ]", "onMenuClick: clicked - About Manila Bay" );
                 break;
             case Constant.mainMenu_report:
-                Intent report = new Intent(listener, Report.class);
+                Intent report = new Intent(listener, ReportActivity.class);
                 startActivity(report);
                 Log.d("[ HomeFragment.java ]", "onMenuClick: clicked - Report");
                 break;
@@ -85,12 +85,12 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
                 Log.d("[ HomeFragment.java ]", "onMenuClick: clicked - Tracker");
                 break;
             case Constant.mainMenu_feedback:
-                Intent feedback = new Intent(listener, Feedback.class);
+                Intent feedback = new Intent(listener, FeedbackActivity.class);
                 startActivity(feedback);
                 Log.d("[ HomeFragment.java ]", "onMenuClick: clicked - Feedback");
                 break;
             case Constant.mainMenu_information:
-                Intent information = new Intent(listener, Information.class);
+                Intent information = new Intent(listener, InformationActivity.class);
                 startActivity(information);
                 Log.d("[ HomeFragment.java ]", "onMenuClick: clicked - Information");
                 break;

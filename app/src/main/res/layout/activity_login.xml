@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.Login">
+    tools:context=".ui.registration.LoginActivity">
 
     <!-- Main Content -->
     <!-- Title Text -->
@@ -69,7 +69,8 @@
         android:text="LOGIN"
         android:textSize="15sp"
         android:textColor="@color/colorBackground"
-        android:fontFamily="@font/montserrat"/>
+        android:fontFamily="@font/montserrat"
+        android:onClick="goToMain"/>
 
     <!-- TextView SignUp -->
     <RelativeLayout
@@ -83,14 +84,14 @@
         <TextView
             android:id="@+id/textView_text01"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="Don't have an Account? "
             android:fontFamily="@font/montserrat"/>
 
         <TextView
             android:id="@+id/textView_loginSignUp"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/textView_text01"
             android:text="SIGN UP"
             android:textColor="@color/colorPrimaryDark"

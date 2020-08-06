@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/textView_eulaTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_gravity="center"
+        android:layout_alignParentTop="true"
+        android:paddingBottom="10dp"
+        android:text="Terms of Use"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        android:fontFamily="@font/montserrat_bold"
+        style="@style/headerText"/>
+
+    <ScrollView
+        android:id="@+id/scrollView_eula"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_eulaTitle"
+        android:paddingBottom="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_eulaAgreement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <CheckBox
+            android:id="@+id/checkBox_eulaAgree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="I AGREE WITH THE TERMS AND CONDITION"
+            android:textSize="7sp"
+            android:fontFamily="@font/montserrat" />
+
+        <Button
+            android:id="@+id/button_eulaAgree"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="20dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:background="@drawable/bg_outlinedbox"
+            android:text="Agree and Continue"
+            android:textColor="@color/colorBackground"
+            android:textSize="12sp"
+            android:fontFamily="@font/montserrat"
+            android:visibility="invisible"
+            android:layout_centerHorizontal="true" />
+
+    </LinearLayout>
+
+</RelativeLayout>

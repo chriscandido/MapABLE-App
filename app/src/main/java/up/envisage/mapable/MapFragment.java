@@ -46,7 +46,8 @@ import java.util.Map;
 import static android.os.Looper.getMainLooper;
 
 
-public class MapFragment extends Fragment implements OnMapReadyCallback, PermissionsListener {
+public class MapFragment extends Fragment implements OnMapReadyCallback, PermissionsListener,
+    OnCameraTrackingChangedListener {
 
     private static final long DEFAULT_INTERVAL_IN_MILLISECONDS = 1000L;
     private static final long DEFAULT_MAX_WAIT_TIME = DEFAULT_INTERVAL_IN_MILLISECONDS * 5;
@@ -57,9 +58,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
     private LocationEngine locationEngine;
     private LocationChangeListeningActivityLocationCallback callback =
             new LocationChangeListeningActivityLocationCallback(this);
-
-    private static double Latitude;
-    private static double Longitude;
 
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -93,7 +91,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
     @Override
     public void onMapReady(@NonNull final MapboxMap mapboxMap) {
         MapFragment.this.mapboxMap = mapboxMap;
-        setCameraPosition(Latitude, Longitude, mapboxMap);
 
         mapboxMap.setStyle(new Style.Builder().fromUri("mapbox://styles/mapbox/cjerxnqt3cgvp2rmyuxbeqme7"),
                 new Style.OnStyleLoaded() {
@@ -127,7 +124,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
             locationComponent.setCameraMode(CameraMode.TRACKING);
 
             //Set the component's render mode
-            locationComponent.setRenderMode(RenderMode.COMPASS);
+            locationComponent.setRenderMode(RenderMode.GPS);
+
+            locationComponent.addOnCameraTrackingChangedListener(this);
+
+            //Set the component's zoom
+            locationComponent.zoomWhileTracking(15.0, 15000);
 
             initLocationEngine();
         } else {
@@ -151,13 +153,23 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
         locationEngine.getLastLocation(callback);
     }
 
-    private void setCameraPosition(double latitude, double longitude, MapboxMap mapboxMap) {
+    private void setCameraPosition(double latitude, double longitude) {
         CameraPosition position = new CameraPosition.Builder()
                 .target(new LatLng(latitude, longitude))
                 .zoom(17)
                 .tilt(45)
                 .build();
         mapboxMap.animateCamera(CameraUpdateFactory.newCameraPosition(position), 15000);
+    }
+
+    @Override
+    public void onCameraTrackingDismissed() {
+
+    }
+
+    @Override
+    public void onCameraTrackingChanged(int currentMode) {
+
     }
 
     private static class LocationChangeListeningActivityLocationCallback implements
@@ -177,8 +189,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
             MapFragment activity = mapFragmentWeakReference.get();
             if (activity != null) {
                 Location location = result.getLastLocation();
-                Latitude = location.getLatitude();
-                Longitude = location.getLongitude();
                 if (location == null) {
                     return;
                 }

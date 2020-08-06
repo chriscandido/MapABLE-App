@@ -1,4 +1,4 @@
-package up.envisage.mapable.ui;
+package up.envisage.mapable.ui.registration;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,11 +8,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import com.google.android.material.textfield.TextInputLayout;
-
-import java.util.List;
 
 import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
@@ -22,32 +19,26 @@ import up.envisage.mapable.db.table.UserTable;
 import up.envisage.mapable.model.RegisterViewModel;
 
 
-public class Register extends AppCompatActivity implements Listener {
-
-    TextInputLayout textInputLayout_registerName, textInputLayout_registerEmail,
-            textInputLayout_registerUsername, textInputLayout_registerPassword;
-
-    Button button_submit;
-
-    TextView textView_registerLogin;
+public class RegisterActivity extends AppCompatActivity implements Listener {
 
     private RegisterViewModel registerViewModel;
     private ActivityRegisterBinding binding;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(Register.this, R.layout.activity_register);
-        binding.setClickListener((Register) this);
+        binding = DataBindingUtil.setContentView(RegisterActivity.this, R.layout.activity_register);
+        binding.setClickListener((RegisterActivity) this);
 
-        registerViewModel = ViewModelProviders.of(Register.this).get(RegisterViewModel.class);
+        registerViewModel = ViewModelProviders.of(RegisterActivity.this).get(RegisterViewModel.class);
 
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
+    public void onClick(View view) {
+        switch (view.getId()) {
             case R.id.button_submit:
                 String name = binding.textInputLayoutRegisterName.getEditText().getText().toString().trim();
+                String number = binding.textInputLayoutRegisterMobileNum.getEditText().getText().toString().trim();
                 String email = binding.textInputLayoutRegisterEmail.getEditText().getText().toString().trim();
                 String username = binding.textInputLayoutRegisterUsername.getEditText().getText().toString().trim();
                 String password = binding.textInputLayoutRegisterPassword.getEditText().getText().toString().trim();
@@ -71,17 +62,18 @@ public class Register extends AppCompatActivity implements Listener {
 
                 else {
                     user.setName(name);
+                    user.setNumber(number);
                     user.setEmail(email);
                     user.setUsername(username);
                     user.setPassword(password);
                     registerViewModel.insert(user);
-                    Intent intent = new Intent(Register.this, MainActivity.class);
+                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                     startActivity(intent);
                 }
                 break;
 
             case R.id.textView_registerLogin:
-                Intent intent = new Intent(Register.this, Login.class);
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 startActivity(intent);
                 break;
 

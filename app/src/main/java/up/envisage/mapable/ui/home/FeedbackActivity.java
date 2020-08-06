@@ -1,4 +1,4 @@
-package up.envisage.mapable.ui;
+package up.envisage.mapable.ui.home;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import up.envisage.mapable.R;
 
-public class Feedback extends AppCompatActivity {
+public class FeedbackActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

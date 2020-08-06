@@ -5,6 +5,11 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature android:name="android.hardware.Camera" android:required="true"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
     <application
         android:allowBackup="true"
@@ -14,10 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <!-- Activities -->
-        <activity android:name=".ui.Information" />
-        <activity android:name=".ui.Feedback" />
-        <activity android:name=".ui.Tracker" />
-        <activity android:name=".ui.Report" />
+        <!-- Launcher -->
         <activity
             android:name=".SplashActivity"
             android:theme="@style/SplashTheme">
@@ -27,15 +29,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- Registration && Login -->
+        <activity android:name=".ui.registration.LoginActivity" />
+        <activity android:name=".ui.registration.RegisterActivity" />
+        <!-- Main Activity -->
         <activity android:name=".MainActivity" />
-        <activity android:name=".MapFragment"/>
-        <activity android:name=".ui.Login" />
-        <activity android:name=".ui.Register" />
-        <activity android:name=".ui.AboutManilaBay" />
-
+        <!-- Main Menu -->
+        <activity android:name=".ui.home.AboutManilaBayActivity" />
+        <activity android:name=".ui.home.ReportActivity" />
+        <activity android:name=".ui.home.InformationActivity" />
+        <activity android:name=".ui.home.FeedbackActivity" />
+        <activity android:name=".ui.home.report.ReportIncidentActivity"/>
+        <activity android:name=".ui.home.report.CameraActivity"/>
+        <activity android:name="up.envisage.mapable.fragment.GoogleMapFragment"
+            android:label="Google Maps"/>
+        <!-- Fonts -->
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+        <!-- Google API Key -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
     </application>
 
 </manifest>

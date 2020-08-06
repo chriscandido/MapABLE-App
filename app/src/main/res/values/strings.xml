@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">MapABLE</string>
 
+    <!-- MapBox -->
     <string name="mapbox_access_token">sk.eyJ1IjoiY2hyaXNjYW5kaWRvIiwiYSI6ImNrY3ZzczhvZjA3YnIzMnBxanlwNG4yMTIifQ.csRrOg_f00ba2PA0DOjIdQ</string>
+
+    <!-- Google Maps -->
+    <string name="google_maps_key">AIzaSyAAEcTYPqxAEeO9zFcaQgcjY08xMuUneU8</string>
+
+    <!-- Report Description -->
+    <string name="report_desc">Layunin ng Mapable mobile app na mapabilis ang pangangalap ng impormasyon hinggil sa insidenteng karaniwang nararanasan at maaring makaapekto sa buhay Manila Bay upang mas mabilis maaksyunan ang mga ito</string>
 </resources>

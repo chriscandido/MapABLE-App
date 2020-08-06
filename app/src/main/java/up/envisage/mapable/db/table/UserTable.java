@@ -14,6 +14,9 @@ public class UserTable {
     @ColumnInfo (name = "name")
     private String name;
 
+    @ColumnInfo (name = "number")
+    private String number;
+
     @ColumnInfo (name = "email")
     private String email;
 
@@ -37,6 +40,14 @@ public class UserTable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     public String getEmail() {
