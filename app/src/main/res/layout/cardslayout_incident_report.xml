@@ -25,8 +25,8 @@
                 android:id="@+id/imageView_incidentImage"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:tag="image_tag"
                 android:layout_gravity="end"
+                android:transitionName="img_incident_type"
                 android:background="@drawable/ic_launcher_background"/>
 
             <LinearLayout
@@ -43,7 +43,7 @@
                     android:layout_gravity="start"
                     android:text="Title"
                     android:textSize="12sp"
-                    android:fontFamily="@font/montserrat_bold" />
+                    android:fontFamily="@font/news_cycle_bold" />
 
                 <TextView
                     android:id="@+id/textView_incidentContent"
@@ -52,7 +52,7 @@
                     android:layout_gravity="start"
                     android:text="Lorem ipsum"
                     android:textSize="9sp"
-                    android:fontFamily="@font/montserrat"/>
+                    android:fontFamily="@font/news_cycle"/>
 
             </LinearLayout>
 

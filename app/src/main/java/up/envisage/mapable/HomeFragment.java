@@ -20,7 +20,7 @@ import up.envisage.mapable.adapter.MainMenuAdapter;
 import up.envisage.mapable.ui.home.AboutManilaBayActivity;
 import up.envisage.mapable.ui.home.FeedbackActivity;
 import up.envisage.mapable.ui.home.InformationActivity;
-import up.envisage.mapable.ui.home.ReportActivity;
+import up.envisage.mapable.ui.home.ReportingActivity;
 import up.envisage.mapable.ui.Tracker;
 import up.envisage.mapable.util.Constant;
 
@@ -75,7 +75,7 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
                 Log.d("[ HomeFragment.java ]", "onMenuClick: clicked - About Manila Bay" );
                 break;
             case Constant.mainMenu_report:
-                Intent report = new Intent(listener, ReportActivity.class);
+                Intent report = new Intent(listener, ReportingActivity.class);
                 startActivity(report);
                 Log.d("[ HomeFragment.java ]", "onMenuClick: clicked - Report");
                 break;

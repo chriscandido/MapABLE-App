@@ -14,11 +14,10 @@
         android:id="@+id/bottomnavigation_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
         android:layout_alignParentBottom="true"
         android:elevation="10dp"
-        android:background="@drawable/bottom_navigation_background"
-        app:itemIconTint="@color/colorPrimary"
+        android:background="@color/colorPrimary"
+        app:itemIconTint="@color/colorBackground"
         app:labelVisibilityMode="unlabeled"
         app:menu="@menu/menu_bottom_navigation" />
 

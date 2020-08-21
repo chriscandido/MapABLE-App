@@ -42,7 +42,7 @@
         android:text="Juan Dela Cruz"
         android:textSize="20sp"
         android:textColor="#000000"
-        android:fontFamily="@font/montserrat_bold"/>
+        android:fontFamily="@font/news_cycle_bold"/>
 
     <!-- Email address -->
     <TextView
@@ -52,7 +52,7 @@
         android:layout_gravity="center"
         android:text="juandelacruz@gmail.com"
         android:textSize="12sp"
-        android:fontFamily="@font/montserrat_alternates"/>
+        android:fontFamily="@font/news_cycle"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -73,7 +73,7 @@
             android:layout_gravity="center"
             android:text="No. of Reports: "
             android:textSize="12sp"
-            android:fontFamily="@font/montserrat_alternates"/>
+            android:fontFamily="@font/news_cycle"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -83,7 +83,7 @@
             android:text="1000"
             android:textSize="12sp"
             android:textColor="@color/colorPrimaryDark"
-            android:fontFamily="@font/montserrat_alternates"/>
+            android:fontFamily="@font/news_cycle"/>
         
     </LinearLayout>
 
@@ -106,7 +106,7 @@
             android:layout_gravity="center"
             android:text="No. of Points: "
             android:textSize="12sp"
-            android:fontFamily="@font/montserrat_alternates"/>
+            android:fontFamily="@font/news_cycle"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -116,7 +116,7 @@
             android:text="10"
             android:textSize="12sp"
             android:textColor="@color/colorPrimaryDark"
-            android:fontFamily="@font/montserrat_alternates"/>
+            android:fontFamily="@font/news_cycle"/>
 
     </LinearLayout>
 

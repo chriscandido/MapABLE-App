@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
                     fragment = new MapFragment();
                     break;
                 case R.id.mainMenu_support:
+                    fragment = new SupportFragment();
                     break;
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragmentLayout_container, fragment).commit();

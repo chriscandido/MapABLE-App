@@ -2,7 +2,6 @@ package up.envisage.mapable.fragment;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -14,10 +13,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -29,11 +26,9 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.mapbox.mapboxsdk.annotations.Icon;
-import com.mapbox.mapboxsdk.annotations.IconFactory;
 
 import up.envisage.mapable.R;
-import up.envisage.mapable.ui.home.ReportActivity;
+import up.envisage.mapable.ui.home.ReportingActivity;
 import up.envisage.mapable.util.Constant;
 
 public class GoogleMapFragment extends FragmentActivity
@@ -102,7 +97,7 @@ public class GoogleMapFragment extends FragmentActivity
                             Log.v("[ GoogleMapFragment.java ]", "Pinned Location - latitude: " +
                                     pinnedLocation[0].latitude + " and " + "longitude: "+
                                     pinnedLocation[0].longitude);
-                            Intent submitLocation = new Intent(GoogleMapFragment.this, ReportActivity.class);
+                            Intent submitLocation = new Intent(GoogleMapFragment.this, ReportingActivity.class);
                             submitLocation.putExtra("Latitude", String.valueOf(pinnedLocation[0].latitude));
                             submitLocation.putExtra("Longitude", String.valueOf(pinnedLocation[0].longitude));
                             startActivity(submitLocation);

@@ -10,6 +10,7 @@ public class Constant {
     //Camera
     public static final int REQUEST_CODE = 101;
     public static final int CAMERA_REQUEST_CODE = 102;
+    public static final int ACTIVITY_SELECT_IMAGE = 1234;
     //Location settings
     public static final int REQUEST_CHECK_SETTINGS = 2001;
     public static final int REQUEST_PERMISSIONS_REQUEST_CODE = 34;

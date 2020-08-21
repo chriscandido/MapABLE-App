@@ -4,13 +4,14 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.media.Image;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -20,7 +21,7 @@ import androidx.core.content.ContextCompat;
 import com.google.android.material.button.MaterialButton;
 
 import up.envisage.mapable.R;
-import up.envisage.mapable.ui.home.ReportActivity;
+import up.envisage.mapable.ui.home.ReportingActivity;
 import up.envisage.mapable.util.Constant;
 
 public class CameraActivity extends Activity {
@@ -33,6 +34,7 @@ public class CameraActivity extends Activity {
         setContentView(R.layout.activity_camera);
 
         imageView_reportImage = findViewById(R.id.imageView_reportCamera);
+
         button_reportCamera = findViewById(R.id.button_report_camera);
         button_reportGallery = findViewById(R.id.button_report_photoGallery);
         button_reportSave = findViewById(R.id.button_report_savePhoto);
@@ -44,10 +46,17 @@ public class CameraActivity extends Activity {
             }
         });
 
+        button_reportGallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                askGalleryPermission();
+            }
+        });
+
         button_reportSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent save = new Intent(CameraActivity.this, ReportActivity.class);
+                Intent save = new Intent(CameraActivity.this, ReportingActivity.class);
                 startActivity(save);
             }
         });
@@ -59,6 +68,14 @@ public class CameraActivity extends Activity {
             ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.CAMERA}, Constant.REQUEST_CODE);
         } else {
             openCamera();
+        }
+    }
+
+    public void askGalleryPermission(){
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, Constant.ACTIVITY_SELECT_IMAGE);
+        } else {
+            openGallery();
         }
     }
 
@@ -78,10 +95,38 @@ public class CameraActivity extends Activity {
         startActivityForResult(camera, Constant.CAMERA_REQUEST_CODE);
     }
 
+    public void openGallery() {
+        Log.v("[ CameraActivity.java ]", "Gallery Open Request");
+        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(gallery, Constant.ACTIVITY_SELECT_IMAGE);
+    }
+
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        if (requestCode == Constant.CAMERA_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            Bitmap photo = (Bitmap) data.getExtras().get("data");
-            imageView_reportImage.setImageBitmap(photo);
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case Constant.CAMERA_REQUEST_CODE:
+                if (resultCode == Activity.RESULT_OK) {
+                    Bitmap cameraPhoto = (Bitmap) data.getExtras().get("data");
+                    imageView_reportImage.setImageBitmap(cameraPhoto);
+                }
+                break;
+            case Constant.ACTIVITY_SELECT_IMAGE:
+                if (resultCode == Activity.RESULT_OK){
+                    Uri selectedImage = data.getData();
+                    String[] filePathColumn = {MediaStore.Images.Media.DATA};
+
+                    Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
+                    cursor.moveToFirst();
+
+                    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                    String filePath = cursor.getString(columnIndex);
+                    cursor.close();
+
+                    Bitmap galleryPhoto = BitmapFactory.decodeFile(filePath);
+                    imageView_reportImage.setImageBitmap(galleryPhoto);
+
+                }
+                break;
         }
     }
 }

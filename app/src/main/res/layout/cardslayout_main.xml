@@ -44,7 +44,7 @@
                     android:layout_gravity="start"
                     android:text="Title"
                     android:textSize="15sp"
-                    android:fontFamily="@font/montserrat_bold" />
+                    android:fontFamily="@font/news_cycle_bold" />
 
                 <TextView
                     android:id="@+id/textView_mainContent"
@@ -53,7 +53,7 @@
                     android:layout_gravity="start"
                     android:text="Lorem ipsum"
                     android:textSize="9sp"
-                    android:fontFamily="@font/montserrat"/>
+                    android:fontFamily="@font/news_cycle"/>
 
             </LinearLayout>
 

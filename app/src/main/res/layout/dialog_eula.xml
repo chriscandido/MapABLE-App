@@ -17,7 +17,7 @@
         android:text="Terms of Use"
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"
-        android:fontFamily="@font/montserrat_bold"
+        android:fontFamily="@font/news_cycle_bold"
         style="@style/headerText"/>
 
     <ScrollView
@@ -52,7 +52,7 @@
             android:layout_marginBottom="10dp"
             android:text="I AGREE WITH THE TERMS AND CONDITION"
             android:textSize="7sp"
-            android:fontFamily="@font/montserrat" />
+            android:fontFamily="@font/news_cycle"/>
 
         <Button
             android:id="@+id/button_eulaAgree"

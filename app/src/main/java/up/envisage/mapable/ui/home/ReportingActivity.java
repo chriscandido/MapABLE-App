@@ -8,13 +8,13 @@ import android.view.View;
 
 import com.google.android.material.button.MaterialButton;
 
-import up.envisage.mapable.HomeFragment;
+import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
 import up.envisage.mapable.fragment.GoogleMapFragment;
 import up.envisage.mapable.ui.home.report.CameraActivity;
 import up.envisage.mapable.ui.home.report.ReportIncidentActivity;
 
-public class ReportActivity extends AppCompatActivity {
+public class ReportingActivity extends AppCompatActivity {
 
     MaterialButton button_reportIncident, button_reportCamera, button_reportLocation;
 
@@ -28,7 +28,7 @@ public class ReportActivity extends AppCompatActivity {
         button_reportIncident.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent incident = new Intent(ReportActivity.this, ReportIncidentActivity.class);
+                Intent incident = new Intent(ReportingActivity.this, ReportIncidentActivity.class);
                 startActivity(incident);
             }
         });
@@ -38,7 +38,7 @@ public class ReportActivity extends AppCompatActivity {
         button_reportLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent location = new Intent(ReportActivity.this, GoogleMapFragment.class);
+                Intent location = new Intent(ReportingActivity.this, GoogleMapFragment.class);
                 startActivity(location);
             }
         });
@@ -48,7 +48,7 @@ public class ReportActivity extends AppCompatActivity {
         button_reportCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent camera = new Intent(ReportActivity.this, CameraActivity.class);
+                Intent camera = new Intent(ReportingActivity.this, CameraActivity.class);
                 startActivity(camera);
             }
         });
@@ -68,7 +68,7 @@ public class ReportActivity extends AppCompatActivity {
 
     public void onBackPressed(){
         super.onBackPressed();
-        Intent intent = new Intent(ReportActivity.this, HomeFragment.class);
+        Intent intent = new Intent(ReportingActivity.this, MainActivity.class);
         startActivity(intent);
     }
 }

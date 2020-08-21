@@ -4,24 +4,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
-import com.google.android.material.textfield.TextInputLayout;
 
 import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
 import up.envisage.mapable.databinding.ActivityRegisterBinding;
 import up.envisage.mapable.databinding.Listener;
 import up.envisage.mapable.db.table.UserTable;
-import up.envisage.mapable.model.RegisterViewModel;
+import up.envisage.mapable.model.UserViewModel;
 
 
 public class RegisterActivity extends AppCompatActivity implements Listener {
 
-    private RegisterViewModel registerViewModel;
+    private UserViewModel registerViewModel;
     private ActivityRegisterBinding binding;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +27,7 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
         binding = DataBindingUtil.setContentView(RegisterActivity.this, R.layout.activity_register);
         binding.setClickListener((RegisterActivity) this);
 
-        registerViewModel = ViewModelProviders.of(RegisterActivity.this).get(RegisterViewModel.class);
+        registerViewModel = ViewModelProviders.of(RegisterActivity.this).get(UserViewModel.class);
 
     }
 

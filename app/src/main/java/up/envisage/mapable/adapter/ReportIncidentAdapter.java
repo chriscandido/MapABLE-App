@@ -1,5 +1,6 @@
 package up.envisage.mapable.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,9 +9,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import up.envisage.mapable.R;
+import up.envisage.mapable.ui.home.report.ReportIncidentActivity;
 
 public class ReportIncidentAdapter extends RecyclerView.Adapter<ReportIncidentAdapter.ViewHolder> {
 
@@ -76,6 +80,7 @@ public class ReportIncidentAdapter extends RecyclerView.Adapter<ReportIncidentAd
     public void onBindViewHolder(@NonNull ReportIncidentAdapter.ViewHolder holder, int position) {
         holder.textView_incidentTitle.setText(incidentReport_Title[position]);
         holder.imageView_incidentImage.setImageResource(incidentReport_Image[position]);
+
     }
 
     @Override

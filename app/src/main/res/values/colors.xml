@@ -15,5 +15,11 @@
     <color name="colorError">#B00020</color>
     <color name="colorNeutral">#757575</color>
     <color name="colorBackgroundTint">#dcf1f2</color>
+    //Type of Report
+    <color name="colorAlgalBloom">#264653</color>
+    <color name="colorPollution">#617373</color>
+    <color name="colorFishKill">#212121</color>
+    <color name="colorIllegalFishing">#7c1e3b</color>
+    <color name="colorIllegalReclamation">#6a4849</color>
 
 </resources>

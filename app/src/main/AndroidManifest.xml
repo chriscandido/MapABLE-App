@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-feature android:name="android.hardware.Camera" android:required="true"/>
     <uses-permission android:name="android.permission.INTERNET" />
@@ -13,9 +15,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo_mapable_240x240"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo_mapable_240x240"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <!-- Activities -->
@@ -36,7 +38,7 @@
         <activity android:name=".MainActivity" />
         <!-- Main Menu -->
         <activity android:name=".ui.home.AboutManilaBayActivity" />
-        <activity android:name=".ui.home.ReportActivity" />
+        <activity android:name=".ui.home.ReportingActivity" />
         <activity android:name=".ui.home.InformationActivity" />
         <activity android:name=".ui.home.FeedbackActivity" />
         <activity android:name=".ui.home.report.ReportIncidentActivity"/>

@@ -21,8 +21,8 @@ public interface UserDAO {
     @Query ("SELECT * FROM User_Profile")
     LiveData<List<UserTable>> getAllUsers();
 
-    @Query ("SELECT * FROM User_Profile WHERE username LIKE :username LIMIT 1")
-    LiveData<UserTable> findByUsername(String username);
+    @Query ("SELECT * FROM User_Profile WHERE username LIKE :username AND password LIKE :password LIMIT 1")
+    LiveData<UserTable> verifyUserLogin(String username, String password);
 
     @Query ("DELETE FROM User_Profile")
     void deleteAllUsers();

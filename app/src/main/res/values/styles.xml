@@ -1,14 +1,15 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowContentTransitions" tools:targetApi="lollipop">true</item>
     </style>
 
     <!-- Splash application theme -->
-    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="SplashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/bg_splash</item>
     </style>
 
@@ -17,7 +18,7 @@
         <item name="android:textSize">30sp</item>
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:fontFamily">@font/news_cycle_bold</item>
         <item name="android:textStyle">bold</item>
     </style>
 
@@ -26,7 +27,7 @@
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/colorNeutral</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:fontFamily">@font/news_cycle</item>
     </style>
 
     <!-- Navigation text theme -->
@@ -34,7 +35,7 @@
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/colorBackground</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:fontFamily">@font/montserrat_alternates</item>
+        <item name="android:fontFamily">@font/news_cycle_bold</item>
     </style>
 
 </resources>

@@ -4,5 +4,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- Top Navigation Menu -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_alignParentLeft="true"
+            android:text="Back"
+            style="@style/navigationText"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_alignParentRight="true"
+            android:text="About Manila Bay"
+            style="@style/navigationText"/>
+
+    </RelativeLayout>
+
 
 </RelativeLayout>

@@ -5,18 +5,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackgroundTint"
     android:orientation="vertical"
     tools:context=".ui.registration.LoginActivity">
 
     <!-- Main Content -->
     <!-- Title Text -->
     <TextView
+        style="@style/headerText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:layout_marginLeft="20dp"
-        android:text="WELCOME"
-        style="@style/headerText"/>
+        android:layout_marginTop="50dp"
+        android:text="WELCOME" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -36,10 +37,11 @@
         android:layout_marginRight="20dp"
         android:layout_gravity="center"
         android:hint="Username"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:fontFamily="@font/news_cycle"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -54,7 +56,8 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:fontFamily="@font/news_cycle"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Button Login -->
@@ -65,12 +68,11 @@
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/bg_outlinedbox"
+        android:backgroundTint="@color/colorAccent"
         android:text="LOGIN"
         android:textSize="15sp"
         android:textColor="@color/colorBackground"
-        android:fontFamily="@font/montserrat"
-        android:onClick="goToMain"/>
+        android:fontFamily="@font/montserrat"/>
 
     <!-- TextView SignUp -->
     <RelativeLayout
@@ -86,7 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Don't have an Account? "
-            android:fontFamily="@font/montserrat"/>
+            android:fontFamily="@font/news_cycle"/>
 
         <TextView
             android:id="@+id/textView_loginSignUp"
@@ -95,7 +97,7 @@
             android:layout_toRightOf="@+id/textView_text01"
             android:text="SIGN UP"
             android:textColor="@color/colorPrimaryDark"
-            android:fontFamily="@font/montserrat"
+            android:fontFamily="@font/news_cycle"
             android:onClick="goToSignup"/>
 
     </RelativeLayout>

@@ -11,12 +11,12 @@ import java.util.List;
 import up.envisage.mapable.db.table.UserTable;
 import up.envisage.mapable.repository.UserRepository;
 
-public class RegisterViewModel extends AndroidViewModel {
+public class UserViewModel extends AndroidViewModel {
 
     private UserRepository userRepository;
     private LiveData<List<UserTable>> getAllUsers;
 
-    public RegisterViewModel(@NonNull Application application) {
+    public UserViewModel(@NonNull Application application) {
         super(application);
 
         userRepository = new UserRepository(application);

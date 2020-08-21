@@ -3,8 +3,6 @@ package up.envisage.mapable.ui.registration;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -14,41 +12,64 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.List;
+
 import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
+import up.envisage.mapable.db.table.UserTable;
+import up.envisage.mapable.model.UserViewModel;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity  {
 
-    TextInputLayout textInputLayout_username, textInputLayout_password;
-    TextView textView_signup;
-    Button button_login;
-
+    TextInputLayout textInputLayout_loginUsername, textInputLayout_loginPassword;
+    TextView textView_eulaTitle, textView_signUp;
+    Button button_eulaAgree, button_login;
     Dialog dialog;
-    Button button_eulaAgree;
     CheckBox checkBox_eulaAgree;
-    TextView textView_eulaTitle;
+
+    private UserViewModel userViewModel;
+
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //Initialize Terms of Use using Dialog Box
-        initializeTermsOfUse();
-
-        initViews();
-    }
-
-    public void initViews() {
-        textInputLayout_username = findViewById(R.id.textInputLayout_loginUsername);
-        textInputLayout_password = findViewById(R.id.textInputLayout_loginPassword);
+        textInputLayout_loginUsername = findViewById(R.id.textInputLayout_loginUsername);
+        textInputLayout_loginPassword = findViewById(R.id.textInputLayout_loginPassword);
 
         button_login = findViewById(R.id.button_login);
 
-        textView_signup = findViewById(R.id.textView_loginSignUp);
+        userViewModel = ViewModelProviders.of(LoginActivity.this).get(UserViewModel.class);
 
+        //Initialize Terms of Use using Dialog Box
+        initializeTermsOfUse();
+
+        button_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final String username = textInputLayout_loginUsername.getEditText().getText().toString().trim();
+                final String password = textInputLayout_loginPassword.getEditText().getText().toString().trim();
+
+                userViewModel.getUsers().observe(LoginActivity.this, new Observer<List<UserTable>>() {
+                    @Override
+                    public void onChanged(List<UserTable> userTables) {
+                        for (UserTable ut: userTables){
+                            boolean isUsernameValid = ut.getUsername().equals(username);
+                            boolean isPasswordValid = ut.getPassword().equals(password);
+                            if (isUsernameValid && isPasswordValid) {
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                startActivity(intent);
+                            }
+                        }
+                    }
+                });
+            }
+        });
     }
 
     public void initializeTermsOfUse(){
@@ -96,11 +117,6 @@ public class LoginActivity extends AppCompatActivity {
 
     public void goToSignup(View view) {
         Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-        startActivity(intent);
-    }
-
-    public void goToMain(View view) {
-        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
     }
 

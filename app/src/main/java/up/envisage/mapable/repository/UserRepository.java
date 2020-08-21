@@ -16,6 +16,7 @@ import up.envisage.mapable.db.table.UserTable;
 
 public class UserRepository {
 
+    private UserTable userTable;
     private UserDAO userDAO;
     private LiveData<List<UserTable>> allUsers;
 
