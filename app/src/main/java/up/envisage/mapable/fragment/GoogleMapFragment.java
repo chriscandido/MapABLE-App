@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -26,8 +27,10 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.button.MaterialButton;
 
 import up.envisage.mapable.R;
+import up.envisage.mapable.ui.home.ReportIncidentActivity;
 import up.envisage.mapable.ui.home.ReportingActivity;
 import up.envisage.mapable.util.Constant;
 
@@ -36,7 +39,7 @@ public class GoogleMapFragment extends FragmentActivity
         OnMapReadyCallback {
 
     private GoogleMap map;
-    Button button_googleMaps_submitLocation;
+    private MaterialButton button_googleMaps_submitLocation;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -47,6 +50,7 @@ public class GoogleMapFragment extends FragmentActivity
         mapFragment.getMapAsync(this);
     }
 
+    //----------------------------------------------------------------------------------------------Google map
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
@@ -101,6 +105,7 @@ public class GoogleMapFragment extends FragmentActivity
                             submitLocation.putExtra("Latitude", String.valueOf(pinnedLocation[0].latitude));
                             submitLocation.putExtra("Longitude", String.valueOf(pinnedLocation[0].longitude));
                             startActivity(submitLocation);
+                            Toast.makeText(GoogleMapFragment.this, "Coordinates successfully saved", Toast.LENGTH_LONG).show();
                          }
                     }
                 }

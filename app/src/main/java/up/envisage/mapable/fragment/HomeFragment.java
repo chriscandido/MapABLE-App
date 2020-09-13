@@ -1,4 +1,4 @@
-package up.envisage.mapable;
+package up.envisage.mapable.fragment;
 
 import android.app.Activity;
 import android.content.Context;
@@ -16,12 +16,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import up.envisage.mapable.R;
 import up.envisage.mapable.adapter.MainMenuAdapter;
 import up.envisage.mapable.ui.home.AboutManilaBayActivity;
 import up.envisage.mapable.ui.home.FeedbackActivity;
 import up.envisage.mapable.ui.home.InformationActivity;
 import up.envisage.mapable.ui.home.ReportingActivity;
-import up.envisage.mapable.ui.Tracker;
 import up.envisage.mapable.util.Constant;
 
 
@@ -78,11 +78,6 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
                 Intent report = new Intent(listener, ReportingActivity.class);
                 startActivity(report);
                 Log.d("[ HomeFragment.java ]", "onMenuClick: clicked - Report");
-                break;
-            case Constant.mainMenu_tracker:
-                Intent tracker = new Intent(listener, Tracker.class);
-                startActivity(tracker);
-                Log.d("[ HomeFragment.java ]", "onMenuClick: clicked - Tracker");
                 break;
             case Constant.mainMenu_feedback:
                 Intent feedback = new Intent(listener, FeedbackActivity.class);

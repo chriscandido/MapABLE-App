@@ -1,8 +1,10 @@
 package up.envisage.mapable.ui.registration;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,6 +33,7 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
 
     }
 
+    @SuppressLint("LongLogTag")
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -59,6 +62,7 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
                 }
 
                 else {
+                    //Insert data to local server
                     user.setName(name);
                     user.setNumber(number);
                     user.setEmail(email);
@@ -67,6 +71,7 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
                     registerViewModel.insert(user);
                     Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                     startActivity(intent);
+                    Log.v("[ RegisterActivity.java ]", "Data successfully inserted");
                 }
                 break;
 

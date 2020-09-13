@@ -40,17 +40,17 @@
         android:layout_marginLeft="20dp"
         android:layout_below="@+id/camera_mainTitle"
         android:paddingBottom="10dp"
+        android:backgroundTint="@color/colorAccent"
         android:text="Camera"
         android:textColor="@color/colorBackground"
         android:textSize="15sp"
         android:fontFamily="@font/montserrat"
-        android:src="@drawable/bg_outlinedbox"
         app:icon="@drawable/ic_report_camera"
         app:iconGravity="start"
         app:iconTint="@color/colorBackground"
         app:iconSize="25dp"
         app:cornerRadius="10dp"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"/>
+        style="@style/Widget.MaterialComponents.Button"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_report_photoGallery"
@@ -60,17 +60,17 @@
         android:layout_marginLeft="20dp"
         android:layout_below="@+id/button_report_camera"
         android:paddingBottom="10dp"
+        android:backgroundTint="@color/colorAccent"
         android:text="Photo Gallery"
         android:textColor="@color/colorBackground"
         android:textSize="15sp"
         android:fontFamily="@font/montserrat"
-        android:src="@drawable/bg_outlinedbox"
         app:icon="@drawable/ic_report_photogallery"
         app:iconGravity="start"
         app:iconTint="@color/colorBackground"
         app:iconSize="25dp"
         app:cornerRadius="10dp"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"/>
+        style="@style/Widget.MaterialComponents.Button"/>
 
     <ImageView
         android:id="@+id/imageView_reportCamera"
@@ -95,6 +95,6 @@
         android:textSize="15sp"
         android:fontFamily="@font/montserrat"
         app:cornerRadius="10dp"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"/>
+        style="@style/Widget.MaterialComponents.Button"/>
 
 </RelativeLayout>

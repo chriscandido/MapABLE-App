@@ -20,12 +20,12 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView_reportIncidentTitle_algalBloom"
+                android:id="@+id/textView_reportIncidentTitle_pollution"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_gravity="center"
-                android:text="Polusyon"
+                android:text="@string/title_pollution"
                 android:textColor="@color/colorBackground"
                 style="@style/headerText"/>
 
@@ -37,11 +37,11 @@
                 android:src="@drawable/img_pollution"/>
 
             <TextView
-                android:id="@+id/textView_reportIncidentBody_algalBloom"
+                android:id="@+id/textView_reportIncidentBody_pollution"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:text="@string/pollution"
+                android:text="@string/desc_pollution"
                 android:textColor="@color/colorBackground"
                 android:textAlignment="center"
                 style="@style/contentText"/>
@@ -80,7 +80,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_reportAlgalBloom_ok"
+                android:id="@+id/button_reportPollution_ok"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"

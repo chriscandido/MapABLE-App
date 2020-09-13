@@ -1,4 +1,4 @@
-package up.envisage.mapable.ui.home.report;
+package up.envisage.mapable.ui.home;
 
 import android.Manifest;
 import android.app.Activity;
@@ -13,6 +13,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -21,7 +22,6 @@ import androidx.core.content.ContextCompat;
 import com.google.android.material.button.MaterialButton;
 
 import up.envisage.mapable.R;
-import up.envisage.mapable.ui.home.ReportingActivity;
 import up.envisage.mapable.util.Constant;
 
 public class CameraActivity extends Activity {
@@ -58,6 +58,7 @@ public class CameraActivity extends Activity {
             public void onClick(View view) {
                 Intent save = new Intent(CameraActivity.this, ReportingActivity.class);
                 startActivity(save);
+                Toast.makeText(CameraActivity.this, "Photo successfully saved", Toast.LENGTH_LONG).show();
             }
         });
 

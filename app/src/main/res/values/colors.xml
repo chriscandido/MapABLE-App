@@ -14,7 +14,7 @@
     <color name="colorBackground">#FFFFFF</color>
     <color name="colorError">#B00020</color>
     <color name="colorNeutral">#757575</color>
-    <color name="colorBackgroundTint">#dcf1f2</color>
+    <color name="colorBackgroundTint">#F9F7F3</color>
     //Type of Report
     <color name="colorAlgalBloom">#264653</color>
     <color name="colorPollution">#617373</color>

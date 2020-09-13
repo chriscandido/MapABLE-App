@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/colorAlgalBloom"
+    android:background="@color/colorIllegalReclamation"
     android:padding="10dp"
     android:orientation="vertical">
 
@@ -20,13 +20,13 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView_reportIncidentTitle_algalBloom"
+                android:id="@+id/textView_reportIncidentTitle_illegalReclamation"
                 style="@style/headerText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
-                android:text="@string/title_algalBloom"
+                android:text="@string/title_illegalReclamation"
                 android:textColor="@color/colorBackground" />
 
             <ImageView
@@ -34,14 +34,14 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:elevation="10dp"
-                android:src="@drawable/img_algal_bloom"/>
+                android:src="@drawable/img_illegal_reclamation"/>
 
             <TextView
-                android:id="@+id/textView_reportIncidentBody_algalBloom"
+                android:id="@+id/textView_reportIncidentBody_illegalReclamation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:text="@string/desc_algalBloom"
+                android:text="@string/desc_illegalReclamation"
                 android:textColor="@color/colorBackground"
                 android:textAlignment="center"
                 style="@style/contentText"/>
@@ -67,7 +67,7 @@
                 style="@style/contentText"/>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout_reportAlgalBloom"
+                android:id="@+id/textInputLayout_reportIllegalReclamation"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
@@ -80,7 +80,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_reportAlgalBloom_ok"
+                android:id="@+id/button_reportIllegalReclamation_ok"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"

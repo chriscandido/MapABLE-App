@@ -47,6 +47,7 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.ViewHo
         layoutInflater = LayoutInflater.from(context);
     }
 
+    //Title
     public String[] mainMenu_title = {
             "Manila Bay",
             "Report",
@@ -55,14 +56,16 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.ViewHo
             "About"
     };
 
+    //Description
     public String[] mainMenu_content = {
-            "Information about Manila Bay (Trivias, Myths, and Important Facts about Manila Bay and its watershed",
+            "Information about Manila Bay (Trivia, Myths, and Important Facts about Manila Bay and its watershed",
             "Relay to authorities about the environmental concerns happening in Manila Bay and its watershed",
             "Know the status of your report and the actions taken by authorities",
             "Be informed about relevant policies and laws concerning environmental protection and conservation particularly Manila Bay",
             "Know about the IM4ManilaBay Program, Project MapABLE, and the mobile application"
     };
 
+    //Icon
     public int[] mainMenu_icon = {
             R.drawable.ic_mainmenu_aboutmanilabay,
             R.drawable.ic_mainmenu_report,

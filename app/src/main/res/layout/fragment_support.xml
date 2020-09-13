@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackgroundTint"
     android:orientation="vertical"
-    tools:context=".SupportFragment">
+    tools:context=".fragment.SupportFragment">
 
     <!-- Top Navigation Menu -->
     <LinearLayout

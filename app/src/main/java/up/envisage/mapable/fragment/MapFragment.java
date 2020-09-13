@@ -1,4 +1,4 @@
-package up.envisage.mapable;
+package up.envisage.mapable.fragment;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -39,9 +39,9 @@ import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.maps.Style;
 
 import java.lang.ref.WeakReference;
-import java.security.Permission;
 import java.util.List;
-import java.util.Map;
+
+import up.envisage.mapable.R;
 
 import static android.os.Looper.getMainLooper;
 

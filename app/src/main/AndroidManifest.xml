@@ -41,8 +41,8 @@
         <activity android:name=".ui.home.ReportingActivity" />
         <activity android:name=".ui.home.InformationActivity" />
         <activity android:name=".ui.home.FeedbackActivity" />
-        <activity android:name=".ui.home.report.ReportIncidentActivity"/>
-        <activity android:name=".ui.home.report.CameraActivity"/>
+        <activity android:name=".ui.home.ReportIncidentActivity"/>
+        <activity android:name=".ui.home.CameraActivity"/>
         <activity android:name="up.envisage.mapable.fragment.GoogleMapFragment"
             android:label="Google Maps"/>
         <!-- Fonts -->

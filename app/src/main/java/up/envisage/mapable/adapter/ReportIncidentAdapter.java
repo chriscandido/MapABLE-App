@@ -1,6 +1,5 @@
 package up.envisage.mapable.adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,12 +8,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityOptionsCompat;
-import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import up.envisage.mapable.R;
-import up.envisage.mapable.ui.home.report.ReportIncidentActivity;
 
 public class ReportIncidentAdapter extends RecyclerView.Adapter<ReportIncidentAdapter.ViewHolder> {
 
@@ -35,10 +31,8 @@ public class ReportIncidentAdapter extends RecyclerView.Adapter<ReportIncidentAd
             this.textView_incidentContent = view.findViewById(R.id.textView_incidentContent);
             this.imageView_incidentImage = view.findViewById(R.id.imageView_incidentImage);
             this.onIncidentClickListener = onIncidentClickListener;
-
             view.setOnClickListener(this);
         }
-
         @Override
         public void onClick(View view) {
             onIncidentClickListener.onClick(getAdapterPosition());
@@ -60,14 +54,16 @@ public class ReportIncidentAdapter extends RecyclerView.Adapter<ReportIncidentAd
         layoutInflater = LayoutInflater.from(context);
     }
 
-    public String[] incidentReport_Title = {
-            "Algal Bloom",
-            "Fish Kill",
-            "Pollution",
-            "Illegal Fishing",
-            "Illegal Reclamation"
+    //Title
+    public int[] incidentReport_Title = {
+            R.string.title_algalBloom,
+            R.string.title_fishKill,
+            R.string.title_pollution,
+            R.string.title_illegalFishing,
+            R.string.title_illegalReclamation
     };
 
+    //Image
     public int[] incidentReport_Image = {
             R.drawable.img_algal_bloom,
             R.drawable.img_fish_kill,

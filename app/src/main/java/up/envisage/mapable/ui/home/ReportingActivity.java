@@ -11,8 +11,6 @@ import com.google.android.material.button.MaterialButton;
 import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
 import up.envisage.mapable.fragment.GoogleMapFragment;
-import up.envisage.mapable.ui.home.report.CameraActivity;
-import up.envisage.mapable.ui.home.report.ReportIncidentActivity;
 
 public class ReportingActivity extends AppCompatActivity {
 

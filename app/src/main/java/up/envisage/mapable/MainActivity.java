@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 
-import com.google.android.gms.common.api.GoogleApi;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.ResultCallback;
@@ -22,8 +21,10 @@ import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import javax.net.ssl.SSLEngineResult;
-
+import up.envisage.mapable.fragment.HomeFragment;
+import up.envisage.mapable.fragment.MapFragment;
+import up.envisage.mapable.fragment.SupportFragment;
+import up.envisage.mapable.fragment.UserFragment;
 import up.envisage.mapable.util.Constant;
 
 public class MainActivity extends AppCompatActivity {
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         displayLocationSettingsRequest(this);
     }
 
+    //----------------------------------------------------------------------------------------------Bottom navigation items
     private BottomNavigationView.OnNavigationItemSelectedListener bottomNavigation = new BottomNavigationView.OnNavigationItemSelectedListener() {
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
             Fragment fragment = null;
@@ -68,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    //----------------------------------------------------------------------------------------------Location settings
     public void displayLocationSettingsRequest(Context context){
         GoogleApiClient googleApiClient = new GoogleApiClient.Builder(context)
                 .addApi(LocationServices.API).build();
