@@ -26,14 +26,14 @@ import up.envisage.mapable.model.UserViewModel;
 
 public class LoginActivity extends AppCompatActivity  {
 
-    TextInputLayout textInputLayout_loginUsername, textInputLayout_loginPassword;
-    TextView textView_eulaTitle, textView_signUp;
-    Button button_eulaAgree, button_login;
+    private TextInputLayout textInputLayout_loginUsername, textInputLayout_loginPassword;
+    private TextView textView_eulaTitle, textView_signUp;
+    private Button button_eulaAgree, button_login;
+    private CheckBox checkBox_eulaAgree;
+
     Dialog dialog;
-    CheckBox checkBox_eulaAgree;
 
     private UserViewModel userViewModel;
-
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -42,13 +42,13 @@ public class LoginActivity extends AppCompatActivity  {
         textInputLayout_loginUsername = findViewById(R.id.textInputLayout_loginUsername);
         textInputLayout_loginPassword = findViewById(R.id.textInputLayout_loginPassword);
 
-        button_login = findViewById(R.id.button_login);
-
         userViewModel = ViewModelProviders.of(LoginActivity.this).get(UserViewModel.class);
 
         //Initialize Terms of Use using Dialog Box
         initializeTermsOfUse();
 
+        //Check username and password in local db
+        button_login = findViewById(R.id.button_login);
         button_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,6 +72,7 @@ public class LoginActivity extends AppCompatActivity  {
         });
     }
 
+    //----------------------------------------------------------------------------------------------Initialization of Terms of Use
     public void initializeTermsOfUse(){
 
         final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -104,6 +105,7 @@ public class LoginActivity extends AppCompatActivity  {
         }
     }
 
+    //----------------------------------------------------------------------------------------------Set the visibility of agree button
     public class onCheckListener implements CompoundButton.OnCheckedChangeListener {
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -115,6 +117,7 @@ public class LoginActivity extends AppCompatActivity  {
         }
     }
 
+    //----------------------------------------------------------------------------------------------Go to Sign-up Page
     public void goToSignup(View view) {
         Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
         startActivity(intent);

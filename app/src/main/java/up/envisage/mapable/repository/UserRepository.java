@@ -34,6 +34,7 @@ public class UserRepository {
         new insertUserAsyncTask(userDAO).execute(userTable);
     }
 
+    //----------------------------------------------------------------------------------------------Inserting User Data to local SDB
     public static class insertUserAsyncTask extends AsyncTask<UserTable, Void, Void> {
 
         private UserDAO userDAO;

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
 
@@ -14,7 +15,8 @@ import up.envisage.mapable.fragment.GoogleMapFragment;
 
 public class ReportingActivity extends AppCompatActivity {
 
-    MaterialButton button_reportIncident, button_reportCamera, button_reportLocation;
+    private MaterialButton button_reportIncident, button_reportCamera, button_reportLocation;
+    private TextView textView_reportBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,16 @@ public class ReportingActivity extends AppCompatActivity {
                 startActivity(camera);
             }
         });
+
+        //Text Button back to Main Menu
+        textView_reportBack = findViewById(R.id.textView_report_back);
+        textView_reportBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent back = new Intent(ReportingActivity.this, MainActivity.class);
+                startActivity(back);
+            }
+        });
     }
 
     public void onStart(){
@@ -65,8 +77,5 @@ public class ReportingActivity extends AppCompatActivity {
     }
 
     public void onBackPressed(){
-        super.onBackPressed();
-        Intent intent = new Intent(ReportingActivity.this, MainActivity.class);
-        startActivity(intent);
     }
 }

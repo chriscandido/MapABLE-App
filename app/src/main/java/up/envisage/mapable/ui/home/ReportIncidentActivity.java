@@ -33,6 +33,7 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
                             textInputLayout_reportIllegalFishing, textInputLayout_reportIllegalReclamation;
     private MaterialButton button_reportAlgalBloom_ok, button_reportFishKill_ok, button_reportPollution_ok,
                             button_reportIllegalFishing_ok, button_reportIllegalReclamation_ok;
+    private TextView textView_reportIncident_back;
 
     Dialog dialog;
 
@@ -49,8 +50,18 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
 
         adapter = new ReportIncidentAdapter(getApplicationContext(), this);
         recyclerView.setAdapter(adapter);
+
+        textView_reportIncident_back = findViewById(R.id.textView_reportIncident_back);
+        textView_reportIncident_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent back = new Intent(ReportIncidentActivity.this, ReportingActivity.class);
+                startActivity(back);
+            }
+        });
     }
 
+    //----------------------------------------------------------------------------------------------Incident Type Menu
     public void onClick(int position){
         Log.d("[ ReportIncident.java ]", "onIncidentClick: clicked - " + position);
         switch (position) {
@@ -145,10 +156,5 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
     }
 
     public void onBackPressed(){
-        super.onBackPressed();
-        Intent intent = new Intent(ReportIncidentActivity.this, ReportingActivity.class);
-        startActivity(intent);
     }
-
-
 }

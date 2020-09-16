@@ -14,11 +14,8 @@ public class ReportTable {
     private String uniqueId;
 
     @PrimaryKey (autoGenerate = true)
-    @ColumnInfo (name = "id")
-    private int id;
-
-    @ColumnInfo (name = "name")
-    private String name;
+    @ColumnInfo (name = "rid")
+    private int rid;
 
     @ColumnInfo (name = "dateTime")
     private long dateTime;
@@ -35,5 +32,59 @@ public class ReportTable {
     @ColumnInfo (name = "photo")
     private int photo;
 
+    public String getUniqueId() {
+        return uniqueId;
+    }
 
+    public void setUniqueId(String uniqueId) {
+        this.uniqueId = uniqueId;
+    }
+
+    public int getRid() {
+        return rid;
+    }
+
+    public void setRid(int rid) {
+        this.rid = rid;
+    }
+
+    public long getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(long dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public String getIncidentType() {
+        return incidentType;
+    }
+
+    public void setIncidentType(String incidentType) {
+        this.incidentType = incidentType;
+    }
+
+    public LatLng getLocation() {
+        return location;
+    }
+
+    public void setLocation(LatLng location) {
+        this.location = location;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    public int getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(int photo) {
+        this.photo = photo;
+    }
 }

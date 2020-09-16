@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">MapABLE</string>
 
-    <!-- MapBox -->
+    <!-- MapBox Access Token -->
     <string name="mapbox_access_token">sk.eyJ1IjoiY2hyaXNjYW5kaWRvIiwiYSI6ImNrY3ZzczhvZjA3YnIzMnBxanlwNG4yMTIifQ.csRrOg_f00ba2PA0DOjIdQ</string>
 
-    <!-- Google Maps -->
+    <!-- Google Maps Access Token -->
     <string name="google_maps_key">AIzaSyAAEcTYPqxAEeO9zFcaQgcjY08xMuUneU8</string>
 
 </resources>

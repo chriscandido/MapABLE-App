@@ -66,6 +66,7 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
         recyclerView.setAdapter(adapter);
     }
 
+    //----------------------------------------------------------------------------------------------Main Menu Features
     public void onClick(int position){
         Log.d("[ HomeFragment.java ]", "onMenuClick: clicked - " + position);
         switch (position) {

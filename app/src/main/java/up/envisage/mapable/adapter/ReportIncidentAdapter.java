@@ -15,9 +15,9 @@ import up.envisage.mapable.R;
 public class ReportIncidentAdapter extends RecyclerView.Adapter<ReportIncidentAdapter.ViewHolder> {
 
     Context context;
+
     private OnIncidentClickListener onIncidentClickListener;
     private LayoutInflater layoutInflater;
-
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 

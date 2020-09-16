@@ -16,9 +16,9 @@ import up.envisage.mapable.R;
 public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.ViewHolder> {
 
     Context context;
+
     private OnMenuClickListener onMenuClickListener;
     private LayoutInflater layoutInflater;
-
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView textView_mainTitle, textView_mainContent;

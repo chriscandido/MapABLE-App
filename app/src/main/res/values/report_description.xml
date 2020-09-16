@@ -8,21 +8,21 @@
 
     <!-- Report Description -->
     <string name="report_desc">Layunin ng Mapable mobile app na mapabilis ang pangangalap ng impormasyon hinggil sa insidenteng karaniwang nararanasan at maaring makaapekto sa buhay Manila Bay upang mas mabilis maaksyunan ang mga ito</string>
-
+    <!-- Algal Bloom Description -->
     <string name="desc_algalBloom">Ang liya o algal bloom ay ang mabilis na pagdami ng algae sa anyong tubig tulad ng Manila bay.
         Ito ay resulta ng pagdami ng sustansya (nutrients) sa tubig na maaaring natural sa tubig o kaya ay mula sa mga fish feeds, pataba sa lupa o dumi ng hayop na inaanod sa mga ilog papuntang Manila bay.
         Maaari ring magmula ang sustansyang ito sa gamit na tubig tulad ng pinaglabahan mula sa mga kabahayan o mula sa ibang mga pasilidad.
         Karaniwang naoobserbahan ang liya tuwing tag-araw.
     </string>
-
+    <!-- Fish Kill Description -->
     <string name="desc_fishkill">Ang fishkill ay biglaan at hindi inaasahang pagkamatay ng mga isda. Ito ay maaaring bunga ng pagkalason ng mga isda (tulad ng red tide) o pagkaubos ng oxygen o hypoxia sa tubig na kailangan ng mga isda upan mabuhay.
     Ang hypoxia ay maaring resulta ng liya, lubhang pagdami o overpopulation ng mga isda sa isang maliit na lugar, o pagtaas ng temperatura ng tubig.
     </string>
-
+    <!-- Pollution Description -->
     <string name="desc_pollution">Ang polusyon sa tubig ay ang pagbaba ng kalidad nito bilang resulta ng iba\'t ibang bagay tulad ng mga basura, kemikal, maruruming tubig, at dumi mula sa pabrika at pasilidad.
         Ang paglala ng polusyon sa mga ilog at sa Manila Bay ay maaaring magdulot ng iba pang problema tulad ng liya, kontaminasyon ng inuming tubig, at fish kill.
     </string>
-
+    <!-- Illegal Reclamation Description -->
     <string name="desc_illegalReclamation">Ang pagtatambak at pagtatayo ng istruktura sa lawa o reclamation ay maaari lamang gawin kung may kaukulang pahintulot mula sa awtoridad.
     Anumang reclamation project na walang pahintulot o/at nakakasira sa lagay ng Laguna de Bayay maaaring ipagbibigay-alam sa mga kinauukulan.
     </string>

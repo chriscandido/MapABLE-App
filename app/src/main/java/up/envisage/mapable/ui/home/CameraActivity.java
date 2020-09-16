@@ -13,6 +13,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -26,8 +27,9 @@ import up.envisage.mapable.util.Constant;
 
 public class CameraActivity extends Activity {
 
-    ImageView imageView_reportImage;
-    MaterialButton button_reportCamera, button_reportGallery, button_reportSave;
+    private ImageView imageView_reportImage;
+    private MaterialButton button_reportCamera, button_reportGallery, button_reportSave;
+    private TextView textView_cameraBack;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -35,10 +37,8 @@ public class CameraActivity extends Activity {
 
         imageView_reportImage = findViewById(R.id.imageView_reportCamera);
 
+        //Button camera
         button_reportCamera = findViewById(R.id.button_report_camera);
-        button_reportGallery = findViewById(R.id.button_report_photoGallery);
-        button_reportSave = findViewById(R.id.button_report_savePhoto);
-
         button_reportCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,6 +46,8 @@ public class CameraActivity extends Activity {
             }
         });
 
+        //Button go to gallery
+        button_reportGallery = findViewById(R.id.button_report_photoGallery);
         button_reportGallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,6 +55,8 @@ public class CameraActivity extends Activity {
             }
         });
 
+        //Button save photo
+        button_reportSave = findViewById(R.id.button_report_savePhoto);
         button_reportSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,8 +66,19 @@ public class CameraActivity extends Activity {
             }
         });
 
+        //Text Button back to Main Menu
+        textView_cameraBack = findViewById(R.id.textView_camera_back);
+        textView_cameraBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent back = new Intent(CameraActivity.this, ReportingActivity.class);
+                startActivity(back);
+            }
+        });
+
     }
 
+    //----------------------------------------------------------------------------------------------Ask for Camera Permission
     public void askCameraPermissions() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.CAMERA}, Constant.REQUEST_CODE);
@@ -72,6 +87,7 @@ public class CameraActivity extends Activity {
         }
     }
 
+    //----------------------------------------------------------------------------------------------Ask for Gallery Permission
     public void askGalleryPermission(){
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, Constant.ACTIVITY_SELECT_IMAGE);
@@ -90,18 +106,21 @@ public class CameraActivity extends Activity {
         }
     }
 
+    //----------------------------------------------------------------------------------------------Open Camera
     public void openCamera() {
         Log.v("[ CameraActivity.java ]", "Camera Open Request");
         Intent camera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(camera, Constant.CAMERA_REQUEST_CODE);
     }
 
+    //----------------------------------------------------------------------------------------------Open Gallery
     public void openGallery() {
         Log.v("[ CameraActivity.java ]", "Gallery Open Request");
         Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(gallery, Constant.ACTIVITY_SELECT_IMAGE);
     }
 
+    //----------------------------------------------------------------------------------------------Load Photo from Camera/Gallery
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
@@ -129,5 +148,20 @@ public class CameraActivity extends Activity {
                 }
                 break;
         }
+    }
+
+    public void onStart(){
+        super.onStart();
+    }
+
+    public void onResume(){
+        super.onResume();
+    }
+
+    public void onPause(){
+        super.onPause();
+    }
+
+    public void onBackPressed(){
     }
 }
