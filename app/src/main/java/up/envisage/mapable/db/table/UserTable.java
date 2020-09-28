@@ -2,14 +2,24 @@ package up.envisage.mapable.db.table;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity (tableName = "User_Profile")
+@Entity (tableName = "User_Profile",
+        indices = {
+        @Index(value = "number", unique = true),
+                @Index(value="email", unique = true),
+                @Index(value="username", unique = true)
+        })
 public class UserTable {
 
     @PrimaryKey (autoGenerate = true)
     @ColumnInfo (name = "id")
     private int id;
+
+    @PrimaryKey
+    @ColumnInfo (name = "unique_id")
+    private String uniqueId;
 
     @ColumnInfo (name = "name")
     private String name;
@@ -32,6 +42,14 @@ public class UserTable {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getUniqueId() {
+        return uniqueId;
+    }
+
+    public void setUniqueId(String uniqueId){
+        this.uniqueId = uniqueId;
     }
 
     public String getName() {

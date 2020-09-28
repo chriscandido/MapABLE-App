@@ -91,6 +91,7 @@ public class GoogleMapFragment extends FragmentActivity
         map.setOnMyLocationButtonClickListener(GoogleMapFragment.this);
         map.setOnMyLocationClickListener(GoogleMapFragment.this);
 
+        //Get coordinates of the marker
         button_googleMaps_submitLocation = findViewById(R.id.button_googleMap_submit);
         button_googleMaps_submitLocation.setOnClickListener(
                 new View.OnClickListener() {

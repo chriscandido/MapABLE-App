@@ -2,25 +2,28 @@ package up.envisage.mapable.db.table;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 import up.envisage.mapable.util.LatLng;
 
-@Entity(tableName = "Report_Profile")
+@Entity(tableName = "Report_Profile",
+        foreignKeys = {
+        @ForeignKey(entity = UserTable.class, parentColumns = "unique_id", childColumns = "unique_id")
+        })
 public class ReportTable {
 
-    @PrimaryKey
-    @ColumnInfo (name = "uniqueId")
+    @ColumnInfo (name = "unique_id")
     private String uniqueId;
 
     @PrimaryKey (autoGenerate = true)
-    @ColumnInfo (name = "rid")
-    private int rid;
+    @ColumnInfo (name = "report_id")
+    private int reportId;
 
     @ColumnInfo (name = "dateTime")
     private long dateTime;
 
-    @ColumnInfo (name = "incidentType")
+    @ColumnInfo (name = "incident_type")
     private String incidentType;
 
     @ColumnInfo (name = "location")
@@ -41,11 +44,11 @@ public class ReportTable {
     }
 
     public int getRid() {
-        return rid;
+        return reportId;
     }
 
     public void setRid(int rid) {
-        this.rid = rid;
+        this.reportId = reportId;
     }
 
     public long getDateTime() {
