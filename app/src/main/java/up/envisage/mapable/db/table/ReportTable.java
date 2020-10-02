@@ -27,7 +27,7 @@ public class ReportTable {
     private String incidentType;
 
     @ColumnInfo (name = "location")
-    private LatLng location;
+    private long location;
 
     @ColumnInfo (name = "answer")
     private String answer;
@@ -43,11 +43,11 @@ public class ReportTable {
         this.uniqueId = uniqueId;
     }
 
-    public int getRid() {
+    public int getReportId() {
         return reportId;
     }
 
-    public void setRid(int rid) {
+    public void setReportId(int reportId) {
         this.reportId = reportId;
     }
 
@@ -67,11 +67,11 @@ public class ReportTable {
         this.incidentType = incidentType;
     }
 
-    public LatLng getLocation() {
+    public long getLocation() {
         return location;
     }
 
-    public void setLocation(LatLng location) {
+    public void setLocation(long location) {
         this.location = location;
     }
 

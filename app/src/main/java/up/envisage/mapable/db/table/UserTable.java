@@ -9,7 +9,8 @@ import androidx.room.PrimaryKey;
         indices = {
         @Index(value = "number", unique = true),
                 @Index(value="email", unique = true),
-                @Index(value="username", unique = true)
+                @Index(value="username", unique = true),
+                @Index(value = "unique_id", unique = true)
         })
 public class UserTable {
 
@@ -17,7 +18,7 @@ public class UserTable {
     @ColumnInfo (name = "id")
     private int id;
 
-    @PrimaryKey
+
     @ColumnInfo (name = "unique_id")
     private String uniqueId;
 
