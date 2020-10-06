@@ -6,11 +6,11 @@ const Schema = mongoose.Schema;
 // to be fixed - for Gilson
 // Schema should contain: username, type, description, location, picture, date and time
 const userSchema = new Schema({
-  "name": {"type": "String"},
-  "mobile_number": {"type": "String"},
-  "email": {"type": "String"},
   "username": {"type": "String"},
-  "password": {"type": "String"},
+  "type": {"type": "String"},
+  "description": {"type": "String"},
+  "location": {"type": "String"},
+  "datetime": {"type": "Date"},
 });
 
 const User = mongoose.model('User', userSchema);

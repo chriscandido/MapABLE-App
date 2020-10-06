@@ -72,11 +72,12 @@
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/news_cycle"
-                    android:minHeight="200dp"/>
+                    android:minHeight="200dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton

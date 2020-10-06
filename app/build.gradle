@@ -80,4 +80,8 @@ dependencies {
     implementation "com.google.android.gms:play-services-auth:18.0.0"
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
     implementation 'com.google.android.libraries.places:places:2.2.0'
+
+//    For calling HTTP requests: Back-end
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
 }
