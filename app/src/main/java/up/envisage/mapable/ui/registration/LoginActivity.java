@@ -59,7 +59,6 @@ public class LoginActivity extends AppCompatActivity  {
                     @Override
                     public void onChanged(List<UserTable> userTables) {
                         for (UserTable ut: userTables){
-
                             boolean isUsernameValid = ut.getUsername().equals(username);
                             boolean isPasswordValid = ut.getPassword().equals(password);
                             if (isUsernameValid && isPasswordValid) {

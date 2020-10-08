@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/colorAlgalBloom"
+    android:background="@color/colorBackground"
     android:padding="10dp"
     android:orientation="vertical">
 
@@ -27,7 +27,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:text="@string/title_algalBloom"
-                android:textColor="@color/colorBackground" />
+                android:textColor="@color/colorNeutral" />
 
             <ImageView
                 android:layout_width="50dp"
@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="@string/desc_algalBloom"
-                android:textColor="@color/colorBackground"
+                android:textColor="@color/colorNeutral"
                 android:textAlignment="center"
                 style="@style/contentText"/>
 
@@ -51,9 +51,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:text="Salaysay/Obserbasyon"
+                android:text="Maikling salaysay"
                 android:textSize="15sp"
-                style="@style/navigationText"/>
+                android:fontFamily="@font/news_cycle"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -61,10 +61,10 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:text="Isang maikling salaysay tungkol sa nangyaring insidente. Maaring isulat kung kailan nagsimula, kung ano ang obserbasyon sa lugar, o hindi kaya ay kung ano ang naging dahilan ng insidente"
-                android:textColor="@color/colorBackground"
+                android:textColor="@color/colorNeutral"
                 android:textSize="9sp"
                 android:textAlignment="viewStart"
-                style="@style/contentText"/>
+                android:fontFamily="@font/news_cycle"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout_reportAlgalBloom"
@@ -76,9 +76,37 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/news_cycle"
-                    android:minHeight="200dp"/>
+                    android:minHeight="100dp"/>
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- Question01 Spinner -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="Gaano katagal naoobserbahan ang liya sa tubig?"
+                    android:textSize="15sp"
+                    android:textAlignment="textStart"/>
+
+                <Spinner
+                    android:id="@+id/spinner_reportAgalBloom_q01"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@color/colorBackground"
+                    android:textSize="9sp"
+                    android:textAlignment="viewStart"/>
+
+            </LinearLayout>
+
+            <!-- Ok Button -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_reportAlgalBloom_ok"
                 android:layout_width="match_parent"
