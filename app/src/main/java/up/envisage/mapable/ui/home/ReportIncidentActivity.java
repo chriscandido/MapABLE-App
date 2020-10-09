@@ -6,7 +6,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterViewFlipper;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,11 +23,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
 import up.envisage.mapable.adapter.ReportIncidentAdapter;
 
-public class ReportIncidentActivity extends AppCompatActivity implements ReportIncidentAdapter.OnIncidentClickListener {
+public class ReportIncidentActivity extends AppCompatActivity implements ReportIncidentAdapter.OnIncidentClickListener, AdapterView.OnItemSelectedListener {
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
@@ -71,6 +78,17 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
 
                 textInputLayout_reportAlgalBloom = dialog.findViewById(R.id.textInputLayout_reportAlgalBloom);
                 button_reportAlgalBloom_ok = dialog.findViewById(R.id.button_reportAlgalBloom_ok);
+
+                //Spinner element
+                Spinner spinner_reportAlgalBloom_q01 = dialog.findViewById(R.id.spinner_reportAgalBloom_q01);
+                spinner_reportAlgalBloom_q01.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
+                List<String> categories = new ArrayList<String>();
+                categories.add("Mababa sa isang linggo");
+                categories.add("Isang linggo");
+                categories.add("Higit sa isang linggo");
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+                spinner_reportAlgalBloom_q01.setAdapter(adapter);
 
                 button_reportAlgalBloom_ok.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -156,5 +174,15 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
     }
 
     public void onBackPressed(){
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+        String item = adapterView.getItemAtPosition(position).toString();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }

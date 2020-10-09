@@ -33,6 +33,7 @@
 
     </RelativeLayout>
 
+    <!-- Camera Button -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_report_camera"
         android:layout_width="match_parent"
@@ -54,6 +55,7 @@
         app:cornerRadius="10dp"
         style="@style/Widget.MaterialComponents.Button"/>
 
+    <!-- Gallery Button -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_report_photoGallery"
         android:layout_width="match_parent"
@@ -74,6 +76,7 @@
         app:cornerRadius="10dp"
         style="@style/Widget.MaterialComponents.Button"/>
 
+    <!-- Photo -->
     <ImageView
         android:id="@+id/imageView_reportCamera"
         android:layout_width="match_parent"
@@ -84,6 +87,7 @@
         android:layout_marginBottom="75dp"
         android:layout_below="@+id/button_report_photoGallery" />
 
+    <!-- Save Button -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_report_savePhoto"
         android:layout_width="match_parent"
