@@ -1,5 +1,6 @@
 package up.envisage.mapable.ui.registration;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -17,8 +19,14 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.HashMap;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
 import up.envisage.mapable.db.table.UserTable;
@@ -35,9 +43,20 @@ public class LoginActivity extends AppCompatActivity  {
 
     private UserViewModel userViewModel;
 
+    private Retrofit retrofit;
+    private RetrofitInterface retrofitInterface;
+    private String BASE_URL = "http://localhost:5000/users";
+
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        retrofitInterface = retrofit.create(RetrofitInterface.class);
 
         textInputLayout_loginUsername = findViewById(R.id.textInputLayout_loginUsername);
         textInputLayout_loginPassword = findViewById(R.id.textInputLayout_loginPassword);
@@ -55,23 +74,59 @@ public class LoginActivity extends AppCompatActivity  {
                 final String username = textInputLayout_loginUsername.getEditText().getText().toString().trim();
                 final String password = textInputLayout_loginPassword.getEditText().getText().toString().trim();
 
-                userViewModel.getUsers().observe(LoginActivity.this, new Observer<List<UserTable>>() {
-                    @Override
-                    public void onChanged(List<UserTable> userTables) {
-                        for (UserTable ut: userTables){
+//                function to do what it does when login button is clicked
+//                handleLoginDialog();
+                HashMap<String, String> map = new HashMap<>();
+                map.put("username", username);
+                map.put("password", password);
 
-                            boolean isUsernameValid = ut.getUsername().equals(username);
-                            boolean isPasswordValid = ut.getPassword().equals(password);
-                            if (isUsernameValid && isPasswordValid) {
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                startActivity(intent);
-                            }
+                Call<LoginResult> call = retrofitInterface.executeLogin(map);
+
+                call.enqueue(new Callback<LoginResult>() {
+                    @Override
+                    public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
+                        if (response.code() == 200) {
+
+                            LoginResult result = response.body();
+                            AlertDialog.Builder builder1 = new AlertDialog.Builder(LoginActivity.this);
+                            builder1.setTitle(result.getName());
+                            builder1.setMessage(result.getEmail());
+
+                            builder1.show();
+                        } else if (response.code() == 400){
+                            Toast.makeText(LoginActivity.this, "Wrong Credentials",
+                                    Toast.LENGTH_LONG).show();
                         }
                     }
+
+                    @Override
+                    public void onFailure(Call<LoginResult> call, Throwable t) {
+                        Toast.makeText(LoginActivity.this, t.getMessage(),
+                                Toast.LENGTH_LONG).show();
+                    }
                 });
+
+//                userViewModel.getUsers().observe(LoginActivity.this, new Observer<List<UserTable>>() {
+//                    @Override
+//                    public void onChanged(List<UserTable> userTables) {
+//                        for (UserTable ut: userTables){
+//
+//                            boolean isUsernameValid = ut.getUsername().equals(username);
+//                            boolean isPasswordValid = ut.getPassword().equals(password);
+//                            if (isUsernameValid && isPasswordValid) {
+//                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//                                startActivity(intent);
+//                            }
+//                        }
+//                    }
+//                });
             }
         });
     }
+
+    //----------------------------------------------------------------------------------------------Handles Log-In button Click
+//    private void handleLoginDialog() {
+////    }
 
     //----------------------------------------------------------------------------------------------Initialization of Terms of Use
     public void initializeTermsOfUse(){

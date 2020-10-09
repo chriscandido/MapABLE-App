@@ -28,11 +28,20 @@ router.route('/signup').post((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-//finds announcement using id
-router.route('/:id').get((req, res) => {
-  Item.findById(req.params.id)
-    .then(items => res.json(items))
-    .catch(err => res.status(400).json('Error: ' + err));
+//adds User when upon sign-up
+router.route('/login').post((req, res) => {
+  const query = {
+    username: req.body.username,
+    password: req.body.password
+}
+
+  var result = Item.findOne(query, (err, result) => {
+    if (result != null){
+        res.status(200).send(result);
+    } else {
+        res.status(400).send();
+    }
+  });
 });
 
 //deletes an item
