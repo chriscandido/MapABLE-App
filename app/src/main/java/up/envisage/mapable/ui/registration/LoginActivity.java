@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity  {
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-    private String BASE_URL = "http://10.0.2.2:5000/";
+    private String BASE_URL = "https://project-mapable.herokuapp.com/";
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
