@@ -8,10 +8,10 @@ import retrofit2.http.POST;
 
 public interface RetrofitInterface {
 
-    @POST("/login")
+    @POST("/users/login")
     Call<LoginResult> executeLogin(@Body HashMap<String, String> map);
 //    you call the java class here
 
-    @POST("/signup")
+    @POST("/users/signup")
     Call<Void> executeSignup(@Body HashMap<String, String> map);
 }

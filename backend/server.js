@@ -14,7 +14,7 @@ const uri = "mongodb+srv://mapable:mapable@mapable-cluster.fjjjm.mongodb.net/map
 mongoose.connect(process.env.MONGODB_URI || uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }).catch(error => console.log(error));
 
 const connection = mongoose.connection;
-connection.once('open', () => { 
+connection.once('open', () => {
   console.log("MongoDB database connection established successfully");
 })
 

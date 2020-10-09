@@ -10,25 +10,34 @@ router.route('/').get((req, res) => {
 //adds User when upon sign-up
 router.route('/signup').post((req, res) => {
   const name = req.body.name;
-  const mobile_number = req.body.mobile_number;
+  const number = req.body.number;
   const email = req.body.email;
   const username = req.body.username;
   const password = req.body.password;
 
-  const newItem = new Item({
-    name,
-    mobile_number,
-    email,
-    username,
-    password
+  const checkEmail = {email: email};
+
+  var result = Item.findOne(checkEmail, (err, result) => {
+    if (result != null){
+        res.status(400).send();
+    } else {
+      const newItem = new Item({
+        name,
+        number,
+        email,
+        username,
+        password
+    });
+
+      newItem.save()
+        .then(() => res.json('User added!'))
+        .catch(err => res.status(404).json('Error: ' + err));
+      res.status(200).send(result);
+    }
+  });
 });
 
-  newItem.save()
-    .then(() => res.json('Item added!'))
-    .catch(err => res.status(400).json('Error: ' + err));
-});
-
-//adds User when upon sign-up
+//Log-in route
 router.route('/login').post((req, res) => {
   const query = {
     username: req.body.username,
@@ -56,7 +65,7 @@ router.route('/update/:id').post((req, res) => {
   Item.findById(req.params.id)
     .then(item => {
       item.name = req.body.name;
-      item.mobile_number = req.body.mobile_number;
+      item.mobile_number = req.body.number;
       item.email = req.body.email;
       item.username = req.body.username;
       item.password = req.body.password;

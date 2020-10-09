@@ -6,10 +6,21 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
+
+import java.util.HashMap;
+
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
@@ -24,12 +35,31 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
     private UserViewModel registerViewModel;
     private ActivityRegisterBinding binding;
 
+    private Retrofit retrofit;
+    private RetrofitInterface retrofitInterface;
+    private String BASE_URL = "http://10.0.2.2:5000/";
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(RegisterActivity.this, R.layout.activity_register);
         binding.setClickListener((RegisterActivity) this);
 
         registerViewModel = ViewModelProviders.of(RegisterActivity.this).get(UserViewModel.class);
+
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+
+        httpClient.addInterceptor(logging);  // <-- add interceptor
+
+        retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(httpClient.build())
+                .build();
+
+        retrofitInterface = retrofit.create(RetrofitInterface.class);
 
     }
 
@@ -62,16 +92,45 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
                 }
 
                 else {
+//                    function to do what it does when login button is clicked
+                    HashMap<String, String> map = new HashMap<>();
+                    map.put("name", name);
+                    map.put("number", number);
+                    map.put("email", email);
+                    map.put("username", username);
+                    map.put("password", password);
+
+                    Call<Void> call = retrofitInterface.executeSignup(map);
+
+                    call.enqueue(new Callback<Void>() {
+                        @Override
+                        public void onResponse(Call<Void> call, Response<Void> response) {
+                            if (response.code() == 200) {
+                                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                                startActivity(intent);
+
+                            } else if (response.code() == 400){
+                                Toast.makeText(RegisterActivity.this, "Cannot make account: Email already in use!",
+                                        Toast.LENGTH_LONG).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<Void> call, Throwable t) {
+                            Toast.makeText(RegisterActivity.this, t.getMessage(),
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    });
                     //Insert data to local server
-                    user.setName(name);
-                    user.setNumber(number);
-                    user.setEmail(email);
-                    user.setUsername(username);
-                    user.setPassword(password);
-                    registerViewModel.insert(user);
-                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    Log.v("[ RegisterActivity.java ]", "Data successfully inserted");
+//                    user.setName(name);
+//                    user.setNumber(number);
+//                    user.setEmail(email);
+//                    user.setUsername(username);
+//                    user.setPassword(password);
+//                    registerViewModel.insert(user);
+//                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+//                    startActivity(intent);
+//                    Log.v("[ RegisterActivity.java ]", "Data successfully inserted");
                 }
                 break;
 
