@@ -6,6 +6,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowContentTransitions" tools:targetApi="lollipop">true</item>
+        <item name="android:spinnerItemStyle">@style/spinnerText</item>
     </style>
 
     <!-- Splash application theme -->
@@ -36,6 +37,12 @@
         <item name="android:textColor">@color/colorBackground</item>
         <item name="android:textAlignment">center</item>
         <item name="android:fontFamily">@font/news_cycle_bold</item>
+    </style>
+
+    <style name="spinnerText">
+        <item name="android:textSize">9sp</item>
+        <item name="android:textColor">@color/colorNeutral</item>
+        <item name="android:fontFamily">@font/news_cycle</item>
     </style>
 
 </resources>

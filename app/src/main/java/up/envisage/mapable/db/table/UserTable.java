@@ -18,7 +18,6 @@ public class UserTable {
     @ColumnInfo (name = "id")
     private int id;
 
-
     @ColumnInfo (name = "unique_id")
     private String uniqueId;
 
@@ -37,9 +36,7 @@ public class UserTable {
     @ColumnInfo (name = "password")
     private String password;
 
-    public int getId() {
-        return id;
-    }
+    public int getId() { return id; }
 
     public void setId(int id) {
         this.id = id;

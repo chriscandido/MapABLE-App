@@ -61,7 +61,7 @@
             android:fontFamily="@font/news_cycle"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Button Login -->
+    <!-- Login Button -->
     <Button
         android:id="@+id/button_login"
         android:layout_width="match_parent"
@@ -75,7 +75,7 @@
         android:textColor="@color/colorBackground"
         android:fontFamily="@font/montserrat"/>
 
-    <!-- TextView SignUp -->
+    <!-- SignUp TextView-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
