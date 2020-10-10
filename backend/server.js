@@ -11,6 +11,7 @@ app.use(express.json());
 
 //MongoDB connection string
 const uri = "mongodb+srv://mapable:mapable@mapable-cluster.fjjjm.mongodb.net/mapable-db?retryWrites=true&w=majority"
+
 mongoose.connect(process.env.MONGODB_URI || uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }).catch(error => console.log(error));
 
 const connection = mongoose.connection;
@@ -19,7 +20,10 @@ connection.once('open', () => {
 })
 
 const userRouter = require('./routes/user');
+const reportRouter = require('./routes/report');
+
 app.use('/users', userRouter);
+app.use('/reports', reportRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
