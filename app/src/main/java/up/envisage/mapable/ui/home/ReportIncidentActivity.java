@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterViewFlipper;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -24,11 +25,23 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
 import up.envisage.mapable.adapter.ReportIncidentAdapter;
+import up.envisage.mapable.ui.home.report.ReportResult;
+import up.envisage.mapable.ui.registration.LoginActivity;
+import up.envisage.mapable.ui.registration.LoginResult;
+import up.envisage.mapable.ui.registration.RetrofitInterface;
 
 public class ReportIncidentActivity extends AppCompatActivity implements ReportIncidentAdapter.OnIncidentClickListener, AdapterView.OnItemSelectedListener {
 
@@ -42,12 +55,36 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
                             button_reportIllegalFishing_ok, button_reportIllegalReclamation_ok;
     private TextView textView_reportIncident_back;
 
+    private Retrofit retrofit;
+    private RetrofitInterface retrofitInterface;
+    private String BASE_URL = "https://project-mapable.herokuapp.com/";
+//            "http://10.0.2.2:5000";
+
+
     Dialog dialog;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report_incident);
+
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+// set your desired log level
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+// add your other interceptors …
+
+// add logging as last interceptor
+        httpClient.addInterceptor(logging);  // <-- this is the important line!
+
+        retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(httpClient.build())
+                .build();
+
+        retrofitInterface = retrofit.create(RetrofitInterface.class);
 
         recyclerView = findViewById(R.id.recyclerView_reportIncident);
         recyclerView.setHasFixedSize(true);
@@ -95,6 +132,36 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
                     public void onClick(View view) {
                         Intent algalBloomOk = new Intent(ReportIncidentActivity.this, ReportingActivity.class);
                         startActivity(algalBloomOk);
+
+                        final String report = textInputLayout_reportAlgalBloom.getEditText().getText().toString().trim();
+
+                        HashMap<String, String> map = new HashMap<>();
+                        map.put("report", report);
+
+                        Call<ReportResult> call = retrofitInterface.executeSubmit(map);
+
+                        call.enqueue(new Callback<ReportResult>() {
+                            @Override
+
+                            public void onResponse(Call<ReportResult> call, Response<ReportResult> response) {
+                                if (response.code() != 400) {
+                                    Toast.makeText(ReportIncidentActivity.this, "Report Submitted Successfully",
+                                            Toast.LENGTH_LONG).show();
+
+                                } else if (response.code() == 400){
+                                    Toast.makeText(ReportIncidentActivity.this, "Error Submitting",
+                                            Toast.LENGTH_LONG).show();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<ReportResult> call, Throwable t) {
+                                Toast.makeText(ReportIncidentActivity.this, t.getMessage(),
+                                        Toast.LENGTH_LONG).show();
+                            }
+                        });
+
+
                         Toast.makeText(ReportIncidentActivity.this, "Data successfully saved", Toast.LENGTH_LONG).show();
                     }
                 });

@@ -21,6 +21,8 @@ import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import javax.net.ssl.SSLEngineResult;
+
 import up.envisage.mapable.fragment.HomeFragment;
 import up.envisage.mapable.fragment.MapFragment;
 import up.envisage.mapable.fragment.SupportFragment;
@@ -47,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
         displayLocationSettingsRequest(this);
     }
 
-    //----------------------------------------------------------------------------------------------Bottom navigation items
     private BottomNavigationView.OnNavigationItemSelectedListener bottomNavigation = new BottomNavigationView.OnNavigationItemSelectedListener() {
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
             Fragment fragment = null;
