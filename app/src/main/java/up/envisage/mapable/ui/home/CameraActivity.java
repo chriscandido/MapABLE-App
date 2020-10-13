@@ -31,9 +31,17 @@ public class CameraActivity extends Activity {
     private MaterialButton button_reportCamera, button_reportGallery, button_reportSave;
     private TextView textView_cameraBack;
 
+    String report, lon, lat, image;
+
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
+
+        Intent camera = getIntent();
+
+        report = camera.getStringExtra("report");
+        lon = camera.getStringExtra("Longitude");
+        lat = camera.getStringExtra("Latitude");
 
         imageView_reportImage = findViewById(R.id.imageView_reportCamera);
 
@@ -61,6 +69,10 @@ public class CameraActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Intent save = new Intent(CameraActivity.this, ReportingActivity.class);
+                save.putExtra("report", report);
+                save.putExtra("Longitude", lon);
+                save.putExtra("Latitude", lat);
+                save.putExtra("image", "kunwari image part 2 para unique");
                 startActivity(save);
                 Toast.makeText(CameraActivity.this, "Photo successfully saved", Toast.LENGTH_LONG).show();
             }

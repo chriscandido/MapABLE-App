@@ -57,9 +57,11 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-    private String BASE_URL = "https://project-mapable.herokuapp.com/";
-//            "http://10.0.2.2:5000";
+    private String BASE_URL = "http://10.0.2.2:5000";
+    //            "http://10.0.2.2:5000";
+    //"https://project-mapable.herokuapp.com/"
 
+    String report, lon, lat, image;
 
     Dialog dialog;
 
@@ -85,6 +87,12 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
                 .build();
 
         retrofitInterface = retrofit.create(RetrofitInterface.class);
+
+        Intent incident = getIntent();
+
+        lon = incident.getStringExtra("Longitude");
+        lat = incident.getStringExtra("Latitude");
+        image = incident.getStringExtra("image");
 
         recyclerView = findViewById(R.id.recyclerView_reportIncident);
         recyclerView.setHasFixedSize(true);
@@ -130,10 +138,14 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
                 button_reportAlgalBloom_ok.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent algalBloomOk = new Intent(ReportIncidentActivity.this, ReportingActivity.class);
-                        startActivity(algalBloomOk);
-
                         final String report = textInputLayout_reportAlgalBloom.getEditText().getText().toString().trim();
+
+                        Intent algalBloomOk = new Intent(ReportIncidentActivity.this, ReportingActivity.class);
+                        algalBloomOk.putExtra("report", report);
+                        algalBloomOk.putExtra("Longitude", lon);
+                        algalBloomOk.putExtra("Latitude", lat);
+                        algalBloomOk.putExtra("image", image);
+                        startActivity(algalBloomOk);
 
                         HashMap<String, String> map = new HashMap<>();
                         map.put("report", report);

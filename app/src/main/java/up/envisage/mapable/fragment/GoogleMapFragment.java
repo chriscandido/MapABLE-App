@@ -41,9 +41,16 @@ public class GoogleMapFragment extends FragmentActivity
     private GoogleMap map;
     private MaterialButton button_googleMaps_submitLocation;
 
+    String report, lon, lat, image;
+
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_google_maps);
+
+        Intent location = getIntent();
+
+        report = location.getStringExtra("report");
+        image = location.getStringExtra("image");
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.google_map);
@@ -103,8 +110,10 @@ public class GoogleMapFragment extends FragmentActivity
                                     pinnedLocation[0].latitude + " and " + "longitude: "+
                                     pinnedLocation[0].longitude);
                             Intent submitLocation = new Intent(GoogleMapFragment.this, ReportingActivity.class);
+                            submitLocation.putExtra("report", report);
                             submitLocation.putExtra("Latitude", String.valueOf(pinnedLocation[0].latitude));
                             submitLocation.putExtra("Longitude", String.valueOf(pinnedLocation[0].longitude));
+                            submitLocation.putExtra("image", image);
                             startActivity(submitLocation);
                             Toast.makeText(GoogleMapFragment.this, "Coordinates successfully saved", Toast.LENGTH_LONG).show();
                          }
