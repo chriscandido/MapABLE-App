@@ -1,11 +1,11 @@
 const router = require('express').Router();
 let Item = require('../models/report.model');
 
-// router.route('/').get((req, res) => {
-//   Item.find()
-//     .then(items => res.json(items))
-//     .catch(err => res.status(400).json('Error: ' + err));
-// });
+router.route('/').get((req, res) => {
+  Item.find()
+    .then(items => res.json(items))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
 
 //adds User when upon sign-up
 router.route('/submit').post((req, res) => {
