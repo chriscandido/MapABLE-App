@@ -2,9 +2,11 @@ package up.envisage.mapable.db.dao;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -15,8 +17,20 @@ import up.envisage.mapable.db.table.UserTable;
 public interface ReportDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertUser(ReportTable reportTable);
+    void insertReport(ReportTable reportTable);
 
     @Query ("SELECT * FROM Report_Profile")
     LiveData<List<ReportTable>> getAllReports();
+
+    @Query ("SELECT * FROM Report_Profile ORDER BY report_id DESC LIMIT 1")
+    LiveData<List<ReportTable>> getLastReport();
+
+    @Query ("DELETE FROM Report_Profile")
+    void deleteAllReports();
+
+    @Delete
+    void deleteReport(ReportTable reportsTable);
+
+    @Update
+    void updateReport(ReportTable reports);
 }
