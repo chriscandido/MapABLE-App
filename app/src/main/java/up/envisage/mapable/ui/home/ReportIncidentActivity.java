@@ -69,14 +69,17 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report_incident);
 
+        dialog = new Dialog(this);
+
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-// set your desired log level
+
+        //set your desired log level
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-// add your other interceptors …
+        // add your other interceptors …
 
-// add logging as last interceptor
+        // add logging as last interceptor
         httpClient.addInterceptor(logging);  // <-- this is the important line!
 
         retrofit = new Retrofit.Builder()
@@ -117,12 +120,11 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
         Log.d("[ ReportIncident.java ]", "onIncidentClick: clicked - " + position);
         switch (position) {
             case 0:
-                dialog = new Dialog(this);
                 dialog.setContentView(R.layout.dialog_report_algalbloom);
 
                 textInputLayout_reportAlgalBloom = dialog.findViewById(R.id.textInputLayout_reportAlgalBloom);
                 button_reportAlgalBloom_ok = dialog.findViewById(R.id.button_reportAlgalBloom_ok);
-
+                
                 //Spinner element
                 Spinner spinner_reportAlgalBloom_q01 = dialog.findViewById(R.id.spinner_reportAgalBloom_q01);
                 spinner_reportAlgalBloom_q01.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);

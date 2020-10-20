@@ -13,8 +13,10 @@ import up.envisage.mapable.util.LatLng;
         })
 public class ReportTable {
 
+    /*
     @ColumnInfo (name = "unique_id")
     private String uniqueId;
+    */
 
     @PrimaryKey (autoGenerate = true)
     @ColumnInfo (name = "report_id")
@@ -26,15 +28,19 @@ public class ReportTable {
     @ColumnInfo (name = "incident_type")
     private String incidentType;
 
-    @ColumnInfo (name = "location")
-    private long location;
+    @ColumnInfo (name = "latitude")
+    private long latitude;
 
-    @ColumnInfo (name = "answer")
-    private String answer;
+    @ColumnInfo (name = "longitude")
+    private long longitude;
+
+    @ColumnInfo (name = "report")
+    private String report;
 
     @ColumnInfo (name = "photo")
     private int photo;
 
+    /*
     public String getUniqueId() {
         return uniqueId;
     }
@@ -42,6 +48,7 @@ public class ReportTable {
     public void setUniqueId(String uniqueId) {
         this.uniqueId = uniqueId;
     }
+    */
 
     public int getReportId() {
         return reportId;
@@ -67,22 +74,30 @@ public class ReportTable {
         this.incidentType = incidentType;
     }
 
-    public long getLocation() {
-        return location;
+    public long getLatitude() {
+        return latitude;
     }
 
-    public void setLocation(long location) {
-        this.location = location;
+    public void setLatitude(long latitude) {
+        this.latitude = latitude;
     }
 
-    public String getAnswer() {
-        return answer;
+    public long getLongitude() {
+        return longitude;
     }
 
-    public void setAnswer(String answer) {
-        this.answer = answer;
+    public void setLongitude(long longitude) {
+        this.longitude = longitude;
     }
 
+    public String getReport() {
+        return report;
+    }
+
+    public void setReport(String report) {
+        this.report = report;
+    }
+    
     public int getPhoto() {
         return photo;
     }

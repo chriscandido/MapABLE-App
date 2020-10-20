@@ -56,13 +56,14 @@ public class LoginActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_login);
 
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-// set your desired log level
+
+        //set your desired log level
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-// add your other interceptors …
+        //add your other interceptors …
 
-// add logging as last interceptor
+        //add logging as last interceptor
         httpClient.addInterceptor(logging);  // <-- this is the important line!
 
         retrofit = new Retrofit.Builder()
@@ -89,7 +90,7 @@ public class LoginActivity extends AppCompatActivity  {
                 final String username = textInputLayout_loginUsername.getEditText().getText().toString().trim();
                 final String password = textInputLayout_loginPassword.getEditText().getText().toString().trim();
 
-//                function to do what it does when login button is clicked
+                //function to do what it does when login button is clicked
                 HashMap<String, String> map = new HashMap<>();
                 map.put("username", username);
                 map.put("password", password);
