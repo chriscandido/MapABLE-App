@@ -15,7 +15,10 @@ router.route('/submit').post((req, res) => {
     const userID = req.body.userID;
     const type = req.body.type;
     const description = req.body.description;
-    const geometry = req.body.geometry;
+    const geometry = {
+		"type": "Point",
+		"coordinates": [121.069961, 14.656469]
+	};
 
     const checkUser = {_id: mongoose.Types.ObjectId(req.body.userID)};
 

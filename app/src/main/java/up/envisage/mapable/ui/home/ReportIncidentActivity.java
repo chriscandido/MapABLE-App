@@ -57,8 +57,8 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-    private String BASE_URL = "http://10.0.2.2:5000";
-    //"https://project-mapable.herokuapp.com/"
+    private String BASE_URL = "https://project-mapable.herokuapp.com/";
+//    "http://10.0.2.2:5000"
 
     String report, lon, lat, image;
 
@@ -137,7 +137,12 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
                 button_reportAlgalBloom_ok.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        final String report = textInputLayout_reportAlgalBloom.getEditText().getText().toString().trim();
+
+                        final String userID = "5f807194a9e237001761172f";
+                        final String type = "Algal Bloom";
+                        final String description =  textInputLayout_reportAlgalBloom.getEditText().getText().toString().trim();
+
+//                        final String report = textInputLayout_reportAlgalBloom.getEditText().getText().toString().trim();
 
                         Intent algalBloomOk = new Intent(ReportIncidentActivity.this, ReportingActivity.class);
                         algalBloomOk.putExtra("report", report);
@@ -147,7 +152,9 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
                         startActivity(algalBloomOk);
 
                         HashMap<String, String> map = new HashMap<>();
-                        map.put("report", report);
+                        map.put("userID", userID);
+                        map.put("type", type);
+                        map.put("description", description);
 
                         Call<ReportResult> call = retrofitInterface.executeSubmit(map);
 
