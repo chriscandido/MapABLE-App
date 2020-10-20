@@ -1,5 +1,6 @@
 const router = require('express').Router();
 let Item = require('../models/report.model');
+let User = require('../models/user.model');
 
 router.route('/').get((req, res) => {
   Item.find()
@@ -7,21 +8,33 @@ router.route('/').get((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-//adds User when upon sign-up
+//adds Report upon Submit
 router.route('/submit').post((req, res) => {
 
-    const report = req.body.report;
-  
-    const newItem = new Item({
-        report
+    const username = req.body.username;
+    const type = req.body.type;
+    const description = req.body.description;
+    const geometry = req.body.geometry;
+
+    const checkUser = {username: username};
+
+    var result = User.findOne(checkUser, (err, result) => {
+        if (result == null){
+            res.status(400).send("User is not found in database");
+        } else {
+        const newItem = new Item({
+            username,
+            type,
+            description,
+            geometry
+        });
+        newItem.save()
+            .then(() => res.json('Report added!'))
+            .catch(err => res.status(400).json('Error: ' + err))
+        res.status(200).send(result);
+        }
     });
-
-    newItem.save()
-        .then(() => res.json('Report added!'))
-        .catch(err => res.status(400).json('Error: ' + err))
-
-        console.log('Hello World!');
-    }
+}
 );
 
 module.exports = router;
