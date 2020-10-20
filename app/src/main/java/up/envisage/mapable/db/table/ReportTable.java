@@ -28,8 +28,11 @@ public class ReportTable {
     @ColumnInfo (name = "incident_type")
     private String incidentType;
 
-    @ColumnInfo (name = "location")
-    private long location;
+    @ColumnInfo (name = "latitude")
+    private long latitude;
+
+    @ColumnInfo (name = "longitude")
+    private long longitude;
 
     @ColumnInfo (name = "report")
     private String report;
@@ -71,22 +74,30 @@ public class ReportTable {
         this.incidentType = incidentType;
     }
 
-    public long getLocation() {
-        return location;
+    public long getLatitude() {
+        return latitude;
     }
 
-    public void setLocation(long location) {
-        this.location = location;
+    public void setLatitude(long latitude) {
+        this.latitude = latitude;
+    }
+
+    public long getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(long longitude) {
+        this.longitude = longitude;
     }
 
     public String getReport() {
         return report;
     }
 
-    public void setAnswer(String answer) {
+    public void setReport(String report) {
         this.report = report;
     }
-
+    
     public int getPhoto() {
         return photo;
     }
