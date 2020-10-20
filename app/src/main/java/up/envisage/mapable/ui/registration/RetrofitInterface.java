@@ -18,8 +18,8 @@ public interface RetrofitInterface {
     Call<Void> executeSignup(@Body HashMap<String, String> map);
 
     @POST("/reports/submit")
-//    Call<ReportResult> executeSubmit(@Body HashMap<String, String> map);
-    Call<Void> executeSubmit(@Body HashMap<String, String> map);
+    Call<ReportResult> executeSubmit(@Body HashMap<String, String> map);
+//    Call<Void> executeSubmit(@Body HashMap<String, String> map);
 
     @POST("/reports2/submit")
     Call<ReportClassResult> executeReportSubmit(@Body HashMap<String, String> map);

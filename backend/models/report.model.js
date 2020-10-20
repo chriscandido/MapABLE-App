@@ -10,6 +10,7 @@ const reportSchema = new Schema({
   "type": String,
   "description": String,
   "date": { type: Date, default: Date.now },
+  "image": String,
   // "img": {data: Buffer, contentType: String},
   "geometry": {
     "type": {

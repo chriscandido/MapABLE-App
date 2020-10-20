@@ -15,11 +15,11 @@ router.route('/submit').post((req, res) => {
     const userID = req.body.userID;
     const type = req.body.type;
     const description = req.body.description;
+    const image = req.body.image;
     const geometry = {
 		"type": "Point",
-		"coordinates": [121.069961, 14.656469]
+		"coordinates": [parseFloat(req.body.longitude), parseFloat(req.body.latitude)]
 	};
-
     const checkUser = {_id: mongoose.Types.ObjectId(req.body.userID)};
 
     var result = User.findOne(checkUser, (err, result) => {
@@ -30,6 +30,7 @@ router.route('/submit').post((req, res) => {
             userID,
             type,
             description,
+            image,
             geometry
         });
         newItem.save()
