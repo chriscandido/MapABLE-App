@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const mongoose = require('mongoose');
 let Item = require('../models/report.model');
 let User = require('../models/user.model');
 
@@ -11,19 +12,19 @@ router.route('/').get((req, res) => {
 //adds Report upon Submit
 router.route('/submit').post((req, res) => {
 
-    const username = req.body.username;
+    const userID = req.body.userID;
     const type = req.body.type;
     const description = req.body.description;
     const geometry = req.body.geometry;
 
-    const checkUser = {username: username};
+    const checkUser = {_id: mongoose.Types.ObjectId(req.body.userID)};
 
     var result = User.findOne(checkUser, (err, result) => {
         if (result == null){
             res.status(400).send("User is not found in database");
         } else {
         const newItem = new Item({
-            username,
+            userID,
             type,
             description,
             geometry

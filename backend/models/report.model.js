@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 // to be fixed - for Gilson
 // Schema should contain: username, type, description, location, picture, date and time
 const reportSchema = new Schema({
-  "username": String,
+  "userID": String,
   "type": String,
   "description": String,
   "date": { type: Date, default: Date.now },
