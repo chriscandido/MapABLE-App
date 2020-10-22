@@ -80,8 +80,8 @@ public class ReportingActivity extends AppCompatActivity {
                     a5 = null;
                     a6 = null;
                     a7 = null;
-                    lon = null;
-                    lat = null;
+                    lon = "122.54032239317894";
+                    lat = "12.65017682702677";
                     image = null;
                 } else {
                     type = save.getStringExtra("type");
