@@ -13,10 +13,10 @@ import up.envisage.mapable.util.LatLng;
         })
 public class ReportTable {
 
-    /*
+
     @ColumnInfo (name = "unique_id")
     private String uniqueId;
-    */
+
 
     @PrimaryKey (autoGenerate = true)
     @ColumnInfo (name = "report_id")
@@ -40,7 +40,7 @@ public class ReportTable {
     @ColumnInfo (name = "photo")
     private int photo;
 
-    /*
+
     public String getUniqueId() {
         return uniqueId;
     }
@@ -48,7 +48,7 @@ public class ReportTable {
     public void setUniqueId(String uniqueId) {
         this.uniqueId = uniqueId;
     }
-    */
+
 
     public int getReportId() {
         return reportId;

@@ -39,9 +39,9 @@ public class GoogleMapFragment extends FragmentActivity
         OnMapReadyCallback {
 
     private GoogleMap map;
-    private MaterialButton button_googleMaps_submitLocation;
+    private Button button_googleMaps_submitLocation;
 
-    String report, lon, lat, image;
+    String userID, type, incident, frequency, a1, a2, a3, a4, a5, a6, a7, lon, lat, image;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -49,7 +49,17 @@ public class GoogleMapFragment extends FragmentActivity
 
         Intent location = getIntent();
 
-        report = location.getStringExtra("report");
+        userID = location.getStringExtra("userID");
+        type = location.getStringExtra("type");
+        incident = location.getStringExtra("incident");
+        frequency = location.getStringExtra("frequency");
+        a1 = location.getStringExtra("a1");
+        a2 = location.getStringExtra("a2");
+        a3 = location.getStringExtra("a3");
+        a4 = location.getStringExtra("a4");
+        a5 = location.getStringExtra("a5");
+        a6 = location.getStringExtra("a6");
+        a7 = location.getStringExtra("a7");
         image = location.getStringExtra("image");
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -110,7 +120,17 @@ public class GoogleMapFragment extends FragmentActivity
                                     pinnedLocation[0].latitude + " and " + "longitude: "+
                                     pinnedLocation[0].longitude);
                             Intent submitLocation = new Intent(GoogleMapFragment.this, ReportingActivity.class);
-                            submitLocation.putExtra("report", report);
+                            submitLocation.putExtra("userID", userID);
+                            submitLocation.putExtra("type", type);
+                            submitLocation.putExtra("incident", incident);
+                            submitLocation.putExtra("frequency", frequency);
+                            submitLocation.putExtra("a1", a1);
+                            submitLocation.putExtra("a2", a2);
+                            submitLocation.putExtra("a3", a3);
+                            submitLocation.putExtra("a4", a4);
+                            submitLocation.putExtra("a5", a5);
+                            submitLocation.putExtra("a6", a6);
+                            submitLocation.putExtra("a7", a7);
                             submitLocation.putExtra("Latitude", String.valueOf(pinnedLocation[0].latitude));
                             submitLocation.putExtra("Longitude", String.valueOf(pinnedLocation[0].longitude));
                             submitLocation.putExtra("image", image);

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.IntentSender;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,16 +28,24 @@ import up.envisage.mapable.fragment.HomeFragment;
 import up.envisage.mapable.fragment.MapFragment;
 import up.envisage.mapable.fragment.SupportFragment;
 import up.envisage.mapable.fragment.UserFragment;
+import up.envisage.mapable.ui.home.ReportIncidentActivity;
+import up.envisage.mapable.ui.home.ReportingActivity;
 import up.envisage.mapable.util.Constant;
 
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
 
+    String userID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent login = getIntent(); // gets intent from reportingActivity
+
+        userID = login.getStringExtra("userID");
 
         //Bottom bar navigation
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomnavigation_menu);
@@ -58,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.mainMenu_home:
                     fragment = new HomeFragment();
+                    Intent homeFragment = new Intent(MainActivity.this, HomeFragment.class);
+                    homeFragment.putExtra("userID", userID);
                     break;
                 case R.id.mainMenu_map:
                     fragment = new MapFragment();
