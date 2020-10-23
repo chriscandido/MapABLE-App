@@ -18,7 +18,7 @@ const reportSchema = new Schema({
     },
     "coordinates": {
       "type": [
-        "Number" // Coordinates of Hospital [Longitude, Latitude]
+        "Number" // Coordinates of Report [Longitude, Latitude]
       ]
     }
   }
