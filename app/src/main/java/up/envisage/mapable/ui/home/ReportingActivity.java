@@ -35,7 +35,7 @@ public class ReportingActivity extends AppCompatActivity {
     private MaterialButton button_reportIncident, button_reportCamera, button_reportLocation, button_reportSend;
     private TextView textView_reportBack;
 
-    String report, lon, lat, image;
+    String userID, type, incident, frequency, a1, a2, a3, a4, a5, a6, a7, lon, lat, image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,35 +60,74 @@ public class ReportingActivity extends AppCompatActivity {
 
         retrofitInterface = retrofit.create(RetrofitInterface.class);
 
-        Intent algalBloomOk = getIntent();
+        Intent reportAct = getIntent();
         Intent submitLocation = getIntent();
         Intent save = getIntent();
+        Intent user = getIntent();
 
-        if(algalBloomOk.getStringExtra("report") == null) {
+        userID = user.getStringExtra("userID");
+
+        if(reportAct.getStringExtra("type") == null) {
             if(submitLocation.getStringExtra("Longitude") == null || submitLocation.getStringExtra("Latitude") == null) {
                 if(save.getStringExtra("image") == null) {
-                    report = null;
-                    lon = null;
-                    lat = null;
+                    type = null;
+                    incident = null;
+                    frequency = null;
+                    a1 = null;
+                    a2 = null;
+                    a3 = null;
+                    a4 = null;
+                    a5 = null;
+                    a6 = null;
+                    a7 = null;
+                    lon = "122.54032239317894";
+                    lat = "12.65017682702677";
                     image = null;
                 } else {
-                    report = save.getStringExtra("report");
+                    type = save.getStringExtra("type");
+                    incident = save.getStringExtra("incident");
+                    frequency = save.getStringExtra("frequency");
+                    a1 = save.getStringExtra("a1");
+                    a2 = save.getStringExtra("a2");
+                    a3 = save.getStringExtra("a3");
+                    a4 = save.getStringExtra("a4");
+                    a5 = save.getStringExtra("a5");
+                    a6 = save.getStringExtra("a6");
+                    a7 = save.getStringExtra("a7");
                     lon = save.getStringExtra("Longitude");
                     lat = save.getStringExtra("Latitude");
                     image = save.getStringExtra("image");
                 }
 
             } else {
-                report = submitLocation.getStringExtra("report");
+                type = submitLocation.getStringExtra("type");
+                incident = submitLocation.getStringExtra("incident");
+                frequency = submitLocation.getStringExtra("frequency");
+                a1 = submitLocation.getStringExtra("a1");
+                a2 = submitLocation.getStringExtra("a2");
+                a3 = submitLocation.getStringExtra("a3");
+                a4 = submitLocation.getStringExtra("a4");
+                a5 = submitLocation.getStringExtra("a5");
+                a6 = submitLocation.getStringExtra("a6");
+                a7 = submitLocation.getStringExtra("a7");
                 lon = submitLocation.getStringExtra("Longitude");
                 lat = submitLocation.getStringExtra("Latitude");
                 image = submitLocation.getStringExtra("image");
             }
         } else {
-            report = algalBloomOk.getStringExtra("report");
-            lon = algalBloomOk.getStringExtra("Longitude");
-            lat = algalBloomOk.getStringExtra("Latitude");
-            image = algalBloomOk.getStringExtra("image");
+            type = reportAct.getStringExtra("type");
+            incident = reportAct.getStringExtra("incident");
+            frequency = reportAct.getStringExtra("frequency");
+            a1 = reportAct.getStringExtra("a1");
+            a2 = reportAct.getStringExtra("a2");
+            a3 = reportAct.getStringExtra("a3");
+            a4 = reportAct.getStringExtra("a4");
+            a5 = reportAct.getStringExtra("a5");
+            a6 = reportAct.getStringExtra("a6");
+            a7 = reportAct.getStringExtra("a7");
+            lon = reportAct.getStringExtra("Longitude");
+            lat = reportAct.getStringExtra("Latitude");
+            image = reportAct.getStringExtra("image");
         }
         
         //Button report incident
@@ -97,6 +136,7 @@ public class ReportingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent incident = new Intent(ReportingActivity.this, ReportIncidentActivity.class);
+                incident.putExtra("userID", userID);
                 incident.putExtra("Longitude", lon);
                 incident.putExtra("Latitude", lat);
                 incident.putExtra("image", image);
@@ -110,7 +150,17 @@ public class ReportingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent location = new Intent(ReportingActivity.this, GoogleMapFragment.class);
-                location.putExtra("report", report);
+                location.putExtra("userID", userID);
+                location.putExtra("type", type);
+                location.putExtra("incident", incident);
+                location.putExtra("frequency", frequency);
+                location.putExtra("a1", a1);
+                location.putExtra("a2", a2);
+                location.putExtra("a3", a3);
+                location.putExtra("a4", a4);
+                location.putExtra("a5", a5);
+                location.putExtra("a6", a6);
+                location.putExtra("a7", a7);
                 location.putExtra("image", image);
                 startActivity(location);
             }
@@ -122,7 +172,17 @@ public class ReportingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent camera = new Intent(ReportingActivity.this, CameraActivity.class);
-                camera.putExtra("report", report);
+                camera.putExtra("userID", userID);
+                camera.putExtra("type", type);
+                camera.putExtra("incident", incident);
+                camera.putExtra("frequency", frequency);
+                camera.putExtra("a1", a1);
+                camera.putExtra("a2", a2);
+                camera.putExtra("a3", a3);
+                camera.putExtra("a4", a4);
+                camera.putExtra("a5", a5);
+                camera.putExtra("a6", a6);
+                camera.putExtra("a7", a7);
                 camera.putExtra("Longitude", lon);
                 camera.putExtra("Latitude", lat);
                 startActivity(camera);
@@ -146,7 +206,17 @@ public class ReportingActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 HashMap<String, String> map = new HashMap<>();
-                map.put("report", report);
+                map.put("userID", userID);
+                map.put("type", type);
+                map.put("incident", incident);
+                map.put("frequency", frequency);
+                map.put("a1", a1);
+                map.put("a2", a2);
+                map.put("a3", a3);
+                map.put("a4", a4);
+                map.put("a5", a5);
+                map.put("a6", a6);
+                map.put("a7", a7);
                 map.put("lon", lon);
                 map.put("lat", lat);
                 map.put("image", image);

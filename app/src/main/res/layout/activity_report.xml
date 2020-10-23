@@ -67,8 +67,14 @@
                 android:layout_gravity="center"
                 android:text="@string/report_desc"
                 style="@style/contentText"/>
+            
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_gravity="center"/>
 
-            <!-- Choose Incident Type and Take Survey Button -->
+            <!-- Button Choose Incident Type and Take Survey -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -93,7 +99,7 @@
 
             </LinearLayout>
 
-            <!-- Location of Incident Button -->
+            <!-- Button Location of Incident -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -118,7 +124,7 @@
 
             </LinearLayout>
 
-            <!-- Take Photo Button -->
+            <!-- Button Take Photo -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

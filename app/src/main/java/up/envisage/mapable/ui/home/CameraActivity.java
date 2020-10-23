@@ -31,7 +31,7 @@ public class CameraActivity extends Activity {
     private MaterialButton button_reportCamera, button_reportGallery, button_reportSave;
     private TextView textView_cameraBack;
 
-    String report, lon, lat, image;
+    String userID, type, incident, frequency, a1, a2, a3, a4, a5, a6, a7, lon, lat, image;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -39,7 +39,17 @@ public class CameraActivity extends Activity {
 
         Intent camera = getIntent();
 
-        report = camera.getStringExtra("report");
+        userID = camera.getStringExtra("userID");
+        type = camera.getStringExtra("type");
+        incident = camera.getStringExtra("incident");
+        frequency = camera.getStringExtra("frequency");
+        a1 = camera.getStringExtra("a1");
+        a2 = camera.getStringExtra("a2");
+        a3 = camera.getStringExtra("a3");
+        a4 = camera.getStringExtra("a4");
+        a5 = camera.getStringExtra("a5");
+        a6 = camera.getStringExtra("a6");
+        a7 = camera.getStringExtra("a7");
         lon = camera.getStringExtra("Longitude");
         lat = camera.getStringExtra("Latitude");
 
@@ -69,7 +79,17 @@ public class CameraActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Intent save = new Intent(CameraActivity.this, ReportingActivity.class);
-                save.putExtra("report", report);
+                save.putExtra("userID", userID);
+                save.putExtra("type", type);
+                save.putExtra("incident", incident);
+                save.putExtra("frequency", frequency);
+                save.putExtra("a1", a1);
+                save.putExtra("a2", a2);
+                save.putExtra("a3", a3);
+                save.putExtra("a4", a4);
+                save.putExtra("a5", a5);
+                save.putExtra("a6", a6);
+                save.putExtra("a7", a7);
                 save.putExtra("Longitude", lon);
                 save.putExtra("Latitude", lat);
                 save.putExtra("image", "kunwari image part 2 para unique");
