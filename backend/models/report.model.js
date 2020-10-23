@@ -8,8 +8,16 @@ const Schema = mongoose.Schema;
 const reportSchema = new Schema({
   "userID": String,
   "type": String,
-  "description": String,
+  "incident": String,
+  "frequency": String,
   "date": { type: Date, default: Date.now },
+  "a1": String,
+  "a2": String,
+  "a3": String,
+  "a4": String,
+  "a5": String,
+  "a6": String,
+  "a7": String,
   "image": String,
   // "img": {data: Buffer, contentType: String},
   "geometry": {

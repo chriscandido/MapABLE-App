@@ -102,8 +102,12 @@ public class LoginActivity extends AppCompatActivity  {
                   
                   public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
                         if (response.code() == 200) {
+                            final String username2 = textInputLayout_loginUsername.getEditText().getText().toString().trim();
+
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            intent.putExtra("userID", username2);
                             startActivity(intent);
+                            Log.i("response", response.toString());
 
                         } else if (response.code() == 400){
                             Toast.makeText(LoginActivity.this, "Wrong Credentials",

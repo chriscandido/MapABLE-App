@@ -14,31 +14,54 @@ router.route('/submit').post((req, res) => {
 
     const userID = req.body.userID;
     const type = req.body.type;
-    const description = req.body.description;
+    const incident = req.body.incident;
+    const frequency = req.body.frequency;
+    const a1 = req.body.a1;
+    const a2 = req.body.a2;
+    const a3 = req.body.a3;
+    const a4 = req.body.a4;
+    const a5 = req.body.a5;
+    const a6 = req.body.a6;
+    const a7 = req.body.a7;
     const image = req.body.image;
     const geometry = {
 		"type": "Point",
-		"coordinates": [parseFloat(req.body.longitude), parseFloat(req.body.latitude)]
-	};
-    const checkUser = {_id: mongoose.Types.ObjectId(req.body.userID)};
+		"coordinates": [parseFloat(req.body.lon), parseFloat(req.body.lat)]
+    };
+    
+    const newItem = new Item({
+        userID,
+        type,
+        incident,
+        frequency,
+        a1,
+        a2,
+        a3,
+        a4,
+        a5,
+        a6,
+        a7,
+        image,
+        geometry
+    });
 
-    var result = User.findOne(checkUser, (err, result) => {
-        if (result == null){
-            res.status(400).send("User is not found in database");
-        } else {
-        const newItem = new Item({
-            userID,
-            type,
-            description,
-            image,
-            geometry
-        });
-        newItem.save()
+    newItem.save()
             .then(() => res.json('Report added!'))
             .catch(err => res.status(400).json('Error: ' + err))
-        res.status(200).send(result);
-        }
-    });
+
+    // const checkUser = {_id: mongoose.Types.ObjectId(req.body.userID)};
+
+    // var result = User.findOne(checkUser, (err, result) => {
+    //     if (result == null){
+    //         res.status(400).send("User is not found in database");
+    //     } else {
+        
+    //     newItem.save()
+    //         .then(() => res.json('Report added!'))
+    //         .catch(err => res.status(400).json('Error: ' + err))
+    //     res.status(200).send(result);
+    //     }
+    // });
 }
 );
 

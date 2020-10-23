@@ -32,6 +32,8 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
     private RecyclerView.LayoutManager layoutManager;
     private FragmentActivity listener;
 
+    String userID;
+
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof Activity){
@@ -41,12 +43,16 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent homeFragment = getActivity().getIntent();
+        userID = homeFragment.getStringExtra("userID");
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         //Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_home, container, false);
 
     }
@@ -77,6 +83,7 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
                 break;
             case Constant.mainMenu_report:
                 Intent report = new Intent(listener, ReportingActivity.class);
+                report.putExtra("userID", userID);
                 startActivity(report);
                 Log.d("[ HomeFragment.java ]", "onMenuClick: clicked - Report");
                 break;

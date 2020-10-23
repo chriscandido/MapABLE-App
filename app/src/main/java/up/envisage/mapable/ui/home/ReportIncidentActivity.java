@@ -57,10 +57,11 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-    private String BASE_URL = "https://project-mapable.herokuapp.com/";
-//    "http://10.0.2.2:5000"
+    private String BASE_URL = "http://10.0.2.2:5000";
+    //            "http://10.0.2.2:5000";
+    //"https://project-mapable.herokuapp.com/"
 
-    String report, lon, lat, image;
+    String userID, frequency, a1, a2, a3, a4, a5, a6, a7, lon, lat, image;
 
     Dialog dialog;
 
@@ -69,17 +70,14 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report_incident);
 
-        dialog = new Dialog(this);
-
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-
-        //set your desired log level
+// set your desired log level
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-        // add your other interceptors …
+// add your other interceptors …
 
-        // add logging as last interceptor
+// add logging as last interceptor
         httpClient.addInterceptor(logging);  // <-- this is the important line!
 
         retrofit = new Retrofit.Builder()
@@ -90,8 +88,9 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
 
         retrofitInterface = retrofit.create(RetrofitInterface.class);
 
-        Intent incident = getIntent();
+        Intent incident = getIntent(); // gets intent from reportingActivity
 
+        userID = incident.getStringExtra("userID");
         lon = incident.getStringExtra("Longitude");
         lat = incident.getStringExtra("Latitude");
         image = incident.getStringExtra("image");
@@ -120,11 +119,12 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
         Log.d("[ ReportIncident.java ]", "onIncidentClick: clicked - " + position);
         switch (position) {
             case 0:
+                dialog = new Dialog(this);
                 dialog.setContentView(R.layout.dialog_report_algalbloom);
 
                 textInputLayout_reportAlgalBloom = dialog.findViewById(R.id.textInputLayout_reportAlgalBloom);
                 button_reportAlgalBloom_ok = dialog.findViewById(R.id.button_reportAlgalBloom_ok);
-                
+
                 //Spinner element
                 Spinner spinner_reportAlgalBloom_q01 = dialog.findViewById(R.id.spinner_reportAgalBloom_q01);
                 spinner_reportAlgalBloom_q01.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
@@ -139,57 +139,24 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
                 button_reportAlgalBloom_ok.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
-                        final String type = "Algal Bloom";
-                        final String description =  textInputLayout_reportAlgalBloom.getEditText().getText().toString().trim();
-
-//                        TO BE SOURCED FROM TRUE ORIGINS
-//                        userID must be user objectID returned upon log-in
-                        final String userID = "5f807194a9e237001761172f";
-//                        latitude and longitude must be from GPS coordinates, converted to string
-                        final String latitude = Float.toString(14.656469F);
-                        final String longitude = Float.toString(121.069961F);
-//                        image must be converted to base64 (string) before being sent
-                        final String image64 = "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";
+                        final String incident = textInputLayout_reportAlgalBloom.getEditText().getText().toString().trim();
 
                         Intent algalBloomOk = new Intent(ReportIncidentActivity.this, ReportingActivity.class);
-                        algalBloomOk.putExtra("report", report);
+                        algalBloomOk.putExtra("userID", userID);
+                        algalBloomOk.putExtra("type", "Algal Bloom Incident");
+                        algalBloomOk.putExtra("incident", incident);
+                        algalBloomOk.putExtra("frequency", "Mababa sa isang linggo");
+                        algalBloomOk.putExtra("a1", "answer to a1");
+                        algalBloomOk.putExtra("a2", "answer to a2");
+                        algalBloomOk.putExtra("a3", "answer to a3");
+                        algalBloomOk.putExtra("a4", "answer to a4");
+                        algalBloomOk.putExtra("a5", "answer to a5");
+                        algalBloomOk.putExtra("a6", "answer to a6");
+                        algalBloomOk.putExtra("a7", "answer to a7");
                         algalBloomOk.putExtra("Longitude", lon);
                         algalBloomOk.putExtra("Latitude", lat);
                         algalBloomOk.putExtra("image", image);
                         startActivity(algalBloomOk);
-
-                        HashMap<String, String> map = new HashMap<>();
-                        map.put("userID", userID);
-                        map.put("type", type);
-                        map.put("description", description);
-                        map.put("latitude", latitude);
-                        map.put("longitude", longitude);
-                        map.put("image", image64);
-
-                        Call<ReportResult> call = retrofitInterface.executeSubmit(map);
-
-                        call.enqueue(new Callback<ReportResult>() {
-                            @Override
-
-                            public void onResponse(Call<ReportResult> call, Response<ReportResult> response) {
-                                if (response.code() != 400) {
-                                    Toast.makeText(ReportIncidentActivity.this, "Report Submitted Successfully",
-                                            Toast.LENGTH_LONG).show();
-
-                                } else if (response.code() == 400){
-                                    Toast.makeText(ReportIncidentActivity.this, "Error Submitting",
-                                            Toast.LENGTH_LONG).show();
-                                }
-                            }
-
-                            @Override
-                            public void onFailure(Call<ReportResult> call, Throwable t) {
-                                Toast.makeText(ReportIncidentActivity.this, t.getMessage(),
-                                        Toast.LENGTH_LONG).show();
-                            }
-                        });
-
 
                         Toast.makeText(ReportIncidentActivity.this, "Data successfully saved", Toast.LENGTH_LONG).show();
                     }
@@ -208,8 +175,24 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
                 button_reportFishKill_ok.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        final String incident = textInputLayout_reportFishKill.getEditText().getText().toString().trim();
+
                         Intent fishKillOk = new Intent(ReportIncidentActivity.this, ReportingActivity.class);
+                        fishKillOk.putExtra("type", "Fish Kill");
+                        fishKillOk.putExtra("incident", incident);
+                        fishKillOk.putExtra("frequency", "Mababa sa isang linggo");
+                        fishKillOk.putExtra("a1", "answer to a1");
+                        fishKillOk.putExtra("a2", "answer to a2");
+                        fishKillOk.putExtra("a3", "answer to a3");
+                        fishKillOk.putExtra("a4", "answer to a4");
+                        fishKillOk.putExtra("a5", "answer to a5");
+                        fishKillOk.putExtra("a6", "answer to a6");
+                        fishKillOk.putExtra("a7", "answer to a7");
+                        fishKillOk.putExtra("Longitude", lon);
+                        fishKillOk.putExtra("Latitude", lat);
+                        fishKillOk.putExtra("image", image);
                         startActivity(fishKillOk);
+
                         Toast.makeText(ReportIncidentActivity.this, "Data successfully saved", Toast.LENGTH_LONG).show();
                     }
                 });
@@ -226,8 +209,24 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
                 button_reportPollution_ok.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        final String incident = textInputLayout_reportPollution.getEditText().getText().toString().trim();
+
                         Intent pollutionOk = new Intent(ReportIncidentActivity.this, ReportingActivity.class);
+                        pollutionOk.putExtra("type", "Pollution");
+                        pollutionOk.putExtra("incident", incident);
+                        pollutionOk.putExtra("frequency", "Mababa sa isang linggo");
+                        pollutionOk.putExtra("a1", "answer to a1");
+                        pollutionOk.putExtra("a2", "answer to a2");
+                        pollutionOk.putExtra("a3", "answer to a3");
+                        pollutionOk.putExtra("a4", "answer to a4");
+                        pollutionOk.putExtra("a5", "answer to a5");
+                        pollutionOk.putExtra("a6", "answer to a6");
+                        pollutionOk.putExtra("a7", "answer to a7");
+                        pollutionOk.putExtra("Longitude", lon);
+                        pollutionOk.putExtra("Latitude", lat);
+                        pollutionOk.putExtra("image", image);
                         startActivity(pollutionOk);
+
                         Toast.makeText(ReportIncidentActivity.this, "Data successfully saved", Toast.LENGTH_LONG).show();
                     }
                 });
@@ -246,8 +245,24 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
                 button_reportIllegalReclamation_ok.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        final String incident = textInputLayout_reportIllegalReclamation.getEditText().getText().toString().trim();
+
                         Intent illegalReclamationOk = new Intent(ReportIncidentActivity.this, ReportingActivity.class);
+                        illegalReclamationOk.putExtra("type", "Illegal Reclamation");
+                        illegalReclamationOk.putExtra("incident", incident);
+                        illegalReclamationOk.putExtra("frequency", "Mababa sa isang linggo");
+                        illegalReclamationOk.putExtra("a1", "answer to a1");
+                        illegalReclamationOk.putExtra("a2", "answer to a2");
+                        illegalReclamationOk.putExtra("a3", "answer to a3");
+                        illegalReclamationOk.putExtra("a4", "answer to a4");
+                        illegalReclamationOk.putExtra("a5", "answer to a5");
+                        illegalReclamationOk.putExtra("a6", "answer to a6");
+                        illegalReclamationOk.putExtra("a7", "answer to a7");
+                        illegalReclamationOk.putExtra("Longitude", lon);
+                        illegalReclamationOk.putExtra("Latitude", lat);
+                        illegalReclamationOk.putExtra("image", image);
                         startActivity(illegalReclamationOk);
+
                         Toast.makeText(ReportIncidentActivity.this, "Data successfully sent", Toast.LENGTH_LONG).show();
                     }
                 });
