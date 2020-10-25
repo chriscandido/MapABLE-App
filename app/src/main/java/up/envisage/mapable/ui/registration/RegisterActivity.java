@@ -13,6 +13,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -37,7 +38,10 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
+//    private String BASE_URL = "http://10.0.2.2:5000";
     private String BASE_URL = "https://project-mapable.herokuapp.com/";
+
+    String username, password;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,8 +75,8 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
                 String name = binding.textInputLayoutRegisterName.getEditText().getText().toString().trim();
                 String number = binding.textInputLayoutRegisterMobileNum.getEditText().getText().toString().trim();
                 String email = binding.textInputLayoutRegisterEmail.getEditText().getText().toString().trim();
-                String username = binding.textInputLayoutRegisterUsername.getEditText().getText().toString().trim();
-                String password = binding.textInputLayoutRegisterPassword.getEditText().getText().toString().trim();
+                username = binding.textInputLayoutRegisterUsername.getEditText().getText().toString().trim();
+                password = binding.textInputLayoutRegisterPassword.getEditText().getText().toString().trim();
 
                 UserTable user = new UserTable();
                 if (TextUtils.isEmpty(name)) {
@@ -106,8 +110,36 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
                             if (response.code() == 200) {
-                                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                                startActivity(intent);
+
+                                Map<String, String> data = new HashMap<>();
+                                data.put("username", username);
+                                data.put("password", password);
+
+                                Call<userID> call2 = retrofitInterface.getUser(data);
+
+                                call2.enqueue(new Callback<userID>() {
+                                    @Override
+                                    public void onResponse(Call<userID> call, Response<userID> response) {
+                                        if (response.isSuccessful()) {
+                                            String userID = response.body().get_id();
+                                            Log.i("Get ID Response", userID);
+
+                                            Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                                            intent.putExtra("userID", userID);
+                                            startActivity(intent);
+
+                                        } else if (response.code() == 400){
+                                            Toast.makeText(RegisterActivity.this, "Wrong Credentials",
+                                                    Toast.LENGTH_LONG).show();
+                                        }
+
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<userID> call, Throwable t) {
+                                        Log.d("Error", t.getMessage());
+                                    }
+                                });
 
                             } else if (response.code() == 400){
                                 Toast.makeText(RegisterActivity.this, "Cannot make account: Email already in use!",
