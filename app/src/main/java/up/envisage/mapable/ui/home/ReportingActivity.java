@@ -1,9 +1,14 @@
 package up.envisage.mapable.ui.home;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -11,6 +16,7 @@ import android.widget.Toast;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.HashMap;
+import java.util.List;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -21,7 +27,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
+import up.envisage.mapable.db.table.ReportTable;
 import up.envisage.mapable.fragment.GoogleMapFragment;
+import up.envisage.mapable.model.ReportViewModel;
 import up.envisage.mapable.ui.home.report.ReportClassResult;
 import up.envisage.mapable.ui.home.report.ReportResult;
 import up.envisage.mapable.ui.registration.RetrofitInterface;
@@ -37,6 +45,7 @@ public class ReportingActivity extends AppCompatActivity {
 
     String userID, type, incident, frequency, a1, a2, a3, a4, a5, a6, a7, lon, lat, image;
 
+    @SuppressLint("LongLogTag")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -166,7 +175,7 @@ public class ReportingActivity extends AppCompatActivity {
             }
         });
 
-        //Button take photo
+        //Take photo Button
         button_reportCamera = findViewById(R.id.button_report_takePhoto);
         button_reportCamera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -189,7 +198,7 @@ public class ReportingActivity extends AppCompatActivity {
             }
         });
 
-        //Text Button back to Main Menu
+        //back to Main Menu Text Button
         textView_reportBack = findViewById(R.id.textView_report_back);
         textView_reportBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -199,12 +208,32 @@ public class ReportingActivity extends AppCompatActivity {
             }
         });
 
-        //Send Button to DB
+        //Send to server Button
         button_reportSend = findViewById(R.id.button_report_send);
         button_reportSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Insert report details to server
+                ReportViewModel reportViewModel = ViewModelProviders.of(ReportingActivity.this).get(ReportViewModel.class);
+                reportViewModel.getLastReport().observe(ReportingActivity.this, new Observer<ReportTable>() {
+                    @Override
+                    public void onChanged(ReportTable reportTable) {
+                        String outDateTime = reportTable.getDateTime();
+                        String outIncidentType = reportTable.getIncidentType();
+                        String outReport = reportTable.getReport();
+                        Double outLatitude = reportTable.getLatitude();
+                        Double outLongitude = reportTable.getLongitude();
+                        Log.v("[ ReportingActivity.java ]",
+                                "DATE & TIME: " + outDateTime + "\n" +
+                                "INCIDENT TYPE: " + outIncidentType + "\n" +
+                                "REPORT: " + outReport + "\n" +
+                                "LATITUDE: " + outLatitude + "\n" +
+                                "LONGITUDE: " + outLongitude + "\n");
+                    }
 
+                });
+
+                /*
                 HashMap<String, String> map = new HashMap<>();
                 map.put("userID", userID);
                 map.put("type", type);
@@ -242,7 +271,7 @@ public class ReportingActivity extends AppCompatActivity {
                         Toast.makeText(ReportingActivity.this, t.getMessage(),
                                 Toast.LENGTH_LONG).show();
                     }
-                });
+                });*/
             }
         });
 

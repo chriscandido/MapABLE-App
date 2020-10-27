@@ -23,7 +23,7 @@ public interface ReportDAO {
     LiveData<List<ReportTable>> getAllReports();
 
     @Query ("SELECT * FROM Report_Profile ORDER BY report_id DESC LIMIT 1")
-    LiveData<List<ReportTable>> getLastReport();
+    LiveData<ReportTable> getLastReport();
 
     @Query ("DELETE FROM Report_Profile")
     void deleteAllReports();

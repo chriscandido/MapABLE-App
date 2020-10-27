@@ -38,6 +38,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
 import up.envisage.mapable.adapter.ReportIncidentAdapter;
+import up.envisage.mapable.ui.home.report.ReportAlgalBloom;
 import up.envisage.mapable.ui.home.report.ReportResult;
 import up.envisage.mapable.ui.registration.LoginActivity;
 import up.envisage.mapable.ui.registration.LoginResult;
@@ -71,13 +72,13 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
         setContentView(R.layout.activity_report_incident);
 
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-// set your desired log level
+        // set your desired log level
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-// add your other interceptors …
+        // add your other interceptors …
 
-// add logging as last interceptor
+        // add logging as last interceptor
         httpClient.addInterceptor(logging);  // <-- this is the important line!
 
         retrofit = new Retrofit.Builder()
@@ -119,6 +120,7 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
         Log.d("[ ReportIncident.java ]", "onIncidentClick: clicked - " + position);
         switch (position) {
             case 0:
+                /*
                 dialog = new Dialog(this);
                 dialog.setContentView(R.layout.dialog_report_algalbloom);
 
@@ -162,7 +164,10 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
                     }
                 });
 
-                dialog.show();
+                dialog.show();*/
+
+                Intent algalBloomOk = new Intent(ReportIncidentActivity.this, ReportAlgalBloom.class);
+                startActivity(algalBloomOk);
 
                 break;
             case 1:

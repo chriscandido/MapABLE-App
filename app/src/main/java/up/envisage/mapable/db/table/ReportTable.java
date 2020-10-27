@@ -1,5 +1,8 @@
 package up.envisage.mapable.db.table;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
@@ -7,38 +10,33 @@ import androidx.room.PrimaryKey;
 
 import up.envisage.mapable.util.LatLng;
 
-@Entity(tableName = "Report_Profile",
-        foreignKeys = {
-        @ForeignKey(entity = UserTable.class, parentColumns = "unique_id", childColumns = "unique_id")
-        })
+@Entity(tableName = "Report_Profile")
 public class ReportTable {
-
 
     @ColumnInfo (name = "unique_id")
     private String uniqueId;
-
 
     @PrimaryKey (autoGenerate = true)
     @ColumnInfo (name = "report_id")
     private int reportId;
 
     @ColumnInfo (name = "dateTime")
-    private long dateTime;
+    private String dateTime;
 
     @ColumnInfo (name = "incident_type")
     private String incidentType;
 
     @ColumnInfo (name = "latitude")
-    private long latitude;
+    private double latitude;
 
     @ColumnInfo (name = "longitude")
-    private long longitude;
+    private double longitude;
 
     @ColumnInfo (name = "report")
     private String report;
 
     @ColumnInfo (name = "photo")
-    private int photo;
+    private String photo;
 
 
     public String getUniqueId() {
@@ -49,7 +47,6 @@ public class ReportTable {
         this.uniqueId = uniqueId;
     }
 
-
     public int getReportId() {
         return reportId;
     }
@@ -58,11 +55,11 @@ public class ReportTable {
         this.reportId = reportId;
     }
 
-    public long getDateTime() {
+    public String getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(long dateTime) {
+    public void setDateTime(String dateTime) {
         this.dateTime = dateTime;
     }
 
@@ -74,19 +71,19 @@ public class ReportTable {
         this.incidentType = incidentType;
     }
 
-    public long getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(long latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
-    public long getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(long longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
@@ -98,11 +95,11 @@ public class ReportTable {
         this.report = report;
     }
     
-    public int getPhoto() {
+    public String getPhoto() {
         return photo;
     }
 
-    public void setPhoto(int photo) {
+    public void setPhoto(String photo) {
         this.photo = photo;
     }
 }

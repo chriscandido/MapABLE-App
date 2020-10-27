@@ -42,8 +42,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:text="Title"
-                    android:textSize="12sp"
-                    android:fontFamily="@font/news_cycle_bold" />
+                    android:textSize="15sp"
+                    android:fontFamily="@font/comfortaa_bold" />
 
                 <TextView
                     android:id="@+id/textView_incidentContent"
@@ -51,8 +51,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:text="Lorem ipsum"
-                    android:textSize="9sp"
-                    android:fontFamily="@font/news_cycle"/>
+                    android:textSize="10sp"
+                    android:fontFamily="@font/comfortaa"/>
 
             </LinearLayout>
 

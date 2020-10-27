@@ -10,6 +10,7 @@ import androidx.room.Update;
 
 import java.util.List;
 
+import up.envisage.mapable.db.table.ReportTable;
 import up.envisage.mapable.db.table.UserTable;
 
 @Dao
@@ -20,6 +21,9 @@ public interface UserDAO {
 
     @Query ("SELECT * FROM User_Profile")
     LiveData<List<UserTable>> getAllUsers();
+
+    @Query ("SELECT * FROM User_Profile ORDER BY id DESC LIMIT 1")
+    LiveData<UserTable> getLastUser();
 
     @Query ("SELECT * FROM User_Profile WHERE username LIKE :username AND password LIKE :password LIMIT 1")
     LiveData<UserTable> verifyUserLogin(String username, String password);
