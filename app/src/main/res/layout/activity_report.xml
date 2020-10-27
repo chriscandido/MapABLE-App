@@ -68,12 +68,6 @@
                 android:text="@string/report_desc"
                 style="@style/contentText"/>
             
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_gravity="center"/>
-
             <!-- Button Choose Incident Type and Take Survey -->
             <LinearLayout
                 android:layout_width="match_parent"

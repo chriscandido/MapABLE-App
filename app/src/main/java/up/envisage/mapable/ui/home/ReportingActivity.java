@@ -1,8 +1,6 @@
 package up.envisage.mapable.ui.home;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.annotation.SuppressLint;
@@ -11,27 +9,18 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 
-import java.util.HashMap;
-import java.util.List;
-
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+
 import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
-import up.envisage.mapable.db.table.ReportTable;
 import up.envisage.mapable.fragment.GoogleMapFragment;
 import up.envisage.mapable.model.ReportViewModel;
-import up.envisage.mapable.ui.home.report.ReportClassResult;
-import up.envisage.mapable.ui.home.report.ReportResult;
 import up.envisage.mapable.ui.registration.RetrofitInterface;
 
 public class ReportingActivity extends AppCompatActivity {
@@ -215,22 +204,22 @@ public class ReportingActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //Insert report details to server
                 ReportViewModel reportViewModel = ViewModelProviders.of(ReportingActivity.this).get(ReportViewModel.class);
-                reportViewModel.getLastReport().observe(ReportingActivity.this, new Observer<ReportTable>() {
-                    @Override
-                    public void onChanged(ReportTable reportTable) {
-                        String outDateTime = reportTable.getDateTime();
-                        String outIncidentType = reportTable.getIncidentType();
-                        String outReport = reportTable.getReport();
-                        Double outLatitude = reportTable.getLatitude();
-                        Double outLongitude = reportTable.getLongitude();
-                        Log.v("[ ReportingActivity.java ]",
-                                "DATE & TIME: " + outDateTime + "\n" +
-                                "INCIDENT TYPE: " + outIncidentType + "\n" +
-                                "REPORT: " + outReport + "\n" +
-                                "LATITUDE: " + outLatitude + "\n" +
-                                "LONGITUDE: " + outLongitude + "\n");
-                    }
-
+                reportViewModel.getLastReport().observe(ReportingActivity.this, reportTable -> {;
+                    int outId = reportTable.getReportId();
+                    String outDateTime = reportTable.getDateTime();
+                    String outIncidentType = reportTable.getIncidentType();
+                    String outReport = reportTable.getReport();
+                    Double outLatitude = reportTable.getLatitude();
+                    Double outLongitude = reportTable.getLongitude();
+                    String outPhoto = reportTable.getPhoto();
+                    Log.v("[ ReportingActivity.java ]",
+                            "DATE & TIME: " + outDateTime + "\n" +
+                            "INCIDENT TYPE: " + outIncidentType + "\n" +
+                            "REPORT: " + outReport + "\n" +
+                            "LATITUDE: " + outLatitude + "\n" +
+                            "LONGITUDE: " + outLongitude + "\n");
+                    Intent goToMain = new Intent(ReportingActivity.this, MainActivity.class);
+                    startActivity(goToMain);
                 });
 
                 /*
@@ -289,6 +278,5 @@ public class ReportingActivity extends AppCompatActivity {
         super.onPause();
     }
 
-       public void onBackPressed(){
-    }
+    public void onBackPressed(){ }
 }
