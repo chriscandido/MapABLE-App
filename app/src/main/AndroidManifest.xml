@@ -46,6 +46,7 @@
         <activity android:name=".ui.home.CameraActivity"/>
         <activity android:name="up.envisage.mapable.fragment.GoogleMapFragment"
             android:label="Google Maps"/>
+        <activity android:name=".ui.home.report.ReportAlgalBloom"/>
         <!-- Fonts -->
         <meta-data
             android:name="preloaded_fonts"

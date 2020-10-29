@@ -30,6 +30,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.button.MaterialButton;
 
 import up.envisage.mapable.R;
+import up.envisage.mapable.ui.home.CameraActivity;
 import up.envisage.mapable.ui.home.ReportIncidentActivity;
 import up.envisage.mapable.ui.home.ReportingActivity;
 import up.envisage.mapable.util.Constant;
@@ -41,14 +42,15 @@ public class GoogleMapFragment extends FragmentActivity
     private GoogleMap map;
     private Button button_googleMaps_submitLocation;
 
-    String userID, type, incident, frequency, a1, a2, a3, a4, a5, a6, a7, lon, lat, image;
+    //String userID, type, incident, frequency, a1, a2, a3, a4, a5, a6, a7, lon, lat, image;
+    String incidentType, dateTime, report, lat, lon;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_google_maps);
 
         Intent location = getIntent();
-
+        /*
         userID = location.getStringExtra("userID");
         type = location.getStringExtra("type");
         incident = location.getStringExtra("incident");
@@ -60,7 +62,11 @@ public class GoogleMapFragment extends FragmentActivity
         a5 = location.getStringExtra("a5");
         a6 = location.getStringExtra("a6");
         a7 = location.getStringExtra("a7");
-        image = location.getStringExtra("image");
+        image = location.getStringExtra("image");*/
+
+        dateTime = location.getStringExtra("Date and Time");
+        incidentType = location.getStringExtra("Incident Type");
+        report = location.getStringExtra("Report");
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.google_map);
@@ -119,21 +125,26 @@ public class GoogleMapFragment extends FragmentActivity
                             Log.v("[ GoogleMapFragment.java ]", "Pinned Location - latitude: " +
                                     pinnedLocation[0].latitude + " and " + "longitude: "+
                                     pinnedLocation[0].longitude);
-                            Intent submitLocation = new Intent(GoogleMapFragment.this, ReportingActivity.class);
-                            submitLocation.putExtra("userID", userID);
-                            submitLocation.putExtra("type", type);
-                            submitLocation.putExtra("incident", incident);
-                            submitLocation.putExtra("frequency", frequency);
-                            submitLocation.putExtra("a1", a1);
-                            submitLocation.putExtra("a2", a2);
-                            submitLocation.putExtra("a3", a3);
-                            submitLocation.putExtra("a4", a4);
-                            submitLocation.putExtra("a5", a5);
-                            submitLocation.putExtra("a6", a6);
-                            submitLocation.putExtra("a7", a7);
+                            Intent submitLocation = new Intent(GoogleMapFragment.this, CameraActivity.class);
+                            submitLocation.putExtra("Date and Time", dateTime);
+                            submitLocation.putExtra("Incident Type", incidentType);
+                            submitLocation.putExtra("Report", report);
                             submitLocation.putExtra("Latitude", String.valueOf(pinnedLocation[0].latitude));
                             submitLocation.putExtra("Longitude", String.valueOf(pinnedLocation[0].longitude));
-                            submitLocation.putExtra("image", image);
+                            //submitLocation.putExtra("userID", userID);
+                            //submitLocation.putExtra("type", type);
+                            //submitLocation.putExtra("incident", incident);
+                            //submitLocation.putExtra("frequency", frequency);
+                            //submitLocation.putExtra("a1", a1);
+                            //submitLocation.putExtra("a2", a2);
+                            //submitLocation.putExtra("a3", a3);
+                            //submitLocation.putExtra("a4", a4);
+                            //submitLocation.putExtra("a5", a5);
+                            //submitLocation.putExtra("a6", a6);
+                            //submitLocation.putExtra("a7", a7);
+                            //submitLocation.putExtra("Latitude", String.valueOf(pinnedLocation[0].latitude));
+                            //submitLocation.putExtra("Longitude", String.valueOf(pinnedLocation[0].longitude));
+                            //submitLocation.putExtra("image", image);
                             startActivity(submitLocation);
                             Toast.makeText(GoogleMapFragment.this, "Coordinates successfully saved", Toast.LENGTH_LONG).show();
                          }

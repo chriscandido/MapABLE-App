@@ -17,28 +17,38 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.material.button.MaterialButton;
 
 import up.envisage.mapable.R;
+import up.envisage.mapable.db.table.ReportTable;
+import up.envisage.mapable.model.ReportViewModel;
+import up.envisage.mapable.model.UserViewModel;
+import up.envisage.mapable.ui.registration.RegisterActivity;
 import up.envisage.mapable.util.Constant;
 
-public class CameraActivity extends Activity {
+public class CameraActivity extends AppCompatActivity {
 
     private ImageView imageView_reportImage;
     private MaterialButton button_reportCamera, button_reportGallery, button_reportSave;
     private TextView textView_cameraBack;
-
-    String userID, type, incident, frequency, a1, a2, a3, a4, a5, a6, a7, lon, lat, image;
+    private ReportViewModel reportViewModel;
+    //String userID, type, incident, frequency, a1, a2, a3, a4, a5, a6, a7, lon, lat, image;
+    String dateTime, incidentType, answer, latitude, longitude, imgPath;
+    Bitmap galleryPhoto;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
 
-        Intent camera = getIntent();
+        reportViewModel = ViewModelProviders.of(CameraActivity.this).get(ReportViewModel.class);
 
+        Intent camera = getIntent();
+        /*
         userID = camera.getStringExtra("userID");
         type = camera.getStringExtra("type");
         incident = camera.getStringExtra("incident");
@@ -51,7 +61,13 @@ public class CameraActivity extends Activity {
         a6 = camera.getStringExtra("a6");
         a7 = camera.getStringExtra("a7");
         lon = camera.getStringExtra("Longitude");
-        lat = camera.getStringExtra("Latitude");
+        lat = camera.getStringExtra("Latitude");*/
+
+        dateTime = camera.getStringExtra("Date and Time");
+        incidentType = camera.getStringExtra("Incident Type");
+        answer = camera.getStringExtra("Report");
+        latitude = camera.getStringExtra("Latitude");
+        longitude = camera.getStringExtra("Longitude");
 
         imageView_reportImage = findViewById(R.id.imageView_reportCamera);
 
@@ -78,21 +94,29 @@ public class CameraActivity extends Activity {
         button_reportSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ReportTable report = new ReportTable();
+                report.setDateTime(dateTime);
+                report.setIncidentType(incidentType);
+                report.setReport(answer);
+                report.setLatitude(Double.parseDouble(latitude));
+                report.setLongitude(Double.parseDouble(longitude));
+                report.setPhoto(imgPath);
+                reportViewModel.insert(report);
                 Intent save = new Intent(CameraActivity.this, ReportingActivity.class);
-                save.putExtra("userID", userID);
-                save.putExtra("type", type);
-                save.putExtra("incident", incident);
-                save.putExtra("frequency", frequency);
-                save.putExtra("a1", a1);
-                save.putExtra("a2", a2);
-                save.putExtra("a3", a3);
-                save.putExtra("a4", a4);
-                save.putExtra("a5", a5);
-                save.putExtra("a6", a6);
-                save.putExtra("a7", a7);
-                save.putExtra("Longitude", lon);
-                save.putExtra("Latitude", lat);
-                save.putExtra("image", "kunwari image part 2 para unique");
+                //save.putExtra("userID", userID);
+                //save.putExtra("type", type);
+                //save.putExtra("incident", incident);
+                //save.putExtra("frequency", frequency);
+                //save.putExtra("a1", a1);
+                //save.putExtra("a2", a2);
+                //save.putExtra("a3", a3);
+                //save.putExtra("a4", a4);
+                //save.putExtra("a5", a5);
+                //save.putExtra("a6", a6);
+                //save.putExtra("a7", a7);
+                //save.putExtra("Longitude", lon);
+                //save.putExtra("Latitude", lat);
+                //save.putExtra("image", "kunwari image part 2 para unique");
                 startActivity(save);
                 Toast.makeText(CameraActivity.this, "Photo successfully saved", Toast.LENGTH_LONG).show();
             }
@@ -165,6 +189,7 @@ public class CameraActivity extends Activity {
             case Constant.ACTIVITY_SELECT_IMAGE:
                 if (resultCode == Activity.RESULT_OK){
                     Uri selectedImage = data.getData();
+                    imgPath = selectedImage.toString();
                     String[] filePathColumn = {MediaStore.Images.Media.DATA};
 
                     Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
@@ -174,9 +199,8 @@ public class CameraActivity extends Activity {
                     String filePath = cursor.getString(columnIndex);
                     cursor.close();
 
-                    Bitmap galleryPhoto = BitmapFactory.decodeFile(filePath);
+                    galleryPhoto = BitmapFactory.decodeFile(filePath);
                     imageView_reportImage.setImageBitmap(galleryPhoto);
-
                 }
                 break;
         }

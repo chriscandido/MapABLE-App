@@ -68,12 +68,6 @@
                 android:text="@string/report_desc"
                 style="@style/contentText"/>
             
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_gravity="center"/>
-
             <!-- Button Choose Incident Type and Take Survey -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -90,7 +84,7 @@
                     android:text="Type of Incident"
                     android:textSize="12sp"
                     android:textColor="@color/colorNeutral"
-                    android:fontFamily="@font/news_cycle"
+                    android:fontFamily="@font/comfortaa"
                     android:backgroundTint="@color/colorBackground"
                     app:icon="@drawable/ic_report_incident"
                     app:iconTint="@color/colorPrimary"
@@ -115,7 +109,7 @@
                     android:text="Location"
                     android:textSize="12sp"
                     android:textColor="@color/colorNeutral"
-                    android:fontFamily="@font/news_cycle"
+                    android:fontFamily="@font/comfortaa"
                     android:backgroundTint="@color/colorBackground"
                     app:icon="@drawable/ic_report_location"
                     app:iconTint="@color/colorPrimary"
@@ -140,7 +134,7 @@
                     android:text="Take a Picture"
                     android:textSize="12sp"
                     android:textColor="@color/colorNeutral"
-                    android:fontFamily="@font/news_cycle"
+                    android:fontFamily="@font/comfortaa"
                     android:backgroundTint="@color/colorBackground"
                     app:icon="@drawable/ic_report_camera"
                     app:iconTint="@color/colorPrimary"

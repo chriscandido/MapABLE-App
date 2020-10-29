@@ -24,15 +24,21 @@ public class UserRepository {
 
     private UserDAO userDAO;
     private LiveData<List<UserTable>> allUsers;
+    private LiveData<UserTable> lastUser;
 
     public UserRepository (Application application) {
         Database db = Database.getInstance(application);
         userDAO = db.userDAO();
         allUsers = userDAO.getAllUsers();
+        lastUser = userDAO.getLastUser();
     }
 
     public LiveData<List<UserTable>> getAllUsers() {
         return allUsers;
+    }
+
+    public LiveData<UserTable> getLastUser() {
+        return lastUser;
     }
 
     public LiveData<UserTable> getUsername(String username, String password) {

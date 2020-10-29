@@ -154,15 +154,15 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
                         }
                     });
                     //Insert data to local server
-//                    user.setName(name);
-//                    user.setNumber(number);
-//                    user.setEmail(email);
-//                    user.setUsername(username);
-//                    user.setPassword(password);
-//                    registerViewModel.insert(user);
-//                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-//                    startActivity(intent);
-//                    Log.v("[ RegisterActivity.java ]", "Data successfully inserted");
+                    user.setName(name);
+                    user.setNumber(number);
+                    user.setEmail(email);
+                    user.setUsername(username);
+                    user.setPassword(password);
+                    registerViewModel.insert(user);
+                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    Log.v("[ RegisterActivity.java ]", "Data successfully inserted");
                 }
                 break;
 
@@ -170,7 +170,6 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 startActivity(intent);
                 break;
-
         }
     }
 }
