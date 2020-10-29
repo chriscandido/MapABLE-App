@@ -14,15 +14,8 @@ router.route('/submit').post((req, res) => {
 
     const userID = req.body.userID;
     const type = req.body.type;
-    const incident = req.body.incident;
-    const frequency = req.body.frequency;
-    const a1 = req.body.a1;
-    const a2 = req.body.a2;
-    const a3 = req.body.a3;
-    const a4 = req.body.a4;
-    const a5 = req.body.a5;
-    const a6 = req.body.a6;
-    const a7 = req.body.a7;
+    const date = req.body.date;
+    const report = req.body.report;
     const image = req.body.image;
     const geometry = {
 		"type": "Point",
@@ -32,15 +25,8 @@ router.route('/submit').post((req, res) => {
     const newItem = new Item({
         userID,
         type,
-        incident,
-        frequency,
-        a1,
-        a2,
-        a3,
-        a4,
-        a5,
-        a6,
-        a7,
+        date,
+        report,
         image,
         geometry
     });

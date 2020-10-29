@@ -58,8 +58,8 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-//    private String BASE_URL = "http://10.0.2.2:5000";
-    private String BASE_URL = "https://project-mapable.herokuapp.com/";
+    private String BASE_URL = "http://10.0.2.2:5000";
+
 
     String userID, frequency, a1, a2, a3, a4, a5, a6, a7, lon, lat, image;
 
@@ -166,6 +166,10 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
                 dialog.show();*/
 
                 Intent algalBloomOk = new Intent(ReportIncidentActivity.this, ReportAlgalBloom.class);
+                algalBloomOk.putExtra("userID", userID);
+                algalBloomOk.putExtra("Longitude", lon);
+                algalBloomOk.putExtra("Latitude", lat);
+                algalBloomOk.putExtra("image", image);
                 startActivity(algalBloomOk);
 
                 break;
@@ -183,16 +187,6 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
 
                         Intent fishKillOk = new Intent(ReportIncidentActivity.this, ReportingActivity.class);
                         fishKillOk.putExtra("userID", userID);
-                        fishKillOk.putExtra("type", "Fish Kill");
-                        fishKillOk.putExtra("incident", incident);
-                        fishKillOk.putExtra("frequency", "Mababa sa isang linggo");
-                        fishKillOk.putExtra("a1", "answer to a1");
-                        fishKillOk.putExtra("a2", "answer to a2");
-                        fishKillOk.putExtra("a3", "answer to a3");
-                        fishKillOk.putExtra("a4", "answer to a4");
-                        fishKillOk.putExtra("a5", "answer to a5");
-                        fishKillOk.putExtra("a6", "answer to a6");
-                        fishKillOk.putExtra("a7", "answer to a7");
                         fishKillOk.putExtra("Longitude", lon);
                         fishKillOk.putExtra("Latitude", lat);
                         fishKillOk.putExtra("image", image);
@@ -218,16 +212,6 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
 
                         Intent pollutionOk = new Intent(ReportIncidentActivity.this, ReportingActivity.class);
                         pollutionOk.putExtra("userID", userID);
-                        pollutionOk.putExtra("type", "Pollution");
-                        pollutionOk.putExtra("incident", incident);
-                        pollutionOk.putExtra("frequency", "Mababa sa isang linggo");
-                        pollutionOk.putExtra("a1", "answer to a1");
-                        pollutionOk.putExtra("a2", "answer to a2");
-                        pollutionOk.putExtra("a3", "answer to a3");
-                        pollutionOk.putExtra("a4", "answer to a4");
-                        pollutionOk.putExtra("a5", "answer to a5");
-                        pollutionOk.putExtra("a6", "answer to a6");
-                        pollutionOk.putExtra("a7", "answer to a7");
                         pollutionOk.putExtra("Longitude", lon);
                         pollutionOk.putExtra("Latitude", lat);
                         pollutionOk.putExtra("image", image);
@@ -255,16 +239,6 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
 
                         Intent illegalReclamationOk = new Intent(ReportIncidentActivity.this, ReportingActivity.class);
                         illegalReclamationOk.putExtra("userID", userID);
-                        illegalReclamationOk.putExtra("type", "Illegal Reclamation");
-                        illegalReclamationOk.putExtra("incident", incident);
-                        illegalReclamationOk.putExtra("frequency", "Mababa sa isang linggo");
-                        illegalReclamationOk.putExtra("a1", "answer to a1");
-                        illegalReclamationOk.putExtra("a2", "answer to a2");
-                        illegalReclamationOk.putExtra("a3", "answer to a3");
-                        illegalReclamationOk.putExtra("a4", "answer to a4");
-                        illegalReclamationOk.putExtra("a5", "answer to a5");
-                        illegalReclamationOk.putExtra("a6", "answer to a6");
-                        illegalReclamationOk.putExtra("a7", "answer to a7");
                         illegalReclamationOk.putExtra("Longitude", lon);
                         illegalReclamationOk.putExtra("Latitude", lat);
                         illegalReclamationOk.putExtra("image", image);
