@@ -16,12 +16,12 @@ router.route('/submit').post((req, res) => {
     const type = req.body.type;
     const date = req.body.date;
     const report = req.body.report;
-    const image = req.body.image;
+    const image = req.body.image; // file path nalang to or file name kasi separate yung sa image upload
     const geometry = {
 		"type": "Point",
 		"coordinates": [parseFloat(req.body.lon), parseFloat(req.body.lat)]
     };
-    
+
     const newItem = new Item({
         userID,
         type,
@@ -31,23 +31,20 @@ router.route('/submit').post((req, res) => {
         geometry
     });
 
-    newItem.save()
+    const checkUser = {_id: mongoose.Types.ObjectId(req.body.userID)};
+    // Para lang macheck na before masubmit si report dapat linked siya sa isang userID
+
+    var result = User.findOne(checkUser, (err, result) => {
+        if (result == null){
+            res.status(400).send("User is not found in database");
+        } else {
+
+        newItem.save()
             .then(() => res.json('Report added!'))
             .catch(err => res.status(400).json('Error: ' + err))
-
-    // const checkUser = {_id: mongoose.Types.ObjectId(req.body.userID)};
-
-    // var result = User.findOne(checkUser, (err, result) => {
-    //     if (result == null){
-    //         res.status(400).send("User is not found in database");
-    //     } else {
-        
-    //     newItem.save()
-    //         .then(() => res.json('Report added!'))
-    //         .catch(err => res.status(400).json('Error: ' + err))
-    //     res.status(200).send(result);
-    //     }
-    // });
+        res.status(200).send(result);
+        }
+    });
 }
 );
 
