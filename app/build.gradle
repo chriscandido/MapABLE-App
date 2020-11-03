@@ -84,11 +84,7 @@ dependencies {
 
 //    For calling HTTP requests: Back-end
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.7.1'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
-<<<<<<< HEAD
-=======
-
     implementation 'com.android.support:multidex:1.0.3'
->>>>>>> b34a8a0aee87bef7ef78c6bb6b4d257d77fec061
 }

@@ -16,8 +16,8 @@ const reportSchema = new Schema({
   "a5": String,
   "a6": String,
   "a7": String,
-  "image": String,
-  // "img": {data: Buffer, contentType: String},
+  // "image": String,
+  "image": {data: Buffer, contentType: String},
   "geometry": {
     "type": {
       "type": "String" // usually just Point

@@ -4,8 +4,6 @@ const mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
 require('dotenv').config();
-// var fs = require('fs');
-// var path = require('path');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -28,11 +26,11 @@ app.use(bodyParser.json())
 
 const userRouter = require('./routes/user');
 const reportRouter = require('./routes/report');
-// const imageRouter = require('./routes/image');
+const imageRouter = require('./routes/image');
 
 app.use('/users', userRouter);
 app.use('/reports', reportRouter);
-// app.use('/images', imageRouter);
+app.use('/images', imageRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
