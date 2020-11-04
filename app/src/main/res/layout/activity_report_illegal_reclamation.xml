@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorBackground"
+    android:padding="10dp"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView_reportIncidentTitle_illegalReclamation"
+                style="@style/headerText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:text="@string/title_illegalReclamation"
+                android:textColor="@color/colorNeutral" />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:elevation="10dp"
+                android:src="@drawable/img_illegal_reclamation"/>
+
+            <TextView
+                android:id="@+id/textView_reportIncidentBody_illegalReclamation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/desc_illegalReclamation"
+                android:textColor="@color/colorNeutral"
+                android:textAlignment="center"
+                style="@style/contentText"/>
+
+            <!-- Question00 TextInputLayout -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="Maikling Salaysay"
+                android:textSize="15sp"
+                android:textColor="@color/colorNeutral"
+                style="@style/navigationText"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="Isang maikling salaysay tungkol sa nangyaring insidente. Maaring isulat kung kailan nagsimula, kung ano ang obserbasyon sa lugar, o hindi kaya ay kung ano ang naging dahilan ng insidente"
+                android:textColor="@color/colorNeutral"
+                android:textSize="9sp"
+                android:textAlignment="viewStart"
+                style="@style/contentText"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_reportIllegalReclamation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/comfortaa"
+                    android:minHeight="100dp"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Question01 Spinner -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="Kailan mo unang naobserbahan ang pagtatambak?"
+                    android:textSize="15sp"
+                    android:textAlignment="textStart"
+                    android:fontFamily="@font/comfortaa_bold"/>
+
+                <Spinner
+                    android:id="@+id/spinner_reportIllegalReclamation_q01"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@color/colorNeutral"
+                    android:textSize="9sp"
+                    android:textAlignment="viewStart"/>
+
+            </LinearLayout>
+
+            <!-- Question02 Spinner -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="Ano ang panambak na ginamit?"
+                    android:textSize="15sp"
+                    android:textAlignment="textStart"
+                    android:fontFamily="@font/comfortaa_bold"/>
+
+                <Spinner
+                    android:id="@+id/spinner_reportIllegalReclamation_q02"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@color/colorNeutral"
+                    android:textSize="9sp"
+                    android:textAlignment="viewStart"/>
+
+            </LinearLayout>
+
+            <!-- Question03 Spinner -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="Gaano kalawak ang nasakop ng panambak?"
+                    android:textSize="15sp"
+                    android:textAlignment="textStart"
+                    android:fontFamily="@font/comfortaa_bold"/>
+
+                <Spinner
+                    android:id="@+id/spinner_reportIllegalReclamation_q03"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@color/colorNeutral"
+                    android:textSize="9sp"
+                    android:textAlignment="viewStart"/>
+
+            </LinearLayout>
+
+            <!-- Question04 Spinner -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="May nakatayo bang istruktura sa tinambakang lugar?"
+                    android:textSize="15sp"
+                    android:textAlignment="textStart"
+                    android:fontFamily="@font/comfortaa_bold"/>
+
+                <Spinner
+                    android:id="@+id/spinner_reportIllegalReclamation_q04"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@color/colorNeutral"
+                    android:textSize="9sp"
+                    android:textAlignment="viewStart"/>
+
+            </LinearLayout>
+
+            <!-- Question05 Spinner -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="May namamalagi o nagbabantay sa tinambakang lugar?"
+                    android:textSize="15sp"
+                    android:textAlignment="textStart"
+                    android:fontFamily="@font/comfortaa_bold"/>
+
+                <Spinner
+                    android:id="@+id/spinner_reportIllegalReclamation_q05"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@color/colorNeutral"
+                    android:textSize="9sp"
+                    android:textAlignment="viewStart"/>
+
+            </LinearLayout>
+
+            <!-- Question06 TextInput -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="Pangalan ng nagtambak, posibleng nagtambak o nagbabantay sa lugar (Ilagay ang Wala kung hindi kilala)"
+                android:textSize="15sp"
+                android:fontFamily="@font/comfortaa_bold"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_reportIllegalReclamation_q06"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/comfortaa" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_reportIllegalReclamation_next"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/colorAccent"
+                android:text="Next"
+                android:textSize="15sp"
+                android:textColor="@color/colorBackground"
+                android:fontFamily="@font/comfortaa" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>
