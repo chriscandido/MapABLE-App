@@ -14,54 +14,37 @@ router.route('/submit').post((req, res) => {
 
     const userID = req.body.userID;
     const type = req.body.type;
-    const incident = req.body.incident;
-    const frequency = req.body.frequency;
-    const a1 = req.body.a1;
-    const a2 = req.body.a2;
-    const a3 = req.body.a3;
-    const a4 = req.body.a4;
-    const a5 = req.body.a5;
-    const a6 = req.body.a6;
-    const a7 = req.body.a7;
-    const image = req.body.image;
+    const date = req.body.date;
+    const report = req.body.report;
+    const image = req.body.image; // file path nalang to or file name kasi separate yung sa image upload
     const geometry = {
 		"type": "Point",
 		"coordinates": [parseFloat(req.body.lon), parseFloat(req.body.lat)]
     };
-    
+
     const newItem = new Item({
         userID,
         type,
-        incident,
-        frequency,
-        a1,
-        a2,
-        a3,
-        a4,
-        a5,
-        a6,
-        a7,
+        date,
+        report,
         image,
         geometry
     });
 
-    newItem.save()
+    const checkUser = {_id: mongoose.Types.ObjectId(req.body.userID)};
+    // Para lang macheck na before masubmit si report dapat linked siya sa isang userID
+
+    var result = User.findOne(checkUser, (err, result) => {
+        if (result == null){
+            res.status(400).send("User is not found in database");
+        } else {
+
+        newItem.save()
             .then(() => res.json('Report added!'))
             .catch(err => res.status(400).json('Error: ' + err))
-
-    // const checkUser = {_id: mongoose.Types.ObjectId(req.body.userID)};
-
-    // var result = User.findOne(checkUser, (err, result) => {
-    //     if (result == null){
-    //         res.status(400).send("User is not found in database");
-    //     } else {
-        
-    //     newItem.save()
-    //         .then(() => res.json('Report added!'))
-    //         .catch(err => res.status(400).json('Error: ' + err))
-    //     res.status(200).send(result);
-    //     }
-    // });
+        res.status(200).send(result);
+        }
+    });
 }
 );
 

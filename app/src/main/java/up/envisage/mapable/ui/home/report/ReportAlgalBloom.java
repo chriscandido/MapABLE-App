@@ -25,10 +25,10 @@ import up.envisage.mapable.fragment.GoogleMapFragment;
 
 public class ReportAlgalBloom extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    private MaterialButton button_reportAlgalBloom_ok;
-    private TextInputLayout textInputLayout_reportAlgalBloom_q00, textInputLayout_reportAlgalBloom_q04;
+    MaterialButton button_reportAlgalBloom_ok;
+    TextInputLayout textInputLayout_reportAlgalBloom_q00, textInputLayout_reportAlgalBloom_q04;
 
-    private String input00, input01, input02, input03, input04;
+    String input00, input01, input02, input03, input04;
     private List<String> out = new ArrayList<>();
 
     @Override
