@@ -5,17 +5,29 @@ const mongoose = require('mongoose');
 const fs = require('fs');
 const path = require('path');
 
-// Retriving the image 
-router.route('/').get((req, res) => { 
-    Image.find({}, (err, items) => { 
-        if (err) { 
-            console.log(err); 
-        } 
-        else {
-            res.render('app', { items: items }); 
-        }
-    });
-});
+// var storage = multer.diskStorage({ 
+// 	destination: (req, file, cb) => { 
+// 		cb(null, 'uploads') 
+// 	}, 
+// 	filename: (req, file, cb) => { 
+// 		cb(null, file.fieldname + '-' + Date.now()) 
+// 	} 
+// }); 
+
+// var upload = multer({ storage: storage }); 
+
+// // Retriving the image 
+// router.route('/').get((req, res) => { 
+//     Image.find({}, (err, items) => { 
+//         if (err) { 
+//             console.log(err); 
+//         } 
+//         else { 
+//             res.render('app', { items: items }); 
+//         } 
+//     }); 
+// }); 
+
 
 //adds Image upon Submit
 // dapat may kukunin to na path pagka-upload, tas yun ilalagay sa imgPath na variable
