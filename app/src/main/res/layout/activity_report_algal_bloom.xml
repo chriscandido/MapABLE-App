@@ -19,6 +19,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <!-- Incident Type -->
             <TextView
                 android:id="@+id/textView_reportIncidentTitle_algalBloom"
                 style="@style/headerText"
@@ -27,7 +28,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:text="@string/title_algalBloom"
-                android:textColor="@color/colorNeutral" />
+                android:textColor="#000000" />
 
             <ImageView
                 android:layout_width="50dp"
@@ -36,16 +37,19 @@
                 android:elevation="10dp"
                 android:src="@drawable/img_algal_bloom"/>
 
+            <!-- Incident Type Summary -->
             <TextView
                 android:id="@+id/textView_reportIncidentBody_algalBloom"
+                style="@style/contentText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                android:fontFamily="@font/comfortaa"
                 android:text="@string/desc_algalBloom"
-                android:textColor="@color/colorNeutral"
                 android:textAlignment="center"
-                style="@style/contentText"/>
+                android:textColor="@color/colorNeutral" />
 
+            <!-- Question00 TextInput -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -53,7 +57,7 @@
                 android:layout_marginRight="10dp"
                 android:text="Maikling salaysay"
                 android:textSize="15sp"
-                android:fontFamily="@font/news_cycle"/>
+                android:fontFamily="@font/comfortaa_bold"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -62,22 +66,22 @@
                 android:layout_marginRight="10dp"
                 android:text="Isang maikling salaysay tungkol sa nangyaring insidente. Maaring isulat kung kailan nagsimula, kung ano ang obserbasyon sa lugar, o hindi kaya ay kung ano ang naging dahilan ng insidente"
                 android:textColor="@color/colorNeutral"
-                android:textSize="9sp"
+                android:textSize="12sp"
                 android:textAlignment="viewStart"
-                android:fontFamily="@font/news_cycle"/>
+                android:fontFamily="@font/comfortaa"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout_reportAlgalBloom"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:fontFamily="@font/news_cycle"
-                    android:minHeight="100dp"/>  
+                    android:fontFamily="@font/comfortaa"
+                    android:minHeight="100dp"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Question01 Spinner -->
@@ -93,7 +97,8 @@
                     android:layout_marginRight="10dp"
                     android:text="Gaano katagal naoobserbahan ang liya sa tubig?"
                     android:textSize="15sp"
-                    android:textAlignment="textStart"/>
+                    android:textAlignment="textStart"
+                    android:fontFamily="@font/comfortaa_bold"/>
 
                 <Spinner
                     android:id="@+id/spinner_reportAgalBloom_q01"
@@ -107,17 +112,96 @@
 
             </LinearLayout>
 
-            <!-- Ok Button -->
+            <!-- Question02 Spinner -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="May kakaibang amoy bang nagmumula sa tubig?"
+                    android:textSize="15sp"
+                    android:textAlignment="textStart"
+                    android:fontFamily="@font/comfortaa_bold"/>
+
+                <Spinner
+                    android:id="@+id/spinner_reportAgalBloom_q02"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@color/colorBackground"
+                    android:textSize="9sp"
+                    android:textAlignment="viewStart"/>
+
+            </LinearLayout>
+
+            <!-- Question03 Spinner -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="May mga namamatay na bang isda malapit o sa lugar kung saan may liya?"
+                    android:textSize="15sp"
+                    android:textAlignment="textStart"
+                    android:fontFamily="@font/comfortaa_bold"/>
+
+                <Spinner
+                    android:id="@+id/spinner_reportAgalBloom_q03"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@color/colorBackground"
+                    android:textSize="9sp"
+                    android:textAlignment="viewStart"/>
+
+            </LinearLayout>
+
+            <!-- Question04 TextInput -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="Kundisyon ng tubig"
+                android:textSize="15sp"
+                android:fontFamily="@font/comfortaa_bold"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_reportAlgalBloom_q04"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/comfortaa" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Next Button -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_reportAlgalBloom_ok"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:backgroundTint="@color/colorAccent"
-                android:text="Ok"
+                android:text="Next"
                 android:textSize="15sp"
                 android:textColor="@color/colorBackground"
-                android:fontFamily="@font/news_cycle" />
+                android:fontFamily="@font/comfortaa" />
 
         </LinearLayout>
 

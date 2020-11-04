@@ -1,14 +1,8 @@
 package up.envisage.mapable.db.table;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
-
-import up.envisage.mapable.util.LatLng;
 
 @Entity(tableName = "Report_Profile")
 public class ReportTable {

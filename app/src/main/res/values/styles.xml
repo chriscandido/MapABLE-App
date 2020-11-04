@@ -39,8 +39,9 @@
         <item name="android:fontFamily">@font/comfortaa_bold</item>
     </style>
 
+    <!-- Spinner text theme -->
     <style name="spinnerText">
-        <item name="android:textSize">9sp</item>
+        <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/colorNeutral</item>
         <item name="android:fontFamily">@font/comfortaa</item>
     </style>

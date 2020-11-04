@@ -38,7 +38,7 @@ public class CameraActivity extends AppCompatActivity {
     private TextView textView_cameraBack;
     private ReportViewModel reportViewModel;
     //String userID, type, incident, frequency, a1, a2, a3, a4, a5, a6, a7, lon, lat, image;
-    String dateTime, incidentType, answer, latitude, longitude, imgPath;
+    String userID, dateTime, incidentType, answer, latitude, longitude, imgPath;
     Bitmap galleryPhoto;
 
     protected void onCreate(Bundle savedInstanceState){
@@ -48,21 +48,8 @@ public class CameraActivity extends AppCompatActivity {
         reportViewModel = ViewModelProviders.of(CameraActivity.this).get(ReportViewModel.class);
 
         Intent camera = getIntent();
-        /*
-        userID = camera.getStringExtra("userID");
-        type = camera.getStringExtra("type");
-        incident = camera.getStringExtra("incident");
-        frequency = camera.getStringExtra("frequency");
-        a1 = camera.getStringExtra("a1");
-        a2 = camera.getStringExtra("a2");
-        a3 = camera.getStringExtra("a3");
-        a4 = camera.getStringExtra("a4");
-        a5 = camera.getStringExtra("a5");
-        a6 = camera.getStringExtra("a6");
-        a7 = camera.getStringExtra("a7");
-        lon = camera.getStringExtra("Longitude");
-        lat = camera.getStringExtra("Latitude");*/
 
+        userID = camera.getStringExtra("userID");
         dateTime = camera.getStringExtra("Date and Time");
         incidentType = camera.getStringExtra("Incident Type");
         answer = camera.getStringExtra("Report");
@@ -103,20 +90,15 @@ public class CameraActivity extends AppCompatActivity {
                 report.setPhoto(imgPath);
                 reportViewModel.insert(report);
                 Intent save = new Intent(CameraActivity.this, ReportingActivity.class);
-                //save.putExtra("userID", userID);
-                //save.putExtra("type", type);
-                //save.putExtra("incident", incident);
-                //save.putExtra("frequency", frequency);
-                //save.putExtra("a1", a1);
-                //save.putExtra("a2", a2);
-                //save.putExtra("a3", a3);
-                //save.putExtra("a4", a4);
-                //save.putExtra("a5", a5);
-                //save.putExtra("a6", a6);
-                //save.putExtra("a7", a7);
-                //save.putExtra("Longitude", lon);
-                //save.putExtra("Latitude", lat);
-                //save.putExtra("image", "kunwari image part 2 para unique");
+
+                save.putExtra("userID", userID);
+                save.putExtra("Date and Time", dateTime);
+                save.putExtra("Incident Type", incidentType);
+                save.putExtra("Report", answer);
+                save.putExtra("Latitude", latitude);
+                save.putExtra("Longitude", longitude);
+                save.putExtra("image", imgPath);
+
                 startActivity(save);
                 Toast.makeText(CameraActivity.this, "Photo successfully saved", Toast.LENGTH_LONG).show();
             }
