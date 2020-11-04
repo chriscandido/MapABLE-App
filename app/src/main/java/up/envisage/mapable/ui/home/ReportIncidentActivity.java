@@ -58,9 +58,8 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-    private String BASE_URL = "http://10.0.2.2:5000";
-    //            "http://10.0.2.2:5000";
-    //"https://project-mapable.herokuapp.com/"
+//    private String BASE_URL = "http://10.0.2.2:5000";
+    private String BASE_URL = "https://project-mapable.herokuapp.com/";
 
     String userID, frequency, a1, a2, a3, a4, a5, a6, a7, lon, lat, image;
 
@@ -183,6 +182,7 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
                         final String incident = textInputLayout_reportFishKill.getEditText().getText().toString().trim();
 
                         Intent fishKillOk = new Intent(ReportIncidentActivity.this, ReportingActivity.class);
+                        fishKillOk.putExtra("userID", userID);
                         fishKillOk.putExtra("type", "Fish Kill");
                         fishKillOk.putExtra("incident", incident);
                         fishKillOk.putExtra("frequency", "Mababa sa isang linggo");
@@ -217,6 +217,7 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
                         final String incident = textInputLayout_reportPollution.getEditText().getText().toString().trim();
 
                         Intent pollutionOk = new Intent(ReportIncidentActivity.this, ReportingActivity.class);
+                        pollutionOk.putExtra("userID", userID);
                         pollutionOk.putExtra("type", "Pollution");
                         pollutionOk.putExtra("incident", incident);
                         pollutionOk.putExtra("frequency", "Mababa sa isang linggo");
@@ -253,6 +254,7 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
                         final String incident = textInputLayout_reportIllegalReclamation.getEditText().getText().toString().trim();
 
                         Intent illegalReclamationOk = new Intent(ReportIncidentActivity.this, ReportingActivity.class);
+                        illegalReclamationOk.putExtra("userID", userID);
                         illegalReclamationOk.putExtra("type", "Illegal Reclamation");
                         illegalReclamationOk.putExtra("incident", incident);
                         illegalReclamationOk.putExtra("frequency", "Mababa sa isang linggo");

@@ -22,6 +22,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -43,12 +44,15 @@ public class LoginActivity extends AppCompatActivity  {
     private Button button_eulaAgree, button_login;
     private CheckBox checkBox_eulaAgree;
 
+    String userID;
+
     Dialog dialog;
 
     private UserViewModel userViewModel;
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
+//    private String BASE_URL = "http://10.0.2.2:5000";
     private String BASE_URL = "https://project-mapable.herokuapp.com/";
 
     protected void onCreate(Bundle savedInstanceState){
@@ -99,15 +103,18 @@ public class LoginActivity extends AppCompatActivity  {
 
                 call.enqueue(new Callback<LoginResult>() {
                     @Override
-                  
-                  public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
+
+                    public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
                         if (response.code() == 200) {
                             final String username2 = textInputLayout_loginUsername.getEditText().getText().toString().trim();
 
+                            String userID2 = response.body().get_id();
+                            Log.i("Get ID Response [LOGIN]", userID2);
+
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            intent.putExtra("userID", username2);
+                            intent.putExtra("userID", userID2);
                             startActivity(intent);
-                            Log.i("response", response.toString());
+
 
                         } else if (response.code() == 400){
                             Toast.makeText(LoginActivity.this, "Wrong Credentials",
@@ -121,6 +128,7 @@ public class LoginActivity extends AppCompatActivity  {
                                 Toast.LENGTH_LONG).show();
                     }
                 });
+
 
 //                userViewModel.getUsers().observe(LoginActivity.this, new Observer<List<UserTable>>() {
 //                    @Override

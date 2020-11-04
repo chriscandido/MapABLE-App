@@ -7,6 +7,20 @@ router.route('/').get((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
+//gets ID of a user 
+router.route('/getID').get((req, res) => {
+  
+  const query = {
+    username: req.query['username'],
+    password: req.query['password']
+  }
+
+  Item.findOne(query)
+  .then(item => res.json(item))
+  .catch(err => res.status(400).json('Error: ' + err));
+
+});
+
 //adds User when upon sign-up
 router.route('/signup').post((req, res) => {
   const name = req.body.name;
@@ -28,10 +42,11 @@ router.route('/signup').post((req, res) => {
         username,
         password
     });
+      console.log(result);
 
       newItem.save()
         .then(() => res.json('User added!'))
-        .catch(err => res.status(404).json('Error: ' + err));
+        .catch(err => res.status(400).json('Error: ' + err));
       res.status(200).send(result);
     }
   });

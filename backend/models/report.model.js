@@ -2,9 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-//user refers to those logging in to the app
-// to be fixed - for Gilson
-// Schema should contain: username, type, description, location, picture, date and time
+// Report Schema
 const reportSchema = new Schema({
   "userID": String,
   "type": String,
@@ -18,15 +16,15 @@ const reportSchema = new Schema({
   "a5": String,
   "a6": String,
   "a7": String,
-  "image": String,
-  // "img": {data: Buffer, contentType: String},
+  // "image": String,
+  "image": {data: Buffer, contentType: String},
   "geometry": {
     "type": {
       "type": "String" // usually just Point
     },
     "coordinates": {
       "type": [
-        "Number" // Coordinates of Hospital [Longitude, Latitude]
+        "Number" // Coordinates of Report [Longitude, Latitude]
       ]
     }
   }
