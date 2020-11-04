@@ -41,13 +41,14 @@ public class ReportingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_report);
 
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-// set your desired log level
+
+        // set your desired log level
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-// add your other interceptors …
+        // add your other interceptors …
 
-// add logging as last interceptor
+        // add logging as last interceptor
         httpClient.addInterceptor(logging);  // <-- this is the important line!
 
         retrofit = new Retrofit.Builder()

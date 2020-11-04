@@ -3,12 +3,16 @@
     package="up.envisage.mapable">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-feature android:name="android.hardware.Camera" android:required="true"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.Camera"
+        android:required="true" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
@@ -17,10 +21,11 @@
         android:allowBackup="true"
         android:icon="@drawable/logo_mapable_240x240"
         android:label="@string/app_name"
-        android:usesCleartextTraffic="true"
         android:roundIcon="@drawable/logo_mapable_240x240"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ui.home.AboutActivity"></activity>
         <!-- Activities -->
         <!-- Launcher -->
         <activity
@@ -31,27 +36,25 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <!-- Registration && Login -->
+        </activity> <!-- Registration && Login -->
         <activity android:name=".ui.registration.LoginActivity" />
-        <activity android:name=".ui.registration.RegisterActivity" />
-        <!-- Main Activity -->
-        <activity android:name=".MainActivity" />
-        <!-- Main Menu -->
+        <activity android:name=".ui.registration.RegisterActivity" /> <!-- Main Activity -->
+        <activity android:name=".MainActivity" /> <!-- Main Menu -->
         <activity android:name=".ui.home.AboutManilaBayActivity" />
         <activity android:name=".ui.home.ReportingActivity" />
         <activity android:name=".ui.home.InformationActivity" />
         <activity android:name=".ui.home.FeedbackActivity" />
-        <activity android:name=".ui.home.ReportIncidentActivity"/>
-        <activity android:name=".ui.home.CameraActivity"/>
-        <activity android:name="up.envisage.mapable.fragment.GoogleMapFragment"
-            android:label="Google Maps"/>
-        <activity android:name=".ui.home.report.ReportAlgalBloom"/>
-        <!-- Fonts -->
+        <activity android:name=".ui.home.ReportIncidentActivity" />
+        <activity android:name=".ui.home.CameraActivity" />
+        <activity
+            android:name=".fragment.GoogleMapFragment"
+            android:label="Google Maps" /> <!-- Report -->
+        <activity android:name=".ui.home.report.ReportAlgalBloom" />
+        <activity android:name=".ui.home.report.ReportFishKill" />
+        <activity android:name=".ui.home.report.ReportIllegalReclamation" /> <!-- Fonts -->
         <meta-data
             android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
-        <!-- Google API Key -->
+            android:resource="@array/preloaded_fonts" /> <!-- Google API Key -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
