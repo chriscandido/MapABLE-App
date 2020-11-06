@@ -2,14 +2,22 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
+// Report Schema
 const reportSchema = new Schema({
   "userID": String,
   "type": String,
-  "date": String,
-  // "date": { type: Date, default: Date.now },
-  "report": String,
-  "image": String,
-  // "img": {data: Buffer, contentType: String},
+  "incident": String,
+  "frequency": String,
+  "date": { type: Date, default: Date.now },
+  "a1": String,
+  "a2": String,
+  "a3": String,
+  "a4": String,
+  "a5": String,
+  "a6": String,
+  "a7": String,
+  // "image": String,
+  "image": {data: Buffer, contentType: String},
   "geometry": {
     "type": {
       "type": "String" // usually just Point

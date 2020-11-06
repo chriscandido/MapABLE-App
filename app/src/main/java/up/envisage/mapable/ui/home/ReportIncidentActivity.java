@@ -39,12 +39,15 @@ import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
 import up.envisage.mapable.adapter.ReportIncidentAdapter;
 import up.envisage.mapable.ui.home.report.ReportAlgalBloom;
+import up.envisage.mapable.ui.home.report.ReportFishKill;
+import up.envisage.mapable.ui.home.report.ReportIllegalReclamation;
+import up.envisage.mapable.ui.home.report.ReportPollution;
 import up.envisage.mapable.ui.home.report.ReportResult;
 import up.envisage.mapable.ui.registration.LoginActivity;
 import up.envisage.mapable.ui.registration.LoginResult;
 import up.envisage.mapable.ui.registration.RetrofitInterface;
 
-public class ReportIncidentActivity extends AppCompatActivity implements ReportIncidentAdapter.OnIncidentClickListener, AdapterView.OnItemSelectedListener {
+public class ReportIncidentActivity extends AppCompatActivity implements ReportIncidentAdapter.OnIncidentClickListener {
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
@@ -176,6 +179,10 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
 
                 break;
             case 1:
+
+                Intent fishKillOk = new Intent(ReportIncidentActivity.this, ReportFishKill.class);
+                startActivity(fishKillOk);
+                /*
                 dialog = new Dialog(this);
                 dialog.setContentView(R.layout.dialog_report_fishkill);
 
@@ -198,9 +205,13 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
                     }
                 });
 
-                dialog.show();
+                dialog.show();*/
                 break;
             case 2:
+
+                Intent pollutionOk = new Intent(ReportIncidentActivity.this, ReportPollution.class);
+                startActivity(pollutionOk);
+                /*
                 dialog = new Dialog(this);
                 dialog.setContentView(R.layout.dialog_report_pollution);
 
@@ -223,11 +234,15 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
                     }
                 });
 
-                dialog.show();
+                dialog.show();*/
+
                 break;
             case 3:
                 break;
             case 4:
+                Intent illegalReclamationOk = new Intent(ReportIncidentActivity.this, ReportIllegalReclamation.class);
+                startActivity(illegalReclamationOk);
+                /*
                 dialog = new Dialog(this);
                 dialog.setContentView(R.layout.dialog_report_illegalreclamation);
 
@@ -250,7 +265,7 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
                     }
                 });
 
-                dialog.show();
+                dialog.show();*/
                 break;
         }
     }
@@ -270,13 +285,4 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
     public void onBackPressed(){
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-        String item = adapterView.getItemAtPosition(position).toString();
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
-    }
 }

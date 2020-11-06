@@ -32,7 +32,7 @@ public class UserFragment extends Fragment {
     private RecyclerView.LayoutManager layoutManager;
     private FragmentActivity listener;
 
-    TextView textView_user_name, textView_user_email, textView_user_reports;
+    TextView textView_user_name, textView_user_username, textView_user_email, textView_user_reports;
 
     ReportViewModel reportViewModel;
     UserViewModel userViewModel;
@@ -53,6 +53,7 @@ public class UserFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         textView_user_name = view.findViewById(R.id.textView_user_name);
+        textView_user_username = view.findViewById(R.id.textView_user_username);
         textView_user_email = view.findViewById(R.id.textView_user_email);
         textView_user_reports = view.findViewById(R.id.textView_user_reports);
 
@@ -68,8 +69,10 @@ public class UserFragment extends Fragment {
             @Override
             public void onChanged(UserTable userTable) {
                 String name = userTable.getName();
+                String username = userTable.getUsername();
                 String email = userTable.getEmail();
                 textView_user_name.setText(name);
+                textView_user_username.setText("@" + username);
                 textView_user_email.setText(email);
             }
         });
