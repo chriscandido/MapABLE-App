@@ -37,17 +37,87 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:layout_gravity="center"
                 android:text="IM4ManilaBay Program"
-                android:textColor="#000000"
+                android:textColor="@color/colorPrimaryDark"
                 style="@style/headerText"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="Integrated Mapping, Monitoring, Modelling, and Management System for Manila Bay and Linked Environments"
+                android:textSize="15dp"
+                android:fontFamily="@font/comfortaa_bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="@string/desc01_IM4ManilaBayProgram"
+                android:textSize="15dp"
+                android:fontFamily="@font/comfortaa"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="@string/desc02_IM4ManilaBayProgram"
+                android:textSize="15dp"
+                android:fontFamily="@font/comfortaa"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="@string/desc03_IM4ManilaBayProgram"
+                android:textSize="15dp"
+                android:fontFamily="@font/comfortaa"/>
+            
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="Bisitahin ang"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/comfortaa"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text=" link"
+                    android:textSize="15sp"
+                    android:textColor="@color/colorError"
+                    android:fontFamily="@font/comfortaa"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text=" para sa iba pang impormasyon"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/comfortaa"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
