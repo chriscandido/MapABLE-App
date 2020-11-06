@@ -9,15 +9,8 @@ const reportSchema = new Schema({
   "incident": String,
   "frequency": String,
   "date": { type: Date, default: Date.now },
-  "a1": String,
-  "a2": String,
-  "a3": String,
-  "a4": String,
-  "a5": String,
-  "a6": String,
-  "a7": String,
-  // "image": String,
-  "image": {data: Buffer, contentType: String},
+  "report": [String],
+  "image": String,
   "geometry": {
     "type": {
       "type": "String" // usually just Point

@@ -11,6 +11,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -43,6 +44,7 @@ public class CameraActivity extends AppCompatActivity {
     private ReportViewModel reportViewModel;
     //String userID, type, incident, frequency, a1, a2, a3, a4, a5, a6, a7, lon, lat, image;
     String userID, dateTime, incidentType, answer, latitude, longitude, imgPath;
+    public static String imageString;
     Bitmap galleryPhoto;
 
     protected void onCreate(Bundle savedInstanceState){
@@ -52,7 +54,6 @@ public class CameraActivity extends AppCompatActivity {
         reportViewModel = ViewModelProviders.of(CameraActivity.this).get(ReportViewModel.class);
 
         Intent camera = getIntent();
-
         userID = camera.getStringExtra("userID");
         dateTime = camera.getStringExtra("Date and Time");
         incidentType = camera.getStringExtra("Incident Type");
@@ -101,7 +102,8 @@ public class CameraActivity extends AppCompatActivity {
                 save.putExtra("Report", answer);
                 save.putExtra("Latitude", latitude);
                 save.putExtra("Longitude", longitude);
-                save.putExtra("image", imgPath);
+//                save.putExtra("image", imgPath);
+                save.putExtra("image", imageString);
 
                 startActivity(save);
                 Toast.makeText(CameraActivity.this, "Photo successfully saved", Toast.LENGTH_LONG).show();
@@ -169,16 +171,16 @@ public class CameraActivity extends AppCompatActivity {
             case Constant.CAMERA_REQUEST_CODE:
                 if (resultCode == Activity.RESULT_OK) {
                     Bitmap cameraPhoto = (Bitmap) data.getExtras().get("data");
+
+                    // get the base 64 string
+                    imageString = Base64.encodeToString(getBytesFromBitmap(cameraPhoto),
+                            Base64.NO_WRAP);
+
+//                    Log.v("[ CameraActivity.java ]",
+//                            "Base64: " + imageString  + "\n");
+
                     imageView_reportImage.setImageBitmap(cameraPhoto);
 
-                    // CALL THIS METHOD TO GET THE URI FROM THE BITMAP
-                    Uri tempUri = getImageUri(getApplicationContext(), cameraPhoto);
-
-                    // CALL THIS METHOD TO GET THE ACTUAL PATH
-                    File finalFile = new File(getRealPathFromURI(tempUri));
-
-                    Log.v("[ CameraActivity.java ]",
-                            "FILEPATH: " + mImageCaptureUri  + "\n");
                 }
                 break;
             case Constant.ACTIVITY_SELECT_IMAGE:
@@ -194,28 +196,29 @@ public class CameraActivity extends AppCompatActivity {
                     String filePath = cursor.getString(columnIndex);
                     cursor.close();
 
-                    Log.v("[ CameraActivity.java ]",
-                            "FILEPATH: " + filePath  + "\n");
+//                    Log.v("[ CameraActivity.java ]",
+//                            "FILEPATH: " + filePath  + "\n");
 
                     galleryPhoto = BitmapFactory.decodeFile(filePath);
+
+                    // get the base 64 string
+                    imageString = Base64.encodeToString(getBytesFromBitmap(galleryPhoto),
+                            Base64.NO_WRAP);
+
+                    Log.v("[ CameraActivity.java ]",
+                            "Base64: " + imageString  + "\n");
+
                     imageView_reportImage.setImageBitmap(galleryPhoto);
                 }
                 break;
         }
     }
 
-    public Uri getImageUri(Context inContext, Bitmap inImage) {
-        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
-        return Uri.parse(path);
-    }
-
-    public String getRealPathFromURI(Uri uri) {
-        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
-        cursor.moveToFirst();
-        int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
-        return cursor.getString(idx);
+    // convert from bitmap to byte array
+    public byte[] getBytesFromBitmap(Bitmap bitmap) {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        return stream.toByteArray();
     }
 
     public void onStart(){

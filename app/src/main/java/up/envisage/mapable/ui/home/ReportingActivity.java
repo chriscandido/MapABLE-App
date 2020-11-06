@@ -40,7 +40,7 @@ public class ReportingActivity extends AppCompatActivity {
     private MaterialButton button_reportIncident, button_reportCamera, button_reportLocation, button_reportSend;
     private TextView textView_reportBack;
 
-    String userID, dateTime, incidentType, Report, frequency, lon, lat, image;
+    String userID, dateTime, incidentType, Report, frequency, lon, lat, image, imageID2;
 
     @SuppressLint("LongLogTag")
     @Override
@@ -193,7 +193,6 @@ public class ReportingActivity extends AppCompatActivity {
                     startActivity(goToMain);
                 });
 
-
                 HashMap<String, String> map = new HashMap<>();
                 map.put("userID", userID);
                 map.put("date", dateTime);
@@ -202,11 +201,6 @@ public class ReportingActivity extends AppCompatActivity {
                 map.put("lon", lon);
                 map.put("lat", lat);
                 map.put("image", image);
-
-//                HashMap<String, String> imageMap = new HashMap<>();
-//                imageMap.put("userID", userID);
-//                imageMap.put("date", dateTime);
-//                imageMap.put("image", image);
 
                 Call<ReportClassResult> call = retrofitInterface.executeReportSubmit(map);
 
