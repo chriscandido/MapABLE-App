@@ -27,4 +27,7 @@ public interface RetrofitInterface {
 
     @POST("/reports/submit")
     Call<ReportClassResult> executeReportSubmit(@Body HashMap<String, String> map);
+
+    @POST("/images/upload")
+    Call<Void> executeImageUpload(@Body HashMap<String, String> map);
 }

@@ -20,16 +20,16 @@ router.route('/').get((req, res) => {
 //adds Image upon Submit
 // dapat may kukunin to na path pagka-upload, tas yun ilalagay sa imgPath na variable
 router.route('/upload').post((req, res) => {
-    const imgPath = __dirname.replace('routes','conv3.png');
-    const userID = "ilalagay dito si objectID ni user pang link";
-    const reportID = "ilalagay dito si objectID ni report pang link";
+    // const imgPath = __dirname.replace('routes','conv3.png');
+    const imgPath = req.body.image;
+    const userID = req.body.userID;
     const imageBuffer = fs.readFileSync(imgPath);
     // To convert to base64, imageBuffer.toString('base64')
     const imageType = 'image/'+path.extname(imgPath).replace('.','').toLowerCase();
 
     const newItem = new Image({
         userID,
-        reportID,
+        date,
         image: {
                 data: imageBuffer,
                 contentType: imageType

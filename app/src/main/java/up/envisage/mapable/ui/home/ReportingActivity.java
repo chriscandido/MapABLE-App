@@ -34,8 +34,8 @@ public class ReportingActivity extends AppCompatActivity {
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-    private String BASE_URL = "http://10.0.2.2:5000";
-    //    private String BASE_URL = "https://project-mapable.herokuapp.com/";
+//    private String BASE_URL = "http://10.0.2.2:5000";
+    private String BASE_URL = "https://project-mapable.herokuapp.com/";
 
     private MaterialButton button_reportIncident, button_reportCamera, button_reportLocation, button_reportSend;
     private TextView textView_reportBack;
@@ -201,6 +201,11 @@ public class ReportingActivity extends AppCompatActivity {
                 map.put("lon", lon);
                 map.put("lat", lat);
                 map.put("image", image);
+
+//                HashMap<String, String> imageMap = new HashMap<>();
+//                imageMap.put("userID", userID);
+//                imageMap.put("date", dateTime);
+//                imageMap.put("image", image);
 
                 Call<ReportClassResult> call = retrofitInterface.executeReportSubmit(map);
 

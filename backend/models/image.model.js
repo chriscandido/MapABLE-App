@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 
 var imageSchema = new Schema({
     "userID": String,
-    "reportID": String,
-    "date": { type: Date, default: Date.now },
+    "reportID": { type: String, default: 'ilalagay dito si objectID ni report pang link' },
+    "date": String,
     "image": {data: Buffer,
             contentType: { type: String, default: 'image/png' }}
 });

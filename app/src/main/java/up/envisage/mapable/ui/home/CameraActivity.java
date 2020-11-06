@@ -2,6 +2,7 @@ package up.envisage.mapable.ui.home;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -23,6 +24,9 @@ import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.material.button.MaterialButton;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 
 import up.envisage.mapable.R;
 import up.envisage.mapable.db.table.ReportTable;
@@ -166,6 +170,15 @@ public class CameraActivity extends AppCompatActivity {
                 if (resultCode == Activity.RESULT_OK) {
                     Bitmap cameraPhoto = (Bitmap) data.getExtras().get("data");
                     imageView_reportImage.setImageBitmap(cameraPhoto);
+
+                    // CALL THIS METHOD TO GET THE URI FROM THE BITMAP
+                    Uri tempUri = getImageUri(getApplicationContext(), cameraPhoto);
+
+                    // CALL THIS METHOD TO GET THE ACTUAL PATH
+                    File finalFile = new File(getRealPathFromURI(tempUri));
+
+                    Log.v("[ CameraActivity.java ]",
+                            "FILEPATH: " + mImageCaptureUri  + "\n");
                 }
                 break;
             case Constant.ACTIVITY_SELECT_IMAGE:
@@ -181,11 +194,28 @@ public class CameraActivity extends AppCompatActivity {
                     String filePath = cursor.getString(columnIndex);
                     cursor.close();
 
+                    Log.v("[ CameraActivity.java ]",
+                            "FILEPATH: " + filePath  + "\n");
+
                     galleryPhoto = BitmapFactory.decodeFile(filePath);
                     imageView_reportImage.setImageBitmap(galleryPhoto);
                 }
                 break;
         }
+    }
+
+    public Uri getImageUri(Context inContext, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
+    }
+
+    public String getRealPathFromURI(Uri uri) {
+        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+        cursor.moveToFirst();
+        int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+        return cursor.getString(idx);
     }
 
     public void onStart(){

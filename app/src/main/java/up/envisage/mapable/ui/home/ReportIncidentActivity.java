@@ -58,7 +58,9 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-    private String BASE_URL = "http://10.0.2.2:5000";
+//    private String BASE_URL = "http://10.0.2.2:5000";
+    private String BASE_URL = "https://project-mapable.herokuapp.com/";
+
 
 
     String userID, frequency, a1, a2, a3, a4, a5, a6, a7, lon, lat, image;
