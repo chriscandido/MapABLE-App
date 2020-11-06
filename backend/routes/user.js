@@ -1,6 +1,6 @@
 const router = require('express').Router();
 let Item = require('../models/user.model');
-let Userlog = require('../models/userlog.model');
+let UserLog = require('../models/userlog.model');
 
 router.route('/').get((req, res) => {
   Item.find()
@@ -62,7 +62,7 @@ router.route('/login').post((req, res) => {
 
   var result = Item.findOne(query, (err, result) => {
     if (result != null){
-      const newLog = new Userlog({
+      const newLog = new UserLog({
         name: result.name,
         username: result.username
       });
