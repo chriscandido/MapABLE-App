@@ -34,13 +34,13 @@ public class ReportingActivity extends AppCompatActivity {
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-    private String BASE_URL = "http://10.0.2.2:5000";
-    //    private String BASE_URL = "https://project-mapable.herokuapp.com/";
+//    private String BASE_URL = "http://10.0.2.2:5000";
+    private String BASE_URL = "https://project-mapable.herokuapp.com/";
 
     private MaterialButton button_reportIncident, button_reportCamera, button_reportLocation, button_reportSend;
     private TextView textView_reportBack;
 
-    String userID, dateTime, incidentType, Report, frequency, lon, lat, image;
+    String userID, dateTime, incidentType, Report, frequency, lon, lat, image, imageID2;
 
     @SuppressLint("LongLogTag")
     @Override
@@ -192,7 +192,6 @@ public class ReportingActivity extends AppCompatActivity {
                     Intent goToMain = new Intent(ReportingActivity.this, MainActivity.class);
                     startActivity(goToMain);
                 });
-
 
                 HashMap<String, String> map = new HashMap<>();
                 map.put("userID", userID);

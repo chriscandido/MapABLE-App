@@ -39,9 +39,9 @@ import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
 import up.envisage.mapable.adapter.ReportIncidentAdapter;
 import up.envisage.mapable.ui.home.report.ReportAlgalBloom;
-import up.envisage.mapable.ui.home.report.ReportFishKill;
-import up.envisage.mapable.ui.home.report.ReportIllegalReclamation;
-import up.envisage.mapable.ui.home.report.ReportPollution;
+//import up.envisage.mapable.ui.home.report.ReportFishKill;
+//import up.envisage.mapable.ui.home.report.ReportIllegalReclamation;
+//import up.envisage.mapable.ui.home.report.ReportPollution;
 import up.envisage.mapable.ui.home.report.ReportResult;
 import up.envisage.mapable.ui.registration.LoginActivity;
 import up.envisage.mapable.ui.registration.LoginResult;
@@ -61,7 +61,9 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-    private String BASE_URL = "http://10.0.2.2:5000";
+//    private String BASE_URL = "http://10.0.2.2:5000";
+    private String BASE_URL = "https://project-mapable.herokuapp.com/";
+
 
 
     String userID, frequency, a1, a2, a3, a4, a5, a6, a7, lon, lat, image;
@@ -178,8 +180,8 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
                 break;
             case 1:
 
-                Intent fishKillOk = new Intent(ReportIncidentActivity.this, ReportFishKill.class);
-                startActivity(fishKillOk);
+//                Intent fishKillOk = new Intent(ReportIncidentActivity.this, ReportFishKill.class);
+//                startActivity(fishKillOk);
                 /*
                 dialog = new Dialog(this);
                 dialog.setContentView(R.layout.dialog_report_fishkill);
@@ -207,8 +209,8 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
                 break;
             case 2:
 
-                Intent pollutionOk = new Intent(ReportIncidentActivity.this, ReportPollution.class);
-                startActivity(pollutionOk);
+//                Intent pollutionOk = new Intent(ReportIncidentActivity.this, ReportPollution.class);
+//                startActivity(pollutionOk);
                 /*
                 dialog = new Dialog(this);
                 dialog.setContentView(R.layout.dialog_report_pollution);
@@ -238,8 +240,8 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
             case 3:
                 break;
             case 4:
-                Intent illegalReclamationOk = new Intent(ReportIncidentActivity.this, ReportIllegalReclamation.class);
-                startActivity(illegalReclamationOk);
+//                Intent illegalReclamationOk = new Intent(ReportIncidentActivity.this, ReportIllegalReclamation.class);
+//                startActivity(illegalReclamationOk);
                 /*
                 dialog = new Dialog(this);
                 dialog.setContentView(R.layout.dialog_report_illegalreclamation);
