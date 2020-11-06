@@ -2,6 +2,7 @@ package up.envisage.mapable.ui.home;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -10,6 +11,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -23,6 +25,9 @@ import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.material.button.MaterialButton;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 
 import up.envisage.mapable.R;
 import up.envisage.mapable.db.table.ReportTable;
@@ -39,6 +44,7 @@ public class CameraActivity extends AppCompatActivity {
     private ReportViewModel reportViewModel;
     //String userID, type, incident, frequency, a1, a2, a3, a4, a5, a6, a7, lon, lat, image;
     String userID, dateTime, incidentType, answer, latitude, longitude, imgPath;
+    public static String imageString;
     Bitmap galleryPhoto;
 
     protected void onCreate(Bundle savedInstanceState){
@@ -48,7 +54,6 @@ public class CameraActivity extends AppCompatActivity {
         reportViewModel = ViewModelProviders.of(CameraActivity.this).get(ReportViewModel.class);
 
         Intent camera = getIntent();
-
         userID = camera.getStringExtra("userID");
         dateTime = camera.getStringExtra("Date and Time");
         incidentType = camera.getStringExtra("Incident Type");
@@ -97,7 +102,8 @@ public class CameraActivity extends AppCompatActivity {
                 save.putExtra("Report", answer);
                 save.putExtra("Latitude", latitude);
                 save.putExtra("Longitude", longitude);
-                save.putExtra("image", imgPath);
+//                save.putExtra("image", imgPath);
+                save.putExtra("image", imageString);
 
                 startActivity(save);
                 Toast.makeText(CameraActivity.this, "Photo successfully saved", Toast.LENGTH_LONG).show();
@@ -165,7 +171,16 @@ public class CameraActivity extends AppCompatActivity {
             case Constant.CAMERA_REQUEST_CODE:
                 if (resultCode == Activity.RESULT_OK) {
                     Bitmap cameraPhoto = (Bitmap) data.getExtras().get("data");
+
+                    // get the base 64 string
+                    imageString = Base64.encodeToString(getBytesFromBitmap(cameraPhoto),
+                            Base64.NO_WRAP);
+
+//                    Log.v("[ CameraActivity.java ]",
+//                            "Base64: " + imageString  + "\n");
+
                     imageView_reportImage.setImageBitmap(cameraPhoto);
+
                 }
                 break;
             case Constant.ACTIVITY_SELECT_IMAGE:
@@ -181,11 +196,29 @@ public class CameraActivity extends AppCompatActivity {
                     String filePath = cursor.getString(columnIndex);
                     cursor.close();
 
+//                    Log.v("[ CameraActivity.java ]",
+//                            "FILEPATH: " + filePath  + "\n");
+
                     galleryPhoto = BitmapFactory.decodeFile(filePath);
+
+                    // get the base 64 string
+                    imageString = Base64.encodeToString(getBytesFromBitmap(galleryPhoto),
+                            Base64.NO_WRAP);
+
+                    Log.v("[ CameraActivity.java ]",
+                            "Base64: " + imageString  + "\n");
+
                     imageView_reportImage.setImageBitmap(galleryPhoto);
                 }
                 break;
         }
+    }
+
+    // convert from bitmap to byte array
+    public byte[] getBytesFromBitmap(Bitmap bitmap) {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        return stream.toByteArray();
     }
 
     public void onStart(){

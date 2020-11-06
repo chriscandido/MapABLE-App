@@ -19,15 +19,14 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <!-- Incident Type -->
             <TextView
-                android:id="@+id/textView_reportIncidentTitle_algalBloom"
+                android:id="@+id/textView_reportIncidentTitle_fishKill"
                 style="@style/headerText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
-                android:text="@string/title_algalBloom"
+                android:text="@string/title_fishKill"
                 android:textColor="#000000" />
 
             <ImageView
@@ -35,27 +34,24 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:elevation="10dp"
-                android:src="@drawable/img_algal_bloom"/>
+                android:src="@drawable/img_fish_kill"/>
 
-            <!-- Incident Type Summary -->
             <TextView
-                android:id="@+id/textView_reportIncidentBody_algalBloom"
-                style="@style/contentText"
+                android:id="@+id/textView_reportIncidentBody_fishKill"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:fontFamily="@font/comfortaa"
-                android:text="@string/desc_algalBloom"
+                android:text="@string/desc_fishkill"
+                android:textColor="@color/colorNeutral"
                 android:textAlignment="center"
-                android:textColor="@color/colorNeutral" />
+                style="@style/contentText"/>
 
-            <!-- Question00 TextInput -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:text="Maikling salaysay"
+                android:text="Maikling Salaysay"
                 android:textSize="15sp"
                 android:fontFamily="@font/comfortaa_bold"/>
 
@@ -71,7 +67,7 @@
                 android:fontFamily="@font/comfortaa"/>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout_reportAlgalBloom"
+                android:id="@+id/textInputLayout_reportFishKill"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
@@ -95,13 +91,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:text="Gaano katagal naoobserbahan ang liya sa tubig?"
+                    android:text="Gaano katagal naoobserbahan ang fish kill?"
                     android:textSize="15sp"
                     android:textAlignment="textStart"
                     android:fontFamily="@font/comfortaa_bold"/>
 
                 <Spinner
-                    android:id="@+id/spinner_reportAgalBloom_q01"
+                    android:id="@+id/spinner_reportFishKill_q01"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -129,7 +125,7 @@
                     android:fontFamily="@font/comfortaa_bold"/>
 
                 <Spinner
-                    android:id="@+id/spinner_reportAgalBloom_q02"
+                    android:id="@+id/spinner_reportFishKill_q02"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -140,46 +136,18 @@
 
             </LinearLayout>
 
-            <!-- Question03 Spinner -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:text="May mga namamatay na bang isda malapit o sa lugar kung saan may liya?"
-                    android:textSize="15sp"
-                    android:textAlignment="textStart"
-                    android:fontFamily="@font/comfortaa_bold"/>
-
-                <Spinner
-                    android:id="@+id/spinner_reportAgalBloom_q03"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:textColor="@color/colorBackground"
-                    android:textSize="9sp"
-                    android:textAlignment="viewStart"/>
-
-            </LinearLayout>
-
-            <!-- Question04 TextInput -->
+            <!-- Question03 TextInput -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:text="Kundisyon ng tubig"
+                android:text="Ilarawan ang itsura ng tubig (kulay, etc.)"
                 android:textSize="15sp"
                 android:fontFamily="@font/comfortaa_bold"/>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout_reportAlgalBloom_q04"
+                android:id="@+id/textInputLayout_reportFishKill_q03"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
@@ -191,14 +159,41 @@
                     android:fontFamily="@font/comfortaa" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Next Button -->
+            <!-- Question04 Spinner -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="Nakakaapekto ba sa kabuhayan ang fish kill na nararanasan sa lugar?"
+                    android:textSize="15sp"
+                    android:textAlignment="textStart"
+                    android:fontFamily="@font/comfortaa_bold"/>
+
+                <Spinner
+                    android:id="@+id/spinner_reportFishKill_q04"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@color/colorBackground"
+                    android:textSize="9sp"
+                    android:textAlignment="viewStart"/>
+
+            </LinearLayout>
+
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_reportAlgalBloom_ok"
+                android:id="@+id/button_reportFishKill_next"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:backgroundTint="@color/colorAccent"
-                android:text="Next"
+                android:text="NEXT"
                 android:textSize="15sp"
                 android:textColor="@color/colorBackground"
                 android:fontFamily="@font/comfortaa" />

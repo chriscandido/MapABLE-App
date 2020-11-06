@@ -19,64 +19,59 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <!-- Incident Type -->
             <TextView
-                android:id="@+id/textView_reportIncidentTitle_algalBloom"
-                style="@style/headerText"
+                android:id="@+id/textView_reportIncidentTitle_pollution"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_margin="10dp"
-                android:text="@string/title_algalBloom"
-                android:textColor="#000000" />
+                android:layout_gravity="center"
+                android:text="@string/title_pollution"
+                android:textColor="#000000"
+                style="@style/headerText"/>
 
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:elevation="10dp"
-                android:src="@drawable/img_algal_bloom"/>
+                android:src="@drawable/img_pollution"/>
 
-            <!-- Incident Type Summary -->
             <TextView
-                android:id="@+id/textView_reportIncidentBody_algalBloom"
-                style="@style/contentText"
+                android:id="@+id/textView_reportIncidentBody_pollution"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:fontFamily="@font/comfortaa"
-                android:text="@string/desc_algalBloom"
+                android:text="@string/desc_pollution"
+                android:textColor="@color/colorNeutral"
                 android:textAlignment="center"
-                android:textColor="@color/colorNeutral" />
+                style="@style/contentText"/>
 
-            <!-- Question00 TextInput -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:text="Maikling salaysay"
+                android:text="Maikling Salaysay"
                 android:textSize="15sp"
                 android:fontFamily="@font/comfortaa_bold"/>
 
+            <!-- Question00 TextInputLayout -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:text="Isang maikling salaysay tungkol sa nangyaring insidente. Maaring isulat kung kailan nagsimula, kung ano ang obserbasyon sa lugar, o hindi kaya ay kung ano ang naging dahilan ng insidente"
-                android:textColor="@color/colorNeutral"
                 android:textSize="12sp"
                 android:textAlignment="viewStart"
                 android:fontFamily="@font/comfortaa"/>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout_reportAlgalBloom"
+                android:id="@+id/textInputLayout_reportPollution"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -95,18 +90,18 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:text="Gaano katagal naoobserbahan ang liya sa tubig?"
+                    android:text="Apektadong tubig"
                     android:textSize="15sp"
                     android:textAlignment="textStart"
                     android:fontFamily="@font/comfortaa_bold"/>
 
                 <Spinner
-                    android:id="@+id/spinner_reportAgalBloom_q01"
+                    android:id="@+id/spinner_reportPollution_q01"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:textColor="@color/colorBackground"
+                    android:textColor="@color/colorNeutral"
                     android:textSize="9sp"
                     android:textAlignment="viewStart"/>
 
@@ -123,13 +118,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:text="May kakaibang amoy bang nagmumula sa tubig?"
+                    android:text="Anong klaseng polusyon ang iyong naobserbahan?"
                     android:textSize="15sp"
                     android:textAlignment="textStart"
                     android:fontFamily="@font/comfortaa_bold"/>
 
                 <Spinner
-                    android:id="@+id/spinner_reportAgalBloom_q02"
+                    android:id="@+id/spinner_reportPollution_q02"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -151,13 +146,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:text="May mga namamatay na bang isda malapit o sa lugar kung saan may liya?"
+                    android:text="Kailan mo unang naobsebahan ang polusyon?"
                     android:textSize="15sp"
                     android:textAlignment="textStart"
                     android:fontFamily="@font/comfortaa_bold"/>
 
                 <Spinner
-                    android:id="@+id/spinner_reportAgalBloom_q03"
+                    android:id="@+id/spinner_reportPollution_q03"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -168,18 +163,46 @@
 
             </LinearLayout>
 
-            <!-- Question04 TextInput -->
+            <!-- Question04 Spinner -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="May kakaibang amoy bang nagmumula sa tubig?"
+                    android:textSize="15sp"
+                    android:textAlignment="textStart"
+                    android:fontFamily="@font/comfortaa_bold"/>
+
+                <Spinner
+                    android:id="@+id/spinner_reportPollution_q04"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@color/colorBackground"
+                    android:textSize="9sp"
+                    android:textAlignment="viewStart"/>
+
+            </LinearLayout>
+
+            <!-- Question05 TextInput -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:text="Kundisyon ng tubig"
+                android:text="Ilarawan ang itsura ng tubig (kulay, etc.)"
                 android:textSize="15sp"
                 android:fontFamily="@font/comfortaa_bold"/>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout_reportAlgalBloom_q04"
+                android:id="@+id/textInputLayout_reportPollution_q05"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
@@ -191,9 +214,59 @@
                     android:fontFamily="@font/comfortaa" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Next Button -->
+            <!-- Question06 Spinner -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="Nagdudulot ba ng iba pang problema ang polusyon tulad ng liya o pagkamatay ng isda?"
+                    android:textSize="15sp"
+                    android:textAlignment="textStart"
+                    android:fontFamily="@font/comfortaa_bold"/>
+
+                <Spinner
+                    android:id="@+id/spinner_reportPollution_q06"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@color/colorBackground"
+                    android:textSize="9sp"
+                    android:textAlignment="viewStart"/>
+
+            </LinearLayout>
+
+            <!-- Question07 TextInput -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="Pangalan ng istruktura o pasilidad ng pnagmumulan ng polusyon sa tubig (Ilagay ang Wala kung hindi kilala):"
+                android:textSize="15sp"
+                android:fontFamily="@font/comfortaa_bold"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_reportPollution_q07"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/comfortaa" />
+            </com.google.android.material.textfield.TextInputLayout>
+
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_reportAlgalBloom_ok"
+                android:id="@+id/button_reportPollution_next"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
@@ -201,7 +274,7 @@
                 android:text="Next"
                 android:textSize="15sp"
                 android:textColor="@color/colorBackground"
-                android:fontFamily="@font/comfortaa" />
+                android:fontFamily="@font/news_cycle" />
 
         </LinearLayout>
 
