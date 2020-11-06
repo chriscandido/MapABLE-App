@@ -40,7 +40,7 @@ public class ReportingActivity extends AppCompatActivity {
     private MaterialButton button_reportIncident, button_reportCamera, button_reportLocation, button_reportSend;
     private TextView textView_reportBack;
 
-    String userID, dateTime, incidentType, Report, frequency, lon, lat, image, imageID2;
+    String userID, dateTime, incidentType, Report, lon, lat, image, imageID2;
 
     @SuppressLint("LongLogTag")
     @Override

@@ -42,6 +42,9 @@ import up.envisage.mapable.ui.home.report.ReportAlgalBloom;
 //import up.envisage.mapable.ui.home.report.ReportFishKill;
 //import up.envisage.mapable.ui.home.report.ReportIllegalReclamation;
 //import up.envisage.mapable.ui.home.report.ReportPollution;
+import up.envisage.mapable.ui.home.report.ReportFishKill;
+import up.envisage.mapable.ui.home.report.ReportIllegalReclamation;
+import up.envisage.mapable.ui.home.report.ReportPollution;
 import up.envisage.mapable.ui.home.report.ReportResult;
 import up.envisage.mapable.ui.registration.LoginActivity;
 import up.envisage.mapable.ui.registration.LoginResult;
@@ -66,7 +69,7 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
 
 
 
-    String userID, frequency, a1, a2, a3, a4, a5, a6, a7, lon, lat, image;
+    String userID, dateTime, incidentType, Report, lon, lat, image, imageID2;
 
     Dialog dialog;
 
@@ -96,6 +99,9 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
         Intent incident = getIntent(); // gets intent from reportingActivity
 
         userID = incident.getStringExtra("userID");
+        dateTime = incident.getStringExtra("Date and Time");
+        incidentType = incident.getStringExtra("Incident Type");
+        Report = incident.getStringExtra("Report");
         lon = incident.getStringExtra("Longitude");
         lat = incident.getStringExtra("Latitude");
         image = incident.getStringExtra("image");
@@ -172,6 +178,9 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
 
                 Intent algalBloomOk = new Intent(ReportIncidentActivity.this, ReportAlgalBloom.class);
                 algalBloomOk.putExtra("userID", userID);
+                algalBloomOk.putExtra("Date and time", dateTime);
+                algalBloomOk.putExtra("Incident Type", incidentType);
+                algalBloomOk.putExtra("Report", Report);
                 algalBloomOk.putExtra("Longitude", lon);
                 algalBloomOk.putExtra("Latitude", lat);
                 algalBloomOk.putExtra("image", image);
@@ -179,7 +188,15 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
 
                 break;
             case 1:
-
+                Intent fishKillOk = new Intent(ReportIncidentActivity.this, ReportFishKill.class);
+                fishKillOk.putExtra("userID", userID);
+                fishKillOk.putExtra("Date and time", dateTime);
+                fishKillOk.putExtra("Incident Type", incidentType);
+                fishKillOk.putExtra("Report", Report);
+                fishKillOk.putExtra("Longitude", lon);
+                fishKillOk.putExtra("Latitude", lat);
+                fishKillOk.putExtra("image", image);
+                startActivity(fishKillOk);
 //                Intent fishKillOk = new Intent(ReportIncidentActivity.this, ReportFishKill.class);
 //                startActivity(fishKillOk);
                 /*
@@ -208,7 +225,15 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
                 dialog.show();*/
                 break;
             case 2:
-
+                Intent pollutionOk = new Intent(ReportIncidentActivity.this, ReportPollution.class);
+                pollutionOk.putExtra("userID", userID);
+                pollutionOk.putExtra("Date and time", dateTime);
+                pollutionOk.putExtra("Incident Type", incidentType);
+                pollutionOk.putExtra("Report", Report);
+                pollutionOk.putExtra("Longitude", lon);
+                pollutionOk.putExtra("Latitude", lat);
+                pollutionOk.putExtra("image", image);
+                startActivity(pollutionOk);
 //                Intent pollutionOk = new Intent(ReportIncidentActivity.this, ReportPollution.class);
 //                startActivity(pollutionOk);
                 /*
@@ -240,6 +265,15 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
             case 3:
                 break;
             case 4:
+                Intent illegalReclamationOk = new Intent(ReportIncidentActivity.this, ReportIllegalReclamation.class);
+                illegalReclamationOk.putExtra("userID", userID);
+                illegalReclamationOk.putExtra("Date and time", dateTime);
+                illegalReclamationOk.putExtra("Incident Type", incidentType);
+                illegalReclamationOk.putExtra("Report", Report);
+                illegalReclamationOk.putExtra("Longitude", lon);
+                illegalReclamationOk.putExtra("Latitude", lat);
+                illegalReclamationOk.putExtra("image", image);
+                startActivity(illegalReclamationOk);
 //                Intent illegalReclamationOk = new Intent(ReportIncidentActivity.this, ReportIllegalReclamation.class);
 //                startActivity(illegalReclamationOk);
                 /*

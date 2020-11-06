@@ -62,9 +62,10 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
-                android:text="@string/desc01_IM4ManilaBayProgram"
+                android:text="Hello World!"
                 android:textSize="15dp"
                 android:fontFamily="@font/comfortaa"/>
+<!--            android:text="@string/desc01_IM4ManilaBayProgram"-->
 
             <TextView
                 android:layout_width="wrap_content"
@@ -72,9 +73,10 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
-                android:text="@string/desc02_IM4ManilaBayProgram"
+                android:text="Hello World!"
                 android:textSize="15dp"
                 android:fontFamily="@font/comfortaa"/>
+<!--            android:text="@string/desc02_IM4ManilaBayProgram"-->
 
             <TextView
                 android:layout_width="wrap_content"
@@ -82,9 +84,10 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
-                android:text="@string/desc03_IM4ManilaBayProgram"
+                android:text="Hello World!"
                 android:textSize="15dp"
                 android:fontFamily="@font/comfortaa"/>
+<!--            android:text="@string/desc03_IM4ManilaBayProgram"-->
             
             <LinearLayout
                 android:layout_width="wrap_content"
