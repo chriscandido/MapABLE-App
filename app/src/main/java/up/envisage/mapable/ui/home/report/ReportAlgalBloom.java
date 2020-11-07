@@ -29,12 +29,24 @@ public class ReportAlgalBloom extends AppCompatActivity implements AdapterView.O
     TextInputLayout textInputLayout_reportAlgalBloom_q00, textInputLayout_reportAlgalBloom_q04;
 
     String input00, input01, input02, input03, input04;
+    String userID, dateTime, incidentType, Report, lon, lat, image, imageID2;
+
     private List<String> out = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report_algal_bloom);
+
+        Intent prevIntent = getIntent(); // gets intent from reportingActivity
+
+        userID = prevIntent.getStringExtra("userID");
+        dateTime = prevIntent.getStringExtra("Date and Time");
+        incidentType = prevIntent.getStringExtra("Incident Type");
+        Report = prevIntent.getStringExtra("Report");
+        lon = prevIntent.getStringExtra("Longitude");
+        lat = prevIntent.getStringExtra("Latitude");
+        image = prevIntent.getStringExtra("image");
 
         Spinner spinner_reportAlgalBloom_q01 = findViewById(R.id.spinner_reportAgalBloom_q01);
         Spinner spinner_reportAlgalBloom_q02 = findViewById(R.id.spinner_reportAgalBloom_q02);
@@ -97,9 +109,13 @@ public class ReportAlgalBloom extends AppCompatActivity implements AdapterView.O
                 Log.v("[ ReportAlgalBloom.java ]", "ANSWER: " + ans);
 
                 Intent intent = new Intent(ReportAlgalBloom.this, GoogleMapFragment.class);
+                intent.putExtra("userID", userID);
                 intent.putExtra("Date and Time", dateTime());
                 intent.putExtra("Incident Type", "Algal Bloom");
                 intent.putExtra("Report", ans);
+                intent.putExtra("Longitude", lon);
+                intent.putExtra("Latitude", lat);
+                intent.putExtra("image", image);
                 startActivity(intent);
             }
         });
