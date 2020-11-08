@@ -33,9 +33,21 @@ public class ReportPollution extends AppCompatActivity implements AdapterView.On
 
     private List<String> out = new ArrayList<>();
 
+    String userID, dateTime, incidentType, Report, lon, lat, image, imageID2;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report_pollution);
+
+        Intent prevIntent = getIntent(); // gets intent from reportingActivity
+
+        userID = prevIntent.getStringExtra("userID");
+        dateTime = prevIntent.getStringExtra("Date and Time");
+        incidentType = prevIntent.getStringExtra("Incident Type");
+        Report = prevIntent.getStringExtra("Report");
+        lon = prevIntent.getStringExtra("Longitude");
+        lat = prevIntent.getStringExtra("Latitude");
+        image = prevIntent.getStringExtra("image");
 
         Spinner spinner_reportPollution_q01 = findViewById(R.id.spinner_reportPollution_q01);
         Spinner spinner_reportPollution_q02 = findViewById(R.id.spinner_reportPollution_q02);
@@ -132,6 +144,9 @@ public class ReportPollution extends AppCompatActivity implements AdapterView.On
                 intent.putExtra("Date and Time", dateTime());
                 intent.putExtra("Incident Type", "Pollution");
                 intent.putExtra("Report", ans);
+                intent.putExtra("Longitude", lon);
+                intent.putExtra("Latitude", lat);
+                intent.putExtra("image", image);
                 startActivity(intent);
 
             }

@@ -51,6 +51,7 @@
             android:label="Google Maps" /> <!-- Report -->
         <activity android:name=".ui.home.report.ReportAlgalBloom" />
         <activity android:name=".ui.home.report.ReportFishKill" />
+        <activity android:name=".ui.home.report.ReportPollution" />
         <activity android:name=".ui.home.report.ReportIllegalReclamation" /> <!-- Fonts -->
         <meta-data
             android:name="preloaded_fonts"
