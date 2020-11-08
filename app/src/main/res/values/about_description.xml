@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- IM4ManilaBay Program -->
+    <string name="title_IM4ManilaBayProgram">Integrated Mapping, Monitoring, Modelling, and Management System
+        for Manila Bay and Linked Environments
+    </string>
+    <string name="desc01_IM4ManilaBayProgram">Ang Integrated Mapping, Monitoring, Modelling, and Management System
+        for Manila Bay and Linked Environments (IM4ManilaBay Program) ay isang pananaliksik na sinusuportahan
+        ng Department of Science and Technology (DOST) sa pangangasiwa ng Philippine Council for Industry, Energy,
+        and Emerging Technology Research and Development (DOST-PCIEERD). Ito ay naglalayong magbigay ng siyentipikong
+        impormasyon tungkol sa Manila Bay, sa tubig-saluran nito, at sa iba pang sistemang pangkalikasang nakakonekta
+        rito Ang mga impormasyong ito ay magagamit sa paggawa ng o pagsasaayos ng mga polisiya at programa para sa
+        rehabilitasyon at pangangasiwa ng look.
+    </string>
+
+    <string name="desc02_IM4ManilaBayProgram">Ang IM4ManilaBay Program ay binubuo ng apat na proyektong nakatuon sa iba\'t ibang
+        aspeto ng pananaliksik gaya ng solid waste management (Project IWASTO), pagmamapa at pagmomonitor ng water quality
+        (Project MapABLE), hydrodynamic at hydrologic modelling (Project e-SMART), ay dredged materials (CharTeD DreaM Project).
+    </string>
+
+    <string name="desc03_IM4ManilaBayProgram">Ang IM4ManilaBay Program at ang Project MapABLE ay pinamumunuan ni Dr. Ariel C. Blanco ng UP Training Center
+        for Applied Geodesy and Photogrammetry (TCAGP). Ang Project IWASTO, sa pamumuni ni Dr. Maria Antonia N. Tanchuling,
+        at ang Project e-SMART, sa pamumuno naman ni Dr. Eugene C. Herrera, ay isinasagawa sa ilalim ng UP Institute of
+        Civil Engineering (ICE). Ang CharTeD DreaM Project naman ay pinangungunahan ni Engr. Reynaldo L. Esguerra ng
+        Industrial Technology Development Institute (DOST-ITDI).
+    </string>
+
+</resources>
