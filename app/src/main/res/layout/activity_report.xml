@@ -81,7 +81,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="20dp"
-                    android:text="Type of Incident"
+                    android:text="Incident Type"
                     android:textSize="12sp"
                     android:textColor="@color/colorNeutral"
                     android:fontFamily="@font/comfortaa"
@@ -143,27 +143,52 @@
 
             </LinearLayout>
 
-            <!-- Send Button -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_report_send"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_below="@+id/camera_mainTitle"
-                android:paddingBottom="10dp"
-                android:backgroundTint="@color/colorAccent"
-                android:text="Send"
-                android:textColor="@color/colorBackground"
-                android:textSize="15sp"
-                android:fontFamily="@font/montserrat"
-                app:icon="@drawable/ic_report_send"
-                app:iconGravity="textStart"
-                app:iconTint="@color/colorBackground"
-                app:iconSize="25dp"
-                app:cornerRadius="10dp"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+                android:orientation="vertical">
+
+                <!-- Send Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_report_takeSurvey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_below="@+id/camera_mainTitle"
+                    android:paddingBottom="10dp"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:text="Take Survey"
+                    android:textColor="@color/colorBackground"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/montserrat"
+                    app:cornerRadius="10dp"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+
+                <!-- Send Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_report_send"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_below="@+id/camera_mainTitle"
+                    android:paddingBottom="10dp"
+                    android:backgroundTint="@color/colorAccent"
+                    android:text="Send"
+                    android:textColor="@color/colorBackground"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/montserrat"
+                    app:icon="@drawable/ic_report_send"
+                    app:iconGravity="textStart"
+                    app:iconTint="@color/colorBackground"
+                    app:iconSize="25dp"
+                    app:cornerRadius="10dp"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 

@@ -14,14 +14,22 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
+import up.envisage.mapable.db.table.UserTable;
+import up.envisage.mapable.model.UserViewModel;
 import up.envisage.mapable.ui.registration.LoginActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
+    private UserViewModel userViewModel;
+    String uniqueID = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        userViewModel = ViewModelProviders.of(SplashActivity.this).get(UserViewModel.class);
 
         startActivity(new Intent(this, LoginActivity.class));
         finish();

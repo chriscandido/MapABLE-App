@@ -32,6 +32,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="10dp"
         android:fillViewport="true">
 
         <LinearLayout
@@ -43,6 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                android:gravity="start"
                 android:text="IM4ManilaBay Program"
                 android:textColor="@color/colorPrimaryDark"
                 style="@style/headerText"/>
@@ -62,10 +64,9 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
-                android:text="Hello World!"
+                android:text="@string/desc01_IM4ManilaBayProgram"
                 android:textSize="15dp"
                 android:fontFamily="@font/comfortaa"/>
-<!--            android:text="@string/desc01_IM4ManilaBayProgram"-->
 
             <TextView
                 android:layout_width="wrap_content"
@@ -73,10 +74,9 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
-                android:text="Hello World!"
+                android:text="@string/desc02_IM4ManilaBayProgram"
                 android:textSize="15dp"
                 android:fontFamily="@font/comfortaa"/>
-<!--            android:text="@string/desc02_IM4ManilaBayProgram"-->
 
             <TextView
                 android:layout_width="wrap_content"
@@ -84,43 +84,58 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
-                android:text="Hello World!"
+                android:text="@string/desc03_IM4ManilaBayProgram"
                 android:textSize="15dp"
                 android:fontFamily="@font/comfortaa"/>
-<!--            android:text="@string/desc03_IM4ManilaBayProgram"-->
-            
-            <LinearLayout
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="20dp"
+                android:text="https://www.facebook.com/IM4ManilaBay"
+                android:textSize="15dp"
+                android:textColor="@color/colorError"
+                android:fontFamily="@font/comfortaa"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:text="Bisitahin ang"
-                    android:textSize="15sp"
-                    android:fontFamily="@font/comfortaa"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="start"
+                android:text="Project MapABLE"
+                android:textColor="@color/colorPrimaryDark"
+                style="@style/headerText"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text=" link"
-                    android:textSize="15sp"
-                    android:textColor="@color/colorError"
-                    android:fontFamily="@font/comfortaa"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="@string/title_MapABLE"
+                android:textSize="15dp"
+                android:fontFamily="@font/comfortaa_bold"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text=" para sa iba pang impormasyon"
-                    android:textSize="15sp"
-                    android:fontFamily="@font/comfortaa"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:text="@string/desc01_MapABLE"
+                android:textSize="15dp"
+                android:fontFamily="@font/comfortaa"/>
 
-            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="20dp"
+                android:text="https://www.facebook.com/ProjectMapABLE"
+                android:textSize="15dp"
+                android:textColor="@color/colorError"
+                android:fontFamily="@font/comfortaa"/>
 
         </LinearLayout>
 

@@ -38,10 +38,10 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-//    private String BASE_URL = "http://10.0.2.2:5000";
+    //private String BASE_URL = "http://10.0.2.2:5000";
     private String BASE_URL = "https://project-mapable.herokuapp.com/";
 
-    String username, password;
+    String username, password, userID;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,7 +121,7 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
                                     @Override
                                     public void onResponse(Call<userID> call, Response<userID> response) {
                                         if (response.isSuccessful()) {
-                                            String userID = response.body().get_id();
+                                            userID = response.body().get_id();
                                             Log.i("Get ID Response", userID);
 
                                             Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
@@ -154,6 +154,7 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
                         }
                     });
                     //Insert data to local server
+                    user.setUniqueId(userID);
                     user.setName(name);
                     user.setNumber(number);
                     user.setEmail(email);
