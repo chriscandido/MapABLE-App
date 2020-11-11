@@ -20,6 +20,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import up.envisage.mapable.ui.registration.LoginActivity;
+
 public class SplashActivity extends AppCompatActivity {
 
     final private int REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS = 124;
@@ -179,7 +181,8 @@ public class SplashActivity extends AppCompatActivity {
                 try {
                     // Thread will sleep for 10 seconds
                     sleep(4*1000);
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+
                     finish();
                 } catch (Exception e) {
                 }
