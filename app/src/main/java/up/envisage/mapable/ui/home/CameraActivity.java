@@ -28,6 +28,7 @@ import com.google.android.material.button.MaterialButton;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.nio.ByteBuffer;
 
 import up.envisage.mapable.R;
 import up.envisage.mapable.db.table.ReportTable;
@@ -219,11 +220,19 @@ public class CameraActivity extends AppCompatActivity {
         }
     }
 
-    // convert from bitmap to byte array
+    // convert from bitmap to byte array (with compression)
     public byte[] getBytesFromBitmap(Bitmap bitmap) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
         return stream.toByteArray();
+    }
+
+    // convert from bitmap to byte array (without compression)
+    public static byte[] convertBitmapToByteArrayUncompressed(Bitmap bitmap){
+        ByteBuffer byteBuffer = ByteBuffer.allocate(bitmap.getByteCount());
+        bitmap.copyPixelsToBuffer(byteBuffer);
+        byteBuffer.rewind();
+        return byteBuffer.array();
     }
 
     public void onStart(){
