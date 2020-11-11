@@ -1,6 +1,5 @@
 package up.envisage.mapable;
 
-
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -20,9 +19,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import up.envisage.mapable.model.UserViewModel;
-import up.envisage.mapable.ui.registration.LoginActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
