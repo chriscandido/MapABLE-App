@@ -181,16 +181,16 @@ public class CameraActivity extends AppCompatActivity {
                     Uri selectedImage = Uri.parse(path);
                     imgPath = selectedImage.toString();
 
-                    // get the base 64 string
+                    //Get the base 64 string
                     imageString = Base64.encodeToString(getBytesFromBitmap(cameraPhoto),
                             Base64.NO_WRAP);
 
                     Log.v("[ CameraActivity.java ]", "Base64: " + imageString  + "\n");
 
                     imageView_reportImage.setImageBitmap(cameraPhoto);
-
                 }
                 break;
+
             case Constant.ACTIVITY_SELECT_IMAGE:
                 if (resultCode == Activity.RESULT_OK){
                     Uri selectedImage = data.getData();
@@ -203,9 +203,6 @@ public class CameraActivity extends AppCompatActivity {
                     int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
                     String filePath = cursor.getString(columnIndex);
                     cursor.close();
-
-//                    Log.v("[ CameraActivity.java ]",
-//                            "FILEPATH: " + filePath  + "\n");
 
                     galleryPhoto = BitmapFactory.decodeFile(filePath);
 

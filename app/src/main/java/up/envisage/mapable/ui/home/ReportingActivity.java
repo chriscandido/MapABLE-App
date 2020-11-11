@@ -57,13 +57,13 @@ public class ReportingActivity extends AppCompatActivity {
 
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
 
-        // set your desired log level
+        //Set your desired log level
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-        // add your other interceptors …
+        //Add your other interceptors …
 
-        // add logging as last interceptor
+        //Add logging as last interceptor
         httpClient.addInterceptor(logging);  // <-- this is the important line!
 
         retrofit = new Retrofit.Builder()
@@ -130,58 +130,6 @@ public class ReportingActivity extends AppCompatActivity {
                 startActivity(survey);
             }
         });
-
-        /**
-        //Button report incident
-        button_reportIncident = findViewById(R.id.button_report_typeOfIncident);
-        button_reportIncident.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent incident = new Intent(ReportingActivity.this, ReportIncidentActivity.class);
-                incident.putExtra("userID", userID);
-                incident.putExtra("Date and Time", dateTime);
-                incident.putExtra("Incident Type", incidentType);
-                incident.putExtra("Report", Report);
-                incident.putExtra("Longitude", lon);
-                incident.putExtra("Latitude", lat);
-                incident.putExtra("image", image);
-                startActivity(incident);
-            }
-        });
-        //Button report location
-        button_reportLocation = findViewById(R.id.button_report_locationOfIncident);
-        button_reportLocation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent location = new Intent(ReportingActivity.this, GoogleMapFragment.class);
-                location.putExtra("userID", userID);
-                location.putExtra("Date and Time", dateTime);
-                location.putExtra("Incident Type", incidentType);
-                location.putExtra("Report", Report);
-                location.putExtra("Longitude", lon);
-                location.putExtra("Latitude", lat);
-                location.putExtra("image", image);
-                startActivity(location);
-            }
-        });
-
-        //Take photo Button
-        button_reportCamera = findViewById(R.id.button_report_takePhoto);
-        button_reportCamera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent camera = new Intent(ReportingActivity.this, CameraActivity.class);
-                camera.putExtra("userID", userID);
-                camera.putExtra("Date and Time", dateTime);
-                camera.putExtra("Incident Type", incidentType);
-                camera.putExtra("Report", Report);
-                camera.putExtra("Longitude", lon);
-                camera.putExtra("Latitude", lat);
-                camera.putExtra("image", image);
-                startActivity(camera);
-            }
-        });
-        **/
 
         //back to Main Menu Text Button
         textView_reportBack = findViewById(R.id.textView_report_back);
@@ -282,7 +230,7 @@ public class ReportingActivity extends AppCompatActivity {
 
         Bitmap galleryPhoto = BitmapFactory.decodeFile(filePath);
 
-        // get the base 64 string
+        //Get the base 64 string
         String img = Base64.encodeToString(getBytesFromBitmap(galleryPhoto),
                 Base64.NO_WRAP);
         return img;

@@ -6,48 +6,26 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterViewFlipper;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
 import up.envisage.mapable.adapter.ReportIncidentAdapter;
 import up.envisage.mapable.ui.home.report.ReportAlgalBloom;
-//import up.envisage.mapable.ui.home.report.ReportFishKill;
-//import up.envisage.mapable.ui.home.report.ReportIllegalReclamation;
-//import up.envisage.mapable.ui.home.report.ReportPollution;
 import up.envisage.mapable.ui.home.report.ReportFishKill;
 import up.envisage.mapable.ui.home.report.ReportIllegalReclamation;
 import up.envisage.mapable.ui.home.report.ReportPollution;
-import up.envisage.mapable.ui.home.report.ReportResult;
-import up.envisage.mapable.ui.registration.LoginActivity;
-import up.envisage.mapable.ui.registration.LoginResult;
 import up.envisage.mapable.ui.registration.RetrofitInterface;
 
 public class ReportIncidentActivity extends AppCompatActivity implements ReportIncidentAdapter.OnIncidentClickListener {
@@ -56,22 +34,13 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
 
-    private TextInputLayout textInputLayout_reportAlgalBloom, textInputLayout_reportFishKill, textInputLayout_reportPollution,
-                            textInputLayout_reportIllegalFishing, textInputLayout_reportIllegalReclamation;
-    private MaterialButton button_reportAlgalBloom_ok, button_reportFishKill_ok, button_reportPollution_ok,
-                            button_reportIllegalFishing_ok, button_reportIllegalReclamation_ok;
     private TextView textView_reportIncident_back;
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-//    private String BASE_URL = "http://10.0.2.2:5000";
+    //private String BASE_URL = "http://10.0.2.2:5000";
     private String BASE_URL = "https://project-mapable.herokuapp.com/";
-
-
-
-    String userID, dateTime, incidentType, Report, lon, lat, image, imageID2;
-
-    Dialog dialog;
+    private String userID, dateTime, incidentType, Report, lon, lat, image, imageID2;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,52 +99,6 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
         Log.d("[ ReportIncident.java ]", "onIncidentClick: clicked - " + position);
         switch (position) {
             case 0:
-                /*
-                dialog = new Dialog(this);
-                dialog.setContentView(R.layout.dialog_report_algalbloom);
-
-                textInputLayout_reportAlgalBloom = dialog.findViewById(R.id.textInputLayout_reportAlgalBloom);
-                button_reportAlgalBloom_ok = dialog.findViewById(R.id.button_reportAlgalBloom_ok);
-
-                //Spinner element
-                Spinner spinner_reportAlgalBloom_q01 = dialog.findViewById(R.id.spinner_reportAgalBloom_q01);
-                spinner_reportAlgalBloom_q01.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
-                List<String> categories = new ArrayList<String>();
-                categories.add("Mababa sa isang linggo");
-                categories.add("Isang linggo");
-                categories.add("Higit sa isang linggo");
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-                spinner_reportAlgalBloom_q01.setAdapter(adapter);
-
-                button_reportAlgalBloom_ok.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        final String incident = textInputLayout_reportAlgalBloom.getEditText().getText().toString().trim();
-
-                        Intent algalBloomOk = new Intent(ReportIncidentActivity.this, ReportingActivity.class);
-                        algalBloomOk.putExtra("userID", userID);
-                        algalBloomOk.putExtra("type", "Algal Bloom Incident");
-                        algalBloomOk.putExtra("incident", incident);
-                        algalBloomOk.putExtra("frequency", "Mababa sa isang linggo");
-                        algalBloomOk.putExtra("a1", "answer to a1");
-                        algalBloomOk.putExtra("a2", "answer to a2");
-                        algalBloomOk.putExtra("a3", "answer to a3");
-                        algalBloomOk.putExtra("a4", "answer to a4");
-                        algalBloomOk.putExtra("a5", "answer to a5");
-                        algalBloomOk.putExtra("a6", "answer to a6");
-                        algalBloomOk.putExtra("a7", "answer to a7");
-                        algalBloomOk.putExtra("Longitude", lon);
-                        algalBloomOk.putExtra("Latitude", lat);
-                        algalBloomOk.putExtra("image", image);
-                        startActivity(algalBloomOk);
-
-                        Toast.makeText(ReportIncidentActivity.this, "Data successfully saved", Toast.LENGTH_LONG).show();
-                    }
-                });
-
-                dialog.show();*/
-
                 Intent algalBloomOk = new Intent(ReportIncidentActivity.this, ReportAlgalBloom.class);
                 algalBloomOk.putExtra("userID", userID);
                 algalBloomOk.putExtra("Date and time", dateTime);
@@ -197,32 +120,6 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
                 fishKillOk.putExtra("Latitude", lat);
                 fishKillOk.putExtra("image", image);
                 startActivity(fishKillOk);
-//                Intent fishKillOk = new Intent(ReportIncidentActivity.this, ReportFishKill.class);
-//                startActivity(fishKillOk);
-                /*
-                dialog = new Dialog(this);
-                dialog.setContentView(R.layout.dialog_report_fishkill);
-
-                textInputLayout_reportFishKill = dialog.findViewById(R.id.textInputLayout_reportFishKill);
-                button_reportFishKill_ok = dialog.findViewById(R.id.button_reportFishKill_ok);
-
-                button_reportFishKill_ok.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        final String incident = textInputLayout_reportFishKill.getEditText().getText().toString().trim();
-
-                        Intent fishKillOk = new Intent(ReportIncidentActivity.this, ReportingActivity.class);
-                        fishKillOk.putExtra("userID", userID);
-                        fishKillOk.putExtra("Longitude", lon);
-                        fishKillOk.putExtra("Latitude", lat);
-                        fishKillOk.putExtra("image", image);
-                        startActivity(fishKillOk);
-
-                        Toast.makeText(ReportIncidentActivity.this, "Data successfully saved", Toast.LENGTH_LONG).show();
-                    }
-                });
-
-                dialog.show();*/
                 break;
             case 2:
                 Intent pollutionOk = new Intent(ReportIncidentActivity.this, ReportPollution.class);
@@ -234,33 +131,6 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
                 pollutionOk.putExtra("Latitude", lat);
                 pollutionOk.putExtra("image", image);
                 startActivity(pollutionOk);
-//                Intent pollutionOk = new Intent(ReportIncidentActivity.this, ReportPollution.class);
-//                startActivity(pollutionOk);
-                /*
-                dialog = new Dialog(this);
-                dialog.setContentView(R.layout.dialog_report_pollution);
-
-                textInputLayout_reportPollution = dialog.findViewById(R.id.textInputLayout_reportPollution);
-                button_reportPollution_ok = dialog.findViewById(R.id.button_reportPollution_ok);
-
-                button_reportPollution_ok.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        final String incident = textInputLayout_reportPollution.getEditText().getText().toString().trim();
-
-                        Intent pollutionOk = new Intent(ReportIncidentActivity.this, ReportingActivity.class);
-                        pollutionOk.putExtra("userID", userID);
-                        pollutionOk.putExtra("Longitude", lon);
-                        pollutionOk.putExtra("Latitude", lat);
-                        pollutionOk.putExtra("image", image);
-                        startActivity(pollutionOk);
-
-                        Toast.makeText(ReportIncidentActivity.this, "Data successfully saved", Toast.LENGTH_LONG).show();
-                    }
-                });
-
-                dialog.show();*/
-
                 break;
             case 3:
                 break;
@@ -274,32 +144,6 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
                 illegalReclamationOk.putExtra("Latitude", lat);
                 illegalReclamationOk.putExtra("image", image);
                 startActivity(illegalReclamationOk);
-//                Intent illegalReclamationOk = new Intent(ReportIncidentActivity.this, ReportIllegalReclamation.class);
-//                startActivity(illegalReclamationOk);
-                /*
-                dialog = new Dialog(this);
-                dialog.setContentView(R.layout.dialog_report_illegalreclamation);
-
-                textInputLayout_reportIllegalReclamation = dialog.findViewById(R.id.textInputLayout_reportIllegalReclamation);
-                button_reportIllegalReclamation_ok = dialog.findViewById(R.id.button_reportIllegalReclamation_ok);
-
-                button_reportIllegalReclamation_ok.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        final String incident = textInputLayout_reportIllegalReclamation.getEditText().getText().toString().trim();
-
-                        Intent illegalReclamationOk = new Intent(ReportIncidentActivity.this, ReportingActivity.class);
-                        illegalReclamationOk.putExtra("userID", userID);
-                        illegalReclamationOk.putExtra("Longitude", lon);
-                        illegalReclamationOk.putExtra("Latitude", lat);
-                        illegalReclamationOk.putExtra("image", image);
-                        startActivity(illegalReclamationOk);
-
-                        Toast.makeText(ReportIncidentActivity.this, "Data successfully sent", Toast.LENGTH_LONG).show();
-                    }
-                });
-
-                dialog.show();*/
                 break;
         }
     }

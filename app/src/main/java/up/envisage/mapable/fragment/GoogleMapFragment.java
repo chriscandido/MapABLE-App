@@ -41,9 +41,7 @@ public class GoogleMapFragment extends FragmentActivity
 
     private GoogleMap map;
     private Button button_googleMaps_submitLocation;
-
-    //String userID, type, incident, frequency, a1, a2, a3, a4, a5, a6, a7, lon, lat, image;
-    String userID, incidentType, dateTime, report, lat, lon, image;
+    private String userID, incidentType, dateTime, report, lat, lon, image;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
