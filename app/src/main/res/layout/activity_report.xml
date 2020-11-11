@@ -71,99 +71,179 @@
             <!-- Button Choose Incident Type and Take Survey -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/bg_outlinedbutton">
+                android:background="@drawable/bg_outlinedbutton"
+                android:orientation="horizontal">
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button_report_typeOfIncident"
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:padding="40dp"
+                    android:layout_gravity="start"
+                    android:src="@drawable/ic_report_incident"
+                    android:alpha="0.5"/>
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="20dp"
-                    android:text="Type of Incident"
-                    android:textSize="12sp"
-                    android:textColor="@color/colorNeutral"
-                    android:fontFamily="@font/comfortaa"
-                    android:backgroundTint="@color/colorBackground"
-                    app:icon="@drawable/ic_report_incident"
-                    app:iconTint="@color/colorPrimary"
-                    app:iconGravity="start"
-                    style="@style/Widget.AppCompat.Button.Borderless"/>
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Uri ng Insidente"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/comfortaa_bold"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="Ito ay mga karaniwang environmental incidents (algal bloom, fish kill, at iba pa) na nangyayari sa Manila bay at sa watershed nito."
+                        android:textSize="10sp"
+                        android:fontFamily="@font/comfortaa"/>
+
+                </LinearLayout>
 
             </LinearLayout>
 
             <!-- Button Location of Incident -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/bg_outlinedbutton">
+                android:background="@drawable/bg_outlinedbutton"
+                android:orientation="horizontal">
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button_report_locationOfIncident"
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:padding="40dp"
+                    android:layout_gravity="start"
+                    android:src="@drawable/ic_report_location"
+                    android:alpha="0.5"/>
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="20dp"
-                    android:text="Location"
-                    android:textSize="12sp"
-                    android:textColor="@color/colorNeutral"
-                    android:fontFamily="@font/comfortaa"
-                    android:backgroundTint="@color/colorBackground"
-                    app:icon="@drawable/ic_report_location"
-                    app:iconTint="@color/colorPrimary"
-                    app:iconGravity="start"
-                    style="@style/Widget.AppCompat.Button.Borderless"/>
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Lokasyon"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/comfortaa_bold"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="Nagtatala ng coordinates (latitude at longitude) ng mga insidente upang matrack at magkaroon ng ideya kung saan nangyari ang insidente"
+                        android:textSize="10sp"
+                        android:fontFamily="@font/comfortaa"/>
+
+                </LinearLayout>
 
             </LinearLayout>
 
             <!-- Button Take Photo -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/bg_outlinedbutton">
+                android:background="@drawable/bg_outlinedbutton"
+                android:orientation="horizontal">
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button_report_takePhoto"
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:padding="40dp"
+                    android:layout_gravity="start"
+                    android:src="@drawable/ic_report_camera"
+                    android:alpha="0.5"/>
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="20dp"
-                    android:text="Take a Picture"
-                    android:textSize="12sp"
-                    android:textColor="@color/colorNeutral"
-                    android:fontFamily="@font/comfortaa"
-                    android:backgroundTint="@color/colorBackground"
-                    app:icon="@drawable/ic_report_camera"
-                    app:iconTint="@color/colorPrimary"
-                    app:iconGravity="start"
-                    style="@style/Widget.AppCompat.Button.Borderless"/>
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Larawan"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/comfortaa_bold"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="Kumukuha ng litrato o larawan ng insidente upang magkaroon ng ebidensiya ukol sa pangyayari"
+                        android:textSize="10sp"
+                        android:fontFamily="@font/comfortaa"/>
+
+                </LinearLayout>
 
             </LinearLayout>
 
-            <!-- Send Button -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_report_send"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_below="@+id/camera_mainTitle"
-                android:paddingBottom="10dp"
-                android:backgroundTint="@color/colorAccent"
-                android:text="Send"
-                android:textColor="@color/colorBackground"
-                android:textSize="15sp"
-                android:fontFamily="@font/montserrat"
-                app:icon="@drawable/ic_report_send"
-                app:iconGravity="textStart"
-                app:iconTint="@color/colorBackground"
-                app:iconSize="25dp"
-                app:cornerRadius="10dp"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+                android:orientation="vertical">
+
+                <!-- Take Survey Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_report_takeSurvey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_below="@+id/camera_mainTitle"
+                    android:paddingBottom="10dp"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:text="Take Survey"
+                    android:textColor="@color/colorBackground"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/montserrat"
+                    app:cornerRadius="10dp"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+
+                <!-- Send Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_report_send"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_below="@+id/camera_mainTitle"
+                    android:paddingBottom="10dp"
+                    android:backgroundTint="@color/colorAccent"
+                    android:text="Send"
+                    android:textColor="@color/colorBackground"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/montserrat"
+                    app:icon="@drawable/ic_report_send"
+                    app:iconGravity="textStart"
+                    app:iconTint="@color/colorBackground"
+                    app:iconSize="25dp"
+                    app:cornerRadius="10dp"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 

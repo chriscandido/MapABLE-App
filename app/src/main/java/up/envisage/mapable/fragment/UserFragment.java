@@ -2,7 +2,6 @@ package up.envisage.mapable.fragment;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -22,8 +21,6 @@ import up.envisage.mapable.db.table.ReportTable;
 import up.envisage.mapable.db.table.UserTable;
 import up.envisage.mapable.model.ReportViewModel;
 import up.envisage.mapable.model.UserViewModel;
-import up.envisage.mapable.ui.home.ReportingActivity;
-
 
 public class UserFragment extends Fragment {
 

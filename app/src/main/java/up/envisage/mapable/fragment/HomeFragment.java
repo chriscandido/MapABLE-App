@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 
 import up.envisage.mapable.R;
 import up.envisage.mapable.adapter.MainMenuAdapter;
+import up.envisage.mapable.ui.home.AboutActivity;
 import up.envisage.mapable.ui.home.AboutManilaBayActivity;
 import up.envisage.mapable.ui.home.FeedbackActivity;
 import up.envisage.mapable.ui.home.InformationActivity;
@@ -52,7 +53,6 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         //Inflate the layout for this fragment
-
         return inflater.inflate(R.layout.fragment_home, container, false);
 
     }
@@ -96,6 +96,11 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
                 Intent information = new Intent(listener, InformationActivity.class);
                 startActivity(information);
                 Log.d("[ HomeFragment.java ]", "onMenuClick: clicked - Information");
+                break;
+            case Constant.mainMenu_about:
+                Intent about = new Intent(listener, AboutActivity.class);
+                startActivity(about);
+                Log.d("[ HomeFragment.java ]", "onMenuClick: clicked - About");
                 break;
         }
 

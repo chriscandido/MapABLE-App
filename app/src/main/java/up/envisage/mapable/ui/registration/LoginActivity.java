@@ -1,6 +1,5 @@
 package up.envisage.mapable.ui.registration;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,14 +14,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -34,7 +30,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
-import up.envisage.mapable.db.table.UserTable;
 import up.envisage.mapable.model.UserViewModel;
 
 public class LoginActivity extends AppCompatActivity  {
@@ -44,15 +39,14 @@ public class LoginActivity extends AppCompatActivity  {
     private Button button_eulaAgree, button_login;
     private CheckBox checkBox_eulaAgree;
 
-    String userID;
-
     Dialog dialog;
 
     private UserViewModel userViewModel;
+    private SharedPreferences sharedPreferences;
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-//    private String BASE_URL = "http://10.0.2.2:5000";
+    //private String BASE_URL = "http://10.0.2.2:5000";
     private String BASE_URL = "https://project-mapable.herokuapp.com/";
 
     protected void onCreate(Bundle savedInstanceState){
@@ -82,6 +76,12 @@ public class LoginActivity extends AppCompatActivity  {
         textInputLayout_loginPassword = findViewById(R.id.textInputLayout_loginPassword);
 
         userViewModel = ViewModelProviders.of(LoginActivity.this).get(UserViewModel.class);
+        sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
+
+        //Shared preference for one time login
+        if (sharedPreferences.getBoolean("logged", false)) {
+            goToMainActivity();
+        }
 
         //Initialize Terms of Use using Dialog Box
         initializeTermsOfUse();
@@ -114,6 +114,7 @@ public class LoginActivity extends AppCompatActivity  {
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             intent.putExtra("userID", userID2);
                             startActivity(intent);
+                            sharedPreferences.edit().putBoolean("logged", true).apply();
 
 
                         } else if (response.code() == 400){
@@ -128,22 +129,6 @@ public class LoginActivity extends AppCompatActivity  {
                                 Toast.LENGTH_LONG).show();
                     }
                 });
-
-
-//                userViewModel.getUsers().observe(LoginActivity.this, new Observer<List<UserTable>>() {
-//                    @Override
-//                    public void onChanged(List<UserTable> userTables) {
-//                        for (UserTable ut: userTables){
-//
-//                            boolean isUsernameValid = ut.getUsername().equals(username);
-//                            boolean isPasswordValid = ut.getPassword().equals(password);
-//                            if (isUsernameValid && isPasswordValid) {
-//                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//                                startActivity(intent);
-//                            }
-//                        }
-//                    }
-//                });
             }
         });
     }
@@ -176,7 +161,6 @@ public class LoginActivity extends AppCompatActivity  {
                     dialog.dismiss();
                 }
             });
-
             dialog.show();
         }
     }
@@ -199,4 +183,9 @@ public class LoginActivity extends AppCompatActivity  {
         startActivity(intent);
     }
 
+    //----------------------------------------------------------------------------------------------Go to Main Page
+    public void goToMainActivity() {
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
 }

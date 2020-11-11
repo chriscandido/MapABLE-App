@@ -23,7 +23,19 @@
         for Applied Geodesy and Photogrammetry (TCAGP). Ang Project IWASTO, sa pamumuni ni Dr. Maria Antonia N. Tanchuling,
         at ang Project e-SMART, sa pamumuno naman ni Dr. Eugene C. Herrera, ay isinasagawa sa ilalim ng UP Institute of
         Civil Engineering (ICE). Ang CharTeD DreaM Project naman ay pinangungunahan ni Engr. Reynaldo L. Esguerra ng
-        Industrial Technology Development Institute (DOST-ITDI).
+        Industrial Technology Development Institute (DOST-ITDI). Para sa iba pang impormasyon, bisitahin ang
+    </string>
+
+    <!-- Project MapABLE -->
+    <string name="title_MapABLE">Development of Integrated Mapping, Monitoring, and Analytical Network System for Manila Bay and
+        Linked Environments
+    </string>
+
+    <string name="desc01_MapABLE">Ang Development of Integrated Mapping, Monitoring, and Analytical Network System for Manila Bay
+        and Linked Environments (Project MapABLE) ay isinasagawa sa pangangasiwa ni Dr. Ariel Blanco ng UP Training Center for
+        Applied Geodesy and Photogrammetry (UPTCAGP). Ito ay naglalayong bumuo at maglunsad ng isang Sistema para sa pagmamapa at
+        pagmomonitor ng water quality hindi lamang sa Manila Bay kung hindi maging sa mga pangunahing ilog na nakakabit dito sa
+        pamamagitan ng geospatial technology at citizen science. Para sa karagdagang impormasyon, maaaring bisitahin ang
     </string>
 
 </resources>

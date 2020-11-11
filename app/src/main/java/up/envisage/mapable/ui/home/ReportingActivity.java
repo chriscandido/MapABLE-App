@@ -5,7 +5,13 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -13,6 +19,7 @@ import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 
+import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 
 import okhttp3.OkHttpClient;
@@ -34,13 +41,13 @@ public class ReportingActivity extends AppCompatActivity {
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-//    private String BASE_URL = "http://10.0.2.2:5000";
+    //private String BASE_URL = "http://10.0.2.2:5000";
     private String BASE_URL = "https://project-mapable.herokuapp.com/";
 
-    private MaterialButton button_reportIncident, button_reportCamera, button_reportLocation, button_reportSend;
+    private MaterialButton button_reportIncident, button_reportCamera, button_reportLocation, button_takeSurvey, button_reportSend;
     private TextView textView_reportBack;
 
-    String userID, dateTime, incidentType, Report, lon, lat, image, imageID2;
+    String userID, dateTime, incidentType, Report, lon, lat, image, imageID2, outPhoto;
 
     @SuppressLint("LongLogTag")
     @Override
@@ -50,13 +57,13 @@ public class ReportingActivity extends AppCompatActivity {
 
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
 
-        // set your desired log level
+        //Set your desired log level
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-        // add your other interceptors …
+        //Add your other interceptors …
 
-        // add logging as last interceptor
+        //Add logging as last interceptor
         httpClient.addInterceptor(logging);  // <-- this is the important line!
 
         retrofit = new Retrofit.Builder()
@@ -106,55 +113,21 @@ public class ReportingActivity extends AppCompatActivity {
             image = reportAct.getStringExtra("image");
 
         }
-        
-        //Button report incident
-        button_reportIncident = findViewById(R.id.button_report_typeOfIncident);
-        button_reportIncident.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent incident = new Intent(ReportingActivity.this, ReportIncidentActivity.class);
-                incident.putExtra("userID", userID);
-                incident.putExtra("Date and Time", dateTime);
-                incident.putExtra("Incident Type", incidentType);
-                incident.putExtra("Report", Report);
-                incident.putExtra("Longitude", lon);
-                incident.putExtra("Latitude", lat);
-                incident.putExtra("image", image);
-                startActivity(incident);
-            }
-        });
 
-        //Button report location
-        button_reportLocation = findViewById(R.id.button_report_locationOfIncident);
-        button_reportLocation.setOnClickListener(new View.OnClickListener() {
+        //Button take survey
+        button_takeSurvey = findViewById(R.id.button_report_takeSurvey);
+        button_takeSurvey.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent location = new Intent(ReportingActivity.this, GoogleMapFragment.class);
-                location.putExtra("userID", userID);
-                location.putExtra("Date and Time", dateTime);
-                location.putExtra("Incident Type", incidentType);
-                location.putExtra("Report", Report);
-                location.putExtra("Longitude", lon);
-                location.putExtra("Latitude", lat);
-                location.putExtra("image", image);
-                startActivity(location);
-            }
-        });
-
-        //Take photo Button
-        button_reportCamera = findViewById(R.id.button_report_takePhoto);
-        button_reportCamera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent camera = new Intent(ReportingActivity.this, CameraActivity.class);
-                camera.putExtra("userID", userID);
-                camera.putExtra("Date and Time", dateTime);
-                camera.putExtra("Incident Type", incidentType);
-                camera.putExtra("Report", Report);
-                camera.putExtra("Longitude", lon);
-                camera.putExtra("Latitude", lat);
-                camera.putExtra("image", image);
-                startActivity(camera);
+            public void onClick(View v) {
+                Intent survey = new Intent(ReportingActivity.this, ReportIncidentActivity.class);
+                survey.putExtra("userID", userID);
+                survey.putExtra("Date and Time", dateTime);
+                survey.putExtra("Incident Type", incidentType);
+                survey.putExtra("Report", Report);
+                survey.putExtra("Longitude", lon);
+                survey.putExtra("Latitude", lat);
+                survey.putExtra("image", image);
+                startActivity(survey);
             }
         });
 
@@ -170,6 +143,11 @@ public class ReportingActivity extends AppCompatActivity {
 
         //Send to server Button
         button_reportSend = findViewById(R.id.button_report_send);
+        if (dateTime == null) {
+            button_reportSend.setVisibility(View.GONE);
+        } else {
+            button_reportSend.setVisibility(View.VISIBLE);
+        }
         button_reportSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -182,7 +160,7 @@ public class ReportingActivity extends AppCompatActivity {
                     String outReport = reportTable.getReport();
                     Double outLatitude = reportTable.getLatitude();
                     Double outLongitude = reportTable.getLongitude();
-                    String outPhoto = reportTable.getPhoto();
+                    outPhoto = reportTable.getPhoto();
                     Log.v("[ ReportingActivity.java ]",
                             "DATE & TIME: " + outDateTime + "\n" +
                             "INCIDENT TYPE: " + outIncidentType + "\n" +
@@ -193,6 +171,8 @@ public class ReportingActivity extends AppCompatActivity {
                     startActivity(goToMain);
                 });
 
+                String imageString = imageConvertToString(image);
+
                 HashMap<String, String> map = new HashMap<>();
                 map.put("userID", userID);
                 map.put("date", dateTime);
@@ -200,7 +180,7 @@ public class ReportingActivity extends AppCompatActivity {
                 map.put("report", Report);
                 map.put("lon", lon);
                 map.put("lat", lat);
-                map.put("image", image);
+                map.put("image", imageString);
 
                 Call<ReportClassResult> call = retrofitInterface.executeReportSubmit(map);
 
@@ -227,6 +207,33 @@ public class ReportingActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    //----------------------------------------------------------------------------------------------convert from bitmap to byte array
+    public byte[] getBytesFromBitmap(Bitmap bitmap) {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        return stream.toByteArray();
+    }
+
+    //----------------------------------------------------------------------------------------------convert image to string
+    public String imageConvertToString(String image) {
+        Uri selectedImage = Uri.parse(image);
+        String[] filePathColumn = {MediaStore.Images.Media.DATA};
+
+        Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
+        cursor.moveToFirst();
+
+        int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+        String filePath = cursor.getString(columnIndex);
+        cursor.close();
+
+        Bitmap galleryPhoto = BitmapFactory.decodeFile(filePath);
+
+        //Get the base 64 string
+        String img = Base64.encodeToString(getBytesFromBitmap(galleryPhoto),
+                Base64.NO_WRAP);
+        return img;
     }
 
     public void onStart(){

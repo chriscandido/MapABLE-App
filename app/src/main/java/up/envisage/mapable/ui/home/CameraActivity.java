@@ -43,10 +43,11 @@ public class CameraActivity extends AppCompatActivity {
     private MaterialButton button_reportCamera, button_reportGallery, button_reportSave;
     private TextView textView_cameraBack;
     private ReportViewModel reportViewModel;
-    //String userID, type, incident, frequency, a1, a2, a3, a4, a5, a6, a7, lon, lat, image;
+
     String userID, dateTime, incidentType, answer, latitude, longitude, imgPath;
     public static String imageString;
     Bitmap galleryPhoto;
+    byte[] byteArray;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -88,6 +89,7 @@ public class CameraActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ReportTable report = new ReportTable();
+                report.setUniqueId(userID);
                 report.setDateTime(dateTime);
                 report.setIncidentType(incidentType);
                 report.setReport(answer);
@@ -103,8 +105,8 @@ public class CameraActivity extends AppCompatActivity {
                 save.putExtra("Report", answer);
                 save.putExtra("Latitude", latitude);
                 save.putExtra("Longitude", longitude);
-//                save.putExtra("image", imgPath);
-                save.putExtra("image", imageString);
+                save.putExtra("image", imgPath);
+                //save.putExtra("image", imageString);
 
                 startActivity(save);
                 Toast.makeText(CameraActivity.this, "Photo successfully saved", Toast.LENGTH_LONG).show();
@@ -173,17 +175,23 @@ public class CameraActivity extends AppCompatActivity {
                 if (resultCode == Activity.RESULT_OK) {
                     Bitmap cameraPhoto = (Bitmap) data.getExtras().get("data");
 
-                    // get the base 64 string
+                    //Get image file path
+                    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+                    cameraPhoto.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+                    String path = MediaStore.Images.Media.insertImage(getApplicationContext().getContentResolver(), cameraPhoto, "Image", null);
+                    Uri selectedImage = Uri.parse(path);
+                    imgPath = selectedImage.toString();
+
+                    //Get the base 64 string
                     imageString = Base64.encodeToString(getBytesFromBitmap(cameraPhoto),
                             Base64.NO_WRAP);
 
-//                    Log.v("[ CameraActivity.java ]",
-//                            "Base64: " + imageString  + "\n");
+                    Log.v("[ CameraActivity.java ]", "Base64: " + imageString  + "\n");
 
                     imageView_reportImage.setImageBitmap(cameraPhoto);
-
                 }
                 break;
+
             case Constant.ACTIVITY_SELECT_IMAGE:
                 if (resultCode == Activity.RESULT_OK){
                     Uri selectedImage = data.getData();
@@ -196,9 +204,6 @@ public class CameraActivity extends AppCompatActivity {
                     int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
                     String filePath = cursor.getString(columnIndex);
                     cursor.close();
-
-//                    Log.v("[ CameraActivity.java ]",
-//                            "FILEPATH: " + filePath  + "\n");
 
                     galleryPhoto = BitmapFactory.decodeFile(filePath);
 

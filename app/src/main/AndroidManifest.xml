@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="up.envisage.mapable">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -25,7 +26,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.home.AboutActivity"></activity>
         <!-- Activities -->
         <!-- Launcher -->
         <activity
@@ -36,26 +36,33 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- Registration && Login -->
+        </activity>
+        <!-- Registration && Login -->
         <activity android:name=".ui.registration.LoginActivity" />
-        <activity android:name=".ui.registration.RegisterActivity" /> <!-- Main Activity -->
-        <activity android:name=".MainActivity" /> <!-- Main Menu -->
+        <activity android:name=".ui.registration.RegisterActivity" />
+        <!-- Main Activity -->
+        <activity android:name=".MainActivity" />
+        <!-- Main Menu -->
         <activity android:name=".ui.home.AboutManilaBayActivity" />
         <activity android:name=".ui.home.ReportingActivity" />
         <activity android:name=".ui.home.InformationActivity" />
         <activity android:name=".ui.home.FeedbackActivity" />
+        <activity android:name=".ui.home.AboutActivity" />
         <activity android:name=".ui.home.ReportIncidentActivity" />
         <activity android:name=".ui.home.CameraActivity" />
         <activity
             android:name=".fragment.GoogleMapFragment"
-            android:label="Google Maps" /> <!-- Report -->
+            android:label="Google Maps" />
+        <!-- Report -->
         <activity android:name=".ui.home.report.ReportAlgalBloom" />
         <activity android:name=".ui.home.report.ReportFishKill" />
         <activity android:name=".ui.home.report.ReportPollution" />
-        <activity android:name=".ui.home.report.ReportIllegalReclamation" /> <!-- Fonts -->
+        <activity android:name=".ui.home.report.ReportIllegalReclamation" />
+        <!-- Fonts -->
         <meta-data
             android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" /> <!-- Google API Key -->
+            android:resource="@array/preloaded_fonts" />
+        <!-- Google API Key -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
