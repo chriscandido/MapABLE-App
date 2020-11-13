@@ -89,6 +89,7 @@
                 android:fontFamily="@font/comfortaa"/>
 
             <TextView
+                android:id="@+id/textView_aboutUs_im4manilabayLink"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
@@ -127,6 +128,7 @@
                 android:fontFamily="@font/comfortaa"/>
 
             <TextView
+                android:id="@+id/textView_aboutUs_mapableLink"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
