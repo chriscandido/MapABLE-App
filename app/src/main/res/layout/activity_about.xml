@@ -41,12 +41,12 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:gravity="start"
                 android:text="IM4ManilaBay Program"
                 android:textColor="@color/colorPrimaryDark"
+                android:textAlignment="textStart"
                 style="@style/headerText"/>
 
             <TextView
@@ -65,7 +65,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
                 android:text="@string/desc01_IM4ManilaBayProgram"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:fontFamily="@font/comfortaa"/>
 
             <TextView
@@ -75,7 +75,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
                 android:text="@string/desc02_IM4ManilaBayProgram"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:fontFamily="@font/comfortaa"/>
 
             <TextView
@@ -85,7 +85,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
                 android:text="@string/desc03_IM4ManilaBayProgram"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:fontFamily="@font/comfortaa"/>
 
             <TextView
@@ -101,12 +101,12 @@
                 android:fontFamily="@font/comfortaa"/>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:gravity="start"
                 android:text="Project MapABLE"
                 android:textColor="@color/colorPrimaryDark"
+                android:textAlignment="textStart"
                 style="@style/headerText"/>
 
             <TextView
@@ -124,7 +124,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
                 android:text="@string/desc01_MapABLE"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:fontFamily="@font/comfortaa"/>
 
             <TextView

@@ -35,6 +35,14 @@ public class AboutActivity extends AppCompatActivity {
                 openFacebookIntent(facebookLink);
             }
         });
+
+        textView_aboutUs_mapableLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String facebookLink = textView_aboutUs_mapableLink.getText().toString();
+                openFacebookIntent(facebookLink);
+            }
+        });
     }
 
     private void openFacebookIntent(String url) {
