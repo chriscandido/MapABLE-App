@@ -32,7 +32,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
-import up.envisage.mapable.fragment.GoogleMapFragment;
 import up.envisage.mapable.model.ReportViewModel;
 import up.envisage.mapable.ui.home.report.ReportClassResult;
 import up.envisage.mapable.ui.registration.RetrofitInterface;
@@ -167,8 +166,6 @@ public class ReportingActivity extends AppCompatActivity {
                             "REPORT: " + outReport + "\n" +
                             "LATITUDE: " + outLatitude + "\n" +
                             "LONGITUDE: " + outLongitude + "\n");
-                    Intent goToMain = new Intent(ReportingActivity.this, MainActivity.class);
-                    startActivity(goToMain);
                 });
 
                 String imageString = imageConvertToString(image);
@@ -204,6 +201,9 @@ public class ReportingActivity extends AppCompatActivity {
                                 Toast.LENGTH_LONG).show();
                     }
                 });
+
+                Intent goToMain = new Intent(ReportingActivity.this, MainActivity.class);
+                startActivity(goToMain);
             }
         });
 

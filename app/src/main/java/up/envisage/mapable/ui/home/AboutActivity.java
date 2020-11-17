@@ -2,59 +2,59 @@ package up.envisage.mapable.ui.home;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
-import com.google.android.material.textfield.TextInputLayout;
-
+import up.envisage.mapable.BuildConfig;
+import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
 
 public class AboutActivity extends AppCompatActivity {
-
-    private TextView textView_aboutUs_im4manilbayLink, textView_aboutUs_mapableLink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
-        textView_aboutUs_im4manilbayLink = findViewById(R.id.textView_aboutUs_im4manilabayLink);
-        textView_aboutUs_mapableLink = findViewById(R.id.textView_aboutUs_mapableLink);
+        TextView textView_aboutUs_back = findViewById(R.id.textView_aboutUs_back);
+        TextView textView_aboutUs_im4manilbayLink = findViewById(R.id.textView_aboutUs_im4manilabayLink);
+        TextView textView_aboutUs_mapableLink = findViewById(R.id.textView_aboutUs_mapableLink);
 
-        textView_aboutUs_im4manilbayLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String facebookLink = textView_aboutUs_im4manilbayLink.getText().toString();
-                openFacebookIntent(facebookLink);
-            }
+
+        textView_aboutUs_back.setOnClickListener(v -> {
+            Intent back = new Intent(AboutActivity.this, MainActivity.class);
+            startActivity(back);
         });
 
-        textView_aboutUs_mapableLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String facebookLink = textView_aboutUs_mapableLink.getText().toString();
-                openFacebookIntent(facebookLink);
-            }
+        textView_aboutUs_im4manilbayLink.setOnClickListener(v -> {
+            String facebookLink = textView_aboutUs_im4manilbayLink.getText().toString();
+            openFacebookIntent(facebookLink);
+        });
+
+        textView_aboutUs_mapableLink.setOnClickListener(v -> {
+            String facebookLink = textView_aboutUs_mapableLink.getText().toString();
+            openFacebookIntent(facebookLink);
         });
     }
 
+    //----------------------------------------------------------------------------------------------facebook link of program
     private void openFacebookIntent(String url) {
         Context context = null;
         try {
+            if (BuildConfig.DEBUG) {
+                throw new AssertionError("Assertion failed");
+            }
             ApplicationInfo applicationInfo = context.getPackageManager().getApplicationInfo("com.facebook.katana", 0);
             if (applicationInfo.enabled) {
                 int versionCode = context.getPackageManager().getPackageInfo("com.facebook.katana", 0).versionCode;
                 String facebookUrl = null;
                 if (versionCode >= 3002850) {
                     facebookUrl = "fb://facewebmodal/f?href=" + url;
-                } else {
                 }
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(facebookUrl)));
             } else {

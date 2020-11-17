@@ -16,6 +16,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
+
 import up.envisage.mapable.R;
 import up.envisage.mapable.adapter.MainMenuAdapter;
 import up.envisage.mapable.ui.home.AboutActivity;
@@ -24,7 +28,6 @@ import up.envisage.mapable.ui.home.FeedbackActivity;
 import up.envisage.mapable.ui.home.InformationActivity;
 import up.envisage.mapable.ui.home.ReportingActivity;
 import up.envisage.mapable.util.Constant;
-
 
 public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClickListener {
 
@@ -45,7 +48,7 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent homeFragment = getActivity().getIntent();
+        Intent homeFragment = Objects.requireNonNull(getActivity()).getIntent();
         userID = homeFragment.getStringExtra("userID");
     }
 
@@ -57,7 +60,7 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
 
     }
 
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
+    public void onViewCreated(@NotNull View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
 
         recyclerView = view.findViewById(R.id.recyclerView_mainMenu);
