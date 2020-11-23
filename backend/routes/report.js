@@ -21,7 +21,7 @@ router.route('/viewport').get((req, res) => {
 });
 
 //adds Report upon Submit
-router.route('/submit').post((req, res) => {
+router.route('/submit').post( async (req, res) => {
 
     const userID = req.body.userID;
     const type = req.body.type;
