@@ -21,14 +21,13 @@ public class ReportIncidentAdapter extends RecyclerView.Adapter<ReportIncidentAd
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView textView_incidentTitle, textView_incidentContent;
+        TextView textView_incidentTitle;
         ImageView imageView_incidentImage;
         OnIncidentClickListener onIncidentClickListener;
 
         public ViewHolder(@NonNull View view, OnIncidentClickListener onIncidentClickListener){
             super(view);
             this.textView_incidentTitle = view.findViewById(R.id.textView_incidentTitle);
-            this.textView_incidentContent = view.findViewById(R.id.textView_incidentContent);
             this.imageView_incidentImage = view.findViewById(R.id.imageView_incidentImage);
             this.onIncidentClickListener = onIncidentClickListener;
             view.setOnClickListener(this);

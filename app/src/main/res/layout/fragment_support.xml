@@ -86,7 +86,7 @@
             android:layout_marginBottom="20dp"
             android:fontFamily="@font/comfortaa"
             android:gravity="center"
-            android:text="Legal"
+            android:text="Privacy Policy"
             android:textSize="18sp"/>
 
     </LinearLayout>
