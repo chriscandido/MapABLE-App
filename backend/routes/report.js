@@ -5,7 +5,17 @@ let Image = require('../models/image.model');
 let User = require('../models/user.model');
 
 router.route('/').get((req, res) => {
-  Item.find()
+  const query = req.body;
+  Item.find(query)
+    .then(items => res.json(items))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/viewport').get((req, res) => {
+  const latitude = req.body.latitude;
+  const longitude = req.body.longitude;
+
+  Item.find(query)
     .then(items => res.json(items))
     .catch(err => res.status(400).json('Error: ' + err));
 });
@@ -47,6 +57,13 @@ router.route('/submit').post((req, res) => {
     });
 
     const checkUser = {_id: mongoose.Types.ObjectId(req.body.userID)};
+
+    // Find user from user database
+    var user  = await User.findOne(checkUser);
+
+    user.numOfReports += 1;
+
+    user.save();
 
     newItem.save()
             .then(() => res.json('Report added!'))
