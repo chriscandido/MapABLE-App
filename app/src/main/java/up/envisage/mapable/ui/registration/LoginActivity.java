@@ -43,6 +43,7 @@ public class LoginActivity extends AppCompatActivity  {
 
     private UserViewModel userViewModel;
     private SharedPreferences sharedPreferences;
+    private SharedPreferences userIdPreferences;
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
@@ -77,6 +78,7 @@ public class LoginActivity extends AppCompatActivity  {
 
         userViewModel = ViewModelProviders.of(LoginActivity.this).get(UserViewModel.class);
         sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
+        userIdPreferences = getSharedPreferences("userID", MODE_PRIVATE);
 
         //Shared preference for one time login
         if (sharedPreferences.getBoolean("logged", false)) {
@@ -106,7 +108,7 @@ public class LoginActivity extends AppCompatActivity  {
 
                     public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
                         if (response.code() == 200) {
-                            final String username2 = textInputLayout_loginUsername.getEditText().getText().toString().trim();
+//                            final String username2 = textInputLayout_loginUsername.getEditText().getText().toString().trim();
 
                             String userID2 = response.body().get_id();
                             Log.i("Get ID Response [LOGIN]", userID2);
@@ -115,6 +117,7 @@ public class LoginActivity extends AppCompatActivity  {
                             intent.putExtra("userID", userID2);
                             startActivity(intent);
                             sharedPreferences.edit().putBoolean("logged", true).apply();
+                            userIdPreferences.edit().putString("userID", response.body().get_id()).apply();
 
 
                         } else if (response.code() == 400){
@@ -186,6 +189,7 @@ public class LoginActivity extends AppCompatActivity  {
     //----------------------------------------------------------------------------------------------Go to Main Page
     public void goToMainActivity() {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        intent.putExtra("userID", userIdPreferences.getString("userID", "Invalid User ID"));
         startActivity(intent);
     }
 }

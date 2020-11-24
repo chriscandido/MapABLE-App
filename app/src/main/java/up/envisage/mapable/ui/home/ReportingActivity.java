@@ -4,10 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -20,6 +24,7 @@ import android.widget.Toast;
 import com.google.android.material.button.MaterialButton;
 
 import java.io.ByteArrayOutputStream;
+import java.util.Calendar;
 import java.util.HashMap;
 
 import okhttp3.OkHttpClient;
@@ -76,6 +81,9 @@ public class ReportingActivity extends AppCompatActivity {
         Intent reportAct = getIntent();
 
         userID = reportAct.getStringExtra("userID");
+
+        Boolean connection = isNetworkAvailable();
+        Log.v("Internet Connection:", connection.toString());
 
         if(reportAct.getStringExtra("Incident Type") == null) {
             if(reportAct.getStringExtra("Longitude") == null || reportAct.getStringExtra("Latitude") == null) {
@@ -166,7 +174,13 @@ public class ReportingActivity extends AppCompatActivity {
                             "REPORT: " + outReport + "\n" +
                             "LATITUDE: " + outLatitude + "\n" +
                             "LONGITUDE: " + outLongitude + "\n");
+
+                    Intent goToMain = new Intent(ReportingActivity.this, MainActivity.class);
+                    goToMain.putExtra("userID", userID);
+                    startActivity(goToMain);
+
                 });
+                Log.v("[ CameraActivity.java ]", "Image Path: " + image  + "\n");
 
                 imageString = imageConvertToString(image);
                 Log.v("[ ReportingActivity.java ]",
@@ -181,6 +195,15 @@ public class ReportingActivity extends AppCompatActivity {
                 map.put("lat", lat);
                 map.put("image", imageString);
 
+                Log.v("[ ReportingActivity.java ]",
+                        "DATE & TIME: " + dateTime + "\n" +
+                                "USER ID: " + userID + "\n" +
+                                "INCIDENT TYPE: " + incidentType + "\n" +
+                                "REPORT: " + Report + "\n" +
+                                "LATITUDE: " + lat + "\n" +
+                                "LONGITUDE: " + lon + "\n" +
+                                "IMAGE: " + imageString + "\n" );
+
                 Call<ReportClassResult> call = retrofitInterface.executeReportSubmit(map);
 
                 call.enqueue(new Callback<ReportClassResult>() {
@@ -190,6 +213,15 @@ public class ReportingActivity extends AppCompatActivity {
                         if (response.code() != 400) {
                             Toast.makeText(ReportingActivity.this, "Report Sent Successfully",
                                     Toast.LENGTH_LONG).show();
+
+                            Log.v("[ ReportingActivity.java ]",
+                                    "DATE & TIME: " + dateTime + "\n" +
+                                            "USER ID: " + userID + "\n" +
+                                            "INCIDENT TYPE: " + incidentType + "\n" +
+                                            "REPORT: " + Report + "\n" +
+                                            "LATITUDE: " + lat + "\n" +
+                                            "LONGITUDE: " + lon + "\n" +
+                                            "IMAGE: " + imageString + "\n" );
 
                         } else if (response.code() == 400){
                             Toast.makeText(ReportingActivity.this, "Error Sending Report",
@@ -209,6 +241,12 @@ public class ReportingActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
     //----------------------------------------------------------------------------------------------convert from bitmap to byte array

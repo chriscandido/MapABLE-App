@@ -2,6 +2,7 @@ package up.envisage.mapable.ui.registration;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -35,6 +36,8 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
 
     private UserViewModel registerViewModel;
     private ActivityRegisterBinding binding;
+
+    private SharedPreferences userIdPreferences;
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;

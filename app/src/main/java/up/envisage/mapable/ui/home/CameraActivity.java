@@ -29,6 +29,7 @@ import com.google.android.material.button.MaterialButton;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.nio.ByteBuffer;
+import java.util.Calendar;
 
 import up.envisage.mapable.R;
 import up.envisage.mapable.db.table.ReportTable;
@@ -99,6 +100,8 @@ public class CameraActivity extends AppCompatActivity {
                 reportViewModel.insert(report);
                 Intent save = new Intent(CameraActivity.this, ReportingActivity.class);
 
+                Log.v("[ CameraActivity.java ]", "Image Path: " + imgPath  + "\n");
+
                 save.putExtra("userID", userID);
                 save.putExtra("Date and Time", dateTime);
                 save.putExtra("Incident Type", incidentType);
@@ -106,7 +109,7 @@ public class CameraActivity extends AppCompatActivity {
                 save.putExtra("Latitude", latitude);
                 save.putExtra("Longitude", longitude);
                 save.putExtra("image", imgPath);
-                //save.putExtra("image", imageString);
+//                save.putExtra("image", imageString);
 
                 startActivity(save);
                 Toast.makeText(CameraActivity.this, "Photo successfully saved", Toast.LENGTH_LONG).show();
@@ -178,9 +181,11 @@ public class CameraActivity extends AppCompatActivity {
                     //Get image file path
                     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
                     cameraPhoto.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-                    String path = MediaStore.Images.Media.insertImage(getApplicationContext().getContentResolver(), cameraPhoto, "Image", null);
+                    String path = MediaStore.Images.Media.insertImage(getApplicationContext().getContentResolver(), cameraPhoto, "IMG_" + Calendar.getInstance().getTime(), null);
                     Uri selectedImage = Uri.parse(path);
                     imgPath = selectedImage.toString();
+
+                    Log.v("[ CameraActivity.java ]", "Base64: " + imgPath  + "\n");
 
                     //Get the base 64 string
                     imageString = Base64.encodeToString(getBytesFromBitmap(cameraPhoto),
