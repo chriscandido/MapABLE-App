@@ -46,7 +46,7 @@ public class ReportingActivity extends AppCompatActivity {
     private MaterialButton button_reportIncident, button_reportCamera, button_reportLocation, button_takeSurvey, button_reportSend;
     private TextView textView_reportBack;
 
-    String userID, dateTime, incidentType, Report, lon, lat, image, imageID2, outPhoto;
+    String userID, dateTime, incidentType, Report, lon, lat, image, imageID2, outPhoto, imageString;
 
     @SuppressLint("LongLogTag")
     @Override
@@ -168,7 +168,9 @@ public class ReportingActivity extends AppCompatActivity {
                             "LONGITUDE: " + outLongitude + "\n");
                 });
 
-                String imageString = imageConvertToString(image);
+                imageString = imageConvertToString(image);
+                Log.v("[ ReportingActivity.java ]",
+                        "IMAGE STRING: " + imageString);
 
                 HashMap<String, String> map = new HashMap<>();
                 map.put("userID", userID);

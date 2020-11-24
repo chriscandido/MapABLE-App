@@ -10,7 +10,7 @@ router.route('/').get((req, res) => {
 
 //gets ID of a user 
 router.route('/getID').get((req, res) => {
-  
+
   const query = {
     username: req.query['username'],
     password: req.query['password']
