@@ -134,6 +134,7 @@ public class ReportIllegalReclamation extends AppCompatActivity implements Adapt
                 Log.v("[ ReportIllegalReclamation.java ]", "ANSWER: " + ans);
 
                 Intent intent = new Intent(ReportIllegalReclamation.this, GoogleMapFragment.class);
+                intent.putExtra("userID", userID);
                 intent.putExtra("Date and Time", dateTime());
                 intent.putExtra("Incident Type", "Illegal Reclamation");
                 intent.putExtra("Report", ans);

@@ -81,45 +81,51 @@ public class ReportingActivity extends AppCompatActivity {
         Intent reportAct = getIntent();
 
         userID = reportAct.getStringExtra("userID");
+        dateTime = reportAct.getStringExtra("Date and Time");
+        incidentType = reportAct.getStringExtra("Incident Type");
+        Report = reportAct.getStringExtra("Report");
+        lon = reportAct.getStringExtra("Longitude");
+        lat = reportAct.getStringExtra("Latitude");
+        image = reportAct.getStringExtra("image");
 
         Boolean connection = isNetworkAvailable();
         Log.v("Internet Connection:", connection.toString());
 
-        if(reportAct.getStringExtra("Incident Type") == null) {
-            if(reportAct.getStringExtra("Longitude") == null || reportAct.getStringExtra("Latitude") == null) {
-                if(reportAct.getStringExtra("image") == null) {
-                    dateTime = null;
-                    incidentType = null;
-                    Report = null;
-                    lon = "122.54032239317894"; //add some default latitude in Manila Bay
-                    lat = "12.65017682702677";
-                    image = null;
-                } else {
-                    dateTime = reportAct.getStringExtra("Date and Time");
-                    incidentType = reportAct.getStringExtra("Incident Type");
-                    Report = reportAct.getStringExtra("Report");
-                    lon = reportAct.getStringExtra("Longitude");
-                    lat = reportAct.getStringExtra("Latitude");
-                    image = reportAct.getStringExtra("image");
-                }
-
-            } else {
-                dateTime = reportAct.getStringExtra("Date and Time");
-                incidentType = reportAct.getStringExtra("Incident Type");
-                Report = reportAct.getStringExtra("Report");
-                lon = reportAct.getStringExtra("Longitude");
-                lat = reportAct.getStringExtra("Latitude");
-                image = reportAct.getStringExtra("image");
-            }
-        } else {
-            dateTime = reportAct.getStringExtra("Date and Time");
-            incidentType = reportAct.getStringExtra("Incident Type");
-            Report = reportAct.getStringExtra("Report");
-            lon = reportAct.getStringExtra("Longitude");
-            lat = reportAct.getStringExtra("Latitude");
-            image = reportAct.getStringExtra("image");
-
-        }
+//        if(reportAct.getStringExtra("Incident Type") == null) {
+//            if(reportAct.getStringExtra("Longitude") == null || reportAct.getStringExtra("Latitude") == null) {
+//                if(reportAct.getStringExtra("image") == null) {
+//                    dateTime = null;
+//                    incidentType = null;
+//                    Report = null;
+//                    lon = "122.54032239317894"; //add some default latitude in Manila Bay
+//                    lat = "12.65017682702677";
+//                    image = null;
+//                } else {
+//                    dateTime = reportAct.getStringExtra("Date and Time");
+//                    incidentType = reportAct.getStringExtra("Incident Type");
+//                    Report = reportAct.getStringExtra("Report");
+//                    lon = reportAct.getStringExtra("Longitude");
+//                    lat = reportAct.getStringExtra("Latitude");
+//                    image = reportAct.getStringExtra("image");
+//                }
+//
+//            } else {
+//                dateTime = reportAct.getStringExtra("Date and Time");
+//                incidentType = reportAct.getStringExtra("Incident Type");
+//                Report = reportAct.getStringExtra("Report");
+//                lon = reportAct.getStringExtra("Longitude");
+//                lat = reportAct.getStringExtra("Latitude");
+//                image = reportAct.getStringExtra("image");
+//            }
+//        } else {
+//            dateTime = reportAct.getStringExtra("Date and Time");
+//            incidentType = reportAct.getStringExtra("Incident Type");
+//            Report = reportAct.getStringExtra("Report");
+//            lon = reportAct.getStringExtra("Longitude");
+//            lat = reportAct.getStringExtra("Latitude");
+//            image = reportAct.getStringExtra("image");
+//
+//        }
 
         //Button take survey
         button_takeSurvey = findViewById(R.id.button_report_takeSurvey);
@@ -128,13 +134,13 @@ public class ReportingActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent survey = new Intent(ReportingActivity.this, ReportIncidentActivity.class);
                 survey.putExtra("userID", userID);
-                survey.putExtra("Date and Time", dateTime);
-                survey.putExtra("Incident Type", incidentType);
-                survey.putExtra("Report", Report);
-                survey.putExtra("Longitude", lon);
-                survey.putExtra("Latitude", lat);
-                survey.putExtra("image", image);
                 startActivity(survey);
+//                survey.putExtra("Date and Time", dateTime);
+//                survey.putExtra("Incident Type", incidentType);
+//                survey.putExtra("Report", Report);
+//                survey.putExtra("Longitude", lon);
+//                survey.putExtra("Latitude", lat);
+//                survey.putExtra("image", image);
             }
         });
 
@@ -159,28 +165,7 @@ public class ReportingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Insert report details to server
-                ReportViewModel reportViewModel = ViewModelProviders.of(ReportingActivity.this).get(ReportViewModel.class);
-                reportViewModel.getLastReport().observe(ReportingActivity.this, reportTable -> {;
-                    int outId = reportTable.getReportId();
-                    String outDateTime = reportTable.getDateTime();
-                    String outIncidentType = reportTable.getIncidentType();
-                    String outReport = reportTable.getReport();
-                    Double outLatitude = reportTable.getLatitude();
-                    Double outLongitude = reportTable.getLongitude();
-                    outPhoto = reportTable.getPhoto();
-                    Log.v("[ ReportingActivity.java ]",
-                            "DATE & TIME: " + outDateTime + "\n" +
-                            "INCIDENT TYPE: " + outIncidentType + "\n" +
-                            "REPORT: " + outReport + "\n" +
-                            "LATITUDE: " + outLatitude + "\n" +
-                            "LONGITUDE: " + outLongitude + "\n");
-
-                    Intent goToMain = new Intent(ReportingActivity.this, MainActivity.class);
-                    goToMain.putExtra("userID", userID);
-                    startActivity(goToMain);
-
-                });
-                Log.v("[ CameraActivity.java ]", "Image Path: " + image  + "\n");
+                Log.v("[ReportingActivity.java ]", "Image Path: " + image  + "\n");
 
                 imageString = imageConvertToString(image);
                 Log.v("[ ReportingActivity.java ]",
@@ -236,7 +221,26 @@ public class ReportingActivity extends AppCompatActivity {
                     }
                 });
 
+                ReportViewModel reportViewModel = ViewModelProviders.of(ReportingActivity.this).get(ReportViewModel.class);
+                reportViewModel.getLastReport().observe(ReportingActivity.this, reportTable -> {;
+                    int outId = reportTable.getReportId();
+                    String outDateTime = reportTable.getDateTime();
+                    String outIncidentType = reportTable.getIncidentType();
+                    String outReport = reportTable.getReport();
+                    Double outLatitude = reportTable.getLatitude();
+                    Double outLongitude = reportTable.getLongitude();
+                    outPhoto = reportTable.getPhoto();
+                    Log.v("[ ReportingActivity.java Result ]",
+                            "DATE & TIME: " + outDateTime + "\n" +
+                                    "USER ID: " + userID + "\n" +
+                            "INCIDENT TYPE: " + outIncidentType + "\n" +
+                            "REPORT: " + outReport + "\n" +
+                            "LATITUDE: " + outLatitude + "\n" +
+                            "LONGITUDE: " + outLongitude + "\n");
+                });
+
                 Intent goToMain = new Intent(ReportingActivity.this, MainActivity.class);
+                goToMain.putExtra("userID", userID);
                 startActivity(goToMain);
             }
         });
