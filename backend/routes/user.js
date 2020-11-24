@@ -8,7 +8,7 @@ router.route('/').get((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-//gets ID of a user 
+//gets ID of a user
 router.route('/getID').get((req, res) => {
 
   const query = {

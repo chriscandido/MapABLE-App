@@ -4,6 +4,15 @@ let Item = require('../models/report.model');
 let Image = require('../models/image.model');
 let User = require('../models/user.model');
 
+function stringToArray(str) {
+  var i;
+  var res = str.split(",")
+  for (i = 0; i < res.length; i++) {
+    res[i] = res[i].replace('[','').replace(/"/g,'').replace(']','');
+  };
+  return(res);
+}
+
 router.route('/').get((req, res) => {
   const query = req.body;
   Item.find(query)
@@ -26,7 +35,7 @@ router.route('/submit').post( async (req, res) => {
     const userID = req.body.userID;
     const type = req.body.type;
     const date = req.body.date;
-    const report = req.body.report;
+    const report = stringToArray(req.body.report);
     const imageBuffer = Buffer.from(req.body.image, 'base64');
     // To convert to base64, imageBuffer.toString('base64')
     // const imageType = 'image/'+path.extname(imgPath).replace('.','').toLowerCase();
