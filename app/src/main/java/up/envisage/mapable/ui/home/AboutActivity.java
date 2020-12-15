@@ -46,9 +46,6 @@ public class AboutActivity extends AppCompatActivity {
     private void openFacebookIntent(String url) {
         Context context = null;
         try {
-            if (BuildConfig.DEBUG) {
-                throw new AssertionError("Assertion failed");
-            }
             ApplicationInfo applicationInfo = context.getPackageManager().getApplicationInfo("com.facebook.katana", 0);
             if (applicationInfo.enabled) {
                 int versionCode = context.getPackageManager().getPackageInfo("com.facebook.katana", 0).versionCode;

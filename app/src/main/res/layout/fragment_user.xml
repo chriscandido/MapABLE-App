@@ -19,119 +19,156 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="MY PROFILE"
+            android:text="PROFILE"
             android:gravity="center"
             style="@style/navigationText"/>
 
     </LinearLayout>
 
-    <!-- User Profile logo -->
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_margin="20dp"
-        android:layout_gravity="center"
-        android:src="@drawable/ic_mainmenu_userprofile"/>
-
-    <!-- Name -->
-    <TextView
-        android:id="@+id/textView_user_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_gravity="center"
-        android:text="Juan Dela Cruz"
-        android:textSize="24sp"
-        android:textColor="#000000"
-        android:fontFamily="@font/comfortaa_bold"/>
-
-    <!-- Name -->
-    <TextView
-        android:id="@+id/textView_user_username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="cgcandido"
-        android:textSize="18sp"
-        android:textColor="@color/colorAccent"
-        android:fontFamily="@font/comfortaa"/>
-
-    <!-- Email address -->
-    <TextView
-        android:id="@+id/textView_user_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center"
-        android:text="juandelacruz@gmail.com"
-        android:textSize="12sp"
-        android:fontFamily="@font/comfortaa"/>
-
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp">
-        
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_userprofile_report"/>
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_gravity="center"
-            android:text="No. of Reports: "
-            android:textSize="12sp"
-            android:fontFamily="@font/comfortaa"/>
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView_user_reports"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_gravity="center"
-            android:text="1000"
-            android:textSize="12sp"
-            android:textColor="@color/colorPrimaryDark"
-            android:fontFamily="@font/comfortaa"/>
-        
-    </LinearLayout>
+            <!-- User Profile logo -->
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_margin="20dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_mainmenu_userprofile"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp">
+            <!-- Name -->
+            <TextView
+                android:id="@+id/textView_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center"
+                android:text="Juan Dela Cruz"
+                android:textSize="25sp"
+                android:textColor="@color/colorBlack"
+                android:fontFamily="@font/poppins_bold"/>
 
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_userprofile_reward"/>
+            <!-- User Name -->
+            <TextView
+                android:id="@+id/textView_user_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="cgcandido"
+                android:textSize="12sp"
+                android:textColor="@color/colorAccent"
+                android:fontFamily="@font/poppins"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_gravity="center"
-            android:text="No. of Points: "
-            android:textSize="12sp"
-            android:fontFamily="@font/comfortaa"/>
+            <!-- Email address -->
+            <TextView
+                android:id="@+id/textView_user_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:text="juandelacruz@gmail.com"
+                android:textSize="12sp"
+                android:fontFamily="@font/poppins_light"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_gravity="center"
-            android:text="10"
-            android:textSize="12sp"
-            android:textColor="@color/colorPrimaryDark"
-            android:fontFamily="@font/comfortaa"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:text="My"
+                    android:textSize="25sp"
+                    android:textColor="@color/colorBlack"
+                    android:fontFamily="@font/poppins_light"/>
 
-    </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:text=" Stats"
+                    android:textSize="25sp"
+                    android:textColor="@color/colorBlack"
+                    android:fontFamily="@font/poppins_semibold"/>
+            </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_userprofile_report"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center"
+                    android:text="No. of Reports: "
+                    android:textSize="12sp"
+                    android:fontFamily="@font/poppins"/>
+
+                <TextView
+                    android:id="@+id/textView_user_reports"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="center"
+                    android:text="1000"
+                    android:textSize="12sp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:fontFamily="@font/poppins_semibold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_userprofile_reward"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center"
+                    android:text="No. of Points: "
+                    android:textSize="12sp"
+                    android:fontFamily="@font/poppins"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="center"
+                    android:text="10"
+                    android:textSize="12sp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:fontFamily="@font/poppins_semibold"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

@@ -19,7 +19,7 @@
         <item name="android:textSize">30sp</item>
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:fontFamily">@font/comfortaa_bold</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
         <item name="android:textStyle">bold</item>
     </style>
 
@@ -28,7 +28,7 @@
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/colorNeutral</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:fontFamily">@font/comfortaa</item>
+        <item name="android:fontFamily">@font/poppins</item>
     </style>
 
     <!-- Navigation text theme -->
@@ -36,14 +36,14 @@
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/colorBackground</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:fontFamily">@font/comfortaa_bold</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
     </style>
 
     <!-- Spinner text theme -->
     <style name="spinnerText">
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/colorNeutral</item>
-        <item name="android:fontFamily">@font/comfortaa</item>
+        <item name="android:fontFamily">@font/poppins_light</item>
     </style>
 
 </resources>

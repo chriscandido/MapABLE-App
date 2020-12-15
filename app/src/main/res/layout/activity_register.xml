@@ -27,7 +27,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:layout_marginLeft="20dp"
             android:text="Provide Personal Details"
             style="@style/contentText"/>
@@ -45,7 +44,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="@font/comfortaa"/>
+                android:fontFamily="@font/poppins_light"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -60,7 +59,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="@font/comfortaa"/>
+                android:fontFamily="@font/poppins_light"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -75,7 +74,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="@font/comfortaa"/>
+                android:fontFamily="@font/poppins_light"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -90,7 +89,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="@font/comfortaa"/>
+                android:fontFamily="@font/poppins_light"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -106,7 +105,7 @@
                 android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="@font/comfortaa"/>
+                android:fontFamily="@font/poppins_light"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Submit Button -->
@@ -137,7 +136,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Already have an Account? "
-                android:fontFamily="@font/comfortaa"/>
+                android:fontFamily="@font/poppins_light"/>
 
             <TextView
                 android:id="@+id/textView_registerLogin"
@@ -146,7 +145,7 @@
                 android:layout_toRightOf="@+id/textView_registerText01"
                 android:text="Login"
                 android:textColor="@color/colorPrimaryDark"
-                android:fontFamily="@font/comfortaa"
+                android:fontFamily="@font/poppins_semibold"
                 android:clickable="true"
                 android:focusable="true"
                 android:onClick="@{(v) -> ClickListener.onClick(v)}"/>
