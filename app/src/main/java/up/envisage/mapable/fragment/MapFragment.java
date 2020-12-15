@@ -3,12 +3,17 @@ package up.envisage.mapable.fragment;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.os.Bundle;
 
+import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
@@ -20,7 +25,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.google.android.material.transition.MaterialArcMotion;
 import com.mapbox.android.core.location.LocationEngine;
 import com.mapbox.android.core.location.LocationEngineCallback;
 import com.mapbox.android.core.location.LocationEngineProvider;
@@ -28,10 +32,9 @@ import com.mapbox.android.core.location.LocationEngineRequest;
 import com.mapbox.android.core.location.LocationEngineResult;
 import com.mapbox.android.core.permissions.PermissionsListener;
 import com.mapbox.android.core.permissions.PermissionsManager;
-import com.mapbox.geojson.Feature;
-import com.mapbox.geojson.FeatureCollection;
-import com.mapbox.geojson.Point;
 import com.mapbox.mapboxsdk.Mapbox;
+import com.mapbox.mapboxsdk.annotations.Icon;
+import com.mapbox.mapboxsdk.annotations.IconFactory;
 import com.mapbox.mapboxsdk.annotations.MarkerOptions;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
@@ -45,7 +48,8 @@ import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.maps.Style;
-import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
+import com.mapbox.mapboxsdk.plugins.annotation.Symbol;
+import com.mapbox.mapboxsdk.plugins.annotation.SymbolManager;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -54,9 +58,9 @@ import java.util.List;
 import up.envisage.mapable.R;
 import up.envisage.mapable.db.table.ReportTable;
 import up.envisage.mapable.model.ReportViewModel;
-import up.envisage.mapable.ui.home.ReportingActivity;
 
 import static android.os.Looper.getMainLooper;
+import static com.mapbox.mapboxsdk.Mapbox.getApplicationContext;
 
 
 public class MapFragment extends Fragment implements OnMapReadyCallback, PermissionsListener,
@@ -64,8 +68,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
 
     private static final long DEFAULT_INTERVAL_IN_MILLISECONDS = 1000L;
     private static final long DEFAULT_MAX_WAIT_TIME = DEFAULT_INTERVAL_IN_MILLISECONDS * 5;
-    private static final String SOURCE_ID = "SOURCE_ID";
-    private static final String ICON_ID = "ICON_ID";
+    private SymbolManager symbolManager;
+    private List<Symbol> symbols = new ArrayList<>();
     private PermissionsManager permissionsManager;
     private FragmentActivity listener;
     private MapView mapView;
@@ -107,13 +111,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
     public void onMapReady(@NonNull final MapboxMap mapboxMap) {
         MapFragment.this.mapboxMap = mapboxMap;
 
-        List<Feature> symbolLayerFeatureList = new ArrayList<>();
-
         mapboxMap.setStyle(new Style.Builder().fromUri("mapbox://styles/mapbox/cjerxnqt3cgvp2rmyuxbeqme7"),
                 new Style.OnStyleLoaded() {
                     @Override
                     public void onStyleLoaded(@NonNull Style style) {
                         enableLocationComponent(style);
+
+                        Icon icon = drawableToIcon(getApplicationContext(), R.drawable.ic_report_location_target);
 
                         //Load report data of the user
                         ReportViewModel reportViewModel = ViewModelProviders.of(MapFragment.this).get(ReportViewModel.class);
@@ -127,11 +131,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
                                     Double longitude = reportTables.get(i).getLongitude();
                                     mapboxMap.addMarker(new MarkerOptions()
                                     .position(new LatLng(latitude, longitude))
-                                    .title(incidentType));
+                                    .title(incidentType)
+                                    .icon(icon));
                                 }
                             }
                         });
-
                     }
                 });
     }
@@ -195,6 +199,17 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
                 .tilt(45)
                 .build();
         mapboxMap.animateCamera(CameraUpdateFactory.newCameraPosition(position), 15000);
+    }
+
+    public static Icon drawableToIcon(@NonNull Context context, @DrawableRes int id) {
+        Drawable vectorDrawable = ResourcesCompat.getDrawable(context.getResources(), id, context.getTheme());
+        assert vectorDrawable != null;
+        Bitmap bitmap = Bitmap.createBitmap(vectorDrawable.getIntrinsicWidth(),
+                vectorDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        vectorDrawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+        vectorDrawable.draw(canvas);
+        return IconFactory.getInstance(context).fromBitmap(bitmap);
     }
 
     @Override
@@ -294,7 +309,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
         mapView.onSaveInstanceState(savedInstanceState);
     }
 
-    public void onDestroyView(){
+    public void onDestroyView() {
         super.onDestroyView();
         //Prevent leaks
         if (locationEngine != null){

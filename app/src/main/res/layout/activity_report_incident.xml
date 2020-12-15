@@ -12,16 +12,22 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary">
 
+        <!-- Back button -->
         <TextView
             android:id="@+id/textView_reportIncident_back"
+            style="@style/navigationText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:layout_alignParentLeft="true"
-            android:text="Back"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:clickable="true"
-            style="@style/navigationText"/>
+            android:fontFamily="@font/poppins"
+            android:text="Back" />
 
+        <!-- Title page -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

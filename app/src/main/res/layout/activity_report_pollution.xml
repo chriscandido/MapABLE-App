@@ -26,7 +26,7 @@
                 android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:text="@string/title_pollution"
-                android:textColor="#000000"
+                android:textColor="@color/colorBlack"
                 style="@style/headerText"/>
 
             <ImageView
@@ -42,8 +42,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="@string/desc_pollution"
-                android:textColor="@color/colorNeutral"
                 android:textAlignment="center"
+                android:textColor="@color/colorNeutral"
                 style="@style/contentText"/>
 
             <TextView
@@ -53,7 +53,7 @@
                 android:layout_marginRight="10dp"
                 android:text="Maikling Salaysay"
                 android:textSize="15sp"
-                android:fontFamily="@font/comfortaa_bold"/>
+                android:fontFamily="@font/poppins"/>
 
             <!-- Question00 TextInputLayout -->
             <TextView
@@ -64,7 +64,7 @@
                 android:text="Isang maikling salaysay tungkol sa nangyaring insidente. Maaring isulat kung kailan nagsimula, kung ano ang obserbasyon sa lugar, o hindi kaya ay kung ano ang naging dahilan ng insidente"
                 android:textSize="12sp"
                 android:textAlignment="viewStart"
-                android:fontFamily="@font/comfortaa"/>
+                android:fontFamily="@font/poppins_light"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout_reportPollution"
@@ -75,7 +75,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:fontFamily="@font/comfortaa"
+                    android:fontFamily="@font/poppins"
                     android:minHeight="100dp"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -93,7 +93,7 @@
                     android:text="Apektadong tubig"
                     android:textSize="15sp"
                     android:textAlignment="textStart"
-                    android:fontFamily="@font/comfortaa_bold"/>
+                    android:fontFamily="@font/poppins"/>
 
                 <Spinner
                     android:id="@+id/spinner_reportPollution_q01"
@@ -121,7 +121,7 @@
                     android:text="Anong klaseng polusyon ang iyong naobserbahan?"
                     android:textSize="15sp"
                     android:textAlignment="textStart"
-                    android:fontFamily="@font/comfortaa_bold"/>
+                    android:fontFamily="@font/poppins"/>
 
                 <Spinner
                     android:id="@+id/spinner_reportPollution_q02"
@@ -149,7 +149,7 @@
                     android:text="Kailan mo unang naobsebahan ang polusyon?"
                     android:textSize="15sp"
                     android:textAlignment="textStart"
-                    android:fontFamily="@font/comfortaa_bold"/>
+                    android:fontFamily="@font/poppins"/>
 
                 <Spinner
                     android:id="@+id/spinner_reportPollution_q03"
@@ -157,8 +157,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:textColor="@color/colorBackground"
                     android:textSize="9sp"
+                    android:textColor="@color/colorBackground"
                     android:textAlignment="viewStart"/>
 
             </LinearLayout>
@@ -177,7 +177,7 @@
                     android:text="May kakaibang amoy bang nagmumula sa tubig?"
                     android:textSize="15sp"
                     android:textAlignment="textStart"
-                    android:fontFamily="@font/comfortaa_bold"/>
+                    android:fontFamily="@font/poppins"/>
 
                 <Spinner
                     android:id="@+id/spinner_reportPollution_q04"
@@ -199,7 +199,7 @@
                 android:layout_marginRight="10dp"
                 android:text="Ilarawan ang itsura ng tubig (kulay, etc.)"
                 android:textSize="15sp"
-                android:fontFamily="@font/comfortaa_bold"/>
+                android:fontFamily="@font/poppins"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout_reportPollution_q05"
@@ -207,11 +207,10 @@
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:fontFamily="@font/comfortaa" />
+                    android:fontFamily="@font/poppins" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Question06 Spinner -->
@@ -228,7 +227,7 @@
                     android:text="Nagdudulot ba ng iba pang problema ang polusyon tulad ng liya o pagkamatay ng isda?"
                     android:textSize="15sp"
                     android:textAlignment="textStart"
-                    android:fontFamily="@font/comfortaa_bold"/>
+                    android:fontFamily="@font/poppins"/>
 
                 <Spinner
                     android:id="@+id/spinner_reportPollution_q06"
@@ -250,7 +249,7 @@
                 android:layout_marginRight="10dp"
                 android:text="Pangalan ng istruktura o pasilidad ng pnagmumulan ng polusyon sa tubig (Ilagay ang Wala kung hindi kilala):"
                 android:textSize="15sp"
-                android:fontFamily="@font/comfortaa_bold"/>
+                android:fontFamily="@font/poppins"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout_reportPollution_q07"
@@ -258,11 +257,10 @@
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:fontFamily="@font/comfortaa" />
+                    android:fontFamily="@font/poppins" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
@@ -274,7 +272,7 @@
                 android:text="Next"
                 android:textSize="15sp"
                 android:textColor="@color/colorBackground"
-                android:fontFamily="@font/news_cycle" />
+                android:fontFamily="@font/montserrat" />
 
         </LinearLayout>
 

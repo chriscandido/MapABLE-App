@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary">
 
+        <!-- Back button -->
         <TextView
             android:id="@+id/textView_aboutUs_back"
             android:layout_width="wrap_content"
@@ -18,8 +19,10 @@
             android:layout_margin="10dp"
             android:layout_alignParentLeft="true"
             android:text="Back"
+            android:fontFamily="@font/poppins_light"
             style="@style/navigationText"/>
 
+        <!-- Title page -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -57,7 +60,7 @@
                 android:layout_marginRight="10dp"
                 android:text="Integrated Mapping, Monitoring, Modelling, and Management System for Manila Bay and Linked Environments"
                 android:textSize="15dp"
-                android:fontFamily="@font/comfortaa_bold"/>
+                android:fontFamily="@font/poppins_semibold"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -67,7 +70,7 @@
                 android:layout_marginLeft="10dp"
                 android:text="@string/desc01_IM4ManilaBayProgram"
                 android:textSize="15sp"
-                android:fontFamily="@font/comfortaa"/>
+                android:fontFamily="@font/poppins_light"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -77,7 +80,7 @@
                 android:layout_marginLeft="10dp"
                 android:text="@string/desc02_IM4ManilaBayProgram"
                 android:textSize="15sp"
-                android:fontFamily="@font/comfortaa"/>
+                android:fontFamily="@font/poppins_light"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -87,7 +90,7 @@
                 android:layout_marginLeft="10dp"
                 android:text="@string/desc03_IM4ManilaBayProgram"
                 android:textSize="15sp"
-                android:fontFamily="@font/comfortaa"/>
+                android:fontFamily="@font/poppins_light"/>
 
             <TextView
                 android:id="@+id/textView_aboutUs_im4manilabayLink"
@@ -99,7 +102,7 @@
                 android:text="https://www.facebook.com/IM4ManilaBay"
                 android:textSize="15dp"
                 android:textColor="@color/colorError"
-                android:fontFamily="@font/comfortaa"/>
+                android:fontFamily="@font/poppins_semibold"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -117,7 +120,7 @@
                 android:layout_marginRight="10dp"
                 android:text="@string/title_MapABLE"
                 android:textSize="15dp"
-                android:fontFamily="@font/comfortaa_bold"/>
+                android:fontFamily="@font/poppins_semibold"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -126,7 +129,7 @@
                 android:layout_marginLeft="10dp"
                 android:text="@string/desc01_MapABLE"
                 android:textSize="15sp"
-                android:fontFamily="@font/comfortaa"/>
+                android:fontFamily="@font/poppins_light"/>
 
             <TextView
                 android:id="@+id/textView_aboutUs_mapableLink"
@@ -138,7 +141,7 @@
                 android:text="https://www.facebook.com/ProjectMapABLE"
                 android:textSize="15dp"
                 android:textColor="@color/colorError"
-                android:fontFamily="@font/comfortaa"/>
+                android:fontFamily="@font/poppins_semibold"/>
 
         </LinearLayout>
 

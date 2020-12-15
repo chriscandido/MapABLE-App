@@ -28,7 +28,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:text="@string/title_algalBloom"
-                android:textColor="#000000" />
+                android:textColor="@color/colorBlack"/>
 
             <ImageView
                 android:layout_width="50dp"
@@ -44,7 +44,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:fontFamily="@font/comfortaa"
                 android:text="@string/desc_algalBloom"
                 android:textAlignment="center"
                 android:textColor="@color/colorNeutral" />
@@ -57,7 +56,7 @@
                 android:layout_marginRight="10dp"
                 android:text="Maikling salaysay"
                 android:textSize="15sp"
-                android:fontFamily="@font/comfortaa_bold"/>
+                android:fontFamily="@font/poppins"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -68,7 +67,7 @@
                 android:textColor="@color/colorNeutral"
                 android:textSize="12sp"
                 android:textAlignment="viewStart"
-                android:fontFamily="@font/comfortaa"/>
+                android:fontFamily="@font/poppins_light"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout_reportAlgalBloom"
@@ -76,11 +75,10 @@
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:fontFamily="@font/comfortaa"
+                    android:fontFamily="@font/poppins_light"
                     android:minHeight="100dp"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -98,7 +96,7 @@
                     android:text="Gaano katagal naoobserbahan ang liya sa tubig?"
                     android:textSize="15sp"
                     android:textAlignment="textStart"
-                    android:fontFamily="@font/comfortaa_bold"/>
+                    android:fontFamily="@font/poppins"/>
 
                 <Spinner
                     android:id="@+id/spinner_reportAgalBloom_q01"
@@ -126,7 +124,7 @@
                     android:text="May kakaibang amoy bang nagmumula sa tubig?"
                     android:textSize="15sp"
                     android:textAlignment="textStart"
-                    android:fontFamily="@font/comfortaa_bold"/>
+                    android:fontFamily="@font/poppins"/>
 
                 <Spinner
                     android:id="@+id/spinner_reportAgalBloom_q02"
@@ -154,7 +152,7 @@
                     android:text="May mga namamatay na bang isda malapit o sa lugar kung saan may liya?"
                     android:textSize="15sp"
                     android:textAlignment="textStart"
-                    android:fontFamily="@font/comfortaa_bold"/>
+                    android:fontFamily="@font/poppins"/>
 
                 <Spinner
                     android:id="@+id/spinner_reportAgalBloom_q03"
@@ -176,7 +174,7 @@
                 android:layout_marginRight="10dp"
                 android:text="Kundisyon ng tubig"
                 android:textSize="15sp"
-                android:fontFamily="@font/comfortaa_bold"/>
+                android:fontFamily="@font/poppins"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout_reportAlgalBloom_q04"
@@ -184,11 +182,10 @@
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:fontFamily="@font/comfortaa" />
+                    android:fontFamily="@font/poppins" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Next Button -->
@@ -201,7 +198,7 @@
                 android:text="Next"
                 android:textSize="15sp"
                 android:textColor="@color/colorBackground"
-                android:fontFamily="@font/comfortaa" />
+                android:fontFamily="@font/montserrat" />
 
         </LinearLayout>
 

@@ -43,7 +43,7 @@
                     android:layout_gravity="start"
                     android:text="Title"
                     android:textSize="15sp"
-                    android:fontFamily="@font/comfortaa_bold" />
+                    android:fontFamily="@font/poppins_semibold" />
 
                 <TextView
                     android:id="@+id/textView_mainContent"
@@ -52,7 +52,7 @@
                     android:layout_gravity="start"
                     android:text="Lorem ipsum"
                     android:textSize="10sp"
-                    android:fontFamily="@font/comfortaa"/>
+                    android:fontFamily="@font/poppins_light"/>
 
             </LinearLayout>
 

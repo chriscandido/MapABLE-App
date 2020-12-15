@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary">
 
+        <!-- Back button -->
         <TextView
             android:id="@+id/textView_information_back"
             android:layout_width="wrap_content"
@@ -21,8 +22,10 @@
             android:layout_alignParentLeft="true"
             android:text="Back"
             android:clickable="true"
+            android:fontFamily="@font/poppins_light"
             style="@style/navigationText"/>
 
+        <!-- Title page -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -32,5 +35,12 @@
             style="@style/navigationText"/>
 
     </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_information"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:scrollbars="vertical"/>
 
 </LinearLayout>

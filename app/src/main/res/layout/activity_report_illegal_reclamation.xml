@@ -27,7 +27,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:text="@string/title_illegalReclamation"
-                android:textColor="@color/colorNeutral" />
+                android:textColor="@color/colorBlack" />
 
             <ImageView
                 android:layout_width="50dp"
@@ -54,8 +54,7 @@
                 android:layout_marginRight="10dp"
                 android:text="Maikling Salaysay"
                 android:textSize="15sp"
-                android:textColor="@color/colorNeutral"
-                style="@style/navigationText"/>
+                android:fontFamily="@font/poppins"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -63,10 +62,10 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:text="Isang maikling salaysay tungkol sa nangyaring insidente. Maaring isulat kung kailan nagsimula, kung ano ang obserbasyon sa lugar, o hindi kaya ay kung ano ang naging dahilan ng insidente"
-                android:textColor="@color/colorNeutral"
                 android:textSize="9sp"
+                android:textColor="@color/colorNeutral"
                 android:textAlignment="viewStart"
-                style="@style/contentText"/>
+                android:fontFamily="@font/poppins_light"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout_reportIllegalReclamation"
@@ -77,7 +76,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:fontFamily="@font/comfortaa"
+                    android:fontFamily="@font/poppins_light"
                     android:minHeight="100dp"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -95,7 +94,7 @@
                     android:text="Kailan mo unang naobserbahan ang pagtatambak?"
                     android:textSize="15sp"
                     android:textAlignment="textStart"
-                    android:fontFamily="@font/comfortaa_bold"/>
+                    android:fontFamily="@font/poppins"/>
 
                 <Spinner
                     android:id="@+id/spinner_reportIllegalReclamation_q01"
@@ -123,7 +122,7 @@
                     android:text="Ano ang panambak na ginamit?"
                     android:textSize="15sp"
                     android:textAlignment="textStart"
-                    android:fontFamily="@font/comfortaa_bold"/>
+                    android:fontFamily="@font/poppins"/>
 
                 <Spinner
                     android:id="@+id/spinner_reportIllegalReclamation_q02"
@@ -151,7 +150,7 @@
                     android:text="Gaano kalawak ang nasakop ng panambak?"
                     android:textSize="15sp"
                     android:textAlignment="textStart"
-                    android:fontFamily="@font/comfortaa_bold"/>
+                    android:fontFamily="@font/poppins"/>
 
                 <Spinner
                     android:id="@+id/spinner_reportIllegalReclamation_q03"
@@ -179,7 +178,7 @@
                     android:text="May nakatayo bang istruktura sa tinambakang lugar?"
                     android:textSize="15sp"
                     android:textAlignment="textStart"
-                    android:fontFamily="@font/comfortaa_bold"/>
+                    android:fontFamily="@font/poppins"/>
 
                 <Spinner
                     android:id="@+id/spinner_reportIllegalReclamation_q04"
@@ -207,7 +206,7 @@
                     android:text="May namamalagi o nagbabantay sa tinambakang lugar?"
                     android:textSize="15sp"
                     android:textAlignment="textStart"
-                    android:fontFamily="@font/comfortaa_bold"/>
+                    android:fontFamily="@font/poppins"/>
 
                 <Spinner
                     android:id="@+id/spinner_reportIllegalReclamation_q05"
@@ -229,7 +228,7 @@
                 android:layout_marginRight="10dp"
                 android:text="Pangalan ng nagtambak, posibleng nagtambak o nagbabantay sa lugar (Ilagay ang Wala kung hindi kilala)"
                 android:textSize="15sp"
-                android:fontFamily="@font/comfortaa_bold"/>
+                android:fontFamily="@font/poppins"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout_reportIllegalReclamation_q06"
@@ -237,11 +236,10 @@
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:fontFamily="@font/comfortaa" />
+                    android:fontFamily="@font/poppins" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
@@ -253,7 +251,7 @@
                 android:text="Next"
                 android:textSize="15sp"
                 android:textColor="@color/colorBackground"
-                android:fontFamily="@font/comfortaa" />
+                android:fontFamily="@font/montserrat" />
 
         </LinearLayout>
 
