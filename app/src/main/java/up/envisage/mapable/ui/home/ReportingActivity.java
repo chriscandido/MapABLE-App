@@ -26,6 +26,7 @@ import com.google.android.material.button.MaterialButton;
 import java.io.ByteArrayOutputStream;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -66,6 +67,9 @@ public class ReportingActivity extends AppCompatActivity {
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         //Add your other interceptors …
+        httpClient.connectTimeout(5, TimeUnit.MINUTES) // connect timeout
+                .writeTimeout(5, TimeUnit.MINUTES) // write timeout
+                .readTimeout(5, TimeUnit.MINUTES); // read timeout
 
         //Add logging as last interceptor
         httpClient.addInterceptor(logging);  // <-- this is the important line!

@@ -53,6 +53,10 @@ router.route('/submit').post( async (req, res) => {
           }
     });
 
+    console.log("----SAVING IMAGE------");
+    console.log("userID: " + newImage.userID);
+    console.log("date: " + newImage.date);
+
     // save Images in a different collection
     newImage.save();
 
@@ -67,8 +71,12 @@ router.route('/submit').post( async (req, res) => {
 
     const checkUser = {_id: mongoose.Types.ObjectId(req.body.userID)};
 
+    console.log("------ ETO HAHANAPIN NA NIYA SI USER -------")
     // Find user from user database
     var user  = await User.findOne(checkUser);
+
+    console.log("------ NAHANAP NIYA SI USER -------");
+    console.log("userID found:" + user._id);
 
     user.numOfReports += 1;
 
