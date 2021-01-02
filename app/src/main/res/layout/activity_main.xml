@@ -9,22 +9,23 @@
     android:background="@color/colorBackgroundTint"
     tools:context=".MainActivity">
 
-    <!-- Bottom Navigation Menu -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomnavigation_menu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:elevation="10dp"
-        android:background="@color/colorPrimary"
-        app:itemIconTint="@color/navigation_state"
-        app:labelVisibilityMode="unlabeled"
-        app:menu="@menu/menu_bottom_navigation" />
+  <!-- Bottom Navigation Menu -->
+  <com.google.android.material.bottomnavigation.BottomNavigationView
+      android:id="@+id/bottomnavigation_menu"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:elevation="10dp"
+      android:background="@color/colorPrimary"
+      app:itemIconTint="@color/navigation_state"
+      app:labelVisibilityMode="unlabeled"
+      app:menu="@menu/menu_bottom_navigation" />
 
-    <FrameLayout
-        android:id="@+id/fragmentLayout_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/bottomnavigation_menu"/>
+  <FrameLayout
+      android:id="@+id/fragmentLayout_container"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_above="@+id/bottomnavigation_menu"/>
 
 </RelativeLayout>
+

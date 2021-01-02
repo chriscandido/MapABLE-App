@@ -47,7 +47,6 @@ public class LoginActivity extends AppCompatActivity  {
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-    //private String BASE_URL = "http://10.0.2.2:5000";
     private String BASE_URL = "https://project-mapable.herokuapp.com/";
 
     protected void onCreate(Bundle savedInstanceState){
@@ -82,6 +81,7 @@ public class LoginActivity extends AppCompatActivity  {
 
         //Shared preference for one time login
         if (sharedPreferences.getBoolean("logged", false)) {
+            Log.v("[UserID]",  userIdPreferences.getString("userID", "Invalid User ID"));
             goToMainActivity();
         }
 

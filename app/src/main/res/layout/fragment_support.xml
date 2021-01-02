@@ -48,7 +48,7 @@
             android:gravity="center"
             android:text="English"
             android:textSize="18sp"
-            android:fontFamily="@font/comfortaa"/>
+            android:fontFamily="@font/poppins"/>
 
     </LinearLayout>
 
@@ -74,7 +74,7 @@
                 android:gravity="center"
                 android:text="About"
                 android:textSize="18sp"
-                android:fontFamily="@font/comfortaa"/>
+                android:fontFamily="@font/poppins"/>
 
         </LinearLayout>
 
@@ -84,7 +84,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
-            android:fontFamily="@font/comfortaa"
+            android:fontFamily="@font/poppins"
             android:gravity="center"
             android:text="Privacy Policy"
             android:textSize="18sp"/>

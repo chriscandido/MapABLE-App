@@ -141,6 +141,7 @@ public class ReportPollution extends AppCompatActivity implements AdapterView.On
                 Log.v("[ ReportPollution.java ]", "ANSWER: " + ans);
 
                 Intent intent = new Intent(ReportPollution.this, GoogleMapFragment.class);
+                intent.putExtra("userID", userID);
                 intent.putExtra("Date and Time", dateTime());
                 intent.putExtra("Incident Type", "Pollution");
                 intent.putExtra("Report", ans);

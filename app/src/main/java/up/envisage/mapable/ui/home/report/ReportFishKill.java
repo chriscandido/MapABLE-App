@@ -107,6 +107,7 @@ public class ReportFishKill extends AppCompatActivity implements AdapterView.OnI
             Log.v("[ ReportFishKill.java ]", "ANSWER: " + ans);
 
             Intent intent = new Intent(ReportFishKill.this, GoogleMapFragment.class);
+            intent.putExtra("userID", userID);
             intent.putExtra("Date and Time", dateTime());
             intent.putExtra("Incident Type", "Fish Kill");
             intent.putExtra("Report", ans);

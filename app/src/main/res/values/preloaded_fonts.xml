@@ -9,5 +9,9 @@
         <item>@font/montserrat_alternates_bold</item>
         <item>@font/montserrat_bold</item>
         <item>@font/news_cycle_bold</item>
+        <item>@font/poppins</item>
+        <item>@font/poppins_bold</item>
+        <item>@font/poppins_light</item>
+        <item>@font/poppins_semibold</item>
     </array>
 </resources>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Manila Bay Rehabilitation -->
+    <string name="desc_manilaBayRehabilitation">
+        <p>Pormal na idineklara ang Battle for Manila Bay sa pangunguna ng Department of Environment and
+        Natural Resources (DENR) noong Enero 27, 2019 sa pamamagitan ng isang solidarity walk mula
+        Quirino Grandstand sa Luneta Park patungong Baywalk area sa Roxas Boulevard. Ito ay nilahukan
+        ng Manila Bay mandamus agencies, mga lokal na pamahalaan, at pribadong sektor. Ayon sa DENR,
+        ang Manila Bay rehabilitation ay may tatlong phases: (1) paglilinis at pagpapaayos ng kalidad
+        ng tubig; (2) rehabilitasyon at resettlement; at (3) pagpapakalap ng impormasyon sa mga mamamayan
+        at pagpapanatili ng mga programa. Para sa mga karagdagang impormasyon, maaaring bisitahin ang
+            website ng Manila Bay Coordinating Office (MCBO).</p>
+    </string>
+
+    <!-- Manila Bay Mandamus -->
+    <string name="desc_manilaBayMandamus">
+        <p>Ang G.R. Nos. 171947-48, o mas kilala sa tawag na Manila Bay Mandamus, ay tumutukoy sa desisyon
+        ng Korte Suprema sa kasong inihain ng isang grupo ng concerned citizens upang gampanan ng iba’t
+        ibang ahensya ng pamahalaan ang tungkulin nito sa pangangalaga sa Manila Bay. Ang pinal na desisyon
+        para sa continuing mandamus ay iginawad noong Pebrero 15, 2011. Inuutusan din nito ang mga ahensyang
+        nabanggit sa desisyon na magpasa ng regular na ulat upang masiguro ang pagpapatupad ng mga programa
+        para sa rehabilitasyon ng Manila Bay. Layunin ng rehabilitasyong maibalik at mapanatili sa Class
+        SB na klasipikasyon ang tubig sa Manila Bay upang maging ligtas at bukas ito sa mga aktibidad gaya ng paglangoy o paliligo.</p>
+    </string>
+
+    <string name="desc_manilaBayTaskForce">
+        <p>Nilagdaan ni Pangulong Rodrigo Duterte noong Pebrero 19, 2019 ang Administrative Order No. 16 na
+        bumuo sa Manila Bay Task Force upang mapabilis ang rehabilitasyon ng Manila Bay. Ang AO 16 ay sang-ayon
+        sa Manila Bay Mandamus at nagtatalaga sa iba’t ibang ahensya ng pamahalaan na makibahagi sa pagpapatupad
+        ng mga kaukulang batas at programang may kinalaman sa pagsasaayos ng Manila Bay at ng watershed nito.
+        \nAng Manila Bay Task Force ay pinangungunahan ng DENR. Ang mga sumusunod ang mga ahensya at opisinang kasapi nito:
+        \n<b><font size="15">Department of Interior and Local Government (DILG)</font></b>
+        \n<b><font size="15">Department of Tourism (DOT)</font></b>
+        \n<b><font size="15">Department of Health (DOH)</font></b>
+        \n<b><font size="15">Housing and Urban Development and Coordinating Council (HUDCC)</font></b>
+        \n<b><font size="15">Metro Manila Development Authority (MMDA)</font></b>
+        \n<b><font size="15">Pasig River Coordinating and Management Office (PRCMO)</font></b>
+        \n<b><font size="15">Local Water Utilities Administration (LWUA)</font></b>
+        \n<b><font size="15">Manila Waterworks and Sewerage System (MWSS)</font></b>
+        \n<b><font size="15">Philippine National Police Maritime Group (PNP-MG)</font></b>
+        \n<b><font size="15">Philippine Coast Guard (PCG)</font></b>
+        \n<b><font size="15">Philippine Ports Authority (PPA)</font></b>
+        \n<b><font size="15">Manila Water Company, Inc. (Manila Water)</font></b>
+        \n<b><font size="15">Maynilad Water Services, Inc. (Maynilad)</font></b>
+        </p>
+    </string>
+
+    <string name="desc_cleanWaterAct">
+        <p>Ang Philippine Clean Water Act of 2004 (RA 9275) ang pangunahing batas na may kinalaman sa
+            pangangalaga ng mga katubigan sa Pilipinas. Ito ay nilagdaan noong Marso 02, 2004 ni Pangulong
+            Gloria Macapagal-Arroyo. Ilan sa mga layunin ng batas ang magtalaga ng maayos na proseso
+            upang maiwasan, makontrol, at masolusyunan ang polusyon sa mga anyong tubig; bumuo ng pambansang 
+            programang tumatalakay sa kaugnayan ng kahalagahan ng mga katubigan sa iba pang isyung pangkalikasan,
+            pang-ekonomiya, at pangkalusugan, at sa kabuhayan ng mga Pilipino sa kabuuan; at hikayatin
+            ang bawat sektor ng lipunan upang makibahagi sa pangangalaga ng mga anyong tubig.</p>
+    </string>
+    
+    <string name="desc_waterQualityGuidelines">
+        <p>Ang DAO 2016-08 ay tumatalakay sa iba’t ibang klasipikasyon ng tubig at water quality standards
+            na nararapat para sa bawat klasipikasyon. Nakasaad dito ang mga parameters na kailangang
+            i-monitor upang masabi kung ang kalidad ng tubig ay maganda o hindi. Ilan sa mga water quality
+            parameters na ito ang biological oxygen demand (BOD), chloride, color, dissolved oxygen (DO),
+            fecal coliform, nitrate, phosphate, pH, temperature, at total suspended solids (TSS).
+            \nAng mga freshwater o tubig-tabang gaya ng mga ilog at lawa ay may limang klasipikasyon, samantlang
+            ang marine waters o tubig-alat tulad ng Manila Bay at mga dagat ay may apat namang klasipikasyon.
+            Bawat isa sa mga klasipikasyong ito ay naaayon sa iba’t ibang gamit ng anyong tubig tulad ng
+            pangingisda, tubig na inumin, agrikultural na gamit gaya ng irigasyon, paliligo o paglangoy,
+            turismo, at nabigasyon.</p>
+    </string>
+    
+    <string name="desc_ecologicalSolidWaste">
+        <p>Ang Ecological Solid Waste Management Act of 2000 (RA 9003) ay nilagdaan ni Pangulong Gloria
+            Macapagal-Arroyo noong Enero 26, 2001. Ang batas na ito ay naglalayong magtalaga ng sistematiko
+            at komprehensibong programa para sa solid waste management sa Pilipinas. Ilan sa mga probisyon
+            nito ay may kinalaman sa tamang pagtatapon ng basura kabilang ang paghihiwalay (segregation)
+            ng mga ito bago kolektahin, pagtatayo ng materials recovery facility (MRF) sa bawat barangay,
+            at pagbuo ng Solid Waste Management Plan ng mga lokal na pamahalaan.</p>
+    </string>
+</resources>

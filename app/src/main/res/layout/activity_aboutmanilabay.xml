@@ -10,14 +10,17 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary">
 
+        <!-- Back button -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_alignParentLeft="true"
             android:text="Back"
+            android:fontFamily="@font/poppins_light"
             style="@style/navigationText"/>
 
+        <!-- Title page -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

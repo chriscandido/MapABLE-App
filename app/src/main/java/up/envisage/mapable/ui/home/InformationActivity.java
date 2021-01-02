@@ -1,10 +1,14 @@
 package up.envisage.mapable.ui.home;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -15,45 +19,30 @@ import android.widget.TextView;
 
 import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
+import up.envisage.mapable.adapter.InformationAdapter;
+import up.envisage.mapable.adapter.ReportIncidentAdapter;
 
-public class InformationActivity extends AppCompatActivity {
+public class InformationActivity extends AppCompatActivity implements InformationAdapter.OnInformationClickListener {
 
-    private TextView textView_information_back;
-    private CardView cardView;
-    private int minHeight;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_information);
 
-        //Text Button go to Main Menu
-        textView_information_back = findViewById(R.id.textView_information_back);
-        textView_information_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent back = new Intent(InformationActivity.this, MainActivity.class);
-                startActivity(back);
-            }
-        });
+        recyclerView = findViewById(R.id.recyclerView_information);
+        recyclerView.setHasFixedSize(true);
 
-        WindowManager windowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
-        DisplayMetrics dimension = new DisplayMetrics();
-        windowManager.getDefaultDisplay().getRealMetrics(dimension);
-        final int height = dimension.heightPixels;
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
 
-        cardView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
-            @Override
-            public boolean onPreDraw() {
-                cardView.getViewTreeObserver().removeOnPreDrawListener(this);
-                minHeight = cardView.getHeight();
-                ViewGroup.LayoutParams layoutParams = cardView.getLayoutParams();
-                layoutParams.height = minHeight;
-                cardView.setLayoutParams(layoutParams);
+        adapter = new InformationAdapter(getApplicationContext(), this);
+        recyclerView.setAdapter(adapter);
 
-                return true;
-            }
-        });
 
     }
 
@@ -70,5 +59,10 @@ public class InformationActivity extends AppCompatActivity {
     }
 
     public void onBackPressed(){
+    }
+
+    @Override
+    public void onClick(int position) {
+
     }
 }

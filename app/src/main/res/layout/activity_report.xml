@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary">
 
+        <!-- Back button -->
         <TextView
             android:id="@+id/textView_report_back"
             android:layout_width="wrap_content"
@@ -22,9 +23,11 @@
             android:layout_margin="10dp"
             android:layout_alignParentLeft="true"
             android:text="Back"
+            android:fontFamily="@font/poppins_light"
             android:clickable="true"
             style="@style/navigationText"/>
 
+        <!-- Title page -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -57,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_gravity="center"
-                android:text="Magsimulang Magreport"
+                android:text="Simulan ang Pagrereport"
                 style="@style/headerText"/>
 
             <TextView
@@ -68,7 +71,7 @@
                 android:text="@string/report_desc"
                 style="@style/contentText"/>
             
-            <!-- Button Choose Incident Type and Take Survey -->
+            <!-- Incident Type  -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -96,7 +99,7 @@
                         android:layout_marginTop="10dp"
                         android:text="Uri ng Insidente"
                         android:textSize="15sp"
-                        android:fontFamily="@font/comfortaa_bold"/>
+                        android:fontFamily="@font/poppins"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -105,13 +108,13 @@
                         android:layout_marginBottom="5dp"
                         android:text="Ito ay mga karaniwang environmental incidents (algal bloom, fish kill, at iba pa) na nangyayari sa Manila bay at sa watershed nito."
                         android:textSize="10sp"
-                        android:fontFamily="@font/comfortaa"/>
+                        android:fontFamily="@font/poppins_light"/>
 
                 </LinearLayout>
 
             </LinearLayout>
 
-            <!-- Button Location of Incident -->
+            <!-- Location of Incident -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -140,7 +143,7 @@
                         android:layout_marginTop="10dp"
                         android:text="Lokasyon"
                         android:textSize="15sp"
-                        android:fontFamily="@font/comfortaa_bold"/>
+                        android:fontFamily="@font/poppins"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -149,13 +152,13 @@
                         android:layout_marginBottom="5dp"
                         android:text="Nagtatala ng coordinates (latitude at longitude) ng mga insidente upang matrack at magkaroon ng ideya kung saan nangyari ang insidente"
                         android:textSize="10sp"
-                        android:fontFamily="@font/comfortaa"/>
+                        android:fontFamily="@font/poppins_light"/>
 
                 </LinearLayout>
 
             </LinearLayout>
 
-            <!-- Button Take Photo -->
+            <!-- Take Photo -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -183,7 +186,7 @@
                         android:layout_marginTop="10dp"
                         android:text="Larawan"
                         android:textSize="15sp"
-                        android:fontFamily="@font/comfortaa_bold"/>
+                        android:fontFamily="@font/poppins"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -192,7 +195,7 @@
                         android:layout_marginBottom="5dp"
                         android:text="Kumukuha ng litrato o larawan ng insidente upang magkaroon ng ebidensiya ukol sa pangyayari"
                         android:textSize="10sp"
-                        android:fontFamily="@font/comfortaa"/>
+                        android:fontFamily="@font/poppins_light"/>
 
                 </LinearLayout>
 
