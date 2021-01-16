@@ -11,8 +11,7 @@ const port = process.env.PORT || 5000;
 app.use(express.json({limit: '50mb'}));
 
 //MongoDB connection string
-const uri = "mongodb+srv://mapable:mapable@mapable-cluster.fjjjm.mongodb.net/mapable-db?retryWrites=true&w=majority"
-// const uri = "mongodb+srv://masdan:masdan@masdan.d2tu6.mongodb.net/masdan-db?retryWrites=true&w=majority"
+const uri = "mongodb+srv://masdan:masdan@masdan.d2tu6.mongodb.net/masdan-db?retryWrites=true&w=majority"
 
 mongoose.connect(process.env.MONGODB_URI || uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }).catch(error => console.log(error));
 
