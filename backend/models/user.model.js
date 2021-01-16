@@ -9,7 +9,9 @@ const userSchema = new Schema({
   "email": String,
   "username": String,
   "password": String,
-  "numOfReports": {type: Number, default: 0}
+  "numOfReports": {type: Number, default: 0},
+  "image": {data: Buffer,
+    contentType: { type: String, default: 'image/jpeg' }}
 });
 
 const User = mongoose.model('User', userSchema);

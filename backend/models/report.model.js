@@ -10,11 +10,10 @@ const reportSchema = new Schema({
   "frequency": String,
   "date": { type: Date, default: Date.now },
   "report": [String],
+  "status": { type: String, default: "Unverified" },
   "image": String,
   "geometry": {
-    "type": {
-      "type": "String" // usually just Point
-    },
+    "type": { type: String, default: "Point" },
     "coordinates": {
       "type": [
         "Number" // Coordinates of Report [Longitude, Latitude]
