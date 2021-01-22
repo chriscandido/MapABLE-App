@@ -38,8 +38,7 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-    //private String BASE_URL = "http://10.0.2.2:5000";
-    private String BASE_URL = "https://project-mapable.herokuapp.com/";
+    private String BASE_URL = "http://ec2-54-91-89-105.compute-1.amazonaws.com/";
     private String userID, dateTime, incidentType, Report, lon, lat, image, imageID2;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)

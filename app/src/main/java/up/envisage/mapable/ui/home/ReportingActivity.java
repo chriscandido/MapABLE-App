@@ -45,8 +45,7 @@ public class ReportingActivity extends AppCompatActivity {
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-    //private String BASE_URL = "http://10.0.2.2:5000";
-    private String BASE_URL = "https://project-mapable.herokuapp.com/";
+    private String BASE_URL = "http://ec2-54-91-89-105.compute-1.amazonaws.com/";
 
     private MaterialButton button_reportIncident, button_reportCamera, button_reportLocation, button_takeSurvey, button_reportSend;
     private TextView textView_reportBack;
@@ -91,42 +90,6 @@ public class ReportingActivity extends AppCompatActivity {
         Boolean connection = isNetworkAvailable();
         Log.v("Internet Connection:", connection.toString());
 
-//        if(reportAct.getStringExtra("Incident Type") == null) {
-//            if(reportAct.getStringExtra("Longitude") == null || reportAct.getStringExtra("Latitude") == null) {
-//                if(reportAct.getStringExtra("image") == null) {
-//                    dateTime = null;
-//                    incidentType = null;
-//                    Report = null;
-//                    lon = "122.54032239317894"; //add some default latitude in Manila Bay
-//                    lat = "12.65017682702677";
-//                    image = null;
-//                } else {
-//                    dateTime = reportAct.getStringExtra("Date and Time");
-//                    incidentType = reportAct.getStringExtra("Incident Type");
-//                    Report = reportAct.getStringExtra("Report");
-//                    lon = reportAct.getStringExtra("Longitude");
-//                    lat = reportAct.getStringExtra("Latitude");
-//                    image = reportAct.getStringExtra("image");
-//                }
-//
-//            } else {
-//                dateTime = reportAct.getStringExtra("Date and Time");
-//                incidentType = reportAct.getStringExtra("Incident Type");
-//                Report = reportAct.getStringExtra("Report");
-//                lon = reportAct.getStringExtra("Longitude");
-//                lat = reportAct.getStringExtra("Latitude");
-//                image = reportAct.getStringExtra("image");
-//            }
-//        } else {
-//            dateTime = reportAct.getStringExtra("Date and Time");
-//            incidentType = reportAct.getStringExtra("Incident Type");
-//            Report = reportAct.getStringExtra("Report");
-//            lon = reportAct.getStringExtra("Longitude");
-//            lat = reportAct.getStringExtra("Latitude");
-//            image = reportAct.getStringExtra("image");
-//
-//        }
-
         //Button take survey
         button_takeSurvey = findViewById(R.id.button_report_takeSurvey);
         button_takeSurvey.setOnClickListener(new View.OnClickListener() {
@@ -135,12 +98,6 @@ public class ReportingActivity extends AppCompatActivity {
                 Intent survey = new Intent(ReportingActivity.this, ReportIncidentActivity.class);
                 survey.putExtra("userID", userID);
                 startActivity(survey);
-//                survey.putExtra("Date and Time", dateTime);
-//                survey.putExtra("Incident Type", incidentType);
-//                survey.putExtra("Report", Report);
-//                survey.putExtra("Longitude", lon);
-//                survey.putExtra("Latitude", lat);
-//                survey.putExtra("image", image);
             }
         });
 
@@ -195,18 +152,9 @@ public class ReportingActivity extends AppCompatActivity {
                     @Override
 
                     public void onResponse(Call<ReportClassResult> call, Response<ReportClassResult> response) {
-                        if (response.code() != 400) {
+                        if (response.code() == 200) {
                             Toast.makeText(ReportingActivity.this, "Report Sent Successfully",
                                     Toast.LENGTH_LONG).show();
-
-                            Log.v("[ ReportingActivity.java ]",
-                                    "DATE & TIME: " + dateTime + "\n" +
-                                            "USER ID: " + userID + "\n" +
-                                            "INCIDENT TYPE: " + incidentType + "\n" +
-                                            "REPORT: " + Report + "\n" +
-                                            "LATITUDE: " + lat + "\n" +
-                                            "LONGITUDE: " + lon + "\n" +
-                                            "IMAGE: " + imageString + "\n" );
 
                         } else if (response.code() == 400){
                             Toast.makeText(ReportingActivity.this, "Error Sending Report",
@@ -218,6 +166,7 @@ public class ReportingActivity extends AppCompatActivity {
                     public void onFailure(Call<ReportClassResult> call, Throwable t) {
                         Toast.makeText(ReportingActivity.this, t.getMessage(),
                                 Toast.LENGTH_LONG).show();
+                        Log.v("Onfailure Error Message", t.getMessage());
                     }
                 });
 
