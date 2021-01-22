@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackgroundTint"
+    android:background="@color/colorPrimary"
     android:orientation="vertical"
     tools:context=".fragment.SupportFragment">
 
@@ -12,7 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorSecondary"
         android:orientation="horizontal">
 
         <TextView
@@ -26,70 +26,79 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_outlinedbutton"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="10dp"
-            android:src="@drawable/ic_support_world"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="20dp"
-            android:gravity="center"
-            android:text="English"
-            android:textSize="18sp"
-            android:fontFamily="@font/poppins"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/bg_outlinedbutton"
-        android:orientation="vertical">
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_box01">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/bg_outlinedbutton">
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="20dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_support_world"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:gravity="center"
-                android:text="About"
-                android:textSize="18sp"
-                android:fontFamily="@font/poppins"/>
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="English"
+                android:textSize="12sp"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/renogare_regular"/>
 
         </LinearLayout>
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_box01">
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:fontFamily="@font/poppins"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:gravity="center"
-            android:text="Privacy Policy"
-            android:textSize="18sp"/>
+            android:text="About"
+            android:textSize="12sp"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="@font/renogare_regular"/>
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_box01">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Privay Policy"
+            android:textSize="12sp"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="@font/renogare_regular"/>
+
+    </LinearLayout>
 
 </LinearLayout>

@@ -5,74 +5,83 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackgroundTint"
+    android:background="@drawable/img_background_05"
     android:orientation="vertical"
     tools:context=".ui.registration.LoginActivity">
 
     <!-- Main Content -->
     <!-- Title Text -->
-    <TextView
-        style="@style/headerText"
+    <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="50dp"
-        android:text="WELCOME" />
+        android:layout_height="150dp"
+        android:layout_marginTop="150dp"
+        android:src="@drawable/logo_masdan_02"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:text="Login to Continue"
-        style="@style/contentText"/>
+        android:layout_gravity="center"
+        android:text="Mag Log-in"
+        android:textSize="20sp"
+        android:textColor="@color/colorAccent"
+        android:fontFamily="@font/renogare_regular"/>
 
     <!-- Input Username & Password -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout_loginUsername"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:layout_gravity="center"
-        android:hint="Username"
+        android:textColorHint="@color/colorAccent02"
+        app:boxStrokeColor="@color/colorBackground"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fontFamily="@font/poppins_light"/>
+            android:hint="Username"
+            android:textSize="20sp"
+            android:fontFamily="@font/renogare_regular"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout_loginPassword"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="5dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:layout_gravity="center"
-        android:hint="Password"
+        android:textColorHint="@color/colorAccent02"
+        app:boxStrokeColor="@color/colorBackground"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <com.google.android.material.textfield.TextInputEditText
             android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fontFamily="@font/poppins_light"/>
+            android:hint="Password"
+            android:textSize="20sp"
+            android:fontFamily="@font/renogare_regular"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Login Button -->
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/button_login"
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:backgroundTint="@color/colorAccent"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/colorText"
         android:text="LOGIN"
-        android:textSize="15sp"
-        android:textColor="@color/colorBackground"
-        android:fontFamily="@font/montserrat"/>
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="@font/renogare_regular"
+        app:cornerRadius="20dp"
+        style="@style/Widget.MaterialComponents.Button"/>
 
     <!-- SignUp TextView-->
     <RelativeLayout
@@ -87,17 +96,20 @@
             android:id="@+id/textView_text01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Don't have an Account? "
-            android:fontFamily="@font/poppins_light"/>
+            android:text="Wala pang Account? "
+            android:textSize="15sp"
+            android:textColor="@color/colorAccent02"
+            android:fontFamily="@font/renogare_regular"/>
 
         <TextView
             android:id="@+id/textView_loginSignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/textView_text01"
+            android:layout_toEndOf="@+id/textView_text01"
             android:text="SIGN UP"
-            android:textColor="@color/colorPrimaryDark"
-            android:fontFamily="@font/poppins_semibold"
+            android:textSize="15sp"
+            android:textColor="@color/colorAccent"
+            android:fontFamily="@font/renogare_regular"
             android:onClick="goToSignup"/>
 
     </RelativeLayout>

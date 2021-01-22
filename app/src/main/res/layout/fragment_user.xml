@@ -8,23 +8,6 @@
     android:orientation="vertical"
     tools:context=".fragment.UserFragment">
 
-    <!-- Top Navigation Menu -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="PROFILE"
-            android:gravity="center"
-            style="@style/navigationText"/>
-
-    </LinearLayout>
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -38,9 +21,9 @@
             <ImageView
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_margin="20dp"
+                android:layout_marginTop="100dp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_mainmenu_userprofile"/>
+                android:src="@drawable/ic_userprofile_profilecamera"/>
 
             <!-- Name -->
             <TextView
@@ -51,8 +34,9 @@
                 android:layout_gravity="center"
                 android:text="Juan Dela Cruz"
                 android:textSize="25sp"
-                android:textColor="@color/colorBlack"
-                android:fontFamily="@font/poppins_bold"/>
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold"
+                android:fontFamily="@font/amplesoftpro_medium" />
 
             <!-- User Name -->
             <TextView
@@ -61,20 +45,22 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="cgcandido"
-                android:textSize="12sp"
-                android:textColor="@color/colorAccent"
-                android:fontFamily="@font/poppins"/>
+                android:textSize="15sp"
+                android:textColor="@color/colorAccent02"
+                android:fontFamily="@font/renogare_regular"/>
 
             <!-- Email address -->
             <TextView
                 android:id="@+id/textView_user_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_gravity="center"
                 android:text="juandelacruz@gmail.com"
-                android:textSize="12sp"
-                android:fontFamily="@font/poppins_light"/>
+                android:textSize="15sp"
+                android:textColor="@color/colorAccent02"
+                android:textStyle="normal"
+                android:fontFamily="@font/renogare_regular"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -83,88 +69,100 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:text="My"
+                    android:gravity="center"
+                    android:text="My Stats"
+                    android:textColor="@color/colorText"
                     android:textSize="25sp"
-                    android:textColor="@color/colorBlack"
-                    android:fontFamily="@font/poppins_light"/>
+                    android:fontFamily="@font/renogare_regular"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:text=" Stats"
-                    android:textSize="25sp"
-                    android:textColor="@color/colorBlack"
-                    android:fontFamily="@font/poppins_semibold"/>
             </LinearLayout>
 
+            <!-- Pending Reports -->
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp">
+                android:layout_gravity="center"
+                android:background="@drawable/bg_box01">
 
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/ic_userprofile_report"/>
+                    android:layout_marginStart="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_userprofile_pendingreports"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_gravity="center"
-                    android:text="No. of Reports: "
+                    android:text="My Pending Reports"
                     android:textSize="12sp"
-                    android:fontFamily="@font/poppins"/>
-
-                <TextView
-                    android:id="@+id/textView_user_reports"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_gravity="center"
-                    android:text="1000"
-                    android:textSize="12sp"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:fontFamily="@font/poppins_semibold"/>
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/renogare_regular"/>
 
             </LinearLayout>
 
+            <!-- Reports -->
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp">
+                android:layout_gravity="center"
+                android:background="@drawable/bg_box01">
 
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/ic_userprofile_reward"/>
+                    android:layout_marginStart="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_userprofile_myreports"/>
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
-                    android:layout_gravity="center"
-                    android:text="No. of Points: "
+                    android:gravity="center"
+                    android:text="My Reports"
                     android:textSize="12sp"
-                    android:fontFamily="@font/poppins"/>
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/renogare_regular"/>
+
+            </LinearLayout>
+
+            <!-- Points -->
+            <LinearLayout
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_box01">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_userprofile_mypoints"/>
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_gravity="center"
-                    android:text="10"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:text="My Points"
                     android:textSize="12sp"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:fontFamily="@font/poppins_semibold"/>
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/renogare_regular"/>
 
             </LinearLayout>
 

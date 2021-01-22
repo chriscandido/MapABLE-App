@@ -35,7 +35,7 @@
                 android:id="@+id/imageView_informationClip"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:background="@drawable/bg_gradient"
+                android:background="@drawable/bg_cardslayout"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="@id/imageView_information"
                 app:layout_constraintEnd_toEndOf="parent"/>

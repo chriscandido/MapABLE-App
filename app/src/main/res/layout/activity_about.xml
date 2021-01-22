@@ -49,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="IM4ManilaBay Program"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorPrimary"
                 android:textAlignment="textStart"
                 style="@style/headerText"/>
 
@@ -101,7 +101,7 @@
                 android:layout_marginBottom="20dp"
                 android:text="https://www.facebook.com/IM4ManilaBay"
                 android:textSize="15dp"
-                android:textColor="@color/colorError"
+                android:textColor="@color/colorAccent"
                 android:fontFamily="@font/poppins_semibold"/>
 
             <TextView
@@ -109,7 +109,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="Project MapABLE"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorPrimary"
                 android:textAlignment="textStart"
                 style="@style/headerText"/>
 
@@ -140,7 +140,7 @@
                 android:layout_marginBottom="20dp"
                 android:text="https://www.facebook.com/ProjectMapABLE"
                 android:textSize="15dp"
-                android:textColor="@color/colorError"
+                android:textColor="@color/colorAccent"
                 android:fontFamily="@font/poppins_semibold"/>
 
         </LinearLayout>

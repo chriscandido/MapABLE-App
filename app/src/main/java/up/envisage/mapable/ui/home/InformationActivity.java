@@ -43,7 +43,6 @@ public class InformationActivity extends AppCompatActivity implements Informatio
         adapter = new InformationAdapter(getApplicationContext(), this);
         recyclerView.setAdapter(adapter);
 
-
     }
 
     public void onStart(){

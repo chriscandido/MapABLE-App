@@ -28,7 +28,6 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.ViewHo
         public ViewHolder(@NonNull View view, OnMenuClickListener onMenuClickListener) {
             super(view);
             this.textView_mainTitle = view.findViewById(R.id.textView_mainTitle);
-            this.textView_mainContent = view.findViewById(R.id.textView_mainContent);
             this.imageView_mainIcon = view.findViewById(R.id.imageView_mainIcon);
             this.onMenuClickListener = onMenuClickListener;
 
@@ -49,11 +48,10 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.ViewHo
 
     //Title
     public String[] mainMenu_title = {
-            "Manila Bay",
-            "Report",
-            "Feedback",
-            "Information",
-            "About"
+            "MANILA BAY, ALAMIN NATIN!",
+            "MAY REPORT AKO!",
+            "LAWS AND POLICIES",
+            "KILALANIN SI IM4MANILABAY"
     };
 
     //Description
@@ -69,7 +67,6 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.ViewHo
     public int[] mainMenu_icon = {
             R.drawable.ic_mainmenu_aboutmanilabay,
             R.drawable.ic_mainmenu_report,
-            R.drawable.ic_mainmenu_feedback,
             R.drawable.ic_mainmenu_information,
             R.drawable.ic_mainmenu_about
 
@@ -86,7 +83,6 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.textView_mainTitle.setText(mainMenu_title[position]);
-        holder.textView_mainContent.setText(mainMenu_content[position]);
         holder.imageView_mainIcon.setImageResource(mainMenu_icon[position]);
 
     }

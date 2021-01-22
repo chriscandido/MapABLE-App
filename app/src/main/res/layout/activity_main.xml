@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorBackgroundTint"
+    android:background="@drawable/img_background_04"
     tools:context=".MainActivity">
 
   <!-- Bottom Navigation Menu -->
@@ -16,10 +16,10 @@
       android:layout_height="wrap_content"
       android:layout_alignParentBottom="true"
       android:elevation="10dp"
-      android:background="@color/colorPrimary"
+      android:background="@color/colorSecondary"
       app:itemIconTint="@color/navigation_state"
       app:labelVisibilityMode="unlabeled"
-      app:menu="@menu/menu_bottom_navigation" />
+      app:menu="@menu/menu_bottom_navigation"/>
 
   <FrameLayout
       android:id="@+id/fragmentLayout_container"

@@ -3,7 +3,7 @@
     <item android:drawable="@color/colorPrimary"/>
     <item>
         <bitmap
-            android:src="@drawable/logo_mapable_240x240"
+            android:src="@drawable/logo_masdan"
             android:gravity="center"/>
     </item>
 </layer-list>

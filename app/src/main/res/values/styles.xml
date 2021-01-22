@@ -3,7 +3,7 @@
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowContentTransitions" tools:targetApi="lollipop">true</item>
         <item name="android:spinnerItemStyle">@style/spinnerText</item>
@@ -17,33 +17,38 @@
     <!-- Header text theme -->
     <style name="headerText">
         <item name="android:textSize">30sp</item>
-        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textColor">@color/colorText</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:fontFamily">@font/renogare_regular</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <!-- Content text theme -->
     <style name="contentText">
         <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@color/colorNeutral</item>
+        <item name="android:textColor">@color/colorAccent</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:fontFamily">@font/renogare_regular</item>
     </style>
 
     <!-- Navigation text theme -->
     <style name="navigationText">
         <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@color/colorBackground</item>
+        <item name="android:textColor">@color/colorAccent</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:fontFamily">@font/renogare_regular</item>
     </style>
 
     <!-- Spinner text theme -->
     <style name="spinnerText">
         <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@color/colorNeutral</item>
-        <item name="android:fontFamily">@font/poppins_light</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:fontFamily">@font/renogare_regular</item>
+    </style>
+
+    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">#fff</item>
+        <item name="boxStrokeWidth">2dp</item>
     </style>
 
 </resources>
