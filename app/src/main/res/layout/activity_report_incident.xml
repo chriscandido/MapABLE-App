@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimary"
     android:orientation="vertical"
     tools:context=".ui.home.ReportIncidentActivity">
 
@@ -10,7 +13,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary">
+        android:layout_marginBottom="50dp"
+        android:background="@color/colorSecondary">
 
         <!-- Back button -->
         <TextView
@@ -24,17 +28,8 @@
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:clickable="true"
-            android:fontFamily="@font/poppins"
+            android:fontFamily="@font/renogare_regular"
             android:text="Back" />
-
-        <!-- Title page -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_alignParentRight="true"
-            android:text="Report Incident"
-            style="@style/navigationText"/>
 
     </RelativeLayout>
 

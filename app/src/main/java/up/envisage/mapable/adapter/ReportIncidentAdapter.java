@@ -64,11 +64,11 @@ public class ReportIncidentAdapter extends RecyclerView.Adapter<ReportIncidentAd
 
     //Image
     public int[] incidentReport_Image = {
-            R.drawable.img_algal_bloom,
-            R.drawable.img_fish_kill,
-            R.drawable.img_pollution,
-            R.drawable.img_illegal_fishing,
-            R.drawable.img_illegal_reclamation
+            R.drawable.ic_map_algalbloom,
+            R.drawable.ic_map_fishkill,
+            R.drawable.ic_map_waterpollution,
+            R.drawable.ic_map_hyacinth,
+            R.drawable.ic_map_illegalreclamation
     };
 
     @Override

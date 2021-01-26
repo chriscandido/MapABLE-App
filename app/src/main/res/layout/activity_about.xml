@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    tools:context=".ui.home.AboutActivity">
 
     <!-- Top Navigation Menu -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorSecondary">
 
         <!-- Back button -->
         <TextView
@@ -19,129 +23,332 @@
             android:layout_margin="10dp"
             android:layout_alignParentLeft="true"
             android:text="Back"
-            android:fontFamily="@font/poppins_light"
-            style="@style/navigationText"/>
-
-        <!-- Title page -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_alignParentRight="true"
-            android:text="About Us"
+            android:fontFamily="@font/renogare_regular"
             style="@style/navigationText"/>
 
     </RelativeLayout>
 
+    <!-- Page Title -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/ic_mainmenu_about"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="5dp"
+            android:text="KILALANIN SI IM4MANILABAY"
+            android:textSize="25sp"
+            android:textColor="@color/colorText"
+            android:fontFamily="@font/renogare_regular"/>
+
+    </LinearLayout>
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:orientation="vertical">
 
-            <TextView
+            <!-- IM4ManilaBay Program Description -->
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="IM4ManilaBay Program"
-                android:textColor="@color/colorPrimary"
-                android:textAlignment="textStart"
-                style="@style/headerText"/>
+                android:layout_margin="5dp"
+                app:cardBackgroundColor="@color/colorAccent02"
+                app:cardCornerRadius="10dp"
+                app:cardPreventCornerOverlap="true">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:text="Integrated Mapping, Monitoring, Modelling, and Management System for Manila Bay and Linked Environments"
-                android:textSize="15dp"
-                android:fontFamily="@font/poppins_semibold"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:text="@string/desc01_IM4ManilaBayProgram"
-                android:textSize="15sp"
-                android:fontFamily="@font/poppins_light"/>
+                    <ImageView
+                        android:id="@+id/imageView_programLogo"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentStart="true"
+                        android:src="@drawable/logo_im4manilabay"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:text="@string/desc02_IM4ManilaBayProgram"
-                android:textSize="15sp"
-                android:fontFamily="@font/poppins_light"/>
+                    <TextView
+                        android:id="@+id/textView_programTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/imageView_programLogo"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="Integrated Mapping, Monitoring, Modelling, and Management System for Manila Bay and Linked Environments"
+                        android:textSize="12sp"
+                        android:textColor="@color/colorAccent"
+                        android:fontFamily="@font/renogare_regular"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:text="@string/desc03_IM4ManilaBayProgram"
-                android:textSize="15sp"
-                android:fontFamily="@font/poppins_light"/>
+                    <LinearLayout
+                        android:id="@+id/linearLayout_programtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textView_programTitle"
+                        android:layout_toEndOf="@+id/imageView_programLogo"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textView_aboutUs_im4manilabayLink"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="20dp"
-                android:text="https://www.facebook.com/IM4ManilaBay"
-                android:textSize="15dp"
-                android:textColor="@color/colorAccent"
-                android:fontFamily="@font/poppins_semibold"/>
+                        <ImageView
+                            android:layout_width="20sp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/logo_facebook"/>
 
-            <TextView
+                        <TextView
+                            android:id="@+id/textView_aboutUs_im4manilabayLink"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="/IM4ManilaBay"
+                            android:textSize="12sp"
+                            android:textColor="@color/colorPrimary"
+                            android:fontFamily="@font/renogare_regular"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textview_programDesc01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/linearLayout_programtitle"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/desc01_IM4ManilaBayProgram"
+                        android:textSize="12sp"
+                        android:textColor="@color/colorSecondary"
+                        android:fontFamily="@font/renogare_regular"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textview_programDesc01"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/desc03_IM4ManilaBayProgram"
+                        android:textSize="12sp"
+                        android:textColor="@color/colorSecondary"
+                        android:fontFamily="@font/renogare_regular"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Project iWASTO -->
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Project MapABLE"
-                android:textColor="@color/colorPrimary"
-                android:textAlignment="textStart"
-                style="@style/headerText"/>
+                android:layout_margin="5dp"
+                app:cardBackgroundColor="@color/colorAccent02"
+                app:cardCornerRadius="10dp"
+                app:cardPreventCornerOverlap="true">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:text="@string/title_MapABLE"
-                android:textSize="15dp"
-                android:fontFamily="@font/poppins_semibold"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="10dp"
-                android:text="@string/desc01_MapABLE"
-                android:textSize="15sp"
-                android:fontFamily="@font/poppins_light"/>
+                    <ImageView
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/logo_iwasto"/>
 
-            <TextView
-                android:id="@+id/textView_aboutUs_mapableLink"
-                android:layout_width="wrap_content"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/desc_iWASTO"
+                        android:textSize="12sp"
+                        android:textColor="@color/colorAccent"
+                        android:fontFamily="@font/renogare_regular" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Project e-SMART -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="20dp"
-                android:text="https://www.facebook.com/ProjectMapABLE"
-                android:textSize="15dp"
-                android:textColor="@color/colorAccent"
-                android:fontFamily="@font/poppins_semibold"/>
+                android:layout_margin="5dp"
+                app:cardBackgroundColor="@color/colorAccent02"
+                app:cardCornerRadius="10dp"
+                app:cardPreventCornerOverlap="true">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/logo_esmart"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/desc_eSMART"
+                        android:textSize="12sp"
+                        android:textColor="@color/colorAccent"
+                        android:fontFamily="@font/renogare_regular" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Project CharteD DreaM -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                app:cardBackgroundColor="@color/colorAccent02"
+                app:cardCornerRadius="10dp"
+                app:cardPreventCornerOverlap="true">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/logo_chartedream"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/desc_CharteDDreaM"
+                        android:textSize="12sp"
+                        android:textColor="@color/colorAccent"
+                        android:fontFamily="@font/renogare_regular" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Project MapABLE -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                app:cardBackgroundColor="@color/colorAccent02"
+                app:cardCornerRadius="10dp"
+                app:cardPreventCornerOverlap="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/imageView_mapableLogo"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentStart="true"
+                        android:src="@drawable/logo_mapable_240x240"/>
+
+                    <TextView
+                        android:id="@+id/textView_projectTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/imageView_mapableLogo"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="@string/title_MapABLE"
+                        android:textSize="12sp"
+                        android:textColor="@color/colorAccent"
+                        android:fontFamily="@font/renogare_regular"/>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout_projectTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/textView_projectTitle"
+                        android:layout_toEndOf="@+id/imageView_mapableLogo"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="20sp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/logo_facebook"/>
+
+                        <TextView
+                            android:id="@+id/textView_aboutUs_mapableLink"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="/ProjectMapABLE"
+                            android:textSize="12sp"
+                            android:textColor="@color/colorPrimary"
+                            android:fontFamily="@font/renogare_regular"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textview_mapableDesc01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/linearLayout_projectTitle"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/desc01_MapABLE"
+                        android:textSize="12sp"
+                        android:textColor="@color/colorSecondary"
+                        android:fontFamily="@font/renogare_regular"/>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/colorPrimary"/>
 
         </LinearLayout>
 

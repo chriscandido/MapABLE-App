@@ -10,50 +10,55 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView_mainMenu"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="2dp"
-        app:cardBackgroundColor="@color/colorBackground"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        app:cardBackgroundColor="@color/colorPrimary"
         app:cardCornerRadius="10dp"
-        app:cardElevation="5dp"
-        app:cardUseCompatPadding="true">
+        app:cardPreventCornerOverlap="true">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="100dp"
+            android:background="@drawable/bg_cardslayout"
+            android:orientation="horizontal">
 
+            <!-- Main Menu Icon -->
             <ImageView
                 android:id="@+id/imageView_incidentImage"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="end"
-                android:transitionName="img_incident_type"
-                android:background="@drawable/ic_launcher_background"/>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="75dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_map_algalbloom"/>
+
+            <!-- Main Menu Title -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_margin ="5dp"
-                android:layout_toRightOf="@+id/imageView_incidentImage"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textView_incidentTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center_vertical"
                     android:text="Title"
-                    android:textSize="15sp"
-                    android:fontFamily="@font/poppins_semibold" />
+                    android:textSize="20sp"
+                    android:textColor="@color/colorText"
+                    android:fontFamily="@font/renogare_regular"/>
 
             </LinearLayout>
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="100dp"
-                android:layout_alignParentRight="true"
-                android:background="@color/colorBackground"/>
-
-        </RelativeLayout>
+        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 

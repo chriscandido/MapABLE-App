@@ -25,19 +25,18 @@ public class AboutActivity extends AppCompatActivity {
         TextView textView_aboutUs_im4manilbayLink = findViewById(R.id.textView_aboutUs_im4manilabayLink);
         TextView textView_aboutUs_mapableLink = findViewById(R.id.textView_aboutUs_mapableLink);
 
-
         textView_aboutUs_back.setOnClickListener(v -> {
             Intent back = new Intent(AboutActivity.this, MainActivity.class);
             startActivity(back);
         });
 
         textView_aboutUs_im4manilbayLink.setOnClickListener(v -> {
-            String facebookLink = textView_aboutUs_im4manilbayLink.getText().toString();
+            String facebookLink = "https://www.facebook.com/IM4ManilaBay";
             openFacebookIntent(facebookLink);
         });
 
         textView_aboutUs_mapableLink.setOnClickListener(v -> {
-            String facebookLink = textView_aboutUs_mapableLink.getText().toString();
+            String facebookLink = "https://www.facebook.com/ProjectMapABLE";
             openFacebookIntent(facebookLink);
         });
     }

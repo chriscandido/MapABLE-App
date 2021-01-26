@@ -5,42 +5,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     android:orientation="vertical">
 
     <!-- Top Navigation Menu -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorSecondary">
 
         <!-- Back button -->
         <TextView
             android:id="@+id/textView_information_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
             android:layout_margin="10dp"
-            android:layout_alignParentLeft="true"
             android:text="Back"
             android:clickable="true"
-            android:fontFamily="@font/poppins_light"
+            android:fontFamily="@font/renogare_regular"
             style="@style/navigationText"/>
-
-        <!-- Title page -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_alignParentRight="true"
-            android:text="Information"
-            style="@style/navigationText"/>
-
     </RelativeLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_information"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager_lawsAndPolicy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:scrollbars="vertical"/>
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:background="@color/colorSecondary"
+        android:orientation="horizontal"/>
 
 </LinearLayout>

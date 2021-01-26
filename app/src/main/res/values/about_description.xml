@@ -20,10 +20,25 @@
     </string>
 
     <string name="desc03_IM4ManilaBayProgram">Ang IM4ManilaBay Program at ang Project MapABLE ay pinamumunuan ni Dr. Ariel C. Blanco ng UP Training Center
-        for Applied Geodesy and Photogrammetry (TCAGP). Ang Project IWASTO, sa pamumuni ni Dr. Maria Antonia N. Tanchuling,
-        at ang Project e-SMART, sa pamumuno naman ni Dr. Eugene C. Herrera, ay isinasagawa sa ilalim ng UP Institute of
-        Civil Engineering (ICE). Ang CharTeD DreaM Project naman ay pinangungunahan ni Engr. Reynaldo L. Esguerra ng
-        Industrial Technology Development Institute (DOST-ITDI). Para sa iba pang impormasyon, bisitahin ang
+        for Applied Geodesy and Photogrammetry (TCAGP).
+    </string>
+
+    <!-- Project iWASTO -->
+    <string name="desc_iWASTO"><p><b>PROJECT iWASTO</b>
+        <br><br>Ang Project iWASTO ay nakatuon sa pagsasaliksik tungkol sa solid waste management. Ito ay pinamumunuan ni Dr. Maria Antonia N. Tanchuling
+            ng UP Institute of Civil Engineering.</br></br></p>
+    </string>
+
+    <!-- Project eSMART -->
+    <string name="desc_eSMART"><p><b>PROJECT e-SMART</b>
+        <br><br>Ang Project e-SMART ay nakapokus sa hydrodynamic at hydrologic modelling. Ito ay pinamumunuan ni Dr. Eugene C. Herrera
+            ng UP Institute of Civil Engineering.</br></br></p>
+    </string>
+
+    <!-- Project CharteD DreaM -->
+    <string name="desc_CharteDDreaM"><p><b>PROJECT CharteD DreaM</b>
+        <br><br>Ang Project CharteD DreaM ay nagsasaliksik naman tungkol sa mga dredged materials. Ito ay pinamumunuan ni Engr. Reynalod L. Esguerra
+            ng Industrial Technology Institute (DOST-ITDI).</br></br></p>
     </string>
 
     <!-- Project MapABLE -->

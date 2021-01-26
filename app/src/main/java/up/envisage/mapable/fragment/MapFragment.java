@@ -117,7 +117,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
                     public void onStyleLoaded(@NonNull Style style) {
                         enableLocationComponent(style);
 
-                        Icon icon = drawableToIcon(getApplicationContext(), R.drawable.ic_report_location_target);
+                        Icon iconAlgalBloom = drawableToIcon(getApplicationContext(), R.drawable.ic_map_algalbloom120x120);
+                        Icon iconFishKill = drawableToIcon(getApplicationContext(), R.drawable.ic_map_fishkill120x120);
+                        Icon iconPollution = drawableToIcon(getApplicationContext(), R.drawable.ic_map_waterpollution120x120);
+                        Icon iconIllegalFishing = drawableToIcon(getApplicationContext(), R.drawable.ic_map_hyacinth120x120);
+                        Icon iconIllegalRec = drawableToIcon(getApplicationContext(), R.drawable.ic_map_illegalreclamation120x120);
 
                         //Load report data of the user
                         ReportViewModel reportViewModel = ViewModelProviders.of(MapFragment.this).get(ReportViewModel.class);
@@ -129,10 +133,32 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
                                     String incidentType = reportTables.get(i).getIncidentType();
                                     Double latitude = reportTables.get(i).getLatitude();
                                     Double longitude = reportTables.get(i).getLongitude();
-                                    mapboxMap.addMarker(new MarkerOptions()
-                                    .position(new LatLng(latitude, longitude))
-                                    .title(incidentType)
-                                    .icon(icon));
+                                    if (incidentType.equals("Algal Bloom")) {
+                                        mapboxMap.addMarker(new MarkerOptions()
+                                                .position(new LatLng(latitude, longitude))
+                                                .title(incidentType)
+                                                .icon(iconAlgalBloom));
+                                    } else if (incidentType.equals("Fish Kill")) {
+                                        mapboxMap.addMarker(new MarkerOptions()
+                                                .position(new LatLng(latitude, longitude))
+                                                .title(incidentType)
+                                                .icon(iconFishKill));
+                                    } else if (incidentType.equals("Pollution")) {
+                                        mapboxMap.addMarker(new MarkerOptions()
+                                                .position(new LatLng(latitude, longitude))
+                                                .title(incidentType)
+                                                .icon(iconPollution));
+                                    } else if (incidentType.equals("Illegal Fishinh")) {
+                                        mapboxMap.addMarker(new MarkerOptions()
+                                                .position(new LatLng(latitude, longitude))
+                                                .title(incidentType)
+                                                .icon(iconIllegalFishing));
+                                    } else if (incidentType.equals("Illegal Reclamation")){
+                                        mapboxMap.addMarker(new MarkerOptions()
+                                                .position(new LatLng(latitude, longitude))
+                                                .title(incidentType)
+                                                .icon(iconIllegalRec));
+                                    }
                                 }
                             }
                         });

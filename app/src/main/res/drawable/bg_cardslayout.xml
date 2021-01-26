@@ -2,6 +2,7 @@
     <item>
         <shape android:shape="rectangle">
             <stroke android:width="3dp" android:color="#FFF" />
+            <corners android:radius="10dp"/>
         </shape>
     </item>
 </layer-list>

@@ -23,6 +23,7 @@
 
     </LinearLayout>
 
+    <!-- Map -->
     <com.mapbox.mapboxsdk.maps.MapView
         android:id="@+id/mapBox_mapView"
         android:layout_width="match_parent"
