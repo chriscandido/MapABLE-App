@@ -2,7 +2,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     //Primary
     <color name="colorPrimary">#037f8b</color>
-    <color name="colorPrimaryDark">#037f8b</color>
     //Secondary
     <color name="colorSecondary">#025e73</color>
     //Accent
@@ -11,14 +10,5 @@
     //Text Color
     <color name="colorText">#ffcd5e</color>
     <color name="colorBackground">#FFF</color>
-    <color name="colorBlack">#000</color>
-    <color name="colorNeutral">#000</color>
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#fff</color>
-    //Background - 025e73
-    //Icons - 025e73
-    //Header Text - fff7b6
-    //Normal Text - White
-    //Icon Bar - f268651
-    //Icon Bar Clicked - ffcd5e
-
 </resources>

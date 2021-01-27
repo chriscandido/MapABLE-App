@@ -41,8 +41,9 @@
 
     <!-- Spinner text theme -->
     <style name="spinnerText">
+        <item name="android:layout_margin">10dp</item>
         <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorSecondary</item>
         <item name="android:fontFamily">@font/renogare_regular</item>
     </style>
 

@@ -180,6 +180,7 @@
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:layout_margin="5dp"
+                        android:layout_gravity="center_vertical"
                         android:src="@drawable/logo_iwasto"/>
 
                     <TextView
@@ -215,6 +216,7 @@
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:layout_margin="5dp"
+                        android:gravity="center_vertical"
                         android:src="@drawable/logo_esmart"/>
 
                     <TextView
@@ -250,6 +252,7 @@
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:layout_margin="5dp"
+                        android:layout_gravity="center_vertical"
                         android:src="@drawable/logo_chartedream"/>
 
                     <TextView

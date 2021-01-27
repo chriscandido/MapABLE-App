@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimary"
     android:orientation="vertical">
 
     <!-- Title -->
@@ -10,13 +11,12 @@
         android:id="@+id/textView_eulaTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_margin="20dp"
         android:layout_gravity="center"
-        android:layout_alignParentTop="true"
-        android:paddingBottom="10dp"
         android:text="Terms of Use"
-        android:textColor="@color/colorPrimary"
         android:textSize="20sp"
+        android:textColor="@color/colorAccent"
         android:fontFamily="@font/renogare_regular"
         style="@style/headerText"/>
 
@@ -42,8 +42,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/date"
-                android:textColor="@color/colorNeutral"
                 android:textSize="12sp"
+                android:textColor="@color/colorText"
                 android:fontFamily="@font/renogare_regular"/>
 
             <TextView
@@ -51,6 +51,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/heading"
                 android:textSize="10sp"
+                android:textColor="@color/colorAccent02"
                 android:fontFamily="@font/renogare_regular"/>
 
             <TextView
@@ -58,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/title01"
                 android:textSize="15sp"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/colorText"
                 android:fontFamily="@font/renogare_regular"/>
 
             <TextView
@@ -66,6 +67,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/body01"
                 android:textSize="12sp"
+                android:textColor="@color/colorAccent02"
                 android:fontFamily="@font/renogare_regular"/>
 
             <TextView
@@ -73,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/title02"
                 android:textSize="15sp"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorText"
                 android:fontFamily="@font/renogare_regular"/>
 
             <TextView
@@ -81,6 +83,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/body02"
                 android:textSize="12sp"
+                android:textColor="@color/colorAccent02"
                 android:fontFamily="@font/renogare_regular"/>
 
             <TextView
@@ -88,7 +91,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/title03"
                 android:textSize="15sp"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorText"
                 android:fontFamily="@font/renogare_regular"/>
 
             <TextView
@@ -96,6 +99,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/body03"
                 android:textSize="12sp"
+                android:textColor="@color/colorAccent02"
                 android:fontFamily="@font/renogare_regular"/>
 
             <TextView
@@ -103,7 +107,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/title04"
                 android:textSize="15sp"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorText"
                 android:fontFamily="@font/renogare_regular"/>
 
             <TextView
@@ -111,6 +115,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/body04"
                 android:textSize="12sp"
+                android:textColor="@color/colorAccent02"
                 android:fontFamily="@font/renogare_regular"/>
 
             <TextView
@@ -118,7 +123,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/title05"
                 android:textSize="15sp"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorText"
                 android:fontFamily="@font/renogare_regular"/>
 
             <TextView
@@ -126,6 +131,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/body05"
                 android:textSize="12sp"
+                android:textColor="@color/colorAccent02"
                 android:fontFamily="@font/renogare_regular"/>
 
             <TextView
@@ -133,7 +139,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/title06"
                 android:textSize="15sp"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorText"
                 android:fontFamily="@font/renogare_regular"/>
 
             <TextView
@@ -141,6 +147,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/body06"
                 android:textSize="12sp"
+                android:textColor="@color/colorAccent02"
                 android:fontFamily="@font/renogare_regular"/>
 
             <TextView
@@ -148,7 +155,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/title07"
                 android:textSize="15sp"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorText"
                 android:fontFamily="@font/renogare_regular"/>
 
             <TextView
@@ -156,6 +163,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/body07"
                 android:textSize="12sp"
+                android:textColor="@color/colorAccent02"
                 android:fontFamily="@font/renogare_regular"/>
 
             <TextView
@@ -163,7 +171,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/title08"
                 android:textSize="15sp"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorText"
                 android:fontFamily="@font/renogare_regular"/>
 
             <TextView
@@ -171,6 +179,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/body08"
                 android:textSize="12sp"
+                android:textColor="@color/colorAccent02"
                 android:fontFamily="@font/renogare_regular"/>
 
             <TextView
@@ -178,7 +187,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/title09"
                 android:textSize="15sp"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorText"
                 android:fontFamily="@font/renogare_regular"/>
 
             <TextView
@@ -186,7 +195,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/title10"
                 android:textSize="15sp"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorText"
                 android:fontFamily="@font/renogare_regular"/>
 
             <TextView
@@ -194,6 +203,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/body10"
                 android:textSize="12sp"
+                android:textColor="@color/colorAccent02"
                 android:fontFamily="@font/renogare_regular"/>
 
             <TextView
@@ -201,7 +211,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/title11"
                 android:textSize="15sp"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorText"
                 android:fontFamily="@font/renogare_regular"/>
 
             <TextView
@@ -209,6 +219,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/body11"
                 android:textSize="12sp"
+                android:textColor="@color/colorAccent02"
                 android:fontFamily="@font/renogare_regular"/>
 
             <TextView
@@ -216,7 +227,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/title12"
                 android:textSize="15sp"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorText"
                 android:fontFamily="@font/renogare_regular"/>
 
             <TextView
@@ -224,6 +235,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/body12"
                 android:textSize="12sp"
+                android:textColor="@color/colorAccent02"
                 android:fontFamily="@font/renogare_regular"/>
 
             <TextView
@@ -231,7 +243,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/title13"
                 android:textSize="15sp"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorText"
                 android:fontFamily="@font/renogare_regular"/>
 
             <TextView
@@ -239,6 +251,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/body13"
                 android:textSize="12sp"
+                android:textColor="@color/colorAccent02"
                 android:fontFamily="@font/renogare_regular"/>
 
         </LinearLayout>
@@ -261,6 +274,7 @@
             android:layout_marginBottom="10dp"
             android:text="I AGREE WITH THE TERMS AND CONDITION"
             android:textSize="7sp"
+            android:textColor="@color/colorAccent02"
             android:fontFamily="@font/renogare_regular"/>
 
         <!-- Agree Button -->
@@ -268,6 +282,7 @@
             android:id="@+id/button_eulaAgree"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="20dp"
@@ -275,11 +290,10 @@
             android:paddingRight="10dp"
             android:background="@drawable/bg_box01"
             android:text="Agree and Continue"
-            android:textColor="@color/colorBackground"
             android:textSize="12sp"
-            android:fontFamily="@font/"
-            android:visibility="invisible"
-            android:layout_centerHorizontal="true" />
+            android:textColor="@color/colorText"
+            android:fontFamily="@font/renogare_regular"
+            android:visibility="invisible" />
 
     </LinearLayout>
 

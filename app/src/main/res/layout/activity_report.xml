@@ -39,24 +39,25 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:layout_marginTop="100dp"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="50dp"
-                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:src="@drawable/ic_mainmenu_report"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:layout_gravity="center"
+                    android:layout_gravity="center_vertical"
                     android:text="May Report Ako!"
+                    android:textAlignment="viewStart"
                     style="@style/headerText"/>
 
             </LinearLayout>
@@ -230,7 +231,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_gravity="center"
                     android:backgroundTint="@color/colorText"
-                    android:text="Ipasa"
+                    android:text="IPASA"
                     android:textSize="15sp"
                     android:textColor="@color/colorPrimary"
                     android:fontFamily="@font/renogare_regular"
@@ -240,7 +241,11 @@
                     app:iconSize="25dp"
                     app:cornerRadius="20dp"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+
             </LinearLayout>
+
         </LinearLayout>
+
     </androidx.core.widget.NestedScrollView>
+
 </LinearLayout>

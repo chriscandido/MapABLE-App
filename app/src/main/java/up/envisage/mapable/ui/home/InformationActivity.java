@@ -1,4 +1,4 @@
-package up.envisage.mapable.ui.home;
+ package up.envisage.mapable.ui.home;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;

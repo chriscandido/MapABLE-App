@@ -187,7 +187,7 @@ public class ReportingActivity extends AppCompatActivity {
                             "LATITUDE: " + outLatitude + "\n" +
                             "LONGITUDE: " + outLongitude + "\n");
                 });
-
+                Toast.makeText(getApplicationContext(), "Survey Answer Successfully Sent!", Toast.LENGTH_LONG).show();
                 Intent goToMain = new Intent(ReportingActivity.this, MainActivity.class);
                 goToMain.putExtra("userID", userID);
                 startActivity(goToMain);
