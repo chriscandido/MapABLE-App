@@ -37,7 +37,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
+import up.envisage.mapable.db.table.ReportTable;
+import up.envisage.mapable.db.table.UserTable;
 import up.envisage.mapable.model.ReportViewModel;
+import up.envisage.mapable.model.UserViewModel;
 import up.envisage.mapable.ui.home.report.ReportClassResult;
 import up.envisage.mapable.ui.registration.RetrofitInterface;
 
@@ -49,14 +52,27 @@ public class ReportingActivity extends AppCompatActivity {
 
     private MaterialButton button_reportIncident, button_reportCamera, button_reportLocation, button_takeSurvey, button_reportSend;
     private TextView textView_reportBack;
+    private ReportViewModel reportViewModel;
+    private UserViewModel userViewModel;
 
-    String userID, dateTime, incidentType, Report, lon, lat, image, imageID2, outPhoto, imageString;
+    String userID, dateTime, incidentType, Report, lon, lat, image, imageID2, outPhoto, imageString, outUserId;
+
+    public Boolean connection;
 
     @SuppressLint("LongLogTag")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
+
+        //Initiating report class
+        reportViewModel = ViewModelProviders.of(ReportingActivity.this).get(ReportViewModel.class);
+        userViewModel = ViewModelProviders.of(ReportingActivity.this).get(UserViewModel.class);
+
+        userViewModel.getLastUser().observe(ReportingActivity.this, UserTable -> {
+            outUserId = UserTable.getUniqueId();
+            Log.v("[ReportingActivity.java userID from local]:",  "UserID: " + outUserId);
+        });
 
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
 
@@ -87,10 +103,7 @@ public class ReportingActivity extends AppCompatActivity {
         lat = reportAct.getStringExtra("Latitude");
         image = reportAct.getStringExtra("image");
 
-        Boolean connection = isNetworkAvailable();
-        Log.v("Internet Connection:", connection.toString());
-
-        //Button take survey
+       //Button take survey
         button_takeSurvey = findViewById(R.id.button_report_takeSurvey);
         button_takeSurvey.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,6 +131,10 @@ public class ReportingActivity extends AppCompatActivity {
         } else {
             button_reportSend.setVisibility(View.VISIBLE);
         }
+
+        //checks for internet connection
+        connection = isNetworkAvailable();
+
         button_reportSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -146,48 +163,114 @@ public class ReportingActivity extends AppCompatActivity {
                                 "LONGITUDE: " + lon + "\n" +
                                 "IMAGE: " + imageString + "\n" );
 
-                Call<ReportClassResult> call = retrofitInterface.executeReportSubmit(map);
+                if(connection == true){
 
-                call.enqueue(new Callback<ReportClassResult>() {
-                    @Override
+                    Call<ReportClassResult> call = retrofitInterface.executeReportSubmit(map);
 
-                    public void onResponse(Call<ReportClassResult> call, Response<ReportClassResult> response) {
-                        if (response.code() == 200) {
-                            Toast.makeText(ReportingActivity.this, "Report Sent Successfully",
-                                    Toast.LENGTH_LONG).show();
+                    call.enqueue(new Callback<ReportClassResult>() {
+                        @Override
 
-                        } else if (response.code() == 400){
-                            Toast.makeText(ReportingActivity.this, "Error Sending Report",
-                                    Toast.LENGTH_LONG).show();
+                        public void onResponse(Call<ReportClassResult> call, Response<ReportClassResult> response) {
+                            if (response.code() == 200) {
+                                Toast.makeText(ReportingActivity.this, "Report Sent Successfully",
+                                        Toast.LENGTH_LONG).show();
+
+                            } else if (response.code() == 400){
+                                Toast.makeText(ReportingActivity.this, "Error Sending Report",
+                                        Toast.LENGTH_LONG).show();
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onFailure(Call<ReportClassResult> call, Throwable t) {
-                        Toast.makeText(ReportingActivity.this, t.getMessage(),
-                                Toast.LENGTH_LONG).show();
-                        Log.v("Onfailure Error Message", t.getMessage());
-                    }
-                });
+                        @Override
+                        public void onFailure(Call<ReportClassResult> call, Throwable t) {
+                            Toast.makeText(ReportingActivity.this, t.getMessage(),
+                                    Toast.LENGTH_LONG).show();
+                            Log.v("OnFailure Error Message", t.getMessage());
 
-                ReportViewModel reportViewModel = ViewModelProviders.of(ReportingActivity.this).get(ReportViewModel.class);
-                reportViewModel.getLastReport().observe(ReportingActivity.this, reportTable -> {;
-                    int outId = reportTable.getReportId();
-                    String outDateTime = reportTable.getDateTime();
-                    String outIncidentType = reportTable.getIncidentType();
-                    String outReport = reportTable.getReport();
-                    Double outLatitude = reportTable.getLatitude();
-                    Double outLongitude = reportTable.getLongitude();
-                    outPhoto = reportTable.getPhoto();
-                    Log.v("[ ReportingActivity.java Result ]",
-                            "DATE & TIME: " + outDateTime + "\n" +
-                                    "USER ID: " + userID + "\n" +
-                            "INCIDENT TYPE: " + outIncidentType + "\n" +
-                            "REPORT: " + outReport + "\n" +
-                            "LATITUDE: " + outLatitude + "\n" +
-                            "LONGITUDE: " + outLongitude + "\n");
-                });
-                Toast.makeText(getApplicationContext(), "Survey Answer Successfully Sent!", Toast.LENGTH_LONG).show();
+                            //if onFailure, report is stored in the local database
+                            ReportTable report = new ReportTable();
+                            report.setUniqueId(outUserId);
+                            report.setDateTime(dateTime);
+                            report.setIncidentType(incidentType);
+                            report.setReport(Report);
+                            report.setLatitude(Double.parseDouble(lat));
+                            report.setLongitude(Double.parseDouble(lon));
+                            report.setPhoto(image);
+                            reportViewModel.insert(report);
+                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<ReportClassResult> call, Throwable t) {
+//                        Toast.makeText(ReportingActivity.this, t.getMessage(),
+//                                Toast.LENGTH_LONG).show();
+//                        Log.v("Onfailure Error Message", t.getMessage());
+//                    }
+//                });
+//
+//                ReportViewModel reportViewModel = ViewModelProviders.of(ReportingActivity.this).get(ReportViewModel.class);
+//                reportViewModel.getLastReport().observe(ReportingActivity.this, reportTable -> {;
+//                    int outId = reportTable.getReportId();
+//                    String outDateTime = reportTable.getDateTime();
+//                    String outIncidentType = reportTable.getIncidentType();
+//                    String outReport = reportTable.getReport();
+//                    Double outLatitude = reportTable.getLatitude();
+//                    Double outLongitude = reportTable.getLongitude();
+//                    outPhoto = reportTable.getPhoto();
+//                    Log.v("[ ReportingActivity.java Result ]",
+//                            "DATE & TIME: " + outDateTime + "\n" +
+//                                    "USER ID: " + userID + "\n" +
+//                            "INCIDENT TYPE: " + outIncidentType + "\n" +
+//                            "REPORT: " + outReport + "\n" +
+//                            "LATITUDE: " + outLatitude + "\n" +
+//                            "LONGITUDE: " + outLongitude + "\n");
+//                });
+//                Toast.makeText(getApplicationContext(), "Survey Answer Successfully Sent!", Toast.LENGTH_LONG).show();
+                    });
+                }
+                else{ //if no internet connection, report is stored in the local database
+                    Toast.makeText(ReportingActivity.this, "No Internet Connection",
+                            Toast.LENGTH_LONG).show();
+
+                    ReportTable report = new ReportTable();
+                    report.setUniqueId(outUserId);
+                    report.setDateTime(dateTime);
+                    report.setIncidentType(incidentType);
+                    report.setReport(Report);
+                    report.setLatitude(Double.parseDouble(lat));
+                    report.setLongitude(Double.parseDouble(lon));
+                    report.setPhoto(image);
+                    reportViewModel.insert(report);
+                }
+
+//                reportViewModel.getLastReport().observe(ReportingActivity.this, reportTable -> {
+//                    if(reportViewModel.getLastReport() == null){
+//                        Log.v("[ ReportingActivity.java Result ]",
+//                                "DATE & TIME: No Data " + "\n" +
+//                                        "USER ID: No Data" + "\n" +
+//                                        "INCIDENT TYPE: No Data" + "\n" +
+//                                        "REPORT: No Data" + "\n" +
+//                                        "LATITUDE: No Data" + "\n" +
+//                                        "LONGITUDE: No data" + "\n");
+//                    }
+//                    else {
+//                        int outId = reportTable.getReportId();
+//                        String outDateTime = reportTable.getDateTime();
+//                        String outIncidentType = reportTable.getIncidentType();
+//                        String outReport = reportTable.getReport();
+//                        Double outLatitude = reportTable.getLatitude();
+//                        Double outLongitude = reportTable.getLongitude();
+//                        outPhoto = reportTable.getPhoto();
+//                        Log.v("[ ReportingActivity.java Result ]",
+//                                "DATE & TIME: " + outDateTime + "\n" +
+//                                        "USER ID: " + userID + "\n" +
+//                                        "INCIDENT TYPE: " + outIncidentType + "\n" +
+//                                        "REPORT: " + outReport + "\n" +
+//                                        "LATITUDE: " + outLatitude + "\n" +
+//                                        "LONGITUDE: " + outLongitude + "\n");
+//                    }
+//                });
+
                 Intent goToMain = new Intent(ReportingActivity.this, MainActivity.class);
                 goToMain.putExtra("userID", userID);
                 startActivity(goToMain);

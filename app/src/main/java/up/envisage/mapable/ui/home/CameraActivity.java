@@ -54,8 +54,6 @@ public class CameraActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
 
-        reportViewModel = ViewModelProviders.of(CameraActivity.this).get(ReportViewModel.class);
-
         Intent camera = getIntent();
         userID = camera.getStringExtra("userID");
         dateTime = camera.getStringExtra("Date and Time");
@@ -89,15 +87,7 @@ public class CameraActivity extends AppCompatActivity {
         button_reportSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ReportTable report = new ReportTable();
-                report.setUniqueId(userID);
-                report.setDateTime(dateTime);
-                report.setIncidentType(incidentType);
-                report.setReport(answer);
-                report.setLatitude(Double.parseDouble(latitude));
-                report.setLongitude(Double.parseDouble(longitude));
-                report.setPhoto(imgPath);
-                reportViewModel.insert(report);
+
                 Intent save = new Intent(CameraActivity.this, ReportingActivity.class);
 
                 Log.v("[ CameraActivity.java ]", "Image Path: " + imgPath  + "\n");

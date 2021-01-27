@@ -43,7 +43,7 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
     private RetrofitInterface retrofitInterface;
     private String BASE_URL = "http://ec2-54-91-89-105.compute-1.amazonaws.com/";
 
-    String username, password, userID;
+    String username, password, userID, name, number, email;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,9 +74,9 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.button_submit:
-                String name = binding.textInputLayoutRegisterName.getEditText().getText().toString().trim();
-                String number = binding.textInputLayoutRegisterMobileNum.getEditText().getText().toString().trim();
-                String email = binding.textInputLayoutRegisterEmail.getEditText().getText().toString().trim();
+                name = binding.textInputLayoutRegisterName.getEditText().getText().toString().trim();
+                number = binding.textInputLayoutRegisterMobileNum.getEditText().getText().toString().trim();
+                email = binding.textInputLayoutRegisterEmail.getEditText().getText().toString().trim();
                 username = binding.textInputLayoutRegisterUsername.getEditText().getText().toString().trim();
                 password = binding.textInputLayoutRegisterPassword.getEditText().getText().toString().trim();
 
@@ -126,6 +126,17 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
                                             userID = response.body().get_id();
                                             Log.i("Get ID Response", userID);
 
+                                            //Insert data to local server
+                                            UserTable user = new UserTable();
+                                            user.setUniqueId(userID);
+                                            user.setName(name);
+                                            user.setNumber(number);
+                                            user.setEmail(email);
+                                            user.setUsername(username);
+                                            user.setPassword(password);
+                                            registerViewModel.insert(user);
+                                            Log.v("[ RegisterActivity.java ]", "Data successfully inserted");
+
                                             Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                                             intent.putExtra("userID", userID);
                                             startActivity(intent);
@@ -155,17 +166,7 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
                                     Toast.LENGTH_LONG).show();
                         }
                     });
-                    //Insert data to local server
-                    user.setUniqueId(userID);
-                    user.setName(name);
-                    user.setNumber(number);
-                    user.setEmail(email);
-                    user.setUsername(username);
-                    user.setPassword(password);
-                    registerViewModel.insert(user);
-                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    Log.v("[ RegisterActivity.java ]", "Data successfully inserted");
+
                 }
                 break;
 
