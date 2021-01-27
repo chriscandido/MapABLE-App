@@ -28,7 +28,6 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.ViewHo
         public ViewHolder(@NonNull View view, OnMenuClickListener onMenuClickListener) {
             super(view);
             this.textView_mainTitle = view.findViewById(R.id.textView_mainTitle);
-            this.textView_mainContent = view.findViewById(R.id.textView_mainContent);
             this.imageView_mainIcon = view.findViewById(R.id.imageView_mainIcon);
             this.onMenuClickListener = onMenuClickListener;
 
@@ -49,27 +48,16 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.ViewHo
 
     //Title
     public String[] mainMenu_title = {
-            "Manila Bay",
-            "Report",
-            "Feedback",
-            "Information",
-            "About"
-    };
-
-    //Description
-    public String[] mainMenu_content = {
-            "Information about Manila Bay (Trivia, Myths, and Important Facts about Manila Bay and its watershed",
-            "Relay to authorities about the environmental concerns happening in Manila Bay and its watershed",
-            "Know the status of your report and the actions taken by authorities",
-            "Be informed about relevant policies and laws concerning environmental protection and conservation particularly Manila Bay",
-            "Know about the IM4ManilaBay Program, Project MapABLE, and the mobile application"
+            "MANILA BAY, ALAMIN NATIN!",
+            "MAY REPORT AKO!",
+            "LAWS AND POLICIES",
+            "KILALANIN SI IM4MANILABAY"
     };
 
     //Icon
     public int[] mainMenu_icon = {
             R.drawable.ic_mainmenu_aboutmanilabay,
             R.drawable.ic_mainmenu_report,
-            R.drawable.ic_mainmenu_feedback,
             R.drawable.ic_mainmenu_information,
             R.drawable.ic_mainmenu_about
 
@@ -86,7 +74,6 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.textView_mainTitle.setText(mainMenu_title[position]);
-        holder.textView_mainContent.setText(mainMenu_content[position]);
         holder.imageView_mainIcon.setImageResource(mainMenu_icon[position]);
 
     }

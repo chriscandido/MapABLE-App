@@ -6,14 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorBackground"
+    android:background="@color/colorPrimary"
     tools:context=".ui.home.ReportingActivity">
 
     <!-- Top Navigation Menu -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorSecondary">
 
         <!-- Back button -->
         <TextView
@@ -21,21 +21,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:text="Back"
-            android:fontFamily="@font/poppins_light"
             android:clickable="true"
             style="@style/navigationText"/>
-
-        <!-- Title page -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_alignParentRight="true"
-            android:text="Report Incident"
-            style="@style/navigationText"/>
-
     </RelativeLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -48,158 +37,166 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_mainmenu_report"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="100dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="50dp"
+                    android:gravity="center"
+                    android:src="@drawable/ic_mainmenu_report"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:text="May Report Ako!"
+                    android:textAlignment="viewStart"
+                    style="@style/headerText"/>
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_gravity="center"
-                android:text="Simulan ang Pagrereport"
-                style="@style/headerText"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
                 android:layout_gravity="center"
                 android:text="@string/report_desc"
+                android:textColor="@color/colorAccent02"
+                style="@style/contentText"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_gravity="center"
+                android:text="Ang mga sumusunod na impormasyon ang iyong ilalagay sa incident report"
+                android:textColor="@color/colorAccent02"
                 style="@style/contentText"/>
             
             <!-- Incident Type  -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/bg_outlinedbutton"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:padding="40dp"
-                    android:layout_gravity="start"
-                    android:src="@drawable/ic_report_incident"
-                    android:alpha="0.5"/>
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="125dp"
+                    android:padding="10dp"
+                    android:background="@drawable/bg_box02"
+                    android:src="@drawable/ic_report_incident" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_gravity="center"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Uri ng Insidente"
+                        android:text="Uri ng"
                         android:textSize="15sp"
-                        android:fontFamily="@font/poppins"/>
+                        android:textColor="@color/colorText"
+                        android:fontFamily="@font/renogare_regular"/>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:text="Ito ay mga karaniwang environmental incidents (algal bloom, fish kill, at iba pa) na nangyayari sa Manila bay at sa watershed nito."
-                        android:textSize="10sp"
-                        android:fontFamily="@font/poppins_light"/>
-
+                        android:text="Insidente"
+                        android:textSize="15sp"
+                        android:textColor="@color/colorText"
+                        android:fontFamily="@font/renogare_regular"/>
                 </LinearLayout>
-
             </LinearLayout>
 
             <!-- Location of Incident -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/bg_outlinedbutton"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:padding="40dp"
-                    android:layout_gravity="start"
-                    android:src="@drawable/ic_report_location"
-                    android:alpha="0.5"/>
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="125dp"
+                    android:padding="10dp"
+                    android:background="@drawable/bg_box02"
+                    android:src="@drawable/ic_report_location" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_gravity="center"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:text="Lokasyon"
                         android:textSize="15sp"
-                        android:fontFamily="@font/poppins"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:text="Nagtatala ng coordinates (latitude at longitude) ng mga insidente upang matrack at magkaroon ng ideya kung saan nangyari ang insidente"
-                        android:textSize="10sp"
-                        android:fontFamily="@font/poppins_light"/>
-
+                        android:textColor="@color/colorText"
+                        android:fontFamily="@font/renogare_regular"/>
                 </LinearLayout>
-
             </LinearLayout>
 
             <!-- Take Photo -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/bg_outlinedbutton"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:padding="40dp"
-                    android:layout_gravity="start"
-                    android:src="@drawable/ic_report_camera"
-                    android:alpha="0.5"/>
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="125dp"
+                    android:padding="10dp"
+                    android:background="@drawable/bg_box02"
+                    android:src="@drawable/ic_report_camera" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_gravity="center"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:text="Larawan"
                         android:textSize="15sp"
-                        android:fontFamily="@font/poppins"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:text="Kumukuha ng litrato o larawan ng insidente upang magkaroon ng ebidensiya ukol sa pangyayari"
-                        android:textSize="10sp"
-                        android:fontFamily="@font/poppins_light"/>
+                        android:textColor="@color/colorText"
+                        android:fontFamily="@font/renogare_regular"/>
 
                 </LinearLayout>
 
             </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -209,41 +206,40 @@
                 <!-- Take Survey Button -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/button_report_takeSurvey"
-                    android:layout_width="match_parent"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginBottom="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginLeft="20dp"
-                    android:layout_below="@+id/camera_mainTitle"
-                    android:paddingBottom="10dp"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:text="Take Survey"
-                    android:textColor="@color/colorBackground"
+                    android:layout_gravity="center"
+                    android:backgroundTint="@color/colorText"
+                    android:text="Sagutan ang Form"
                     android:textSize="15sp"
-                    android:fontFamily="@font/montserrat"
-                    app:cornerRadius="10dp"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/renogare_regular"
+                    app:cornerRadius="20dp"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
                 <!-- Send Button -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/button_report_send"
-                    android:layout_width="match_parent"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginLeft="20dp"
-                    android:layout_below="@+id/camera_mainTitle"
-                    android:paddingBottom="10dp"
-                    android:backgroundTint="@color/colorAccent"
-                    android:text="Send"
-                    android:textColor="@color/colorBackground"
+                    android:layout_gravity="center"
+                    android:backgroundTint="@color/colorText"
+                    android:text="IPASA"
                     android:textSize="15sp"
-                    android:fontFamily="@font/montserrat"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/renogare_regular"
                     app:icon="@drawable/ic_report_send"
                     app:iconGravity="textStart"
-                    app:iconTint="@color/colorBackground"
+                    app:iconTint="@color/colorPrimary"
                     app:iconSize="25dp"
-                    app:cornerRadius="10dp"
+                    app:cornerRadius="20dp"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
             </LinearLayout>

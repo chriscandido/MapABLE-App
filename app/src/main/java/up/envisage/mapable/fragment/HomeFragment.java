@@ -90,11 +90,6 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
                 startActivity(report);
                 Log.d("[ HomeFragment.java ]", "onMenuClick: clicked - Report");
                 break;
-            case Constant.mainMenu_feedback:
-                Intent feedback = new Intent(listener, FeedbackActivity.class);
-                startActivity(feedback);
-                Log.d("[ HomeFragment.java ]", "onMenuClick: clicked - Feedback");
-                break;
             case Constant.mainMenu_information:
                 Intent information = new Intent(listener, InformationActivity.class);
                 startActivity(information);

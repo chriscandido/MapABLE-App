@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/colorBackground"
+    android:background="@color/colorPrimary"
     android:padding="10dp"
     android:orientation="vertical">
 
@@ -19,174 +19,227 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <!-- Incident Type -->
-            <TextView
-                android:id="@+id/textView_reportIncidentTitle_algalBloom"
-                style="@style/headerText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:text="@string/title_algalBloom"
-                android:textColor="@color/colorBlack"/>
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:elevation="10dp"
-                android:src="@drawable/img_algal_bloom"/>
-
-            <!-- Incident Type Summary -->
-            <TextView
-                android:id="@+id/textView_reportIncidentBody_algalBloom"
-                style="@style/contentText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="@string/desc_algalBloom"
-                android:textAlignment="center"
-                android:textColor="@color/colorNeutral" />
-
-            <!-- Question00 TextInput -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:text="Maikling salaysay"
-                android:textSize="15sp"
-                android:fontFamily="@font/poppins"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:text="Isang maikling salaysay tungkol sa nangyaring insidente. Maaring isulat kung kailan nagsimula, kung ano ang obserbasyon sa lugar, o hindi kaya ay kung ano ang naging dahilan ng insidente"
-                android:textColor="@color/colorNeutral"
-                android:textSize="12sp"
-                android:textAlignment="viewStart"
-                android:fontFamily="@font/poppins_light"/>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout_reportAlgalBloom"
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fontFamily="@font/poppins_light"
-                    android:minHeight="100dp"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                app:cardBackgroundColor="@color/colorAccent02"
+                app:cardCornerRadius="10dp"
+                app:cardPreventCornerOverlap="true">
 
-            <!-- Question01 Spinner -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:text="Gaano katagal naoobserbahan ang liya sa tubig?"
-                    android:textSize="15sp"
-                    android:textAlignment="textStart"
-                    android:fontFamily="@font/poppins"/>
-
-                <Spinner
-                    android:id="@+id/spinner_reportAgalBloom_q01"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:textColor="@color/colorBackground"
-                    android:textSize="9sp"
-                    android:textAlignment="viewStart"/>
+                    android:orientation="vertical">
 
-            </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-            <!-- Question02 Spinner -->
-            <LinearLayout
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_map_algalbloom"/>
+
+                        <!-- Incident Type -->
+                        <TextView
+                            android:id="@+id/textView_reportIncidentTitle_algalBloom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:text="@string/title_algalBloom"
+                            android:textColor="@color/colorAccent"
+                            style="@style/headerText"/>
+
+                    </LinearLayout>
+
+                    <!-- Incident Type Summary -->
+                    <TextView
+                        android:id="@+id/textView_reportIncidentBody_algalBloom"
+                        style="@style/contentText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="@string/desc_algalBloom"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorSecondary"
+                        android:fontFamily="@font/renogare_regular"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:text="May kakaibang amoy bang nagmumula sa tubig?"
-                    android:textSize="15sp"
-                    android:textAlignment="textStart"
-                    android:fontFamily="@font/poppins"/>
-
-                <Spinner
-                    android:id="@+id/spinner_reportAgalBloom_q02"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:textColor="@color/colorBackground"
-                    android:textSize="9sp"
-                    android:textAlignment="viewStart"/>
-
-            </LinearLayout>
-
-            <!-- Question03 Spinner -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:text="May mga namamatay na bang isda malapit o sa lugar kung saan may liya?"
-                    android:textSize="15sp"
-                    android:textAlignment="textStart"
-                    android:fontFamily="@font/poppins"/>
-
-                <Spinner
-                    android:id="@+id/spinner_reportAgalBloom_q03"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:textColor="@color/colorBackground"
-                    android:textSize="9sp"
-                    android:textAlignment="viewStart"/>
-
-            </LinearLayout>
-
-            <!-- Question04 TextInput -->
-            <TextView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:text="Kundisyon ng tubig"
-                android:textSize="15sp"
-                android:fontFamily="@font/poppins"/>
+                android:layout_margin="5dp"
+                app:cardBackgroundColor="@color/colorAccent02"
+                app:cardCornerRadius="10dp"
+                app:cardPreventCornerOverlap="true">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout_reportAlgalBloom_q04"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-                <com.google.android.material.textfield.TextInputEditText
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fontFamily="@font/poppins" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Question00 TextInput -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="Maikling salaysay"
+                        android:textSize="15sp"
+                        android:textColor="@color/colorAccent"
+                        android:fontFamily="@font/renogare_regular"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="Isang maikling salaysay tungkol sa nangyaring insidente. Maaring isulat kung kailan nagsimula, kung ano ang obserbasyon sa lugar, o hindi kaya ay kung ano ang naging dahilan ng insidente"
+                        android:textSize="12sp"
+                        android:textColor="@color/colorSecondary"
+                        android:textAlignment="viewStart"
+                        android:fontFamily="@font/renogare_regular"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayout_reportAlgalBloom"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        app:boxBackgroundColor="@color/colorBackground"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/renogare_regular"
+                            android:minHeight="100dp"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Question01 Spinner -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="Gaano katagal naoobserbahan ang liya sa tubig?"
+                            android:textSize="15sp"
+                            android:textColor="@color/colorAccent"
+                            android:textAlignment="textStart"
+                            android:fontFamily="@font/renogare_regular"/>
+
+                        <Spinner
+                            android:id="@+id/spinner_reportAgalBloom_q01"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textSize="9sp"
+                            android:textColor="@color/colorBackground"
+                            android:textAlignment="viewStart"/>
+
+                    </LinearLayout>
+
+                    <!-- Question02 Spinner -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="May kakaibang amoy bang nagmumula sa tubig?"
+                            android:textSize="15sp"
+                            android:textColor="@color/colorAccent"
+                            android:textAlignment="textStart"
+                            android:fontFamily="@font/renogare_regular"/>
+
+                        <Spinner
+                            android:id="@+id/spinner_reportAgalBloom_q02"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textColor="@color/colorBackground"
+                            android:textSize="9sp"
+                            android:textAlignment="viewStart"/>
+
+                    </LinearLayout>
+
+                    <!-- Question03 Spinner -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="May mga namamatay na bang isda malapit o sa lugar kung saan may liya?"
+                            android:textSize="15sp"
+                            android:textColor="@color/colorAccent"
+                            android:textAlignment="textStart"
+                            android:fontFamily="@font/renogare_regular"/>
+
+                        <Spinner
+                            android:id="@+id/spinner_reportAgalBloom_q03"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textColor="@color/colorBackground"
+                            android:textSize="9sp"
+                            android:textAlignment="viewStart"/>
+
+                    </LinearLayout>
+
+                    <!-- Question04 TextInput -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="Kundisyon ng tubig"
+                        android:textSize="15sp"
+                        android:textColor="@color/colorAccent"
+                        android:fontFamily="@font/renogare_regular"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayout_reportAlgalBloom_q04"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        app:boxBackgroundColor="@color/colorBackground"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/renogare_regular" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
 
             <!-- Next Button -->
             <com.google.android.material.button.MaterialButton
@@ -194,11 +247,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
-                android:backgroundTint="@color/colorAccent"
-                android:text="Next"
+                android:backgroundTint="@color/colorText"
+                android:text="SUNOD"
                 android:textSize="15sp"
-                android:textColor="@color/colorBackground"
-                android:fontFamily="@font/montserrat" />
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/renogare_regular"
+                app:cornerRadius="20dp"/>
 
         </LinearLayout>
 

@@ -52,10 +52,9 @@ public class UserFragment extends Fragment {
         textView_user_name = view.findViewById(R.id.textView_user_name);
         textView_user_username = view.findViewById(R.id.textView_user_username);
         textView_user_email = view.findViewById(R.id.textView_user_email);
-        textView_user_reports = view.findViewById(R.id.textView_user_reports);
 
         userDetails();
-        reportDetails();
+        //reportDetails();
 
     }
 
@@ -76,7 +75,7 @@ public class UserFragment extends Fragment {
     }
 
     //----------------------------------------------------------------------------------------------Get report details from local db
-    public void reportDetails() {
+    /**public void reportDetails() {
         reportViewModel = ViewModelProviders.of(UserFragment.this).get(ReportViewModel.class);
         reportViewModel.getAllReports().observe(UserFragment.this, new Observer<List<ReportTable>>() {
             @Override
@@ -85,5 +84,5 @@ public class UserFragment extends Fragment {
                 textView_user_reports.setText(String.valueOf(numOfReports));
             }
         });
-    }
+    }**/
 }

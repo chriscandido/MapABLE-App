@@ -4,55 +4,55 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
     android:orientation="vertical"
     android:tag="cards main container">
-    
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView_mainMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="2dp"
-        android:padding="10dp"
-        app:cardBackgroundColor="@color/colorBackground"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        app:cardBackgroundColor="@color/colorPrimary"
         app:cardCornerRadius="10dp"
-        app:cardElevation="5dp"
-        app:cardUseCompatPadding="true">
+        app:cardPreventCornerOverlap="true">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
+            android:background="@drawable/bg_cardslayout"
             android:orientation="horizontal">
 
+            <!-- Main Menu Icon -->
             <ImageView
                 android:id="@+id/imageView_mainIcon"
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="end"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="12dp"
+                android:layout_gravity="center"
                 android:src="@drawable/ic_launcher_background"/>
 
+            <!-- Main Menu Title -->
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_margin ="5dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textView_mainTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center_vertical"
                     android:text="Title"
-                    android:textSize="15sp"
-                    android:fontFamily="@font/poppins_semibold" />
-
-                <TextView
-                    android:id="@+id/textView_mainContent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:text="Lorem ipsum"
-                    android:textSize="10sp"
-                    android:fontFamily="@font/poppins_light"/>
+                    android:textSize="20sp"
+                    android:textColor="@color/colorText"
+                    android:textAlignment="viewStart"
+                    android:fontFamily="@font/renogare_regular" />
 
             </LinearLayout>
 

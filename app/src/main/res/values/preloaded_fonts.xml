@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
-        <item>@font/comfortaa</item>
-        <item>@font/comfortaa_bold</item>
-        <item>@font/maven_pro_medium</item>
-        <item>@font/montserrat</item>
-        <item>@font/montserrat_alternates</item>
-        <item>@font/montserrat_alternates_bold</item>
-        <item>@font/montserrat_bold</item>
-        <item>@font/news_cycle_bold</item>
-        <item>@font/poppins</item>
-        <item>@font/poppins_bold</item>
-        <item>@font/poppins_light</item>
-        <item>@font/poppins_semibold</item>
     </array>
 </resources>

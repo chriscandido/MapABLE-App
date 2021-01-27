@@ -17,16 +17,7 @@
             android:layout_margin="10dp"
             android:layout_alignParentLeft="true"
             android:text="Back"
-            android:fontFamily="@font/poppins_light"
-            style="@style/navigationText"/>
-
-        <!-- Title page -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_alignParentRight="true"
-            android:text="About Manila Bay"
+            android:fontFamily="@font/renogare_regular"
             style="@style/navigationText"/>
 
     </RelativeLayout>

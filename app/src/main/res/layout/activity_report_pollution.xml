@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/colorBackground"
+    android:background="@color/colorPrimary"
     android:padding="10dp"
     android:orientation="vertical">
 
@@ -19,260 +19,318 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView_reportIncidentTitle_pollution"
-                android:layout_width="wrap_content"
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_gravity="center"
-                android:text="@string/title_pollution"
-                android:textColor="@color/colorBlack"
-                style="@style/headerText"/>
+                android:layout_margin="5dp"
+                app:cardBackgroundColor="@color/colorAccent02"
+                app:cardCornerRadius="10dp"
+                app:cardPreventCornerOverlap="true">
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:elevation="10dp"
-                android:src="@drawable/img_pollution"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView_reportIncidentBody_pollution"
-                android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_map_waterpollution"/>
+
+                        <TextView
+                            android:id="@+id/textView_reportIncidentTitle_pollution"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:layout_gravity="center"
+                            android:text="@string/title_pollution"
+                            android:textColor="@color/colorAccent"
+                            style="@style/headerText"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView_reportIncidentBody_pollution"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="@string/desc_pollution"
+                        android:textColor="@color/colorSecondary"
+                        android:textAlignment="viewStart"
+                        android:fontFamily="@font/renogare_regular"
+                        style="@style/contentText"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="@string/desc_pollution"
-                android:textAlignment="center"
-                android:textColor="@color/colorNeutral"
-                style="@style/contentText"/>
+                android:layout_margin="5dp"
+                app:cardBackgroundColor="@color/colorAccent02"
+                app:cardCornerRadius="10dp"
+                app:cardPreventCornerOverlap="true">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:text="Maikling Salaysay"
-                android:textSize="15sp"
-                android:fontFamily="@font/poppins"/>
-
-            <!-- Question00 TextInputLayout -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:text="Isang maikling salaysay tungkol sa nangyaring insidente. Maaring isulat kung kailan nagsimula, kung ano ang obserbasyon sa lugar, o hindi kaya ay kung ano ang naging dahilan ng insidente"
-                android:textSize="12sp"
-                android:textAlignment="viewStart"
-                android:fontFamily="@font/poppins_light"/>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout_reportPollution"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fontFamily="@font/poppins"
-                    android:minHeight="100dp"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <!-- Question01 Spinner -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:text="Apektadong tubig"
-                    android:textSize="15sp"
-                    android:textAlignment="textStart"
-                    android:fontFamily="@font/poppins"/>
-
-                <Spinner
-                    android:id="@+id/spinner_reportPollution_q01"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:textColor="@color/colorNeutral"
-                    android:textSize="9sp"
-                    android:textAlignment="viewStart"/>
+                    android:orientation="vertical">
 
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="Maikling Salaysay"
+                        android:textSize="15sp"
+                        android:textColor="@color/colorAccent"
+                        android:fontFamily="@font/renogare_regular"/>
 
-            <!-- Question02 Spinner -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                    <!-- Question00 TextInputLayout -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="Isang maikling salaysay tungkol sa nangyaring insidente. Maaring isulat kung kailan nagsimula, kung ano ang obserbasyon sa lugar, o hindi kaya ay kung ano ang naging dahilan ng insidente"
+                        android:textSize="12sp"
+                        android:textColor="@color/colorSecondary"
+                        android:textAlignment="viewStart"
+                        android:fontFamily="@font/renogare_regular"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:text="Anong klaseng polusyon ang iyong naobserbahan?"
-                    android:textSize="15sp"
-                    android:textAlignment="textStart"
-                    android:fontFamily="@font/poppins"/>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayout_reportPollution"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        app:boxBackgroundColor="@color/colorBackground"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/renogare_regular"
+                            android:minHeight="100dp"/>
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                <Spinner
-                    android:id="@+id/spinner_reportPollution_q02"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:textColor="@color/colorBackground"
-                    android:textSize="9sp"
-                    android:textAlignment="viewStart"/>
+                    <!-- Question01 Spinner -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
-            </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="Apektadong tubig"
+                            android:textSize="15sp"
+                            android:textColor="@color/colorAccent"
+                            android:textAlignment="textStart"
+                            android:fontFamily="@font/renogare_regular"/>
 
-            <!-- Question03 Spinner -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                        <Spinner
+                            android:id="@+id/spinner_reportPollution_q01"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textSize="9sp"
+                            android:textColor="@color/colorPrimary"
+                            android:textAlignment="viewStart"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:text="Kailan mo unang naobsebahan ang polusyon?"
-                    android:textSize="15sp"
-                    android:textAlignment="textStart"
-                    android:fontFamily="@font/poppins"/>
+                    </LinearLayout>
 
-                <Spinner
-                    android:id="@+id/spinner_reportPollution_q03"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:textSize="9sp"
-                    android:textColor="@color/colorBackground"
-                    android:textAlignment="viewStart"/>
+                    <!-- Question02 Spinner -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
-            </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="Anong klaseng polusyon ang iyong naobserbahan?"
+                            android:textSize="15sp"
+                            android:textColor="@color/colorAccent"
+                            android:textAlignment="textStart"
+                            android:fontFamily="@font/renogare_regular"/>
 
-            <!-- Question04 Spinner -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                        <Spinner
+                            android:id="@+id/spinner_reportPollution_q02"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textSize="9sp"
+                            android:textColor="@color/colorPrimary"
+                            android:textAlignment="viewStart"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:text="May kakaibang amoy bang nagmumula sa tubig?"
-                    android:textSize="15sp"
-                    android:textAlignment="textStart"
-                    android:fontFamily="@font/poppins"/>
+                    </LinearLayout>
 
-                <Spinner
-                    android:id="@+id/spinner_reportPollution_q04"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:textColor="@color/colorBackground"
-                    android:textSize="9sp"
-                    android:textAlignment="viewStart"/>
+                    <!-- Question03 Spinner -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
-            </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="Kailan mo unang naobsebahan ang polusyon?"
+                            android:textSize="15sp"
+                            android:textColor="@color/colorAccent"
+                            android:textAlignment="textStart"
+                            android:fontFamily="@font/renogare_regular"/>
 
-            <!-- Question05 TextInput -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:text="Ilarawan ang itsura ng tubig (kulay, etc.)"
-                android:textSize="15sp"
-                android:fontFamily="@font/poppins"/>
+                        <Spinner
+                            android:id="@+id/spinner_reportPollution_q03"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textSize="9sp"
+                            android:textColor="@color/colorPrimary"
+                            android:textAlignment="viewStart"/>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout_reportPollution_q05"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fontFamily="@font/poppins" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
 
-            <!-- Question06 Spinner -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                    <!-- Question04 Spinner -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:text="Nagdudulot ba ng iba pang problema ang polusyon tulad ng liya o pagkamatay ng isda?"
-                    android:textSize="15sp"
-                    android:textAlignment="textStart"
-                    android:fontFamily="@font/poppins"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="May kakaibang amoy bang nagmumula sa tubig?"
+                            android:textSize="15sp"
+                            android:textColor="@color/colorAccent"
+                            android:textAlignment="textStart"
+                            android:fontFamily="@font/renogare_regular"/>
 
-                <Spinner
-                    android:id="@+id/spinner_reportPollution_q06"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:textColor="@color/colorBackground"
-                    android:textSize="9sp"
-                    android:textAlignment="viewStart"/>
+                        <Spinner
+                            android:id="@+id/spinner_reportPollution_q04"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textSize="9sp"
+                            android:textColor="@color/colorPrimary"
+                            android:textAlignment="viewStart"/>
 
-            </LinearLayout>
+                    </LinearLayout>
 
-            <!-- Question07 TextInput -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:text="Pangalan ng istruktura o pasilidad ng pnagmumulan ng polusyon sa tubig (Ilagay ang Wala kung hindi kilala):"
-                android:textSize="15sp"
-                android:fontFamily="@font/poppins"/>
+                    <!-- Question05 TextInput -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="Ilarawan ang itsura ng tubig (kulay, etc.)"
+                        android:textSize="15sp"
+                        android:textColor="@color/colorAccent"
+                        android:fontFamily="@font/renogare_regular"/>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout_reportPollution_q07"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fontFamily="@font/poppins" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayout_reportPollution_q05"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        app:boxBackgroundColor="@color/colorBackground"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/renogare_regular" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Question06 Spinner -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="Nagdudulot ba ng iba pang problema ang polusyon tulad ng liya o pagkamatay ng isda?"
+                            android:textSize="15sp"
+                            android:textColor="@color/colorAccent"
+                            android:textAlignment="textStart"
+                            android:fontFamily="@font/renogare_regular"/>
+
+                        <Spinner
+                            android:id="@+id/spinner_reportPollution_q06"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textSize="9sp"
+                            android:textColor="@color/colorPrimary"
+                            android:textAlignment="viewStart"/>
+
+                    </LinearLayout>
+
+                    <!-- Question07 TextInput -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="Pangalan ng istruktura o pasilidad ng pnagmumulan ng polusyon sa tubig (Ilagay ang Wala kung hindi kilala):"
+                        android:textSize="15sp"
+                        android:textColor="@color/colorAccent"
+                        android:fontFamily="@font/renogare_regular"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayout_reportPollution_q07"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        app:boxBackgroundColor="@color/colorBackground"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/renogare_regular" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_reportPollution_next"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
-                android:backgroundTint="@color/colorAccent"
-                android:text="Next"
+                android:backgroundTint="@color/colorText"
+                android:text="SUNOD"
                 android:textSize="15sp"
-                android:textColor="@color/colorBackground"
-                android:fontFamily="@font/montserrat" />
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/renogare_regular"
+                app:cornerRadius="20dp"/>
 
         </LinearLayout>
 

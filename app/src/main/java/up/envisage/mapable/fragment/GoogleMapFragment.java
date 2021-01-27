@@ -69,7 +69,7 @@ public class GoogleMapFragment extends FragmentActivity
         final LatLng[] pinnedLocation = new LatLng[1];
 
         //Add marker, move camera and zoom level
-        final LatLng[] location = {new LatLng(12.65017682702677, 122.54032239317894)};
+        final LatLng[] location = {new LatLng(14.5188, 120.7580)};
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location[0], 12.0f));
 
         //Marker icon

@@ -22,22 +22,20 @@
     <!-- Submit Button -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_googleMap_submit"
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_margin ="20dp"
-        android:backgroundTint="@color/colorAccent"
-        android:text="Submit"
+        android:backgroundTint="@color/colorText"
+        android:text="Ipasa"
         android:textSize="15sp"
-        android:textColor="@color/colorBackground"
-        android:fontFamily="@font/montserrat"
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="@font/renogare_regular"
         app:icon="@drawable/ic_report_send"
-        app:iconGravity="start"
-        app:iconTint="@color/colorBackground"
+        app:iconTint="@color/colorPrimary"
         app:iconSize="25dp"
-        app:cornerRadius="10dp"
+        app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/google_map"
         app:layout_constraintEnd_toEndOf="@+id/google_map"
         app:layout_constraintStart_toStartOf="@+id/google_map"
         style="@style/Widget.MaterialComponents.Button"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
