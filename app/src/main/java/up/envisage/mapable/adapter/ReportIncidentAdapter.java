@@ -58,7 +58,7 @@ public class ReportIncidentAdapter extends RecyclerView.Adapter<ReportIncidentAd
             R.string.title_algalBloom,
             R.string.title_fishKill,
             R.string.title_pollution,
-            R.string.title_illegalFishing,
+            R.string.title_waterHyacinth,
             R.string.title_illegalReclamation
     };
 

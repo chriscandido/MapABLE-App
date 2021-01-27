@@ -1,5 +1,8 @@
 package up.envisage.mapable.fragment;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -21,6 +24,9 @@ import up.envisage.mapable.db.table.ReportTable;
 import up.envisage.mapable.db.table.UserTable;
 import up.envisage.mapable.model.ReportViewModel;
 import up.envisage.mapable.model.UserViewModel;
+import up.envisage.mapable.ui.home.MyReportActivity;
+import up.envisage.mapable.ui.home.ReportIncidentActivity;
+import up.envisage.mapable.ui.home.ReportingActivity;
 
 public class UserFragment extends Fragment {
 
@@ -29,10 +35,17 @@ public class UserFragment extends Fragment {
     private RecyclerView.LayoutManager layoutManager;
     private FragmentActivity listener;
 
-    TextView textView_user_name, textView_user_username, textView_user_email, textView_user_reports;
+    TextView textView_user_name, textView_user_username, textView_user_email, textView_user_myReport;
 
     ReportViewModel reportViewModel;
     UserViewModel userViewModel;
+
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof Activity){
+            this.listener = (FragmentActivity) context;
+        }
+    }
 
     public void onCreate(@Nullable Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -55,6 +68,14 @@ public class UserFragment extends Fragment {
 
         userDetails();
         //reportDetails();
+        textView_user_myReport = view.findViewById(R.id.textView_user_myReport);
+        textView_user_myReport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myReport = new Intent(listener, MyReportActivity.class);
+                startActivity(myReport);
+            }
+        });
 
     }
 

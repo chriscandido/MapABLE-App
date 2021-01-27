@@ -60,6 +60,8 @@
         <activity android:name=".ui.home.report.ReportFishKill" />
         <activity android:name=".ui.home.report.ReportPollution" />
         <activity android:name=".ui.home.report.ReportIllegalReclamation" />
+        <!-- User Profile -->
+        <activity android:name=".ui.home.MyReportActivity"/>
         <!-- Fonts -->
         <meta-data
             android:name="preloaded_fonts"
