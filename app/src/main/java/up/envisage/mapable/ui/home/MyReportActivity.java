@@ -1,9 +1,10 @@
 package up.envisage.mapable.ui.home;
 
-import android.os.AsyncTask;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.LinearLayout;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -15,10 +16,9 @@ import java.util.List;
 
 import up.envisage.mapable.R;
 import up.envisage.mapable.adapter.MyReportAdapter;
-import up.envisage.mapable.db.Database;
 import up.envisage.mapable.db.table.ReportTable;
+import up.envisage.mapable.fragment.UserFragment;
 import up.envisage.mapable.model.ReportViewModel;
-import up.envisage.mapable.model.UserViewModel;
 
 public class MyReportActivity extends AppCompatActivity implements MyReportAdapter.OnReportClickListener {
 
@@ -26,6 +26,8 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
     private ReportViewModel reportViewModel;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+
+    private TextView textView_myReport_back;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -43,6 +45,16 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
                 Log.v("[ MyReportActivity ]", "Number of Reports: " + reportTables.get(1).getIncidentType());
             }
         });
+
+        textView_myReport_back = findViewById(R.id.textView_myReport_back);
+        textView_myReport_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myReportBack = new Intent(MyReportActivity.this, UserFragment.class);
+                startActivity(myReportBack);
+            }
+        });
+
     }
 
     @Override
