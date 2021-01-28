@@ -43,6 +43,7 @@ import up.envisage.mapable.db.table.UserTable;
 import up.envisage.mapable.model.ReportViewModel;
 import up.envisage.mapable.model.UserViewModel;
 import up.envisage.mapable.ui.home.report.ReportClassResult;
+import up.envisage.mapable.ui.registration.LoginActivity;
 import up.envisage.mapable.ui.registration.RetrofitInterface;
 
 public class ReportingActivity extends AppCompatActivity {
@@ -72,7 +73,7 @@ public class ReportingActivity extends AppCompatActivity {
 
         userViewModel.getLastUser().observe(ReportingActivity.this, UserTable -> {
             outUserId = UserTable.getUniqueId();
-            Log.v("[ReportingActivity.java userID from local]:",  "UserID: " + outUserId);
+            Log.v("[ReportingActivity.java userID from local]:", "UserID: " + outUserId);
         });
 
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
@@ -178,10 +179,30 @@ public class ReportingActivity extends AppCompatActivity {
                             if (response.code() == 200) {
                                 Toast.makeText(ReportingActivity.this, "Report Sent Successfully",
                                         Toast.LENGTH_LONG).show();
-
                             } else if (response.code() == 400){
                                 Toast.makeText(ReportingActivity.this, "Error Sending Report",
                                         Toast.LENGTH_LONG).show();
+                                ReportTable report = new ReportTable();
+                                report.setUniqueId(outUserId);
+                                report.setDateTime(dateTime);
+                                report.setIncidentType(incidentType);
+                                report.setReport(Report);
+                                report.setLatitude(Double.parseDouble(lat));
+                                report.setLongitude(Double.parseDouble(lon));
+                                report.setPhoto(image);
+                                reportViewModel.insert(report);
+                            } else if (response.code() == 504){
+                                Toast.makeText(ReportingActivity.this, "Timeout",
+                                        Toast.LENGTH_LONG).show();
+                                ReportTable report = new ReportTable();
+                                report.setUniqueId(outUserId);
+                                report.setDateTime(dateTime);
+                                report.setIncidentType(incidentType);
+                                report.setReport(Report);
+                                report.setLatitude(Double.parseDouble(lat));
+                                report.setLongitude(Double.parseDouble(lon));
+                                report.setPhoto(image);
+                                reportViewModel.insert(report);
                             }
                         }
 
@@ -233,7 +254,7 @@ public class ReportingActivity extends AppCompatActivity {
                     });
                 }
                 else{ //if no internet connection, report is stored in the local database
-                    Toast.makeText(ReportingActivity.this, "No Internet Connection",
+                    Toast.makeText(ReportingActivity.this, "No Internet Connection. Report will be saved in the device!",
                             Toast.LENGTH_LONG).show();
 
                     ReportTable report = new ReportTable();
