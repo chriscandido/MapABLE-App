@@ -272,7 +272,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginBottom="10dp"
-            android:text="I AGREE WITH THE TERMS AND CONDITION"
+            android:text="I AGREE WITH THE TERMS AND CONDITIONS"
             android:textSize="9sp"
             android:textColor="@color/colorAccent02"
             android:fontFamily="@font/renogare_regular"/>

@@ -20,14 +20,14 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="150dp"
-            android:layout_marginTop="75dp"
+            android:layout_marginTop="60dp"
             android:src="@drawable/logo_masdan_02"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Mag sign-up"
+            android:text="Mag-Signup"
             android:textSize="20sp"
             android:textColor="@color/colorAccent"
             android:fontFamily="@font/renogare_regular"/>
@@ -36,91 +36,105 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout_registerName"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="5dp"
+            android:layout_height="55dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:textColorHint="@color/colorAccent02"
             app:boxStrokeColor="@color/colorBackground"
+            app:hintTextColor="@color/colorAccent02"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:gravity="center_vertical"
                 android:hint="Pangalan"
-                android:textSize="20sp"
+                android:textSize="15sp"
+                android:textColor="@color/colorAccent02"
                 android:fontFamily="@font/renogare_regular" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout_registerMobileNum"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="55dp"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:textColorHint="@color/colorAccent02"
             app:boxStrokeColor="@color/colorBackground"
+            app:hintTextColor="@color/colorAccent02"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
                 android:hint="Mobile Number"
-                android:textSize="20sp"
+                android:textSize="15sp"
+                android:textColor="@color/colorAccent02"
                 android:fontFamily="@font/renogare_regular"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout_registerEmail"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="55dp"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:textColorHint="@color/colorAccent02"
             app:boxStrokeColor="@color/colorBackground"
+            app:hintTextColor="@color/colorAccent02"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
                 android:hint="Email"
-                android:textSize="20sp"
+                android:textSize="15sp"
+                android:textColor="@color/colorAccent02"
                 android:fontFamily="@font/renogare_regular"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout_registerUsername"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="55dp"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:textColorHint="@color/colorAccent02"
             app:boxStrokeColor="@color/colorBackground"
+            app:hintTextColor="@color/colorAccent02"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
                 android:hint="Username"
-                android:textSize="20sp"
+                android:textSize="15sp"
+                android:textColor="@color/colorAccent02"
                 android:fontFamily="@font/renogare_regular"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout_registerPassword"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="55dp"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:textColorHint="@color/colorAccent02"
             app:boxStrokeColor="@color/colorBackground"
+            app:hintTextColor="@color/colorAccent02"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
             <com.google.android.material.textfield.TextInputEditText
                 android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
                 android:hint="Password"
-                android:textSize="20sp"
+                android:textSize="15sp"
+                android:textColor="@color/colorAccent02"
                 android:fontFamily="@font/renogare_regular"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -164,7 +178,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@+id/textView_registerText01"
-                android:text="Login"
+                android:text="MAG-LOGIN"
                 android:textSize="15sp"
                 android:textColor="@color/colorAccent"
                 android:fontFamily="@font/renogare_regular"

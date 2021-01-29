@@ -55,6 +55,7 @@
                 android:id="@+id/textView_user_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp"
                 android:layout_gravity="center"
                 android:text="juandelacruz@gmail.com"
                 android:textSize="15sp"
@@ -62,27 +63,9 @@
                 android:textStyle="normal"
                 android:fontFamily="@font/renogare_regular"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="20dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/renogare_regular"
-                    android:gravity="center"
-                    android:text="Report Info"
-                    android:textColor="@color/colorText"
-                    android:textSize="25sp" />
-
-            </LinearLayout>
-
             <!-- Reports -->
             <LinearLayout
-                android:layout_width="200dp"
+                android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="20dp"
@@ -145,7 +128,7 @@
 
             <!-- Points -->
             <LinearLayout
-                android:layout_width="200dp"
+                android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="20dp"
