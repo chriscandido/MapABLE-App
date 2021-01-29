@@ -1,9 +1,13 @@
 package up.envisage.mapable.ui.home;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
@@ -16,15 +20,35 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.widget.Toast;
+
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
 import up.envisage.mapable.fragment.GoogleMapFragment;
 import up.envisage.mapable.fragment.SupportFragment;
+import up.envisage.mapable.model.UserViewModel;
+import up.envisage.mapable.ui.home.report.FeedbackResult;
 import up.envisage.mapable.ui.home.report.ReportPollution;
+import up.envisage.mapable.ui.registration.RetrofitInterface;
 
 public class FeedbackActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+
+    private Retrofit retrofit;
+    private RetrofitInterface retrofitInterface;
+    private String BASE_URL = "http://ec2-54-91-89-105.compute-1.amazonaws.com/";
 
     private TextView textView_feedback_back;
     private TextInputLayout textInputLayout_feedback_q01, textInputLayout_feedback_q02;
@@ -33,10 +57,46 @@ public class FeedbackActivity extends AppCompatActivity implements AdapterView.O
                     input09, input10, input11, input12, input13, input14, input15, input16, input17;
     private List<String> out = new ArrayList<>();
 
+    private UserViewModel userViewModel;
+
+    String outUserId;
+
+    public Boolean connection;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
+
+        connection = isNetworkAvailable();
+
+        userViewModel = ViewModelProviders.of(FeedbackActivity.this).get(UserViewModel.class);
+
+        userViewModel.getLastUser().observe(FeedbackActivity.this, UserTable -> {
+            outUserId = UserTable.getUniqueId();
+        });
+
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+
+        //Set your desired log level
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        //Add your other interceptors …
+        httpClient.connectTimeout(5, TimeUnit.MINUTES) // connect timeout
+                .writeTimeout(5, TimeUnit.MINUTES) // write timeout
+                .readTimeout(5, TimeUnit.MINUTES); // read timeout
+
+        //Add logging as last interceptor
+        httpClient.addInterceptor(logging);  // <-- this is the important line!
+
+        retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(httpClient.build())
+                .build();
+
+        retrofitInterface = retrofit.create(RetrofitInterface.class);
 
         Spinner spinner_feedback_q01  = findViewById(R.id.spinner_feedback_q01);
         Spinner spinner_feedback_q02  = findViewById(R.id.spinner_feedback_q02);
@@ -277,8 +337,44 @@ public class FeedbackActivity extends AppCompatActivity implements AdapterView.O
 
                 Gson gson = new Gson();
                 String answer = gson.toJson(out);
-                Intent intent = new Intent(FeedbackActivity.this, MainActivity.class);
-                startActivity(intent);
+
+                HashMap<String, String> map = new HashMap<>();
+                map.put("userID", outUserId);
+                map.put("model", input00);
+                map.put("feedback", answer);
+                Log.v("[FeedbackActivity.java]", "Feedback:" + answer);
+
+                if(connection == true){
+                    Call<FeedbackResult> call = retrofitInterface.submitFeedback(map);
+
+                    call.enqueue(new Callback<FeedbackResult>() {
+                        @Override
+                        public void onResponse(Call<FeedbackResult> call, Response<FeedbackResult> response) {
+                            if (response.code() == 200) {
+                                Toast.makeText(FeedbackActivity.this, "Feedback Sent Successfully",
+                                        Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(FeedbackActivity.this, MainActivity.class);
+                                startActivity(intent);
+                            } else if (response.code() == 400){
+                                Toast.makeText(FeedbackActivity.this, "Error Sending Feedback",
+                                        Toast.LENGTH_LONG).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<FeedbackResult> call, Throwable t) {
+                            Toast.makeText(FeedbackActivity.this, t.getMessage(),
+                                    Toast.LENGTH_LONG).show();
+                            Log.v("OnFailure Error Message", t.getMessage());
+                        }
+
+
+                    });
+                } else {
+                    Toast.makeText(FeedbackActivity.this, "No Internet Connection",
+                            Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 
@@ -291,6 +387,12 @@ public class FeedbackActivity extends AppCompatActivity implements AdapterView.O
         });
 
 
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
     public void onStart(){

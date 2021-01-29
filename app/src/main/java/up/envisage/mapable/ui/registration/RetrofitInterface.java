@@ -8,6 +8,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.QueryMap;
+import up.envisage.mapable.ui.home.report.FeedbackResult;
 import up.envisage.mapable.ui.home.report.ReportClassResult;
 
 public interface RetrofitInterface {
@@ -24,5 +25,8 @@ public interface RetrofitInterface {
 
     @POST("/reports/submit")
     Call<ReportClassResult> executeReportSubmit(@Body HashMap<String, String> map);
+
+    @POST("/feedback/submit")
+    Call<FeedbackResult> submitFeedback(@Body HashMap<String, String> map);
 
 }

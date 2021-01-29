@@ -53,6 +53,7 @@
         <activity android:name=".ui.home.AboutActivity" />
         <activity android:name=".ui.home.ReportIncidentActivity" />
         <activity android:name=".ui.home.CameraActivity" />
+        <activity android:name=".fragment.SupportFragment" />
         <activity
             android:name=".fragment.GoogleMapFragment"
             android:label="Google Maps" />
