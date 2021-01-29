@@ -10,7 +10,7 @@
         ng Department of Science and Technology (DOST) sa pangangasiwa ng Philippine Council for Industry, Energy,
         and Emerging Technology Research and Development (DOST-PCIEERD). Ito ay naglalayong magbigay ng siyentipikong
         impormasyon tungkol sa Manila Bay, sa tubig-saluran nito, at sa iba pang sistemang pangkalikasang nakakonekta
-        rito Ang mga impormasyong ito ay magagamit sa paggawa ng o pagsasaayos ng mga polisiya at programa para sa
+        rito. Ang mga impormasyong ito ay magagamit sa paggawa ng o pagsasaayos ng mga polisiya at programa para sa
         rehabilitasyon at pangangasiwa ng look.
     </string>
 
@@ -48,9 +48,9 @@
 
     <string name="desc01_MapABLE">Ang Development of Integrated Mapping, Monitoring, and Analytical Network System for Manila Bay
         and Linked Environments (Project MapABLE) ay isinasagawa sa pangangasiwa ni Dr. Ariel Blanco ng UP Training Center for
-        Applied Geodesy and Photogrammetry (UPTCAGP). Ito ay naglalayong bumuo at maglunsad ng isang Sistema para sa pagmamapa at
+        Applied Geodesy and Photogrammetry (UP TCAGP). Ito ay naglalayong bumuo at maglunsad ng isang Sistema para sa pagmamapa at
         pagmomonitor ng water quality hindi lamang sa Manila Bay kung hindi maging sa mga pangunahing ilog na nakakabit dito sa
-        pamamagitan ng geospatial technology at citizen science. Para sa karagdagang impormasyon, maaaring bisitahin ang
+        pamamagitan ng geospatial technology at citizen science. Para sa karagdagang impormasyon, maaaring bisitahin ang https://www.facebook.com/ProjectMapABLE
     </string>
 
 </resources>

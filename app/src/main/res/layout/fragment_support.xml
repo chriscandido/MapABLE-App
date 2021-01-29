@@ -97,14 +97,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="Privay Policy"
+            android:text="Privacy Policy"
             android:textSize="12sp"
             android:textColor="@color/colorPrimary"
             android:fontFamily="@font/renogare_regular"/>
 
     </LinearLayout>
 
-    <!-- Feddback -->
+    <!-- Feedback -->
     <LinearLayout
         android:layout_width="200dp"
         android:layout_height="50dp"
