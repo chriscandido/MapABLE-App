@@ -54,7 +54,9 @@ public class InformationAdapter extends RecyclerView.Adapter<InformationAdapter.
     public int[] img_policiesAndLaws = {
             R.drawable.img_policy_battleogmanilabay,
             R.drawable.img_policy_manilabaymandamus,
-            R.drawable.img_policy_manilabaytaskforce
+            R.drawable.img_policy_manilabaytaskforce,
+            R.drawable.img_policy_solidwaste,
+            R.drawable.img_policy_cleanwateract
     };
 
     @NonNull

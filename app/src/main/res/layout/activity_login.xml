@@ -30,32 +30,35 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout_loginUsername"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:layout_gravity="center"
         android:textColorHint="@color/colorAccent02"
         app:boxStrokeColor="@color/colorBackground"
+        app:hintTextColor="@color/colorAccent02"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Username"
             android:textSize="20sp"
+            android:textColor="@color/colorAccent02"
             android:fontFamily="@font/renogare_regular"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout_loginPassword"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:layout_gravity="center"
         android:textColorHint="@color/colorAccent02"
         app:boxStrokeColor="@color/colorBackground"
+        app:hintTextColor="@color/colorAccent02"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <com.google.android.material.textfield.TextInputEditText
             android:inputType="textPassword"
@@ -63,6 +66,7 @@
             android:layout_height="match_parent"
             android:hint="Password"
             android:textSize="20sp"
+            android:textColor="@color/colorAccent02"
             android:fontFamily="@font/renogare_regular"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -106,7 +110,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/textView_text01"
-            android:text="SIGN UP"
+            android:text="MAG-SIGNUP"
             android:textSize="15sp"
             android:textColor="@color/colorAccent"
             android:fontFamily="@font/renogare_regular"

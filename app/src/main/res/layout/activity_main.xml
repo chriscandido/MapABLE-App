@@ -11,8 +11,9 @@
 
   <ImageView
       android:layout_width="wrap_content"
-      android:layout_height="50dp"
-      android:layout_above="@id/bottomnavigation_menu"
+      android:layout_height="75dp"
+      android:layout_marginBottom="45dp"
+      android:layout_alignParentBottom="true"
       android:src="@drawable/img_background_02"/>
 
   <!-- Bottom Navigation Menu -->
