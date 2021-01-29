@@ -291,6 +291,7 @@
             android:textSize="12sp"
             android:textColor="@color/colorPrimary"
             android:fontFamily="@font/renogare_regular"
+            android:visibility="invisible"
             app:cornerRadius="20dp"
             style="@style/Widget.MaterialComponents.Button"/>
 
