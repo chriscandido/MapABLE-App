@@ -32,11 +32,13 @@ public class AboutActivity extends AppCompatActivity {
 
         textView_aboutUs_im4manilbayLink.setOnClickListener(v -> {
             String facebookLink = "https://www.facebook.com/IM4ManilaBay";
+            //String facebookLink = "IM4ManilaBay";
             openFacebookIntent(facebookLink);
         });
 
         textView_aboutUs_mapableLink.setOnClickListener(v -> {
             String facebookLink = "https://www.facebook.com/ProjectMapABLE";
+            //String facebookLink = "ProjectMapABLE";
             openFacebookIntent(facebookLink);
         });
     }
@@ -51,6 +53,7 @@ public class AboutActivity extends AppCompatActivity {
                 String facebookUrl = null;
                 if (versionCode >= 3002850) {
                     facebookUrl = "fb://facewebmodal/f?href=" + url;
+                    //facebookUrl = "fb://page/" + url;
                 }
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(facebookUrl)));
             } else {
