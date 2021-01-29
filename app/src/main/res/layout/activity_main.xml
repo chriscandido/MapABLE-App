@@ -9,6 +9,12 @@
     android:background="@drawable/img_background_04"
     tools:context=".MainActivity">
 
+  <ImageView
+      android:layout_width="wrap_content"
+      android:layout_height="50dp"
+      android:layout_above="@id/bottomnavigation_menu"
+      android:src="@drawable/img_background_02"/>
+
   <!-- Bottom Navigation Menu -->
   <com.google.android.material.bottomnavigation.BottomNavigationView
       android:id="@+id/bottomnavigation_menu"
