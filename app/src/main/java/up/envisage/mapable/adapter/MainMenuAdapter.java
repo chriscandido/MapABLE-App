@@ -50,7 +50,7 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.ViewHo
     public String[] mainMenu_title = {
             "MAY REPORT AKO!",
             "MANILA BAY ALAMIN NATIN!",
-            "KILALANIN SI IM4MANILABAY"
+            "KILALANIN SI   IM4MANILABAY"
     };
 
     //Icon
