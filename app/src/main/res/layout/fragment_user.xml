@@ -144,6 +144,7 @@
                     android:src="@drawable/ic_userprofile_mypoints"/>
 
                 <TextView
+                    android:id="@+id/textView_user_myStats"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
