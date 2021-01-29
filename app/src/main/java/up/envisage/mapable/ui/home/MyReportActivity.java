@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
 import up.envisage.mapable.adapter.MyReportAdapter;
 import up.envisage.mapable.db.table.ReportTable;
@@ -42,7 +43,7 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
                 recyclerView.setHasFixedSize(true);
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.setAdapter(adapter);
-                Log.v("[ MyReportActivity ]", "Number of Reports: " + reportTables.get(1).getIncidentType());
+                //Log.v("[ MyReportActivity ]", "Number of Reports: " + reportTables.get(1).getIncidentType());
             }
         });
 
@@ -50,7 +51,7 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
         textView_myReport_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myReportBack = new Intent(MyReportActivity.this, UserFragment.class);
+                Intent myReportBack = new Intent(MyReportActivity.this, MainActivity.class);
                 startActivity(myReportBack);
             }
         });

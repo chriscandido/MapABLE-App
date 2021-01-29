@@ -2,10 +2,10 @@ package up.envisage.mapable.util;
 
 public class Constant {
     //Main menu
-    public static final int mainMenu_aboutManilaBay = 0;
-    public static final int mainMenu_report = 1;
-    public static final int mainMenu_information = 2;
-    public static final int mainMenu_about = 3;
+    //public static final int mainMenu_aboutManilaBay = 0;
+    public static final int mainMenu_report = 0;
+    public static final int mainMenu_information = 1;
+    public static final int mainMenu_about = 2;
     //Camera
     public static final int REQUEST_CODE = 101;
     public static final int CAMERA_REQUEST_CODE = 102;

@@ -270,30 +270,29 @@
             android:id="@+id/checkBox_eulaAgree"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginBottom="10dp"
             android:text="I AGREE WITH THE TERMS AND CONDITION"
-            android:textSize="7sp"
+            android:textSize="9sp"
             android:textColor="@color/colorAccent02"
             android:fontFamily="@font/renogare_regular"/>
 
         <!-- Agree Button -->
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/button_eulaAgree"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:background="@drawable/bg_box01"
+            android:backgroundTint="@color/colorText"
             android:text="Agree and Continue"
             android:textSize="12sp"
-            android:textColor="@color/colorText"
+            android:textColor="@color/colorPrimary"
             android:fontFamily="@font/renogare_regular"
-            android:visibility="invisible" />
+            app:cornerRadius="20dp"
+            style="@style/Widget.MaterialComponents.Button"/>
 
     </LinearLayout>
 

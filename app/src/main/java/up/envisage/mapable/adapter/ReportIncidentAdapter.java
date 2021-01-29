@@ -58,7 +58,6 @@ public class ReportIncidentAdapter extends RecyclerView.Adapter<ReportIncidentAd
             R.string.title_algalBloom,
             R.string.title_fishKill,
             R.string.title_pollution,
-            R.string.title_waterHyacinth,
             R.string.title_illegalReclamation
     };
 
@@ -67,7 +66,6 @@ public class ReportIncidentAdapter extends RecyclerView.Adapter<ReportIncidentAd
             R.drawable.ic_map_algalbloom,
             R.drawable.ic_map_fishkill,
             R.drawable.ic_map_waterpollution,
-            R.drawable.ic_map_hyacinth,
             R.drawable.ic_map_illegalreclamation
     };
 

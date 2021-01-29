@@ -48,17 +48,15 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.ViewHo
 
     //Title
     public String[] mainMenu_title = {
-            "MANILA BAY, ALAMIN NATIN!",
             "MAY REPORT AKO!",
-            "LAWS AND POLICIES",
+            "MANILA BAY ALAMIN NATIN!",
             "KILALANIN SI IM4MANILABAY"
     };
 
     //Icon
     public int[] mainMenu_icon = {
-            R.drawable.ic_mainmenu_aboutmanilabay,
             R.drawable.ic_mainmenu_report,
-            R.drawable.ic_mainmenu_information,
+            R.drawable.ic_mainmenu_aboutmanilabay,
             R.drawable.ic_mainmenu_about
 
     };

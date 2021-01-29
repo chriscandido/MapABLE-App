@@ -8,10 +8,13 @@ import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
+import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
 import up.envisage.mapable.adapter.InformationAdapter;
 
@@ -19,6 +22,7 @@ public class InformationActivity extends AppCompatActivity implements Informatio
 
     private RecyclerView.Adapter adapter;
     private ViewPager2 viewPager2;
+    private TextView textView_ainformation_back;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -48,6 +52,15 @@ public class InformationActivity extends AppCompatActivity implements Informatio
 
         viewPager2.setPageTransformer(transformer);
 
+        textView_ainformation_back = findViewById(R.id.textView_information_back);
+        textView_ainformation_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent back = new Intent(InformationActivity.this, MainActivity.class);
+                startActivity(back);
+            }
+        });
+
     }
 
     public void onStart(){
@@ -63,7 +76,7 @@ public class InformationActivity extends AppCompatActivity implements Informatio
     }
 
     public void onBackPressed(){
-        super.onBackPressed();
+
     }
 
     @Override

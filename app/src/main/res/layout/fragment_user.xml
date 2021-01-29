@@ -24,7 +24,7 @@
                 android:layout_height="150dp"
                 android:layout_marginTop="100dp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_userprofile_profilecamera"/>
+                android:src="@drawable/ic_mainmenu_userprofile"/>
 
             <!-- Name -->
             <TextView
@@ -72,11 +72,11 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/renogare_regular"
                     android:gravity="center"
-                    android:text="My Stats"
+                    android:text="Report Info"
                     android:textColor="@color/colorText"
-                    android:textSize="25sp"
-                    android:fontFamily="@font/renogare_regular"/>
+                    android:textSize="25sp" />
 
             </LinearLayout>
 
@@ -112,6 +112,7 @@
             </LinearLayout>
 
             <!-- Pending Reports -->
+            <!--
             <LinearLayout
                 android:layout_width="200dp"
                 android:layout_height="50dp"
@@ -140,6 +141,7 @@
                     android:fontFamily="@font/renogare_regular"/>
 
             </LinearLayout>
+            -->
 
             <!-- Points -->
             <LinearLayout
@@ -163,7 +165,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
                     android:gravity="center_vertical"
-                    android:text="My Points"
+                    android:text="My Stats"
                     android:textSize="12sp"
                     android:textColor="@color/colorPrimary"
                     android:textAlignment="gravity"

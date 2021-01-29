@@ -5,13 +5,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
     tools:context=".ui.home.FeedbackActivity">
 
     <!-- Top Navigation Menu -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorSecondary">
 
         <TextView
             android:id="@+id/textView_feedback_back"
@@ -23,14 +25,570 @@
             android:clickable="true"
             style="@style/navigationText"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_alignParentRight="true"
-            android:text="Feedback"
-            style="@style/navigationText"/>
-
     </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                app:cardBackgroundColor="@color/colorAccent02"
+                app:cardCornerRadius="10dp"
+                app:cardPreventCornerOverlap="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Question01 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="What is the model of your device? We will use this information to examine possible compatibility issues."
+                        android:textSize="15sp"
+                        android:textColor="@color/colorAccent"
+                        android:fontFamily="@font/renogare_regular"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayout_feedback_q01"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        app:boxBackgroundColor="@color/colorBackground"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/renogare_regular"
+                            android:minHeight="100dp"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Question01 Spinner -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="How would you rate the speed of installation?"
+                            android:textSize="15sp"
+                            android:textColor="@color/colorAccent"
+                            android:textAlignment="textStart"
+                            android:fontFamily="@font/renogare_regular"/>
+
+                        <Spinner
+                            android:id="@+id/spinner_feedback_q01"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textSize="9sp"
+                            android:textColor="@color/colorPrimary"
+                            android:textAlignment="viewStart"/>
+
+                    </LinearLayout>
+
+                    <!-- Question02 Spinner -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="How would you rate the speed of the app when running?"
+                            android:textSize="15sp"
+                            android:textColor="@color/colorAccent"
+                            android:textAlignment="textStart"
+                            android:fontFamily="@font/renogare_regular"/>
+
+                        <Spinner
+                            android:id="@+id/spinner_feedback_q02"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textSize="9sp"
+                            android:textColor="@color/colorPrimary"
+                            android:textAlignment="viewStart"/>
+
+                    </LinearLayout>
+
+                    <!-- Question03 Spinner -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="After submitting responses, do appropriate pop-up notifications appear? Does a confirmation message appear after you submit your registration or report?"
+                            android:textSize="15sp"
+                            android:textColor="@color/colorAccent"
+                            android:textAlignment="textStart"
+                            android:fontFamily="@font/renogare_regular"/>
+
+                        <Spinner
+                            android:id="@+id/spinner_feedback_q03"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textSize="9sp"
+                            android:textColor="@color/colorPrimary"
+                            android:textAlignment="viewStart"/>
+
+                    </LinearLayout>
+
+                    <!-- Question04 Spinner -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="Do all buttons work properly? Do they lead to the correct page/activity?"
+                            android:textSize="15sp"
+                            android:textColor="@color/colorAccent"
+                            android:textAlignment="textStart"
+                            android:fontFamily="@font/renogare_regular"/>
+
+                        <Spinner
+                            android:id="@+id/spinner_feedback_q04"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textSize="9sp"
+                            android:textColor="@color/colorPrimary"
+                            android:textAlignment="viewStart"/>
+
+                    </LinearLayout>
+
+                    <!-- Question05 Spinner -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="Does the map automatically pin to your current location when opened?"
+                            android:textSize="15sp"
+                            android:textColor="@color/colorAccent"
+                            android:textAlignment="textStart"
+                            android:fontFamily="@font/renogare_regular"/>
+
+                        <Spinner
+                            android:id="@+id/spinner_feedback_q05"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textSize="9sp"
+                            android:textColor="@color/colorPrimary"
+                            android:textAlignment="viewStart"/>
+
+                    </LinearLayout>
+
+                    <!-- Question06 Spinner -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="Are you able to pin your location by long pressing on the map?"
+                            android:textSize="15sp"
+                            android:textColor="@color/colorAccent"
+                            android:textAlignment="textStart"
+                            android:fontFamily="@font/renogare_regular"/>
+
+                        <Spinner
+                            android:id="@+id/spinner_feedback_q06"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textSize="9sp"
+                            android:textColor="@color/colorPrimary"
+                            android:textAlignment="viewStart"/>
+
+                    </LinearLayout>
+
+                    <!-- Question07 Spinner -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="Are you able to successfully capture images from the app?"
+                            android:textSize="15sp"
+                            android:textColor="@color/colorAccent"
+                            android:textAlignment="textStart"
+                            android:fontFamily="@font/renogare_regular"/>
+
+                        <Spinner
+                            android:id="@+id/spinner_feedback_q07"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textSize="9sp"
+                            android:textColor="@color/colorPrimary"
+                            android:textAlignment="viewStart"/>
+
+                    </LinearLayout>
+
+                    <!-- Question08 Spinner -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="Are you able to access and upload images from your gallery/camera roll through the app?"
+                            android:textSize="15sp"
+                            android:textColor="@color/colorAccent"
+                            android:textAlignment="textStart"
+                            android:fontFamily="@font/renogare_regular"/>
+
+                        <Spinner
+                            android:id="@+id/spinner_feedback_q08"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textSize="9sp"
+                            android:textColor="@color/colorPrimary"
+                            android:textAlignment="viewStart"/>
+
+                    </LinearLayout>
+
+                    <!-- Question09 Spinner -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="Does the reporting module solicit enough and appropriate information about the environmental concerns? Are questions easy to understand? Are the options for answers appropriate and clear?"
+                            android:textSize="15sp"
+                            android:textColor="@color/colorAccent"
+                            android:textAlignment="textStart"
+                            android:fontFamily="@font/renogare_regular"/>
+
+                        <Spinner
+                            android:id="@+id/spinner_feedback_q09"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textSize="9sp"
+                            android:textColor="@color/colorPrimary"
+                            android:textAlignment="viewStart"/>
+
+                    </LinearLayout>
+
+                    <!-- Question10 Spinner -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="Are the colors, icons, and overall graphic design pleasing to the eyes? Are the icons and layout easy to understand? "
+                            android:textSize="15sp"
+                            android:textColor="@color/colorAccent"
+                            android:textAlignment="textStart"
+                            android:fontFamily="@font/renogare_regular"/>
+
+                        <Spinner
+                            android:id="@+id/spinner_feedback_q10"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textSize="9sp"
+                            android:textColor="@color/colorPrimary"
+                            android:textAlignment="viewStart"/>
+
+                    </LinearLayout>
+
+                    <!-- Question11 Spinner -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="Are the contents relevant and easy to read and understand? "
+                            android:textSize="15sp"
+                            android:textColor="@color/colorAccent"
+                            android:textAlignment="textStart"
+                            android:fontFamily="@font/renogare_regular"/>
+
+                        <Spinner
+                            android:id="@+id/spinner_feedback_q11"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textSize="9sp"
+                            android:textColor="@color/colorPrimary"
+                            android:textAlignment="viewStart"/>
+
+                    </LinearLayout>
+
+                    <!-- Question12 Spinner -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="The app is relevant and useful in monitoring Manila Bay and its linked environments."
+                            android:textSize="15sp"
+                            android:textColor="@color/colorAccent"
+                            android:textAlignment="textStart"
+                            android:fontFamily="@font/renogare_regular"/>
+
+                        <Spinner
+                            android:id="@+id/spinner_feedback_q12"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textSize="9sp"
+                            android:textColor="@color/colorPrimary"
+                            android:textAlignment="viewStart"/>
+
+                    </LinearLayout>
+
+                    <!-- Question13 Spinner -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="Did you find the app easy to use?"
+                            android:textSize="15sp"
+                            android:textColor="@color/colorAccent"
+                            android:textAlignment="textStart"
+                            android:fontFamily="@font/renogare_regular"/>
+
+                        <Spinner
+                            android:id="@+id/spinner_feedback_q13"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textSize="9sp"
+                            android:textColor="@color/colorPrimary"
+                            android:textAlignment="viewStart"/>
+
+                    </LinearLayout>
+
+                    <!-- Question14 Spinner -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="Are you satisfied with the app?"
+                            android:textSize="15sp"
+                            android:textColor="@color/colorAccent"
+                            android:textAlignment="textStart"
+                            android:fontFamily="@font/renogare_regular"/>
+
+                        <Spinner
+                            android:id="@+id/spinner_feedback_q14"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textSize="9sp"
+                            android:textColor="@color/colorPrimary"
+                            android:textAlignment="viewStart"/>
+
+                    </LinearLayout>
+
+                    <!-- Question15 Spinner -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="Would you recommend this app to your family, friends, and colleagues?"
+                            android:textSize="15sp"
+                            android:textColor="@color/colorAccent"
+                            android:textAlignment="textStart"
+                            android:fontFamily="@font/renogare_regular"/>
+
+                        <Spinner
+                            android:id="@+id/spinner_feedback_q15"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textSize="9sp"
+                            android:textColor="@color/colorPrimary"
+                            android:textAlignment="viewStart"/>
+
+                    </LinearLayout>
+
+                    <!-- Question16 Spinner -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="What functions did not work as expected? Select all that apply."
+                            android:textSize="15sp"
+                            android:textColor="@color/colorAccent"
+                            android:textAlignment="textStart"
+                            android:fontFamily="@font/renogare_regular"/>
+
+                        <Spinner
+                            android:id="@+id/spinner_feedback_q16"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textSize="9sp"
+                            android:textColor="@color/colorPrimary"
+                            android:textAlignment="viewStart"/>
+
+                    </LinearLayout>
+
+                    <!-- Question01 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="Do you have any other comments or suggestions?"
+                        android:textSize="15sp"
+                        android:textColor="@color/colorAccent"
+                        android:fontFamily="@font/renogare_regular"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayout_feedback_q02"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        app:boxBackgroundColor="@color/colorBackground"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/renogare_regular"
+                            android:minHeight="100dp"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_feedback_send"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/colorText"
+                android:text="SEND"
+                android:textSize="15sp"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/renogare_regular"
+                app:cornerRadius="20dp"
+                app:icon="@drawable/ic_report_send"
+                app:iconTint="@color/colorPrimary"
+                app:iconSize="25dp"
+                app:iconGravity="textStart"/>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

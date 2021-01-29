@@ -107,7 +107,6 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
                 algalBloomOk.putExtra("Latitude", lat);
                 algalBloomOk.putExtra("image", image);
                 startActivity(algalBloomOk);
-
                 break;
             case 1:
                 Intent fishKillOk = new Intent(ReportIncidentActivity.this, ReportFishKill.class);
@@ -132,8 +131,6 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
                 startActivity(pollutionOk);
                 break;
             case 3:
-                break;
-            case 4:
                 Intent illegalReclamationOk = new Intent(ReportIncidentActivity.this, ReportIllegalReclamation.class);
                 illegalReclamationOk.putExtra("userID", userID);
                 illegalReclamationOk.putExtra("Date and time", dateTime);

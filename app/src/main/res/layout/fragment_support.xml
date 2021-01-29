@@ -71,6 +71,7 @@
         android:background="@drawable/bg_box01">
 
         <TextView
+            android:id="@+id/textView_support_about"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -92,10 +93,33 @@
         android:background="@drawable/bg_box01">
 
         <TextView
+            android:id="@+id/textView_support_policy"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="Privay Policy"
+            android:textSize="12sp"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="@font/renogare_regular"/>
+
+    </LinearLayout>
+
+    <!-- Feddback -->
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_box01">
+
+        <TextView
+            android:id="@+id/textView_support_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Feedback"
             android:textSize="12sp"
             android:textColor="@color/colorPrimary"
             android:fontFamily="@font/renogare_regular"/>
