@@ -3,6 +3,7 @@ package up.envisage.mapable.fragment;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -53,6 +54,22 @@ public class SupportFragment extends Fragment {
         textView_support_policy = view.findViewById(R.id.textView_support_policy);
         textView_support_feedback = view.findViewById(R.id.textView_support_feedback);
 
+        textView_support_about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String aboutLink = "https://sites.google.com/up.edu.ph/masdanmobileapp/home";
+                openWebsiteLink(aboutLink);
+            }
+        });
+
+        textView_support_policy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String policyLink = "https://sites.google.com/up.edu.ph/masdanmobileapp/privacy-policy";
+                openWebsiteLink(policyLink);
+            }
+        });
+
         textView_support_feedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,6 +78,12 @@ public class SupportFragment extends Fragment {
             }
         });
 
+    }
+
+    public void openWebsiteLink(String url){
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url));
+        startActivity(intent);
     }
 
 }

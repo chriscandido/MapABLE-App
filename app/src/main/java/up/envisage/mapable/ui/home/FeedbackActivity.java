@@ -55,6 +55,8 @@ public class FeedbackActivity extends AppCompatActivity implements AdapterView.O
         Spinner spinner_feedback_q15  = findViewById(R.id.spinner_feedback_q15);
         Spinner spinner_feedback_q16  = findViewById(R.id.spinner_feedback_q16);
 
+        textView_feedback_back = findViewById(R.id.textView_feedback_back);
+
         textInputLayout_feedback_q01 = findViewById(R.id.textInputLayout_feedback_q01);
         textInputLayout_feedback_q02 = findViewById(R.id.textInputLayout_feedback_q02);
 
@@ -275,10 +277,19 @@ public class FeedbackActivity extends AppCompatActivity implements AdapterView.O
 
                 Gson gson = new Gson();
                 String answer = gson.toJson(out);
-                Intent intent = new Intent(FeedbackActivity.this, SupportFragment.class);
+                Intent intent = new Intent(FeedbackActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
+
+        textView_feedback_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent back = new Intent(FeedbackActivity.this, MainActivity.class);
+                startActivity(back);
+            }
+        });
+
 
     }
 
