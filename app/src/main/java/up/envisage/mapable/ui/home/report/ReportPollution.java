@@ -149,10 +149,8 @@ public class ReportPollution extends AppCompatActivity implements AdapterView.On
                 intent.putExtra("Latitude", lat);
                 intent.putExtra("image", image);
                 startActivity(intent);
-
             }
         });
-
     }
 
     @Override

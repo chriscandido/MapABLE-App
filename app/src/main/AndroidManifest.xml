@@ -50,10 +50,9 @@
         <activity android:name=".ui.home.ReportingActivity" />
         <activity android:name=".ui.home.InformationActivity" />
         <activity android:name=".ui.home.FeedbackActivity" />
-        <activity android:name=".ui.home.AboutActivity" />
+        <activity android:name=".ui.home.AboutActivity"/>
         <activity android:name=".ui.home.ReportIncidentActivity" />
         <activity android:name=".ui.home.CameraActivity" />
-        <activity android:name=".fragment.SupportFragment" />
         <activity
             android:name=".fragment.GoogleMapFragment"
             android:label="Google Maps" />
@@ -72,6 +71,10 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+        <!-- Facebook Link -->
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="https://www.facebook.com/IM4ManilaBay"/>
     </application>
 
 </manifest>

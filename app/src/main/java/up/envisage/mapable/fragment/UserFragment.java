@@ -92,9 +92,9 @@ public class UserFragment extends Fragment {
                 myStatsDialog();
             }
         });
-
     }
 
+    //----------------------------------------------------------------------------------------------Get report stats of user
     public void myStatsDialog() {
         dialog = new Dialog(listener);
         dialog.setContentView(R.layout.popup_mystats);

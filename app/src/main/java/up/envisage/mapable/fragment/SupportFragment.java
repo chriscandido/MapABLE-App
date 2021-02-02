@@ -77,7 +77,6 @@ public class SupportFragment extends Fragment {
                 startActivity(myReport);
             }
         });
-
     }
 
     public void openWebsiteLink(String url){

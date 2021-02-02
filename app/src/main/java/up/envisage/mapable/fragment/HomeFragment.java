@@ -79,11 +79,6 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
     public void onClick(int position){
         Log.d("[ HomeFragment.java ]", "onMenuClick: clicked - " + position);
         switch (position) {
-            /**case Constant.mainMenu_aboutManilaBay:
-                Intent aboutmanilabay = new Intent(listener, AboutManilaBayActivity.class);
-                startActivity(aboutmanilabay);
-                Log.d("[ HomeFragment.java ]", "onMenuClick: clicked - About Manila Bay" );
-                break;**/
             case Constant.mainMenu_report:
                 Intent report = new Intent(listener, ReportingActivity.class);
                 report.putExtra("userID", userID);
@@ -101,6 +96,5 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
                 Log.d("[ HomeFragment.java ]", "onMenuClick: clicked - About");
                 break;
         }
-
     }
 }

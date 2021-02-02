@@ -8,27 +8,37 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
+import com.facebook.FacebookSdk;
+
+import bolts.AppLink;
+import bolts.AppLinks;
 import up.envisage.mapable.BuildConfig;
 import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
 
 public class AboutActivity extends AppCompatActivity {
 
+    TextView textView_aboutUs_im4manilbayLink;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
+        FacebookSdk.sdkInitialize(this);
+
         TextView textView_aboutUs_back = findViewById(R.id.textView_aboutUs_back);
-        TextView textView_aboutUs_im4manilbayLink = findViewById(R.id.textView_aboutUs_im4manilabayLink);
+        textView_aboutUs_im4manilbayLink = findViewById(R.id.textView_aboutUs_im4manilabayLink);
         TextView textView_aboutUs_mapableLink = findViewById(R.id.textView_aboutUs_mapableLink);
 
         textView_aboutUs_back.setOnClickListener(v -> {
             Intent back = new Intent(AboutActivity.this, MainActivity.class);
             startActivity(back);
         });
+
 
         textView_aboutUs_im4manilbayLink.setOnClickListener(v -> {
             String facebookLink = "https://www.facebook.com/IM4ManilaBay";
@@ -42,6 +52,7 @@ public class AboutActivity extends AppCompatActivity {
             openFacebookIntent(facebookLink);
         });
     }
+
 
     //----------------------------------------------------------------------------------------------facebook link of program
     private void openFacebookIntent(String url) {
