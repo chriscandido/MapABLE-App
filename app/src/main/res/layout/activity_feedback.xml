@@ -61,7 +61,7 @@
                         android:text="1. What is the model of your device? We will use this information to examine possible compatibility issues."
                         android:textSize="15sp"
                         android:textColor="@color/colorSecondary"
-                        android:fontFamily="@font/montserrat_v02"/>
+                        android:fontFamily="@font/montserrat"/>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textInputLayout_feedback_q01"
@@ -73,7 +73,7 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:fontFamily="@font/montserrat_v02"
+                            android:fontFamily="@font/montserrat"
                             android:minHeight="100dp"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,7 +92,7 @@
                             android:textSize="15sp"
                             android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/montserrat_v02"/>
+                            android:fontFamily="@font/montserrat"/>
 
                         <Spinner
                             android:id="@+id/spinner_feedback_q01"
@@ -121,7 +121,7 @@
                             android:textSize="15sp"
                             android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/montserrat_v02"/>
+                            android:fontFamily="@font/montserrat"/>
 
                         <Spinner
                             android:id="@+id/spinner_feedback_q02"
@@ -150,7 +150,7 @@
                             android:textSize="15sp"
                             android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/montserrat_v02"/>
+                            android:fontFamily="@font/montserrat"/>
 
                         <Spinner
                             android:id="@+id/spinner_feedback_q03"
@@ -179,7 +179,7 @@
                             android:textSize="15sp"
                             android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/montserrat_v02"/>
+                            android:fontFamily="@font/montserrat"/>
 
                         <Spinner
                             android:id="@+id/spinner_feedback_q04"
@@ -208,7 +208,7 @@
                             android:textSize="15sp"
                             android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/montserrat_v02"/>
+                            android:fontFamily="@font/montserrat"/>
 
                         <Spinner
                             android:id="@+id/spinner_feedback_q05"
@@ -237,7 +237,7 @@
                             android:textSize="15sp"
                             android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/montserrat_v02"/>
+                            android:fontFamily="@font/montserrat"/>
 
                         <Spinner
                             android:id="@+id/spinner_feedback_q06"
@@ -266,7 +266,7 @@
                             android:textSize="15sp"
                             android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/montserrat_v02"/>
+                            android:fontFamily="@font/montserrat"/>
 
                         <Spinner
                             android:id="@+id/spinner_feedback_q07"
@@ -295,7 +295,7 @@
                             android:textSize="15sp"
                             android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/montserrat_v02"/>
+                            android:fontFamily="@font/montserrat"/>
 
                         <Spinner
                             android:id="@+id/spinner_feedback_q08"
@@ -324,7 +324,7 @@
                             android:textSize="15sp"
                             android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/montserrat_v02"/>
+                            android:fontFamily="@font/montserrat"/>
 
                         <Spinner
                             android:id="@+id/spinner_feedback_q09"
@@ -353,7 +353,7 @@
                             android:textSize="15sp"
                             android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/montserrat_v02"/>
+                            android:fontFamily="@font/montserrat"/>
 
                         <Spinner
                             android:id="@+id/spinner_feedback_q10"
@@ -382,7 +382,7 @@
                             android:textSize="15sp"
                             android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/montserrat_v02"/>
+                            android:fontFamily="@font/montserrat"/>
 
                         <Spinner
                             android:id="@+id/spinner_feedback_q11"
@@ -411,7 +411,7 @@
                             android:textSize="15sp"
                             android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/montserrat_v02"/>
+                            android:fontFamily="@font/montserrat"/>
 
                         <Spinner
                             android:id="@+id/spinner_feedback_q12"
@@ -440,7 +440,7 @@
                             android:textSize="15sp"
                             android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/montserrat_v02"/>
+                            android:fontFamily="@font/montserrat"/>
 
                         <Spinner
                             android:id="@+id/spinner_feedback_q13"
@@ -469,7 +469,7 @@
                             android:textSize="15sp"
                             android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/montserrat_v02"/>
+                            android:fontFamily="@font/montserrat"/>
 
                         <Spinner
                             android:id="@+id/spinner_feedback_q14"
@@ -498,7 +498,7 @@
                             android:textSize="15sp"
                             android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/montserrat_v02"/>
+                            android:fontFamily="@font/montserrat"/>
 
                         <Spinner
                             android:id="@+id/spinner_feedback_q15"
@@ -527,7 +527,7 @@
                             android:textSize="15sp"
                             android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/montserrat_v02"/>
+                            android:fontFamily="@font/montserrat"/>
 
                         <Spinner
                             android:id="@+id/spinner_feedback_q16"
@@ -551,7 +551,7 @@
                         android:text="18. Do you have any other comments or suggestions?"
                         android:textSize="15sp"
                         android:textColor="@color/colorSecondary"
-                        android:fontFamily="@font/montserrat_v02"/>
+                        android:fontFamily="@font/montserrat"/>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textInputLayout_feedback_q02"
@@ -563,7 +563,7 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:fontFamily="@font/montserrat_v02"
+                            android:fontFamily="@font/montserrat"
                             android:minHeight="100dp"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -580,7 +580,7 @@
                 android:text="SEND"
                 android:textSize="15sp"
                 android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/montserrat_v02"
+                android:fontFamily="@font/montserrat"
                 app:cornerRadius="20dp"
                 app:icon="@drawable/ic_report_send"
                 app:iconTint="@color/colorSecondary"

@@ -52,7 +52,7 @@
                     android:textSize="20sp"
                     android:textColor="@color/colorSecondary"
                     android:textAlignment="viewStart"
-                    android:fontFamily="@font/montserrat_v02" />
+                    android:fontFamily="@font/montserrat" />
 
             </LinearLayout>
 

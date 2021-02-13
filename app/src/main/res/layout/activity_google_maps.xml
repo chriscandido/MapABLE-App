@@ -29,7 +29,7 @@
         android:text="Ipasa"
         android:textSize="15sp"
         android:textColor="@color/colorSecondary"
-        android:fontFamily="@font/montserrat_v02"
+        android:fontFamily="@font/montserrat"
         app:icon="@drawable/ic_report_send"
         app:iconTint="@color/colorSecondary"
         app:iconSize="25dp"
@@ -38,4 +38,5 @@
         app:layout_constraintEnd_toEndOf="@+id/google_map"
         app:layout_constraintStart_toStartOf="@+id/google_map"
         style="@style/Widget.MaterialComponents.Button"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

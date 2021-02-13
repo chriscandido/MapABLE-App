@@ -23,7 +23,7 @@
             android:layout_margin="10dp"
             android:layout_alignParentLeft="true"
             android:text="Back"
-            android:fontFamily="@font/montserrat_v02"
+            android:fontFamily="@font/montserrat"
             style="@style/navigationText"/>
 
     </RelativeLayout>
@@ -52,7 +52,7 @@
             android:textColor="@color/colorText"
             android:textSize="25sp"
             android:textStyle="bold"
-            android:fontFamily="@font/montserrat_v02" />
+            android:fontFamily="@font/montserrat" />
 
     </LinearLayout>
 
@@ -101,7 +101,7 @@
                         android:text="Integrated Mapping, Monitoring, Modelling, and Management System for Manila Bay and Linked Environments"
                         android:textSize="14sp"
                         android:textColor="@color/colorAccent"
-                        android:fontFamily="@font/montserrat_v02"/>
+                        android:fontFamily="@font/montserrat"/>
 
                     <LinearLayout
                         android:id="@+id/linearLayout_programtitle"
@@ -128,7 +128,7 @@
                             android:textSize="12sp"
                             android:textColor="@color/colorPrimary"
                             android:textStyle="bold"
-                            android:fontFamily="@font/montserrat_v02"/>
+                            android:fontFamily="@font/montserrat"/>
 
                     </LinearLayout>
 
@@ -144,7 +144,7 @@
                         android:text="@string/desc01_IM4ManilaBayProgram"
                         android:textSize="12sp"
                         android:textColor="@color/colorSecondary"
-                        android:fontFamily="@font/montserrat_v02"/>
+                        android:fontFamily="@font/montserrat"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -156,7 +156,7 @@
                         android:text="@string/desc03_IM4ManilaBayProgram"
                         android:textSize="12sp"
                         android:textColor="@color/colorSecondary"
-                        android:fontFamily="@font/montserrat_v02"/>
+                        android:fontFamily="@font/montserrat"/>
 
                 </RelativeLayout>
 
@@ -171,7 +171,7 @@
                 android:textSize="16sp"
                 android:textColor="@color/colorText"
                 android:textStyle="bold"
-                android:fontFamily="@font/montserrat_v02"/>
+                android:fontFamily="@font/montserrat"/>
 
             <!-- Project iWASTO -->
             <androidx.cardview.widget.CardView
@@ -203,7 +203,7 @@
                         android:text="@string/desc_iWASTO"
                         android:textSize="12sp"
                         android:textColor="@color/colorSecondary"
-                        android:fontFamily="@font/montserrat_v02" />
+                        android:fontFamily="@font/montserrat" />
 
                 </LinearLayout>
 
@@ -239,7 +239,7 @@
                         android:text="@string/desc_eSMART"
                         android:textSize="12sp"
                         android:textColor="@color/colorSecondary"
-                        android:fontFamily="@font/montserrat_v02" />
+                        android:fontFamily="@font/montserrat" />
 
                 </LinearLayout>
 
@@ -275,7 +275,7 @@
                         android:text="@string/desc_CharteDDreaM"
                         android:textSize="12sp"
                         android:textColor="@color/colorSecondary"
-                        android:fontFamily="@font/montserrat_v02"/>
+                        android:fontFamily="@font/montserrat"/>
 
                 </LinearLayout>
 
@@ -313,7 +313,7 @@
                         android:text="@string/title_MapABLE"
                         android:textSize="14sp"
                         android:textColor="@color/colorAccent"
-                        android:fontFamily="@font/montserrat_v02"/>
+                        android:fontFamily="@font/montserrat"/>
 
                     <LinearLayout
                         android:id="@+id/linearLayout_projectTitle"
@@ -340,7 +340,7 @@
                             android:textSize="12sp"
                             android:textColor="@color/colorPrimary"
                             android:textStyle="bold"
-                            android:fontFamily="@font/montserrat_v02"/>
+                            android:fontFamily="@font/montserrat"/>
 
                     </LinearLayout>
 
@@ -353,7 +353,7 @@
                         android:layout_marginTop="20dp"
                         android:layout_marginEnd="10dp"
                         android:layout_marginBottom="20dp"
-                        android:fontFamily="@font/montserrat_v02"
+                        android:fontFamily="@font/montserrat"
                         android:text="@string/desc01_MapABLE"
                         android:textColor="@color/colorSecondary"
                         android:textSize="12sp" />

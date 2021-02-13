@@ -19,7 +19,7 @@
         <item name="android:textSize">30sp</item>
         <item name="android:textColor">@color/colorText</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:fontFamily">@font/montserrat_v02</item>
+        <item name="android:fontFamily">@font/montserrat</item>
         <item name="android:textStyle">bold</item>
     </style>
 
@@ -28,7 +28,7 @@
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/colorAccent</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:fontFamily">@font/montserrat_v02</item>
+        <item name="android:fontFamily">@font/montserrat</item>
     </style>
 
     <!-- Navigation text theme -->
@@ -36,7 +36,7 @@
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/colorAccent</item>
         <item name="android:textAlignment">center</item>
-        <item name="android:fontFamily">@font/montserrat_v02</item>
+        <item name="android:fontFamily">@font/montserrat</item>
     </style>
 
     <!-- Spinner text theme -->
@@ -44,7 +44,7 @@
         <item name="android:layout_margin">10dp</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/colorSecondary</item>
-        <item name="android:fontFamily">@font/montserrat_v02</item>
+        <item name="android:fontFamily">@font/montserrat</item>
     </style>
 
     <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">

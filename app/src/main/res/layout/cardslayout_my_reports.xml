@@ -53,7 +53,7 @@
                     android:textSize="15sp"
                     android:textColor="@color/colorAccent"
                     android:textStyle="bold"
-                    android:fontFamily="@font/montserrat_v02"/>
+                    android:fontFamily="@font/montserrat"/>
 
                 <TextView
                     android:id="@+id/textView_myReportDescription"
@@ -65,7 +65,7 @@
                     android:text="Lorem Ipsum"
                     android:textSize="12sp"
                     android:textColor="@color/colorSecondary"
-                    android:fontFamily="@font/montserrat_v02"/>
+                    android:fontFamily="@font/montserrat"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -80,7 +80,7 @@
                         android:text="Latitude"
                         android:textSize="12sp"
                         android:textColor="@color/colorSecondary"
-                        android:fontFamily="@font/montserrat_v02"/>
+                        android:fontFamily="@font/montserrat"/>
 
                     <TextView
                         android:id="@+id/textView_myReportLon"
@@ -90,7 +90,7 @@
                         android:text="Longitude"
                         android:textSize="12sp"
                         android:textColor="@color/colorSecondary"
-                        android:fontFamily="@font/montserrat_v02"/>
+                        android:fontFamily="@font/montserrat"/>
 
                 </LinearLayout>
 

@@ -40,7 +40,7 @@
         android:text="Camera"
         android:textSize="15sp"
         android:textColor="@color/colorSecondary"
-        android:fontFamily="@font/montserrat_v02"
+        android:fontFamily="@font/montserrat"
         app:icon="@drawable/ic_report_camera"
         app:iconGravity="textStart"
         app:iconTint="@color/colorSecondary"
@@ -60,7 +60,7 @@
         android:text="Photo Gallery"
         android:textSize="15sp"
         android:textColor="@color/colorSecondary"
-        android:fontFamily="@font/montserrat_v02"
+        android:fontFamily="@font/montserrat"
         app:icon="@drawable/ic_report_photogallery"
         app:iconGravity="textStart"
         app:iconTint="@color/colorSecondary"
@@ -91,7 +91,7 @@
         android:text="SAVE"
         android:textSize="15sp"
         android:textColor="@color/colorSecondary"
-        android:fontFamily="@font/montserrat_v02"
+        android:fontFamily="@font/montserrat"
         app:cornerRadius="20dp"
         style="@style/Widget.MaterialComponents.Button"/>
 

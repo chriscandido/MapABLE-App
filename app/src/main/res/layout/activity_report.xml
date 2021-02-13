@@ -116,7 +116,7 @@
                         android:text="Uri ng"
                         android:textSize="15sp"
                         android:textColor="@color/colorText"
-                        android:fontFamily="@font/montserrat_v02"/>
+                        android:fontFamily="@font/montserrat"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -124,7 +124,7 @@
                         android:text="Insidente"
                         android:textSize="15sp"
                         android:textColor="@color/colorText"
-                        android:fontFamily="@font/montserrat_v02"/>
+                        android:fontFamily="@font/montserrat"/>
 
                 </LinearLayout>
 
@@ -160,7 +160,7 @@
                         android:text="Lokasyon"
                         android:textSize="15sp"
                         android:textColor="@color/colorText"
-                        android:fontFamily="@font/montserrat_v02"/>
+                        android:fontFamily="@font/montserrat"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -194,7 +194,7 @@
                         android:text="Larawan"
                         android:textSize="15sp"
                         android:textColor="@color/colorText"
-                        android:fontFamily="@font/montserrat_v02"/>
+                        android:fontFamily="@font/montserrat"/>
 
                 </LinearLayout>
 
@@ -221,7 +221,7 @@
                     android:textSize="15sp"
                     android:textColor="@color/colorSecondary"
                     android:textStyle="bold"
-                    android:fontFamily="@font/montserrat_v02"
+                    android:fontFamily="@font/montserrat"
                     app:cornerRadius="20dp"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
@@ -239,7 +239,7 @@
                     android:textSize="15sp"
                     android:textColor="@color/colorSecondary"
                     android:textStyle="bold"
-                    android:fontFamily="@font/montserrat_v02"
+                    android:fontFamily="@font/montserrat"
                     app:icon="@drawable/ic_report_send"
                     app:iconGravity="textStart"
                     app:iconTint="@color/colorSecondary"

@@ -19,11 +19,12 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <!-- Report Description -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                app:cardBackgroundColor="@color/colorAccent02"
+                app:cardBackgroundColor="@color/colorBackground"
                 app:cardCornerRadius="10dp"
                 app:cardPreventCornerOverlap="true">
 
@@ -55,7 +56,8 @@
                             android:layout_margin="10dp"
                             android:text="@string/title_illegalReclamation"
                             android:textColor="@color/colorAccent"
-                            android:textAlignment="viewStart"/>
+                            android:textAlignment="viewStart"
+                            android:fontFamily="@font/montserrat"/>
 
                     </LinearLayout>
 
@@ -67,18 +69,18 @@
                         android:text="@string/desc_illegalReclamation"
                         android:textColor="@color/colorSecondary"
                         android:textAlignment="viewStart"
-                        android:fontFamily="@font/montserrat_v02"
                         style="@style/contentText"/>
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
+            <!-- Report Questions -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                app:cardBackgroundColor="@color/colorAccent02"
+                app:cardBackgroundColor="@color/colorBackground"
                 app:cardCornerRadius="10dp"
                 app:cardPreventCornerOverlap="true">
 
@@ -96,8 +98,8 @@
                         android:layout_marginRight="10dp"
                         android:text="Maikling Salaysay"
                         android:textSize="15sp"
-                        android:textColor="@color/colorAccent"
-                        android:fontFamily="@font/montserrat_v02"/>
+                        android:textColor="@color/colorSecondary"
+                        android:fontFamily="@font/montserrat"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -106,9 +108,9 @@
                         android:layout_marginRight="10dp"
                         android:text="Isang maikling salaysay tungkol sa nangyaring insidente. Maaring isulat kung kailan nagsimula, kung ano ang obserbasyon sa lugar, o hindi kaya ay kung ano ang naging dahilan ng insidente"
                         android:textSize="12sp"
-                        android:textColor="@color/colorSecondary"
+                        android:textColor="@color/colorAccent"
                         android:textAlignment="viewStart"
-                        android:fontFamily="@font/montserrat_v02"/>
+                        android:fontFamily="@font/montserrat"/>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textInputLayout_reportIllegalReclamation"
@@ -120,7 +122,7 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:fontFamily="@font/montserrat_v02"
+                            android:fontFamily="@font/montserrat"
                             android:minHeight="100dp"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -137,9 +139,9 @@
                             android:layout_marginRight="10dp"
                             android:text="1. Kailan mo unang naobserbahan ang pagtatambak?"
                             android:textSize="15sp"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/montserrat_v02"/>
+                            android:fontFamily="@font/montserrat"/>
 
                         <Spinner
                             android:id="@+id/spinner_reportIllegalReclamation_q01"
@@ -147,7 +149,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/colorSecondary"
                             android:textSize="9sp"
                             android:textAlignment="viewStart"/>
 
@@ -166,9 +168,9 @@
                             android:layout_marginRight="10dp"
                             android:text="2. Ano ang panambak na ginamit?"
                             android:textSize="15sp"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/montserrat_v02"/>
+                            android:fontFamily="@font/montserrat"/>
 
                         <Spinner
                             android:id="@+id/spinner_reportIllegalReclamation_q02"
@@ -177,7 +179,7 @@
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:textSize="9sp"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/colorSecondary"
                             android:textAlignment="viewStart"/>
 
                     </LinearLayout>
@@ -196,8 +198,8 @@
                             android:text="3. Gaano kalawak ang nasakop ng panambak?"
                             android:textSize="15sp"
                             android:textAlignment="textStart"
-                            android:textColor="@color/colorAccent"
-                            android:fontFamily="@font/montserrat_v02"/>
+                            android:textColor="@color/colorSecondary"
+                            android:fontFamily="@font/montserrat"/>
 
                         <Spinner
                             android:id="@+id/spinner_reportIllegalReclamation_q03"
@@ -206,7 +208,7 @@
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:textSize="9sp"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/colorSecondary"
                             android:textAlignment="viewStart"/>
 
                     </LinearLayout>
@@ -224,9 +226,9 @@
                             android:layout_marginRight="10dp"
                             android:text="4. May nakatayo bang istruktura sa tinambakang lugar?"
                             android:textSize="15sp"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/montserrat_v02"/>
+                            android:fontFamily="@font/montserrat"/>
 
                         <Spinner
                             android:id="@+id/spinner_reportIllegalReclamation_q04"
@@ -235,7 +237,7 @@
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:textSize="9sp"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/colorSecondary"
                             android:textAlignment="viewStart"/>
 
                     </LinearLayout>
@@ -253,9 +255,9 @@
                             android:layout_marginRight="10dp"
                             android:text="5. May namamalagi o nagbabantay sa tinambakang lugar?"
                             android:textSize="15sp"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/montserrat_v02"/>
+                            android:fontFamily="@font/montserrat"/>
 
                         <Spinner
                             android:id="@+id/spinner_reportIllegalReclamation_q05"
@@ -264,7 +266,7 @@
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:textSize="9sp"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/colorSecondary"
                             android:textAlignment="viewStart"/>
 
                     </LinearLayout>
@@ -277,8 +279,8 @@
                         android:layout_marginRight="10dp"
                         android:text="6. Pangalan ng nagtambak, posibleng nagtambak o nagbabantay sa lugar (Ilagay ang Wala kung hindi kilala)"
                         android:textSize="15sp"
-                        android:textColor="@color/colorAccent"
-                        android:fontFamily="@font/montserrat_v02"/>
+                        android:textColor="@color/colorSecondary"
+                        android:fontFamily="@font/montserrat"/>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textInputLayout_reportIllegalReclamation_q06"
@@ -290,7 +292,7 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:fontFamily="@font/montserrat_v02" />
+                            android:fontFamily="@font/montserrat" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
@@ -305,8 +307,8 @@
                 android:backgroundTint="@color/colorText"
                 android:text="SUNOD"
                 android:textSize="15sp"
-                android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/montserrat_v02"
+                android:textColor="@color/colorSecondary"
+                android:fontFamily="@font/montserrat"
                 app:cornerRadius="20dp"/>
 
         </LinearLayout>

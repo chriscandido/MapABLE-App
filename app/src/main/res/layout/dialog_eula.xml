@@ -17,7 +17,7 @@
         android:text="Terms of Use"
         android:textSize="20sp"
         android:textColor="@color/colorAccent"
-        android:fontFamily="@font/montserrat_v02"
+        android:fontFamily="@font/montserrat"
         style="@style/headerText"/>
 
     <ScrollView
@@ -44,7 +44,7 @@
                 android:text="@string/date"
                 android:textSize="12sp"
                 android:textColor="@color/colorText"
-                android:fontFamily="@font/montserrat_v02"/>
+                android:fontFamily="@font/montserrat"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -52,7 +52,7 @@
                 android:text="@string/heading"
                 android:textSize="10sp"
                 android:textColor="@color/colorAccent02"
-                android:fontFamily="@font/montserrat_v02"/>
+                android:fontFamily="@font/montserrat"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -60,7 +60,7 @@
                 android:text="@string/title01"
                 android:textSize="15sp"
                 android:textColor="@color/colorText"
-                android:fontFamily="@font/montserrat_v02"/>
+                android:fontFamily="@font/montserrat"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -68,7 +68,7 @@
                 android:text="@string/body01"
                 android:textSize="12sp"
                 android:textColor="@color/colorAccent02"
-                android:fontFamily="@font/montserrat_v02"/>
+                android:fontFamily="@font/montserrat"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -76,7 +76,7 @@
                 android:text="@string/title02"
                 android:textSize="15sp"
                 android:textColor="@color/colorText"
-                android:fontFamily="@font/montserrat_v02"/>
+                android:fontFamily="@font/montserrat"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -84,7 +84,7 @@
                 android:text="@string/body02"
                 android:textSize="12sp"
                 android:textColor="@color/colorAccent02"
-                android:fontFamily="@font/montserrat_v02"/>
+                android:fontFamily="@font/montserrat"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -92,7 +92,7 @@
                 android:text="@string/title03"
                 android:textSize="15sp"
                 android:textColor="@color/colorText"
-                android:fontFamily="@font/montserrat_v02"/>
+                android:fontFamily="@font/montserrat"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -100,7 +100,7 @@
                 android:text="@string/body03"
                 android:textSize="12sp"
                 android:textColor="@color/colorAccent02"
-                android:fontFamily="@font/montserrat_v02"/>
+                android:fontFamily="@font/montserrat"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -108,7 +108,7 @@
                 android:text="@string/title04"
                 android:textSize="15sp"
                 android:textColor="@color/colorText"
-                android:fontFamily="@font/montserrat_v02"/>
+                android:fontFamily="@font/montserrat"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -116,7 +116,7 @@
                 android:text="@string/body04"
                 android:textSize="12sp"
                 android:textColor="@color/colorAccent02"
-                android:fontFamily="@font/montserrat_v02"/>
+                android:fontFamily="@font/montserrat"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -124,7 +124,7 @@
                 android:text="@string/title05"
                 android:textSize="15sp"
                 android:textColor="@color/colorText"
-                android:fontFamily="@font/montserrat_v02"/>
+                android:fontFamily="@font/montserrat"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -132,7 +132,7 @@
                 android:text="@string/body05"
                 android:textSize="12sp"
                 android:textColor="@color/colorAccent02"
-                android:fontFamily="@font/montserrat_v02"/>
+                android:fontFamily="@font/montserrat"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -140,7 +140,7 @@
                 android:text="@string/title06"
                 android:textSize="15sp"
                 android:textColor="@color/colorText"
-                android:fontFamily="@font/montserrat_v02"/>
+                android:fontFamily="@font/montserrat"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -148,7 +148,7 @@
                 android:text="@string/body06"
                 android:textSize="12sp"
                 android:textColor="@color/colorAccent02"
-                android:fontFamily="@font/montserrat_v02"/>
+                android:fontFamily="@font/montserrat"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -156,7 +156,7 @@
                 android:text="@string/title07"
                 android:textSize="15sp"
                 android:textColor="@color/colorText"
-                android:fontFamily="@font/montserrat_v02"/>
+                android:fontFamily="@font/montserrat"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -164,7 +164,7 @@
                 android:text="@string/body07"
                 android:textSize="12sp"
                 android:textColor="@color/colorAccent02"
-                android:fontFamily="@font/montserrat_v02"/>
+                android:fontFamily="@font/montserrat"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -172,7 +172,7 @@
                 android:text="@string/title08"
                 android:textSize="15sp"
                 android:textColor="@color/colorText"
-                android:fontFamily="@font/montserrat_v02"/>
+                android:fontFamily="@font/montserrat"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -180,7 +180,7 @@
                 android:text="@string/body08"
                 android:textSize="12sp"
                 android:textColor="@color/colorAccent02"
-                android:fontFamily="@font/montserrat_v02"/>
+                android:fontFamily="@font/montserrat"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -188,7 +188,7 @@
                 android:text="@string/title09"
                 android:textSize="15sp"
                 android:textColor="@color/colorText"
-                android:fontFamily="@font/montserrat_v02"/>
+                android:fontFamily="@font/montserrat"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -196,7 +196,7 @@
                 android:text="@string/title10"
                 android:textSize="15sp"
                 android:textColor="@color/colorText"
-                android:fontFamily="@font/montserrat_v02"/>
+                android:fontFamily="@font/montserrat"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -204,7 +204,7 @@
                 android:text="@string/body10"
                 android:textSize="12sp"
                 android:textColor="@color/colorAccent02"
-                android:fontFamily="@font/montserrat_v02"/>
+                android:fontFamily="@font/montserrat"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -212,7 +212,7 @@
                 android:text="@string/title11"
                 android:textSize="15sp"
                 android:textColor="@color/colorText"
-                android:fontFamily="@font/montserrat_v02"/>
+                android:fontFamily="@font/montserrat"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -220,7 +220,7 @@
                 android:text="@string/body11"
                 android:textSize="12sp"
                 android:textColor="@color/colorAccent02"
-                android:fontFamily="@font/montserrat_v02"/>
+                android:fontFamily="@font/montserrat"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -228,7 +228,7 @@
                 android:text="@string/title12"
                 android:textSize="15sp"
                 android:textColor="@color/colorText"
-                android:fontFamily="@font/montserrat_v02"/>
+                android:fontFamily="@font/montserrat"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -236,7 +236,7 @@
                 android:text="@string/body12"
                 android:textSize="12sp"
                 android:textColor="@color/colorAccent02"
-                android:fontFamily="@font/montserrat_v02"/>
+                android:fontFamily="@font/montserrat"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -244,7 +244,7 @@
                 android:text="@string/title13"
                 android:textSize="15sp"
                 android:textColor="@color/colorText"
-                android:fontFamily="@font/montserrat_v02"/>
+                android:fontFamily="@font/montserrat"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -252,7 +252,7 @@
                 android:text="@string/body13"
                 android:textSize="12sp"
                 android:textColor="@color/colorAccent02"
-                android:fontFamily="@font/montserrat_v02"/>
+                android:fontFamily="@font/montserrat"/>
 
         </LinearLayout>
 
@@ -275,7 +275,7 @@
             android:text="I AGREE WITH THE TERMS AND CONDITIONS"
             android:textSize="9sp"
             android:textColor="@color/colorAccent02"
-            android:fontFamily="@font/montserrat_v02"/>
+            android:fontFamily="@font/montserrat"/>
 
         <!-- Agree Button -->
         <com.google.android.material.button.MaterialButton
@@ -290,7 +290,7 @@
             android:text="Agree and Continue"
             android:textSize="12sp"
             android:textColor="@color/colorPrimary"
-            android:fontFamily="@font/montserrat_v02"
+            android:fontFamily="@font/montserrat"
             android:visibility="invisible"
             app:cornerRadius="20dp"
             style="@style/Widget.MaterialComponents.Button"/>
