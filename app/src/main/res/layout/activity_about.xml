@@ -23,7 +23,7 @@
             android:layout_margin="10dp"
             android:layout_alignParentLeft="true"
             android:text="Back"
-            android:fontFamily="@font/renogare_regular"
+            android:fontFamily="@font/montserrat_v02"
             style="@style/navigationText"/>
 
     </RelativeLayout>
@@ -45,13 +45,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="5dp"
             android:text="KILALANIN SI IM4MANILABAY"
-            android:textSize="25sp"
             android:textColor="@color/colorText"
-            android:fontFamily="@font/renogare_regular"/>
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/montserrat_v02" />
 
     </LinearLayout>
 
@@ -73,7 +74,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                app:cardBackgroundColor="@color/colorAccent02"
+                app:cardBackgroundColor="@color/colorBackground"
                 app:cardCornerRadius="10dp"
                 app:cardPreventCornerOverlap="true">
 
@@ -98,9 +99,9 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginEnd="10dp"
                         android:text="Integrated Mapping, Monitoring, Modelling, and Management System for Manila Bay and Linked Environments"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:textColor="@color/colorAccent"
-                        android:fontFamily="@font/renogare_regular"/>
+                        android:fontFamily="@font/montserrat_v02"/>
 
                     <LinearLayout
                         android:id="@+id/linearLayout_programtitle"
@@ -126,7 +127,8 @@
                             android:text="/IM4ManilaBay"
                             android:textSize="12sp"
                             android:textColor="@color/colorPrimary"
-                            android:fontFamily="@font/renogare_regular"/>
+                            android:textStyle="bold"
+                            android:fontFamily="@font/montserrat_v02"/>
 
                     </LinearLayout>
 
@@ -142,7 +144,7 @@
                         android:text="@string/desc01_IM4ManilaBayProgram"
                         android:textSize="12sp"
                         android:textColor="@color/colorSecondary"
-                        android:fontFamily="@font/renogare_regular"/>
+                        android:fontFamily="@font/montserrat_v02"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -154,18 +156,29 @@
                         android:text="@string/desc03_IM4ManilaBayProgram"
                         android:textSize="12sp"
                         android:textColor="@color/colorSecondary"
-                        android:fontFamily="@font/renogare_regular"/>
+                        android:fontFamily="@font/montserrat_v02"/>
 
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_margin="5dp"
+                android:gravity="center_vertical"
+                android:text="Mga Proyektong Bumubuo sa IM4ManilaBay"
+                android:textSize="16sp"
+                android:textColor="@color/colorText"
+                android:textStyle="bold"
+                android:fontFamily="@font/montserrat_v02"/>
 
             <!-- Project iWASTO -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                app:cardBackgroundColor="@color/colorAccent02"
+                app:cardBackgroundColor="@color/colorBackground"
                 app:cardCornerRadius="10dp"
                 app:cardPreventCornerOverlap="true">
 
@@ -189,8 +202,8 @@
                         android:layout_gravity="center_vertical"
                         android:text="@string/desc_iWASTO"
                         android:textSize="12sp"
-                        android:textColor="@color/colorAccent"
-                        android:fontFamily="@font/renogare_regular" />
+                        android:textColor="@color/colorSecondary"
+                        android:fontFamily="@font/montserrat_v02" />
 
                 </LinearLayout>
 
@@ -201,7 +214,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                app:cardBackgroundColor="@color/colorAccent02"
+                app:cardBackgroundColor="@color/colorBackground"
                 app:cardCornerRadius="10dp"
                 app:cardPreventCornerOverlap="true">
 
@@ -225,8 +238,8 @@
                         android:layout_gravity="center_vertical"
                         android:text="@string/desc_eSMART"
                         android:textSize="12sp"
-                        android:textColor="@color/colorAccent"
-                        android:fontFamily="@font/renogare_regular" />
+                        android:textColor="@color/colorSecondary"
+                        android:fontFamily="@font/montserrat_v02" />
 
                 </LinearLayout>
 
@@ -237,7 +250,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                app:cardBackgroundColor="@color/colorAccent02"
+                app:cardBackgroundColor="@color/colorBackground"
                 app:cardCornerRadius="10dp"
                 app:cardPreventCornerOverlap="true">
 
@@ -261,8 +274,8 @@
                         android:layout_gravity="center_vertical"
                         android:text="@string/desc_CharteDDreaM"
                         android:textSize="12sp"
-                        android:textColor="@color/colorAccent"
-                        android:fontFamily="@font/renogare_regular" />
+                        android:textColor="@color/colorSecondary"
+                        android:fontFamily="@font/montserrat_v02"/>
 
                 </LinearLayout>
 
@@ -273,7 +286,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                app:cardBackgroundColor="@color/colorAccent02"
+                app:cardBackgroundColor="@color/colorBackground"
                 app:cardCornerRadius="10dp"
                 app:cardPreventCornerOverlap="true">
 
@@ -298,9 +311,9 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginEnd="10dp"
                         android:text="@string/title_MapABLE"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:textColor="@color/colorAccent"
-                        android:fontFamily="@font/renogare_regular"/>
+                        android:fontFamily="@font/montserrat_v02"/>
 
                     <LinearLayout
                         android:id="@+id/linearLayout_projectTitle"
@@ -326,7 +339,8 @@
                             android:text="/ProjectMapABLE"
                             android:textSize="12sp"
                             android:textColor="@color/colorPrimary"
-                            android:fontFamily="@font/renogare_regular"/>
+                            android:textStyle="bold"
+                            android:fontFamily="@font/montserrat_v02"/>
 
                     </LinearLayout>
 
@@ -335,14 +349,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/linearLayout_projectTitle"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginBottom="20dp"
-                        android:layout_marginEnd="10dp"
                         android:layout_marginStart="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:fontFamily="@font/montserrat_v02"
                         android:text="@string/desc01_MapABLE"
-                        android:textSize="12sp"
                         android:textColor="@color/colorSecondary"
-                        android:fontFamily="@font/renogare_regular"/>
+                        android:textSize="12sp" />
 
                 </RelativeLayout>
 

@@ -30,7 +30,8 @@
             android:text="Mag-Signup"
             android:textSize="20sp"
             android:textColor="@color/colorAccent"
-            android:fontFamily="@font/renogare_regular"/>
+            android:textStyle="bold"
+            android:fontFamily="@font/montserrat_v02"/>
 
         <!-- Person Info -->
         <com.google.android.material.textfield.TextInputLayout
@@ -50,7 +51,7 @@
                 android:hint="Pangalan"
                 android:textSize="15sp"
                 android:textColor="@color/colorAccent02"
-                android:fontFamily="@font/renogare_regular" />
+                android:fontFamily="@font/montserrat_v02" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -71,7 +72,7 @@
                 android:hint="Mobile Number"
                 android:textSize="15sp"
                 android:textColor="@color/colorAccent02"
-                android:fontFamily="@font/renogare_regular"/>
+                android:fontFamily="@font/montserrat_v02"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -92,7 +93,7 @@
                 android:hint="Email"
                 android:textSize="15sp"
                 android:textColor="@color/colorAccent02"
-                android:fontFamily="@font/renogare_regular"/>
+                android:fontFamily="@font/montserrat_v02"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -113,7 +114,7 @@
                 android:hint="Username"
                 android:textSize="15sp"
                 android:textColor="@color/colorAccent02"
-                android:fontFamily="@font/renogare_regular"/>
+                android:fontFamily="@font/montserrat_v02"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -135,7 +136,7 @@
                 android:hint="Password"
                 android:textSize="15sp"
                 android:textColor="@color/colorAccent02"
-                android:fontFamily="@font/renogare_regular"/>
+                android:fontFamily="@font/montserrat_v02"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Signup Button -->
@@ -150,8 +151,9 @@
             android:backgroundTint="@color/colorText"
             android:text="SIGN-UP"
             android:textSize="18sp"
-            android:textColor="@color/colorPrimary"
-            android:fontFamily="@font/renogare_regular"
+            android:textColor="@color/colorSecondary"
+            android:textStyle="bold"
+            android:fontFamily="@font/montserrat_v02"
             android:onClick="@{(v) -> ClickListener.onClick(v)}"
             app:cornerRadius="20dp"
             style="@style/Widget.MaterialComponents.Button"/>
@@ -171,7 +173,7 @@
                 android:text="Meron ng Account? "
                 android:textSize="15sp"
                 android:textColor="@color/colorAccent02"
-                android:fontFamily="@font/renogare_regular"/>
+                android:fontFamily="@font/montserrat_v02"/>
 
             <TextView
                 android:id="@+id/textView_registerLogin"
@@ -181,7 +183,8 @@
                 android:text="MAG-LOGIN"
                 android:textSize="15sp"
                 android:textColor="@color/colorAccent"
-                android:fontFamily="@font/renogare_regular"
+                android:textStyle="bold"
+                android:fontFamily="@font/montserrat_v02"
                 android:clickable="true"
                 android:focusable="true"
                 android:onClick="@{(v) -> ClickListener.onClick(v)}"/>

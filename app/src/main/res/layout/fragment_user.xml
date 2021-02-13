@@ -48,7 +48,7 @@
                 android:text="cgcandido"
                 android:textSize="15sp"
                 android:textColor="@color/colorAccent02"
-                android:fontFamily="@font/renogare_regular"/>
+                android:fontFamily="@font/montserrat_v02"/>
 
             <!-- Email address -->
             <TextView
@@ -61,7 +61,7 @@
                 android:textSize="15sp"
                 android:textColor="@color/colorAccent02"
                 android:textStyle="normal"
-                android:fontFamily="@font/renogare_regular"/>
+                android:fontFamily="@font/montserrat_v02"/>
 
             <!-- Reports -->
             <LinearLayout
@@ -90,7 +90,7 @@
                     android:textSize="12sp"
                     android:textColor="@color/colorPrimary"
                     android:textAlignment="gravity"
-                    android:fontFamily="@font/renogare_regular"/>
+                    android:fontFamily="@font/montserrat_v02"/>
 
             </LinearLayout>
 
@@ -120,7 +120,7 @@
                     android:textSize="12sp"
                     android:textColor="@color/colorPrimary"
                     android:textAlignment="gravity"
-                    android:fontFamily="@font/renogare_regular"/>
+                    android:fontFamily="@font/montserrat_v02"/>
 
             </LinearLayout>
 
@@ -151,7 +151,7 @@
                     android:textSize="12sp"
                     android:textColor="@color/colorPrimary"
                     android:textAlignment="gravity"
-                    android:fontFamily="@font/renogare_regular"/>
+                    android:fontFamily="@font/montserrat_v02"/>
 
             </LinearLayout>
 

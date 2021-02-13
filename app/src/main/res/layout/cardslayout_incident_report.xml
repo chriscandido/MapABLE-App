@@ -54,7 +54,8 @@
                     android:text="Title"
                     android:textSize="20sp"
                     android:textColor="@color/colorText"
-                    android:fontFamily="@font/renogare_regular"/>
+                    android:textStyle="bold"
+                    android:fontFamily="@font/montserrat_v02"/>
 
             </LinearLayout>
 

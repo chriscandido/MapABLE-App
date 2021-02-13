@@ -23,7 +23,7 @@
             android:layout_margin="10dp"
             android:text="Back"
             android:clickable="true"
-            android:fontFamily="@font/renogare_regular"
+            android:fontFamily="@font/montserrat_v02"
             style="@style/navigationText"/>
 
     </RelativeLayout>
@@ -40,6 +40,7 @@
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
+            android:layout_gravity="center_vertical"
             android:src="@drawable/ic_mainmenu_aboutmanilabay"/>
 
         <TextView
@@ -52,7 +53,8 @@
             android:text="MANILA BAY, ALAMIN NATIN!"
             android:textSize="25sp"
             android:textColor="@color/colorText"
-            android:fontFamily="@font/renogare_regular"/>
+            android:textStyle="bold"
+            android:fontFamily="@font/montserrat_v02"/>
 
     </LinearLayout>
 

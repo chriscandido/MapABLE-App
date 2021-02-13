@@ -42,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                app:cardBackgroundColor="@color/colorAccent02"
+                app:cardBackgroundColor="@color/colorBackground"
                 app:cardCornerRadius="10dp"
                 app:cardPreventCornerOverlap="true">
 
@@ -60,8 +60,8 @@
                         android:layout_marginRight="10dp"
                         android:text="1. What is the model of your device? We will use this information to examine possible compatibility issues."
                         android:textSize="15sp"
-                        android:textColor="@color/colorAccent"
-                        android:fontFamily="@font/renogare_regular"/>
+                        android:textColor="@color/colorSecondary"
+                        android:fontFamily="@font/montserrat_v02"/>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textInputLayout_feedback_q01"
@@ -73,7 +73,7 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:fontFamily="@font/renogare_regular"
+                            android:fontFamily="@font/montserrat_v02"
                             android:minHeight="100dp"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -90,9 +90,9 @@
                             android:layout_marginRight="10dp"
                             android:text="2. How would you rate the speed of installation?"
                             android:textSize="15sp"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/renogare_regular"/>
+                            android:fontFamily="@font/montserrat_v02"/>
 
                         <Spinner
                             android:id="@+id/spinner_feedback_q01"
@@ -119,9 +119,9 @@
                             android:layout_marginRight="10dp"
                             android:text="3. How would you rate the speed of the app when running?"
                             android:textSize="15sp"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/renogare_regular"/>
+                            android:fontFamily="@font/montserrat_v02"/>
 
                         <Spinner
                             android:id="@+id/spinner_feedback_q02"
@@ -130,7 +130,7 @@
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:textSize="9sp"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/colorSecondary"
                             android:textAlignment="viewStart"/>
 
                     </LinearLayout>
@@ -148,9 +148,9 @@
                             android:layout_marginRight="10dp"
                             android:text="4. After submitting responses, do appropriate pop-up notifications appear? Does a confirmation message appear after you submit your registration or report?"
                             android:textSize="15sp"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/renogare_regular"/>
+                            android:fontFamily="@font/montserrat_v02"/>
 
                         <Spinner
                             android:id="@+id/spinner_feedback_q03"
@@ -159,7 +159,7 @@
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:textSize="9sp"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/colorSecondary"
                             android:textAlignment="viewStart"/>
 
                     </LinearLayout>
@@ -177,9 +177,9 @@
                             android:layout_marginRight="10dp"
                             android:text="5. Do all buttons work properly? Do they lead to the correct page/activity?"
                             android:textSize="15sp"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/renogare_regular"/>
+                            android:fontFamily="@font/montserrat_v02"/>
 
                         <Spinner
                             android:id="@+id/spinner_feedback_q04"
@@ -188,7 +188,7 @@
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:textSize="9sp"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/colorSecondary"
                             android:textAlignment="viewStart"/>
 
                     </LinearLayout>
@@ -206,9 +206,9 @@
                             android:layout_marginRight="10dp"
                             android:text="6. Does the map automatically pin to your current location when opened?"
                             android:textSize="15sp"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/renogare_regular"/>
+                            android:fontFamily="@font/montserrat_v02"/>
 
                         <Spinner
                             android:id="@+id/spinner_feedback_q05"
@@ -217,7 +217,7 @@
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:textSize="9sp"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/colorSecondary"
                             android:textAlignment="viewStart"/>
 
                     </LinearLayout>
@@ -235,9 +235,9 @@
                             android:layout_marginRight="10dp"
                             android:text="7. Are you able to pin your location by long pressing on the map?"
                             android:textSize="15sp"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/renogare_regular"/>
+                            android:fontFamily="@font/montserrat_v02"/>
 
                         <Spinner
                             android:id="@+id/spinner_feedback_q06"
@@ -264,9 +264,9 @@
                             android:layout_marginRight="10dp"
                             android:text="8. Are you able to successfully capture images from the app?"
                             android:textSize="15sp"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/renogare_regular"/>
+                            android:fontFamily="@font/montserrat_v02"/>
 
                         <Spinner
                             android:id="@+id/spinner_feedback_q07"
@@ -293,9 +293,9 @@
                             android:layout_marginRight="10dp"
                             android:text="9. Are you able to access and upload images from your gallery/camera roll through the app?"
                             android:textSize="15sp"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/renogare_regular"/>
+                            android:fontFamily="@font/montserrat_v02"/>
 
                         <Spinner
                             android:id="@+id/spinner_feedback_q08"
@@ -322,9 +322,9 @@
                             android:layout_marginRight="10dp"
                             android:text="10. Does the reporting module solicit enough and appropriate information about the environmental concerns? Are questions easy to understand? Are the options for answers appropriate and clear?"
                             android:textSize="15sp"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/renogare_regular"/>
+                            android:fontFamily="@font/montserrat_v02"/>
 
                         <Spinner
                             android:id="@+id/spinner_feedback_q09"
@@ -351,9 +351,9 @@
                             android:layout_marginRight="10dp"
                             android:text="11. Are the colors, icons, and overall graphic design pleasing to the eyes? Are the icons and layout easy to understand? "
                             android:textSize="15sp"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/renogare_regular"/>
+                            android:fontFamily="@font/montserrat_v02"/>
 
                         <Spinner
                             android:id="@+id/spinner_feedback_q10"
@@ -380,9 +380,9 @@
                             android:layout_marginRight="10dp"
                             android:text="12. Are the contents relevant and easy to read and understand? "
                             android:textSize="15sp"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/renogare_regular"/>
+                            android:fontFamily="@font/montserrat_v02"/>
 
                         <Spinner
                             android:id="@+id/spinner_feedback_q11"
@@ -409,9 +409,9 @@
                             android:layout_marginRight="10dp"
                             android:text="13. The app is relevant and useful in monitoring Manila Bay and its linked environments."
                             android:textSize="15sp"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/renogare_regular"/>
+                            android:fontFamily="@font/montserrat_v02"/>
 
                         <Spinner
                             android:id="@+id/spinner_feedback_q12"
@@ -438,9 +438,9 @@
                             android:layout_marginRight="10dp"
                             android:text="14. Did you find the app easy to use?"
                             android:textSize="15sp"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/renogare_regular"/>
+                            android:fontFamily="@font/montserrat_v02"/>
 
                         <Spinner
                             android:id="@+id/spinner_feedback_q13"
@@ -467,9 +467,9 @@
                             android:layout_marginRight="10dp"
                             android:text="15. Are you satisfied with the app?"
                             android:textSize="15sp"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/renogare_regular"/>
+                            android:fontFamily="@font/montserrat_v02"/>
 
                         <Spinner
                             android:id="@+id/spinner_feedback_q14"
@@ -496,9 +496,9 @@
                             android:layout_marginRight="10dp"
                             android:text="16. Would you recommend this app to your family, friends, and colleagues?"
                             android:textSize="15sp"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/renogare_regular"/>
+                            android:fontFamily="@font/montserrat_v02"/>
 
                         <Spinner
                             android:id="@+id/spinner_feedback_q15"
@@ -525,9 +525,9 @@
                             android:layout_marginRight="10dp"
                             android:text="17. What functions did not work as expected? Select all that apply."
                             android:textSize="15sp"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/colorSecondary"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/renogare_regular"/>
+                            android:fontFamily="@font/montserrat_v02"/>
 
                         <Spinner
                             android:id="@+id/spinner_feedback_q16"
@@ -550,8 +550,8 @@
                         android:layout_marginRight="10dp"
                         android:text="18. Do you have any other comments or suggestions?"
                         android:textSize="15sp"
-                        android:textColor="@color/colorAccent"
-                        android:fontFamily="@font/renogare_regular"/>
+                        android:textColor="@color/colorSecondary"
+                        android:fontFamily="@font/montserrat_v02"/>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textInputLayout_feedback_q02"
@@ -563,7 +563,7 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:fontFamily="@font/renogare_regular"
+                            android:fontFamily="@font/montserrat_v02"
                             android:minHeight="100dp"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -580,10 +580,10 @@
                 android:text="SEND"
                 android:textSize="15sp"
                 android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/renogare_regular"
+                android:fontFamily="@font/montserrat_v02"
                 app:cornerRadius="20dp"
                 app:icon="@drawable/ic_report_send"
-                app:iconTint="@color/colorPrimary"
+                app:iconTint="@color/colorSecondary"
                 app:iconSize="25dp"
                 app:iconGravity="textStart"/>
 

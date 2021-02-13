@@ -28,7 +28,6 @@
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:clickable="true"
-            android:fontFamily="@font/renogare_regular"
             android:text="Back" />
 
     </RelativeLayout>
@@ -58,11 +57,11 @@
         android:backgroundTint="@color/colorText"
         android:text="IPASA"
         android:textSize="15sp"
-        android:textColor="@color/colorPrimary"
-        android:fontFamily="@font/renogare_regular"
+        android:textColor="@color/colorSecondary"
+        android:fontFamily="@font/montserrat_v02"
         app:icon="@drawable/ic_report_send"
         app:iconGravity="textStart"
-        app:iconTint="@color/colorPrimary"
+        app:iconTint="@color/colorSecondary"
         app:iconSize="25dp"
         app:cornerRadius="20dp"
         style="@style/Widget.MaterialComponents.Button"/>

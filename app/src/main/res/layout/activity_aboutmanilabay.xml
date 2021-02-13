@@ -17,7 +17,7 @@
             android:layout_margin="10dp"
             android:layout_alignParentLeft="true"
             android:text="Back"
-            android:fontFamily="@font/renogare_regular"
+            android:fontFamily="@font/montserrat_v02"
             style="@style/navigationText"/>
 
     </RelativeLayout>

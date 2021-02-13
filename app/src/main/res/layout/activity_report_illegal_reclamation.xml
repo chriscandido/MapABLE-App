@@ -67,7 +67,7 @@
                         android:text="@string/desc_illegalReclamation"
                         android:textColor="@color/colorSecondary"
                         android:textAlignment="viewStart"
-                        android:fontFamily="@font/renogare_regular"
+                        android:fontFamily="@font/montserrat_v02"
                         style="@style/contentText"/>
 
                 </LinearLayout>
@@ -97,7 +97,7 @@
                         android:text="Maikling Salaysay"
                         android:textSize="15sp"
                         android:textColor="@color/colorAccent"
-                        android:fontFamily="@font/renogare_regular"/>
+                        android:fontFamily="@font/montserrat_v02"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -108,7 +108,7 @@
                         android:textSize="12sp"
                         android:textColor="@color/colorSecondary"
                         android:textAlignment="viewStart"
-                        android:fontFamily="@font/renogare_regular"/>
+                        android:fontFamily="@font/montserrat_v02"/>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textInputLayout_reportIllegalReclamation"
@@ -120,7 +120,7 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:fontFamily="@font/renogare_regular"
+                            android:fontFamily="@font/montserrat_v02"
                             android:minHeight="100dp"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -139,7 +139,7 @@
                             android:textSize="15sp"
                             android:textColor="@color/colorAccent"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/renogare_regular"/>
+                            android:fontFamily="@font/montserrat_v02"/>
 
                         <Spinner
                             android:id="@+id/spinner_reportIllegalReclamation_q01"
@@ -168,7 +168,7 @@
                             android:textSize="15sp"
                             android:textColor="@color/colorAccent"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/renogare_regular"/>
+                            android:fontFamily="@font/montserrat_v02"/>
 
                         <Spinner
                             android:id="@+id/spinner_reportIllegalReclamation_q02"
@@ -197,7 +197,7 @@
                             android:textSize="15sp"
                             android:textAlignment="textStart"
                             android:textColor="@color/colorAccent"
-                            android:fontFamily="@font/renogare_regular"/>
+                            android:fontFamily="@font/montserrat_v02"/>
 
                         <Spinner
                             android:id="@+id/spinner_reportIllegalReclamation_q03"
@@ -226,7 +226,7 @@
                             android:textSize="15sp"
                             android:textColor="@color/colorAccent"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/renogare_regular"/>
+                            android:fontFamily="@font/montserrat_v02"/>
 
                         <Spinner
                             android:id="@+id/spinner_reportIllegalReclamation_q04"
@@ -255,7 +255,7 @@
                             android:textSize="15sp"
                             android:textColor="@color/colorAccent"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/renogare_regular"/>
+                            android:fontFamily="@font/montserrat_v02"/>
 
                         <Spinner
                             android:id="@+id/spinner_reportIllegalReclamation_q05"
@@ -278,7 +278,7 @@
                         android:text="6. Pangalan ng nagtambak, posibleng nagtambak o nagbabantay sa lugar (Ilagay ang Wala kung hindi kilala)"
                         android:textSize="15sp"
                         android:textColor="@color/colorAccent"
-                        android:fontFamily="@font/renogare_regular"/>
+                        android:fontFamily="@font/montserrat_v02"/>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textInputLayout_reportIllegalReclamation_q06"
@@ -290,7 +290,7 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:fontFamily="@font/renogare_regular" />
+                            android:fontFamily="@font/montserrat_v02" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
@@ -306,7 +306,7 @@
                 android:text="SUNOD"
                 android:textSize="15sp"
                 android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/renogare_regular"
+                android:fontFamily="@font/montserrat_v02"
                 app:cornerRadius="20dp"/>
 
         </LinearLayout>

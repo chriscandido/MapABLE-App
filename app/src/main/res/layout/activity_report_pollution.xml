@@ -66,7 +66,7 @@
                         android:text="@string/desc_pollution"
                         android:textColor="@color/colorSecondary"
                         android:textAlignment="viewStart"
-                        android:fontFamily="@font/renogare_regular"
+                        android:fontFamily="@font/montserrat_v02"
                         style="@style/contentText"/>
 
                 </LinearLayout>
@@ -95,7 +95,7 @@
                         android:text="Maikling Salaysay"
                         android:textSize="15sp"
                         android:textColor="@color/colorAccent"
-                        android:fontFamily="@font/renogare_regular"/>
+                        android:fontFamily="@font/montserrat_v02"/>
 
                     <!-- Question00 TextInputLayout -->
                     <TextView
@@ -107,7 +107,7 @@
                         android:textSize="12sp"
                         android:textColor="@color/colorSecondary"
                         android:textAlignment="viewStart"
-                        android:fontFamily="@font/renogare_regular"/>
+                        android:fontFamily="@font/montserrat_v02"/>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textInputLayout_reportPollution"
@@ -119,7 +119,7 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:fontFamily="@font/renogare_regular"
+                            android:fontFamily="@font/montserrat_v02"
                             android:minHeight="100dp"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -138,7 +138,7 @@
                             android:textSize="15sp"
                             android:textColor="@color/colorAccent"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/renogare_regular"/>
+                            android:fontFamily="@font/montserrat_v02"/>
 
                         <Spinner
                             android:id="@+id/spinner_reportPollution_q01"
@@ -167,7 +167,7 @@
                             android:textSize="15sp"
                             android:textColor="@color/colorAccent"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/renogare_regular"/>
+                            android:fontFamily="@font/montserrat_v02"/>
 
                         <Spinner
                             android:id="@+id/spinner_reportPollution_q02"
@@ -196,7 +196,7 @@
                             android:textSize="15sp"
                             android:textColor="@color/colorAccent"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/renogare_regular"/>
+                            android:fontFamily="@font/montserrat_v02"/>
 
                         <Spinner
                             android:id="@+id/spinner_reportPollution_q03"
@@ -225,7 +225,7 @@
                             android:textSize="15sp"
                             android:textColor="@color/colorAccent"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/renogare_regular"/>
+                            android:fontFamily="@font/montserrat_v02"/>
 
                         <Spinner
                             android:id="@+id/spinner_reportPollution_q04"
@@ -248,7 +248,7 @@
                         android:text="5. Ilarawan ang itsura ng tubig (kulay, etc.)"
                         android:textSize="15sp"
                         android:textColor="@color/colorAccent"
-                        android:fontFamily="@font/renogare_regular"/>
+                        android:fontFamily="@font/montserrat_v02"/>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textInputLayout_reportPollution_q05"
@@ -260,7 +260,7 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:fontFamily="@font/renogare_regular" />
+                            android:fontFamily="@font/montserrat_v02" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <!-- Question06 Spinner -->
@@ -278,7 +278,7 @@
                             android:textSize="15sp"
                             android:textColor="@color/colorAccent"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/renogare_regular"/>
+                            android:fontFamily="@font/montserrat_v02"/>
 
                         <Spinner
                             android:id="@+id/spinner_reportPollution_q06"
@@ -301,7 +301,7 @@
                         android:text="7. Pangalan ng istruktura o pasilidad ng pnagmumulan ng polusyon sa tubig (Ilagay ang Wala kung hindi kilala):"
                         android:textSize="15sp"
                         android:textColor="@color/colorAccent"
-                        android:fontFamily="@font/renogare_regular"/>
+                        android:fontFamily="@font/montserrat_v02"/>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textInputLayout_reportPollution_q07"
@@ -313,7 +313,7 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:fontFamily="@font/renogare_regular" />
+                            android:fontFamily="@font/montserrat_v02" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
@@ -329,7 +329,7 @@
                 android:text="SUNOD"
                 android:textSize="15sp"
                 android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/renogare_regular"
+                android:fontFamily="@font/montserrat_v02"
                 app:cornerRadius="20dp"/>
 
         </LinearLayout>

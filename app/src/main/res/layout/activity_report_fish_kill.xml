@@ -66,7 +66,7 @@
                         android:text="@string/desc_fishkill"
                         android:textColor="@color/colorSecondary"
                         android:textAlignment="viewStart"
-                        android:fontFamily="@font/renogare_regular"
+                        android:fontFamily="@font/montserrat_v02"
                         style="@style/contentText"/>
 
                 </LinearLayout>
@@ -95,7 +95,7 @@
                         android:text="Maikling Salaysay"
                         android:textSize="15sp"
                         android:textColor="@color/colorAccent"
-                        android:fontFamily="@font/renogare_regular"/>
+                        android:fontFamily="@font/montserrat_v02"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -106,7 +106,7 @@
                         android:textSize="12sp"
                         android:textColor="@color/colorSecondary"
                         android:textAlignment="viewStart"
-                        android:fontFamily="@font/renogare_regular"/>
+                        android:fontFamily="@font/montserrat_v02"/>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textInputLayout_reportFishKill"
@@ -118,7 +118,7 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:fontFamily="@font/renogare_regular"
+                            android:fontFamily="@font/montserrat_v02"
                             android:minHeight="100dp"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -137,7 +137,7 @@
                             android:textSize="15sp"
                             android:textColor="@color/colorAccent"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/renogare_regular"/>
+                            android:fontFamily="@font/montserrat_v02"/>
 
                         <Spinner
                             android:id="@+id/spinner_reportFishKill_q01"
@@ -166,7 +166,7 @@
                             android:textSize="15sp"
                             android:textColor="@color/colorAccent"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/renogare_regular"/>
+                            android:fontFamily="@font/montserrat_v02"/>
 
                         <Spinner
                             android:id="@+id/spinner_reportFishKill_q02"
@@ -189,7 +189,7 @@
                         android:text="3. Ilarawan ang itsura ng tubig (kulay, etc.)"
                         android:textSize="15sp"
                         android:textColor="@color/colorAccent"
-                        android:fontFamily="@font/renogare_regular"/>
+                        android:fontFamily="@font/montserrat_v02"/>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/textInputLayout_reportFishKill_q03"
@@ -201,7 +201,7 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:fontFamily="@font/renogare_regular" />
+                            android:fontFamily="@font/montserrat_v02" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <!-- Question04 Spinner -->
@@ -219,7 +219,7 @@
                             android:textSize="15sp"
                             android:textColor="@color/colorAccent"
                             android:textAlignment="textStart"
-                            android:fontFamily="@font/renogare_regular"/>
+                            android:fontFamily="@font/montserrat_v02"/>
 
                         <Spinner
                             android:id="@+id/spinner_reportFishKill_q04"
@@ -246,7 +246,7 @@
                 android:text="SUNOD"
                 android:textSize="15sp"
                 android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/renogare_regular"
+                android:fontFamily="@font/montserrat_v02"
                 app:cornerRadius="20dp"/>
 
         </LinearLayout>

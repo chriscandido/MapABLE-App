@@ -25,6 +25,7 @@
             android:text="Back"
             android:clickable="true"
             style="@style/navigationText"/>
+
     </RelativeLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -40,7 +41,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="50dp"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -100,7 +101,7 @@
                     android:layout_marginStart="125dp"
                     android:padding="10dp"
                     android:background="@drawable/bg_box02"
-                    android:src="@drawable/ic_report_incident" />
+                    android:src="@drawable/ic_report_incident"/>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -115,7 +116,7 @@
                         android:text="Uri ng"
                         android:textSize="15sp"
                         android:textColor="@color/colorText"
-                        android:fontFamily="@font/renogare_regular"/>
+                        android:fontFamily="@font/montserrat_v02"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -123,8 +124,10 @@
                         android:text="Insidente"
                         android:textSize="15sp"
                         android:textColor="@color/colorText"
-                        android:fontFamily="@font/renogare_regular"/>
+                        android:fontFamily="@font/montserrat_v02"/>
+
                 </LinearLayout>
+
             </LinearLayout>
 
             <!-- Location of Incident -->
@@ -157,7 +160,7 @@
                         android:text="Lokasyon"
                         android:textSize="15sp"
                         android:textColor="@color/colorText"
-                        android:fontFamily="@font/renogare_regular"/>
+                        android:fontFamily="@font/montserrat_v02"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -191,7 +194,7 @@
                         android:text="Larawan"
                         android:textSize="15sp"
                         android:textColor="@color/colorText"
-                        android:fontFamily="@font/renogare_regular"/>
+                        android:fontFamily="@font/montserrat_v02"/>
 
                 </LinearLayout>
 
@@ -216,8 +219,9 @@
                     android:backgroundTint="@color/colorText"
                     android:text="Sagutan ang Form"
                     android:textSize="15sp"
-                    android:textColor="@color/colorPrimary"
-                    android:fontFamily="@font/renogare_regular"
+                    android:textColor="@color/colorSecondary"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/montserrat_v02"
                     app:cornerRadius="20dp"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
@@ -233,11 +237,12 @@
                     android:backgroundTint="@color/colorText"
                     android:text="IPASA"
                     android:textSize="15sp"
-                    android:textColor="@color/colorPrimary"
-                    android:fontFamily="@font/renogare_regular"
+                    android:textColor="@color/colorSecondary"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/montserrat_v02"
                     app:icon="@drawable/ic_report_send"
                     app:iconGravity="textStart"
-                    app:iconTint="@color/colorPrimary"
+                    app:iconTint="@color/colorSecondary"
                     app:iconSize="25dp"
                     app:cornerRadius="20dp"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
