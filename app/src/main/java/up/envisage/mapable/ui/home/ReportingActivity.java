@@ -157,7 +157,7 @@ public class ReportingActivity extends AppCompatActivity {
                 map.put("report", Report);
                 map.put("lon", lon);
                 map.put("lat", lat);
-                map.put("image", imageString);
+                map.put("image", imageString); //imageString
 
                 Log.v("[ ReportingActivity.java ]",
                         "DATE & TIME: " + dateTime + "\n" +
@@ -166,7 +166,7 @@ public class ReportingActivity extends AppCompatActivity {
                                 "REPORT: " + Report + "\n" +
                                 "LATITUDE: " + lat + "\n" +
                                 "LONGITUDE: " + lon + "\n" +
-                                "IMAGE: " + imageString + "\n" );
+                                "IMAGE: " + imageString + "\n" ); //imageString
 
                 if(connection == true){
 

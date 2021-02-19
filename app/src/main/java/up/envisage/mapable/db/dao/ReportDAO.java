@@ -25,6 +25,9 @@ public interface ReportDAO {
     @Query ("SELECT * FROM Report_Profile ORDER BY report_id DESC LIMIT 1")
     LiveData<ReportTable> getLastReport();
 
+    @Query ("SELECT COUNT(report) FROM Report_Profile")
+    LiveData<Integer> getCount();
+
     @Query ("DELETE FROM Report_Profile")
     void deleteAllReports();
 

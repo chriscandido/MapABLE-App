@@ -85,6 +85,11 @@ public class UserFragment extends Fragment {
             }
         });
 
+        //declare view for Verified Reports
+        //Set OnClick Listener
+        //Define OnClick method
+            //Intent to Verified Reports
+
         textView_user_myStats = view.findViewById(R.id.textView_user_myStats);
         textView_user_myStats.setOnClickListener(new View.OnClickListener() {
             @Override
