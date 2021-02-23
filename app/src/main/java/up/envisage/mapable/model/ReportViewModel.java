@@ -37,4 +37,14 @@ public class ReportViewModel extends AndroidViewModel {
     public LiveData<List<ReportTable>> getAllReports() {
         return allReports;
     }
+
+
+//    public
+//    getCount() {
+//        return count;
+//    }
+//
+//    public void setCount(String count) {
+//        this.count = count;
+//    }
 }
