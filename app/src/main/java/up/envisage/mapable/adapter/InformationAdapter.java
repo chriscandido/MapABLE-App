@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -18,20 +19,19 @@ public class InformationAdapter extends RecyclerView.Adapter<InformationAdapter.
 
     Context context;
 
-    private OnInformationClickListener onInformationClickListener;
-    private LayoutInflater layoutInflater;
-
-    private int[] img_policyAndLaws;
+    private final OnInformationClickListener onInformationClickListener;
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView imageView;
+        TextView textView;
         OnInformationClickListener onInformationClickListener;
         Context context;
 
         public ViewHolder(@NonNull View view, OnInformationClickListener onInformationClickListener) {
             super(view);
-            this.imageView = view.findViewById(R.id.imageView_policyAndLaw);
+            this.imageView = view.findViewById(R.id.imageView_informationBackground);
+            this.textView = view.findViewById(R.id.textView_informationTitle);
             this.onInformationClickListener = onInformationClickListener;
 
             view.setOnClickListener(this);
@@ -47,35 +47,46 @@ public class InformationAdapter extends RecyclerView.Adapter<InformationAdapter.
     public InformationAdapter (Context context, OnInformationClickListener onInformationClickListener) {
         this.context = context;
         this.onInformationClickListener = onInformationClickListener;
-        layoutInflater = LayoutInflater.from(context);
+        LayoutInflater layoutInflater = LayoutInflater.from(context);
     }
 
-    //Policies and Laws Images
-    public int[] img_policiesAndLaws = {
-            R.drawable.img_policy_battleogmanilabay,
+    //Information Title
+    public String[] informationTitle = {
+            "Kilalanin ang Manila Bay . . .",
+            "Pormal na idineklara ang BATTLE OF . . .",
+            "Ang G.R. Nos. 171947-48, o mas kilala . . .",
+            "Nilagdaan ni Pangulong Rodrigo Duterte . . .",
+            "Ang Philippine Clean Water Act . . .",
+            "Ano ang Ecological Solid Waste Management Act . . ."
+    };
+
+    //Information Images
+    public int[] img_informationBackground = {
+            R.drawable.img_manilabay,
+            R.drawable.img_policy_battleofmanilabay,
             R.drawable.img_policy_manilabaymandamus,
             R.drawable.img_policy_manilabaytaskforce,
-            R.drawable.img_policy_solidwaste,
-            R.drawable.img_policy_cleanwateract
+            R.drawable.img_policy_cleanwateract,
+            R.drawable.img_policy_solidwaste
     };
 
     @NonNull
     @Override
     public InformationAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.image_policyandlaw, parent, false);
-        ViewHolder viewHolder = new ViewHolder(view, onInformationClickListener);
-        return viewHolder;
+                .inflate(R.layout.cardslayout_information, parent, false);
+        return new ViewHolder(view, onInformationClickListener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull InformationAdapter.ViewHolder viewHolder, int position) {
-        viewHolder.imageView.setImageResource(img_policiesAndLaws[position]);
+        viewHolder.imageView.setImageResource(img_informationBackground[position]);
+        viewHolder.textView.setText(informationTitle[position]);
     }
 
     @Override
     public int getItemCount() {
-        return img_policiesAndLaws.length;
+        return img_informationBackground.length;
     }
 
     public interface OnInformationClickListener {

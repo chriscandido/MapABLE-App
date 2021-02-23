@@ -27,44 +27,24 @@
             style="@style/navigationText"/>
 
     </RelativeLayout>
-
-    <!-- Page Title -->
-    <LinearLayout
+    
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:orientation="horizontal">
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="Manila Bay, Alamin Natin!"
+        android:textColor="@color/colorText"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/montserrat"/>
 
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/ic_mainmenu_aboutmanilabay"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="5dp"
-            android:layout_gravity="center_vertical"
-            android:text="MANILA BAY, ALAMIN NATIN!"
-            android:textSize="25sp"
-            android:textColor="@color/colorText"
-            android:textStyle="bold"
-            android:fontFamily="@font/montserrat"/>
-
-    </LinearLayout>
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager_lawsAndPolicy"
+    <!-- Information -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_information"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:background="@color/colorPrimary"
-        android:orientation="horizontal"/>
+        android:layout_margin="2dp"
+        android:scrollbars="vertical"/>
 
 </LinearLayout>

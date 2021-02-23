@@ -25,7 +25,7 @@
                 android:layout_width="50dp"
                 android:layout_height="100dp"
                 android:layout_marginStart="20dp"
-                android:gravity="center"
+                android:gravity="center_vertical"
                 android:text="12"
                 android:textSize="30sp"
                 android:textColor="@color/colorSecondary"
@@ -33,15 +33,14 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_marginStart="20dp"
                     android:layout_gravity="start"
                     android:text="SUBMITTED"
                     android:textSize="18sp"
@@ -51,7 +50,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
                     android:layout_gravity="start"
                     android:text="REPORTS"
                     android:textSize="18sp"

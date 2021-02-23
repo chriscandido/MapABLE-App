@@ -37,7 +37,6 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
     private TextView textView_reportIncident_back;
 
     private Retrofit retrofit;
-    private RetrofitInterface retrofitInterface;
     private String BASE_URL = "http://ec2-54-91-89-105.compute-1.amazonaws.com/";
     private String userID, dateTime, incidentType, Report, lon, lat, image, imageID2;
 
@@ -62,7 +61,7 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
                 .client(httpClient.build())
                 .build();
 
-        retrofitInterface = retrofit.create(RetrofitInterface.class);
+        RetrofitInterface retrofitInterface = retrofit.create(RetrofitInterface.class);
 
         Intent incident = getIntent(); // gets intent from reportingActivity
 
