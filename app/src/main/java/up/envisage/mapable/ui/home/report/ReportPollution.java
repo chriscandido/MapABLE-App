@@ -126,17 +126,18 @@ public class ReportPollution extends AppCompatActivity implements AdapterView.On
                 input05 = textInputLayout_reportPollution_q05.getEditText().getText().toString();
                 input07 = textInputLayout_reportPollution_q07.getEditText().getText().toString();
 
-                out.add(input00);
-                out.add(input01);
-                out.add(input02);
-                out.add(input03);
-                out.add(input04);
-                out.add(input05);
-                out.add(input06);
-                out.add(input07);
+                // out.add(input00);
+                // out.add(input01);
+                // out.add(input02);
+                // out.add(input03);
+                // out.add(input04);
+                // out.add(input05);
+                // out.add(input06);
+                // out.add(input07);
 
-                Gson gson = new Gson();
-                String ans = gson.toJson(out);
+                // Gson gson = new Gson();
+                // String ans = gson.toJson(out);
+                String ans = input00 + "|" + input01 + "|" + input02 + "|" + input03 + "|" + input04+ "|" + input05+ "|" + input06 + "|" + input07;
 
                 Log.v("[ ReportPollution.java ]", "ANSWER: " + ans);
 
