@@ -101,9 +101,6 @@ import up.envisage.mapable.adapter.ReportIncidentAdapter;
      private void openFacebookPageIntent(String url) {
          Context context = null;
          try {
-             if (BuildConfig.DEBUG) {
-                 throw new AssertionError("Assertion failed");
-             }
              ApplicationInfo applicationInfo = context.getPackageManager().getApplicationInfo("com.facebook.katana", 0);
              if (applicationInfo.enabled) {
                  int versionCode = context.getPackageManager().getPackageInfo("com.facebook.katana", 0).versionCode;

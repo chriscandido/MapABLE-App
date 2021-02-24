@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:padding="10dp"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!-- Report Description -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                app:cardBackgroundColor="@color/colorBackground"
+                app:cardCornerRadius="10dp"
+                app:cardPreventCornerOverlap="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_map_hyacinth"/>
+
+                        <TextView
+                            android:id="@+id/textView_reportIncidentTitle_fishKill"
+                            style="@style/headerText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:text="@string/title_waterHyacinth"
+                            android:textColor="@color/colorAccent"
+                            android:textAlignment="viewStart"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView_reportIncidentBody_fishKill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="@string/desc_waterhyacinth"
+                        android:textColor="@color/colorSecondary"
+                        android:textAlignment="viewStart"
+                        android:fontFamily="@font/montserrat"
+                        style="@style/contentText"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Report Questions -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                app:cardBackgroundColor="@color/colorBackground"
+                app:cardCornerRadius="10dp"
+                app:cardPreventCornerOverlap="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="Maikling Salaysay"
+                        android:textSize="15sp"
+                        android:textColor="@color/colorSecondary"
+                        android:fontFamily="@font/montserrat"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="Isang maikling salaysay tungkol sa nangyaring insidente. Maaring isulat kung kailan nagsimula, kung ano ang obserbasyon sa lugar, o hindi kaya ay kung ano ang naging dahilan ng insidente"
+                        android:textSize="12sp"
+                        android:textColor="@color/colorAccent"
+                        android:textAlignment="viewStart"
+                        android:fontFamily="@font/montserrat"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayout_reportWaterHyacinth"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        app:boxBackgroundColor="@color/colorBackground"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/montserrat"
+                            android:minHeight="100dp"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Question01 Spinner -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="1. Gaano katagal naoobserbahan ang water hyacinths?"
+                            android:textSize="15sp"
+                            android:textColor="@color/colorSecondary"
+                            android:textAlignment="textStart"
+                            android:fontFamily="@font/montserrat"/>
+
+                        <Spinner
+                            android:id="@+id/spinner_reportWaterHyacinth_q01"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            style="@style/spinnerText"/>
+
+                    </LinearLayout>
+
+                    <!-- Question02 Spinner -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="2. Paano mailalarawan ang sakop ng water hyacinthsa tubig?"
+                            android:textSize="15sp"
+                            android:textColor="@color/colorSecondary"
+                            android:textAlignment="textStart"
+                            android:fontFamily="@font/montserrat"/>
+
+                        <Spinner
+                            android:id="@+id/spinner_reportWaterHyacinth_q02"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            style="@style/spinnerText"/>
+
+                    </LinearLayout>
+
+                    <!-- Question03 TextInput -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="3. Gaano kalawak ang sakop ng water hyacinths?"
+                        android:textSize="15sp"
+                        android:textColor="@color/colorSecondary"
+                        android:fontFamily="@font/montserrat"/>
+
+                    <Spinner
+                        android:id="@+id/spinner_reportWaterHyacinth_q03"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        style="@style/spinnerText"/>
+
+                    <!-- Question04 Spinner -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="4. Gumagalaw ba ang water hyacinths kasabay ng agos ng tubig?"
+                            android:textSize="15sp"
+                            android:textColor="@color/colorSecondary"
+                            android:textAlignment="textStart"
+                            android:fontFamily="@font/montserrat"/>
+
+                        <Spinner
+                            android:id="@+id/spinner_reportWaterHyacinth_q04"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            style="@style/spinnerText"/>
+
+                    </LinearLayout>
+
+                    <!-- Question05 Spinner -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="5. Nakaharang ba sa mga daluyan ng tubig (ilog o estero) ang mga water hyacinths?"
+                            android:textSize="15sp"
+                            android:textColor="@color/colorSecondary"
+                            android:textAlignment="textStart"
+                            android:fontFamily="@font/montserrat"/>
+
+                        <Spinner
+                            android:id="@+id/spinner_reportWaterHyacinth_q05"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            style="@style/spinnerText"/>
+
+                    </LinearLayout>
+
+                    <!-- Question06 Spinner -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="6. Naipaalam na ba sa barangay o lokal na pamahalaan ang sitwasyon?"
+                            android:textSize="15sp"
+                            android:textColor="@color/colorSecondary"
+                            android:textAlignment="textStart"
+                            android:fontFamily="@font/montserrat"/>
+
+                        <Spinner
+                            android:id="@+id/spinner_reportWaterHyacinth_q06"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            style="@style/spinnerText"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_reportWaterHyacinth_next"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/colorText"
+                android:text="SUNOD"
+                android:textSize="15sp"
+                android:textColor="@color/colorSecondary"
+                android:fontFamily="@font/montserrat"
+                app:cornerRadius="20dp"/>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

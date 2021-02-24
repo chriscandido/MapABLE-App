@@ -103,7 +103,7 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
                 }
 
                 else {
-//                    function to do what it does when login button is clicked
+                    //function to do what it does when login button is clicked
                     HashMap<String, String> map = new HashMap<>();
                     map.put("name", name);
                     map.put("number", number);
