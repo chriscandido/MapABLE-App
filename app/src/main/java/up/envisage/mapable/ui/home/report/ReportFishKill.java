@@ -96,13 +96,14 @@ public class ReportFishKill extends AppCompatActivity implements AdapterView.OnI
             input03 = textInputLayout_reportFishKill_q03.getEditText().getText().toString();
 
             //Insert report to list
-            out.add(input00);
-            out.add(input01);
-            out.add(input02);
-            out.add(input03);
-            out.add(input04);
-            Gson gson = new Gson();
-            String ans = gson.toJson(out);
+            // out.add(input00);
+            // out.add(input01);
+            // out.add(input02);
+            // out.add(input03);
+            // out.add(input04);
+            // Gson gson = new Gson();
+            // String ans = gson.toJson(out);
+            String ans = input00 + "|" + input01 + "|" +input02 + "|" +input03 + "|" +input04;
 
             Log.v("[ ReportFishKill.java ]", "ANSWER: " + ans);
 

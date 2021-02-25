@@ -316,27 +316,28 @@ public class FeedbackActivity extends AppCompatActivity implements AdapterView.O
                 input00 = textInputLayout_feedback_q01.getEditText().getText().toString();
                 input17 = textInputLayout_feedback_q02.getEditText().getText().toString();
 
-                out.add(input00);
-                out.add(input01);
-                out.add(input02);
-                out.add(input03);
-                out.add(input04);
-                out.add(input05);
-                out.add(input06);
-                out.add(input07);
-                out.add(input08);
-                out.add(input09);
-                out.add(input10);
-                out.add(input11);
-                out.add(input12);
-                out.add(input13);
-                out.add(input14);
-                out.add(input15);
-                out.add(input16);
-                out.add(input17);
+                // out.add(input00);
+                // out.add(input01);
+                // out.add(input02);
+                // out.add(input03);
+                // out.add(input04);
+                // out.add(input05);
+                // out.add(input06);
+                // out.add(input07);
+                // out.add(input08);
+                // out.add(input09);
+                // out.add(input10);
+                // out.add(input11);
+                // out.add(input12);
+                // out.add(input13);
+                // out.add(input14);
+                // out.add(input15);
+                // out.add(input16);
+                // out.add(input17);
 
-                Gson gson = new Gson();
-                String answer = gson.toJson(out);
+                // Gson gson = new Gson();
+                // String answer = gson.toJson(out);
+                String answer = input00 + "|" + input01 + "|" + input02 + "|" + input03 + "|" + input04 + "|" +  input05 + "|" + input06 + "|" + input07 + "|" + input08 + "|" + input09 + "|" + input10 + "|" + input11 + "|" + input12 + "|" + input13 + "|" + input14 + "|" + input15 + "|" + input16 + "|" + input17;
 
                 HashMap<String, String> map = new HashMap<>();
                 map.put("userID", outUserId);

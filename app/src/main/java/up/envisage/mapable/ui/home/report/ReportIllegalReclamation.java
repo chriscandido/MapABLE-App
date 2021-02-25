@@ -121,15 +121,16 @@ public class ReportIllegalReclamation extends AppCompatActivity implements Adapt
                 input06 = textInputLayout_reportIllegalReclamation_q06.getEditText().getText().toString();
 
                 //Insert report details
-                out.add(input00);
-                out.add(input01);
-                out.add(input02);
-                out.add(input03);
-                out.add(input04);
-                out.add(input05);
-                out.add(input06);
-                Gson gson = new Gson();
-                String ans = gson.toJson(out);
+                // out.add(input00);
+                // out.add(input01);
+                // out.add(input02);
+                // out.add(input03);
+                // out.add(input04);
+                // out.add(input05);
+                // out.add(input06);
+                // Gson gson = new Gson();
+                // String ans = gson.toJson(out);
+                String ans = input00 + "|" + input01 + "|" + input02 + "|" + input03 + "|" + input04+ "|" + input05+ "|" + input06;
 
                 Log.v("[ ReportIllegalReclamation.java ]", "ANSWER: " + ans);
 
