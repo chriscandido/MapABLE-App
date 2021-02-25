@@ -215,7 +215,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
             locationComponent.addOnLocationClickListener(this::initLocationEngine);
 
             //Set the component's zoom
-            locationComponent.zoomWhileTracking(15.0, 15000);
+            locationComponent.zoomWhileTracking(12.0, 10000);
 
             initLocationEngine();
         } else {
@@ -237,15 +237,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
 
         locationEngine.requestLocationUpdates(request, callback, getMainLooper());
         locationEngine.getLastLocation(callback);
-    }
-
-    private void setCameraPosition(double latitude, double longitude) {
-        CameraPosition position = new CameraPosition.Builder()
-                .target(new LatLng(latitude, longitude))
-                .zoom(17)
-                .tilt(45)
-                .build();
-        mapboxMap.animateCamera(CameraUpdateFactory.newCameraPosition(position), 15000);
     }
 
     public static Icon drawableToIcon(@NonNull Context context, @DrawableRes int id) {
