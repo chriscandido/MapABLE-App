@@ -25,7 +25,6 @@ import up.envisage.mapable.fragment.GoogleMapFragment;
 
 public class ReportIllegalReclamation extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    private MaterialButton button_reportIllegalReclamation_next;
     private TextInputLayout textInputLayout_reportIllegalReclamation_q00, textInputLayout_reportIllegalReclamation_q06;
 
     private String input00, input01, input02, input03, input04, input05, input06;
@@ -57,7 +56,7 @@ public class ReportIllegalReclamation extends AppCompatActivity implements Adapt
         textInputLayout_reportIllegalReclamation_q00 = findViewById(R.id.textInputLayout_reportIllegalReclamation);
         textInputLayout_reportIllegalReclamation_q06 = findViewById(R.id.textInputLayout_reportIllegalReclamation_q06);
 
-        button_reportIllegalReclamation_next = findViewById(R.id.button_reportIllegalReclamation_next);
+        MaterialButton button_reportIllegalReclamation_next = findViewById(R.id.button_reportIllegalReclamation_next);
 
         //Question01 spinner element
         spinner_reportIllegalReclamation_q01.setOnItemSelectedListener(this);
@@ -120,16 +119,6 @@ public class ReportIllegalReclamation extends AppCompatActivity implements Adapt
                 input00 = textInputLayout_reportIllegalReclamation_q00.getEditText().getText().toString();
                 input06 = textInputLayout_reportIllegalReclamation_q06.getEditText().getText().toString();
 
-                //Insert report details
-                // out.add(input00);
-                // out.add(input01);
-                // out.add(input02);
-                // out.add(input03);
-                // out.add(input04);
-                // out.add(input05);
-                // out.add(input06);
-                // Gson gson = new Gson();
-                // String ans = gson.toJson(out);
                 String ans = input00 + "|" + input01 + "|" + input02 + "|" + input03 + "|" + input04+ "|" + input05+ "|" + input06;
 
                 Log.v("[ ReportIllegalReclamation.java ]", "ANSWER: " + ans);

@@ -49,22 +49,7 @@ import up.envisage.mapable.adapter.ReportIncidentAdapter;
          });
      }
 
-     public void onStart() {
-         super.onStart();
-     }
-
-     public void onResume() {
-         super.onResume();
-     }
-
-     public void onPause() {
-         super.onPause();
-     }
-
-     public void onBackPressed() {
-
-     }
-
+     //---------------------------------------------------------------------------------------------Different cardview for each facebook links
      @SuppressLint("LongLogTag")
      @Override
      public void onClick(int position) {
@@ -107,7 +92,6 @@ import up.envisage.mapable.adapter.ReportIncidentAdapter;
                  String facebookUrl = null;
                  if (versionCode >= 3002850) {
                      facebookUrl = "fb://facewebmodal/f?href=" + url;
-                     //facebookUrl = "fb://page/" + url;
                  }
                  startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(facebookUrl)));
              } else {
@@ -118,6 +102,24 @@ import up.envisage.mapable.adapter.ReportIncidentAdapter;
          } catch (Exception e) {
              startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
          }
+     }
+
+     public void onStart() {
+         super.onStart();
+     }
+
+     public void onResume() {
+         super.onResume();
+     }
+
+     public void onPause() {
+         super.onPause();
+     }
+
+     public void onBackPressed() {
+        super.onBackPressed();
+         Intent intent = new Intent(InformationActivity.this, MainActivity.class);
+         startActivity(intent);
      }
  }
 

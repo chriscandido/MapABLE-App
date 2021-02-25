@@ -349,5 +349,9 @@ public class ReportingActivity extends AppCompatActivity {
         super.onPause();
     }
 
-    public void onBackPressed(){ }
+    public void onBackPressed(){
+        super.onBackPressed();
+        Intent intent = new Intent(ReportingActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
 }

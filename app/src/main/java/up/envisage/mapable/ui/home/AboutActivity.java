@@ -34,21 +34,21 @@ public class AboutActivity extends AppCompatActivity {
         textView_aboutUs_im4manilbayLink = findViewById(R.id.textView_aboutUs_im4manilabayLink);
         TextView textView_aboutUs_mapableLink = findViewById(R.id.textView_aboutUs_mapableLink);
 
+        //Button go back
         textView_aboutUs_back.setOnClickListener(v -> {
             Intent back = new Intent(AboutActivity.this, MainActivity.class);
             startActivity(back);
         });
 
-
+        //Button go to IM4ManilaBay link
         textView_aboutUs_im4manilbayLink.setOnClickListener(v -> {
             String facebookLink = "https://www.facebook.com/IM4ManilaBay";
-            //String facebookLink = "IM4ManilaBay";
             openFacebookIntent(facebookLink);
         });
 
+        //Button go to Project MapABLE link
         textView_aboutUs_mapableLink.setOnClickListener(v -> {
             String facebookLink = "https://www.facebook.com/ProjectMapABLE";
-            //String facebookLink = "ProjectMapABLE";
             openFacebookIntent(facebookLink);
         });
     }
@@ -64,7 +64,6 @@ public class AboutActivity extends AppCompatActivity {
                 String facebookUrl = null;
                 if (versionCode >= 3002850) {
                     facebookUrl = "fb://facewebmodal/f?href=" + url;
-                    //facebookUrl = "fb://page/" + url;
                 }
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(facebookUrl)));
             } else {
@@ -75,5 +74,23 @@ public class AboutActivity extends AppCompatActivity {
         } catch (Exception e) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
         }
+    }
+
+    public void onStart(){
+        super.onStart();
+    }
+
+    public void onResume(){
+        super.onResume();
+    }
+
+    public void onPause(){
+        super.onPause();
+    }
+
+    public void onBackPressed(){
+        super.onBackPressed();
+        Intent intent = new Intent(AboutActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 }

@@ -99,7 +99,6 @@ public class CameraActivity extends AppCompatActivity {
                 save.putExtra("Latitude", latitude);
                 save.putExtra("Longitude", longitude);
                 save.putExtra("image", imgPath);
-//                save.putExtra("image", imageString);
 
                 startActivity(save);
                 Toast.makeText(CameraActivity.this, "Photo successfully saved", Toast.LENGTH_LONG).show();

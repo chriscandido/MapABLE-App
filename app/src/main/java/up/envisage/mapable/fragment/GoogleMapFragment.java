@@ -158,6 +158,7 @@ public class GoogleMapFragment extends FragmentActivity
         );
     }
 
+    //----------------------------------------------------------------------------------------------Convert to bitmap
     private BitmapDescriptor getMarkerIconFromDrawable(Drawable drawable) {
         Canvas canvas = new Canvas();
         Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);

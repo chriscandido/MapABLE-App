@@ -23,8 +23,6 @@ import java.util.Objects;
 import up.envisage.mapable.R;
 import up.envisage.mapable.adapter.MainMenuAdapter;
 import up.envisage.mapable.ui.home.AboutActivity;
-import up.envisage.mapable.ui.home.AboutManilaBayActivity;
-import up.envisage.mapable.ui.home.FeedbackActivity;
 import up.envisage.mapable.ui.home.InformationActivity;
 import up.envisage.mapable.ui.home.ReportingActivity;
 import up.envisage.mapable.util.Constant;

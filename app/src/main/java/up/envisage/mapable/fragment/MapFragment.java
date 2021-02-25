@@ -72,7 +72,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
     private static final long DEFAULT_INTERVAL_IN_MILLISECONDS = 1000L;
     private static final long DEFAULT_MAX_WAIT_TIME = DEFAULT_INTERVAL_IN_MILLISECONDS * 5;
     private SymbolManager symbolManager;
-    private List<Symbol> symbols = new ArrayList<>();
+    private final List<Symbol> symbols = new ArrayList<>();
     private PermissionsManager permissionsManager;
     private FragmentActivity listener;
     private MapView mapView;
@@ -123,7 +123,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
                         Icon iconAlgalBloom = drawableToIcon(getApplicationContext(), R.drawable.ic_map_algalbloom120x120);
                         Icon iconFishKill = drawableToIcon(getApplicationContext(), R.drawable.ic_map_fishkill120x120);
                         Icon iconPollution = drawableToIcon(getApplicationContext(), R.drawable.ic_map_waterpollution120x120);
-                        Icon iconIllegalFishing = drawableToIcon(getApplicationContext(), R.drawable.ic_map_hyacinth120x120);
                         Icon iconIllegalRec = drawableToIcon(getApplicationContext(), R.drawable.ic_map_illegalreclamation120x120);
 
                         //Load report data of the user
@@ -155,13 +154,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
                                                     .title(incidentType)
                                                     .icon(iconPollution));
                                             break;
-                                        case "Illegal Fishing":
-                                            mapboxMap.addMarker(new MarkerOptions()
-                                                    .position(new LatLng(latitude, longitude))
-                                                    .title(incidentType)
-                                                    .icon(iconIllegalFishing));
-                                            break;
-                                        case "Illegal Reclamation":
+                                        case "Ongoing Reclamation":
                                             mapboxMap.addMarker(new MarkerOptions()
                                                     .position(new LatLng(latitude, longitude))
                                                     .title(incidentType)
@@ -239,6 +232,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
         locationEngine.getLastLocation(callback);
     }
 
+    //----------------------------------------------------------------------------------------------Convert from bitmap to icon
     public static Icon drawableToIcon(@NonNull Context context, @DrawableRes int id) {
         Drawable vectorDrawable = ResourcesCompat.getDrawable(context.getResources(), id, context.getTheme());
         assert vectorDrawable != null;

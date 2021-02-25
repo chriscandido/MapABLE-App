@@ -26,7 +26,6 @@ import up.envisage.mapable.fragment.GoogleMapFragment;
 
 public class ReportPollution extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    private MaterialButton button_reportPollution;
     private TextInputLayout textInputLayout_reportPollution_q00, textInputLayout_reportPollution_q05, textInputLayout_reportPollution_q07;
 
     private String input00, input01, input02, input03, input04, input05, input06, input07;
@@ -59,7 +58,7 @@ public class ReportPollution extends AppCompatActivity implements AdapterView.On
         textInputLayout_reportPollution_q05 = findViewById(R.id.textInputLayout_reportPollution_q05);
         textInputLayout_reportPollution_q07 = findViewById(R.id.textInputLayout_reportPollution_q07);
 
-        button_reportPollution = findViewById(R.id.button_reportPollution_next);
+        MaterialButton button_reportPollution = findViewById(R.id.button_reportPollution_next);
 
         //Question01 spinner element
         spinner_reportPollution_q01.setOnItemSelectedListener(this);
@@ -126,17 +125,6 @@ public class ReportPollution extends AppCompatActivity implements AdapterView.On
                 input05 = textInputLayout_reportPollution_q05.getEditText().getText().toString();
                 input07 = textInputLayout_reportPollution_q07.getEditText().getText().toString();
 
-                // out.add(input00);
-                // out.add(input01);
-                // out.add(input02);
-                // out.add(input03);
-                // out.add(input04);
-                // out.add(input05);
-                // out.add(input06);
-                // out.add(input07);
-
-                // Gson gson = new Gson();
-                // String ans = gson.toJson(out);
                 String ans = input00 + "|" + input01 + "|" + input02 + "|" + input03 + "|" + input04+ "|" + input05+ "|" + input06 + "|" + input07;
 
                 Log.v("[ ReportPollution.java ]", "ANSWER: " + ans);

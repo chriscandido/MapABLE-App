@@ -168,6 +168,9 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
     }
 
     public void onBackPressed(){
+        super.onBackPressed();
+        Intent intent = new Intent(ReportIncidentActivity.this, ReportingActivity.class);
+        startActivity(intent);
     }
 
 }

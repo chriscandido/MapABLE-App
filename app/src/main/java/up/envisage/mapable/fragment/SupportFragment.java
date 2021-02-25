@@ -17,8 +17,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import up.envisage.mapable.R;
-import up.envisage.mapable.ui.home.DevTeamActivity;
-import up.envisage.mapable.ui.home.FeedbackActivity;
+import up.envisage.mapable.ui.support.DevTeamActivity;
+import up.envisage.mapable.ui.support.FeedbackActivity;
 
 public class SupportFragment extends Fragment {
 

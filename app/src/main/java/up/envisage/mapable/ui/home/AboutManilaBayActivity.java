@@ -18,9 +18,28 @@ public class AboutManilaBayActivity extends AppCompatActivity {
 
         TextView textView_informationManilaBay_back = findViewById(R.id.textView_informationManilaBay_back);
 
+        //Button go back
         textView_informationManilaBay_back.setOnClickListener(v -> {
-            Intent back = new Intent(AboutManilaBayActivity.this, MainActivity.class);
+            Intent back = new Intent(AboutManilaBayActivity.this, InformationActivity.class);
             startActivity(back);
         });
+    }
+
+    public void onStart(){
+        super.onStart();
+    }
+
+    public void onResume(){
+        super.onResume();
+    }
+
+    public void onPause(){
+        super.onPause();
+    }
+
+    public void onBackPressed(){
+        super.onBackPressed();
+        Intent intent = new Intent(AboutManilaBayActivity.this, InformationActivity.class);
+        startActivity(intent);
     }
 }

@@ -1,4 +1,4 @@
-package up.envisage.mapable.ui.home;
+package up.envisage.mapable.ui.support;
 
 import android.os.Bundle;
 
