@@ -2,6 +2,7 @@ package up.envisage.mapable.ui.home;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -43,12 +44,15 @@ public class CameraActivity extends AppCompatActivity {
     private ImageView imageView_reportImage;
     private MaterialButton button_reportCamera, button_reportGallery, button_reportSave;
     private TextView textView_cameraBack;
+
     private ReportViewModel reportViewModel;
 
     String userID, dateTime, incidentType, answer, latitude, longitude, imgPath;
     public static String imageString;
     Bitmap galleryPhoto;
     byte[] byteArray;
+
+    private Dialog dialog;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -87,21 +91,24 @@ public class CameraActivity extends AppCompatActivity {
         button_reportSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (imgPath == null) {
+                    selectPhoto();
+                } else {
+                    Intent save = new Intent(CameraActivity.this, ReportingActivity.class);
 
-                Intent save = new Intent(CameraActivity.this, ReportingActivity.class);
+                    Log.v("[ CameraActivity.java ]", "Image Path: " + imgPath  + "\n");
 
-                Log.v("[ CameraActivity.java ]", "Image Path: " + imgPath  + "\n");
+                    save.putExtra("userID", userID);
+                    save.putExtra("Date and Time", dateTime);
+                    save.putExtra("Incident Type", incidentType);
+                    save.putExtra("Report", answer);
+                    save.putExtra("Latitude", latitude);
+                    save.putExtra("Longitude", longitude);
+                    save.putExtra("image", imgPath);
 
-                save.putExtra("userID", userID);
-                save.putExtra("Date and Time", dateTime);
-                save.putExtra("Incident Type", incidentType);
-                save.putExtra("Report", answer);
-                save.putExtra("Latitude", latitude);
-                save.putExtra("Longitude", longitude);
-                save.putExtra("image", imgPath);
-
-                startActivity(save);
-                Toast.makeText(CameraActivity.this, "Photo successfully saved", Toast.LENGTH_LONG).show();
+                    startActivity(save);
+                    Toast.makeText(CameraActivity.this, "Photo successfully saved", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -227,6 +234,21 @@ public class CameraActivity extends AppCompatActivity {
         bitmap.copyPixelsToBuffer(byteBuffer);
         byteBuffer.rewind();
         return byteBuffer.array();
+    }
+
+    private void selectPhoto(){
+        dialog = new Dialog(this);
+        dialog.setContentView(R.layout.popup_error_camera);
+
+        MaterialButton button_reportSelectPhoto_ok = dialog.findViewById(R.id.button_reportSelectPhoto_ok);
+        button_reportSelectPhoto_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
     }
 
     public void onStart(){

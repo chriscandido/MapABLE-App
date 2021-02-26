@@ -1,5 +1,6 @@
 package up.envisage.mapable.ui.home;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -18,11 +19,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.button.MaterialButton;
 
 import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
@@ -54,6 +56,8 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
 
     private TextView textView_myReport_back;
     private Button button_myReport_save;
+
+    private Dialog dialog;
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
@@ -120,6 +124,8 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
             public void onClick(View v) {
 
                 for(i = 0; i<count; i++) {
+
+                    Log.v("Count: ", i.toString());
                     reportViewModel.getAllReports().observe(MyReportActivity.this, new Observer<List<ReportTable>>() {
                         @Override
                         public void onChanged(List<ReportTable> reportTables) {
@@ -232,6 +238,21 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
+    private void successDataSending(){
+        dialog = new Dialog(this);
+        dialog.setContentView(R.layout.popup_registration);
+
+        MaterialButton button_reportDataSent_ok = dialog.findViewById(R.id.button_reportDataSent_ok);
+        button_reportDataSent_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
     }
 
     @Override

@@ -5,7 +5,7 @@
             <!-- background -->
             <solid android:color="@color/colorAccent02" />
             <!-- corner roundness -->
-            <corners android:radius="10dp" />
+            <corners android:radius="20dp" />
         </shape>
     </item>
 </selector>

@@ -8,14 +8,8 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 
-import com.facebook.FacebookSdk;
-
-import bolts.AppLink;
-import bolts.AppLinks;
-import up.envisage.mapable.BuildConfig;
 import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
 
@@ -27,8 +21,6 @@ public class AboutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
-
-        FacebookSdk.sdkInitialize(this);
 
         TextView textView_aboutUs_back = findViewById(R.id.textView_aboutUs_back);
         textView_aboutUs_im4manilbayLink = findViewById(R.id.textView_aboutUs_im4manilabayLink);

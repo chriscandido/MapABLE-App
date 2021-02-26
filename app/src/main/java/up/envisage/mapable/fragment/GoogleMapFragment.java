@@ -2,6 +2,7 @@ package up.envisage.mapable.fragment;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -30,6 +31,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.button.MaterialButton;
 
 import up.envisage.mapable.R;
 import up.envisage.mapable.ui.home.CameraActivity;
@@ -43,6 +45,9 @@ public class GoogleMapFragment extends FragmentActivity
     private static final int REQUEST_CODE = 101;
 
     private GoogleMap map;
+    private Dialog dialog;
+
+    private MaterialButton button_reportMap_ok;
     private String userID, incidentType, dateTime, report, lat, lon, image;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -152,7 +157,9 @@ public class GoogleMapFragment extends FragmentActivity
                             submitLocation.putExtra("image", image);
                             startActivity(submitLocation);
                             Toast.makeText(GoogleMapFragment.this, "Coordinates successfully saved", Toast.LENGTH_LONG).show();
-                         }
+                         } else {
+                            errorMapCoordinates();
+                        }
                     }
                 }
         );
@@ -166,6 +173,21 @@ public class GoogleMapFragment extends FragmentActivity
         drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
         drawable.draw(canvas);
         return BitmapDescriptorFactory.fromBitmap(bitmap);
+    }
+
+    private void errorMapCoordinates(){
+        dialog = new Dialog(this);
+        dialog.setContentView(R.layout.popup_error_coordinates);
+
+        button_reportMap_ok = dialog.findViewById(R.id.button_reportMap_ok);
+        button_reportMap_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
     }
 
     @Override

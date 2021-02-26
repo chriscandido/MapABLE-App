@@ -1,6 +1,7 @@
 package up.envisage.mapable.ui.registration;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -19,6 +20,8 @@ import java.util.Map;
 
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+
+import com.google.android.material.button.MaterialButton;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -46,6 +49,8 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
     private String BASE_URL = "http://ec2-54-91-89-105.compute-1.amazonaws.com/";
 
     public Boolean connection;
+
+    private Dialog dialog;
 
     String username, password, userID, name, number, email;
 
@@ -144,6 +149,8 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
                                                 registerViewModel.insert(user);
                                                 Log.v("[ RegisterActivity.java ]", "Data successfully inserted");
 
+                                                successRegistration();
+
                                                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                                 intent.putExtra("userID", userID);
                                                 startActivity(intent);
@@ -192,5 +199,20 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
+    private void successRegistration(){
+        dialog = new Dialog(this);
+        dialog.setContentView(R.layout.popup_registration);
+
+        MaterialButton button_registration_ok = dialog.findViewById(R.id.button_registration_ok);
+        button_registration_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
     }
 }
