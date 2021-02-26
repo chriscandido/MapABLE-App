@@ -177,7 +177,7 @@ public class GoogleMapFragment extends FragmentActivity
 
     private void errorMapCoordinates(){
         dialog = new Dialog(this);
-        dialog.setContentView(R.layout.popup_error_coordinates);
+        dialog.setContentView(R.layout.popup_error_nolocation);
 
         button_reportMap_ok = dialog.findViewById(R.id.button_reportMap_ok);
         button_reportMap_ok.setOnClickListener(new View.OnClickListener() {
