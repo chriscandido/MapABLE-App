@@ -117,7 +117,6 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
                     @Override
                     public int getMovementFlags(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
 
-<<<<<<< HEAD
                         if(connection) {
                             swipeFlags = ItemTouchHelper.RIGHT;
                         }
@@ -182,68 +181,6 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
                                             Toast.LENGTH_LONG).show();
                                 } else if (response.code() == 504){
                                     Toast.makeText(MyReportActivity.this, "Timeout",
-=======
-        button_myReport_save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                for(i = 0; i<count; i++) {
-
-                    Log.v("Count: ", i.toString());
-                    reportViewModel.getAllReports().observe(MyReportActivity.this, new Observer<List<ReportTable>>() {
-                        @Override
-                        public void onChanged(List<ReportTable> reportTables) {
-
-                            userID = reportTables.get(i).getUniqueId();
-                            dateTime = reportTables.get(i).getDateTime();
-                            incidentType = reportTables.get(i).getIncidentType();
-                            Report = reportTables.get(i).getReport();
-                            Longitude = reportTables.get(i).getLongitude();
-                            Latitude = reportTables.get(i).getLatitude();
-                            image = reportTables.get(i).getPhoto();
-
-                            imageString = imageConvertToString(image);
-
-                            HashMap<String, String> map = new HashMap<>();
-                            map.put("userID", userID);
-                            map.put("date", dateTime);
-                            map.put("type", incidentType);
-                            map.put("report", Report);
-                            map.put("lon", lon);
-                            map.put("lat", lat);
-                            map.put("image", image); //imageString
-
-                            Log.v("[MyReportActivity.java]",
-                                    "DATE & TIME: " + dateTime + "\n" +
-                                            "USER ID: " + userID + "\n" +
-                                            "INCIDENT TYPE: " + incidentType + "\n" +
-                                            "REPORT: " + Report + "\n" +
-                                            "LATITUDE: " + Longitude.toString() + "\n" +
-                                            "LONGITUDE: " + Latitude.toString() + "\n" +
-                                            "IMAGE: " + image + "\n" ); //imageString
-
-                            Call<ReportClassResult> call = retrofitInterface.executeReportSubmit(map);
-
-                            call.enqueue(new Callback<ReportClassResult>() {
-
-                                @Override
-                                public void onResponse(Call<ReportClassResult> call, Response<ReportClassResult> response) {
-                                    if (response.code() == 200) {
-                                        Toast.makeText(MyReportActivity.this, "Pending Report for " + dateTime + " Sent Successfully",
-                                                Toast.LENGTH_LONG).show();
-                                    } else if (response.code() == 400){
-                                        Toast.makeText(MyReportActivity.this, "Error Sending Report",
-                                                Toast.LENGTH_LONG).show();
-                                    } else if (response.code() == 504){
-                                        Toast.makeText(MyReportActivity.this, "Timeout",
-                                                Toast.LENGTH_LONG).show();
-                                    }
-                                }
-
-                                @Override
-                                public void onFailure(Call<ReportClassResult> call, Throwable t) {
-                                    Toast.makeText(MyReportActivity.this, t.getMessage(),
->>>>>>> ad389eeabe66b86118b971c47ce1dfbb78c1d4c7
                                             Toast.LENGTH_LONG).show();
                                 }
                             }
