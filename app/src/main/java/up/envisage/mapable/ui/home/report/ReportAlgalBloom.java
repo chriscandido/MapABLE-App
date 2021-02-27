@@ -31,7 +31,7 @@ public class ReportAlgalBloom extends AppCompatActivity implements AdapterView.O
     String input00, input01, input02, input03, input04;
     String userID, dateTime, incidentType, Report, lon, lat, image, imageID2;
 
-    private List<String> out = new ArrayList<>();
+    private final List<String> out = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,14 +97,6 @@ public class ReportAlgalBloom extends AppCompatActivity implements AdapterView.O
                 input00 = textInputLayout_reportAlgalBloom_q00.getEditText().getText().toString();
                 input04 = textInputLayout_reportAlgalBloom_q04.getEditText().getText().toString();
 
-                //Insert report to list
-                // out.add(input00);
-                // out.add(input01);
-                // out.add(input02);
-                // out.add(input03);
-                // out.add(input04);
-                // Gson gson = new Gson();
-                // String ans = gson.toJson(out);
                 String ans = input00 + "|" + input01 + "|" +input02 + "|" +input03 + "|" +input04;
 
                 Log.v("[ ReportAlgalBloom.java ]", "ANSWER: " + ans);

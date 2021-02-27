@@ -17,9 +17,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import up.envisage.mapable.R;
-import up.envisage.mapable.ui.home.FeedbackActivity;
-import up.envisage.mapable.ui.home.MyReportActivity;
-
+import up.envisage.mapable.ui.support.DevTeamActivity;
+import up.envisage.mapable.ui.support.FeedbackActivity;
 
 public class SupportFragment extends Fragment {
 
@@ -27,8 +26,6 @@ public class SupportFragment extends Fragment {
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private FragmentActivity listener;
-
-    private TextView textView_support_about, textView_support_policy, textView_support_feedback;
 
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -50,9 +47,10 @@ public class SupportFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
 
-        textView_support_about = view.findViewById(R.id.textView_support_about);
-        textView_support_policy = view.findViewById(R.id.textView_support_policy);
-        textView_support_feedback = view.findViewById(R.id.textView_support_feedback);
+        TextView textView_support_about = view.findViewById(R.id.textView_support_about);
+        TextView textView_support_policy = view.findViewById(R.id.textView_support_policy);
+        TextView textView_support_feedback = view.findViewById(R.id.textView_support_feedback);
+        TextView textView_support_devTeam = view.findViewById(R.id.textView_support_devTeam);
 
         textView_support_about.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +73,14 @@ public class SupportFragment extends Fragment {
             public void onClick(View v) {
                 Intent myReport = new Intent(listener, FeedbackActivity.class);
                 startActivity(myReport);
+            }
+        });
+
+        textView_support_devTeam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent devTeam = new Intent(listener, DevTeamActivity.class);
+                startActivity(devTeam);
             }
         });
     }

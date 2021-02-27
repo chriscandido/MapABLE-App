@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -52,14 +53,18 @@ public class ReportingActivity extends AppCompatActivity {
     private RetrofitInterface retrofitInterface;
     private String BASE_URL = "http://ec2-54-91-89-105.compute-1.amazonaws.com/";
 
-    private MaterialButton button_reportIncident, button_reportCamera, button_reportLocation, button_takeSurvey, button_reportSend;
+    private MaterialButton button_reportIncident, button_reportCamera, button_reportLocation,
+            button_takeSurvey, button_reportSend, button_reportDataSent_ok;
     private TextView textView_reportBack;
+
     private ReportViewModel reportViewModel;
     private UserViewModel userViewModel;
 
     String userID, dateTime, incidentType, Report, lon, lat, image, imageID2, outPhoto, imageString, outUserId;
 
     public Boolean connection;
+
+    private Dialog dialog;
 
     @SuppressLint("LongLogTag")
     @Override
@@ -144,6 +149,9 @@ public class ReportingActivity extends AppCompatActivity {
         button_reportSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                successDataSending();
+
                 //Insert report details to server
                 Log.v("[ReportingActivity.java ]", "Image Path: " + image  + "\n");
 
@@ -169,7 +177,7 @@ public class ReportingActivity extends AppCompatActivity {
                                 "LONGITUDE: " + lon + "\n" +
                                 "IMAGE: " + imageString + "\n" ); //imageString
 
-                if(connection == true){
+                if(connection){
 
                     Call<ReportClassResult> call = retrofitInterface.executeReportSubmit(map);
 
@@ -338,6 +346,21 @@ public class ReportingActivity extends AppCompatActivity {
         return img;
     }
 
+    private void successDataSending(){
+        dialog = new Dialog(this);
+        dialog.setContentView(R.layout.popup_success_datasent);
+
+        button_reportDataSent_ok = dialog.findViewById(R.id.button_reportDataSent_ok);
+        button_reportDataSent_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
     public void onStart(){
         super.onStart();
     }
@@ -350,5 +373,9 @@ public class ReportingActivity extends AppCompatActivity {
         super.onPause();
     }
 
-    public void onBackPressed(){ }
+    public void onBackPressed(){
+        super.onBackPressed();
+        Intent intent = new Intent(ReportingActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
 }

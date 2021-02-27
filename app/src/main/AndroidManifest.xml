@@ -49,7 +49,7 @@
         <activity android:name=".ui.home.AboutManilaBayActivity" />
         <activity android:name=".ui.home.ReportingActivity" />
         <activity android:name=".ui.home.InformationActivity" />
-        <activity android:name=".ui.home.FeedbackActivity" />
+        <activity android:name=".ui.support.FeedbackActivity" />
         <activity android:name=".ui.home.AboutActivity"/>
         <activity android:name=".ui.home.ReportIncidentActivity" />
         <activity android:name=".ui.home.CameraActivity" />
@@ -61,8 +61,11 @@
         <activity android:name=".ui.home.report.ReportFishKill" />
         <activity android:name=".ui.home.report.ReportPollution" />
         <activity android:name=".ui.home.report.ReportIllegalReclamation" />
+        <activity android:name=".ui.home.report.ReportWaterHyacinth"/>
         <!-- User Profile -->
         <activity android:name=".ui.home.MyReportActivity"/>
+        <!-- Support -->
+        <activity android:name=".ui.support.DevTeamActivity"/>
         <!-- Fonts -->
         <meta-data
             android:name="preloaded_fonts"

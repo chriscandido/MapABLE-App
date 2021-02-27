@@ -76,14 +76,19 @@ public class MyReportAdapter extends RecyclerView.Adapter<MyReportAdapter.ViewHo
         holder.textView_myReportLat.setText(String.valueOf(lat));
         holder.textView_myReportLon.setText(String.valueOf(lon));
         Log.v("[ MyReportActivity ]", "Number of Reports: " + reportTable.get(position).getIncidentType());
-        if (reportTable.get(position).getIncidentType().equals("Algal Bloom")) {
-            holder.imageView_myReportImage.setImageResource(R.drawable.ic_map_algalbloom);
-        } else if (reportTable.get(position).getIncidentType().equals("Fish Kill")) {
-            holder.imageView_myReportImage.setImageResource(R.drawable.ic_map_fishkill);
-        } else if (reportTable.get(position).getIncidentType().equals("Pollution")) {
-            holder.imageView_myReportImage.setImageResource(R.drawable.ic_map_waterpollution);
-        } else if (reportTable.get(position).getIncidentType().equals("Illegal Reclamation")) {
-            holder.imageView_myReportImage.setImageResource(R.drawable.ic_map_illegalreclamation);
+        switch (reportTable.get(position).getIncidentType()) {
+            case "Algal Bloom":
+                holder.imageView_myReportImage.setImageResource(R.drawable.ic_map_algalbloom);
+                break;
+            case "Fish Kill":
+                holder.imageView_myReportImage.setImageResource(R.drawable.ic_map_fishkill);
+                break;
+            case "Pollution":
+                holder.imageView_myReportImage.setImageResource(R.drawable.ic_map_waterpollution);
+                break;
+            case "Ongoing Reclamation":
+                holder.imageView_myReportImage.setImageResource(R.drawable.ic_map_illegalreclamation);
+                break;
         }
     }
 

@@ -6,6 +6,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.os.Bundle;
@@ -41,7 +42,9 @@ import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.location.LocationComponent;
 import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions;
+import com.mapbox.mapboxsdk.location.LocationComponentOptions;
 import com.mapbox.mapboxsdk.location.OnCameraTrackingChangedListener;
+import com.mapbox.mapboxsdk.location.OnLocationClickListener;
 import com.mapbox.mapboxsdk.location.modes.CameraMode;
 import com.mapbox.mapboxsdk.location.modes.RenderMode;
 import com.mapbox.mapboxsdk.maps.MapView;
@@ -69,7 +72,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
     private static final long DEFAULT_INTERVAL_IN_MILLISECONDS = 1000L;
     private static final long DEFAULT_MAX_WAIT_TIME = DEFAULT_INTERVAL_IN_MILLISECONDS * 5;
     private SymbolManager symbolManager;
-    private List<Symbol> symbols = new ArrayList<>();
+    private final List<Symbol> symbols = new ArrayList<>();
     private PermissionsManager permissionsManager;
     private FragmentActivity listener;
     private MapView mapView;
@@ -120,7 +123,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
                         Icon iconAlgalBloom = drawableToIcon(getApplicationContext(), R.drawable.ic_map_algalbloom120x120);
                         Icon iconFishKill = drawableToIcon(getApplicationContext(), R.drawable.ic_map_fishkill120x120);
                         Icon iconPollution = drawableToIcon(getApplicationContext(), R.drawable.ic_map_waterpollution120x120);
-                        Icon iconIllegalFishing = drawableToIcon(getApplicationContext(), R.drawable.ic_map_hyacinth120x120);
                         Icon iconIllegalRec = drawableToIcon(getApplicationContext(), R.drawable.ic_map_illegalreclamation120x120);
 
                         //Load report data of the user
@@ -131,33 +133,33 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
                                 int count = reportTables.size();
                                 for (int i = 0; i < count; i++){
                                     String incidentType = reportTables.get(i).getIncidentType();
-                                    Double latitude = reportTables.get(i).getLatitude();
-                                    Double longitude = reportTables.get(i).getLongitude();
-                                    if (incidentType.equals("Algal Bloom")) {
-                                        mapboxMap.addMarker(new MarkerOptions()
-                                                .position(new LatLng(latitude, longitude))
-                                                .title(incidentType)
-                                                .icon(iconAlgalBloom));
-                                    } else if (incidentType.equals("Fish Kill")) {
-                                        mapboxMap.addMarker(new MarkerOptions()
-                                                .position(new LatLng(latitude, longitude))
-                                                .title(incidentType)
-                                                .icon(iconFishKill));
-                                    } else if (incidentType.equals("Pollution")) {
-                                        mapboxMap.addMarker(new MarkerOptions()
-                                                .position(new LatLng(latitude, longitude))
-                                                .title(incidentType)
-                                                .icon(iconPollution));
-                                    } else if (incidentType.equals("Illegal Fishinh")) {
-                                        mapboxMap.addMarker(new MarkerOptions()
-                                                .position(new LatLng(latitude, longitude))
-                                                .title(incidentType)
-                                                .icon(iconIllegalFishing));
-                                    } else if (incidentType.equals("Illegal Reclamation")){
-                                        mapboxMap.addMarker(new MarkerOptions()
-                                                .position(new LatLng(latitude, longitude))
-                                                .title(incidentType)
-                                                .icon(iconIllegalRec));
+                                    double latitude = reportTables.get(i).getLatitude();
+                                    double longitude = reportTables.get(i).getLongitude();
+                                    switch (incidentType) {
+                                        case "Algal Bloom":
+                                            mapboxMap.addMarker(new MarkerOptions()
+                                                    .position(new LatLng(latitude, longitude))
+                                                    .title(incidentType)
+                                                    .icon(iconAlgalBloom));
+                                            break;
+                                        case "Fish Kill":
+                                            mapboxMap.addMarker(new MarkerOptions()
+                                                    .position(new LatLng(latitude, longitude))
+                                                    .title(incidentType)
+                                                    .icon(iconFishKill));
+                                            break;
+                                        case "Pollution":
+                                            mapboxMap.addMarker(new MarkerOptions()
+                                                    .position(new LatLng(latitude, longitude))
+                                                    .title(incidentType)
+                                                    .icon(iconPollution));
+                                            break;
+                                        case "Ongoing Reclamation":
+                                            mapboxMap.addMarker(new MarkerOptions()
+                                                    .position(new LatLng(latitude, longitude))
+                                                    .title(incidentType)
+                                                    .icon(iconIllegalRec));
+                                            break;
                                     }
                                 }
                             }
@@ -174,6 +176,14 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
         //Check if the permissions are enabled and if not request
         if (PermissionsManager.areLocationPermissionsGranted(listener)) {
 
+            // Customize the LocationComponent's options
+            LocationComponentOptions customLocationComponentOptions = LocationComponentOptions.builder(getApplicationContext())
+                    .elevation(5)
+                    .accuracyAlpha(.6f)
+                    .accuracyColor(Color.YELLOW)
+                    .foregroundDrawable(R.drawable.ic_report_userlocation_60x60)
+                    .build();
+
             //Get instance of the component
             LocationComponent locationComponent = mapboxMap.getLocationComponent();
 
@@ -181,6 +191,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
             locationComponent.activateLocationComponent(
                     LocationComponentActivationOptions.builder(listener, loadedMapStyle)
                             .useDefaultLocationEngine(false)
+                            .locationComponentOptions(customLocationComponentOptions)
                             .build());
             //Enable to make component visible
             locationComponent.setLocationComponentEnabled(true);
@@ -189,12 +200,15 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
             locationComponent.setCameraMode(CameraMode.TRACKING);
 
             //Set the component's render mode
-            locationComponent.setRenderMode(RenderMode.GPS);
+            locationComponent.setRenderMode(RenderMode.NORMAL);
 
             locationComponent.addOnCameraTrackingChangedListener(this);
 
+            // Add the location icon click listener
+            locationComponent.addOnLocationClickListener(this::initLocationEngine);
+
             //Set the component's zoom
-            locationComponent.zoomWhileTracking(15.0, 15000);
+            locationComponent.zoomWhileTracking(12.0, 10000);
 
             initLocationEngine();
         } else {
@@ -218,15 +232,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
         locationEngine.getLastLocation(callback);
     }
 
-    private void setCameraPosition(double latitude, double longitude) {
-        CameraPosition position = new CameraPosition.Builder()
-                .target(new LatLng(latitude, longitude))
-                .zoom(17)
-                .tilt(45)
-                .build();
-        mapboxMap.animateCamera(CameraUpdateFactory.newCameraPosition(position), 15000);
-    }
-
+    //----------------------------------------------------------------------------------------------Convert from bitmap to icon
     public static Icon drawableToIcon(@NonNull Context context, @DrawableRes int id) {
         Drawable vectorDrawable = ResourcesCompat.getDrawable(context.getResources(), id, context.getTheme());
         assert vectorDrawable != null;

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     android:orientation="vertical"
-    tools:context=".ui.home.FeedbackActivity">
+    tools:context=".ui.support.FeedbackActivity">
 
     <!-- Top Navigation Menu -->
     <RelativeLayout

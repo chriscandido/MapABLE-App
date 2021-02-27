@@ -2,6 +2,7 @@ package up.envisage.mapable.fragment;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -18,6 +19,8 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -27,23 +30,27 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.button.MaterialButton;
 
 import up.envisage.mapable.R;
 import up.envisage.mapable.ui.home.CameraActivity;
-import up.envisage.mapable.ui.home.ReportIncidentActivity;
-import up.envisage.mapable.ui.home.ReportingActivity;
 import up.envisage.mapable.util.Constant;
 
 public class GoogleMapFragment extends FragmentActivity
-    implements GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener,
+        implements GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener,
         OnMapReadyCallback {
 
+    FusedLocationProviderClient fusedLocationProviderClient;
+    private static final int REQUEST_CODE = 101;
+
     private GoogleMap map;
-    private Button button_googleMaps_submitLocation;
+    private Dialog dialog;
+
+    private MaterialButton button_reportMap_ok;
     private String userID, incidentType, dateTime, report, lat, lon, image;
 
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_google_maps);
 
@@ -57,8 +64,10 @@ public class GoogleMapFragment extends FragmentActivity
         lat = location.getStringExtra("Latitude");
         image = location.getStringExtra("image");
 
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.google_map);
+        assert mapFragment != null;
         mapFragment.getMapAsync(this);
     }
 
@@ -68,9 +77,33 @@ public class GoogleMapFragment extends FragmentActivity
         map = googleMap;
         final LatLng[] pinnedLocation = new LatLng[1];
 
-        //Add marker, move camera and zoom level
-        final LatLng[] location = {new LatLng(14.5188, 120.7580)};
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location[0], 12.0f));
+        // Marker icon
+        Drawable userLoc = getResources().getDrawable(R.drawable.ic_report_userlocation_60x60);
+        final BitmapDescriptor userIcon = getMarkerIconFromDrawable(userLoc);
+
+        // Get current location using FusedLocation
+        if (ActivityCompat.checkSelfPermission(
+                this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
+            return;
+        }
+
+        fusedLocationProviderClient.getLastLocation()
+                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        // Got last known location. In some rare situations this can be null.
+                        if (location != null) {
+                            googleMap.addMarker(new MarkerOptions()
+                                    .icon(userIcon)
+                                    .position(new LatLng(location.getLatitude(), location.getLongitude()))
+                                    .title("My Current Location"));
+                            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(), location.getLongitude()), 12.0f));
+                            Toast.makeText(getApplicationContext(), location.getLatitude() + "" + location.getLongitude(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
 
         //Marker icon
         Drawable drawable = getResources().getDrawable(R.drawable.ic_report_location_target);
@@ -104,7 +137,7 @@ public class GoogleMapFragment extends FragmentActivity
         map.setOnMyLocationClickListener(GoogleMapFragment.this);
 
         //Get coordinates of the marker
-        button_googleMaps_submitLocation = findViewById(R.id.button_googleMap_submit);
+        Button button_googleMaps_submitLocation = findViewById(R.id.button_googleMap_submit);
         button_googleMaps_submitLocation.setOnClickListener(
                 new View.OnClickListener() {
                     @SuppressLint("LongLogTag")
@@ -124,12 +157,15 @@ public class GoogleMapFragment extends FragmentActivity
                             submitLocation.putExtra("image", image);
                             startActivity(submitLocation);
                             Toast.makeText(GoogleMapFragment.this, "Coordinates successfully saved", Toast.LENGTH_LONG).show();
-                         }
+                         } else {
+                            errorMapCoordinates();
+                        }
                     }
                 }
         );
     }
 
+    //----------------------------------------------------------------------------------------------Convert to bitmap
     private BitmapDescriptor getMarkerIconFromDrawable(Drawable drawable) {
         Canvas canvas = new Canvas();
         Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
@@ -137,6 +173,21 @@ public class GoogleMapFragment extends FragmentActivity
         drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
         drawable.draw(canvas);
         return BitmapDescriptorFactory.fromBitmap(bitmap);
+    }
+
+    private void errorMapCoordinates(){
+        dialog = new Dialog(this);
+        dialog.setContentView(R.layout.popup_error_nolocation);
+
+        button_reportMap_ok = dialog.findViewById(R.id.button_reportMap_ok);
+        button_reportMap_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
     }
 
     @Override

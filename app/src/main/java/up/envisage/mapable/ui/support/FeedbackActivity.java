@@ -1,7 +1,6 @@
-package up.envisage.mapable.ui.home;
+package up.envisage.mapable.ui.support;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Context;
@@ -9,7 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -17,7 +15,6 @@ import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,11 +34,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
-import up.envisage.mapable.fragment.GoogleMapFragment;
-import up.envisage.mapable.fragment.SupportFragment;
 import up.envisage.mapable.model.UserViewModel;
 import up.envisage.mapable.ui.home.report.FeedbackResult;
-import up.envisage.mapable.ui.home.report.ReportPollution;
 import up.envisage.mapable.ui.registration.RetrofitInterface;
 
 public class FeedbackActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {

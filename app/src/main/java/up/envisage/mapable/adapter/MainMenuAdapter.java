@@ -58,7 +58,6 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.ViewHo
             R.drawable.ic_mainmenu_report,
             R.drawable.ic_mainmenu_aboutmanilabay,
             R.drawable.ic_mainmenu_about
-
     };
 
     public MainMenuAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

@@ -26,6 +26,7 @@ import up.envisage.mapable.ui.home.report.ReportAlgalBloom;
 import up.envisage.mapable.ui.home.report.ReportFishKill;
 import up.envisage.mapable.ui.home.report.ReportIllegalReclamation;
 import up.envisage.mapable.ui.home.report.ReportPollution;
+import up.envisage.mapable.ui.home.report.ReportWaterHyacinth;
 import up.envisage.mapable.ui.registration.RetrofitInterface;
 
 public class ReportIncidentActivity extends AppCompatActivity implements ReportIncidentAdapter.OnIncidentClickListener {
@@ -140,6 +141,17 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
                 illegalReclamationOk.putExtra("image", image);
                 startActivity(illegalReclamationOk);
                 break;
+            case 4:
+                Intent waterHyacinthOk = new Intent(ReportIncidentActivity.this, ReportWaterHyacinth.class);
+                waterHyacinthOk.putExtra("userID", userID);
+                waterHyacinthOk.putExtra("Date and time", dateTime);
+                waterHyacinthOk.putExtra("Incident Type", incidentType);
+                waterHyacinthOk.putExtra("Report", Report);
+                waterHyacinthOk.putExtra("Longitude", lon);
+                waterHyacinthOk.putExtra("Latitude", lat);
+                waterHyacinthOk.putExtra("image", image);
+                startActivity(waterHyacinthOk);
+                break;
         }
     }
 
@@ -156,6 +168,9 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
     }
 
     public void onBackPressed(){
+        super.onBackPressed();
+        Intent intent = new Intent(ReportIncidentActivity.this, ReportingActivity.class);
+        startActivity(intent);
     }
 
 }

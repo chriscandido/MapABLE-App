@@ -62,7 +62,7 @@ public class InformationAdapter extends RecyclerView.Adapter<InformationAdapter.
 
     //Information Images
     public int[] img_informationBackground = {
-            R.drawable.img_manilabay,
+            R.drawable.img_kilalanin_manilabay,
             R.drawable.img_policy_battleofmanilabay,
             R.drawable.img_policy_manilabaymandamus,
             R.drawable.img_policy_manilabaytaskforce,

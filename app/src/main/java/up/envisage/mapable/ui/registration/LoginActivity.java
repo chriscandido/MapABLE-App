@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity  {
 
     private UserViewModel registerViewModel;
     private TextInputLayout textInputLayout_loginUsername, textInputLayout_loginPassword;
-    private TextView textView_eulaTitle, textView_signUp;
+    private TextView textView_signUp;
     private Button button_eulaAgree, button_login;
     private CheckBox checkBox_eulaAgree;
 
@@ -192,7 +192,7 @@ public class LoginActivity extends AppCompatActivity  {
 
             button_eulaAgree = dialog.findViewById(R.id.button_eulaAgree);
             checkBox_eulaAgree = dialog.findViewById(R.id.checkBox_eulaAgree);
-            textView_eulaTitle = dialog.findViewById(R.id.textView_eulaTitle);
+            TextView textView_eulaTitle = dialog.findViewById(R.id.textView_eulaTitle);
 
             //Set agree button to visible or invisible
             checkBox_eulaAgree.setOnCheckedChangeListener(new onCheckListener());

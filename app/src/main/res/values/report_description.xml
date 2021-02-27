@@ -26,4 +26,8 @@
     <string name="desc_illegalReclamation">Ang pagtatambak at pagtatayo ng istruktura sa Manila Bay o reclamation ay maaari lamang gawin kung may kaukulang pahintulot mula sa awtoridad.
     Anumang reclamation project na walang pahintulot o/at nakakasira sa lagay ng Manila Bay ay maaaring ipagbigay-alam sa mga kinauukulan.
     </string>
+    <string name="desc_waterhyacinth">Ang water hyacinth ay isang uri ng halamang makikitang lumulutang sa katubigan. Ito ay maituturing na invasive dahil sa mabilis nitong pagdami at pag-okupa ng espasyo sa tubig.
+        Ito ay humaharang sa liwanag ng araw na kailangan ng mga phytoplankton at halaman sa ilalim ng tubig upang mabuhay. Ang mga namamatay at nabubulok na water hyacinths ay nakakaagaw din sa oxygen na kailangan naman ng mga isda at iba pang hayop sa tubig.
+        Maliban sa mga ito, ang water hyacinths ay nakahaharang din sa mga daluyan ng tubig.
+    </string>
 </resources>

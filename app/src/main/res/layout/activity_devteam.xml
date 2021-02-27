@@ -366,7 +366,7 @@
                         android:layout_height="60dp"
                         android:layout_margin="10dp"
                         android:gravity="center"
-                        android:src="@drawable/ic_devteam_projectleader"/>
+                        android:src="@drawable/ic_devteam_gilson"/>
 
                 </LinearLayout>
 
