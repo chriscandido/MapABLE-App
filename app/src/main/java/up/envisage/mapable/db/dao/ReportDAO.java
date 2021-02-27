@@ -31,8 +31,11 @@ public interface ReportDAO {
     @Query ("DELETE FROM Report_Profile")
     void deleteAllReports();
 
+//    @Query ("DELETE FROM Report_Profile where report_id = :itemId")
+//    void deleteByItemId(int itemId);
+
     @Delete
-    void deleteReport(ReportTable reportsTable);
+    void deleteReport(ReportTable reportTable);
 
     @Update
     void updateReport(ReportTable reports);

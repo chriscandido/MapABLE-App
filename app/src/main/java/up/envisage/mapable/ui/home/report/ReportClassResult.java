@@ -14,5 +14,5 @@ public class ReportClassResult {
 
     private String lat;
 
-    private String image;
+    private Object image;
 }

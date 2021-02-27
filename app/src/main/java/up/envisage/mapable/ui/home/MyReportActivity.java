@@ -17,10 +17,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -59,10 +61,12 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
     private RetrofitInterface retrofitInterface;
     private String BASE_URL = "http://ec2-54-91-89-105.compute-1.amazonaws.com/";
 
-    Integer count, i;
+    Integer count, i, reportId;
     String userID, dateTime, incidentType, Report, lon, lat, image, imageString, outUserId;
     Double Longitude, Latitude;
     Boolean connection;
+    int dragFlags = 0;
+    int swipeFlags;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -75,9 +79,10 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         //Add your other interceptors …
-        httpClient.connectTimeout(5, TimeUnit.MINUTES) // connect timeout
-                .writeTimeout(5, TimeUnit.MINUTES) // write timeout
-                .readTimeout(5, TimeUnit.MINUTES); // read timeout
+        httpClient.callTimeout(2,TimeUnit.MINUTES)
+                .connectTimeout(30, TimeUnit.SECONDS) // connect timeout
+                .writeTimeout(30, TimeUnit.SECONDS) // write timeout
+                .readTimeout(30, TimeUnit.SECONDS); // read timeout
 
         //Add logging as last interceptor
         httpClient.addInterceptor(logging);  // <-- this is the important line!
@@ -101,96 +106,172 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
                 recyclerView.setHasFixedSize(true);
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.setAdapter(adapter);
-                Log.v("[ MyReportActivity ]", "Number of Reports: " + reportTables.get(1).getIncidentType());
-                Log.v("[ MyReportActivity ]", "Number of Pending Reports: " + reportTables.size());
                 count = reportTables.size();
+
+                new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, swipeFlags) {
+
+                    @Override
+                    public int getMovementFlags(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
+
+                        if(connection) {
+                            swipeFlags = ItemTouchHelper.RIGHT;
+                        }
+                        else {
+                            swipeFlags = 0;
+                        }
+                        return makeMovementFlags(dragFlags, swipeFlags);
+                    }
+
+                    @Override
+                    public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                        return false;
+                    }
+
+                    @Override
+                    public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+
+                        userID = reportTables.get(viewHolder.getAdapterPosition()).getUniqueId();
+                        dateTime = reportTables.get(viewHolder.getAdapterPosition()).getDateTime();
+                        incidentType = reportTables.get(viewHolder.getAdapterPosition()).getIncidentType();
+                        Report = reportTables.get(viewHolder.getAdapterPosition()).getReport();
+                        Longitude = reportTables.get(viewHolder.getAdapterPosition()).getLongitude();
+                        Latitude = reportTables.get(viewHolder.getAdapterPosition()).getLatitude();
+                        image = reportTables.get(viewHolder.getAdapterPosition()).getPhoto();
+                        reportId = reportTables.get(viewHolder.getAdapterPosition()).getReportId();
+
+                        imageString = imageConvertToString(image);
+
+                        lon = Longitude.toString();
+                        lat = Latitude.toString();
+
+                        HashMap<String, String> map = new HashMap<>();
+                        map.put("userID", userID);
+                        map.put("date", dateTime);
+                        map.put("type", incidentType);
+                        map.put("report", Report);
+                        map.put("lon", lon);
+                        map.put("lat", lat);
+                        map.put("image", imageString); //imageString
+
+                        Log.v("[MyReportActivity.java]",
+                                "DATE & TIME: " + dateTime + "\n" +
+                                        "USER ID: " + userID + "\n" +
+                                        "INCIDENT TYPE: " + incidentType + "\n" +
+                                        "REPORT: " + Report + "\n" +
+                                        "LATITUDE: " + Longitude.toString() + "\n" +
+                                        "LONGITUDE: " + Latitude.toString() + "\n" +
+                                        "IMAGE: " + image + "\n" ); //imageString
+
+                        Call<ReportClassResult> call = retrofitInterface.executeReportSubmit(map);
+
+                        call.enqueue(new Callback<ReportClassResult>() {
+
+                            @Override
+                            public void onResponse(Call<ReportClassResult> call, Response<ReportClassResult> response) {
+                                if (response.code() == 200) {
+                                    Toast.makeText(MyReportActivity.this, "Pending Report for " + dateTime + " Sent Successfully",
+                                            Toast.LENGTH_LONG).show();
+                                    reportViewModel.delete(reportTables.get(viewHolder.getAdapterPosition()));
+                                } else if (response.code() == 400){
+                                    Toast.makeText(MyReportActivity.this, "Error Sending Report",
+                                            Toast.LENGTH_LONG).show();
+                                } else if (response.code() == 504){
+                                    Toast.makeText(MyReportActivity.this, "Timeout",
+                                            Toast.LENGTH_LONG).show();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<ReportClassResult> call, Throwable t) {
+                                Toast.makeText(MyReportActivity.this, t.getMessage(),
+                                        Toast.LENGTH_LONG).show();
+                                Log.v("OnFailure Error Message", t.getMessage());
+                            }
+                        });
+
+                    }
+                }).attachToRecyclerView(recyclerView);
             }
         });
 
         button_myReport_save = findViewById(R.id.button_myReport_save);
+        button_myReport_save.setVisibility(View.GONE);
+//
+//        if(connection){
+//            button_myReport_save.setVisibility(View.VISIBLE);
+//        } else {
 
-        if(connection){
-            button_myReport_save.setVisibility(View.VISIBLE);
-        } else {
-            button_myReport_save.setVisibility(View.GONE);
-        };
-
-        button_myReport_save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                for(i = 0; i<count; i++) {
-                    reportViewModel.getAllReports().observe(MyReportActivity.this, new Observer<List<ReportTable>>() {
-                        @Override
-                        public void onChanged(List<ReportTable> reportTables) {
-
-                            userID = reportTables.get(i).getUniqueId();
-                            dateTime = reportTables.get(i).getDateTime();
-                            incidentType = reportTables.get(i).getIncidentType();
-                            Report = reportTables.get(i).getReport();
-                            Longitude = reportTables.get(i).getLongitude();
-                            Latitude = reportTables.get(i).getLatitude();
-                            image = reportTables.get(i).getPhoto();
-
-                            imageString = imageConvertToString(image);
-
-                            HashMap<String, String> map = new HashMap<>();
-                            map.put("userID", userID);
-                            map.put("date", dateTime);
-                            map.put("type", incidentType);
-                            map.put("report", Report);
-                            map.put("lon", lon);
-                            map.put("lat", lat);
-                            map.put("image", image); //imageString
-
-                            Log.v("[MyReportActivity.java]",
-                                    "DATE & TIME: " + dateTime + "\n" +
-                                            "USER ID: " + userID + "\n" +
-                                            "INCIDENT TYPE: " + incidentType + "\n" +
-                                            "REPORT: " + Report + "\n" +
-                                            "LATITUDE: " + Longitude.toString() + "\n" +
-                                            "LONGITUDE: " + Latitude.toString() + "\n" +
-                                            "IMAGE: " + image + "\n" ); //imageString
-
-                            Call<ReportClassResult> call = retrofitInterface.executeReportSubmit(map);
-
-                            call.enqueue(new Callback<ReportClassResult>() {
-
-                                @Override
-                                public void onResponse(Call<ReportClassResult> call, Response<ReportClassResult> response) {
-                                    if (response.code() == 200) {
-                                        Toast.makeText(MyReportActivity.this, "Pending Report for " + dateTime + " Sent Successfully",
-                                                Toast.LENGTH_LONG).show();
-                                    } else if (response.code() == 400){
-                                        Toast.makeText(MyReportActivity.this, "Error Sending Report",
-                                                Toast.LENGTH_LONG).show();
-                                    } else if (response.code() == 504){
-                                        Toast.makeText(MyReportActivity.this, "Timeout",
-                                                Toast.LENGTH_LONG).show();
-                                    }
-                                }
-
-                                @Override
-                                public void onFailure(Call<ReportClassResult> call, Throwable t) {
-                                    Toast.makeText(MyReportActivity.this, t.getMessage(),
-                                            Toast.LENGTH_LONG).show();
-                                    Log.v("OnFailure Error Message", t.getMessage());
-                                }
-                            });
-                        }
-                    });
-                }
-
-                Log.v("MyReportActivity.java","My Report Click Successful");
-            }
-
-        });
-        //setOnClick Report for "Ipasa" button
-            //for loop
-            //query report using iterator number
-            //Send report to DB
-            //Delete that report
-            //iterator++
+//        };
+//
+//        button_myReport_save.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                for(i = 0; i<count; i++) {
+//
+//                    userID = reportViewModel.getAllReports().getValue().get(i).getUniqueId();
+//                    dateTime = reportViewModel.getAllReports().getValue().get(i).getDateTime();
+//                    incidentType = reportViewModel.getAllReports().getValue().get(i).getIncidentType();
+//                    Report = reportViewModel.getAllReports().getValue().get(i).getReport();
+//                    Longitude = reportViewModel.getAllReports().getValue().get(i).getLongitude();
+//                    Latitude = reportViewModel.getAllReports().getValue().get(i).getLatitude();
+//                    image = reportViewModel.getAllReports().getValue().get(i).getPhoto();
+//
+//                    imageString = imageConvertToString(image);
+//
+//                    lon = Longitude.toString();
+//                    lat = Latitude.toString();
+//
+//                    HashMap<String, String> map = new HashMap<>();
+//                    map.put("userID", userID);
+//                    map.put("date", dateTime);
+//                    map.put("type", incidentType);
+//                    map.put("report", Report);
+//                    map.put("lon", lon);
+//                    map.put("lat", lat);
+//                    map.put("image", imageString); //imageString
+//
+//                    Log.v("[MyReportActivity.java]",
+//                            "DATE & TIME: " + dateTime + "\n" +
+//                                    "USER ID: " + userID + "\n" +
+//                                    "INCIDENT TYPE: " + incidentType + "\n" +
+//                                    "REPORT: " + Report + "\n" +
+//                                    "LATITUDE: " + Longitude.toString() + "\n" +
+//                                    "LONGITUDE: " + Latitude.toString() + "\n" +
+//                                    "IMAGE: " + image + "\n" ); //imageString
+//
+//                    Call<ReportClassResult> call = retrofitInterface.executeReportSubmit(map);
+//
+//                    call.enqueue(new Callback<ReportClassResult>() {
+//
+//                        @Override
+//                        public void onResponse(Call<ReportClassResult> call, Response<ReportClassResult> response) {
+//                            if (response.code() == 200) {
+////                                Toast.makeText(MyReportActivity.this, "Pending Report for " + dateTime + " Sent Successfully",
+////                                        Toast.LENGTH_LONG).show();
+//                                reportViewModel.delete(reportViewModel.getAllReports().getValue().get(i));
+//                            } else if (response.code() == 400){
+//                                Toast.makeText(MyReportActivity.this, "Error Sending Report",
+//                                        Toast.LENGTH_LONG).show();
+//                            } else if (response.code() == 504){
+//                                Toast.makeText(MyReportActivity.this, "Timeout",
+//                                        Toast.LENGTH_LONG).show();
+//                            }
+//                        }
+//
+//                        @Override
+//                        public void onFailure(Call<ReportClassResult> call, Throwable t) {
+//                            Toast.makeText(MyReportActivity.this, t.getMessage(),
+//                                    Toast.LENGTH_LONG).show();
+//                            Log.v("OnFailure Error Message", t.getMessage());
+//                        }
+//                    });
+//                }
+//
+//                Toast.makeText(MyReportActivity.this, "Pending Reports Sent Successfully!",
+//                        Toast.LENGTH_LONG).show();
+//            }
+//        });
 
         textView_myReport_back = findViewById(R.id.textView_myReport_back);
         textView_myReport_back.setOnClickListener(new View.OnClickListener() {
@@ -237,4 +318,5 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
     @Override
     public void onClick(int position) {
     }
+
 }

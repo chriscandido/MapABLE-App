@@ -30,6 +30,10 @@ public class ReportViewModel extends AndroidViewModel {
         reportRepository.insertReport(report);
     }
 
+    public void delete (ReportTable report) {
+        reportRepository.deleteReport(report);
+    }
+
     public LiveData<ReportTable> getLastReport() {
         return lastReport;
     }
@@ -38,13 +42,4 @@ public class ReportViewModel extends AndroidViewModel {
         return allReports;
     }
 
-
-//    public
-//    getCount() {
-//        return count;
-//    }
-//
-//    public void setCount(String count) {
-//        this.count = count;
-//    }
 }

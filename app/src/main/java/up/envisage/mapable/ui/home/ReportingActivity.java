@@ -83,9 +83,10 @@ public class ReportingActivity extends AppCompatActivity {
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         //Add your other interceptors …
-        httpClient.connectTimeout(5, TimeUnit.MINUTES) // connect timeout
-                .writeTimeout(5, TimeUnit.MINUTES) // write timeout
-                .readTimeout(5, TimeUnit.MINUTES); // read timeout
+        httpClient.callTimeout(2,TimeUnit.MINUTES)
+                .connectTimeout(30, TimeUnit.SECONDS) // connect timeout
+                .writeTimeout(30, TimeUnit.SECONDS) // write timeout
+                .readTimeout(30, TimeUnit.SECONDS); // read timeout
 
         //Add logging as last interceptor
         httpClient.addInterceptor(logging);  // <-- this is the important line!
@@ -100,7 +101,7 @@ public class ReportingActivity extends AppCompatActivity {
 
         Intent reportAct = getIntent();
 
-        userID = reportAct.getStringExtra("userID");
+        userID = outUserId;
         dateTime = reportAct.getStringExtra("Date and Time");
         incidentType = reportAct.getStringExtra("Incident Type");
         Report = reportAct.getStringExtra("Report");
@@ -114,7 +115,7 @@ public class ReportingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent survey = new Intent(ReportingActivity.this, ReportIncidentActivity.class);
-                survey.putExtra("userID", userID);
+                survey.putExtra("userID", outUserId);
                 startActivity(survey);
             }
         });
@@ -151,7 +152,7 @@ public class ReportingActivity extends AppCompatActivity {
                         "IMAGE STRING: " + imageString);
 
                 HashMap<String, String> map = new HashMap<>();
-                map.put("userID", userID);
+                map.put("userID", outUserId);
                 map.put("date", dateTime);
                 map.put("type", incidentType);
                 map.put("report", Report);

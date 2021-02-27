@@ -83,9 +83,10 @@ public class FeedbackActivity extends AppCompatActivity implements AdapterView.O
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         //Add your other interceptors …
-        httpClient.connectTimeout(5, TimeUnit.MINUTES) // connect timeout
-                .writeTimeout(5, TimeUnit.MINUTES) // write timeout
-                .readTimeout(5, TimeUnit.MINUTES); // read timeout
+        httpClient.callTimeout(2,TimeUnit.MINUTES)
+                .connectTimeout(30, TimeUnit.SECONDS) // connect timeout
+                .writeTimeout(30, TimeUnit.SECONDS) // write timeout
+                .readTimeout(30, TimeUnit.SECONDS); // read timeout
 
         //Add logging as last interceptor
         httpClient.addInterceptor(logging);  // <-- this is the important line!

@@ -39,6 +39,10 @@ public class ReportRepository {
         new ReportRepository.insertReportAsyncTask(reportDAO).execute(reportTable);
     }
 
+    public void deleteReport(ReportTable reportTable) {
+        new ReportRepository.deleteReportAsyncTask(reportDAO).execute(reportTable);
+    }
+
     public static class insertReportAsyncTask extends AsyncTask<ReportTable, Void, Void> {
 
         private ReportDAO reportDAO;
@@ -55,4 +59,22 @@ public class ReportRepository {
             return null;
         }
     }
+
+    public static class deleteReportAsyncTask extends AsyncTask<ReportTable, Void, Void> {
+
+        private ReportDAO reportDAO;
+
+        private deleteReportAsyncTask(ReportDAO dao) {
+            reportDAO = dao;
+        }
+
+        @SuppressLint("LongLogTag")
+        @Override
+        protected Void doInBackground(ReportTable... reports) {
+            reportDAO.deleteReport(reports[0]);
+            Log.v("[ ReportRepository.java ]", "Data Successfully Inserted");
+            return null;
+        }
+    }
+
 }
