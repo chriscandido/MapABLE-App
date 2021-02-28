@@ -276,6 +276,8 @@ public class ReportingActivity extends AppCompatActivity {
                     report.setPhoto(image);
                     reportViewModel.insert(report);
 
+                    errorNoConnection();
+
                 }
 
 //                reportViewModel.getLastReport().observe(ReportingActivity.this, reportTable -> {

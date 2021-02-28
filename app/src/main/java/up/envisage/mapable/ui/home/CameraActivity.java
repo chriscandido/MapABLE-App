@@ -215,14 +215,14 @@ public class CameraActivity extends AppCompatActivity {
         }
     }
 
-    // convert from bitmap to byte array (with compression)
+    //----------------------------------------------------------------------------------------------Convert from bitmap to byte array (with compression)
     public byte[] getBytesFromBitmap(Bitmap bitmap) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
         return stream.toByteArray();
     }
 
-    // convert from bitmap to byte array (without compression)
+    //----------------------------------------------------------------------------------------------convert from bitmap to byte array (without compression)
     public static byte[] convertBitmapToByteArrayUncompressed(Bitmap bitmap){
         ByteBuffer byteBuffer = ByteBuffer.allocate(bitmap.getByteCount());
         bitmap.copyPixelsToBuffer(byteBuffer);
@@ -230,6 +230,7 @@ public class CameraActivity extends AppCompatActivity {
         return byteBuffer.array();
     }
 
+    //----------------------------------------------------------------------------------------------Popup for no selected photo
     private void selectPhoto(){
         dialog = new Dialog(this);
         dialog.setContentView(R.layout.popup_error_nophoto);

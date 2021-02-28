@@ -175,6 +175,7 @@ public class GoogleMapFragment extends FragmentActivity
         return BitmapDescriptorFactory.fromBitmap(bitmap);
     }
 
+    //----------------------------------------------------------------------------------------------Popup for no location
     private void errorMapCoordinates(){
         dialog = new Dialog(this);
         dialog.setContentView(R.layout.popup_error_nolocation);

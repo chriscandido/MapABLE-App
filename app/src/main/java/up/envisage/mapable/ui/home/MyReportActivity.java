@@ -337,7 +337,7 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
     //----------------------------------------------------------------------------------------------Popup for successful data sending
     private void successDataSending(){
         dialog = new Dialog(this);
-        dialog.setContentView(R.layout.popup_registration_success);
+        dialog.setContentView(R.layout.popup_success_registration);
 
         MaterialButton button_reportDataSent_ok = dialog.findViewById(R.id.button_reportDataSent_ok);
         button_reportDataSent_ok.setOnClickListener(new View.OnClickListener() {

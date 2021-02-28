@@ -81,7 +81,7 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
 
     }
 
-    @SuppressLint("LongLogTag")
+    @SuppressLint({"LongLogTag", "NonConstantResourceId"})
     @Override
     public void onClick(View view) {
         connection = isNetworkAvailable();
@@ -221,7 +221,7 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
     //----------------------------------------------------------------------------------------------Popup for successful registration
     private void successRegistration(){
         dialog = new Dialog(RegisterActivity.this);
-        dialog.setContentView(R.layout.popup_registration_success);
+        dialog.setContentView(R.layout.popup_success_registration);
 
         MaterialButton button_registrationSuccess_ok = dialog.findViewById(R.id.button_registrationSuccess_ok);
         button_registrationSuccess_ok.setOnClickListener(new View.OnClickListener() {
@@ -234,7 +234,7 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
         dialog.show();
     }
 
-    //----------------------------------------------------------------------------------------------Popup for editting action keys
+    //----------------------------------------------------------------------------------------------Set Action for Keyboard Keys
     private TextInputEditText.OnEditorActionListener editorActionListener = new TextInputEditText.OnEditorActionListener() {
         @Override
         public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {

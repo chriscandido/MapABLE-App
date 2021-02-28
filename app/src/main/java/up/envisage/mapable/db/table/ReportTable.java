@@ -34,7 +34,6 @@ public class ReportTable {
     @ColumnInfo (name = "photo")
     private String photo;
 
-
     public String getUniqueId() {
         return uniqueId;
     }
