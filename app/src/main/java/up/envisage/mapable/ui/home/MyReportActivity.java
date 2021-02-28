@@ -1,5 +1,6 @@
 package up.envisage.mapable.ui.home;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -44,7 +45,6 @@ import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
 import up.envisage.mapable.adapter.MyReportAdapter;
 import up.envisage.mapable.db.table.ReportTable;
-import up.envisage.mapable.fragment.UserFragment;
 import up.envisage.mapable.model.ReportViewModel;
 import up.envisage.mapable.ui.home.report.ReportClassResult;
 import up.envisage.mapable.ui.registration.RetrofitInterface;
@@ -56,17 +56,14 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
 
-    private TextView textView_myReport_back;
-    private Button button_myReport_save;
-
     private Dialog dialog;
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
     private String BASE_URL = "http://ec2-54-91-89-105.compute-1.amazonaws.com/";
 
-    Integer count, i, reportId;
-    String userID, dateTime, incidentType, Report, lon, lat, image, imageString, outUserId;
+    Integer i, reportId;
+    String userID, dateTime, incidentType, Report, lon, lat, image, imageString, outUserId, flag;
     Double Longitude, Latitude;
     Boolean connection;
     int dragFlags = 0;
@@ -103,6 +100,7 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
 
         reportViewModel = ViewModelProviders.of(MyReportActivity.this).get(ReportViewModel.class);
         reportViewModel.getAllReports().observe(MyReportActivity.this, new Observer<List<ReportTable>>() {
+            @SuppressLint("LongLogTag")
             @Override
             public void onChanged(List<ReportTable> reportTables) {
                 adapter = new MyReportAdapter(getApplicationContext(), MyReportActivity.this::onClick, reportTables);
@@ -110,7 +108,9 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
                 recyclerView.setHasFixedSize(true);
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.setAdapter(adapter);
-                count = reportTables.size();
+                int count = reportTables.size();
+
+                Log.v("[ MyReportActivity.java ]", "No. of Reports: " + count);
 
                 new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, swipeFlags) {
 
@@ -142,6 +142,7 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
                         Latitude = reportTables.get(viewHolder.getAdapterPosition()).getLatitude();
                         image = reportTables.get(viewHolder.getAdapterPosition()).getPhoto();
                         reportId = reportTables.get(viewHolder.getAdapterPosition()).getReportId();
+                        reportTables.get(viewHolder.getAdapterPosition()).setFlag("SENT");
 
                         imageString = imageConvertToString(image);
 
@@ -173,6 +174,7 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
                             @Override
                             public void onResponse(Call<ReportClassResult> call, Response<ReportClassResult> response) {
                                 if (response.code() == 200) {
+                                    successDataSending();
                                     Toast.makeText(MyReportActivity.this, "Pending Report for " + dateTime + " Sent Successfully",
                                             Toast.LENGTH_LONG).show();
                                     reportViewModel.delete(reportTables.get(viewHolder.getAdapterPosition()));
@@ -198,7 +200,7 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
             }
         });
 
-        button_myReport_save = findViewById(R.id.button_myReport_save);
+        Button button_myReport_save = findViewById(R.id.button_myReport_save);
         button_myReport_save.setVisibility(View.GONE);
 //
 //        if(connection){
@@ -277,10 +279,23 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
 //            }
 //        });
 
-        textView_myReport_back = findViewById(R.id.textView_myReport_back);
+        TextView textView_myReport_back = findViewById(R.id.textView_myReport_back);
         textView_myReport_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                /**
+                reportViewModel = ViewModelProviders.of(MyReportActivity.this).get(ReportViewModel.class);
+                reportViewModel.getAllReports().observe(MyReportActivity.this, new Observer<List<ReportTable>>() {
+                    @Override
+                    public void onChanged(List<ReportTable> reportTables) {
+                        int count = reportTables.size();
+                        for (i = 0; i<count; i++){
+                            reportViewModel.delete(reportTables.get(i));
+                        }
+                    }
+                });**/
+
                 Intent myReportBack = new Intent(MyReportActivity.this, MainActivity.class);
                 startActivity(myReportBack);
             }
@@ -325,6 +340,21 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
 
         MaterialButton button_reportDataSent_ok = dialog.findViewById(R.id.button_reportDataSent_ok);
         button_reportDataSent_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
+    private void errorNoConnection(){
+        dialog = new Dialog(this);
+        dialog.setContentView(R.layout.popup_error_nointernet);
+
+        MaterialButton button_reportNoInternet_ok = dialog.findViewById(R.id.button_reportNoInternet_ok);
+        button_reportNoInternet_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();

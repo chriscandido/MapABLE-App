@@ -7,7 +7,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -17,6 +19,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.HashMap;
@@ -108,6 +111,9 @@ public class LoginActivity extends AppCompatActivity  {
                 connection = isNetworkAvailable();
                 username = textInputLayout_loginUsername.getEditText().getText().toString().trim();
                 password = textInputLayout_loginPassword.getEditText().getText().toString().trim();
+
+                textInputLayout_loginUsername.getEditText().setOnEditorActionListener(editorActionListener);
+                textInputLayout_loginPassword.getEditText().setOnEditorActionListener(editorActionListener);
 
                 //function to do what it does when login button is clicked
                 HashMap<String, String> map = new HashMap<>();
@@ -222,6 +228,19 @@ public class LoginActivity extends AppCompatActivity  {
             }
         }
     }
+
+    //----------------------------------------------------------------------------------------------Set Action for Keys
+    private TextInputEditText.OnEditorActionListener editorActionListener = new TextInputEditText.OnEditorActionListener() {
+        @Override
+        public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+            switch (actionId) {
+                case EditorInfo.IME_ACTION_NEXT:
+                case EditorInfo.IME_ACTION_DONE:
+                    break;
+            }
+            return false;
+        }
+    };
 
     //----------------------------------------------------------------------------------------------Go to Sign-up Page
     public void goToSignup(View view) {

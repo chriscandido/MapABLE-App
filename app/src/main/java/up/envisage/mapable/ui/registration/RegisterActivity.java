@@ -4,11 +4,14 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +25,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -31,7 +35,6 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
 import up.envisage.mapable.databinding.ActivityRegisterBinding;
 import up.envisage.mapable.databinding.Listener;
@@ -90,13 +93,27 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
                 username = binding.textInputLayoutRegisterUsername.getEditText().getText().toString().trim();
                 password = binding.textInputLayoutRegisterPassword.getEditText().getText().toString().trim();
 
+                binding.textInputLayoutRegisterName.getEditText().setOnEditorActionListener(editorActionListener);
+                binding.textInputLayoutRegisterMobileNum.getEditText().setOnEditorActionListener(editorActionListener);
+                binding.textInputLayoutRegisterEmail.getEditText().setOnEditorActionListener(editorActionListener);
+                binding.textInputLayoutRegisterUsername.getEditText().setOnEditorActionListener(editorActionListener);
+                binding.textInputLayoutRegisterPassword.getEditText().setOnEditorActionListener(editorActionListener);
+
                 UserTable user = new UserTable();
                 if (TextUtils.isEmpty(name)) {
                     binding.textInputLayoutRegisterName.setError("Please Enter Your Name");
                 }
 
+                else if (!name.matches("^[a-zA-Z\\s]+$")) {
+                    binding.textInputLayoutRegisterName.setError("Please enter only alphabetical character");
+                }
+
                 else if (TextUtils.isEmpty(email)) {
                     binding.textInputLayoutRegisterEmail.setError("Please Enter Your Email");
+                }
+
+                else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    binding.textInputLayoutRegisterEmail.setError("Wrong Email");
                 }
 
                 else if (TextUtils.isEmpty(username)) {
@@ -215,4 +232,16 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
 
         dialog.show();
     }
+
+    private TextInputEditText.OnEditorActionListener editorActionListener = new TextInputEditText.OnEditorActionListener() {
+        @Override
+        public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+            switch (actionId) {
+                case EditorInfo.IME_ACTION_NEXT:
+                case EditorInfo.IME_ACTION_DONE:
+                    break;
+            }
+            return false;
+        }
+    };
 }

@@ -15,6 +15,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
@@ -27,6 +28,8 @@ import com.google.android.material.button.MaterialButton;
 import java.io.ByteArrayOutputStream;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -150,8 +153,6 @@ public class ReportingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                successDataSending();
-
                 //Insert report details to server
                 Log.v("[ReportingActivity.java ]", "Image Path: " + image  + "\n");
 
@@ -177,7 +178,7 @@ public class ReportingActivity extends AppCompatActivity {
                                 "LONGITUDE: " + lon + "\n" +
                                 "IMAGE: " + imageString + "\n" ); //imageString
 
-                if(connection){
+                if(isNetworkAvailable() == true){
 
                     Call<ReportClassResult> call = retrofitInterface.executeReportSubmit(map);
 
@@ -199,6 +200,7 @@ public class ReportingActivity extends AppCompatActivity {
                                 report.setLatitude(Double.parseDouble(lat));
                                 report.setLongitude(Double.parseDouble(lon));
                                 report.setPhoto(image);
+                                report.setFlag("");
                                 reportViewModel.insert(report);
                             } else if (response.code() == 504){
                                 Toast.makeText(ReportingActivity.this, "Timeout",
@@ -211,6 +213,7 @@ public class ReportingActivity extends AppCompatActivity {
                                 report.setLatitude(Double.parseDouble(lat));
                                 report.setLongitude(Double.parseDouble(lon));
                                 report.setPhoto(image);
+                                report.setFlag("");
                                 reportViewModel.insert(report);
                             }
                         }
@@ -230,6 +233,7 @@ public class ReportingActivity extends AppCompatActivity {
                             report.setLatitude(Double.parseDouble(lat));
                             report.setLongitude(Double.parseDouble(lon));
                             report.setPhoto(image);
+                            report.setFlag("");
                             reportViewModel.insert(report);
                         }
 //                    }
@@ -262,10 +266,9 @@ public class ReportingActivity extends AppCompatActivity {
 //                Toast.makeText(getApplicationContext(), "Survey Answer Successfully Sent!", Toast.LENGTH_LONG).show();
                     });
                 }
-                else{ //if no internet connection, report is stored in the local database
-                    Toast.makeText(ReportingActivity.this, "No Internet Connection. Report will be saved in the device!",
-                            Toast.LENGTH_LONG).show();
-
+                else { //if no internet connection, report is stored in the local database
+                    //Toast.makeText(ReportingActivity.this, "No Internet Connection. Report will be saved in the device!",
+                            //Toast.LENGTH_LONG).show();
                     ReportTable report = new ReportTable();
                     report.setUniqueId(outUserId);
                     report.setDateTime(dateTime);
@@ -275,6 +278,9 @@ public class ReportingActivity extends AppCompatActivity {
                     report.setLongitude(Double.parseDouble(lon));
                     report.setPhoto(image);
                     reportViewModel.insert(report);
+
+                    errorNoConnection();
+
                 }
 
 //                reportViewModel.getLastReport().observe(ReportingActivity.this, reportTable -> {
@@ -359,6 +365,22 @@ public class ReportingActivity extends AppCompatActivity {
         });
 
         dialog.show();
+    }
+
+    private void errorNoConnection(){
+        dialog = new Dialog(getApplicationContext());
+        dialog.setContentView(R.layout.popup_error_nointernet);
+
+        MaterialButton button_reportNoInternet_ok = dialog.findViewById(R.id.button_reportNoInternet_ok);
+        button_reportNoInternet_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+
     }
 
     public void onStart(){

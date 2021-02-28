@@ -24,6 +24,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <!-- Image Background -->
             <ImageView
                 android:id="@+id/imageView_informationBackground"
                 android:layout_width="match_parent"
@@ -37,6 +38,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
+                <!-- Description -->
                 <TextView
                     android:id="@+id/textView_informationTitle"
                     android:layout_width="match_parent"
