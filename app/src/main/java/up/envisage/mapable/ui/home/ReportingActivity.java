@@ -200,7 +200,6 @@ public class ReportingActivity extends AppCompatActivity {
                                 report.setLatitude(Double.parseDouble(lat));
                                 report.setLongitude(Double.parseDouble(lon));
                                 report.setPhoto(image);
-                                report.setFlag("");
                                 reportViewModel.insert(report);
                             } else if (response.code() == 504){
                                 Toast.makeText(ReportingActivity.this, "Timeout",
@@ -213,7 +212,6 @@ public class ReportingActivity extends AppCompatActivity {
                                 report.setLatitude(Double.parseDouble(lat));
                                 report.setLongitude(Double.parseDouble(lon));
                                 report.setPhoto(image);
-                                report.setFlag("");
                                 reportViewModel.insert(report);
                             }
                         }
@@ -233,7 +231,6 @@ public class ReportingActivity extends AppCompatActivity {
                             report.setLatitude(Double.parseDouble(lat));
                             report.setLongitude(Double.parseDouble(lon));
                             report.setPhoto(image);
-                            report.setFlag("");
                             reportViewModel.insert(report);
                         }
 //                    }
@@ -269,6 +266,7 @@ public class ReportingActivity extends AppCompatActivity {
                 else { //if no internet connection, report is stored in the local database
                     //Toast.makeText(ReportingActivity.this, "No Internet Connection. Report will be saved in the device!",
                             //Toast.LENGTH_LONG).show();
+                    errorNoConnection();
                     ReportTable report = new ReportTable();
                     report.setUniqueId(outUserId);
                     report.setDateTime(dateTime);
@@ -278,8 +276,6 @@ public class ReportingActivity extends AppCompatActivity {
                     report.setLongitude(Double.parseDouble(lon));
                     report.setPhoto(image);
                     reportViewModel.insert(report);
-
-                    errorNoConnection();
 
                 }
 
@@ -352,6 +348,7 @@ public class ReportingActivity extends AppCompatActivity {
         return img;
     }
 
+    //----------------------------------------------------------------------------------------------Popup for successful data sending
     private void successDataSending(){
         dialog = new Dialog(this);
         dialog.setContentView(R.layout.popup_success_datasent);
@@ -367,8 +364,9 @@ public class ReportingActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    //----------------------------------------------------------------------------------------------Popup for internet connection failure
     private void errorNoConnection(){
-        dialog = new Dialog(getApplicationContext());
+        dialog = new Dialog(ReportingActivity.this);
         dialog.setContentView(R.layout.popup_error_nointernet);
 
         MaterialButton button_reportNoInternet_ok = dialog.findViewById(R.id.button_reportNoInternet_ok);

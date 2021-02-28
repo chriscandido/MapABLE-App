@@ -69,28 +69,26 @@ public class MyReportAdapter extends RecyclerView.Adapter<MyReportAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull MyReportAdapter.ViewHolder holder, int position) {
         //holder.imageView_myReportImage.setImageResource(reportTable.get(position).getPhoto());
-        if (reportTable.get(position).getFlag() != null) {
-            holder.textView_myReportTitle.setText(reportTable.get(position).getIncidentType());
-            holder.textView_myReportDescription.setText(reportTable.get(position).getDateTime());
-            float lat = BigDecimal.valueOf(reportTable.get(position).getLatitude()).setScale(3, BigDecimal.ROUND_HALF_UP).floatValue();
-            float lon = BigDecimal.valueOf(reportTable.get(position).getLongitude()).setScale(3, BigDecimal.ROUND_HALF_UP).floatValue();
-            holder.textView_myReportLat.setText(String.valueOf(lat));
-            holder.textView_myReportLon.setText(String.valueOf(lon));
-            Log.v("[ MyReportActivity ]", "Number of Reports: " + reportTable.get(position).getIncidentType());
-            switch (reportTable.get(position).getIncidentType()) {
-                case "Algal Bloom":
-                    holder.imageView_myReportImage.setImageResource(R.drawable.ic_map_algalbloom);
-                    break;
-                case "Fish Kill":
-                    holder.imageView_myReportImage.setImageResource(R.drawable.ic_map_fishkill);
-                    break;
-                case "Pollution":
-                    holder.imageView_myReportImage.setImageResource(R.drawable.ic_map_waterpollution);
-                    break;
-                case "Ongoing Reclamation":
-                    holder.imageView_myReportImage.setImageResource(R.drawable.ic_map_illegalreclamation);
-                    break;
-            }
+        holder.textView_myReportTitle.setText(reportTable.get(position).getIncidentType());
+        holder.textView_myReportDescription.setText(reportTable.get(position).getDateTime());
+        float lat = BigDecimal.valueOf(reportTable.get(position).getLatitude()).setScale(3, BigDecimal.ROUND_HALF_UP).floatValue();
+        float lon = BigDecimal.valueOf(reportTable.get(position).getLongitude()).setScale(3, BigDecimal.ROUND_HALF_UP).floatValue();
+        holder.textView_myReportLat.setText(String.valueOf(lat));
+        holder.textView_myReportLon.setText(String.valueOf(lon));
+        Log.v("[ MyReportActivity ]", "Number of Reports: " + reportTable.get(position).getIncidentType());
+        switch (reportTable.get(position).getIncidentType()) {
+            case "Algal Bloom":
+                holder.imageView_myReportImage.setImageResource(R.drawable.ic_map_algalbloom);
+                break;
+            case "Fish Kill":
+                holder.imageView_myReportImage.setImageResource(R.drawable.ic_map_fishkill);
+                break;
+            case "Pollution":
+                holder.imageView_myReportImage.setImageResource(R.drawable.ic_map_waterpollution);
+                break;
+            case "Ongoing Reclamation":
+                holder.imageView_myReportImage.setImageResource(R.drawable.ic_map_illegalreclamation);
+                break;
         }
     }
 

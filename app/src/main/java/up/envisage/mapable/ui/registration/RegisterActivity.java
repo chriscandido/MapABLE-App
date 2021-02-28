@@ -99,6 +99,7 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
                 binding.textInputLayoutRegisterUsername.getEditText().setOnEditorActionListener(editorActionListener);
                 binding.textInputLayoutRegisterPassword.getEditText().setOnEditorActionListener(editorActionListener);
 
+                //Validation
                 UserTable user = new UserTable();
                 if (TextUtils.isEmpty(name)) {
                     binding.textInputLayoutRegisterName.setError("Please Enter Your Name");
@@ -154,7 +155,7 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
                                             if (response.isSuccessful()) {
                                                 userID = response.body().get_id();
                                                 Log.i("Get ID Response", userID);
-
+                                                successRegistration();
                                                 //Insert data to local server
                                                 UserTable user = new UserTable();
                                                 user.setUniqueId(userID);
@@ -165,8 +166,6 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
                                                 user.setPassword(password);
                                                 registerViewModel.insert(user);
                                                 Log.v("[ RegisterActivity.java ]", "Data successfully inserted");
-
-                                                successRegistration();
 
                                                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                                 intent.putExtra("userID", userID);
@@ -212,18 +211,20 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
         }
     }
 
+    //----------------------------------------------------------------------------------------------Check network connection
     private Boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
+    //----------------------------------------------------------------------------------------------Popup for successful registration
     private void successRegistration(){
-        dialog = new Dialog(this);
-        dialog.setContentView(R.layout.popup_registration);
+        dialog = new Dialog(RegisterActivity.this);
+        dialog.setContentView(R.layout.popup_registration_success);
 
-        MaterialButton button_registration_ok = dialog.findViewById(R.id.button_registration_ok);
-        button_registration_ok.setOnClickListener(new View.OnClickListener() {
+        MaterialButton button_registrationSuccess_ok = dialog.findViewById(R.id.button_registrationSuccess_ok);
+        button_registrationSuccess_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
@@ -233,6 +234,7 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
         dialog.show();
     }
 
+    //----------------------------------------------------------------------------------------------Popup for editting action keys
     private TextInputEditText.OnEditorActionListener editorActionListener = new TextInputEditText.OnEditorActionListener() {
         @Override
         public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {

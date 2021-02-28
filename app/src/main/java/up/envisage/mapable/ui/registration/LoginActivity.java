@@ -19,6 +19,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -171,8 +172,9 @@ public class LoginActivity extends AppCompatActivity  {
                         }
                     });
                 } else {
-                    Toast.makeText(LoginActivity.this, "Cannot login: No Internet Connection!",
-                            Toast.LENGTH_LONG).show();
+                    errorNoConnection();
+                    //Toast.makeText(LoginActivity.this, "Cannot login: No Internet Connection!",
+                            //Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -241,6 +243,23 @@ public class LoginActivity extends AppCompatActivity  {
             return false;
         }
     };
+
+    //----------------------------------------------------------------------------------------------Popup for No Internet Connection
+    private void errorNoConnection(){
+        dialog = new Dialog(LoginActivity.this);
+        dialog.setContentView(R.layout.popup_error_nointernet);
+
+        MaterialButton button_reportNoInternet_ok = dialog.findViewById(R.id.button_reportNoInternet_ok);
+        button_reportNoInternet_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+
+    }
 
     //----------------------------------------------------------------------------------------------Go to Sign-up Page
     public void goToSignup(View view) {

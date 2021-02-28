@@ -34,9 +34,6 @@ public class ReportTable {
     @ColumnInfo (name = "photo")
     private String photo;
 
-    @ColumnInfo (name = "flag")
-    private String flag;
-
 
     public String getUniqueId() {
         return uniqueId;
@@ -102,7 +99,4 @@ public class ReportTable {
         this.photo = photo;
     }
 
-    public String getFlag() { return flag; }
-
-    public void setFlag(String flag) { this.flag = flag; }
 }

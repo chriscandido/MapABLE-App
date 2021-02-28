@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorBackground"
     android:orientation="vertical">
 
     <LinearLayout
@@ -14,19 +14,19 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="50dp"
             android:layout_marginTop="20dp"
             android:layout_gravity="center"
-            android:src="@drawable/ic_report_nointernet"/>
+            android:src="@drawable/ic_registration_check"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_gravity="center"
-            android:text="NAKU, WALANG INTERNET."
+            android:text="Success!"
             android:textSize="15sp"
-            android:textColor="@color/colorAccent02"
+            android:textColor="@color/colorPrimary"
             android:textStyle="bold"
             android:fontFamily="@font/montserrat_extrabold"/>
 
@@ -36,14 +36,14 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_gravity="center"
-            android:text="Okay lang iyan. Humanap ka lang ng signal o kaya kumonek sa WiFi upang magamit ang app"
+            android:text="Registered ka na! Maaari mo nang magamit ang iba't ibang features ng MASDAN. Enjoy!"
             android:textSize="12sp"
-            android:textColor="@color/colorAccent02"
+            android:textColor="@color/colorPrimary"
             android:textAlignment="center"
             android:fontFamily="@font/montserrat"/>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_reportNoInternet_ok"
+            android:id="@+id/button_registrationSuccess_ok"
             android:layout_width="200dp"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"

@@ -73,6 +73,8 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_reports);
 
+        swipeInstruction();
+
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
 
         //Set your desired log level
@@ -142,7 +144,6 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
                         Latitude = reportTables.get(viewHolder.getAdapterPosition()).getLatitude();
                         image = reportTables.get(viewHolder.getAdapterPosition()).getPhoto();
                         reportId = reportTables.get(viewHolder.getAdapterPosition()).getReportId();
-                        reportTables.get(viewHolder.getAdapterPosition()).setFlag("SENT");
 
                         imageString = imageConvertToString(image);
 
@@ -174,7 +175,6 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
                             @Override
                             public void onResponse(Call<ReportClassResult> call, Response<ReportClassResult> response) {
                                 if (response.code() == 200) {
-                                    successDataSending();
                                     Toast.makeText(MyReportActivity.this, "Pending Report for " + dateTime + " Sent Successfully",
                                             Toast.LENGTH_LONG).show();
                                     reportViewModel.delete(reportTables.get(viewHolder.getAdapterPosition()));
@@ -284,7 +284,7 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
             @Override
             public void onClick(View v) {
 
-                /**
+
                 reportViewModel = ViewModelProviders.of(MyReportActivity.this).get(ReportViewModel.class);
                 reportViewModel.getAllReports().observe(MyReportActivity.this, new Observer<List<ReportTable>>() {
                     @Override
@@ -294,7 +294,7 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
                             reportViewModel.delete(reportTables.get(i));
                         }
                     }
-                });**/
+                });
 
                 Intent myReportBack = new Intent(MyReportActivity.this, MainActivity.class);
                 startActivity(myReportBack);
@@ -334,9 +334,10 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
+    //----------------------------------------------------------------------------------------------Popup for successful data sending
     private void successDataSending(){
         dialog = new Dialog(this);
-        dialog.setContentView(R.layout.popup_registration);
+        dialog.setContentView(R.layout.popup_registration_success);
 
         MaterialButton button_reportDataSent_ok = dialog.findViewById(R.id.button_reportDataSent_ok);
         button_reportDataSent_ok.setOnClickListener(new View.OnClickListener() {
@@ -349,8 +350,9 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
         dialog.show();
     }
 
+    //----------------------------------------------------------------------------------------------Popup for internet connection failure
     private void errorNoConnection(){
-        dialog = new Dialog(this);
+        dialog = new Dialog(MyReportActivity.this);
         dialog.setContentView(R.layout.popup_error_nointernet);
 
         MaterialButton button_reportNoInternet_ok = dialog.findViewById(R.id.button_reportNoInternet_ok);
@@ -362,6 +364,23 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
         });
 
         dialog.show();
+    }
+
+    //----------------------------------------------------------------------------------------------Popup for swipe instruction
+    private void swipeInstruction(){
+        dialog = new Dialog(MyReportActivity.this);
+        dialog.setContentView(R.layout.popup_instruction_swipe);
+
+        MaterialButton button_userProfile_swipe = dialog.findViewById(R.id.button_userprofileSwipe_ok);
+        button_userProfile_swipe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+
     }
 
     @Override
