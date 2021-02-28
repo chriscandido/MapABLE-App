@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,6 +31,7 @@ public class MyReportAdapter extends RecyclerView.Adapter<MyReportAdapter.ViewHo
 
         TextView textView_myReportTitle, textView_myReportDescription, textView_myReportLat, textView_myReportLon;
         ImageView imageView_myReportImage;
+        CheckBox checkBox_myReport;
         OnReportClickListener onReportClickListener;
 
         public ViewHolder(@NonNull View view, OnReportClickListener onReportClickListener) {
@@ -40,6 +42,7 @@ public class MyReportAdapter extends RecyclerView.Adapter<MyReportAdapter.ViewHo
             this.textView_myReportLat = view.findViewById(R.id.textView_myReportLat);
             this.textView_myReportLon = view.findViewById(R.id.textView_myReportLon);
             this.imageView_myReportImage = view.findViewById(R.id.imageView_myReportImage);
+            this.checkBox_myReport = view.findViewById(R.id.checkBox_myReports);
             view.setOnClickListener(this);
         }
 

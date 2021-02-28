@@ -284,7 +284,7 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
             @Override
             public void onClick(View v) {
 
-
+                /**
                 reportViewModel = ViewModelProviders.of(MyReportActivity.this).get(ReportViewModel.class);
                 reportViewModel.getAllReports().observe(MyReportActivity.this, new Observer<List<ReportTable>>() {
                     @Override
@@ -294,7 +294,7 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
                             reportViewModel.delete(reportTables.get(i));
                         }
                     }
-                });
+                });**/
 
                 Intent myReportBack = new Intent(MyReportActivity.this, MainActivity.class);
                 startActivity(myReportBack);
