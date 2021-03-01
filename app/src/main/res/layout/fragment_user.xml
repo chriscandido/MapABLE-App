@@ -84,7 +84,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
                     android:gravity="center_vertical"
-                    android:text="My Pending Reports"
+                    android:text="Unsent Reports"
                     android:textSize="12sp"
                     android:textColor="@color/colorPrimary"
                     android:textAlignment="gravity"
