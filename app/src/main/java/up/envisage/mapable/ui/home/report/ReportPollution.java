@@ -74,7 +74,6 @@ public class ReportPollution extends AppCompatActivity implements AdapterView.On
         //Question02 spinner element
         spinner_reportPollution_q02.setOnItemSelectedListener(this);
         List<String> options02 = new ArrayList<>();
-        options02.add("Ilog");
         options02.add("Basura mula sa kabahayan o ibang pasilidad");
         options02.add("Maraming tubig o kemikal mula sa pabrika");
         options02.add("Dumi mula sa hayop (mula sa manukan o babuyan)");
@@ -131,7 +130,7 @@ public class ReportPollution extends AppCompatActivity implements AdapterView.On
                 Intent intent = new Intent(ReportPollution.this, GoogleMapFragment.class);
                 intent.putExtra("userID", userID);
                 intent.putExtra("Date and Time", dateTime());
-                intent.putExtra("Incident Type", "Pollution");
+                intent.putExtra("Incident Type", "Water Pollution");
                 intent.putExtra("Report", ans);
                 intent.putExtra("Longitude", lon);
                 intent.putExtra("Latitude", lat);

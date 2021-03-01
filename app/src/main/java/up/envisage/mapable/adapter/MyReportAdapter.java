@@ -42,7 +42,6 @@ public class MyReportAdapter extends RecyclerView.Adapter<MyReportAdapter.ViewHo
             this.textView_myReportLat = view.findViewById(R.id.textView_myReportLat);
             this.textView_myReportLon = view.findViewById(R.id.textView_myReportLon);
             this.imageView_myReportImage = view.findViewById(R.id.imageView_myReportImage);
-            this.checkBox_myReport = view.findViewById(R.id.checkBox_myReports);
             view.setOnClickListener(this);
         }
 
@@ -91,6 +90,12 @@ public class MyReportAdapter extends RecyclerView.Adapter<MyReportAdapter.ViewHo
                 break;
             case "Ongoing Reclamation":
                 holder.imageView_myReportImage.setImageResource(R.drawable.ic_map_illegalreclamation);
+                break;
+            case "Water Hyacinth":
+                holder.imageView_myReportImage.setImageResource(R.drawable.ic_map_hyacinth);
+                break;
+            case "Solid Waste":
+                holder.imageView_myReportImage.setImageResource(R.drawable.ic_map_solidwaste);
                 break;
         }
     }

@@ -93,14 +93,14 @@ public class ReportSolidWaste extends AppCompatActivity implements AdapterView.O
         //Question 04 spinner element
         spinner_reportSolidWaste_q04.setOnItemSelectedListener(this);
         List<String> options04 = new ArrayList<>();
-        options04.add("Mga papel");
-        options04.add("Food wastes");
-        options04.add("Iba pang nabubulok na bagay");
-        options04.add("Single-use plastics");
-        options04.add("Hard plastics");
-        options04.add("Medical wastes");
-        options04.add("Electronic wastes");
-        options04.add("Iba pang hindi nabubulok");
+        options04.add("Mga papel (e.g., karton, libro)");
+        options04.add("Food wastes (e.g., tirang pagkain)");
+        options04.add("Iba pang nabubulok na bagay (e.g., mga kahoy)");
+        options04.add("Single-use plastics (e.g., sachets, plastic bags)");
+        options04.add("Hard plastics (e.g., PET bottles, PVC pipes)");
+        options04.add("Medical wastes (e.g., surgical masks/gloves)");
+        options04.add("Electronic wastes (e.g., lumang appliances)");
+        options04.add("Iba pang hindi nabubulok (e.g., mga bakal)");
         options04.add("Hindi masabi");
 
         ArrayAdapter<String> adapter04 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, options04);
@@ -160,7 +160,7 @@ public class ReportSolidWaste extends AppCompatActivity implements AdapterView.O
                 Intent intent = new Intent(ReportSolidWaste.this, GoogleMapFragment.class);
                 intent.putExtra("userID", userID);
                 intent.putExtra("Date and Time", dateTime());
-                intent.putExtra("Incident Type", "Ongoing Reclamation");
+                intent.putExtra("Incident Type", "Solid Waste");
                 intent.putExtra("Report", ans);
                 intent.putExtra("Longitude", lon);
                 intent.putExtra("Latitude", lat);

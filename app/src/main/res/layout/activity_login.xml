@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/img_background_05"
+    android:background="@drawable/img_background_07"
     android:orientation="vertical"
     tools:context=".ui.registration.LoginActivity">
 
@@ -88,11 +88,11 @@
         android:layout_marginRight="20dp"
         android:layout_gravity="center"
         android:backgroundTint="@color/colorText"
-        android:text="LOGIN"
+        android:text="LOG IN"
         android:textSize="18sp"
         android:textColor="@color/colorSecondary"
         android:textStyle="bold"
-        android:fontFamily="@font/montserrat"
+        android:fontFamily="@font/montserrat_extrabold"
         app:cornerRadius="20dp"
         style="@style/Widget.MaterialComponents.Button"/>
 

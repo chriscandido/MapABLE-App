@@ -246,14 +246,6 @@ public class LoginActivity extends AppCompatActivity  {
         dialog = new Dialog(LoginActivity.this);
         dialog.setContentView(R.layout.popup_error_nointernet);
 
-        MaterialButton button_reportNoInternet_ok = dialog.findViewById(R.id.button_reportNoInternet_ok);
-        button_reportNoInternet_ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-
         dialog.show();
 
     }

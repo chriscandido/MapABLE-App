@@ -189,6 +189,7 @@ public class ReportingActivity extends AppCompatActivity {
                             if (response.code() == 200) {
                                 Toast.makeText(ReportingActivity.this, "Report Sent Successfully",
                                         Toast.LENGTH_LONG).show();
+                                successDataSending();
                             } else if (response.code() == 400){
                                 Toast.makeText(ReportingActivity.this, "Error Sending Report",
                                         Toast.LENGTH_LONG).show();
@@ -351,16 +352,8 @@ public class ReportingActivity extends AppCompatActivity {
 
     //----------------------------------------------------------------------------------------------Popup for successful data sending
     private void successDataSending(){
-        dialog = new Dialog(this);
+        dialog = new Dialog(ReportingActivity.this);
         dialog.setContentView(R.layout.popup_success_datasent);
-
-        button_reportDataSent_ok = dialog.findViewById(R.id.button_reportDataSent_ok);
-        button_reportDataSent_ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
 
         dialog.show();
     }
@@ -369,14 +362,6 @@ public class ReportingActivity extends AppCompatActivity {
     private void errorNoConnection(){
         dialog = new Dialog(ReportingActivity.this);
         dialog.setContentView(R.layout.popup_error_nointernet);
-
-        MaterialButton button_reportNoInternet_ok = dialog.findViewById(R.id.button_reportNoInternet_ok);
-        button_reportNoInternet_ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
 
         dialog.show();
 

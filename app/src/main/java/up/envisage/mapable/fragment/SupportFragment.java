@@ -56,7 +56,7 @@ public class SupportFragment extends Fragment {
         textView_support_about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String aboutLink = "https://sites.google.com/up.edu.ph/masdanmobileapp/home";
+                String aboutLink = "http://ec2-54-91-89-105.compute-1.amazonaws.com/about";
                 openWebsiteLink(aboutLink);
             }
         });

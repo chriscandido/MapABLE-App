@@ -24,21 +24,21 @@
     </string>
 
     <!-- Project iWASTO -->
-    <string name="desc_iWASTO"><p><h1>PROJECT iWASTO</h1>
-        <br>\nAng Project iWASTO ay nakatuon sa pagsasaliksik tungkol sa solid waste management. Ito ay pinamumunuan ni Dr. Maria Antonia N. Tanchuling
-            ng UP Institute of Civil Engineering.</br></p>
+    <string name="desc_iWASTO">
+        <br>Ang Project iWASTO ay nakatuon sa pagsasaliksik tungkol sa solid waste management. Ito ay pinamumunuan ni Dr. Maria Antonia N. Tanchuling
+            ng UP Institute of Civil Engineering.</br>
     </string>
 
     <!-- Project eSMART -->
-    <string name="desc_eSMART"><p><h1>PROJECT e-SMART</h1>
-        <br>\nAng Project e-SMART ay nakapokus sa hydrodynamic at hydrologic modelling. Ito ay pinamumunuan ni Dr. Eugene C. Herrera
-            ng UP Institute of Civil Engineering.</br></p>
+    <string name="desc_eSMART">
+        <br>Ang Project e-SMART ay nakapokus sa hydrodynamic at hydrologic modelling. Ito ay pinamumunuan ni Dr. Eugene C. Herrera
+            ng UP Institute of Civil Engineering.</br>
     </string>
 
     <!-- Project CharteD DreaM -->
-    <string name="desc_CharteDDreaM"><p><h1>PROJECT CharteD DreaM</h1>
-        <br>\nAng Project CharteD DreaM ay nagsasaliksik naman tungkol sa mga dredged materials. Ito ay pinamumunuan ni Engr. Reynalod L. Esguerra
-            ng Industrial Technology Institute (DOST-ITDI).</br></p>
+    <string name="desc_CharteDDreaM">
+        <br>Ang Project CharteD DreaM ay nagsasaliksik naman tungkol sa mga dredged materials. Ito ay pinamumunuan ni Engr. Reynalod L. Esguerra
+            ng Industrial Technology Institute (DOST-ITDI).</br>
     </string>
 
     <!-- Project MapABLE -->

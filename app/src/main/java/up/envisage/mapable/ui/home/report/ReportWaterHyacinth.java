@@ -115,7 +115,7 @@ public class ReportWaterHyacinth extends AppCompatActivity implements AdapterVie
 
         ArrayAdapter<String> adapter06 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, options06);
         adapter06.setDropDownViewResource(android.R.layout.simple_spinner_item);
-        spinner_reportWaterHyacinth_q05.setAdapter(adapter06);
+        spinner_reportWaterHyacinth_q06.setAdapter(adapter06);
 
         button_reportWaterHyacinth_ok.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("LongLogTag")
@@ -130,7 +130,7 @@ public class ReportWaterHyacinth extends AppCompatActivity implements AdapterVie
                 Intent intent = new Intent(ReportWaterHyacinth.this, GoogleMapFragment.class);
                 intent.putExtra("userID", userID);
                 intent.putExtra("Date and Time", dateTime());
-                intent.putExtra("Incident Type", "Ongoing Reclamation");
+                intent.putExtra("Incident Type", "Water Hyacinth");
                 intent.putExtra("Report", ans);
                 intent.putExtra("Longitude", lon);
                 intent.putExtra("Latitude", lat);

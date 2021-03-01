@@ -53,7 +53,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:layout_gravity="center"
-                    android:text="I-swipe left lamang ang bawat report na nais mong i-send."
+                    android:text="I-swipe lamang ang bawat report na nais mong i-send."
                     android:textSize="12sp"
                     android:textColor="@color/colorPrimary"
                     android:textAlignment="viewStart"

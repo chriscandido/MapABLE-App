@@ -26,9 +26,9 @@ import up.envisage.mapable.fragment.GoogleMapFragment;
 public class ReportFishKill extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private MaterialButton button_reportFishKill_next;
-    private TextInputLayout textInputLayout_reportFishKill_q00, textInputLayout_reportFishKill_q03;
+    private TextInputLayout textInputLayout_reportFishKill_q00, textInputLayout_reportFishKill_q03, textInputLayout_reportFishKill_q05;
 
-    private String input00, input01, input02, input03, input04;
+    private String input00, input01, input02, input03, input04, input05, input06;
 
     private List<String> out = new ArrayList<>();
 
@@ -52,9 +52,11 @@ public class ReportFishKill extends AppCompatActivity implements AdapterView.OnI
         Spinner spinner_reportFishKill_q01 = findViewById(R.id.spinner_reportFishKill_q01);
         Spinner spinner_reportFishKill_q02 = findViewById(R.id.spinner_reportFishKill_q02);
         Spinner spinner_reportFishKill_q04 = findViewById(R.id.spinner_reportFishKill_q04);
+        Spinner spinner_reportFishKill_q06 = findViewById(R.id.spinner_reportFishKill_q06);
 
         textInputLayout_reportFishKill_q00 = findViewById(R.id.textInputLayout_reportFishKill);
         textInputLayout_reportFishKill_q03 = findViewById(R.id.textInputLayout_reportFishKill_q03);
+        textInputLayout_reportFishKill_q05 = findViewById(R.id.textInputLayout_reportFishKill_q05);
 
         button_reportFishKill_next = findViewById(R.id.button_reportFishKill_next);
 
@@ -81,21 +83,34 @@ public class ReportFishKill extends AppCompatActivity implements AdapterView.OnI
 
         //Question 04 spinner element
         spinner_reportFishKill_q04.setOnItemSelectedListener(this);
-        List<String> options03 = new ArrayList<>();
-        options03.add("Oo");
-        options03.add("Hindi");
+        List<String> options04 = new ArrayList<>();
+        options04.add("Oo");
+        options04.add("Hindi");
 
-        ArrayAdapter<String> adapter03 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, options03);
-        adapter03.setDropDownViewResource(android.R.layout.simple_spinner_item);
-        spinner_reportFishKill_q04.setAdapter(adapter03);
+        ArrayAdapter<String> adapter04 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, options04);
+        adapter04.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        spinner_reportFishKill_q04.setAdapter(adapter04);
+
+        //Question 06 spinner element
+        spinner_reportFishKill_q06.setOnItemSelectedListener(this);
+        List<String> options06 = new ArrayList<>();
+        options06.add("Isa hanggang tatlong banyera");
+        options06.add("Mahigit sa tatlong banyera");
+        options06.add("Hindi masabi");
+
+        ArrayAdapter<String> adapter06 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, options06);
+        adapter06.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        spinner_reportFishKill_q06.setAdapter(adapter06);
 
         //Next Button
         button_reportFishKill_next.setOnClickListener(view -> {
 
             input00 = textInputLayout_reportFishKill_q00.getEditText().getText().toString();
             input03 = textInputLayout_reportFishKill_q03.getEditText().getText().toString();
+            input05 = textInputLayout_reportFishKill_q05.getEditText().getText().toString();
 
-            String ans = input00 + "|" + input01 + "|" +input02 + "|" +input03 + "|" +input04;
+            //String answers
+            String ans = input00 + "|" + input01 + "|" +input02 + "|" +input03 + "|" +input04 + "|" + input05 + "|" + input06;
 
             Log.v("[ ReportFishKill.java ]", "ANSWER: " + ans);
 
@@ -118,8 +133,10 @@ public class ReportFishKill extends AppCompatActivity implements AdapterView.OnI
             input01 = adapterView.getItemAtPosition(i).toString();
         } else if (adapterView.getId() == R.id.spinner_reportFishKill_q02) {
             input02 = adapterView.getItemAtPosition(i).toString();
-        } else {
+        } else if (adapterView.getId() == R.id.spinner_reportFishKill_q04){
             input04 = adapterView.getItemAtPosition(i).toString();
+        } else {
+            input06 = adapterView.getItemAtPosition(i).toString();
         }
 
     }

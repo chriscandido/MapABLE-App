@@ -26,6 +26,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.button.MaterialButton;
 
@@ -99,7 +100,6 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
                 .build();
 
         retrofitInterface = retrofit.create(RetrofitInterface.class);
-
         reportViewModel = ViewModelProviders.of(MyReportActivity.this).get(ReportViewModel.class);
         reportViewModel.getAllReports().observe(MyReportActivity.this, new Observer<List<ReportTable>>() {
             @SuppressLint("LongLogTag")
@@ -119,11 +119,12 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
                     @Override
                     public int getMovementFlags(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
 
-                        if(connection) {
+                        if(connection == true) {
                             swipeFlags = ItemTouchHelper.RIGHT;
                         }
                         else {
-                            swipeFlags = 0;
+                            //swipeFlags = 0;
+                            errorNoConnection();
                         }
                         return makeMovementFlags(dragFlags, swipeFlags);
                     }
@@ -177,9 +178,10 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
                                 if (response.code() == 200) {
                                     Toast.makeText(MyReportActivity.this, "Pending Report for " + reportId + " Sent Successfully",
                                             Toast.LENGTH_LONG).show();
-                                    //Log.v("[ MyReportActivity.java ]", "ReportID: " + reportId);
+                                    Log.v("[ MyReportActivity.java ]", "ReportID: " + reportId);
                                     //reportViewModel = ViewModelProviders.of(MyReportActivity.this).get(ReportViewModel.class);
                                     reportViewModel.delete(reportTables.get(viewHolder.getAdapterPosition()));
+                                    successDataSending();
                                 } else if (response.code() == 400){
                                     Toast.makeText(MyReportActivity.this, "Error Sending Report",
                                             Toast.LENGTH_LONG).show();
@@ -337,16 +339,8 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
 
     //----------------------------------------------------------------------------------------------Popup for successful data sending
     private void successDataSending(){
-        dialog = new Dialog(this);
-        dialog.setContentView(R.layout.popup_success_registration);
-
-        MaterialButton button_reportDataSent_ok = dialog.findViewById(R.id.button_reportDataSent_ok);
-        button_reportDataSent_ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+        dialog = new Dialog(MyReportActivity.this);
+        dialog.setContentView(R.layout.popup_success_datasent);
 
         dialog.show();
     }
@@ -355,14 +349,6 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
     private void errorNoConnection(){
         dialog = new Dialog(MyReportActivity.this);
         dialog.setContentView(R.layout.popup_error_nointernet);
-
-        MaterialButton button_reportNoInternet_ok = dialog.findViewById(R.id.button_reportNoInternet_ok);
-        button_reportNoInternet_ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
 
         dialog.show();
     }

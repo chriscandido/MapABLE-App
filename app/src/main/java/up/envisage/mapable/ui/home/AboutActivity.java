@@ -8,6 +8,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import up.envisage.mapable.MainActivity;
@@ -15,15 +16,15 @@ import up.envisage.mapable.R;
 
 public class AboutActivity extends AppCompatActivity {
 
-    TextView textView_aboutUs_im4manilbayLink;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
         TextView textView_aboutUs_back = findViewById(R.id.textView_aboutUs_back);
-        textView_aboutUs_im4manilbayLink = findViewById(R.id.textView_aboutUs_im4manilabayLink);
+        TextView textView_aboutUs_im4manilbayLink = findViewById(R.id.textView_aboutUs_im4manilabayLink);
+        TextView textView_aboutUs_iwasto = findViewById(R.id.textView_aboutUs_iwasto);
+        TextView textView_aboutUs_esmart = findViewById(R.id.textView_aboutUs_esmart);
         TextView textView_aboutUs_mapableLink = findViewById(R.id.textView_aboutUs_mapableLink);
 
         //Button go back
@@ -36,6 +37,24 @@ public class AboutActivity extends AppCompatActivity {
         textView_aboutUs_im4manilbayLink.setOnClickListener(v -> {
             String facebookLink = "https://www.facebook.com/IM4ManilaBay";
             openFacebookIntent(facebookLink);
+        });
+
+        //Button go to iWASTO
+        textView_aboutUs_iwasto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String facebookLink = "https://www.facebook.com/projectiwasto";
+                openFacebookIntent(facebookLink);
+            }
+        });
+
+        //Button go to eSMART
+        textView_aboutUs_esmart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String facebookLink = "https://www.facebook.com/esmart.im4manilabay";
+                openFacebookIntent(facebookLink);
+            }
         });
 
         //Button go to Project MapABLE link
