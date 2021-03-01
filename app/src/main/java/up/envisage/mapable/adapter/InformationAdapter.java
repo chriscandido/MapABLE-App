@@ -57,7 +57,8 @@ public class InformationAdapter extends RecyclerView.Adapter<InformationAdapter.
             "Ang G.R. Nos. 171947-48, o mas kilala . . .",
             "Nilagdaan ni Pangulong Rodrigo Duterte . . .",
             "Ang Philippine Clean Water Act . . .",
-            "Ano ang Ecological Solid Waste Management Act . . ."
+            "Ano ang Ecological Solid Waste Management Act . . .",
+            "Alam niyo ba kung anong batas ang nagsasaad . . ."
     };
 
     //Information Images
@@ -67,7 +68,8 @@ public class InformationAdapter extends RecyclerView.Adapter<InformationAdapter.
             R.drawable.img_policy_manilabaymandamus,
             R.drawable.img_policy_manilabaytaskforce,
             R.drawable.img_policy_cleanwateract,
-            R.drawable.img_policy_solidwaste
+            R.drawable.img_policy_solidwaste,
+            R.drawable.img_policy_fisheriescode
     };
 
     @NonNull
