@@ -75,7 +75,8 @@ public class UserFragment extends Fragment {
         textView_user_email = view.findViewById(R.id.textView_user_email);
 
         userDetails();
-        //reportDetails();
+
+        //Pending reports button
         textView_user_myReport = view.findViewById(R.id.textView_user_myReport);
         textView_user_myReport.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,8 +89,9 @@ public class UserFragment extends Fragment {
         //declare view for Verified Reports
         //Set OnClick Listener
         //Define OnClick method
-            //Intent to Verified Reports
+        //Intent to Verified Reports
 
+        //Stats button
         textView_user_myStats = view.findViewById(R.id.textView_user_myStats);
         textView_user_myStats.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,15 +135,4 @@ public class UserFragment extends Fragment {
         });
     }
 
-    //----------------------------------------------------------------------------------------------Get report details from local db
-    /**public void reportDetails() {
-        reportViewModel = ViewModelProviders.of(UserFragment.this).get(ReportViewModel.class);
-        reportViewModel.getAllReports().observe(UserFragment.this, new Observer<List<ReportTable>>() {
-            @Override
-            public void onChanged(List<ReportTable> reportTables) {
-                int numOfReports = reportTables.size();
-                textView_user_reports.setText(String.valueOf(numOfReports));
-            }
-        });
-    }**/
 }

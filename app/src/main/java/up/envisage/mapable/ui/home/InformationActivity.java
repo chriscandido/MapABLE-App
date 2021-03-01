@@ -49,7 +49,7 @@ import up.envisage.mapable.adapter.ReportIncidentAdapter;
          });
      }
 
-     //---------------------------------------------------------------------------------------------Different cardview for each facebook links
+     //---------------------------------------------------------------------------------------------Different layout for each facebook links
      @SuppressLint("LongLogTag")
      @Override
      public void onClick(int position) {

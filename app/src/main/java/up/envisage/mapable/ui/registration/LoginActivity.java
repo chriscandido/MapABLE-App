@@ -129,7 +129,6 @@ public class LoginActivity extends AppCompatActivity  {
 
                         public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
                             if (response.code() == 200) {
-//                            final String username2 = textInputLayout_loginUsername.getEditText().getText().toString().trim();
 
                                 String userID2 = response.body().get_id();
                                 String name2 = response.body().getName();
@@ -173,8 +172,6 @@ public class LoginActivity extends AppCompatActivity  {
                     });
                 } else {
                     errorNoConnection();
-                    //Toast.makeText(LoginActivity.this, "Cannot login: No Internet Connection!",
-                            //Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -231,7 +228,7 @@ public class LoginActivity extends AppCompatActivity  {
         }
     }
 
-    //----------------------------------------------------------------------------------------------Set Action for Keys
+    //----------------------------------------------------------------------------------------------Set Action for Keyboard Keys
     private TextInputEditText.OnEditorActionListener editorActionListener = new TextInputEditText.OnEditorActionListener() {
         @Override
         public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {

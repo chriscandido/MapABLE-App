@@ -1,7 +1,9 @@
 package up.envisage.mapable.ui.home.report;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -12,7 +14,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import up.envisage.mapable.R;
@@ -114,10 +118,23 @@ public class ReportWaterHyacinth extends AppCompatActivity implements AdapterVie
         spinner_reportWaterHyacinth_q05.setAdapter(adapter06);
 
         button_reportWaterHyacinth_ok.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("LongLogTag")
             @Override
             public void onClick(View v) {
                 input00 = textInputLayout_reportWaterHyacinth_q00.getEditText().getText().toString();
+
+                String ans = input00 + "|" + input01 + "|" + input02 + "|" + input03 + "|" + input04+ "|" + input05+ "|" + input06;
+
+                Log.v("[ ReportWaterHyacinth.java ]", "ANSWER: " + ans);
+
                 Intent intent = new Intent(ReportWaterHyacinth.this, GoogleMapFragment.class);
+                intent.putExtra("userID", userID);
+                intent.putExtra("Date and Time", dateTime());
+                intent.putExtra("Incident Type", "Ongoing Reclamation");
+                intent.putExtra("Report", ans);
+                intent.putExtra("Longitude", lon);
+                intent.putExtra("Latitude", lat);
+                intent.putExtra("image", image);
                 startActivity(intent);
             }
         });
@@ -125,12 +142,34 @@ public class ReportWaterHyacinth extends AppCompatActivity implements AdapterVie
     }
 
     @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long id) {
+
+        if (adapterView.getId() == R.id.spinner_reportWaterHyacinth_q01) {
+            input01 = adapterView.getItemAtPosition(i).toString();
+        } else if (adapterView.getId() == R.id.spinner_reportWaterHyacinth_q02) {
+            input02 = adapterView.getItemAtPosition(i).toString();
+        } else if (adapterView.getId() == R.id.spinner_reportWaterHyacinth_q03) {
+            input03 = adapterView.getItemAtPosition(i).toString();
+        } else if (adapterView.getId() == R.id.spinner_reportWaterHyacinth_q04) {
+            input04 = adapterView.getItemAtPosition(i).toString();
+        } else if (adapterView.getId() == R.id.spinner_reportWaterHyacinth_q05) {
+            input05 = adapterView.getItemAtPosition(i).toString();
+        } else {
+            input06 = adapterView.getItemAtPosition(i).toString();
+        }
 
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    //----------------------------------------------------------------------------------------------Get current date and time
+    public String dateTime(){
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String formattedDate = dateFormat.format(calendar.getTime());
+        return formattedDate;
     }
 }

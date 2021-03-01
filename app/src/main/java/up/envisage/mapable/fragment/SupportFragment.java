@@ -52,6 +52,7 @@ public class SupportFragment extends Fragment {
         TextView textView_support_feedback = view.findViewById(R.id.textView_support_feedback);
         TextView textView_support_devTeam = view.findViewById(R.id.textView_support_devTeam);
 
+        //About MASDAN App button
         textView_support_about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,6 +61,7 @@ public class SupportFragment extends Fragment {
             }
         });
 
+        //Policy link button
         textView_support_policy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,6 +70,7 @@ public class SupportFragment extends Fragment {
             }
         });
 
+        //Feedback question button
         textView_support_feedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,6 +79,7 @@ public class SupportFragment extends Fragment {
             }
         });
 
+        //Dev Team button
         textView_support_devTeam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,6 +89,7 @@ public class SupportFragment extends Fragment {
         });
     }
 
+    //----------------------------------------------------------------------------------------------Parsing of website link
     public void openWebsiteLink(String url){
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse(url));
