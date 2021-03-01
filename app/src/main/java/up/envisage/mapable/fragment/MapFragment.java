@@ -114,79 +114,83 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
     public void onMapReady(@NonNull final MapboxMap mapboxMap) {
         MapFragment.this.mapboxMap = mapboxMap;
 
-        mapboxMap.setStyle(new Style.Builder().fromUri("mapbox://styles/mapbox/cjerxnqt3cgvp2rmyuxbeqme7"),
+        mapboxMap.setStyle(new Style.Builder().fromUri("mapbox://styles/mapbox/cj3kbeqzo00022smj7akz3o1e"),
                 new Style.OnStyleLoaded() {
                     @Override
                     public void onStyleLoaded(@NonNull Style style) {
                         enableLocationComponent(style);
-
-                        Icon iconAlgalBloom = drawableToIcon(getApplicationContext(), R.drawable.ic_map_algalbloom120x120);
-                        Icon iconFishKill = drawableToIcon(getApplicationContext(), R.drawable.ic_map_fishkill120x120);
-                        Icon iconPollution = drawableToIcon(getApplicationContext(), R.drawable.ic_map_waterpollution120x120);
-                        Icon iconIllegalRec = drawableToIcon(getApplicationContext(), R.drawable.ic_map_illegalreclamation120x120);
-                        Icon iconWaterHyacinth = drawableToIcon(getApplicationContext(), R.drawable.ic_map_hyacinth120x120);
-                        Icon iconSolidWaste = drawableToIcon(getApplicationContext(), R.drawable.ic_map_solidwaste120x120);
-                        Icon iconIbaPa = drawableToIcon(getApplicationContext(), R.drawable.ic_map_ibapa120x120);
-
-                        //Load report data of the user
-                        ReportViewModel reportViewModel = ViewModelProviders.of(MapFragment.this).get(ReportViewModel.class);
-                        reportViewModel.getAllReports().observe(MapFragment.this, new Observer<List<ReportTable>>() {
-                            @Override
-                            public void onChanged(List<ReportTable> reportTables) {
-                                int count = reportTables.size();
-                                for (int i = 0; i < count; i++){
-                                    String incidentType = reportTables.get(i).getIncidentType();
-                                    double latitude = reportTables.get(i).getLatitude();
-                                    double longitude = reportTables.get(i).getLongitude();
-                                    switch (incidentType) {
-                                        case "Algal Bloom":
-                                            mapboxMap.addMarker(new MarkerOptions()
-                                                    .position(new LatLng(latitude, longitude))
-                                                    .title(incidentType)
-                                                    .icon(iconAlgalBloom));
-                                            break;
-                                        case "Fish Kill":
-                                            mapboxMap.addMarker(new MarkerOptions()
-                                                    .position(new LatLng(latitude, longitude))
-                                                    .title(incidentType)
-                                                    .icon(iconFishKill));
-                                            break;
-                                        case "Pollution":
-                                            mapboxMap.addMarker(new MarkerOptions()
-                                                    .position(new LatLng(latitude, longitude))
-                                                    .title(incidentType)
-                                                    .icon(iconPollution));
-                                            break;
-                                        case "Ongoing Reclamation":
-                                            mapboxMap.addMarker(new MarkerOptions()
-                                                    .position(new LatLng(latitude, longitude))
-                                                    .title(incidentType)
-                                                    .icon(iconIllegalRec));
-                                            break;
-                                        case "Water Hyacinth":
-                                            mapboxMap.addMarker(new MarkerOptions()
-                                                    .position(new LatLng(latitude, longitude))
-                                                    .title(incidentType)
-                                                    .icon(iconWaterHyacinth));
-                                            break;
-                                        case "Solid Waste":
-                                            mapboxMap.addMarker(new MarkerOptions()
-                                                    .position(new LatLng(latitude, longitude))
-                                                    .title(incidentType)
-                                                    .icon(iconSolidWaste));
-                                            break;
-                                        case "Iba Pa":
-                                            mapboxMap.addMarker(new MarkerOptions()
-                                                    .position(new LatLng(latitude, longitude))
-                                                    .title(incidentType)
-                                                    .icon(iconIbaPa));
-                                            break;
-                                    }
-                                }
-                            }
-                        });
+                        setupData(mapboxMap);
                     }
                 });
+    }
+
+    //----------------------------------------------------------------------------------------------Get data from local db
+    public void setupData (MapboxMap mapboxMap){
+        Icon iconAlgalBloom = drawableToIcon(getApplicationContext(), R.drawable.ic_map_algalbloom120x120);
+        Icon iconFishKill = drawableToIcon(getApplicationContext(), R.drawable.ic_map_fishkill120x120);
+        Icon iconPollution = drawableToIcon(getApplicationContext(), R.drawable.ic_map_waterpollution120x120);
+        Icon iconIllegalRec = drawableToIcon(getApplicationContext(), R.drawable.ic_map_illegalreclamation120x120);
+        Icon iconWaterHyacinth = drawableToIcon(getApplicationContext(), R.drawable.ic_map_hyacinth120x120);
+        Icon iconSolidWaste = drawableToIcon(getApplicationContext(), R.drawable.ic_map_solidwaste120x120);
+        Icon iconIbaPa = drawableToIcon(getApplicationContext(), R.drawable.ic_map_ibapa120x120);
+
+        //Load report data of the user
+        ReportViewModel reportViewModel = ViewModelProviders.of(MapFragment.this).get(ReportViewModel.class);
+        reportViewModel.getAllReports().observe(MapFragment.this, new Observer<List<ReportTable>>() {
+            @Override
+            public void onChanged(List<ReportTable> reportTables) {
+                int count = reportTables.size();
+                for (int i = 0; i < count; i++){
+                    String incidentType = reportTables.get(i).getIncidentType();
+                    double latitude = reportTables.get(i).getLatitude();
+                    double longitude = reportTables.get(i).getLongitude();
+                    switch (incidentType) {
+                        case "Algal Bloom":
+                            mapboxMap.addMarker(new MarkerOptions()
+                                    .position(new LatLng(latitude, longitude))
+                                    .title(incidentType)
+                                    .icon(iconAlgalBloom));
+                            break;
+                        case "Fish Kill":
+                            mapboxMap.addMarker(new MarkerOptions()
+                                    .position(new LatLng(latitude, longitude))
+                                    .title(incidentType)
+                                    .icon(iconFishKill));
+                            break;
+                        case "Pollution":
+                            mapboxMap.addMarker(new MarkerOptions()
+                                    .position(new LatLng(latitude, longitude))
+                                    .title(incidentType)
+                                    .icon(iconPollution));
+                            break;
+                        case "Ongoing Reclamation":
+                            mapboxMap.addMarker(new MarkerOptions()
+                                    .position(new LatLng(latitude, longitude))
+                                    .title(incidentType)
+                                    .icon(iconIllegalRec));
+                            break;
+                        case "Water Hyacinth":
+                            mapboxMap.addMarker(new MarkerOptions()
+                                    .position(new LatLng(latitude, longitude))
+                                    .title(incidentType)
+                                    .icon(iconWaterHyacinth));
+                            break;
+                        case "Solid Waste":
+                            mapboxMap.addMarker(new MarkerOptions()
+                                    .position(new LatLng(latitude, longitude))
+                                    .title(incidentType)
+                                    .icon(iconSolidWaste));
+                            break;
+                        case "Iba Pa":
+                            mapboxMap.addMarker(new MarkerOptions()
+                                    .position(new LatLng(latitude, longitude))
+                                    .title(incidentType)
+                                    .icon(iconIbaPa));
+                            break;
+                    }
+                }
+            }
+        });
     }
 
     /**
@@ -202,6 +206,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
                     .elevation(5)
                     .accuracyAlpha(.6f)
                     .accuracyColor(Color.YELLOW)
+                    .pulseEnabled(true)
+                    .pulseColor(Color.BLUE)
                     .foregroundDrawable(R.drawable.ic_report_userlocation_60x60)
                     .build();
 

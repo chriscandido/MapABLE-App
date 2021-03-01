@@ -263,8 +263,7 @@ public class ReportingActivity extends AppCompatActivity {
 //                });
 //                Toast.makeText(getApplicationContext(), "Survey Answer Successfully Sent!", Toast.LENGTH_LONG).show();
                     });
-                }
-                else { //if no internet connection, report is stored in the local database
+                } else { //if no internet connection, report is stored in the local database
                     //Toast.makeText(ReportingActivity.this, "No Internet Connection. Report will be saved in the device!",
                             //Toast.LENGTH_LONG).show();
                     ReportTable report = new ReportTable();
