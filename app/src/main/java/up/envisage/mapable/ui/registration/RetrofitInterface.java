@@ -20,6 +20,9 @@ public interface RetrofitInterface {
     @GET("/users/getID")
     Call<userID> getUser(@QueryMap Map<String, String> options);
 
+    @GET("/users/stats")
+    Call<StatsResult> getStats(@QueryMap Map<String, String> options);
+
     @POST("/users/signup")
     Call<Void> executeSignup(@Body HashMap<String, String> map);
 

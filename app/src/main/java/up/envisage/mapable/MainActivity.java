@@ -39,8 +39,6 @@ public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
 
-//    private SharedPreferences userIDPreferences;
-
     String userID;
 
     @Override
@@ -51,9 +49,6 @@ public class MainActivity extends AppCompatActivity {
         Intent login = getIntent(); // gets intent from reportingActivity
 
         userID = login.getStringExtra("userID");
-
-//        userIDPreferences = getSharedPreferences("userID", MODE_PRIVATE);
-//        userIDPreferences.edit().putString("userID", userID).apply();
 
         //Bottom bar navigation
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomnavigation_menu);

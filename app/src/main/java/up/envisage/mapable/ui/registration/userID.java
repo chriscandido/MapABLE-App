@@ -23,6 +23,9 @@ public class userID {
     @SerializedName("password")
     private String password;
 
+    @SerializedName("numOfReports")
+    private Integer numOfReports;
+
     public String get_id() {
         return _id;
     }
@@ -46,5 +49,7 @@ public class userID {
     public String getPassword() {
         return password;
     }
+
+    public Integer getNumOfReports() { return numOfReports; }
 
 }
