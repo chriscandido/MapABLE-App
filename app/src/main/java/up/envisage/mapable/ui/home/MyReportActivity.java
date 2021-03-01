@@ -175,8 +175,10 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
                             @Override
                             public void onResponse(Call<ReportClassResult> call, Response<ReportClassResult> response) {
                                 if (response.code() == 200) {
-                                    Toast.makeText(MyReportActivity.this, "Pending Report for " + dateTime + " Sent Successfully",
+                                    Toast.makeText(MyReportActivity.this, "Pending Report for " + reportId + " Sent Successfully",
                                             Toast.LENGTH_LONG).show();
+                                    //Log.v("[ MyReportActivity.java ]", "ReportID: " + reportId);
+                                    //reportViewModel = ViewModelProviders.of(MyReportActivity.this).get(ReportViewModel.class);
                                     reportViewModel.delete(reportTables.get(viewHolder.getAdapterPosition()));
                                 } else if (response.code() == 400){
                                     Toast.makeText(MyReportActivity.this, "Error Sending Report",
@@ -284,7 +286,6 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
             @Override
             public void onClick(View v) {
 
-                /**
                 reportViewModel = ViewModelProviders.of(MyReportActivity.this).get(ReportViewModel.class);
                 reportViewModel.getAllReports().observe(MyReportActivity.this, new Observer<List<ReportTable>>() {
                     @Override
@@ -294,7 +295,7 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
                             reportViewModel.delete(reportTables.get(i));
                         }
                     }
-                });**/
+                });
 
                 Intent myReportBack = new Intent(MyReportActivity.this, MainActivity.class);
                 startActivity(myReportBack);

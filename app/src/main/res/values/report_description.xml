@@ -2,10 +2,10 @@
     <!-- Report Title -->
     <string name="title_algalBloom">Algal Bloom</string>
     <string name="title_fishKill">Fish Kill</string>
-    <string name="title_pollution">Pollution</string>
+    <string name="title_pollution">Water Pollution</string>
     <string name="title_waterHyacinth">Water Hyacinth</string>
     <string name="title_illegalReclamation">Ongoing Reclamation</string>
-    <string name="title_solidwaste">Soild Waste</string>
+    <string name="title_solidwaste">Solid Waste</string>
 
     <!-- Report Description -->
     <string name="report_desc">Layunin ng MapABLE mobile app na mapabilis ang pangangalap ng impormasyon hinggil sa insidenteng karaniwang nararanasan at maaring makaapekto sa buhay ng mga mamamayang nakatira malapit sa Manila Bay</string>

@@ -63,10 +63,9 @@ public class ReportPollution extends AppCompatActivity implements AdapterView.On
         //Question01 spinner element
         spinner_reportPollution_q01.setOnItemSelectedListener(this);
         List<String> options01 = new ArrayList<>();
-        options01.add("Estero");
-        options01.add("Ilog");
-        options01.add("Manila Bay");
-        options01.add("Laguna de Bay");
+        options01.add("Estero/Ilog");
+        options01.add("Dagat");
+        options01.add("Lawa");
 
         ArrayAdapter<String> adapter01 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, options01);
         adapter01.setDropDownViewResource(android.R.layout.simple_spinner_item);

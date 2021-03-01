@@ -25,19 +25,19 @@
 
     <!-- Project iWASTO -->
     <string name="desc_iWASTO"><p><h1>PROJECT iWASTO</h1>
-        <br>Ang Project iWASTO ay nakatuon sa pagsasaliksik tungkol sa solid waste management. Ito ay pinamumunuan ni Dr. Maria Antonia N. Tanchuling
+        <br>\nAng Project iWASTO ay nakatuon sa pagsasaliksik tungkol sa solid waste management. Ito ay pinamumunuan ni Dr. Maria Antonia N. Tanchuling
             ng UP Institute of Civil Engineering.</br></p>
     </string>
 
     <!-- Project eSMART -->
     <string name="desc_eSMART"><p><h1>PROJECT e-SMART</h1>
-        <br>Ang Project e-SMART ay nakapokus sa hydrodynamic at hydrologic modelling. Ito ay pinamumunuan ni Dr. Eugene C. Herrera
+        <br>\nAng Project e-SMART ay nakapokus sa hydrodynamic at hydrologic modelling. Ito ay pinamumunuan ni Dr. Eugene C. Herrera
             ng UP Institute of Civil Engineering.</br></p>
     </string>
 
     <!-- Project CharteD DreaM -->
     <string name="desc_CharteDDreaM"><p><h1>PROJECT CharteD DreaM</h1>
-        <br>Ang Project CharteD DreaM ay nagsasaliksik naman tungkol sa mga dredged materials. Ito ay pinamumunuan ni Engr. Reynalod L. Esguerra
+        <br>\nAng Project CharteD DreaM ay nagsasaliksik naman tungkol sa mga dredged materials. Ito ay pinamumunuan ni Engr. Reynalod L. Esguerra
             ng Industrial Technology Institute (DOST-ITDI).</br></p>
     </string>
 
@@ -50,7 +50,7 @@
         and Linked Environments (Project MapABLE) ay isinasagawa sa pangangasiwa ni Dr. Ariel Blanco ng UP Training Center for
         Applied Geodesy and Photogrammetry (UP TCAGP). Ito ay naglalayong bumuo at maglunsad ng isang Sistema para sa pagmamapa at
         pagmomonitor ng water quality hindi lamang sa Manila Bay kung hindi maging sa mga pangunahing ilog na nakakabit dito sa
-        pamamagitan ng geospatial technology at citizen science. Para sa karagdagang impormasyon, maaaring bisitahin ang https://www.facebook.com/ProjectMapABLE
+        pamamagitan ng geospatial technology at citizen science.
     </string>
 
 </resources>

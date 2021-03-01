@@ -65,7 +65,7 @@ public class SupportFragment extends Fragment {
         textView_support_policy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String policyLink = "https://sites.google.com/up.edu.ph/masdanmobileapp/privacy-policy";
+                String policyLink = "http://ec2-54-91-89-105.compute-1.amazonaws.com/privacypolicy";
                 openWebsiteLink(policyLink);
             }
         });
