@@ -92,6 +92,15 @@ public class MyReportAdapter extends RecyclerView.Adapter<MyReportAdapter.ViewHo
             case "Ongoing Reclamation":
                 holder.imageView_myReportImage.setImageResource(R.drawable.ic_map_illegalreclamation);
                 break;
+            case "Water Hyacinth":
+                holder.imageView_myReportImage.setImageResource(R.drawable.ic_map_hyacinth);
+                break;
+            case "Solid Waste":
+                holder.imageView_myReportImage.setImageResource(R.drawable.ic_map_solidwaste);
+                break;
+            case "Iba Pa":
+                holder.imageView_myReportImage.setImageResource(R.drawable.ic_map_ibapa);
+                break;
         }
     }
 

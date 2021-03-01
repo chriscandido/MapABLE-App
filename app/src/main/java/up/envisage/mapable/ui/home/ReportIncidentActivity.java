@@ -24,8 +24,10 @@ import up.envisage.mapable.R;
 import up.envisage.mapable.adapter.ReportIncidentAdapter;
 import up.envisage.mapable.ui.home.report.ReportAlgalBloom;
 import up.envisage.mapable.ui.home.report.ReportFishKill;
+import up.envisage.mapable.ui.home.report.ReportIbaPa;
 import up.envisage.mapable.ui.home.report.ReportIllegalReclamation;
 import up.envisage.mapable.ui.home.report.ReportPollution;
+import up.envisage.mapable.ui.home.report.ReportSolidWaste;
 import up.envisage.mapable.ui.home.report.ReportWaterHyacinth;
 import up.envisage.mapable.ui.registration.RetrofitInterface;
 
@@ -151,6 +153,28 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
                 waterHyacinthOk.putExtra("Latitude", lat);
                 waterHyacinthOk.putExtra("image", image);
                 startActivity(waterHyacinthOk);
+                break;
+            case 5:
+                Intent solidWasteOk = new Intent(ReportIncidentActivity.this, ReportSolidWaste.class);
+                solidWasteOk.putExtra("userID", userID);
+                solidWasteOk.putExtra("Date and time", dateTime);
+                solidWasteOk.putExtra("Incident Type", incidentType);
+                solidWasteOk.putExtra("Report", Report);
+                solidWasteOk.putExtra("Longitude", lon);
+                solidWasteOk.putExtra("Latitude", lat);
+                solidWasteOk.putExtra("image", image);
+                startActivity(solidWasteOk);
+                break;
+            case 6:
+                Intent ibaPaOk = new Intent(ReportIncidentActivity.this, ReportIbaPa.class);
+                ibaPaOk.putExtra("userID", userID);
+                ibaPaOk.putExtra("Date and time", dateTime);
+                ibaPaOk.putExtra("Incident Type", incidentType);
+                ibaPaOk.putExtra("Report", Report);
+                ibaPaOk.putExtra("Longitude", lon);
+                ibaPaOk.putExtra("Latitude", lat);
+                ibaPaOk.putExtra("image", image);
+                startActivity(ibaPaOk);
                 break;
         }
     }

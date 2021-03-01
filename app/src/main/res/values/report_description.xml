@@ -2,21 +2,23 @@
     <!-- Report Title -->
     <string name="title_algalBloom">Algal Bloom</string>
     <string name="title_fishKill">Fish Kill</string>
-    <string name="title_pollution">Pollution</string>
+    <string name="title_pollution">Water Pollution</string>
     <string name="title_waterHyacinth">Water Hyacinth</string>
     <string name="title_illegalReclamation">Ongoing Reclamation</string>
+    <string name="title_solidwaste">Solid Waste</string>
+    <string name="title_ibapa">Iba Pa</string>
 
     <!-- Report Description -->
-    <string name="report_desc">Layunin ng MapABLE mobile app na mapabilis ang pangangalap ng impormasyon hinggil sa insidenteng karaniwang nararanasan at maaring makaapekto sa buhay ng mga mamamayang nakatira malapit sa Manila Bay</string>
+    <string name="report_desc">Layunin ng MapABLE mobile app na mapabilis ang pangangalap ng impormasyon hinggil sa insidenteng karaniwang nararanasan at maaaring makaapekto sa buhay ng mga mamamayang nakatira malapit sa Manila Bay</string>
     <!-- Algal Bloom Description -->
     <string name="desc_algalBloom">Ang liya o algal bloom ay ang mabilis na pagdami ng algae sa anyong tubig tulad ng Manila bay.
-        Ito ay resulta ng pagdami ng sustansiya (nutrients) sa tubig na maaaring natural sa tubig o kaya ay mula sa mga fish feeds, pataba sa lupa o dumi ng hayop na inaanod sa mga ilog papuntang Manila bay.
+        Ito ay resulta ng pagdami ng sustansiya (nutrients) sa tubig na maaaring natural sa tubig o kaya ay mula sa mga fish feeds, pataba sa lupa, o dumi ng hayop na inaanod sa mga ilog papuntang Manila Bay.
         Maaari ring magmula ang sustansyang ito sa gamit na tubig tulad ng pinaglabahan mula sa mga kabahayan o mula sa ibang mga pasilidad.
         Karaniwang naoobserbahan ang liya tuwing tag-araw.
     </string>
     <!-- Fish Kill Description -->
-    <string name="desc_fishkill">Ang fishkill ay biglaan at hindi inaasahang pagkamatay ng mga isda. Ito ay maaaring bunga ng pagkalason ng mga isda (tulad ng red tide) o pagkaubos ng oxygen o hypoxia sa tubig na kailangan ng mga isda upan mabuhay.
-    Ang hypoxia ay maaring resulta ng liya, lubhang pagdami o overpopulation ng mga isda sa isang maliit na lugar, o pagtaas ng temperatura ng tubig.
+    <string name="desc_fishkill">Ang fish kill ay biglaan at hindi inaasahang pagkamatay ng mga isda. Ito ay maaaring bunga ng pagkalason ng mga isda (tulad ng red tide) o pagkaubos ng oxygen o hypoxia sa tubig na kailangan ng mga isda upan mabuhay.
+    Ang hypoxia ay maaaring resulta ng liya, lubhang pagdami o overpopulation ng mga isda sa isang maliit na lugar, o pagtaas ng temperatura ng tubig.
     </string>
     <!-- Pollution Description -->
     <string name="desc_pollution">Ang polusyon sa tubig ay ang pagbaba ng kalidad nito bilang resulta ng iba\'t ibang bagay tulad ng mga basura, kemikal, maruming tubig, at dumi mula sa pabrika at pasilidad.
@@ -26,8 +28,14 @@
     <string name="desc_illegalReclamation">Ang pagtatambak at pagtatayo ng istruktura sa Manila Bay o reclamation ay maaari lamang gawin kung may kaukulang pahintulot mula sa awtoridad.
     Anumang reclamation project na walang pahintulot o/at nakakasira sa lagay ng Manila Bay ay maaaring ipagbigay-alam sa mga kinauukulan.
     </string>
-    <string name="desc_waterhyacinth">Ang water hyacinth ay isang uri ng halamang makikitang lumulutang sa katubigan. Ito ay maituturing na invasive dahil sa mabilis nitong pagdami at pag-okupa ng espasyo sa tubig.
-        Ito ay humaharang sa liwanag ng araw na kailangan ng mga phytoplankton at halaman sa ilalim ng tubig upang mabuhay. Ang mga namamatay at nabubulok na water hyacinths ay nakakaagaw din sa oxygen na kailangan naman ng mga isda at iba pang hayop sa tubig.
-        Maliban sa mga ito, ang water hyacinths ay nakahaharang din sa mga daluyan ng tubig.
+    <string name="desc_waterhyacinth">Ang water hyacinth ay isang uri ng halaman na makikitang lumulutang sa katubigan. Ito ay maituturing na invasive dahil sa mabilis nitong pagdami at pag-okupa ng espasyo sa tubig.
+        Ito ay humaharang sa liwanag ng araw na kailangan ng mga phytoplankton at halaman sa ilalim ng tubig upang mabuhay. Ang mga namamatay at nabubulok na water hyacinth ay nakakaagaw din sa oxygen na kailangan naman ng mga isda at iba pang hayop sa tubig.
+        Maliban sa mga ito, ang water hyacinth ay nakahaharang din sa mga daluyan ng tubig.
+    </string>
+    <string name="desc_solidwaste">Ang pagtatapon ng basura sa maling lugar gaya ng mga bakanteng lote o mga anyong tubig ay ipinagbabawal sa batas at mga lokal na ordinansa.
+        Maaari itong magdulot ng polusyon sa ating kapaligiran, tulad sa mga ilog at dagat, pagbaha bunga ng mga baradong daluyan ng tubig, at pagkalat ng sakit sanhi ng mga langaw, ipis, at daga.
+    </string>
+    <string name="desc_ibapa">
+        Kung may iba pang isyung pagkalikasang nais ipagbigay-alam sa kinauukulan, magbigay ng ilang mga impormasyon tungkol dito.
     </string>
 </resources>

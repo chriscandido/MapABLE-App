@@ -63,10 +63,9 @@ public class ReportPollution extends AppCompatActivity implements AdapterView.On
         //Question01 spinner element
         spinner_reportPollution_q01.setOnItemSelectedListener(this);
         List<String> options01 = new ArrayList<>();
-        options01.add("Estero");
-        options01.add("Ilog");
-        options01.add("Manila Bay");
-        options01.add("Laguna de Bay");
+        options01.add("Estero/Ilog");
+        options01.add("Dagat");
+        options01.add("Lawa");
 
         ArrayAdapter<String> adapter01 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, options01);
         adapter01.setDropDownViewResource(android.R.layout.simple_spinner_item);
@@ -75,7 +74,6 @@ public class ReportPollution extends AppCompatActivity implements AdapterView.On
         //Question02 spinner element
         spinner_reportPollution_q02.setOnItemSelectedListener(this);
         List<String> options02 = new ArrayList<>();
-        options02.add("Ilog");
         options02.add("Basura mula sa kabahayan o ibang pasilidad");
         options02.add("Maraming tubig o kemikal mula sa pabrika");
         options02.add("Dumi mula sa hayop (mula sa manukan o babuyan)");
@@ -132,7 +130,7 @@ public class ReportPollution extends AppCompatActivity implements AdapterView.On
                 Intent intent = new Intent(ReportPollution.this, GoogleMapFragment.class);
                 intent.putExtra("userID", userID);
                 intent.putExtra("Date and Time", dateTime());
-                intent.putExtra("Incident Type", "Pollution");
+                intent.putExtra("Incident Type", "Water Pollution");
                 intent.putExtra("Report", ans);
                 intent.putExtra("Longitude", lon);
                 intent.putExtra("Latitude", lat);

@@ -78,7 +78,7 @@ public class ReportIllegalReclamation extends AppCompatActivity implements Adapt
 
         ArrayAdapter<String> adapter02 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, options02);
         adapter02.setDropDownViewResource(android.R.layout.simple_spinner_item);
-        spinner_reportIllegalReclamation_q02.setAdapter(adapter01);
+        spinner_reportIllegalReclamation_q02.setAdapter(adapter02);
 
         //Question03 spinner element
         spinner_reportIllegalReclamation_q03.setOnItemSelectedListener(this);

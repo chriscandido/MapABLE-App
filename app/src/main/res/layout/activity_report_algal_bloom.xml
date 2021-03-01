@@ -83,6 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
+                android:paddingBottom="20dp"
                 app:cardBackgroundColor="@color/colorBackground"
                 app:cardCornerRadius="10dp"
                 app:cardPreventCornerOverlap="true">
@@ -234,7 +235,6 @@
                             android:fontFamily="@font/montserrat" />
                     </com.google.android.material.textfield.TextInputLayout>
 
-
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -249,7 +249,7 @@
                 android:text="SUNOD"
                 android:textSize="15sp"
                 android:textColor="@color/colorSecondary"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/montserrat_extrabold"
                 app:cornerRadius="20dp"/>
 
         </LinearLayout>

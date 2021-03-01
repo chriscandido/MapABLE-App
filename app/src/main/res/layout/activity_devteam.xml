@@ -16,7 +16,7 @@
 
         <!-- Back button -->
         <TextView
-            android:id="@+id/textView_aboutUs_back"
+            android:id="@+id/textView_devTeam_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -148,7 +148,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Lalaki435"
+                android:text="Jommer"
                 android:textColor="@color/colorText"
                 android:textSize="15sp"
                 android:textStyle="bold"
@@ -158,7 +158,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Jommer"
+                android:text="SSRS"
                 android:textColor="@color/colorAccent02"
                 android:textSize="12sp"
                 android:fontFamily="@font/montserrat"/>
@@ -203,7 +203,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Lalaki435"
+                android:text="Ella"
                 android:textColor="@color/colorText"
                 android:textSize="15sp"
                 android:textStyle="bold"
@@ -213,7 +213,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Ella"
+                android:text="Vis Comm Specialist"
                 android:textColor="@color/colorAccent02"
                 android:textSize="12sp"
                 android:fontFamily="@font/montserrat"/>
@@ -258,7 +258,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Lalaki435"
+                android:text="Christian"
                 android:textColor="@color/colorText"
                 android:textSize="15sp"
                 android:textStyle="bold"
@@ -268,7 +268,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Christian"
+                android:text="SRS II"
                 android:textColor="@color/colorAccent02"
                 android:textSize="12sp"
                 android:fontFamily="@font/montserrat"/>
@@ -323,7 +323,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Lalaki435"
+                android:text="Dominic"
                 android:textColor="@color/colorText"
                 android:textSize="15sp"
                 android:textStyle="bold"
@@ -333,7 +333,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Dominic"
+                android:text="GEE Specialist"
                 android:textColor="@color/colorAccent02"
                 android:textSize="12sp"
                 android:fontFamily="@font/montserrat"/>
@@ -378,7 +378,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Lalaki435"
+                android:text="Gilson"
                 android:textColor="@color/colorText"
                 android:textSize="15sp"
                 android:textStyle="bold"
@@ -388,7 +388,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Gilson"
+                android:text="GEE Specialist"
                 android:textColor="@color/colorAccent02"
                 android:textSize="12sp"
                 android:fontFamily="@font/montserrat"/>

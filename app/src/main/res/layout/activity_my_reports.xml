@@ -59,7 +59,7 @@
         android:text="IPASA"
         android:textSize="15sp"
         android:textColor="@color/colorSecondary"
-        android:fontFamily="@font/montserrat"
+        android:fontFamily="@font/montserrat_extrabold"
         app:icon="@drawable/ic_report_send"
         app:iconGravity="textStart"
         app:iconTint="@color/colorSecondary"

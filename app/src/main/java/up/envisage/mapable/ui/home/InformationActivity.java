@@ -49,7 +49,7 @@ import up.envisage.mapable.adapter.ReportIncidentAdapter;
          });
      }
 
-     //---------------------------------------------------------------------------------------------Different layout for each facebook links
+     //---------------------------------------------------------------------------------------------Different layout for each facebook posts
      @SuppressLint("LongLogTag")
      @Override
      public void onClick(int position) {
@@ -78,6 +78,10 @@ import up.envisage.mapable.adapter.ReportIncidentAdapter;
              case 5:
                  String facebookLink05 = "https://www.facebook.com/ProjectMapABLE/photos/a.143299490614286/240185767592324/";
                  openFacebookPageIntent(facebookLink05);
+                 break;
+             case 6:
+                 String facebookLink06 = "https://www.facebook.com/ProjectMapABLE/photos/a.143299490614286/248369220107312/";
+                 openFacebookPageIntent(facebookLink06);
                  break;
          }
      }

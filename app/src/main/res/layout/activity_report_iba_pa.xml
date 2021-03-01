@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:padding="10dp"
+    android:orientation="vertical"
+    tools:context=".ui.home.report.ReportIbaPa">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                app:cardBackgroundColor="@color/colorBackground"
+                app:cardCornerRadius="10dp"
+                app:cardPreventCornerOverlap="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <!-- Incident Icon -->
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_map_ibapa"/>
+
+                        <!-- Incident Type -->
+                        <TextView
+                            android:id="@+id/textView_reportIncidentTitle_algalBloom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:text="@string/title_ibapa"
+                            android:textColor="@color/colorAccent"
+                            style="@style/headerText"/>
+
+                    </LinearLayout>
+
+                    <!-- Incident Type Summary -->
+                    <TextView
+                        android:id="@+id/textView_reportIncidentBody_algalBloom"
+                        style="@style/contentText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="@string/desc_ibapa"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorSecondary"
+                        android:fontFamily="@font/montserrat"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Report Questions -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:paddingBottom="20dp"
+                app:cardBackgroundColor="@color/colorBackground"
+                app:cardCornerRadius="10dp"
+                app:cardPreventCornerOverlap="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Question00 TextInput -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="Maikling salaysay"
+                        android:textSize="15sp"
+                        android:textColor="@color/colorSecondary"
+                        android:fontFamily="@font/montserrat"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="Isang maikling salaysay tungkol sa nangyaring insidente. Maaring isulat kung kailan nagsimula, kung ano ang obserbasyon sa lugar, o hindi kaya ay kung ano ang naging dahilan ng insidente"
+                        android:textSize="12sp"
+                        android:textColor="@color/colorAccent"
+                        android:textAlignment="viewStart"
+                        android:fontFamily="@font/montserrat"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayout_reportIbaPa_q00"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        app:boxBackgroundColor="@color/colorBackground"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/montserrat"
+                            android:minHeight="100dp"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Question00 TextInput -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="1. Anong isyung pangkalikasan ang iyong nais i-report?"
+                        android:textSize="15sp"
+                        android:textColor="@color/colorSecondary"
+                        android:fontFamily="@font/montserrat"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayout_reportIbaPa_q01"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        app:boxBackgroundColor="@color/colorBackground"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/montserrat"
+                            android:minHeight="100dp"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Question00 TextInput -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="2. Ilarawan ang sitwasyon (e.g., itsura ng kapaligiran, lawak o lala ng epekto, mga tao o grupong sangkot, o anumang detalyeng makakatulong sa assessment ng sitwasyon)."
+                        android:textSize="15sp"
+                        android:textColor="@color/colorSecondary"
+                        android:fontFamily="@font/montserrat"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayout_reportIbaPa_q02"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        app:boxBackgroundColor="@color/colorBackground"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/montserrat"
+                            android:minHeight="100dp"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Next Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_reportIbaPa_next"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/colorText"
+                android:text="SUNOD"
+                android:textSize="15sp"
+                android:textColor="@color/colorSecondary"
+                android:fontFamily="@font/montserrat_extrabold"
+                app:cornerRadius="20dp"/>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

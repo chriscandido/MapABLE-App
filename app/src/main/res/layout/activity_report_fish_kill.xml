@@ -84,6 +84,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
+                android:paddingBottom="20dp"
                 app:cardBackgroundColor="@color/colorBackground"
                 app:cardCornerRadius="10dp"
                 app:cardPreventCornerOverlap="true">
@@ -234,6 +235,66 @@
 
                     </LinearLayout>
 
+                    <!-- Question05 TextInput -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="4. Anu-anong klaseng isda ang apektado ng fish kill?"
+                            android:textSize="15sp"
+                            android:textColor="@color/colorSecondary"
+                            android:textAlignment="textStart"
+                            android:fontFamily="@font/montserrat"/>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/textInputLayout_reportFishKill_q05"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="10dp"
+                            app:boxBackgroundColor="@color/colorBackground"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:fontFamily="@font/montserrat"
+                                android:minHeight="100dp"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+
+                    <!-- Question06 Spinner -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="6. Sa iyong palagay gaano karaming isda na ang namatay?"
+                            android:textSize="15sp"
+                            android:textColor="@color/colorSecondary"
+                            android:textAlignment="textStart"
+                            android:fontFamily="@font/montserrat"/>
+
+                        <Spinner
+                            android:id="@+id/spinner_reportFishKill_q06"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            style="@style/spinnerText"/>
+
+                    </LinearLayout>
+
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -248,7 +309,7 @@
                 android:text="SUNOD"
                 android:textSize="15sp"
                 android:textColor="@color/colorSecondary"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/montserrat_extrabold"
                 app:cornerRadius="20dp"/>
 
         </LinearLayout>

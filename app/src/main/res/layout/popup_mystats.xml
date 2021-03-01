@@ -60,6 +60,7 @@
 
         </LinearLayout>
 
+        <!--
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_userMyStats_share"
             android:layout_width="200dp"
@@ -74,6 +75,7 @@
             android:textColor="@color/colorText"
             android:fontFamily="@font/montserrat"
             app:cornerRadius="20dp"/>
+        -->
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_userMyStats_ok"

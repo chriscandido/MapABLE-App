@@ -129,6 +129,7 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
                         }
                         else {
                             swipeFlags = 0;
+                            errorNoConnection();
                         }
                         return makeMovementFlags(dragFlags, swipeFlags);
                     }
@@ -182,6 +183,7 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
                                 if (response.code() == 400){
                                     Toast.makeText(MyReportActivity.this, "Error Sending Report",
                                             Toast.LENGTH_LONG).show();
+                                    successDataSending();
                                 } else if (response.code() == 504){
                                     Toast.makeText(MyReportActivity.this, "Timeout",
                                             Toast.LENGTH_LONG).show();
@@ -262,6 +264,7 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
                             if (response.code() == 400){
                                 Toast.makeText(MyReportActivity.this, "Error Sending Report",
                                         Toast.LENGTH_LONG).show();
+                                successDataSending();
                             } else if (response.code() == 504){
                                 Toast.makeText(MyReportActivity.this, "Timeout",
                                         Toast.LENGTH_LONG).show();
@@ -289,18 +292,6 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
         textView_myReport_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                /**
-                reportViewModel = ViewModelProviders.of(MyReportActivity.this).get(ReportViewModel.class);
-                reportViewModel.getAllReports().observe(MyReportActivity.this, new Observer<List<ReportTable>>() {
-                    @Override
-                    public void onChanged(List<ReportTable> reportTables) {
-                        int count = reportTables.size();
-                        for (i = 0; i<count; i++){
-                            reportViewModel.delete(reportTables.get(i));
-                        }
-                    }
-                });**/
 
                 Intent myReportBack = new Intent(MyReportActivity.this, MainActivity.class);
                 startActivity(myReportBack);
@@ -345,14 +336,6 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
         dialog = new Dialog(this);
         dialog.setContentView(R.layout.popup_success_registration);
 
-        MaterialButton button_reportDataSent_ok = dialog.findViewById(R.id.button_reportDataSent_ok);
-        button_reportDataSent_ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-
         dialog.show();
     }
 
@@ -360,14 +343,6 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
     private void errorNoConnection(){
         dialog = new Dialog(MyReportActivity.this);
         dialog.setContentView(R.layout.popup_error_nointernet);
-
-        MaterialButton button_reportNoInternet_ok = dialog.findViewById(R.id.button_reportNoInternet_ok);
-        button_reportNoInternet_ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
 
         dialog.show();
     }
