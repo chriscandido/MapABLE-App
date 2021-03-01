@@ -5,6 +5,7 @@
     <string name="title_pollution">Pollution</string>
     <string name="title_waterHyacinth">Water Hyacinth</string>
     <string name="title_illegalReclamation">Ongoing Reclamation</string>
+    <string name="title_solidwaste">Soild Waste</string>
 
     <!-- Report Description -->
     <string name="report_desc">Layunin ng MapABLE mobile app na mapabilis ang pangangalap ng impormasyon hinggil sa insidenteng karaniwang nararanasan at maaring makaapekto sa buhay ng mga mamamayang nakatira malapit sa Manila Bay</string>
@@ -30,4 +31,6 @@
         Ito ay humaharang sa liwanag ng araw na kailangan ng mga phytoplankton at halaman sa ilalim ng tubig upang mabuhay. Ang mga namamatay at nabubulok na water hyacinths ay nakakaagaw din sa oxygen na kailangan naman ng mga isda at iba pang hayop sa tubig.
         Maliban sa mga ito, ang water hyacinths ay nakahaharang din sa mga daluyan ng tubig.
     </string>
+    <string name="desc_solidwaste">Ang pagtatapon ng basura sa maling lugar gaya ng mga bakanteng lote o mga anyong tubig ay ipinagbabawal sa batas at mga lokal na ordinansa.
+        Maaari itong magdulot ng polusyon sa ating kapaligiran, tulad sa mga ilog at dagat, pagbaha bunga ng mga baradong daluyan ng tubig, at pagkalat ng sakit sanhi ng mga langaw, ipis, at daga.</string>
 </resources>
