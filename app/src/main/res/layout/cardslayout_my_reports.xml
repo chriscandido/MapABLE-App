@@ -100,15 +100,15 @@
 
             </LinearLayout>
 
-            <CheckBox
-                android:id="@+id/checkBox_myReports"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:gravity="center"
-                android:text="I AGREE WITH THE TERMS AND CONDITIONS"
-                android:textSize="9sp"
-                android:textColor="@color/colorAccent02"
-                android:fontFamily="@font/montserrat"/>
+<!--            <CheckBox-->
+<!--                android:id="@+id/checkBox_myReports"-->
+<!--                android:layout_width="100dp"-->
+<!--                android:layout_height="100dp"-->
+<!--                android:gravity="center"-->
+<!--                android:text="I AGREE WITH THE TERMS AND CONDITIONS"-->
+<!--                android:textSize="9sp"-->
+<!--                android:textColor="@color/colorAccent02"-->
+<!--                android:fontFamily="@font/montserrat"/>-->
 
         </LinearLayout>
 
