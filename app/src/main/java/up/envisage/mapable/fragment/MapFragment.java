@@ -124,6 +124,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
                         Icon iconFishKill = drawableToIcon(getApplicationContext(), R.drawable.ic_map_fishkill120x120);
                         Icon iconPollution = drawableToIcon(getApplicationContext(), R.drawable.ic_map_waterpollution120x120);
                         Icon iconIllegalRec = drawableToIcon(getApplicationContext(), R.drawable.ic_map_illegalreclamation120x120);
+                        Icon iconWaterHyacinth = drawableToIcon(getApplicationContext(), R.drawable.ic_map_hyacinth120x120);
+                        Icon iconSolidWaste = drawableToIcon(getApplicationContext(), R.drawable.ic_map_solidwaste120x120);
+                        Icon iconIbaPa = drawableToIcon(getApplicationContext(), R.drawable.ic_map_ibapa120x120);
 
                         //Load report data of the user
                         ReportViewModel reportViewModel = ViewModelProviders.of(MapFragment.this).get(ReportViewModel.class);
@@ -159,6 +162,24 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
                                                     .position(new LatLng(latitude, longitude))
                                                     .title(incidentType)
                                                     .icon(iconIllegalRec));
+                                            break;
+                                        case "Water Hyacinth":
+                                            mapboxMap.addMarker(new MarkerOptions()
+                                                    .position(new LatLng(latitude, longitude))
+                                                    .title(incidentType)
+                                                    .icon(iconWaterHyacinth));
+                                            break;
+                                        case "Solid Waste":
+                                            mapboxMap.addMarker(new MarkerOptions()
+                                                    .position(new LatLng(latitude, longitude))
+                                                    .title(incidentType)
+                                                    .icon(iconSolidWaste));
+                                            break;
+                                        case "Iba Pa":
+                                            mapboxMap.addMarker(new MarkerOptions()
+                                                    .position(new LatLng(latitude, longitude))
+                                                    .title(incidentType)
+                                                    .icon(iconIbaPa));
                                             break;
                                     }
                                 }

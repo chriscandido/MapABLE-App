@@ -8,7 +8,7 @@
     android:background="@color/colorPrimary"
     android:padding="10dp"
     android:orientation="vertical"
-    tools:context=".ui.home.report.ReportAlgalBloom">
+    tools:context=".ui.home.report.ReportIbaPa">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -47,7 +47,7 @@
                             android:layout_marginBottom="10dp"
                             android:layout_marginStart="10dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/ic_map_algalbloom"/>
+                            android:src="@drawable/ic_map_ibapa"/>
 
                         <!-- Incident Type -->
                         <TextView
@@ -56,7 +56,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_margin="10dp"
-                            android:text="@string/title_algalBloom"
+                            android:text="@string/title_ibapa"
                             android:textColor="@color/colorAccent"
                             style="@style/headerText"/>
 
@@ -69,7 +69,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:text="@string/desc_algalBloom"
+                        android:text="@string/desc_ibapa"
                         android:textAlignment="viewStart"
                         android:textColor="@color/colorSecondary"
                         android:fontFamily="@font/montserrat"/>
@@ -117,7 +117,7 @@
                         android:fontFamily="@font/montserrat"/>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/textInputLayout_reportAlgalBloom"
+                        android:id="@+id/textInputLayout_reportIbaPa_q00"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="10dp"
@@ -130,100 +130,20 @@
                             android:minHeight="100dp"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <!-- Question01 Spinner -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:text="1. Gaano katagal naoobserbahan ang liya sa tubig?"
-                            android:textSize="15sp"
-                            android:textColor="@color/colorSecondary"
-                            android:textAlignment="textStart"
-                            android:fontFamily="@font/montserrat"/>
-
-                        <Spinner
-                            android:id="@+id/spinner_reportAgalBloom_q01"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            style="@style/spinnerText"/>
-
-                    </LinearLayout>
-
-                    <!-- Question02 Spinner -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:text="2. May kakaibang amoy bang nagmumula sa tubig?"
-                            android:textSize="15sp"
-                            android:textColor="@color/colorSecondary"
-                            android:textAlignment="textStart"
-                            android:fontFamily="@font/montserrat"/>
-
-                        <Spinner
-                            android:id="@+id/spinner_reportAgalBloom_q02"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            style="@style/spinnerText"/>
-
-                    </LinearLayout>
-
-                    <!-- Question03 Spinner -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:text="3. May mga namamatay na bang isda malapit o sa lugar kung saan may liya?"
-                            android:textSize="15sp"
-                            android:textColor="@color/colorSecondary"
-                            android:textAlignment="textStart"
-                            android:fontFamily="@font/montserrat"/>
-
-                        <Spinner
-                            android:id="@+id/spinner_reportAgalBloom_q03"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            style="@style/spinnerText"/>
-
-                    </LinearLayout>
-
-                    <!-- Question04 TextInput -->
+                    <!-- Question00 TextInput -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:text="4. Kundisyon ng tubig"
+                        android:text="1. Anong isyung pangkalikasan ang iyong nais i-report?"
                         android:textSize="15sp"
                         android:textColor="@color/colorSecondary"
                         android:fontFamily="@font/montserrat"/>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/textInputLayout_reportAlgalBloom_q04"
+                        android:id="@+id/textInputLayout_reportIbaPa_q01"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="10dp"
@@ -232,7 +152,34 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:fontFamily="@font/montserrat" />
+                            android:fontFamily="@font/montserrat"
+                            android:minHeight="100dp"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Question00 TextInput -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="2. Ilarawan ang sitwasyon (e.g., itsura ng kapaligiran, lawak o lala ng epekto, mga tao o grupong sangkot, o anumang detalyeng makakatulong sa assessment ng sitwasyon)."
+                        android:textSize="15sp"
+                        android:textColor="@color/colorSecondary"
+                        android:fontFamily="@font/montserrat"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayout_reportIbaPa_q02"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        app:boxBackgroundColor="@color/colorBackground"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/montserrat"
+                            android:minHeight="100dp"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
@@ -241,7 +188,7 @@
 
             <!-- Next Button -->
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_reportAlgalBloom_ok"
+                android:id="@+id/button_reportIbaPa_next"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"

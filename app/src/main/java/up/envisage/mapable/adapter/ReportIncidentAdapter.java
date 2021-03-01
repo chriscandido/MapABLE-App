@@ -60,7 +60,8 @@ public class ReportIncidentAdapter extends RecyclerView.Adapter<ReportIncidentAd
             R.string.title_pollution,
             R.string.title_illegalReclamation,
             R.string.title_waterHyacinth,
-            R.string.title_solidwaste
+            R.string.title_solidwaste,
+            R.string.title_ibapa
     };
 
     //Image
@@ -70,7 +71,8 @@ public class ReportIncidentAdapter extends RecyclerView.Adapter<ReportIncidentAd
             R.drawable.ic_map_waterpollution,
             R.drawable.ic_map_illegalreclamation,
             R.drawable.ic_map_hyacinth,
-            R.drawable.ic_map_solidwaste
+            R.drawable.ic_map_solidwaste,
+            R.drawable.ic_map_ibapa
     };
 
     @Override

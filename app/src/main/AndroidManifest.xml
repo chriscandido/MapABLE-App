@@ -63,6 +63,7 @@
         <activity android:name=".ui.home.report.ReportIllegalReclamation" />
         <activity android:name=".ui.home.report.ReportWaterHyacinth"/>
         <activity android:name=".ui.home.report.ReportSolidWaste"/>
+        <activity android:name=".ui.home.report.ReportIbaPa"/>
         <!-- User Profile -->
         <activity android:name=".ui.home.MyReportActivity"/>
         <!-- Support -->

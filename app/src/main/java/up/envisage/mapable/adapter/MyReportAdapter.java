@@ -98,6 +98,9 @@ public class MyReportAdapter extends RecyclerView.Adapter<MyReportAdapter.ViewHo
             case "Solid Waste":
                 holder.imageView_myReportImage.setImageResource(R.drawable.ic_map_solidwaste);
                 break;
+            case "Iba Pa":
+                holder.imageView_myReportImage.setImageResource(R.drawable.ic_map_ibapa);
+                break;
         }
     }
 

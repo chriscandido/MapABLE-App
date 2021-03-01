@@ -24,6 +24,7 @@ import up.envisage.mapable.R;
 import up.envisage.mapable.adapter.ReportIncidentAdapter;
 import up.envisage.mapable.ui.home.report.ReportAlgalBloom;
 import up.envisage.mapable.ui.home.report.ReportFishKill;
+import up.envisage.mapable.ui.home.report.ReportIbaPa;
 import up.envisage.mapable.ui.home.report.ReportIllegalReclamation;
 import up.envisage.mapable.ui.home.report.ReportPollution;
 import up.envisage.mapable.ui.home.report.ReportSolidWaste;
@@ -163,6 +164,17 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
                 solidWasteOk.putExtra("Latitude", lat);
                 solidWasteOk.putExtra("image", image);
                 startActivity(solidWasteOk);
+                break;
+            case 6:
+                Intent ibaPaOk = new Intent(ReportIncidentActivity.this, ReportIbaPa.class);
+                ibaPaOk.putExtra("userID", userID);
+                ibaPaOk.putExtra("Date and time", dateTime);
+                ibaPaOk.putExtra("Incident Type", incidentType);
+                ibaPaOk.putExtra("Report", Report);
+                ibaPaOk.putExtra("Longitude", lon);
+                ibaPaOk.putExtra("Latitude", lat);
+                ibaPaOk.putExtra("image", image);
+                startActivity(ibaPaOk);
                 break;
         }
     }
