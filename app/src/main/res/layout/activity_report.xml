@@ -31,6 +31,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
         android:fillViewport="true">
 
         <LinearLayout
@@ -220,7 +221,7 @@
                     android:textSize="15sp"
                     android:textColor="@color/colorSecondary"
                     android:textStyle="bold"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/montserrat_extrabold"
                     app:cornerRadius="20dp"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
@@ -238,7 +239,7 @@
                     android:textSize="15sp"
                     android:textColor="@color/colorSecondary"
                     android:textStyle="bold"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/montserrat_extrabold"
                     app:icon="@drawable/ic_report_send"
                     app:iconGravity="textStart"
                     app:iconTint="@color/colorSecondary"
@@ -247,6 +248,10 @@
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"/>
 
         </LinearLayout>
 
