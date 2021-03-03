@@ -50,12 +50,24 @@ import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.maps.Style;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 import up.envisage.mapable.R;
 import up.envisage.mapable.db.table.ReportTable;
 import up.envisage.mapable.model.ReportViewModel;
+import up.envisage.mapable.model.UserViewModel;
+import up.envisage.mapable.ui.home.ReportingActivity;
+import up.envisage.mapable.ui.registration.RetrofitInterface;
 
 import static android.os.Looper.getMainLooper;
 import static com.mapbox.mapboxsdk.Mapbox.getApplicationContext;
@@ -64,9 +76,16 @@ import static com.mapbox.mapboxsdk.Mapbox.getApplicationContext;
 public class MapFragment extends Fragment implements OnMapReadyCallback, PermissionsListener,
     OnCameraTrackingChangedListener {
 
+    private Retrofit retrofit;
+    private RetrofitInterface retrofitInterface;
+    private String BASE_URL = "http://ec2-54-91-89-105.compute-1.amazonaws.com/";
+
+    private UserViewModel userViewModel;
+
     private static final long DEFAULT_INTERVAL_IN_MILLISECONDS = 1000L;
     private static final long DEFAULT_MAX_WAIT_TIME = DEFAULT_INTERVAL_IN_MILLISECONDS * 5;
 
+//    private final HashMap<String, LatLng> myReports = new HashMap<>();
     private final HashMap<String, LatLng> offshoreStation = new HashMap<>();
     private final HashMap<String, LatLng> prumStation = new HashMap<>();
     private final HashMap<String, LatLng> bathingBeachesStation = new HashMap<>();
@@ -83,6 +102,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
     private MaterialButton button_mapReports, button_mapOffshoreStation, button_mapBathingBeachesStation,
             button_mapRiverOutfallStation, button_mapPRUMStation, button_mapLagunaDeBayStation;
 
+    private String outUserId;
+
+    public ArrayList<List> reportsArrayList = new ArrayList<List>();
+
     private View rootView;
     private LocationChangeListeningActivityLocationCallback callback =
             new LocationChangeListeningActivityLocationCallback(this);
@@ -97,6 +120,36 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        userViewModel = ViewModelProviders.of(MapFragment.this).get(UserViewModel.class);
+
+        userViewModel.getLastUser().observe(MapFragment.this, UserTable -> {
+            outUserId = UserTable.getUniqueId();
+            Log.v("[MapFragment.java]", "UserID from local DB: " + outUserId);
+        });
+
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+
+        //Set your desired log level
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        //Add your other interceptors …
+        httpClient.callTimeout(2, TimeUnit.MINUTES)
+                .connectTimeout(30, TimeUnit.SECONDS) // connect timeout
+                .writeTimeout(30, TimeUnit.SECONDS) // write timeout
+                .readTimeout(30, TimeUnit.SECONDS); // read timeout
+
+        //Add logging as last interceptor
+        httpClient.addInterceptor(logging);  // <-- this is the important line!
+
+        retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(httpClient.build())
+                .build();
+
+        retrofitInterface = retrofit.create(RetrofitInterface.class);
     }
 
     @Override
@@ -134,12 +187,40 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
                     @Override
                     public void onStyleLoaded(@NonNull Style style) {
                         enableLocationComponent(style);
-                        setupData(mapboxMap);
+//                        setupData(mapboxMap);
 
                         button_mapReports.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+
+                                HashMap<String, String> map = new HashMap<>();
+                                map.put("userID", outUserId);
+
+                                Call<List> call2 = retrofitInterface.getUserReports(map);
+
+                                call2.enqueue(new Callback<List>() {
+
+                                    @Override
+                                    public void onResponse(Call<List> call2, Response<List> response2) {
+                                        if(response2.isSuccessful()) {
+
+                                            for(int i=0; i<response2.body().size(); i++) {
+                                                reportsArrayList.add((List) response2.body().get(i));
+                                            }
+
+//                                            Toast.makeText(getActivity(),"My Reports Retrieved!",Toast.LENGTH_SHORT).show();
+
+                                            setupData(mapboxMap);
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<List> call, Throwable t) {
+
+                                    }
+                                });
                                 mapboxMap.removeAnnotations();
+
                             }
                         });
 
@@ -206,65 +287,115 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
         Icon iconSolidWaste = drawableToIcon(getApplicationContext(), R.drawable.ic_map_solidwaste120x120);
         Icon iconIbaPa = drawableToIcon(getApplicationContext(), R.drawable.ic_map_ibapa120x120);
 
-        //Load report data of the user
-        ReportViewModel reportViewModel = ViewModelProviders.of(MapFragment.this).get(ReportViewModel.class);
-        reportViewModel.getAllReports().observe(MapFragment.this, new Observer<List<ReportTable>>() {
-            @Override
-            public void onChanged(List<ReportTable> reportTables) {
-                int count = reportTables.size();
-                for (int i = 0; i < count; i++){
-                    String incidentType = reportTables.get(i).getIncidentType();
-                    String dateTime = reportTables.get(i).getDateTime();
-                    double latitude = reportTables.get(i).getLatitude();
-                    double longitude = reportTables.get(i).getLongitude();
-                    switch (incidentType) {
-                        case "Algal Bloom":
-                            mapboxMap.addMarker(new MarkerOptions()
-                                    .position(new LatLng(latitude, longitude))
-                                    .title(incidentType)
-                                    .snippet(dateTime)
-                                    .icon(iconAlgalBloom));
-                            break;
-                        case "Fish Kill":
-                            mapboxMap.addMarker(new MarkerOptions()
-                                    .position(new LatLng(latitude, longitude))
-                                    .title(incidentType)
-                                    .icon(iconFishKill));
-                            break;
-                        case "Water Pollution":
-                            mapboxMap.addMarker(new MarkerOptions()
-                                    .position(new LatLng(latitude, longitude))
-                                    .title(incidentType)
-                                    .icon(iconPollution));
-                            break;
-                        case "Ongoing Reclamation":
-                            mapboxMap.addMarker(new MarkerOptions()
-                                    .position(new LatLng(latitude, longitude))
-                                    .title(incidentType)
-                                    .icon(iconIllegalRec));
-                            break;
-                        case "Water Hyacinth":
-                            mapboxMap.addMarker(new MarkerOptions()
-                                    .position(new LatLng(latitude, longitude))
-                                    .title(incidentType)
-                                    .icon(iconWaterHyacinth));
-                            break;
-                        case "Solid Waste":
-                            mapboxMap.addMarker(new MarkerOptions()
-                                    .position(new LatLng(latitude, longitude))
-                                    .title(incidentType)
-                                    .icon(iconSolidWaste));
-                            break;
-                        case "Iba Pa":
-                            mapboxMap.addMarker(new MarkerOptions()
-                                    .position(new LatLng(latitude, longitude))
-                                    .title(incidentType)
-                                    .icon(iconIbaPa));
-                            break;
-                    }
-                }
+        for (int i = 0; i <reportsArrayList.size(); i++){
+            String incidentType = reportsArrayList.get(i).get(0).toString();
+//            String dateTime = reportTables.get(i).getDateTime();
+            double latitude = (double) reportsArrayList.get(i).get(2);
+            double longitude = (double) reportsArrayList.get(i).get(1);
+            switch (incidentType) {
+                case "Algal Bloom":
+                    mapboxMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(latitude, longitude))
+                            .title(incidentType)
+                            .icon(iconAlgalBloom));
+                    break;
+                case "Fish Kill":
+                    mapboxMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(latitude, longitude))
+                            .title(incidentType)
+                            .icon(iconFishKill));
+                    break;
+                case "Water Pollution":
+                    mapboxMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(latitude, longitude))
+                            .title(incidentType)
+                            .icon(iconPollution));
+                    break;
+                case "Ongoing Reclamation":
+                    mapboxMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(latitude, longitude))
+                            .title(incidentType)
+                            .icon(iconIllegalRec));
+                    break;
+                case "Water Hyacinth":
+                    mapboxMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(latitude, longitude))
+                            .title(incidentType)
+                            .icon(iconWaterHyacinth));
+                    break;
+                case "Solid Waste":
+                    mapboxMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(latitude, longitude))
+                            .title(incidentType)
+                            .icon(iconSolidWaste));
+                    break;
+                case "Iba Pa":
+                    mapboxMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(latitude, longitude))
+                            .title(incidentType)
+                            .icon(iconIbaPa));
+                    break;
             }
-        });
+        }
+        //Load report data of the user
+//        ReportViewModel reportViewModel = ViewModelProviders.of(MapFragment.this).get(ReportViewModel.class);
+//        reportViewModel.getAllReports().observe(MapFragment.this, new Observer<List<ReportTable>>() {
+//            @Override
+//            public void onChanged(List<ReportTable> reportTables) {
+//                int count = reportTables.size();
+//                for (int i = 0; i < count; i++){
+//                    String incidentType = reportTables.get(i).getIncidentType();
+//                    String dateTime = reportTables.get(i).getDateTime();
+//                    double latitude = reportTables.get(i).getLatitude();
+//                    double longitude = reportTables.get(i).getLongitude();
+//                    switch (incidentType) {
+//                        case "Algal Bloom":
+//                            mapboxMap.addMarker(new MarkerOptions()
+//                                    .position(new LatLng(latitude, longitude))
+//                                    .title(incidentType)
+//                                    .snippet(dateTime)
+//                                    .icon(iconAlgalBloom));
+//                            break;
+//                        case "Fish Kill":
+//                            mapboxMap.addMarker(new MarkerOptions()
+//                                    .position(new LatLng(latitude, longitude))
+//                                    .title(incidentType)
+//                                    .icon(iconFishKill));
+//                            break;
+//                        case "Water Pollution":
+//                            mapboxMap.addMarker(new MarkerOptions()
+//                                    .position(new LatLng(latitude, longitude))
+//                                    .title(incidentType)
+//                                    .icon(iconPollution));
+//                            break;
+//                        case "Ongoing Reclamation":
+//                            mapboxMap.addMarker(new MarkerOptions()
+//                                    .position(new LatLng(latitude, longitude))
+//                                    .title(incidentType)
+//                                    .icon(iconIllegalRec));
+//                            break;
+//                        case "Water Hyacinth":
+//                            mapboxMap.addMarker(new MarkerOptions()
+//                                    .position(new LatLng(latitude, longitude))
+//                                    .title(incidentType)
+//                                    .icon(iconWaterHyacinth));
+//                            break;
+//                        case "Solid Waste":
+//                            mapboxMap.addMarker(new MarkerOptions()
+//                                    .position(new LatLng(latitude, longitude))
+//                                    .title(incidentType)
+//                                    .icon(iconSolidWaste));
+//                            break;
+//                        case "Iba Pa":
+//                            mapboxMap.addMarker(new MarkerOptions()
+//                                    .position(new LatLng(latitude, longitude))
+//                                    .title(incidentType)
+//                                    .icon(iconIbaPa));
+//                            break;
+//                    }
+//                }
+//            }
+//        });
     }
 
     //----------------------------------------------------------------------------------------------View Laguna de Bay
