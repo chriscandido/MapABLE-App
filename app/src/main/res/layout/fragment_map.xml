@@ -26,12 +26,12 @@
     </LinearLayout>
 
     <!-- Map -->
-
     <com.mapbox.mapboxsdk.maps.MapView
         android:id="@+id/mapBox_mapView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <!-- Water Sampling Stations -->
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
