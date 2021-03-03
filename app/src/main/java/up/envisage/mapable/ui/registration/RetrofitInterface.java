@@ -1,6 +1,7 @@
 package up.envisage.mapable.ui.registration;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import retrofit2.Call;
@@ -31,5 +32,9 @@ public interface RetrofitInterface {
 
     @POST("/feedback/submit")
     Call<FeedbackResult> submitFeedback(@Body HashMap<String, String> map);
+
+
+    @GET("/reports")
+    Call<List> getUserReports(@QueryMap Map<String, String> options);
 
 }
