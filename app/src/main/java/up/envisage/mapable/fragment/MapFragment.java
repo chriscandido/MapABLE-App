@@ -104,9 +104,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
                              Bundle savedInstanceState) {
         Mapbox.getInstance(getActivity(), getString(R.string.mapbox_access_token));
         // Inflate the layout for this fragment
-        rootView = inflater.inflate(R.layout.fragment_map, container, false);
-
-        return rootView;
+        return inflater.inflate(R.layout.fragment_map, container, false);
     }
 
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -134,7 +132,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
                     @Override
                     public void onStyleLoaded(@NonNull Style style) {
                         enableLocationComponent(style);
-                        setupData(mapboxMap);
 
                         button_mapReports.setOnClickListener(new View.OnClickListener() {
                             @Override
