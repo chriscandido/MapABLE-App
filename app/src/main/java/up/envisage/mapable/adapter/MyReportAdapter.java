@@ -86,7 +86,7 @@ public class MyReportAdapter extends RecyclerView.Adapter<MyReportAdapter.ViewHo
             case "Fish Kill":
                 holder.imageView_myReportImage.setImageResource(R.drawable.ic_map_fishkill);
                 break;
-            case "Pollution":
+            case "Water Pollution":
                 holder.imageView_myReportImage.setImageResource(R.drawable.ic_map_waterpollution);
                 break;
             case "Ongoing Reclamation":

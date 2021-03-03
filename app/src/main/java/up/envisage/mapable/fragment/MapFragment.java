@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -26,6 +25,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.android.material.button.MaterialButton;
 import com.mapbox.android.core.location.LocationEngine;
 import com.mapbox.android.core.location.LocationEngineCallback;
 import com.mapbox.android.core.location.LocationEngineProvider;
@@ -37,25 +37,20 @@ import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.annotations.Icon;
 import com.mapbox.mapboxsdk.annotations.IconFactory;
 import com.mapbox.mapboxsdk.annotations.MarkerOptions;
-import com.mapbox.mapboxsdk.camera.CameraPosition;
-import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.location.LocationComponent;
 import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions;
 import com.mapbox.mapboxsdk.location.LocationComponentOptions;
 import com.mapbox.mapboxsdk.location.OnCameraTrackingChangedListener;
-import com.mapbox.mapboxsdk.location.OnLocationClickListener;
 import com.mapbox.mapboxsdk.location.modes.CameraMode;
 import com.mapbox.mapboxsdk.location.modes.RenderMode;
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.maps.Style;
-import com.mapbox.mapboxsdk.plugins.annotation.Symbol;
-import com.mapbox.mapboxsdk.plugins.annotation.SymbolManager;
 
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import up.envisage.mapable.R;
@@ -71,13 +66,24 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
 
     private static final long DEFAULT_INTERVAL_IN_MILLISECONDS = 1000L;
     private static final long DEFAULT_MAX_WAIT_TIME = DEFAULT_INTERVAL_IN_MILLISECONDS * 5;
-    private SymbolManager symbolManager;
-    private final List<Symbol> symbols = new ArrayList<>();
+
+    private final HashMap<String, LatLng> offshoreStation = new HashMap<>();
+    private final HashMap<String, LatLng> prumStation = new HashMap<>();
+    private final HashMap<String, LatLng> bathingBeachesStation = new HashMap<>();
+    private final HashMap<String, LatLng> riverOutfallStation = new HashMap<>();
+    private final HashMap<String, LatLng> lagunaDeBayStation = new HashMap<>();
+
     private PermissionsManager permissionsManager;
     private FragmentActivity listener;
+
     private MapView mapView;
     private MapboxMap mapboxMap;
     private LocationEngine locationEngine;
+
+    private MaterialButton button_mapOffshoreStation, button_mapBathingBeachesStation,
+            button_mapRiverOutfallStation, button_mapPRUMStation, button_mapLagunaDeBayStation;
+
+    private View rootView;
     private LocationChangeListeningActivityLocationCallback callback =
             new LocationChangeListeningActivityLocationCallback(this);
 
@@ -98,11 +104,19 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
                              Bundle savedInstanceState) {
         Mapbox.getInstance(getActivity(), getString(R.string.mapbox_access_token));
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_map, container, false);
+        rootView = inflater.inflate(R.layout.fragment_map, container, false);
+
+        return rootView;
     }
 
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        button_mapOffshoreStation = view.findViewById(R.id.button_mapOffshoreStation);
+        button_mapBathingBeachesStation = view.findViewById(R.id.button_mapBathingBeachesStation);
+        button_mapRiverOutfallStation = view.findViewById(R.id.button_mapRiverOutfallStation);
+        button_mapPRUMStation = view.findViewById(R.id.button_mapPRUMStation);
+        button_mapLagunaDeBayStation = view.findViewById(R.id.button_mapLagunaDeBayStation);
 
         mapView = view.findViewById(R.id.mapBox_mapView);
         mapView.onCreate(savedInstanceState);
@@ -114,14 +128,201 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
     public void onMapReady(@NonNull final MapboxMap mapboxMap) {
         MapFragment.this.mapboxMap = mapboxMap;
 
-        mapboxMap.setStyle(new Style.Builder().fromUri("mapbox://styles/mapbox/cj3kbeqzo00022smj7akz3o1e"),
+        mapboxMap.setStyle(Style.OUTDOORS,
                 new Style.OnStyleLoaded() {
                     @Override
                     public void onStyleLoaded(@NonNull Style style) {
                         enableLocationComponent(style);
                         setupData(mapboxMap);
+
+                        // Offshore Station
+                        button_mapOffshoreStation.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                mapboxMap.removeAnnotations();
+                                viewOffshoreStation(mapboxMap);
+                            }
+                        });
+
+                        // Bathing Beaches Station
+                        button_mapBathingBeachesStation.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                mapboxMap.removeAnnotations();
+                                viewBathingBeachesStation(mapboxMap);
+
+                            }
+                        });
+
+                        // River Outfall Station
+                        button_mapRiverOutfallStation.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                mapboxMap.removeAnnotations();
+                                viewRiverOutfallStation(mapboxMap);
+
+                            }
+                        });
+
+                        // PRUM Station
+                        button_mapPRUMStation.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                mapboxMap.removeAnnotations();
+                                viewPRUMStation(mapboxMap);
+
+                            }
+                        });
+
+                        // Laguna de Bay Station
+                        button_mapLagunaDeBayStation.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                mapboxMap.removeAnnotations();
+                                viewLagunaDeBayStation(mapboxMap);
+                            }
+                        });
+
                     }
                 });
+
+    }
+
+    //----------------------------------------------------------------------------------------------View Laguna de Bay
+    public void viewLagunaDeBayStation(MapboxMap mapboxMap) {
+
+        lagunaDeBayStation.put("Station I", new LatLng(14.4169472222222, 121.175988888889));
+        lagunaDeBayStation.put("Station V", new LatLng(14.4891444444444, 121.139452777778));
+        lagunaDeBayStation.put("Station XV", new LatLng(14.3704166666667, 121.113086111111));
+        lagunaDeBayStation.put("Station XVI", new LatLng(14.3056444444444, 121.155505555556));
+        lagunaDeBayStation.put("Station IV", new LatLng(14.3837166666667, 121.286716666667));
+        lagunaDeBayStation.put("Station XVII", new LatLng(14.2798166666667, 121.276480555556));
+        lagunaDeBayStation.put("Station VIII", new LatLng(14.2095805555556, 121.239480555556));
+        lagunaDeBayStation.put("Station II", new LatLng(14.2679166666667, 121.34185));
+        lagunaDeBayStation.put("Station XVIII", new LatLng(14.2970333333333, 121.362316666667));
+
+        Icon iconLagunaDeBayStation = drawableToIcon(getApplicationContext(), R.drawable.ic_map_station36x36);
+
+        for (String station : lagunaDeBayStation.keySet()) {
+            String stationName = station;
+            double latitude = lagunaDeBayStation.get(station).getLatitude();
+            double longitude = lagunaDeBayStation.get(station).getLongitude();
+            mapboxMap.addMarker(new MarkerOptions()
+                    .position(new LatLng(latitude, longitude))
+                    .title(stationName)
+                    .snippet("Laguna de Bay Station").icon(iconLagunaDeBayStation));
+        }
+    }
+
+    //----------------------------------------------------------------------------------------------View PRUM Station
+    public void viewPRUMStation(MapboxMap mapboxMap){
+
+        prumStation.put("Jones Bridge", new LatLng(14.5955, 120.9774));
+        prumStation.put("Nagtahan Bridge", new LatLng(14.5954, 121.0016));
+        prumStation.put("Lambingan Bridge", new LatLng(14.5864, 121.0200));
+        prumStation.put("Guadalupe Ferry", new LatLng(14.5681, 121.0459));
+        prumStation.put("Bambang Bridge", new LatLng(14.5536, 121.0759));
+        prumStation.put("Napindan (C6) Bridge", new LatLng(14.5351, 121.1022));
+        prumStation.put("Batasan Bridge", new LatLng(14.6794, 121.1097));
+        prumStation.put("Tumana Bridge", new LatLng(14.6564, 121.0963));
+        prumStation.put("Marikina Bridge", new LatLng(14.6343, 121.0933));
+        prumStation.put("Rosario Bridge", new LatLng(14.5902, 121.0831));
+        prumStation.put("Santa Rosa Bridge", new LatLng(14.5600, 121.0721));
+        prumStation.put("Sevilla Bridge", new LatLng(14.5941, 121.0260));
+        prumStation.put("Sta Ana Bridge", new LatLng(14.5259, 121.0735));
+        prumStation.put("Levi Mariano Bridge", new LatLng(14.5317, 121.0687));
+        prumStation.put("Buting Bridge", new LatLng(14.5549, 121.0652));
+        prumStation.put("Havana Bridge", new LatLng(14.5795, 121.0157));
+        prumStation.put("Guadalupe Viejo", new LatLng(14.5675, 121.0402));
+        prumStation.put("Gudalupe Nuevo", new LatLng(14.5677, 121.0471));
+        prumStation.put("Manila Bay", new LatLng(14.5930, 120.9464));
+
+        Icon iconPRUMStation = drawableToIcon(getApplicationContext(), R.drawable.ic_map_station36x36);
+
+        for (String station : prumStation.keySet()) {
+            String stationName = station;
+            double latitude = prumStation.get(station).getLatitude();
+            double longitude = prumStation.get(station).getLongitude();
+            mapboxMap.addMarker(new MarkerOptions()
+                    .position(new LatLng(latitude, longitude))
+                    .title(stationName)
+                    .snippet("Pasig River Unified Monitoring Station").icon(iconPRUMStation));
+        }
+
+    }
+
+    //----------------------------------------------------------------------------------------------View Bathing Beaches Station
+    public void viewRiverOutfallStation(MapboxMap mapboxMap){
+
+        riverOutfallStation.put("Balut", new LatLng(14.6008, 120.9581833));
+        riverOutfallStation.put("Vitas", new LatLng(14.6294167, 120.959733));
+        riverOutfallStation.put("San Antonio de Abad", new LatLng(14.5636167, 120.987567));
+        riverOutfallStation.put("Macapagal 1", new LatLng(14.5443, 120.987533));
+        riverOutfallStation.put("Macapagal 2", new LatLng(14.5476833, 120.9894));
+        riverOutfallStation.put("Macapagal 3", new LatLng(14.519833, 120.990633));
+        riverOutfallStation.put("Coastal 1", new LatLng(14.47533, 120.970167));
+        riverOutfallStation.put("Coastal 2", new LatLng(14.476633, 120.972233));
+
+        Icon iconRiverOutfallStation = drawableToIcon(getApplicationContext(), R.drawable.ic_map_station36x36);
+
+        for (String station : riverOutfallStation.keySet()) {
+            String stationName = station;
+            double latitude = riverOutfallStation.get(station).getLatitude();
+            double longitude = riverOutfallStation.get(station).getLongitude();
+            mapboxMap.addMarker(new MarkerOptions()
+                    .position(new LatLng(latitude, longitude))
+                    .title(stationName)
+                    .snippet("River Outfall Station").icon(iconRiverOutfallStation));
+        }
+
+    }
+
+    //----------------------------------------------------------------------------------------------View Bathing Beaches Station
+    public void viewBathingBeachesStation(MapboxMap mapboxMap){
+        bathingBeachesStation.put("Navotas", new LatLng(14.64463611, 120.94823056));
+        bathingBeachesStation.put("Luneta", new LatLng(14.581675, 120.9726361));
+        bathingBeachesStation.put("CCP", new LatLng(14.558483, 120.9829));
+        bathingBeachesStation.put("MOA", new LatLng(14.5419, 120.9803));
+        bathingBeachesStation.put("PEATC", new LatLng(14.4928167, 120.975667));
+        bathingBeachesStation.put("Balut", new LatLng(14.6008, 120.9581833));
+
+        Icon iconBathingBeachesStation = drawableToIcon(getApplicationContext(), R.drawable.ic_map_station36x36);
+
+        for (String station : bathingBeachesStation.keySet()) {
+            String stationName = station;
+            double latitude = bathingBeachesStation.get(station).getLatitude();
+            double longitude = bathingBeachesStation.get(station).getLongitude();
+            mapboxMap.addMarker(new MarkerOptions()
+                    .position(new LatLng(latitude, longitude))
+                    .title(stationName)
+                    .snippet("Bathing Beaches Station").icon(iconBathingBeachesStation));
+        }
+
+    }
+
+    //----------------------------------------------------------------------------------------------View Offshore Station
+    public void viewOffshoreStation(MapboxMap mapboxMap) {
+        offshoreStation.put("MBOS_01", new LatLng(14.6593, 120.86031));
+        offshoreStation.put("MBOS_02", new LatLng(14.683111, 120.7612));
+        offshoreStation.put("MBOS_03", new LatLng(14.67143056, 120.6248));
+        offshoreStation.put("MBOS_04", new LatLng(14.57835, 120.634));
+        offshoreStation.put("MBOS_05", new LatLng(14.4525, 120.6261));
+        offshoreStation.put("MBOS_06", new LatLng(14.45305, 120.7599));
+        offshoreStation.put("MBOS_07", new LatLng(14.46786111, 120.8411));
+        offshoreStation.put("MBOS_08", new LatLng(14.58443889, 120.7621));
+        offshoreStation.put("MBOS_09", new LatLng(14.59081944, 120.8573));
+
+        Icon iconOffshoreStation = drawableToIcon(getApplicationContext(), R.drawable.ic_map_station36x36);
+
+        for (String station : offshoreStation.keySet()) {
+            String stationName = station;
+            double latitude = offshoreStation.get(station).getLatitude();
+            double lonigtude = offshoreStation.get(station).getLongitude();
+            mapboxMap.addMarker(new MarkerOptions()
+                    .position(new LatLng(latitude, lonigtude))
+                    .title(stationName)
+                    .snippet("Manila Bay Offshore Station").icon(iconOffshoreStation));
+        }
     }
 
     //----------------------------------------------------------------------------------------------Get data from local db
@@ -142,6 +343,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
                 int count = reportTables.size();
                 for (int i = 0; i < count; i++){
                     String incidentType = reportTables.get(i).getIncidentType();
+                    String dateTime = reportTables.get(i).getDateTime();
                     double latitude = reportTables.get(i).getLatitude();
                     double longitude = reportTables.get(i).getLongitude();
                     switch (incidentType) {
@@ -149,6 +351,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
                             mapboxMap.addMarker(new MarkerOptions()
                                     .position(new LatLng(latitude, longitude))
                                     .title(incidentType)
+                                    .snippet(dateTime)
                                     .icon(iconAlgalBloom));
                             break;
                         case "Fish Kill":
@@ -157,7 +360,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
                                     .title(incidentType)
                                     .icon(iconFishKill));
                             break;
-                        case "Pollution":
+                        case "Water Pollution":
                             mapboxMap.addMarker(new MarkerOptions()
                                     .position(new LatLng(latitude, longitude))
                                     .title(incidentType)
@@ -344,6 +547,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
             Toast.makeText(listener, "Permission not granted", Toast.LENGTH_LONG).show();
         }
     }
+
 
     @Override
     public void onStart(){

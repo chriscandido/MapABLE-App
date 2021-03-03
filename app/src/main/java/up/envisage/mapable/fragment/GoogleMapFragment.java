@@ -99,7 +99,7 @@ public class GoogleMapFragment extends FragmentActivity
                                     .icon(userIcon)
                                     .position(new LatLng(location.getLatitude(), location.getLongitude()))
                                     .title("My Current Location"));
-                            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(), location.getLongitude()), 12.0f));
+                            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(), location.getLongitude()), 16.0f));
                             Toast.makeText(getApplicationContext(), location.getLatitude() + "" + location.getLongitude(), Toast.LENGTH_SHORT).show();
                         }
                     }

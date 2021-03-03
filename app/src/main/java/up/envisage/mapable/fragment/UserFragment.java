@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -13,15 +16,24 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.share.Sharer;
+import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.widget.ShareDialog;
 import com.google.android.material.button.MaterialButton;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -57,6 +69,8 @@ public class UserFragment extends Fragment {
     private String BASE_URL = "http://ec2-54-91-89-105.compute-1.amazonaws.com/";
 
     private Dialog dialog;
+    private CallbackManager callbackManager;
+    private ShareDialog shareDialog;
 
     TextView textView_user_name, textView_user_username, textView_user_email, textView_user_myReport,
             textView_user_myStats, textView_myStats_submittedReports;
@@ -77,8 +91,16 @@ public class UserFragment extends Fragment {
         }
     }
 
+    public void onActivityResult(final int requestCode, final int resultCode, final Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
     public void onCreate(@Nullable Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+
+        callbackManager = CallbackManager.Factory.create();
+        shareDialog = new ShareDialog(listener);
 
         userViewModel = ViewModelProviders.of(UserFragment.this).get(UserViewModel.class);
 
@@ -139,11 +161,6 @@ public class UserFragment extends Fragment {
                 startActivity(myReport);
             }
         });
-
-        //declare view for Verified Reports
-        //Set OnClick Listener
-        //Define OnClick method
-        //Intent to Verified Reports
 
         //Stats button
         textView_user_myStats = view.findViewById(R.id.textView_user_myStats);
@@ -210,6 +227,22 @@ public class UserFragment extends Fragment {
                 textView_user_email.setText(email);
             }
         });
+    }
+
+    public static void printHashKey(Context pContext) {
+        try {
+            PackageInfo info = pContext.getPackageManager().getPackageInfo(pContext.getPackageName(), PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                String hashKey = new String(Base64.encode(md.digest(), 0));
+                Log.i("[ UserFragment.java ]", "printHashKey() Hash Key: " + hashKey);
+            }
+        } catch (NoSuchAlgorithmException e) {
+            Log.e("[ UserFragment.java ] ", "printHashKey()", e);
+        } catch (Exception e) {
+            Log.e(" [ UserFragment.java ] ", "printHashKey()", e);
+        }
     }
 
 }

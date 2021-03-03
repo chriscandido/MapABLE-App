@@ -183,7 +183,6 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
                                 if (response.code() == 400){
                                     Toast.makeText(MyReportActivity.this, "Error Sending Report",
                                             Toast.LENGTH_LONG).show();
-                                    successDataSending();
                                 } else if (response.code() == 504){
                                     Toast.makeText(MyReportActivity.this, "Timeout",
                                             Toast.LENGTH_LONG).show();
@@ -198,6 +197,7 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
                             }
                         });
 
+                        successDataSending();
                         reportViewModel.delete(reportTables.get(viewHolder.getAdapterPosition()));
                     }
 
@@ -264,7 +264,6 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
                             if (response.code() == 400){
                                 Toast.makeText(MyReportActivity.this, "Error Sending Report",
                                         Toast.LENGTH_LONG).show();
-                                successDataSending();
                             } else if (response.code() == 504){
                                 Toast.makeText(MyReportActivity.this, "Timeout",
                                         Toast.LENGTH_LONG).show();
@@ -278,7 +277,7 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
                             Log.v("OnFailure Error Message", t.getMessage());
                         }
                     });
-
+                    successDataSending();
                     reportViewModel.delete(sentReportList.get(i));
                 }
 
@@ -334,7 +333,7 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
     //----------------------------------------------------------------------------------------------Popup for successful data sending
     private void successDataSending(){
         dialog = new Dialog(this);
-        dialog.setContentView(R.layout.popup_success_registration);
+        dialog.setContentView(R.layout.popup_success_datasent);
 
         dialog.show();
     }
