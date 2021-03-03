@@ -45,8 +45,32 @@
 
             <!-- Send Button -->
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_mapOffshoreStation"
+                android:id="@+id/button_mapMyReports"
                 android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/colorBackground"
+                android:text="My Reports"
+                android:textSize="10sp"
+                android:textColor="@color/colorSecondary"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:fontFamily="@font/montserrat"
+                app:icon="@drawable/ic_map_marker60x60"
+                app:iconSize="18dp"
+                app:cornerRadius="20dp"
+                app:rippleColor="@color/colorPrimary"
+                app:strokeColor="@color/colorSecondary"
+                app:strokeWidth="1dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+
+            <!-- Send Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_mapOffshoreStation"
+                android:layout_width="140dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:layout_marginStart="5dp"
