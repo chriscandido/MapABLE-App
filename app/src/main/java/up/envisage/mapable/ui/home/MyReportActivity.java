@@ -332,7 +332,7 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
 
     //----------------------------------------------------------------------------------------------Popup for successful data sending
     private void successDataSending(){
-        dialog = new Dialog(this);
+        dialog = new Dialog(MyReportActivity.this);
         dialog.setContentView(R.layout.popup_success_datasent);
 
         dialog.show();
@@ -360,7 +360,6 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
         });
 
         dialog.show();
-
     }
 
     @Override
