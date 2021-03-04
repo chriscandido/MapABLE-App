@@ -45,356 +45,450 @@
 
     </LinearLayout>
 
-    <!-- Project Leader -->
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:orientation="vertical">
+        android:fillViewport="true">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:layout_margin="10dp"
-            android:layout_gravity="center"
-            app:cardBackgroundColor="@color/colorAccent02"
-            app:cardCornerRadius="20dp"
-            app:cardPreventCornerOverlap="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
+            <!-- Project Leader -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:gravity="center">
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="95dp"
-                    android:layout_height="90dp"
+                <androidx.cardview.widget.CardView
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
                     android:layout_margin="10dp"
-                    android:gravity="center"
-                    android:src="@drawable/ic_devteam_projectleader"/>
+                    android:layout_gravity="center"
+                    app:cardBackgroundColor="@color/colorAccent02"
+                    app:cardCornerRadius="20dp"
+                    app:cardPreventCornerOverlap="true">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="95dp"
+                            android:layout_height="90dp"
+                            android:layout_margin="10dp"
+                            android:gravity="center"
+                            android:src="@drawable/ic_devteam_projectleader"/>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Dr. Ariel Blanco"
+                    android:textColor="@color/colorText"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/montserrat"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Project Leader"
+                    android:textColor="@color/colorAccent02"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/montserrat"/>
 
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
+            <!-- Dev team -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Dr. Ariel Blanco"
-            android:textColor="@color/colorText"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:fontFamily="@font/montserrat"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Project Leader"
-            android:textColor="@color/colorAccent02"
-            android:textSize="12sp"
-            android:fontFamily="@font/montserrat"/>
-
-    </LinearLayout>
-
-    <!-- Dev team -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <!-- Project Leader -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="150dp"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center"
-            android:orientation="vertical">
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="10dp"
-                android:layout_gravity="center"
-                app:cardBackgroundColor="@color/colorAccent02"
-                app:cardCornerRadius="20dp"
-                app:cardPreventCornerOverlap="true">
-
+                <!-- Project Leader -->
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:gravity="center">
+                    android:layout_height="150dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:layout_margin="10dp"
-                        android:gravity="center"
-                        android:src="@drawable/ic_devteam_sirjommer"/>
+                        android:layout_gravity="center"
+                        app:cardBackgroundColor="@color/colorAccent02"
+                        app:cardCornerRadius="20dp"
+                        app:cardPreventCornerOverlap="true">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:layout_margin="10dp"
+                                android:gravity="center"
+                                android:src="@drawable/ic_devteam_sirjommer"/>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Jommer"
+                        android:textColor="@color/colorText"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/montserrat"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Team Leader"
+                        android:textColor="@color/colorAccent02"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/montserrat"/>
 
                 </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Jommer"
-                android:textColor="@color/colorText"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:fontFamily="@font/montserrat"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="SSRS"
-                android:textColor="@color/colorAccent02"
-                android:textSize="12sp"
-                android:fontFamily="@font/montserrat"/>
-
-        </LinearLayout>
-
-        <!-- Project Leader -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="150dp"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center"
-            android:orientation="vertical">
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="10dp"
-                android:layout_gravity="center"
-                app:cardBackgroundColor="@color/colorAccent02"
-                app:cardCornerRadius="20dp"
-                app:cardPreventCornerOverlap="true">
-
+                <!-- Project Leader -->
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:gravity="center">
+                    android:layout_height="150dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:layout_margin="10dp"
-                        android:gravity="center"
-                        android:src="@drawable/ic_devteam_ella"/>
+                        android:layout_gravity="center"
+                        app:cardBackgroundColor="@color/colorAccent02"
+                        app:cardCornerRadius="20dp"
+                        app:cardPreventCornerOverlap="true">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:layout_margin="10dp"
+                                android:gravity="center"
+                                android:src="@drawable/ic_devteam_ella"/>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Ella"
+                        android:textColor="@color/colorText"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/montserrat"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="UI Design"
+                        android:textColor="@color/colorAccent02"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/montserrat"/>
 
                 </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Ella"
-                android:textColor="@color/colorText"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:fontFamily="@font/montserrat"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Vis Comm Specialist"
-                android:textColor="@color/colorAccent02"
-                android:textSize="12sp"
-                android:fontFamily="@font/montserrat"/>
-
-        </LinearLayout>
-
-        <!-- Project Leader -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="150dp"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center"
-            android:orientation="vertical">
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="10dp"
-                android:layout_gravity="center"
-                app:cardBackgroundColor="@color/colorAccent02"
-                app:cardCornerRadius="20dp"
-                app:cardPreventCornerOverlap="true">
-
+                <!-- Project Leader -->
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:gravity="center">
+                    android:layout_height="150dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:layout_margin="10dp"
-                        android:gravity="center"
-                        android:src="@drawable/ic_devteam_christian"/>
+                        android:layout_gravity="center"
+                        app:cardBackgroundColor="@color/colorAccent02"
+                        app:cardCornerRadius="20dp"
+                        app:cardPreventCornerOverlap="true">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:layout_margin="10dp"
+                                android:gravity="center"
+                                android:src="@drawable/ic_devteam_christian"/>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Christian"
+                        android:textColor="@color/colorText"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/montserrat"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Frontend/UI Design"
+                        android:textColor="@color/colorAccent02"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/montserrat"/>
 
                 </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
+            </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Christian"
-                android:textColor="@color/colorText"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:fontFamily="@font/montserrat"/>
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="SRS II"
-                android:textColor="@color/colorAccent02"
-                android:textSize="12sp"
-                android:fontFamily="@font/montserrat"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <!-- Project Leader -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="150dp"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center"
-            android:orientation="vertical">
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="10dp"
-                android:layout_gravity="center"
-                app:cardBackgroundColor="@color/colorAccent02"
-                app:cardCornerRadius="20dp"
-                app:cardPreventCornerOverlap="true">
-
+                <!-- Project Leader -->
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="150dp"
                     android:layout_margin="10dp"
-                    android:gravity="center">
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:layout_margin="10dp"
-                        android:gravity="center"
-                        android:src="@drawable/ic_devteam_dom"/>
+                        android:layout_gravity="center"
+                        app:cardBackgroundColor="@color/colorAccent02"
+                        app:cardCornerRadius="20dp"
+                        app:cardPreventCornerOverlap="true">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:layout_margin="10dp"
+                                android:gravity="center"
+                                android:src="@drawable/ic_devteam_dom"/>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Dominic"
+                        android:textColor="@color/colorText"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/montserrat"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Backend/Web App"
+                        android:textColor="@color/colorAccent02"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/montserrat"/>
 
                 </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Dominic"
-                android:textColor="@color/colorText"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:fontFamily="@font/montserrat"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="GEE Specialist"
-                android:textColor="@color/colorAccent02"
-                android:textSize="12sp"
-                android:fontFamily="@font/montserrat"/>
-
-        </LinearLayout>
-
-        <!-- Project Leader -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="150dp"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center"
-            android:orientation="vertical">
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="10dp"
-                android:layout_gravity="center"
-                app:cardBackgroundColor="@color/colorAccent02"
-                app:cardCornerRadius="20dp"
-                app:cardPreventCornerOverlap="true">
-
+                <!-- Project Leader -->
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="150dp"
                     android:layout_margin="10dp"
-                    android:gravity="center">
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:layout_margin="10dp"
-                        android:gravity="center"
-                        android:src="@drawable/ic_devteam_gilson"/>
+                        android:layout_gravity="center"
+                        app:cardBackgroundColor="@color/colorAccent02"
+                        app:cardCornerRadius="20dp"
+                        app:cardPreventCornerOverlap="true">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:layout_margin="10dp"
+                                android:gravity="center"
+                                android:src="@drawable/ic_devteam_gilson"/>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Gilson"
+                        android:textColor="@color/colorText"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/montserrat"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Backend/Web App"
+                        android:textColor="@color/colorAccent02"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/montserrat"/>
 
                 </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
+            </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Gilson"
-                android:textColor="@color/colorText"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:fontFamily="@font/montserrat"/>
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/bg_box03"
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="GEE Specialist"
-                android:textColor="@color/colorAccent02"
-                android:textSize="12sp"
-                android:fontFamily="@font/montserrat"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="20dp"
+                    android:text="Contact Us"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorText"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/montserrat"/>
+                
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_support_email"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginStart="20dp"
+                        android:text="mapable.im4manilabay.upd@up.edu.ph"
+                        android:textSize="15sp"
+                        android:textColor="@color/colorText"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/montserrat"/>
+                    
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center"
+                        android:src="@drawable/ic_support_phone"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginStart="20dp"
+                        android:text="(02) 8981-8500 loc 3123"
+                        android:textSize="15sp"
+                        android:textColor="@color/colorText"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/montserrat"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"/>
 
         </LinearLayout>
 
-    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>
