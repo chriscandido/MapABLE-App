@@ -33,8 +33,10 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import up.envisage.mapable.DisclosureAdapterActivity;
 import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
+import up.envisage.mapable.adapter.DisclosureAdapter;
 import up.envisage.mapable.db.table.UserTable;
 import up.envisage.mapable.model.UserViewModel;
 import up.envisage.mapable.ui.home.ReportingActivity;
@@ -97,7 +99,7 @@ public class LoginActivity extends AppCompatActivity  {
         //Shared preference for one time login
         if (sharedPreferences.getBoolean("logged", false) == true ) {
             Log.v("[UserID]",  userIdPreferences.getString("userID", "Invalid User ID"));
-            goToMainActivity();
+            goToDisclosureActivity();
         }
 
         //Initialize Terms of Use using Dialog Box
@@ -151,7 +153,7 @@ public class LoginActivity extends AppCompatActivity  {
 
                                 Log.i("Get ID Response [LOGIN]", userID2);
 
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, DisclosureAdapterActivity.class);
                                 intent.putExtra("userID", userID2);
                                 startActivity(intent);
                                 sharedPreferences.edit().putBoolean("logged", true).apply();
@@ -257,8 +259,8 @@ public class LoginActivity extends AppCompatActivity  {
     }
 
     //----------------------------------------------------------------------------------------------Go to Main Page
-    public void goToMainActivity() {
-        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+    public void goToDisclosureActivity() {
+        Intent intent = new Intent(LoginActivity.this, DisclosureAdapterActivity.class);
         intent.putExtra("userID", userIdPreferences.getString("userID", "Invalid User ID"));
         startActivity(intent);
     }

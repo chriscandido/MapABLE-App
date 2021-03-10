@@ -40,6 +40,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".DisclosureAdapterActivity"/>
         <!-- Registration && Login -->
         <activity android:name=".ui.registration.LoginActivity" />
         <activity android:name=".ui.registration.RegisterActivity" />

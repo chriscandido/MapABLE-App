@@ -71,6 +71,8 @@ public class ReportingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
 
+        prominentDisclosure();
+
         //Initiating report class
         reportViewModel = ViewModelProviders.of(ReportingActivity.this).get(ReportViewModel.class);
         userViewModel = ViewModelProviders.of(ReportingActivity.this).get(UserViewModel.class);
@@ -299,6 +301,23 @@ public class ReportingActivity extends AppCompatActivity {
     private void errorNoConnection(){
         dialog = new Dialog(ReportingActivity.this);
         dialog.setContentView(R.layout.popup_error_nointernet);
+
+        dialog.show();
+
+    }
+
+    //----------------------------------------------------------------------------------------------Popup for prominent disclosure
+    private void prominentDisclosure(){
+        dialog = new Dialog(ReportingActivity.this);
+        dialog.setContentView(R.layout.popup_disclosure_report);
+
+        MaterialButton button_disclosure_close = dialog.findViewById(R.id.button_disclosure_close);
+        button_disclosure_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
 
         dialog.show();
 
