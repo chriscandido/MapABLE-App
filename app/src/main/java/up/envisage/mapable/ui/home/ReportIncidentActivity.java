@@ -43,6 +43,8 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
     private String BASE_URL = "http://ec2-54-91-89-105.compute-1.amazonaws.com/";
     private String userID, dateTime, incidentType, Report, lon, lat, image, imageID2;
 
+    Dialog dialog;
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -178,6 +180,7 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
                 break;
         }
     }
+
 
     public void onStart(){
         super.onStart();

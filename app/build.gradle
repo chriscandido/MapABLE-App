@@ -8,7 +8,7 @@ android {
         applicationId "up.envisage.mapable"
         minSdkVersion 19
         targetSdkVersion 30
-        versionCode 2
+        versionCode 3
         versionName "1.0-valpha"
         multiDexEnabled true
 

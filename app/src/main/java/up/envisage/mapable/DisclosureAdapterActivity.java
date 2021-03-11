@@ -69,9 +69,7 @@ public class DisclosureAdapterActivity extends AppCompatActivity {
                         if (Build.VERSION.SDK_INT >= 23) {
                             permissionCheck();
                         } else {
-                            Intent intent = new Intent(DisclosureAdapterActivity.this, MainActivity.class);
-                            intent.putExtra("userID", userID);
-                            startActivity(intent);
+                            LaunchApp();
                         }
                     }
                 }, 1000);

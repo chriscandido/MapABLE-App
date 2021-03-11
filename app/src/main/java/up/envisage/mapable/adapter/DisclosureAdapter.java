@@ -37,8 +37,8 @@ public class DisclosureAdapter extends PagerAdapter {
 
     //Disclosure body
     public String[] disclosureBody = {
-            "MASDAN collects location data to customize your experience with the app. " +
-                    "MASDAN will use this data for accurate geotagging of reports sent through the app",
+            "MASDAN collects location in the background to customize your experience with the app. MASDAN will use this location in the report module to accurately geotag your submitted reports. " +
+                    "The map interface will also show your current location.",
             "Reports require attachment of photos to complete. MASDAN will use this data to verify your reports."
     };
 

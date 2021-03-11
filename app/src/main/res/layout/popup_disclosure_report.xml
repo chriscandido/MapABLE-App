@@ -41,7 +41,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_gravity="center"
-            android:text="MASDAN collects location data to enable the geotagging of reports. It also collects photos taken from camera or gallery to provide additional information about the reports"
+            android:text="MASDAN collects location in the background to enable geotagging of submitted reports. It also collects photos taken from camera or gallery to provide additional information about the submitted reports"
             android:textSize="12sp"
             android:textColor="@color/colorPrimary"
             android:textAlignment="center"
