@@ -55,6 +55,7 @@ public class ReportingActivity extends AppCompatActivity {
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
     private String BASE_URL = "http://ec2-54-91-89-105.compute-1.amazonaws.com/";
+//    private String BASE_URL = "http://10.0.2.2:5000/";
 
     private ReportViewModel reportViewModel;
     private UserViewModel userViewModel;
@@ -88,9 +89,9 @@ public class ReportingActivity extends AppCompatActivity {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         //Add your other interceptors …
         httpClient.callTimeout(2,TimeUnit.MINUTES)
-                .connectTimeout(30, TimeUnit.SECONDS) // connect timeout
-                .writeTimeout(30, TimeUnit.SECONDS) // write timeout
-                .readTimeout(30, TimeUnit.SECONDS); // read timeout
+                .connectTimeout(60, TimeUnit.SECONDS) // connect timeout
+                .writeTimeout(60, TimeUnit.SECONDS) // write timeout
+                .readTimeout(60, TimeUnit.SECONDS); // read timeout
 
         //Add logging as last interceptor
         httpClient.addInterceptor(logging);  // <-- this is the important line!

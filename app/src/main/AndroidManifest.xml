@@ -49,6 +49,7 @@
         <!-- Main Menu -->
         <activity android:name=".ui.home.AboutManilaBayActivity" />
         <activity android:name=".ui.home.ReportingActivity" />
+        <activity android:name=".ui.home.LeaderboardActivity" />
         <activity android:name=".ui.home.InformationActivity" />
         <activity android:name=".ui.support.FeedbackActivity" />
         <activity android:name=".ui.home.AboutActivity"/>

@@ -24,6 +24,7 @@ import up.envisage.mapable.R;
 import up.envisage.mapable.adapter.MainMenuAdapter;
 import up.envisage.mapable.ui.home.AboutActivity;
 import up.envisage.mapable.ui.home.InformationActivity;
+import up.envisage.mapable.ui.home.LeaderboardActivity;
 import up.envisage.mapable.ui.home.ReportingActivity;
 import up.envisage.mapable.util.Constant;
 
@@ -92,6 +93,12 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
                 Intent about = new Intent(listener, AboutActivity.class);
                 startActivity(about);
                 Log.d("[ HomeFragment.java ]", "onMenuClick: clicked - About");
+                break;
+            case Constant.mainMenu_Leaderboard:
+                Intent report2 = new Intent(listener, LeaderboardActivity.class);
+//                report2.putExtra("userID", userID);
+                startActivity(report2);
+                Log.d("[ HomeFragment.java ]", "onMenuClick: clicked - Report");
                 break;
         }
     }

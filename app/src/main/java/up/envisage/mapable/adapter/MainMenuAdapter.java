@@ -1,11 +1,13 @@
 package up.envisage.mapable.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,7 +37,9 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.ViewHo
         }
 
         public void onClick(View view) {
+
             onMenuClickListener.onClick(getAdapterPosition());
+            Log.v("[MainMenuAdapter.java]:", "Adapter Position: " + getAdapterPosition());
         }
 
     }
@@ -50,14 +54,16 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.ViewHo
     public String[] mainMenu_title = {
             "MAY REPORT AKO!",
             "MANILA BAY ALAMIN NATIN!",
-            "KILALANIN SI   IM4MANILABAY"
+            "KILALANIN SI   IM4MANILABAY",
+            "LEADERBOARD"
     };
 
     //Icon
     public int[] mainMenu_icon = {
             R.drawable.ic_mainmenu_report,
             R.drawable.ic_mainmenu_aboutmanilabay,
-            R.drawable.ic_mainmenu_about
+            R.drawable.ic_mainmenu_about,
+            R.drawable.ic_mainmenu_report,
     };
 
     public MainMenuAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
