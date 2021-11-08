@@ -6,7 +6,6 @@ public class Constant {
     public static final int mainMenu_report = 0;
     public static final int mainMenu_information = 1;
     public static final int mainMenu_about = 2;
-    public static final int mainMenu_Leaderboard = 3;
     //Camera
     public static final int REQUEST_CODE = 101;
     public static final int CAMERA_REQUEST_CODE = 102;

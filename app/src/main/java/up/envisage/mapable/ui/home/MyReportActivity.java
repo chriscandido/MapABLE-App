@@ -291,9 +291,7 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
         textView_myReport_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent myReportBack = new Intent(MyReportActivity.this, MainActivity.class);
-                startActivity(myReportBack);
+                finish();
             }
         });
 

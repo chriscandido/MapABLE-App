@@ -24,18 +24,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.share.Sharer;
-import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareDialog;
 import com.google.android.material.button.MaterialButton;
 
-import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -46,14 +40,13 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import up.envisage.mapable.R;
-import up.envisage.mapable.db.table.ReportTable;
+import up.envisage.mapable.databinding.Listener;
 import up.envisage.mapable.db.table.UserTable;
 import up.envisage.mapable.model.ReportViewModel;
 import up.envisage.mapable.model.UserViewModel;
+import up.envisage.mapable.ui.home.LeaderboardActivity;
 import up.envisage.mapable.ui.home.MyReportActivity;
-import up.envisage.mapable.ui.home.ReportIncidentActivity;
-import up.envisage.mapable.ui.home.ReportingActivity;
-import up.envisage.mapable.ui.registration.LoginResult;
+import up.envisage.mapable.ui.home.MyReportsListActivity;
 import up.envisage.mapable.ui.registration.RetrofitInterface;
 import up.envisage.mapable.ui.registration.StatsResult;
 
@@ -73,7 +66,7 @@ public class UserFragment extends Fragment {
     private ShareDialog shareDialog;
 
     TextView textView_user_name, textView_user_username, textView_user_email, textView_user_myReport,
-            textView_user_myStats, textView_myStats_submittedReports;
+            textView_user_myStats, textView_myStats_submittedReports, textView_user_myReportsList, textView_user_leaderboard;
 
     String outUserId;
     public Integer total;
@@ -153,7 +146,7 @@ public class UserFragment extends Fragment {
         userDetails();
 
         //Pending reports button
-        textView_user_myReport = view.findViewById(R.id.textView_user_myReport);
+        textView_user_myReport = view.findViewById(R.id.textView_user_myReports);
         textView_user_myReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -190,6 +183,26 @@ public class UserFragment extends Fragment {
                     }
                 });
                 myStatsDialog();
+            }
+        });
+
+        textView_user_myReportsList = view.findViewById(R.id.textView_user_myReportsList);
+        textView_user_myReportsList.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(listener, MyReportsListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        textView_user_leaderboard = view.findViewById(R.id.textView_user_leaderboard);
+        textView_user_leaderboard.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(listener, LeaderboardActivity.class);
+                startActivity(intent);
             }
         });
     }
