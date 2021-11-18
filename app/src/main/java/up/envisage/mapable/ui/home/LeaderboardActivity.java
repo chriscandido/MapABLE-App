@@ -1,39 +1,17 @@
 package up.envisage.mapable.ui.home;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.provider.MediaStore;
-import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.material.button.MaterialButton;
-
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -48,14 +26,7 @@ import retrofitInterface.LeaderboardAPI;
 import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
 import up.envisage.mapable.adapter.LeaderboardAdapter;
-import up.envisage.mapable.db.table.ReportTable;
-import up.envisage.mapable.db.table.UserTable;
 import up.envisage.mapable.model.Leaderboard;
-import up.envisage.mapable.model.ReportViewModel;
-import up.envisage.mapable.model.UserViewModel;
-import up.envisage.mapable.ui.home.report.ReportClassResult;
-import up.envisage.mapable.ui.registration.LoginActivity;
-import up.envisage.mapable.ui.registration.RetrofitInterface;
 
 public class LeaderboardActivity extends AppCompatActivity {
 

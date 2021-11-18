@@ -1,4 +1,4 @@
-package up.envisage.mapable.ui.registration;
+package up.envisage.mapable.model;
 
 
 import com.google.gson.annotations.SerializedName;

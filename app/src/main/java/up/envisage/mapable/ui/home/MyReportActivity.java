@@ -3,7 +3,6 @@ package up.envisage.mapable.ui.home;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -43,13 +42,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
 import up.envisage.mapable.adapter.MyReportAdapter;
 import up.envisage.mapable.db.table.ReportTable;
 import up.envisage.mapable.model.ReportViewModel;
 import up.envisage.mapable.ui.home.report.ReportClassResult;
-import up.envisage.mapable.ui.registration.RetrofitInterface;
+import retrofitInterface.RetrofitInterface;
 
 public class MyReportActivity extends AppCompatActivity implements MyReportAdapter.OnReportClickListener {
 
