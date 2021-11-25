@@ -35,11 +35,13 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import retrofitInterface.RetrofitInterface;
 import up.envisage.mapable.R;
 import up.envisage.mapable.databinding.ActivityRegisterBinding;
 import up.envisage.mapable.databinding.Listener;
 import up.envisage.mapable.db.table.UserTable;
 import up.envisage.mapable.model.UserViewModel;
+import up.envisage.mapable.model.userID;
 
 
 public class RegisterActivity extends AppCompatActivity implements Listener {
@@ -147,7 +149,7 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
                                     data.put("username", username);
                                     data.put("password", password);
 
-                                    Call<userID> call2 = retrofitInterface.getUser(data);
+                                    Call<up.envisage.mapable.model.userID> call2 = retrofitInterface.getUser(data);
 
                                     call2.enqueue(new Callback<userID>() {
                                         @Override

@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -15,7 +14,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
@@ -26,10 +24,7 @@ import android.widget.Toast;
 import com.google.android.material.button.MaterialButton;
 
 import java.io.ByteArrayOutputStream;
-import java.util.Calendar;
 import java.util.HashMap;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -43,18 +38,17 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
 import up.envisage.mapable.db.table.ReportTable;
-import up.envisage.mapable.db.table.UserTable;
 import up.envisage.mapable.model.ReportViewModel;
 import up.envisage.mapable.model.UserViewModel;
 import up.envisage.mapable.ui.home.report.ReportClassResult;
-import up.envisage.mapable.ui.registration.LoginActivity;
-import up.envisage.mapable.ui.registration.RetrofitInterface;
+import retrofitInterface.RetrofitInterface;
 
 public class ReportingActivity extends AppCompatActivity {
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
     private String BASE_URL = "http://ec2-54-91-89-105.compute-1.amazonaws.com/";
+//    private String BASE_URL = "http://10.0.2.2:5000/";
 
     private ReportViewModel reportViewModel;
     private UserViewModel userViewModel;
@@ -88,9 +82,9 @@ public class ReportingActivity extends AppCompatActivity {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         //Add your other interceptors …
         httpClient.callTimeout(2,TimeUnit.MINUTES)
-                .connectTimeout(30, TimeUnit.SECONDS) // connect timeout
-                .writeTimeout(30, TimeUnit.SECONDS) // write timeout
-                .readTimeout(30, TimeUnit.SECONDS); // read timeout
+                .connectTimeout(60, TimeUnit.SECONDS) // connect timeout
+                .writeTimeout(60, TimeUnit.SECONDS) // write timeout
+                .readTimeout(60, TimeUnit.SECONDS); // read timeout
 
         //Add logging as last interceptor
         httpClient.addInterceptor(logging);  // <-- this is the important line!

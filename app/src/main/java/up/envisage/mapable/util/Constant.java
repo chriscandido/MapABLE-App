@@ -13,4 +13,5 @@ public class Constant {
     //Location settings
     public static final int REQUEST_CHECK_SETTINGS = 2001;
     public static final int REQUEST_PERMISSIONS_REQUEST_CODE = 34;
+
 }

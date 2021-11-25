@@ -24,14 +24,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.share.Sharer;
-import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareDialog;
 import com.google.android.material.button.MaterialButton;
 
-import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
@@ -46,16 +41,16 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import up.envisage.mapable.R;
-import up.envisage.mapable.db.table.ReportTable;
 import up.envisage.mapable.db.table.UserTable;
 import up.envisage.mapable.model.ReportViewModel;
+import up.envisage.mapable.model.UserReport;
 import up.envisage.mapable.model.UserViewModel;
+import up.envisage.mapable.ui.home.LeaderboardActivity;
 import up.envisage.mapable.ui.home.MyReportActivity;
-import up.envisage.mapable.ui.home.ReportIncidentActivity;
-import up.envisage.mapable.ui.home.ReportingActivity;
-import up.envisage.mapable.ui.registration.LoginResult;
-import up.envisage.mapable.ui.registration.RetrofitInterface;
-import up.envisage.mapable.ui.registration.StatsResult;
+import up.envisage.mapable.ui.home.MyReportsListActivity;
+import up.envisage.mapable.ui.home.UserStatisticsActivity;
+import retrofitInterface.RetrofitInterface;
+import up.envisage.mapable.model.StatsResult;
 
 public class UserFragment extends Fragment {
 
@@ -73,10 +68,12 @@ public class UserFragment extends Fragment {
     private ShareDialog shareDialog;
 
     TextView textView_user_name, textView_user_username, textView_user_email, textView_user_myReport,
-            textView_user_myStats, textView_myStats_submittedReports;
+            textView_user_myStats, textView_myStats_submittedReports, textView_user_myReportsList, textView_user_leaderboard;
 
     String outUserId;
-    public Integer total;
+    public Integer algalBloom, fishKill, waterPollution, ongoingReclamation,
+                    waterHyacinth, solidWaste, otherIssues, verified, unverified, falsePositive, total;
+
     public Object data;
 
     MaterialButton button_userMyStats_ok;
@@ -150,7 +147,7 @@ public class UserFragment extends Fragment {
         userDetails();
 
         //Pending reports button
-        textView_user_myReport = view.findViewById(R.id.textView_user_myReport);
+        textView_user_myReport = view.findViewById(R.id.textView_user_myReports);
         textView_user_myReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -175,9 +172,43 @@ public class UserFragment extends Fragment {
                     @Override
                     public void onResponse(Call<StatsResult> call, Response<StatsResult> response) {
                         if(response.code() == 200) {
+                            algalBloom = response.body().getAlgalBloom();
+                            fishKill = response.body().getFishKill();
+                            waterPollution = response.body().getWaterPollution();
+                            ongoingReclamation = response.body().getOngoingReclamation();
+                            waterHyacinth = response.body().getWaterHyacinth();
+                            solidWaste = response.body().getSolidWaste();
+                            otherIssues = response.body().getOthers();
+                            verified = response.body().getVerified();
+                            unverified = response.body().getUnverified();
+                            falsePositive = response.body().getFalsePositive();
                             total = response.body().getTotal();
-                            textView_myStats_submittedReports.setText(total.toString());
-                            Log.v("[UserFragment.java]", total.toString());
+
+                            Intent userStatsIntent = new Intent(listener, UserStatisticsActivity.class);
+
+                            userStatsIntent.putExtra("algalBloom", algalBloom.toString());
+                            userStatsIntent.putExtra("fishKill", fishKill.toString());
+                            userStatsIntent.putExtra("waterPollution", waterPollution.toString());
+                            userStatsIntent.putExtra("ongoingReclamation", ongoingReclamation.toString());
+                            userStatsIntent.putExtra("waterHyacinth", waterHyacinth.toString());
+                            userStatsIntent.putExtra("solidWaste", solidWaste.toString());
+                            userStatsIntent.putExtra("otherIssues", otherIssues.toString());
+                            userStatsIntent.putExtra("verified", verified.toString());
+                            userStatsIntent.putExtra("unverified", unverified.toString());
+                            userStatsIntent.putExtra("falsePositive", falsePositive.toString());
+                            userStatsIntent.putExtra("total", total.toString());
+                            userStatsIntent.putExtra("userID", outUserId);
+
+                            startActivity(userStatsIntent);
+
+//                            textView_myStats_submittedReports.setText(total.toString());
+//                            Log.v("[UserFragment.java]", "Algal Bloom: " + algalBloom.toString() + "\n" +"Fishkill : " + fishKill.toString() + "/\n" +
+//                                    "Water Pollution: " + waterPollution.toString() + "\n" + "Ongoing Reclamation: " + ongoingReclamation.toString() + "\n" +
+//                                    "Water Hyacinth: " + waterHyacinth.toString() + "\n" + "Solid Waste: " + solidWaste.toString() + "\n" + "Others: " + otherIssues.toString() + "\n" +
+//                                    "Verified: " + verified.toString() + "\n" + "Unverified: " + unverified.toString() + "\n" + "False Positive: " + falsePositive.toString() + "\n" +
+//                                    "Total: " + total.toString()
+//
+//                            );
                         }
                     }
 
@@ -186,7 +217,35 @@ public class UserFragment extends Fragment {
 
                     }
                 });
-                myStatsDialog();
+//                myStatsDialog();
+            }
+        });
+
+        textView_user_myReportsList = view.findViewById(R.id.textView_user_myReportsList);
+        textView_user_myReportsList.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                HashMap<String, String> map = new HashMap<>();
+                map.put("userID", outUserId);
+
+                Call<List<UserReport>> call = retrofitInterface.getUserReportsList(map);
+
+                Intent intent = new Intent(listener, MyReportsListActivity.class);
+
+                intent.putExtra("userID", outUserId);
+                startActivity(intent);
+            }
+        });
+
+        textView_user_leaderboard = view.findViewById(R.id.textView_user_leaderboard);
+        textView_user_leaderboard.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(listener, LeaderboardActivity.class);
+                startActivity(intent);
             }
         });
     }

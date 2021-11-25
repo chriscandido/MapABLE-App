@@ -17,6 +17,7 @@
             android:orientation="vertical">
 
             <!-- User Profile logo -->
+
             <ImageView
                 android:id="@+id/imageView_userProfilePhoto"
                 android:layout_width="150dp"
@@ -65,30 +66,60 @@
             <LinearLayout
                 android:layout_width="150dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
                 android:background="@drawable/bg_box01">
 
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_marginStart="20dp"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/ic_userprofile_myreports"/>
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/ic_userprofile_mypoints" />
 
                 <TextView
-                    android:id="@+id/textView_user_myReport"
+                    android:id="@+id/textView_user_myStats"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/montserrat"
                     android:gravity="center_vertical"
-                    android:text="Unsent Reports"
-                    android:textSize="12sp"
-                    android:textColor="@color/colorPrimary"
+                    android:text="My Stats"
                     android:textAlignment="gravity"
-                    android:fontFamily="@font/montserrat"/>
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/bg_box01">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/ic_userprofile_myreports" />
+
+                <TextView
+                    android:id="@+id/textView_user_leaderboard"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center_vertical"
+                    android:text="Leaderboard"
+                    android:textColor="#009688"
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
@@ -125,33 +156,65 @@
             -->
 
             <!-- Stats -->
+
             <LinearLayout
                 android:layout_width="150dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
                 android:background="@drawable/bg_box01">
 
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_marginStart="20dp"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/ic_userprofile_mypoints"/>
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/ic_userprofile_myreports" />
 
                 <TextView
-                    android:id="@+id/textView_user_myStats"
+                    android:id="@+id/textView_user_myReportsList"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
                     android:gravity="center_vertical"
-                    android:text="My Stats"
-                    android:textSize="12sp"
-                    android:textColor="@color/colorPrimary"
+                    android:text="My Reports List"
                     android:textAlignment="gravity"
-                    android:fontFamily="@font/montserrat"/>
+                    android:textColor="#009688"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/bg_box01">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/ic_userprofile_myreports" />
+
+                <TextView
+                    android:id="@+id/textView_user_myReports"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center_vertical"
+                    android:text="Unsent Reports"
+                    android:textAlignment="gravity"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
