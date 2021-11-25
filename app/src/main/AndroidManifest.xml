@@ -11,11 +11,6 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-
-    <uses-feature
-        android:name="android.hardware.Camera"
-        android:required="true" />
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
@@ -69,11 +64,6 @@
         <activity android:name=".ui.home.MyReportActivity"/>
         <!-- Support -->
         <activity android:name=".ui.support.DevTeamActivity"/>
-        <!-- Facebook -->
-        <provider
-            android:authorities="com.facebook.app.FacebookContentProvider874021253167401"
-            android:name="com.facebook.FacebookContentProvider"
-            android:exported="true"/>
         <!-- Fonts -->
         <meta-data
             android:name="preloaded_fonts"
@@ -82,10 +72,6 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-        <!-- Facebook Link -->
-        <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id"/>
     </application>
 
 </manifest>

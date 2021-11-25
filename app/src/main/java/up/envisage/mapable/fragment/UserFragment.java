@@ -99,9 +99,6 @@ public class UserFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
-        callbackManager = CallbackManager.Factory.create();
-        shareDialog = new ShareDialog(listener);
-
         userViewModel = ViewModelProviders.of(UserFragment.this).get(UserViewModel.class);
 
         userViewModel.getLastUser().observe(UserFragment.this, UserTable -> {
