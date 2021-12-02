@@ -11,6 +11,7 @@
 
   <!-- Project logo -->
   <ImageView
+      android:id="@+id/imageView_mainMenu_logo"
       android:layout_width="wrap_content"
       android:layout_height="75dp"
       android:layout_marginBottom="45dp"
@@ -34,7 +35,7 @@
       android:id="@+id/fragmentLayout_container"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:layout_above="@+id/bottomnavigation_menu"/>
+      android:layout_above="@+id/imageView_mainMenu_logo"/>
 
 </RelativeLayout>
 

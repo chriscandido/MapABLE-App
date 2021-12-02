@@ -45,9 +45,8 @@ import up.envisage.mapable.db.table.ReportTable;
 import up.envisage.mapable.model.ReportViewModel;
 import up.envisage.mapable.model.UserViewModel;
 import up.envisage.mapable.ui.home.ReportIncidentActivity;
-import up.envisage.mapable.ui.home.ReportingActivity;
 import up.envisage.mapable.ui.home.report.ReportClassResult;
-import up.envisage.mapable.ui.registration.RetrofitInterface;
+import retrofitInterface.RetrofitInterface;
 
 public class ReportFragment extends Fragment {
 
@@ -60,7 +59,7 @@ public class ReportFragment extends Fragment {
     private ReportViewModel reportViewModel;
     private UserViewModel userViewModel;
 
-    String userID, dateTime, incidentType, Report, lon, lat, image, imageID2, outPhoto, imageString, outUserId;
+    String userID, dateTime, incidentType, Report, lon, lat, image, imageString, outUserId;
 
     public Boolean connection;
 

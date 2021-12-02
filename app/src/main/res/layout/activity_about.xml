@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,22 +12,43 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorSecondary">
+        android:background="@color/colorText">
 
         <!-- Back button -->
-        <TextView
-            android:id="@+id/textView_aboutUs_back"
+        <ImageView
+            android:id="@+id/imageView_aboutUs_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_alignParentLeft="true"
-            android:text="Back"
-            android:fontFamily="@font/montserrat"
-            style="@style/navigationText"/>
+            android:src="@drawable/ic_arrow_back"/>
 
     </RelativeLayout>
 
+    <!-- Kilalanin Natin si IM4ManilaBay -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                android:src="@drawable/img_kilalanin_mapable"/>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
     <!-- Page Title -->
+    <!--
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -69,7 +89,7 @@
             android:layout_margin="5dp"
             android:orientation="vertical">
 
-            <!-- IM4ManilaBay Program Description -->
+            IM4ManilaBay Program Description
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -173,7 +193,7 @@
                 android:textStyle="bold"
                 android:fontFamily="@font/montserrat"/>
 
-            <!-- Project iWASTO -->
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -253,7 +273,7 @@
 
             </androidx.cardview.widget.CardView>
 
-            <!-- Project e-SMART -->
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -333,7 +353,7 @@
 
             </androidx.cardview.widget.CardView>
 
-            <!-- Project CharteD DreaM -->
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -388,7 +408,7 @@
 
             </androidx.cardview.widget.CardView>
 
-            <!-- Project MapABLE -->
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -476,6 +496,7 @@
 
         </LinearLayout>
 
-    </androidx.core.widget.NestedScrollView>
+
+    </androidx.core.widget.NestedScrollView> -->
 
 </LinearLayout>
