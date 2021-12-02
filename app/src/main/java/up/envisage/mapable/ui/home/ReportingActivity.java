@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -15,7 +14,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
@@ -26,10 +24,7 @@ import android.widget.Toast;
 import com.google.android.material.button.MaterialButton;
 
 import java.io.ByteArrayOutputStream;
-import java.util.Calendar;
 import java.util.HashMap;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -43,18 +38,20 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
 import up.envisage.mapable.db.table.ReportTable;
-import up.envisage.mapable.db.table.UserTable;
 import up.envisage.mapable.model.ReportViewModel;
 import up.envisage.mapable.model.UserViewModel;
 import up.envisage.mapable.ui.home.report.ReportClassResult;
-import up.envisage.mapable.ui.registration.LoginActivity;
-import up.envisage.mapable.ui.registration.RetrofitInterface;
+import retrofitInterface.RetrofitInterface;
 
 public class ReportingActivity extends AppCompatActivity {
 
+    private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
+    private String BASE_URL = "http://ec2-54-91-89-105.compute-1.amazonaws.com/";
+//    private String BASE_URL = "http://10.0.2.2:5000/";
 
     private ReportViewModel reportViewModel;
+    private UserViewModel userViewModel;
 
     String userID, dateTime, incidentType, Report, lon, lat, image, imageID2, outPhoto, imageString, outUserId;
 
@@ -68,11 +65,9 @@ public class ReportingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
 
-        prominentDisclosure();
-
         //Initiating report class
         reportViewModel = ViewModelProviders.of(ReportingActivity.this).get(ReportViewModel.class);
-        UserViewModel userViewModel = ViewModelProviders.of(ReportingActivity.this).get(UserViewModel.class);
+        userViewModel = ViewModelProviders.of(ReportingActivity.this).get(UserViewModel.class);
 
         userViewModel.getLastUser().observe(ReportingActivity.this, UserTable -> {
             outUserId = UserTable.getUniqueId();
@@ -87,15 +82,14 @@ public class ReportingActivity extends AppCompatActivity {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         //Add your other interceptors …
         httpClient.callTimeout(2,TimeUnit.MINUTES)
-                .connectTimeout(30, TimeUnit.SECONDS) // connect timeout
-                .writeTimeout(30, TimeUnit.SECONDS) // write timeout
-                .readTimeout(30, TimeUnit.SECONDS); // read timeout
+                .connectTimeout(60, TimeUnit.SECONDS) // connect timeout
+                .writeTimeout(60, TimeUnit.SECONDS) // write timeout
+                .readTimeout(60, TimeUnit.SECONDS); // read timeout
 
         //Add logging as last interceptor
         httpClient.addInterceptor(logging);  // <-- this is the important line!
 
-        String BASE_URL = "http://ec2-54-91-89-105.compute-1.amazonaws.com/"; // URL
-        Retrofit retrofit = new Retrofit.Builder()
+        retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(httpClient.build())
@@ -118,9 +112,21 @@ public class ReportingActivity extends AppCompatActivity {
         button_takeSurvey.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent survey = new Intent(ReportingActivity.this, ReportIncidentActivity.class);
-                survey.putExtra("userID", outUserId);
-                startActivity(survey);
+                dialog = new Dialog(ReportingActivity.this);
+                dialog.setContentView(R.layout.popup_disclosure_report);
+
+                MaterialButton button_disclosure_close = dialog.findViewById(R.id.button_disclosure_close);
+                button_disclosure_close.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent survey = new Intent(ReportingActivity.this, ReportIncidentActivity.class);
+                        survey.putExtra("userID", outUserId);
+                        startActivity(survey);
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.show();
             }
         });
 
@@ -142,7 +148,7 @@ public class ReportingActivity extends AppCompatActivity {
             button_reportSend.setVisibility(View.VISIBLE);
         }
 
-        //Checks for internet connection
+        //checks for internet connection
         connection = isNetworkAvailable();
 
         button_reportSend.setOnClickListener(new View.OnClickListener() {
@@ -230,10 +236,9 @@ public class ReportingActivity extends AppCompatActivity {
                             reportViewModel.insert(report);
                         }
                     });
-                } else {
-                    //if no internet connection, report is stored in the local database
-                    Toast.makeText(ReportingActivity.this, "No Internet Connection. Report will be saved in the device!",
-                            Toast.LENGTH_LONG).show();
+                } else { //if no internet connection, report is stored in the local database
+                    //Toast.makeText(ReportingActivity.this, "No Internet Connection. Report will be saved in the device!",
+                            //Toast.LENGTH_LONG).show();
                     ReportTable report = new ReportTable();
                     report.setUniqueId(outUserId);
                     report.setDateTime(dateTime);
@@ -261,14 +266,14 @@ public class ReportingActivity extends AppCompatActivity {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
-    //----------------------------------------------------------------------------------------------Convert from bitmap to byte array
+    //----------------------------------------------------------------------------------------------convert from bitmap to byte array
     public byte[] getBytesFromBitmap(Bitmap bitmap) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
         return stream.toByteArray();
     }
 
-    //----------------------------------------------------------------------------------------------Convert image to string
+    //----------------------------------------------------------------------------------------------convert image to string
     public String imageConvertToString(String image) {
         Uri selectedImage = Uri.parse(image);
         String[] filePathColumn = {MediaStore.Images.Media.DATA};
@@ -300,23 +305,6 @@ public class ReportingActivity extends AppCompatActivity {
     private void errorNoConnection(){
         dialog = new Dialog(ReportingActivity.this);
         dialog.setContentView(R.layout.popup_error_nointernet);
-
-        dialog.show();
-
-    }
-
-    //----------------------------------------------------------------------------------------------Popup for prominent disclosure
-    private void prominentDisclosure(){
-        dialog = new Dialog(ReportingActivity.this);
-        dialog.setContentView(R.layout.popup_disclosure_report);
-
-        MaterialButton button_disclosure_close = dialog.findViewById(R.id.button_disclosure_close);
-        button_disclosure_close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
 
         dialog.show();
 

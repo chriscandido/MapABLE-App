@@ -13,9 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.button.MaterialButton;
-import com.google.android.material.textfield.TextInputLayout;
-
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -29,7 +26,7 @@ import up.envisage.mapable.ui.home.report.ReportIllegalReclamation;
 import up.envisage.mapable.ui.home.report.ReportPollution;
 import up.envisage.mapable.ui.home.report.ReportSolidWaste;
 import up.envisage.mapable.ui.home.report.ReportWaterHyacinth;
-import up.envisage.mapable.ui.registration.RetrofitInterface;
+import retrofitInterface.RetrofitInterface;
 
 public class ReportIncidentActivity extends AppCompatActivity implements ReportIncidentAdapter.OnIncidentClickListener {
 
@@ -42,6 +39,8 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
     private Retrofit retrofit;
     private String BASE_URL = "http://ec2-54-91-89-105.compute-1.amazonaws.com/";
     private String userID, dateTime, incidentType, Report, lon, lat, image, imageID2;
+
+    Dialog dialog;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     protected void onCreate(Bundle savedInstanceState) {
@@ -178,6 +177,7 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
                 break;
         }
     }
+
 
     public void onStart(){
         super.onStart();

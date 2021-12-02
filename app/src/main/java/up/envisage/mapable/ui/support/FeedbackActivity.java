@@ -11,8 +11,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
@@ -37,9 +35,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
 import up.envisage.mapable.model.UserViewModel;
-import up.envisage.mapable.ui.home.MyReportActivity;
 import up.envisage.mapable.ui.home.report.FeedbackResult;
-import up.envisage.mapable.ui.registration.RetrofitInterface;
+import retrofitInterface.RetrofitInterface;
 
 public class FeedbackActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
