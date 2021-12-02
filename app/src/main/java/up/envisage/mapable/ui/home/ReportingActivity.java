@@ -52,12 +52,9 @@ import up.envisage.mapable.ui.registration.RetrofitInterface;
 
 public class ReportingActivity extends AppCompatActivity {
 
-    private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-    private String BASE_URL = "http://ec2-54-91-89-105.compute-1.amazonaws.com/";
 
     private ReportViewModel reportViewModel;
-    private UserViewModel userViewModel;
 
     String userID, dateTime, incidentType, Report, lon, lat, image, imageID2, outPhoto, imageString, outUserId;
 
@@ -75,7 +72,7 @@ public class ReportingActivity extends AppCompatActivity {
 
         //Initiating report class
         reportViewModel = ViewModelProviders.of(ReportingActivity.this).get(ReportViewModel.class);
-        userViewModel = ViewModelProviders.of(ReportingActivity.this).get(UserViewModel.class);
+        UserViewModel userViewModel = ViewModelProviders.of(ReportingActivity.this).get(UserViewModel.class);
 
         userViewModel.getLastUser().observe(ReportingActivity.this, UserTable -> {
             outUserId = UserTable.getUniqueId();
@@ -97,7 +94,8 @@ public class ReportingActivity extends AppCompatActivity {
         //Add logging as last interceptor
         httpClient.addInterceptor(logging);  // <-- this is the important line!
 
-        retrofit = new Retrofit.Builder()
+        String BASE_URL = "http://ec2-54-91-89-105.compute-1.amazonaws.com/"; // URL
+        Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(httpClient.build())
@@ -144,7 +142,7 @@ public class ReportingActivity extends AppCompatActivity {
             button_reportSend.setVisibility(View.VISIBLE);
         }
 
-        //checks for internet connection
+        //Checks for internet connection
         connection = isNetworkAvailable();
 
         button_reportSend.setOnClickListener(new View.OnClickListener() {
@@ -232,9 +230,10 @@ public class ReportingActivity extends AppCompatActivity {
                             reportViewModel.insert(report);
                         }
                     });
-                } else { //if no internet connection, report is stored in the local database
-                    //Toast.makeText(ReportingActivity.this, "No Internet Connection. Report will be saved in the device!",
-                            //Toast.LENGTH_LONG).show();
+                } else {
+                    //if no internet connection, report is stored in the local database
+                    Toast.makeText(ReportingActivity.this, "No Internet Connection. Report will be saved in the device!",
+                            Toast.LENGTH_LONG).show();
                     ReportTable report = new ReportTable();
                     report.setUniqueId(outUserId);
                     report.setDateTime(dateTime);
@@ -262,14 +261,14 @@ public class ReportingActivity extends AppCompatActivity {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
-    //----------------------------------------------------------------------------------------------convert from bitmap to byte array
+    //----------------------------------------------------------------------------------------------Convert from bitmap to byte array
     public byte[] getBytesFromBitmap(Bitmap bitmap) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
         return stream.toByteArray();
     }
 
-    //----------------------------------------------------------------------------------------------convert image to string
+    //----------------------------------------------------------------------------------------------Convert image to string
     public String imageConvertToString(String image) {
         Uri selectedImage = Uri.parse(image);
         String[] filePathColumn = {MediaStore.Images.Media.DATA};

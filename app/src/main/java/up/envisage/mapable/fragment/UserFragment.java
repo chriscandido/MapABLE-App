@@ -31,6 +31,8 @@ import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareDialog;
 import com.google.android.material.button.MaterialButton;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -64,13 +66,10 @@ public class UserFragment extends Fragment {
     private RecyclerView.LayoutManager layoutManager;
     private FragmentActivity listener;
 
-    private Retrofit retrofit;
     public RetrofitInterface retrofitInterface;
-    private String BASE_URL = "http://ec2-54-91-89-105.compute-1.amazonaws.com/";
 
     private Dialog dialog;
     private CallbackManager callbackManager;
-    private ShareDialog shareDialog;
 
     TextView textView_user_name, textView_user_username, textView_user_email, textView_user_myReport,
             textView_user_myStats, textView_myStats_submittedReports;
@@ -100,7 +99,7 @@ public class UserFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         callbackManager = CallbackManager.Factory.create();
-        shareDialog = new ShareDialog(listener);
+        ShareDialog shareDialog = new ShareDialog(listener);
 
         userViewModel = ViewModelProviders.of(UserFragment.this).get(UserViewModel.class);
 
@@ -124,7 +123,8 @@ public class UserFragment extends Fragment {
         //Add logging as last interceptor
         httpClient.addInterceptor(logging);  // <-- this is the important line!
 
-        retrofit = new Retrofit.Builder()
+        String BASE_URL = "http://ec2-54-91-89-105.compute-1.amazonaws.com/";
+        Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(httpClient.build())
@@ -143,7 +143,7 @@ public class UserFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_user, container, false);
     }
 
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
+    public void onViewCreated(@NotNull View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
 
         textView_user_name = view.findViewById(R.id.textView_user_name);
@@ -154,43 +154,37 @@ public class UserFragment extends Fragment {
 
         //Pending reports button
         textView_user_myReport = view.findViewById(R.id.textView_user_myReport);
-        textView_user_myReport.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myReport = new Intent(listener, MyReportActivity.class);
-                startActivity(myReport);
-            }
+        textView_user_myReport.setOnClickListener(v -> {
+            Intent myReport = new Intent(listener, MyReportActivity.class);
+            startActivity(myReport);
         });
 
         //Stats button
         textView_user_myStats = view.findViewById(R.id.textView_user_myStats);
-        textView_user_myStats.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        textView_user_myStats.setOnClickListener(v -> {
 
-                HashMap<String, String> map = new HashMap<>();
-                map.put("userID", outUserId);
+            HashMap<String, String> map = new HashMap<>();
+            map.put("userID", outUserId);
 
-                Call<StatsResult> call = retrofitInterface.getStats(map);
+            Call<StatsResult> call = retrofitInterface.getStats(map);
 
-                call.enqueue(new Callback<StatsResult>() {
+            call.enqueue(new Callback<StatsResult>() {
 
-                    @Override
-                    public void onResponse(Call<StatsResult> call, Response<StatsResult> response) {
-                        if(response.code() == 200) {
-                            total = response.body().getTotal();
-                            textView_myStats_submittedReports.setText(total.toString());
-                            Log.v("[UserFragment.java]", total.toString());
-                        }
+                @Override
+                public void onResponse(Call<StatsResult> call, Response<StatsResult> response) {
+                    if(response.code() == 200) {
+                        total = response.body().getTotal();
+                        textView_myStats_submittedReports.setText(total.toString());
+                        Log.v("[UserFragment.java]", total.toString());
                     }
+                }
 
-                    @Override
-                    public void onFailure(Call<StatsResult> call, Throwable t) {
+                @Override
+                public void onFailure(Call<StatsResult> call, Throwable t) {
 
-                    }
-                });
-                myStatsDialog();
-            }
+                }
+            });
+            myStatsDialog();
         });
     }
 
