@@ -113,7 +113,6 @@ public class LeaderboardActivity extends AppCompatActivity {
 
     }
 
-
     public void onStart(){
         super.onStart();
     }
