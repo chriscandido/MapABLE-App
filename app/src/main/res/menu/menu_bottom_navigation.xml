@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-        android:id="@+id/mainMenu_user"
-        android:enabled="true"
-        android:icon="@drawable/ic_mainmenu_userprofile"
-        android:title="User"
-        app:showAsAction="ifRoom"/>
 
+    <!-- Home -->
     <item
         android:id="@+id/mainMenu_home"
         android:enabled="true"
@@ -15,6 +10,23 @@
         android:title="Home"
         app:showAsAction="ifRoom"/>
 
+    <!-- Profile -->
+    <item
+        android:id="@+id/mainMenu_user"
+        android:enabled="true"
+        android:icon="@drawable/ic_mainmenu_userprofile"
+        android:title="User"
+        app:showAsAction="ifRoom"/>
+
+    <!-- Report -->
+    <item
+        android:id="@+id/mainMenu_report"
+        android:enabled="true"
+        android:icon="@drawable/logo_masdan_03"
+        android:title="Report"
+        app:showAsAction="ifRoom"/>
+
+    <!-- Map -->
     <item
         android:id="@+id/mainMenu_map"
         android:enabled="true"
@@ -22,10 +34,12 @@
         android:title="Map"
         app:showAsAction="ifRoom"/>
 
+    <!-- Support -->
     <item
         android:id="@+id/mainMenu_support"
         android:enabled="true"
         android:icon="@drawable/ic_mainmenu_support"
         android:title="Support"
         app:showAsAction="ifRoom"/>
+    
 </menu>

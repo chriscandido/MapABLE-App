@@ -13,7 +13,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/img_background_07"
+        android:background="@color/colorBackground"
         android:orientation="vertical"
         tools:context=".ui.registration.RegisterActivity">
 
@@ -24,40 +24,45 @@
             android:layout_marginTop="60dp"
             android:src="@drawable/logo_masdan_02"/>
 
+        <!-- Mag-sign up Text -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Mag-Sign up"
             android:textSize="20sp"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorBlack"
             android:textStyle="bold"
             android:fontFamily="@font/montserrat"/>
 
         <!-- Person Info -->
+        <!-- Name -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout_registerName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
-            android:textColorHint="@color/colorAccent02"
+            android:textColorHint="@color/colorGray"
             app:boxStrokeColor="@color/colorBackground"
-            app:hintTextColor="@color/colorAccent02"
+            app:hintTextColor="@color/colorGray"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:hint="Pangalan"
-                android:textSize="15sp"
-                android:textColor="@color/colorAccent02"
+                android:textSize="14sp"
+                android:textColor="@color/colorGray"
                 android:fontFamily="@font/montserrat"
                 android:keyPreviewLayout="@null"
                 android:inputType="text"
                 android:imeOptions="actionNext"/>
+
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Mobile Number -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout_registerMobileNum"
             android:layout_width="match_parent"
@@ -65,23 +70,26 @@
             android:layout_marginTop="5dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
-            android:textColorHint="@color/colorAccent02"
+            android:textColorHint="@color/colorGray"
             app:boxStrokeColor="@color/colorBackground"
-            app:hintTextColor="@color/colorAccent02"
+            app:hintTextColor="@color/colorGray"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
                 android:hint="Mobile Number"
-                android:textSize="15sp"
-                android:textColor="@color/colorAccent02"
+                android:textSize="14sp"
+                android:textColor="@color/colorGray"
                 android:fontFamily="@font/montserrat"
                 android:keyPreviewLayout="@null"
                 android:inputType="text"
                 android:imeOptions="actionNext"/>
+
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Email -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout_registerEmail"
             android:layout_width="match_parent"
@@ -89,23 +97,26 @@
             android:layout_marginTop="5dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
-            android:textColorHint="@color/colorAccent02"
+            android:textColorHint="@color/colorGray"
             app:boxStrokeColor="@color/colorBackground"
-            app:hintTextColor="@color/colorAccent02"
+            app:hintTextColor="@color/colorGray"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
                 android:hint="Email"
-                android:textSize="15sp"
-                android:textColor="@color/colorAccent02"
+                android:textSize="14sp"
+                android:textColor="@color/colorGray"
                 android:fontFamily="@font/montserrat"
                 android:keyPreviewLayout="@null"
                 android:inputType="text"
                 android:imeOptions="actionNext"/>
+
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Username -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout_registerUsername"
             android:layout_width="match_parent"
@@ -113,23 +124,26 @@
             android:layout_marginTop="5dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
-            android:textColorHint="@color/colorAccent02"
+            android:textColorHint="@color/colorGray"
             app:boxStrokeColor="@color/colorBackground"
-            app:hintTextColor="@color/colorAccent02"
+            app:hintTextColor="@color/colorGray"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
                 android:hint="Username"
-                android:textSize="15sp"
-                android:textColor="@color/colorAccent02"
+                android:textSize="14sp"
+                android:textColor="@color/colorGray"
                 android:fontFamily="@font/montserrat"
                 android:keyPreviewLayout="@null"
                 android:inputType="text"
                 android:imeOptions="actionNext"/>
+
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Password -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout_registerPassword"
             android:layout_width="match_parent"
@@ -137,42 +151,45 @@
             android:layout_marginTop="5dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
-            android:textColorHint="@color/colorAccent02"
+            android:textColorHint="@color/colorGray"
             app:boxStrokeColor="@color/colorBackground"
-            app:hintTextColor="@color/colorAccent02"
+            app:hintTextColor="@color/colorGray"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
                 android:hint="Password"
-                android:textSize="15sp"
-                android:textColor="@color/colorAccent02"
+                android:textSize="14sp"
+                android:textColor="@color/colorGray"
                 android:fontFamily="@font/montserrat"
                 android:keyPreviewLayout="@null"
                 android:imeOptions="actionDone"/>
+
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Sign-up Button -->
+        <!-- Sign up Button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_submit"
-            android:layout_width="150dp"
+            android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_gravity="center"
             android:backgroundTint="@color/colorText"
-            android:text="SIGN UP"
-            android:textSize="18sp"
-            android:textColor="@color/colorSecondary"
+            android:text="Sign up"
+            android:textSize="14sp"
+            android:textColor="@color/colorBlack"
             android:textStyle="bold"
             android:fontFamily="@font/montserrat_extrabold"
             android:onClick="@{(v) -> ClickListener.onClick(v)}"
             app:cornerRadius="20dp"
             style="@style/Widget.MaterialComponents.Button"/>
 
+        <!-- Log in Text -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -186,8 +203,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Meron nang Account? "
-                android:textSize="15sp"
-                android:textColor="@color/colorAccent02"
+                android:textSize="14sp"
+                android:textColor="@color/colorBlack"
                 android:fontFamily="@font/montserrat"/>
 
             <TextView
@@ -195,11 +212,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@+id/textView_registerText01"
-                android:text="MAG-LOG IN"
+                android:text="Log in"
                 android:textSize="15sp"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorText"
                 android:textStyle="bold"
-                android:fontFamily="@font/montserrat_extrabold"
+                android:fontFamily="@font/montserrat"
                 android:clickable="true"
                 android:focusable="true"
                 android:onClick="@{(v) -> ClickListener.onClick(v)}"/>

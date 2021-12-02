@@ -29,6 +29,7 @@ import javax.net.ssl.SSLEngineResult;
 
 import up.envisage.mapable.fragment.HomeFragment;
 import up.envisage.mapable.fragment.MapFragment;
+import up.envisage.mapable.fragment.ReportFragment;
 import up.envisage.mapable.fragment.SupportFragment;
 import up.envisage.mapable.fragment.UserFragment;
 import up.envisage.mapable.ui.home.ReportIncidentActivity;
@@ -36,8 +37,6 @@ import up.envisage.mapable.ui.home.ReportingActivity;
 import up.envisage.mapable.util.Constant;
 
 public class MainActivity extends AppCompatActivity {
-
-    private BottomNavigationView bottomNavigationView;
 
     String userID;
 
@@ -51,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         userID = login.getStringExtra("userID");
 
         //Bottom bar navigation
-        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomnavigation_menu);
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomnavigation_menu);
         bottomNavigationView.setOnNavigationItemSelectedListener(bottomNavigation);
 
         //Fragment
@@ -66,13 +65,16 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
             Fragment fragment = null;
             switch (menuItem.getItemId()) {
-                case R.id.mainMenu_user:
-                    fragment = new UserFragment();
-                    break;
                 case R.id.mainMenu_home:
                     fragment = new HomeFragment();
                     Intent homeFragment = new Intent(MainActivity.this, HomeFragment.class);
                     homeFragment.putExtra("userID", userID);
+                    break;
+                case R.id.mainMenu_user:
+                    fragment = new UserFragment();
+                    break;
+                case R.id.mainMenu_report:
+                    fragment = new ReportFragment();
                     break;
                 case R.id.mainMenu_map:
                     fragment = new MapFragment();

@@ -5,11 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     android:orientation="vertical"
-    android:background="@drawable/img_background_04"
     tools:context=".MainActivity">
 
+  <!-- Project logo -->
   <ImageView
+      android:id="@+id/imageView_mainMenu_logo"
       android:layout_width="wrap_content"
       android:layout_height="75dp"
       android:layout_marginBottom="45dp"
@@ -22,17 +24,18 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_alignParentBottom="true"
-      android:elevation="10dp"
-      android:background="@color/colorSecondary"
+      android:background="@color/colorBackground"
+      app:elevation="20dp"
       app:itemIconTint="@color/navigation_state"
       app:labelVisibilityMode="unlabeled"
       app:menu="@menu/menu_bottom_navigation"/>
 
+  <!-- Main Frame -->
   <FrameLayout
       android:id="@+id/fragmentLayout_container"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:layout_above="@+id/bottomnavigation_menu"/>
+      android:layout_above="@+id/imageView_mainMenu_logo"/>
 
 </RelativeLayout>
 

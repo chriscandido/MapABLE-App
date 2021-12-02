@@ -10,5 +10,7 @@
     //Text Color
     <color name="colorText">#ffcd5e</color>
     <color name="colorBackground">#FFF</color>
+    <color name="colorBlack">#000</color>
+    <color name="colorGray">#808080</color>
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#fff</color>
 </resources>
