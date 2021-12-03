@@ -26,23 +26,23 @@
             android:id="@+id/textView_homeLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="10dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/montserrat"
             android:gravity="center"
             android:text="UP Diliman, Quezon City"
-            android:textSize="12sp"
             android:textColor="@color/colorBlack"
-            android:textStyle="bold"
-            android:fontFamily="@font/montserrat" />
+            android:textSize="12sp"
+            android:textStyle="bold" />
 
         <ImageView
             android:layout_width="30dp"
             android:layout_height="20dp"
+            android:layout_alignParentTop="true"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="5dp"
-            android:layout_alignParentTop="true"
             android:layout_toStartOf="@+id/textView_homeLocation"
             android:src="@drawable/ic_mainmenu_location" />
 
@@ -62,7 +62,7 @@
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_gravity="center"
-            android:src="@drawable/ic_mainmenu_userprofile"/>
+            android:src="@drawable/ic_userprofile_profile"/>
 
         <!-- Name -->
         <TextView
