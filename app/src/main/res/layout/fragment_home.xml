@@ -11,10 +11,9 @@
     <RelativeLayout
         android:id="@+id/relativeLayout_mainHeader"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="100dp"
         android:background="@drawable/bg_box04">
 
-        <!-- MASDAN Logo -->
         <ImageView
             android:id="@+id/img_mainLogoMasdan"
             android:layout_width="90dp"
@@ -23,29 +22,27 @@
             android:layout_alignParentTop="true"
             android:src="@drawable/logo_masdan_03"/>
 
-        <!-- Location Icon -->
         <TextView
             android:id="@+id/textView_homeLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
             android:layout_alignParentTop="true"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/montserrat"
             android:gravity="center"
             android:text="UP Diliman, Quezon City"
-            android:textSize="12sp"
             android:textColor="@color/colorBlack"
-            android:textStyle="bold"
-            android:fontFamily="@font/montserrat" />
+            android:textSize="12sp"
+            android:textStyle="bold" />
 
-        <!-- Location Text -->
         <ImageView
             android:layout_width="30dp"
             android:layout_height="20dp"
-            android:layout_marginEnd="5dp"
             android:layout_alignParentTop="true"
-            android:layout_alignParentBottom="true"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="5dp"
             android:layout_toStartOf="@+id/textView_homeLocation"
             android:src="@drawable/ic_mainmenu_location" />
 

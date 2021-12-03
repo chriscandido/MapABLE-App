@@ -24,6 +24,7 @@
         android:enabled="true"
         android:icon="@drawable/logo_masdan_03"
         android:title="Report"
+        android:tooltipText="Send Report"
         app:showAsAction="ifRoom"/>
 
     <!-- Map -->
