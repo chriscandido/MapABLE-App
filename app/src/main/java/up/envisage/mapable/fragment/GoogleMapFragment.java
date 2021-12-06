@@ -78,7 +78,7 @@ public class GoogleMapFragment extends FragmentActivity
         final LatLng[] pinnedLocation = new LatLng[1];
 
         // Marker icon
-        Drawable userLoc = getResources().getDrawable(R.drawable.ic_report_userlocation_60x60);
+        Drawable userLoc = getResources().getDrawable(R.drawable.ic_report_userlocation_90x90);
         final BitmapDescriptor userIcon = getMarkerIconFromDrawable(userLoc);
 
         // Get current location using FusedLocation
@@ -106,7 +106,7 @@ public class GoogleMapFragment extends FragmentActivity
                 });
 
         //Marker icon
-        Drawable drawable = getResources().getDrawable(R.drawable.ic_report_location_target);
+        Drawable drawable = getResources().getDrawable(R.drawable.ic_report_userlocation_target_90x90);
         final BitmapDescriptor icon = getMarkerIconFromDrawable(drawable);
 
         googleMap.setOnMapLongClickListener(

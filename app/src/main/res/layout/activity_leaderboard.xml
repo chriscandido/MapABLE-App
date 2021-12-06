@@ -6,47 +6,67 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorBackground"
     tools:context=".ui.home.ReportingActivity">
 
-    <!-- Top Navigation Menu -->
+    <!-- Main Header -->
     <RelativeLayout
+        android:id="@+id/relativeLayout_mainHeader"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorSecondary">
+        android:layout_height="200dp"
+        android:background="@drawable/bg_box04">
 
-        <!-- Back button -->
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="197dp"
-            android:layout_height="30dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="122dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="91dp"
-            android:text="LEADERBOARD"
-            android:textAlignment="textStart"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/textView_report_back"
+        <LinearLayout
+            android:id="@+id/linearLayout_header_leaderBoard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:layout_alignParentStart="true"
-            android:text="Back"
-            android:clickable="true"
-            style="@style/navigationText"/>
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:text="Citizen Science"
+                android:textColor="@color/colorPrimary"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:text="Leadeboard"
+                android:textColor="@color/colorPrimary"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/img_mainLogoMasdan"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_below="@id/linearLayout_header_leaderBoard"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:src="@drawable/logo_masdan_03" />
 
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/Leaderboard_Recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"/>
 
 </LinearLayout>

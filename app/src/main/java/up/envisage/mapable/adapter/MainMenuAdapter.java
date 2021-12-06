@@ -52,18 +52,24 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.ViewHo
 
     //Title
     public String[] mainMenu_title = {
-            "MAY REPORT AKO!",
-            "MANILA BAY ALAMIN NATIN!",
-            "KILALANIN SI   IM4MANILABAY",
+            "Pormal na idineklara and BATTLE FOR ...",
+            "Ang G.R. No. 171947-48, o mas kilala ...",
+            "Nilagdaan ni Pangulong Rodrigo Duterte ...",
+            "Ang Philippine Clean Water Act ...",
+            "Ano ang Ecological Solid Waste Management Act ...",
+            "Alam niyo ba kung anong batas ang nagsasaad ..."
 //            "LEADERBOARD",
 //            "MY REPORTS"
     };
 
     //Icon
     public int[] mainMenu_icon = {
-            R.drawable.ic_mainmenu_report,
-            R.drawable.ic_mainmenu_aboutmanilabay,
-            R.drawable.ic_mainmenu_about,
+            R.drawable.img_policy_battleofmanilabay,
+            R.drawable.img_policy_manilabaymandamus,
+            R.drawable.img_policy_manilabaytaskforce,
+            R.drawable.img_policy_cleanwateract,
+            R.drawable.img_policy_solidwaste,
+            R.drawable.img_policy_fisheriescode
 //            R.drawable.ic_mainmenu_report,
 //            R.drawable.ic_mainmenu_report,
     };

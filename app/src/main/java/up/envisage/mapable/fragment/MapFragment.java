@@ -485,7 +485,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
                     .accuracyColor(Color.YELLOW)
                     .pulseEnabled(true)
                     .pulseColor(Color.BLUE)
-                    .foregroundDrawable(R.drawable.ic_report_userlocation_60x60)
+                    .foregroundDrawable(R.drawable.ic_report_userlocation_90x90)
                     .build();
 
             //Get instance of the component

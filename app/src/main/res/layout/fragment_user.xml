@@ -52,8 +52,8 @@
         android:id="@+id/linearLayout_userProfile_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="80dp"
         android:orientation="vertical">
 
         <!-- User Profile logo -->
@@ -62,20 +62,20 @@
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_gravity="center"
-            android:src="@drawable/ic_userprofile_profile"/>
+            android:src="@drawable/ic_userprofile_profile" />
 
         <!-- Name -->
         <TextView
             android:id="@+id/textView_user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/amplesoftpro_medium"
             android:text="Juan Dela Cruz"
-            android:textSize="25sp"
             android:textColor="@color/colorPrimary"
-            android:textStyle="bold"
-            android:fontFamily="@font/amplesoftpro_medium" />
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
         <!-- User Name -->
         <TextView
@@ -83,22 +83,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:fontFamily="@font/montserrat"
             android:text="cgcandido"
-            android:textSize="15sp"
             android:textColor="@color/colorPrimary"
-            android:fontFamily="@font/montserrat"/>
+            android:textSize="15sp" />
 
         <!-- Email address -->
         <TextView
             android:id="@+id/textView_user_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
             android:layout_gravity="center"
+            android:layout_marginBottom="50dp"
+            android:fontFamily="@font/montserrat"
             android:text="juandelacruz@gmail.com"
-            android:textSize="15sp"
             android:textColor="@color/colorPrimary"
-            android:fontFamily="@font/montserrat"/>
+            android:textSize="15sp" />
 
     </LinearLayout>
 
@@ -127,19 +127,20 @@
                     android:layout_height="30dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="20dp"
-                    android:src="@drawable/ic_userprofile_mypoints" />
+                    android:src="@drawable/ic_userprofile_unsentreports" />
 
                 <TextView
-                    android:id="@+id/textView_user_myStats"
+                    android:id="@+id/textView_userprofile_unsentreports"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/montserrat"
                     android:gravity="center_vertical"
-                    android:text="My Quests"
+                    android:text="Unsent Reports"
                     android:textAlignment="gravity"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -157,22 +158,22 @@
                     android:layout_height="30dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="20dp"
-                    android:src="@drawable/ic_userprofile_myreports" />
+                    android:src="@drawable/ic_userprofile_reportstatus" />
 
                 <TextView
-                    android:id="@+id/textView_user_leaderboard"
-                    android:layout_width="match_parent"
+                    android:id="@+id/textView_userprofile_reportstatus"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/montserrat"
                     android:gravity="center_vertical"
-                    android:text="Leaderboard"
-                    android:textColor="#009688"
-                    android:textSize="12sp" />
+                    android:text="Report Status"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
-
 
             <!-- Stats -->
             <LinearLayout
@@ -189,20 +190,21 @@
                     android:layout_height="30dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="20dp"
-                    android:src="@drawable/ic_userprofile_myreports" />
+                    android:src="@drawable/ic_userprofile_leaderoard" />
 
                 <TextView
-                    android:id="@+id/textView_user_myReportsList"
-                    android:layout_width="match_parent"
+                    android:id="@+id/textView_userprofile_leaderboard"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/montserrat"
                     android:gravity="center_vertical"
-                    android:text="Report Status"
+                    android:text="Leaderboard"
                     android:textAlignment="gravity"
-                    android:textColor="#009688"
-                    android:textSize="12sp" />
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -220,19 +222,20 @@
                     android:layout_height="30dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="20dp"
-                    android:src="@drawable/ic_userprofile_myreports" />
+                    android:src="@drawable/ic_userprofile_myquests" />
 
                 <TextView
-                    android:id="@+id/textView_user_myReports"
+                    android:id="@+id/textView_userprofile_myquests"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:fontFamily="@font/montserrat"
                     android:gravity="center_vertical"
-                    android:text="Unsent Reports"
+                    android:text="My Quests"
                     android:textAlignment="gravity"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 

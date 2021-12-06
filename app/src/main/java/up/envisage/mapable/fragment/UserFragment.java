@@ -69,6 +69,8 @@ public class UserFragment extends Fragment {
 
     TextView textView_user_name, textView_user_username, textView_user_email, textView_user_myReport,
             textView_user_myStats, textView_myStats_submittedReports, textView_user_myReportsList, textView_user_leaderboard;
+    TextView textView_userprofile_unsentreports, textView_userprofile_reportstatus, getTextView_userprofile_leaderboard,
+            textView_userprofile_myyquests;
 
     String outUserId;
     public Integer algalBloom, fishKill, waterPollution, ongoingReclamation,
@@ -147,8 +149,8 @@ public class UserFragment extends Fragment {
         userDetails();
 
         //Pending reports button
-        textView_user_myReport = view.findViewById(R.id.textView_user_myReports);
-        textView_user_myReport.setOnClickListener(new View.OnClickListener() {
+        textView_userprofile_unsentreports = view.findViewById(R.id.textView_userprofile_unsentreports);
+        textView_userprofile_unsentreports.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent myReport = new Intent(listener, MyReportActivity.class);
@@ -157,8 +159,8 @@ public class UserFragment extends Fragment {
         });
 
         //Stats button
-        textView_user_myStats = view.findViewById(R.id.textView_user_myStats);
-        textView_user_myStats.setOnClickListener(new View.OnClickListener() {
+        textView_userprofile_reportstatus = view.findViewById(R.id.textView_userprofile_reportstatus);
+        textView_userprofile_reportstatus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -221,8 +223,18 @@ public class UserFragment extends Fragment {
             }
         });
 
-        textView_user_myReportsList = view.findViewById(R.id.textView_user_myReportsList);
-        textView_user_myReportsList.setOnClickListener(new View.OnClickListener() {
+        getTextView_userprofile_leaderboard = view.findViewById(R.id.textView_userprofile_leaderboard);
+        getTextView_userprofile_leaderboard.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(listener, LeaderboardActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        textView_userprofile_myyquests = view.findViewById(R.id.textView_userprofile_myquests);
+        textView_userprofile_myyquests.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -235,16 +247,6 @@ public class UserFragment extends Fragment {
                 Intent intent = new Intent(listener, MyReportsListActivity.class);
 
                 intent.putExtra("userID", outUserId);
-                startActivity(intent);
-            }
-        });
-
-        textView_user_leaderboard = view.findViewById(R.id.textView_user_leaderboard);
-        textView_user_leaderboard.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(listener, LeaderboardActivity.class);
                 startActivity(intent);
             }
         });

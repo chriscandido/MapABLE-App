@@ -67,7 +67,7 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
         recyclerView.setHasFixedSize(true);
 
         //Linear layout manager
-        layoutManager = new LinearLayoutManager(listener);
+        layoutManager = new LinearLayoutManager(listener, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
 
         //Recycler view adapter

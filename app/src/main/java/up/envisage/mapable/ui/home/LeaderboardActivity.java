@@ -82,16 +82,14 @@ public class LeaderboardActivity extends AppCompatActivity {
 
                 List<Leaderboard> leaders = response.body();
 
-                for(Leaderboard leader : leaders ) {
-                    leaderboardList.add(leader);
-                }
+                assert leaders != null;
+                leaderboardList.addAll(leaders);
 
                 PutDataIntoRecyclerView(leaderboardList);
             }
 
             @Override
             public void onFailure(Call<List<Leaderboard>> call, Throwable t) {
-
             }
 
             private void PutDataIntoRecyclerView(List<Leaderboard> leaderboardList) {
@@ -99,15 +97,6 @@ public class LeaderboardActivity extends AppCompatActivity {
                 LeaderboardAdapter leaderboardAdapter = new LeaderboardAdapter(getApplicationContext(), leaderboardList);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 recyclerView.setAdapter(leaderboardAdapter);
-            }
-        });
-
-        //back to Main Menu Text Button
-        TextView textView_reportBack = findViewById(R.id.textView_report_back);
-        textView_reportBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
             }
         });
 
@@ -127,7 +116,6 @@ public class LeaderboardActivity extends AppCompatActivity {
 
     public void onBackPressed(){
         super.onBackPressed();
-        Intent intent = new Intent(LeaderboardActivity.this, MainActivity.class);
-        startActivity(intent);
+        finish();
     }
 }
