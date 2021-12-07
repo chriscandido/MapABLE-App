@@ -41,11 +41,13 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import up.envisage.mapable.R;
+import up.envisage.mapable.adapter.MyQuestAdapter;
 import up.envisage.mapable.db.table.UserTable;
 import up.envisage.mapable.model.ReportViewModel;
 import up.envisage.mapable.model.UserReport;
 import up.envisage.mapable.model.UserViewModel;
 import up.envisage.mapable.ui.home.LeaderboardActivity;
+import up.envisage.mapable.ui.home.MyQuestActivity;
 import up.envisage.mapable.ui.home.MyReportActivity;
 import up.envisage.mapable.ui.home.MyReportsListActivity;
 import up.envisage.mapable.ui.home.UserStatisticsActivity;
@@ -239,7 +241,7 @@ public class UserFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                HashMap<String, String> map = new HashMap<>();
+/*                HashMap<String, String> map = new HashMap<>();
                 map.put("userID", outUserId);
 
                 Call<List<UserReport>> call = retrofitInterface.getUserReportsList(map);
@@ -247,6 +249,9 @@ public class UserFragment extends Fragment {
                 Intent intent = new Intent(listener, MyReportsListActivity.class);
 
                 intent.putExtra("userID", outUserId);
+                startActivity(intent);*/
+
+                Intent intent = new Intent(listener, MyQuestActivity.class);
                 startActivity(intent);
             }
         });

@@ -66,6 +66,7 @@
         <activity android:name=".ui.home.report.ReportIbaPa"/>
         <!-- User Profile -->
         <activity android:name=".ui.home.MyReportActivity"/>
+        <activity android:name=".ui.home.MyQuestActivity"/>
         <!-- Support -->
         <activity android:name=".ui.support.DevTeamActivity"/>
         <!-- Fonts -->
