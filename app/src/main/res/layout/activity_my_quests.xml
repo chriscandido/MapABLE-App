@@ -84,37 +84,114 @@
                 app:cardPreventCornerOverlap="true"
                 app:cardElevation="10dp">
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:gravity="center"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/textView_myquest_basiclevel"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:layout_gravity="center"
+                        android:gravity="center"
                         android:text="Basic Level"
                         android:textColor="@color/colorPrimary"
                         android:textSize="24sp"
                         android:textStyle="bold"
                         android:fontFamily="@font/montserrat"/>
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerView_myquest_basiclevel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginLeft="2dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginRight="2dp"
-                        android:layout_marginBottom="2dp"
-                        android:orientation="horizontal"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+                    <LinearLayout
+                        android:id="@+id/linearLayout_myquest_basiclevel"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_below="@+id/textView_myquest_basiclevel"
+                        android:orientation="horizontal">
 
-                </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/linearLayout_myquest_tutorial"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/imageView_myquest_tutorial"
+                                android:layout_width="100dp"
+                                android:layout_height="120dp"
+                                android:src="@drawable/ic_badge_lock"/>
+
+                            <TextView
+                                android:id="@+id/textView_myquest_tutorial"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:gravity="center"
+                                android:text="Completed App Tutorial"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/montserrat"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout_myquest_firstreport"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/imageView_myquest_firstreport"
+                                android:layout_width="100dp"
+                                android:layout_height="120dp"
+                                android:src="@drawable/ic_badge_lock"/>
+
+                            <TextView
+                                android:id="@+id/textView_myquest_firstreport"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:gravity="center"
+                                android:text="Completed First Report"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/montserrat"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout_myquest_verifiedreport"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_toEndOf="@+id/linearLayout_myquest_firstreport"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/imageView_myquest_verifiedreport"
+                                android:layout_width="100dp"
+                                android:layout_height="120dp"
+                                android:src="@drawable/ic_badge_lock" />
+
+                            <TextView
+                                android:id="@+id/textView_myquest_verifiedreport"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:fontFamily="@font/montserrat"
+                                android:gravity="center"
+                                android:text="First Verified Report"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
 
@@ -149,24 +226,160 @@
                         android:textStyle="bold"
                         android:fontFamily="@font/montserrat"/>
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerView_myquest_citizenscience"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginLeft="2dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginRight="2dp"
-                        android:layout_marginBottom="2dp"
-                        android:orientation="horizontal"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+                    <LinearLayout
+                        android:id="@+id/linearLayout_myquest_citizenscience"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout_myquest_junior"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/imageView_myquest_junior"
+                                android:layout_width="100dp"
+                                android:layout_height="120dp"
+                                android:src="@drawable/ic_badge_lock"/>
+
+                            <TextView
+                                android:id="@+id/textView_myquest_junior"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:gravity="center"
+                                android:text="Junior Citizen Science"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/montserrat"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout_myquest_senior"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_toEndOf="@+id/linearLayout_myquest_junior"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/imageView_myquest_senior"
+                                android:layout_width="100dp"
+                                android:layout_height="120dp"
+                                android:src="@drawable/ic_badge_lock"/>
+
+                            <TextView
+                                android:id="@+id/textView_myquest_senior"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:gravity="center"
+                                android:text="Senior Citizen Science"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/montserrat"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout_myquest_professional"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/imageView_myquest_professional"
+                                android:layout_width="100dp"
+                                android:layout_height="120dp"
+                                android:src="@drawable/ic_badge_lock" />
+
+                            <TextView
+                                android:id="@+id/textView_myquest_professional"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:fontFamily="@font/montserrat"
+                                android:gravity="center"
+                                android:text="Professional Citizen Science"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout_myquest_citizenscience02"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout_myquest_master"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/imageView_myquest_master"
+                                android:layout_width="100dp"
+                                android:layout_height="120dp"
+                                android:src="@drawable/ic_badge_lock"/>
+
+                            <TextView
+                                android:id="@+id/textView_myquest_master"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:gravity="center"
+                                android:text="Master Citizen Science"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/montserrat"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout_myquest_great"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/imageView_myquest_great"
+                                android:layout_width="100dp"
+                                android:layout_height="120dp"
+                                android:src="@drawable/ic_badge_lock"/>
+
+                            <TextView
+                                android:id="@+id/textView_myquest_great"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:gravity="center"
+                                android:text="The Great Citizen Science"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/montserrat"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
-            <!-- Citizen Science -->
+            <!-- Bilang Tagapagmasid -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView_myquest_tagapagmasid"
                 android:layout_width="match_parent"
@@ -197,18 +410,214 @@
                         android:textStyle="bold"
                         android:fontFamily="@font/montserrat"/>
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerView_myquest_tagapagmasid"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginLeft="2dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginRight="2dp"
-                        android:layout_marginBottom="2dp"
-                        android:orientation="horizontal"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+                    <LinearLayout
+                        android:id="@+id/linearLayout_myquest_tagapagmasid"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout_myquest_algalbloom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/imageView_myquest_algalbloom"
+                                android:layout_width="100dp"
+                                android:layout_height="120dp"
+                                android:src="@drawable/ic_badge_lock"/>
+
+                            <TextView
+                                android:id="@+id/textView_myquest_algalbloom"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:gravity="center"
+                                android:text="Algal Bloom"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/montserrat"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout_myquest_fishkill"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/imageView_myquest_fishkill"
+                                android:layout_width="100dp"
+                                android:layout_height="120dp"
+                                android:src="@drawable/ic_badge_lock"/>
+
+                            <TextView
+                                android:id="@+id/textView_myquest_fishkill"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:gravity="center"
+                                android:text="Fish Kill"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/montserrat"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout_myquest_hyacinth"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/imageView_myquest_hyacinth"
+                                android:layout_width="100dp"
+                                android:layout_height="120dp"
+                                android:src="@drawable/ic_badge_lock" />
+
+                            <TextView
+                                android:id="@+id/textView_myquest_hyacinth"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:fontFamily="@font/montserrat"
+                                android:gravity="center"
+                                android:text="Water Hyacinth"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout_myquest_tagapagmasid02"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout_myquest_solidwaste"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/imageView_myquest_solidwaste"
+                                android:layout_width="100dp"
+                                android:layout_height="120dp"
+                                android:src="@drawable/ic_badge_lock"/>
+
+                            <TextView
+                                android:id="@+id/textView_myquest_solidwaste"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:gravity="center"
+                                android:text="Solid Waste"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/montserrat"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout_myquest_waterpollution"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/imageView_myquest_waterpollution"
+                                android:layout_width="100dp"
+                                android:layout_height="120dp"
+                                android:src="@drawable/ic_badge_lock"/>
+
+                            <TextView
+                                android:id="@+id/textView_myquest_waterpollution"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:gravity="center"
+                                android:text="Water Pollution"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/montserrat"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout_myquest_reclamation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/imageView_myquest_reclamation"
+                                android:layout_width="100dp"
+                                android:layout_height="120dp"
+                                android:src="@drawable/ic_badge_lock"/>
+
+                            <TextView
+                                android:id="@+id/textView_myquest_reclamation"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:gravity="center"
+                                android:text="Ongoing Reclamation"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/montserrat"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout_myquest_tagapagmasid03"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout_myquest_certified"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/imageView_myquest_certified"
+                                android:layout_width="100dp"
+                                android:layout_height="120dp"
+                                android:src="@drawable/ic_badge_lock"/>
+
+                            <TextView
+                                android:id="@+id/textView_myquest_certified"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:gravity="center"
+                                android:text="Certified Tagapagmasid"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/montserrat"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 

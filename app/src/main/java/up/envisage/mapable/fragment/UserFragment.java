@@ -30,7 +30,6 @@ import com.google.android.material.button.MaterialButton;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -41,15 +40,12 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import up.envisage.mapable.R;
-import up.envisage.mapable.adapter.MyQuestAdapter;
 import up.envisage.mapable.db.table.UserTable;
 import up.envisage.mapable.model.ReportViewModel;
-import up.envisage.mapable.model.UserReport;
 import up.envisage.mapable.model.UserViewModel;
 import up.envisage.mapable.ui.home.LeaderboardActivity;
 import up.envisage.mapable.ui.home.MyQuestActivity;
 import up.envisage.mapable.ui.home.MyReportActivity;
-import up.envisage.mapable.ui.home.MyReportsListActivity;
 import up.envisage.mapable.ui.home.UserStatisticsActivity;
 import retrofitInterface.RetrofitInterface;
 import up.envisage.mapable.model.StatsResult;
@@ -71,7 +67,7 @@ public class UserFragment extends Fragment {
 
     TextView textView_user_name, textView_user_username, textView_user_email, textView_user_myReport,
             textView_user_myStats, textView_myStats_submittedReports, textView_user_myReportsList, textView_user_leaderboard;
-    TextView textView_userprofile_unsentreports, textView_userprofile_reportstatus, getTextView_userprofile_leaderboard,
+    TextView textView_userprofile_unsentreports, textView_userprofile_reportstatus, textView_userprofile_leaderboard,
             textView_userprofile_myyquests;
 
     String outUserId;
@@ -225,9 +221,8 @@ public class UserFragment extends Fragment {
             }
         });
 
-        getTextView_userprofile_leaderboard = view.findViewById(R.id.textView_userprofile_leaderboard);
-        getTextView_userprofile_leaderboard.setOnClickListener(new View.OnClickListener() {
-
+        textView_userprofile_leaderboard = view.findViewById(R.id.textView_userprofile_leaderboard);
+        textView_userprofile_leaderboard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(listener, LeaderboardActivity.class);
@@ -237,7 +232,6 @@ public class UserFragment extends Fragment {
 
         textView_userprofile_myyquests = view.findViewById(R.id.textView_userprofile_myquests);
         textView_userprofile_myyquests.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
 
@@ -251,8 +245,44 @@ public class UserFragment extends Fragment {
                 intent.putExtra("userID", outUserId);
                 startActivity(intent);*/
 
-                Intent intent = new Intent(listener, MyQuestActivity.class);
-                startActivity(intent);
+/*                HashMap<String, String> map = new HashMap<>();
+                map.put("userID", outUserId);
+
+                Call<StatsResult> call = retrofitInterface.getStats(map);
+
+                call.enqueue(new Callback<StatsResult>() {
+
+                    @Override
+                    public void onResponse(Call<StatsResult> call, Response<StatsResult> response) {
+                        if(response.code() == 200) {
+                            algalBloom = response.body().getAlgalBloom();
+                            fishKill = response.body().getFishKill();
+                            waterPollution = response.body().getWaterPollution();
+                            ongoingReclamation = response.body().getOngoingReclamation();
+                            waterHyacinth = response.body().getWaterHyacinth();
+                            solidWaste = response.body().getSolidWaste();
+                            otherIssues = response.body().getOthers();
+                            verified = response.body().getVerified();
+                            unverified = response.body().getUnverified();
+                            falsePositive = response.body().getFalsePositive();
+                            total = response.body().getTotal();
+
+                            Intent myQuestIntent = new Intent(listener, MyQuestActivity.class);
+                            myQuestIntent.putExtra("userID", outUserId);
+
+                            startActivity(myQuestIntent);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<StatsResult> call, Throwable t) {
+
+                    }
+                });*/
+
+                Intent myQuestIntent = new Intent(listener, MyQuestActivity.class);
+                myQuestIntent.putExtra("userID", outUserId);
+                startActivity(myQuestIntent);
             }
         });
     }
