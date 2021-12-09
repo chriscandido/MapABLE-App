@@ -9,18 +9,25 @@
 
     <!-- Main Header -->
     <RelativeLayout
-        android:id="@+id/relativeLayout_mainHeader"
+        android:id="@+id/relativeLayout_mainHeader_userprofile"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@drawable/bg_box04">
+        android:layout_height="200dp">
+
+        <ImageView
+            android:id="@+id/imageView_mainHeader_userprofile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/bg_box04"
+            android:transitionName="imageView_mainHeader_userprofile_transition"/>
+
 
         <ImageView
             android:id="@+id/img_mainLogoMasdan"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:layout_marginStart="30dp"
             android:layout_alignParentTop="true"
-            android:src="@drawable/logo_masdan_03"/>
+            android:layout_marginStart="30dp"
+            android:src="@drawable/logo_masdan_03" />
 
         <TextView
             android:id="@+id/textView_homeLocation"

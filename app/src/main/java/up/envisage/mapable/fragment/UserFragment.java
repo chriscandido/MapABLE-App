@@ -7,20 +7,26 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.transition.Transition;
+import android.transition.TransitionInflater;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.facebook.CallbackManager;
@@ -139,6 +145,10 @@ public class UserFragment extends Fragment {
 
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
+
+        ImageView imageView_mainHeader_userprofile = view.findViewById(R.id.imageView_mainHeader_userprofile);
+        ViewCompat.setTransitionName(imageView_mainHeader_userprofile, "imageView_mainHeader_userprofile_transition");
+
 
         textView_user_name = view.findViewById(R.id.textView_user_name);
         textView_user_username = view.findViewById(R.id.textView_user_username);

@@ -2,6 +2,7 @@ package up.envisage.mapable;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 
 import android.content.Context;
@@ -10,9 +11,13 @@ import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
+import android.transition.TransitionInflater;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
@@ -39,6 +44,7 @@ import up.envisage.mapable.util.Constant;
 public class MainActivity extends AppCompatActivity {
 
     String userID;
+    private RelativeLayout relativeLayout_mainHeader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +60,8 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(bottomNavigation);
 
         //Fragment
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentLayout_container, new HomeFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentLayout_container, new HomeFragment())
+                .commit();
 
         //Location settings
         displayLocationSettingsRequest(this);
@@ -83,7 +90,9 @@ public class MainActivity extends AppCompatActivity {
                     fragment = new SupportFragment();
                     break;
             }
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentLayout_container, fragment).commit();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragmentLayout_container, fragment)
+                    .commit();
             return true;
         }
     };

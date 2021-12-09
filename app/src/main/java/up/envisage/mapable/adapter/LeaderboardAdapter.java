@@ -79,7 +79,21 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
             holder.badge.setImageResource(R.drawable.ic_userprofile_leaderoardtop2);
         } else if (position == 2) {
             holder.badge.setImageResource(R.drawable.ic_userprofile_leaderoardtop3);
-        } else holder.badge.setImageResource(0);
+        } else if (position == 3) {
+            holder.badge.setImageResource(R.drawable.ic_userprofile_leaderboardtop4);
+        } else if (position == 4) {
+            holder.badge.setImageResource(R.drawable.ic_userprofile_leaderboardtop5);
+        } else if (position == 5) {
+            holder.badge.setImageResource(R.drawable.ic_userprofile_leaderboardtop6);
+        } else if (position == 6) {
+            holder.badge.setImageResource(R.drawable.ic_userprofile_leaderboardtop7);
+        } else if (position == 7) {
+            holder.badge.setImageResource(R.drawable.ic_userprofile_leaderboardtop8);
+        } else if (position == 8) {
+            holder.badge.setImageResource(R.drawable.ic_userprofile_leaderboardtop9);
+        } else {
+            holder.badge.setImageResource(R.drawable.ic_userprofile_leaderboardtop10);
+        }
 
     }
 

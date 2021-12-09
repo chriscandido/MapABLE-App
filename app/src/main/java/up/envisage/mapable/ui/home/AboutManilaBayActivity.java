@@ -20,8 +20,7 @@ public class AboutManilaBayActivity extends AppCompatActivity {
 
         //Button go back
         textView_informationManilaBay_back.setOnClickListener(v -> {
-            Intent back = new Intent(AboutManilaBayActivity.this, InformationActivity.class);
-            startActivity(back);
+            finish();
         });
     }
 
@@ -39,7 +38,6 @@ public class AboutManilaBayActivity extends AppCompatActivity {
 
     public void onBackPressed(){
         super.onBackPressed();
-        Intent intent = new Intent(AboutManilaBayActivity.this, InformationActivity.class);
-        startActivity(intent);
+        finish();
     }
 }

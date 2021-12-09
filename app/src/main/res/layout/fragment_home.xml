@@ -12,8 +12,14 @@
     <RelativeLayout
         android:id="@+id/relativeLayout_mainHeader"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@drawable/bg_box04">
+        android:layout_height="100dp">
+
+        <ImageView
+            android:id="@+id/imageView_mainHeader_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/bg_box04"
+            android:transitionName="imageView_mainHeader_transition"/>
 
         <ImageView
             android:id="@+id/img_mainLogoMasdan"
@@ -94,7 +100,7 @@
 
                     <!-- Image Background -->
                     <ImageView
-                        android:id="@+id/imageView_informationBackground"
+                        android:id="@+id/imageView_mainMenu_alaminnatin"
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
                         android:src="@drawable/img_kilalanin_manilabay"
@@ -172,7 +178,7 @@
                         android:id="@+id/imageView_mainMenu_im4ManilaBay"
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
-                        android:src="@drawable/logo_im4manilabay"
+                        android:src="@drawable/img_kilalanin_im4manilabay"
                         android:scaleType="centerCrop"
                         android:adjustViewBounds="true"/>
 

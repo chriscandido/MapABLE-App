@@ -156,7 +156,9 @@ public class MyQuestActivity extends AppCompatActivity {
                 imageView_myquest_algalbloom.setImageResource(R.drawable.ic_badge_bronze_algalbloom);
             } else if (algalbloom < 10) {
                 imageView_myquest_algalbloom.setImageResource(R.drawable.ic_badge_silver_algalbloom);
-            }else {
+            } else if (algalbloom > 10) {
+                imageView_myquest_algalbloom.setImageResource(R.drawable.ic_badge_gold_algalbloom);
+            } else {
                 imageView_myquest_algalbloom.setImageResource(R.drawable.ic_badge_lock);
             }
         }
@@ -167,6 +169,8 @@ public class MyQuestActivity extends AppCompatActivity {
                 imageView_myquest_fishkill.setImageResource(R.drawable.ic_badge_bronze_fishkill);
             } else if (fishkill < 10) {
                 imageView_myquest_fishkill.setImageResource(R.drawable.ic_badge_silver_fishkill);
+            } else if (fishkill > 10) {
+                imageView_myquest_fishkill.setImageResource(R.drawable.ic_badge_gold_fishkill);
             }else {
                 imageView_myquest_fishkill.setImageResource(R.drawable.ic_badge_lock);
             }
@@ -178,6 +182,8 @@ public class MyQuestActivity extends AppCompatActivity {
                 imageView_myquest_hyacinth.setImageResource(R.drawable.ic_badge_bronze_hyacinth);
             } else if (hyacinth < 10) {
                 imageView_myquest_hyacinth.setImageResource(R.drawable.ic_badge_silver_hyacinth);
+            } else if (hyacinth > 10) {
+                imageView_myquest_hyacinth.setImageResource(R.drawable.ic_badge_gold_hyacinth);
             } else {
                 imageView_myquest_hyacinth.setImageResource(R.drawable.ic_badge_lock);
             }
@@ -189,6 +195,8 @@ public class MyQuestActivity extends AppCompatActivity {
                 imageView_myquest_solidwaste.setImageResource(R.drawable.ic_badge_bronze_soildwaste);
             } else if (solidwaste < 10) {
                 imageView_myquest_solidwaste.setImageResource(R.drawable.ic_badge_silver_solidwaste);
+            } else if (solidwaste > 10) {
+                imageView_myquest_solidwaste.setImageResource(R.drawable.ic_badge_gold_solidwaste);
             }else {
                 imageView_myquest_solidwaste.setImageResource(R.drawable.ic_badge_lock);
             }
@@ -200,6 +208,8 @@ public class MyQuestActivity extends AppCompatActivity {
                 imageView_myquest_waterpollution.setImageResource(R.drawable.ic_badge_bronze_waterpollution);
             } else if (waterpollution < 10) {
                 imageView_myquest_waterpollution.setImageResource(R.drawable.ic_badge_silver_waterpollution);
+            } else if (waterpollution > 10) {
+                imageView_myquest_waterpollution.setImageResource(R.drawable.ic_badge_gold_waterpollution);
             } else {
                 imageView_myquest_waterpollution.setImageResource(R.drawable.ic_badge_lock);
             }
@@ -210,7 +220,9 @@ public class MyQuestActivity extends AppCompatActivity {
             if (reclamation < 3 ) {
                 imageView_myquest_reclamation.setImageResource(R.drawable.ic_badge_bronze_reclamation);
             } else if (reclamation < 10) {
-                imageView_myquest_hyacinth.setImageResource(R.drawable.ic_badge_silver_reclamation);
+                imageView_myquest_reclamation.setImageResource(R.drawable.ic_badge_silver_reclamation);
+            } else if (reclamation > 10) {
+                imageView_myquest_reclamation.setImageResource(R.drawable.ic_badge_gold_reclamation);
             }else {
                 imageView_myquest_reclamation.setImageResource(R.drawable.ic_badge_lock);
             }
