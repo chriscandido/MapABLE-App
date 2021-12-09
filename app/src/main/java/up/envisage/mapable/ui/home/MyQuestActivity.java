@@ -27,6 +27,8 @@ public class MyQuestActivity extends AppCompatActivity {
 
     RetrofitInterface retrofitInterface;
     private ImageView imageView_myquest_tutorial, imageView_myquest_firstreport, imageView_myquest_verifiedreport;
+    private ImageView imageView_myquest_algalbloom, imageView_myquest_fishkill, imageView_myquest_hyacinth,
+                        imageView_myquest_solidwaste, imageView_myquest_waterpollution, imageView_myquest_reclamation, imageView_myquest_certified;
     private HashMap<String, Integer> userStat;
 
     @SuppressLint("LongLogTag")
@@ -93,6 +95,12 @@ public class MyQuestActivity extends AppCompatActivity {
                     Log.v("[ Call Enqueue ]", "Total: " + String.valueOf(verified));
 
                     setBasicLevelImageResource(total, verified);
+                    setTagapagmasidImageResource(algalBloom,
+                            fishKill,
+                            waterHyacinth,
+                            solidWaste,
+                            waterPollution,
+                            ongoingReclamation);
 
                 }
             }
@@ -123,6 +131,89 @@ public class MyQuestActivity extends AppCompatActivity {
             imageView_myquest_verifiedreport.setImageResource(R.drawable.ic_badge_firstverified);
         } else {
             imageView_myquest_verifiedreport.setImageResource(R.drawable.ic_badge_lock);
+        }
+
+    }
+
+    public void setTagapagmasidImageResource(Integer algalbloom,
+                                             Integer fishkill,
+                                             Integer hyacinth,
+                                             Integer solidwaste,
+                                             Integer waterpollution,
+                                             Integer reclamation){
+
+        imageView_myquest_algalbloom = findViewById(R.id.imageView_myquest_algalbloom);
+        imageView_myquest_fishkill = findViewById(R.id.imageView_myquest_fishkill);
+        imageView_myquest_hyacinth = findViewById(R.id.imageView_myquest_hyacinth);
+        imageView_myquest_solidwaste = findViewById(R.id.imageView_myquest_solidwaste);
+        imageView_myquest_waterpollution = findViewById(R.id.imageView_myquest_waterpollution);
+        imageView_myquest_reclamation = findViewById(R.id.imageView_myquest_reclamation);
+        imageView_myquest_certified = findViewById(R.id.imageView_myquest_certified);
+
+        //Algal Bloom Condition
+        if ( algalbloom > 0) {
+            if (algalbloom < 3 ) {
+                imageView_myquest_algalbloom.setImageResource(R.drawable.ic_badge_bronze_algalbloom);
+            } else if (algalbloom < 10) {
+                imageView_myquest_algalbloom.setImageResource(R.drawable.ic_badge_silver_algalbloom);
+            }else {
+                imageView_myquest_algalbloom.setImageResource(R.drawable.ic_badge_lock);
+            }
+        }
+
+        // Fish kill Condition
+        if ( fishkill > 0) {
+            if (fishkill < 3 ) {
+                imageView_myquest_fishkill.setImageResource(R.drawable.ic_badge_bronze_fishkill);
+            } else if (fishkill < 10) {
+                imageView_myquest_fishkill.setImageResource(R.drawable.ic_badge_silver_fishkill);
+            }else {
+                imageView_myquest_fishkill.setImageResource(R.drawable.ic_badge_lock);
+            }
+        }
+
+        // Hyacinth Condition
+        if ( hyacinth > 0) {
+            if (hyacinth < 3 ) {
+                imageView_myquest_hyacinth.setImageResource(R.drawable.ic_badge_bronze_hyacinth);
+            } else if (hyacinth < 10) {
+                imageView_myquest_hyacinth.setImageResource(R.drawable.ic_badge_silver_hyacinth);
+            } else {
+                imageView_myquest_hyacinth.setImageResource(R.drawable.ic_badge_lock);
+            }
+        }
+
+        // Solid Waste Condition
+        if ( solidwaste > 0) {
+            if (solidwaste < 3 ) {
+                imageView_myquest_solidwaste.setImageResource(R.drawable.ic_badge_bronze_soildwaste);
+            } else if (solidwaste < 10) {
+                imageView_myquest_solidwaste.setImageResource(R.drawable.ic_badge_silver_solidwaste);
+            }else {
+                imageView_myquest_solidwaste.setImageResource(R.drawable.ic_badge_lock);
+            }
+        }
+
+        // Water pollution Condition
+        if ( waterpollution > 0) {
+            if (waterpollution < 3 ) {
+                imageView_myquest_waterpollution.setImageResource(R.drawable.ic_badge_bronze_waterpollution);
+            } else if (waterpollution < 10) {
+                imageView_myquest_waterpollution.setImageResource(R.drawable.ic_badge_silver_waterpollution);
+            } else {
+                imageView_myquest_waterpollution.setImageResource(R.drawable.ic_badge_lock);
+            }
+        }
+
+        // Reclamation Condition
+        if ( reclamation > 0) {
+            if (reclamation < 3 ) {
+                imageView_myquest_reclamation.setImageResource(R.drawable.ic_badge_bronze_reclamation);
+            } else if (reclamation < 10) {
+                imageView_myquest_hyacinth.setImageResource(R.drawable.ic_badge_silver_reclamation);
+            }else {
+                imageView_myquest_reclamation.setImageResource(R.drawable.ic_badge_lock);
+            }
         }
 
     }
