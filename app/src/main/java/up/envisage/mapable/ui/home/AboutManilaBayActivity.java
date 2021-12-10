@@ -2,6 +2,7 @@ package up.envisage.mapable.ui.home;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,10 +17,10 @@ public class AboutManilaBayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aboutmanilabay);
 
-        TextView textView_informationManilaBay_back = findViewById(R.id.textView_informationManilaBay_back);
+        ImageView imageView_aboutManilaBay_back = findViewById(R.id.imageView_aboutManilaBay_back);
 
-        //Button go back
-        textView_informationManilaBay_back.setOnClickListener(v -> {
+        // Go Back Button
+        imageView_aboutManilaBay_back.setOnClickListener(v -> {
             finish();
         });
     }

@@ -3,6 +3,7 @@ package up.envisage.mapable.ui.support;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,8 +20,8 @@ public class DevTeamActivity extends AppCompatActivity {
         setContentView(R.layout.activity_devteam);
 
         //back to Main Menu Text Button
-        TextView textView_supportDev_back = findViewById(R.id.textView_devTeam_back);
-        textView_supportDev_back.setOnClickListener(new View.OnClickListener() {
+        ImageView imageView_devTeam_back = findViewById(R.id.imageView_devTeam_back);
+        imageView_devTeam_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent back = new Intent(DevTeamActivity.this, MainActivity.class);
@@ -28,5 +29,21 @@ public class DevTeamActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void onStart(){
+        super.onStart();
+    }
+
+    public void onResume(){
+        super.onResume();
+    }
+
+    public void onPause(){
+        super.onPause();
+    }
+
+    public void onBackPressed(){
+        finish();
     }
 }

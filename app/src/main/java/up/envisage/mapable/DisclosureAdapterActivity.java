@@ -12,6 +12,7 @@ import android.provider.Settings;
 import android.text.Html;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,11 +36,12 @@ public class DisclosureAdapterActivity extends AppCompatActivity {
     final private int REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS = 124;
 
     private ViewPager viewPager;
-    private LinearLayout linearLayout;
+    private TabLayout tabLayout;
 
     private TextView[] dots;
 
     private DisclosureAdapter disclosureAdapter;
+    private MaterialButton button_disclosure_ok, button_disclosure_cancel;
 
     String userID;
 
@@ -50,15 +53,16 @@ public class DisclosureAdapterActivity extends AppCompatActivity {
         userID = login.getStringExtra("userID");
 
         viewPager = findViewById(R.id.slideViewPager);
-        linearLayout = findViewById(R.id.linearLayout_dots);
+        tabLayout = findViewById(R.id.linearLayout_dots);
+        tabLayout.setupWithViewPager(viewPager, true);
 
         disclosureAdapter = new DisclosureAdapter(this);
         viewPager.setAdapter(disclosureAdapter);
         viewPager.addOnPageChangeListener(viewListener);
 
-        addDotsIndicator(0);
+        //addDotsIndicator(0);
 
-        MaterialButton button_disclosure_ok = findViewById(R.id.button_disclosure_turnon);
+        button_disclosure_ok = findViewById(R.id.button_disclosure_turnon);
         button_disclosure_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,7 +80,7 @@ public class DisclosureAdapterActivity extends AppCompatActivity {
             }
         });
 
-        MaterialButton button_disclosure_cancel = findViewById(R.id.button_disclosure_cancel);
+        button_disclosure_cancel = findViewById(R.id.button_disclosure_cancel);
         button_disclosure_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,20 +92,21 @@ public class DisclosureAdapterActivity extends AppCompatActivity {
 
     }
 
-    public void addDotsIndicator(int position){
+/*    public void addDotsIndicator(int position){
         dots = new TextView[2];
-        linearLayout.removeAllViews();
+        tabLayout.removeAllViews();
         for (int i = 0; i < dots.length; i++){
-            dots[i] = new TextView(this);
-            dots[i].setText(Html.fromHtml("&#8226;"));
-            dots[i].setTextSize(20);
-            dots[i].setTextColor(getResources().getColor(R.color.colorSecondary));
-            linearLayout.addView(dots[i]);
+            //dots[i] = new TextView(this);
+            //dots[i].setText(Html.fromHtml("&#8226;"));
+            //dots[i].setTextSize(30);
+            //dots[i].setTextColor(getResources().getColor(R.color.colorSecondary));
+            tabLayout.addView(dots[i]);
         }
         if (dots.length > 0) {
-            dots[position].setTextColor(getResources().getColor(R.color.colorPrimary));
+            //dots[position].setTextColor(getResources().getColor(R.color.colorBlack));
+            //dots[position].setTextSize(20);
         }
-    }
+    }*/
 
     ViewPager.OnPageChangeListener viewListener = new ViewPager.OnPageChangeListener() {
         @Override
@@ -110,7 +115,13 @@ public class DisclosureAdapterActivity extends AppCompatActivity {
 
         @Override
         public void onPageSelected(int position) {
-            addDotsIndicator(position);
+            if (position == 0) {
+                button_disclosure_ok.setVisibility(View.GONE);
+                button_disclosure_cancel.setVisibility(View.GONE);
+            } else {
+                button_disclosure_ok.setVisibility(View.VISIBLE);
+                button_disclosure_cancel.setVisibility(View.VISIBLE);
+            }
         }
 
         @Override
@@ -196,6 +207,7 @@ public class DisclosureAdapterActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 
         //Checking the request code of our request
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == 23) {
 
             //If permission is granted

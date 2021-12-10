@@ -38,10 +38,10 @@
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:layout_gravity="center"
-        android:textColorHint="@color/colorGray"
+        android:textColorHint="@color/colorGray2"
         android:keyPreviewLayout="@null"
         app:boxStrokeColor="@color/colorBackground"
-        app:hintTextColor="@color/colorGray"
+        app:hintTextColor="@color/colorGray2"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -49,7 +49,7 @@
             android:layout_height="match_parent"
             android:hint="Username"
             android:textSize="18sp"
-            android:textColor="@color/colorGray"
+            android:textColor="@color/colorGray2"
             android:fontFamily="@font/montserrat"
             android:keyPreviewLayout="@null"
             android:inputType="text"
@@ -65,10 +65,10 @@
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:layout_gravity="center"
-        android:textColorHint="@color/colorGray"
+        android:textColorHint="@color/colorGray2"
         android:keyPreviewLayout="@null"
         app:boxStrokeColor="@color/colorBackground"
-        app:hintTextColor="@color/colorGray"
+        app:hintTextColor="@color/colorGray2"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -77,7 +77,7 @@
             android:layout_height="match_parent"
             android:hint="Password"
             android:textSize="18sp"
-            android:textColor="@color/colorGray"
+            android:textColor="@color/colorGray2"
             android:fontFamily="@font/montserrat"
             android:keyPreviewLayout="@null"
             android:imeOptions="actionDone"/>

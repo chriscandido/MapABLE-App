@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
-            android:textColorHint="@color/colorGray"
+            android:textColorHint="@color/colorGray2"
             app:boxStrokeColor="@color/colorBackground"
             app:hintTextColor="@color/colorGray"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
@@ -54,7 +54,7 @@
                 android:gravity="center_vertical"
                 android:hint="Pangalan"
                 android:textSize="14sp"
-                android:textColor="@color/colorGray"
+                android:textColor="@color/colorGray2"
                 android:fontFamily="@font/montserrat"
                 android:keyPreviewLayout="@null"
                 android:inputType="text"
@@ -70,9 +70,9 @@
             android:layout_marginTop="5dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
-            android:textColorHint="@color/colorGray"
+            android:textColorHint="@color/colorGray2"
             app:boxStrokeColor="@color/colorBackground"
-            app:hintTextColor="@color/colorGray"
+            app:hintTextColor="@color/colorGray2"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -81,7 +81,7 @@
                 android:layout_gravity="center_vertical"
                 android:hint="Mobile Number"
                 android:textSize="14sp"
-                android:textColor="@color/colorGray"
+                android:textColor="@color/colorGray2"
                 android:fontFamily="@font/montserrat"
                 android:keyPreviewLayout="@null"
                 android:inputType="text"
@@ -97,9 +97,9 @@
             android:layout_marginTop="5dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
-            android:textColorHint="@color/colorGray"
+            android:textColorHint="@color/colorGray2"
             app:boxStrokeColor="@color/colorBackground"
-            app:hintTextColor="@color/colorGray"
+            app:hintTextColor="@color/colorGray2"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -108,7 +108,7 @@
                 android:layout_gravity="center_vertical"
                 android:hint="Email"
                 android:textSize="14sp"
-                android:textColor="@color/colorGray"
+                android:textColor="@color/colorGray2"
                 android:fontFamily="@font/montserrat"
                 android:keyPreviewLayout="@null"
                 android:inputType="text"
@@ -124,9 +124,9 @@
             android:layout_marginTop="5dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
-            android:textColorHint="@color/colorGray"
+            android:textColorHint="@color/colorGray2"
             app:boxStrokeColor="@color/colorBackground"
-            app:hintTextColor="@color/colorGray"
+            app:hintTextColor="@color/colorGray2"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -135,7 +135,7 @@
                 android:layout_gravity="center_vertical"
                 android:hint="Username"
                 android:textSize="14sp"
-                android:textColor="@color/colorGray"
+                android:textColor="@color/colorGray2"
                 android:fontFamily="@font/montserrat"
                 android:keyPreviewLayout="@null"
                 android:inputType="text"
@@ -151,9 +151,9 @@
             android:layout_marginTop="5dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
-            android:textColorHint="@color/colorGray"
+            android:textColorHint="@color/colorGray2"
             app:boxStrokeColor="@color/colorBackground"
-            app:hintTextColor="@color/colorGray"
+            app:hintTextColor="@color/colorGray2"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -163,7 +163,7 @@
                 android:layout_gravity="center_vertical"
                 android:hint="Password"
                 android:textSize="14sp"
-                android:textColor="@color/colorGray"
+                android:textColor="@color/colorGray2"
                 android:fontFamily="@font/montserrat"
                 android:keyPreviewLayout="@null"
                 android:imeOptions="actionDone"/>

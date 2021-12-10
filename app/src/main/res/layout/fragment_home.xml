@@ -12,14 +12,15 @@
     <RelativeLayout
         android:id="@+id/relativeLayout_mainHeader"
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="100dp"
+        android:translationZ="-270dp">
 
         <ImageView
             android:id="@+id/imageView_mainHeader_home"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/bg_box04"
-            android:transitionName="imageView_mainHeader_transition"/>
+            android:transitionName="imageView_mainHeader_transition" />
 
         <ImageView
             android:id="@+id/img_mainLogoMasdan"
@@ -45,6 +46,7 @@
             android:textStyle="bold" />
 
         <ImageView
+            android:id="@+id/imageview_home_pin"
             android:layout_width="30dp"
             android:layout_height="20dp"
             android:layout_alignParentTop="true"

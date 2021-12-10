@@ -50,7 +50,7 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.ViewHo
         layoutInflater = LayoutInflater.from(context);
     }
 
-    //Title
+    // Title
     public String[] mainMenu_title = {
             "Pormal na idineklara and BATTLE FOR ...",
             "Ang G.R. No. 171947-48, o mas kilala ...",
@@ -58,11 +58,9 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.ViewHo
             "Ang Philippine Clean Water Act ...",
             "Ano ang Ecological Solid Waste Management Act ...",
             "Alam niyo ba kung anong batas ang nagsasaad ..."
-//            "LEADERBOARD",
-//            "MY REPORTS"
     };
 
-    //Icon
+    // Icon
     public int[] mainMenu_icon = {
             R.drawable.img_policy_battleofmanilabay,
             R.drawable.img_policy_manilabaymandamus,
@@ -70,8 +68,6 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.ViewHo
             R.drawable.img_policy_cleanwateract,
             R.drawable.img_policy_solidwaste,
             R.drawable.img_policy_fisheriescode
-//            R.drawable.ic_mainmenu_report,
-//            R.drawable.ic_mainmenu_report,
     };
 
     public MainMenuAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

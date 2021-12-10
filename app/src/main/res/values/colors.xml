@@ -12,5 +12,6 @@
     <color name="colorBackground">#FFF</color>
     <color name="colorBlack">#000</color>
     <color name="colorGray">#EBEBEB</color>
+    <color name="colorGray2">#949494</color>
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#fff</color>
 </resources>
