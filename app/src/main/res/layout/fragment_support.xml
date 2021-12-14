@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     android:orientation="vertical"
     tools:context=".fragment.SupportFragment">
 
@@ -23,9 +24,10 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="About"
-            android:textSize="12sp"
+            android:textSize="18sp"
             android:textColor="@color/colorPrimary"
-            android:fontFamily="@font/montserrat"/>
+            android:textStyle="bold"
+            android:fontFamily="@font/montserrat_extrabold"/>
 
     </LinearLayout>
 
@@ -45,9 +47,10 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="Privacy Policy"
-            android:textSize="12sp"
+            android:textSize="18sp"
             android:textColor="@color/colorPrimary"
-            android:fontFamily="@font/montserrat"/>
+            android:textStyle="bold"
+            android:fontFamily="@font/montserrat_extrabold"/>
 
     </LinearLayout>
 
@@ -67,9 +70,10 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="Feedback"
-            android:textSize="12sp"
+            android:textSize="18sp"
             android:textColor="@color/colorPrimary"
-            android:fontFamily="@font/montserrat"/>
+            android:textStyle="bold"
+            android:fontFamily="@font/montserrat_extrabold"/>
 
     </LinearLayout>
 
@@ -89,9 +93,10 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="Dev Team"
-            android:textSize="12sp"
+            android:textSize="18sp"
             android:textColor="@color/colorPrimary"
-            android:fontFamily="@font/montserrat"/>
+            android:textStyle="bold"
+            android:fontFamily="@font/montserrat_extrabold"/>
 
     </LinearLayout>
 

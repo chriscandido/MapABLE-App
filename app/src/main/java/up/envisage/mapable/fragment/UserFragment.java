@@ -71,7 +71,7 @@ import up.envisage.mapable.ui.home.UserStatisticsActivity;
 import retrofitInterface.RetrofitInterface;
 import up.envisage.mapable.model.StatsResult;
 
-public class UserFragment extends Fragment {
+public class UserFragment extends Fragment implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
@@ -98,12 +98,14 @@ public class UserFragment extends Fragment {
             textView_user_myStats, textView_myStats_submittedReports, textView_user_myReportsList, textView_user_leaderboard;
     TextView textView_userprofile_unsentreports, textView_userprofile_reportstatus, textView_userprofile_leaderboard,
             textView_userprofile_myyquests;
+    TextView textView_userLocation;
+    ImageView imageView_user_pin;
 
-    String outUserId;
-    public Integer algalBloom, fishKill, waterPollution, ongoingReclamation,
+    private String outUserId;
+    private Integer algalBloom, fishKill, waterPollution, ongoingReclamation,
                     waterHyacinth, solidWaste, otherIssues, verified, unverified, falsePositive, total;
 
-    public Object data;
+    private Object data;
 
     MaterialButton button_userMyStats_ok;
 
@@ -172,12 +174,23 @@ public class UserFragment extends Fragment {
         ImageView imageView_mainHeader_userprofile = view.findViewById(R.id.imageView_mainHeader_userprofile);
         ViewCompat.setTransitionName(imageView_mainHeader_userprofile, "imageView_mainHeader_userprofile_transition");
 
-
+        // Textview
         textView_user_name = view.findViewById(R.id.textView_user_name);
         textView_user_username = view.findViewById(R.id.textView_user_username);
         textView_user_email = view.findViewById(R.id.textView_user_email);
+        textView_userLocation = view.findViewById(R.id.textView_userLocation);
+        imageView_user_pin = view.findViewById(R.id.imageView_user_pin);
 
+        isGooglePlayServicesAvailable();
+        createLocationRequest();
         userDetails();
+
+        // GoogleApiClient
+        googleApiClient = new GoogleApiClient.Builder(listener)
+                .addApi(LocationServices.API)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .build();
 
         //Pending reports button
         textView_userprofile_unsentreports = view.findViewById(R.id.textView_userprofile_unsentreports);
@@ -234,14 +247,6 @@ public class UserFragment extends Fragment {
 
                             startActivity(userStatsIntent);
 
-//                            textView_myStats_submittedReports.setText(total.toString());
-//                            Log.v("[UserFragment.java]", "Algal Bloom: " + algalBloom.toString() + "\n" +"Fishkill : " + fishKill.toString() + "/\n" +
-//                                    "Water Pollution: " + waterPollution.toString() + "\n" + "Ongoing Reclamation: " + ongoingReclamation.toString() + "\n" +
-//                                    "Water Hyacinth: " + waterHyacinth.toString() + "\n" + "Solid Waste: " + solidWaste.toString() + "\n" + "Others: " + otherIssues.toString() + "\n" +
-//                                    "Verified: " + verified.toString() + "\n" + "Unverified: " + unverified.toString() + "\n" + "False Positive: " + falsePositive.toString() + "\n" +
-//                                    "Total: " + total.toString()
-//
-//                            );
                         }
                     }
 
@@ -318,6 +323,13 @@ public class UserFragment extends Fragment {
                 startActivity(myQuestIntent);
             }
         });
+
+        imageView_user_pin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateUI();
+            }
+        });
     }
 
     //----------------------------------------------------------------------------------------------Get report stats of user
@@ -341,8 +353,8 @@ public class UserFragment extends Fragment {
 
     //----------------------------------------------------------------------------------------------Get user details from local db
     public void userDetails() {
-        userViewModel = ViewModelProviders.of(UserFragment.this).get(UserViewModel.class);
-        userViewModel.getLastUser().observe(UserFragment.this, new Observer<UserTable>() {
+        userViewModel = ViewModelProviders.of(listener).get(UserViewModel.class);
+        userViewModel.getLastUser().observe(listener, new Observer<UserTable>() {
             @Override
             public void onChanged(UserTable userTable) {
                 String name = userTable.getName();
@@ -405,7 +417,7 @@ public class UserFragment extends Fragment {
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        PendingResult<Status> pendingResult = LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient, locationRequest, this);
+        PendingResult<Status> pendingResult = LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient, locationRequest, this::onLocationChanged);
         Log.d(TAG, "Location update started ...........................: ");
     }
 
@@ -446,7 +458,7 @@ public class UserFragment extends Fragment {
                 } else {
                     address_string[0] = "NO ADDRESS MATCHES WERE FOUND";
                 }
-                textView_homeLocation.setText(addresses.get(0).getSubLocality() + ", " + addresses.get(0).getLocality());
+                textView_userLocation.setText(addresses.get(0).getSubLocality() + ", " + addresses.get(0).getLocality());
                 Log.v("[ HomeFragment.java ]", lat);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -478,7 +490,7 @@ public class UserFragment extends Fragment {
 
     protected void stopLocationUpdates() {
         LocationServices.FusedLocationApi.removeLocationUpdates(
-                googleApiClient, this);
+                googleApiClient, this::onLocationChanged);
         Log.d(TAG, "Location update stopped .......................");
     }
 

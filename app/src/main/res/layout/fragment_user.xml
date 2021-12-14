@@ -30,7 +30,7 @@
             android:src="@drawable/logo_masdan_03" />
 
         <TextView
-            android:id="@+id/textView_homeLocation"
+            android:id="@+id/textView_userLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -45,12 +45,13 @@
             android:textStyle="bold" />
 
         <ImageView
+            android:id="@+id/imageView_user_pin"
             android:layout_width="30dp"
             android:layout_height="20dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="5dp"
-            android:layout_toStartOf="@+id/textView_homeLocation"
+            android:layout_toStartOf="@+id/textView_userLocation"
             android:src="@drawable/ic_mainmenu_location" />
 
     </RelativeLayout>
