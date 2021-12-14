@@ -117,6 +117,7 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
         adapter = new MainMenuAdapter(listener, this);
         recyclerView.setAdapter(adapter);
 
+        isGooglePlayServicesAvailable();
         createLocationRequest();
 
         googleApiClient = new GoogleApiClient.Builder(listener)
@@ -218,26 +219,12 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
         }
     }
 
+    //----------------------------------------------------------------------------------------------Location request
     protected void createLocationRequest() {
         locationRequest = new LocationRequest();
         locationRequest.setInterval(INTERVAL);
         locationRequest.setFastestInterval(FASTEST_INTERVAL);
         locationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        Log.d(TAG, "onStart fired ..............");
-        googleApiClient.connect();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        Log.d(TAG, "onStop fired ..............");
-        googleApiClient.disconnect();
-        Log.d(TAG, "isConnected ...............: " + googleApiClient.isConnected());
     }
 
     private boolean isGooglePlayServicesAvailable() {
@@ -252,7 +239,7 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
 
     @Override
     public void onConnected(Bundle bundle) {
-        Log.d(TAG, "onConnected - isConnected ...............: " + googleApiClient.isConnected());
+        Log.d(TAG, "onConnected - isConnected ..........................: " + googleApiClient.isConnected());
         startLocationUpdates();
     }
 
@@ -268,7 +255,7 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
             return;
         }
         PendingResult<Status> pendingResult = LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient, locationRequest, this);
-        Log.d(TAG, "Location update started ..............: ");
+        Log.d(TAG, "Location update started ...........................: ");
     }
 
     @Override
@@ -288,6 +275,7 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
         updateUI();
     }
 
+    //----------------------------------------------------------------------------------------------Update TextView
     private void updateUI() {
         Log.d(TAG, "UI update initiated .............");
         final String[] address_string = new String[1];
@@ -314,6 +302,21 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
             }
             Log.d(TAG, "location is null ...............");
         }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart fired ..........................");
+        googleApiClient.connect();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop fired ..........................");
+        googleApiClient.disconnect();
+        Log.d(TAG, "isConnected ..........................: " + googleApiClient.isConnected());
     }
 
     @Override

@@ -1,5 +1,6 @@
 package up.envisage.mapable.fragment;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -7,10 +8,14 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
 import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -31,11 +36,21 @@ import android.widget.TextView;
 
 import com.facebook.CallbackManager;
 import com.facebook.share.widget.ShareDialog;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.material.button.MaterialButton;
 
+import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -70,6 +85,14 @@ public class UserFragment extends Fragment {
     private Dialog dialog;
     private CallbackManager callbackManager;
     private ShareDialog shareDialog;
+
+    // GPS
+    private static final String TAG = "LocationActivity";
+    private static final long INTERVAL = 1000 * 10;
+    private static final long FASTEST_INTERVAL = 1000 * 5;
+    LocationRequest locationRequest;
+    GoogleApiClient googleApiClient;
+    Location currentLocation;
 
     TextView textView_user_name, textView_user_username, textView_user_email, textView_user_myReport,
             textView_user_myStats, textView_myStats_submittedReports, textView_user_myReportsList, textView_user_leaderboard;
@@ -345,6 +368,126 @@ public class UserFragment extends Fragment {
             Log.e("[ UserFragment.java ] ", "printHashKey()", e);
         } catch (Exception e) {
             Log.e(" [ UserFragment.java ] ", "printHashKey()", e);
+        }
+    }
+
+    //----------------------------------------------------------------------------------------------Location request
+    protected void createLocationRequest() {
+        locationRequest = new LocationRequest();
+        locationRequest.setInterval(INTERVAL);
+        locationRequest.setFastestInterval(FASTEST_INTERVAL);
+        locationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
+    }
+
+    private boolean isGooglePlayServicesAvailable() {
+        int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(listener);
+        if (ConnectionResult.SUCCESS == status) {
+            return true;
+        } else {
+            GooglePlayServicesUtil.getErrorDialog(status, listener, 0).show();
+            return false;
+        }
+    }
+
+    public void onConnected(Bundle bundle) {
+        Log.d(TAG, "onConnected - isConnected ..........................: " + googleApiClient.isConnected());
+        startLocationUpdates();
+    }
+
+    protected void startLocationUpdates() {
+        if (ActivityCompat.checkSelfPermission(listener, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(listener, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        PendingResult<Status> pendingResult = LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient, locationRequest, this);
+        Log.d(TAG, "Location update started ...........................: ");
+    }
+
+
+    public void onConnectionSuspended(int i) {
+
+    }
+
+
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+        Log.d(TAG, "Connection failed: " + connectionResult.toString());
+    }
+
+
+    public void onLocationChanged(Location location) {
+        Log.d(TAG, "Firing onLocationChanged..............................................");
+        currentLocation = location;
+        updateUI();
+    }
+
+    //----------------------------------------------------------------------------------------------Update TextView
+    private void updateUI() {
+        Log.d(TAG, "UI update initiated .............");
+        final String[] address_string = new String[1];
+        if (null != currentLocation) {
+            String lat = String.valueOf(currentLocation.getLatitude());
+            String lng = String.valueOf(currentLocation.getLongitude());
+            Geocoder geocoder = new Geocoder(listener, Locale.getDefault());
+            List<Address> addresses;
+            try {
+                addresses = geocoder.getFromLocation(currentLocation.getLatitude(), currentLocation.getLongitude(), 1);
+                if (addresses != null) {
+                    try {
+                        address_string[0] = String.valueOf(addresses.get(0).getAddressLine(0));
+                    } catch (IndexOutOfBoundsException e) {
+                        address_string[0] = "NO ADDRESS LINE MATCHED";
+                    }
+                } else {
+                    address_string[0] = "NO ADDRESS MATCHES WERE FOUND";
+                }
+                textView_homeLocation.setText(addresses.get(0).getSubLocality() + ", " + addresses.get(0).getLocality());
+                Log.v("[ HomeFragment.java ]", lat);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Log.d(TAG, "location is null ...............");
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart fired ..........................");
+        googleApiClient.connect();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop fired ..........................");
+        googleApiClient.disconnect();
+        Log.d(TAG, "isConnected ..........................: " + googleApiClient.isConnected());
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        stopLocationUpdates();
+    }
+
+    protected void stopLocationUpdates() {
+        LocationServices.FusedLocationApi.removeLocationUpdates(
+                googleApiClient, this);
+        Log.d(TAG, "Location update stopped .......................");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (googleApiClient.isConnected()) {
+            startLocationUpdates();
+            Log.d(TAG, "Location update resumed .....................");
         }
     }
 
