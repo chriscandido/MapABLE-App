@@ -54,7 +54,6 @@ public class ReportPollution extends AppCompatActivity implements AdapterView.On
         Spinner spinner_reportPollution_q04 = findViewById(R.id.spinner_reportPollution_q04);
         Spinner spinner_reportPollution_q06 = findViewById(R.id.spinner_reportPollution_q06);
 
-        textInputLayout_reportPollution_q00 = findViewById(R.id.textInputLayout_reportPollution);
         textInputLayout_reportPollution_q05 = findViewById(R.id.textInputLayout_reportPollution_q05);
         textInputLayout_reportPollution_q07 = findViewById(R.id.textInputLayout_reportPollution_q07);
 
@@ -119,11 +118,10 @@ public class ReportPollution extends AppCompatActivity implements AdapterView.On
             @Override
             public void onClick(View v) {
 
-                input00 = textInputLayout_reportPollution_q00.getEditText().getText().toString();
                 input05 = textInputLayout_reportPollution_q05.getEditText().getText().toString();
                 input07 = textInputLayout_reportPollution_q07.getEditText().getText().toString();
 
-                String ans = input00 + "|" + input01 + "|" + input02 + "|" + input03 + "|" + input04+ "|" + input05+ "|" + input06 + "|" + input07;
+                String ans = input01 + "|" + input02 + "|" + input03 + "|" + input04+ "|" + input05+ "|" + input06 + "|" + input07;
 
                 Log.v("[ ReportPollution.java ]", "ANSWER: " + ans);
 

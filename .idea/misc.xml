@@ -4,25 +4,52 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/activity_about.xml" value="0.1490036231884058" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/activity_aboutmanilabay.xml" value="0.17527173913043478" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/activity_camera.xml" value="0.17527173913043478" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/activity_devteam.xml" value="0.1296875" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/activity_disclosure.xml" value="0.17527173913043478" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/activity_feedback.xml" value="0.152" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/activity_google_maps.xml" value="0.17527173913043478" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/activity_information.xml" value="0.17527173913043478" />
         <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/activity_leaderboard.xml" value="0.176" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/activity_main.xml" value="0.17527173913043478" />
         <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/activity_my_quests.xml" value="0.264" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/activity_my_reports.xml" value="0.17527173913043478" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/activity_myreportslist.xml" value="0.2346014492753623" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/activity_report.xml" value="0.1296875" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/activity_report_algal_bloom.xml" value="0.264" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/activity_report_fish_kill.xml" value="0.4" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/activity_report_hyacinth.xml" value="0.17527173913043478" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/activity_report_iba_pa.xml" value="0.4" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/activity_report_illegal_reclamation.xml" value="0.264" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/activity_report_incident.xml" value="0.17527173913043478" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/activity_report_pollution.xml" value="0.17527173913043478" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/activity_report_solidwaste.xml" value="0.17527173913043478" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/activity_user_stats.xml" value="0.2346014492753623" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/activity_view_report.xml" value="0.2346014492753623" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/cardslayout_incident_list.xml" value="0.2346014492753623" />
         <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/cardslayout_information.xml" value="0.17527173913043478" />
         <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/cardslayout_main.xml" value="0.4" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/cardslayout_my_reports.xml" value="0.536" />
         <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/fragment_home.xml" value="0.264" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/fragment_incident_list.xml" value="0.2346014492753623" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/fragment_report.xml" value="0.2346014492753623" />
         <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/fragment_user.xml" value="0.264" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/image_policyandlaw.xml" value="0.17527173913043478" />
         <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/leaderboard_item.xml" value="0.264" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/popup_disclosure_location.xml" value="0.17527173913043478" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/popup_disclosure_report.xml" value="0.17527173913043478" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/popup_error_nointernet.xml" value="0.17527173913043478" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/popup_error_nolocation.xml" value="0.17527173913043478" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/popup_error_nophoto.xml" value="0.17527173913043478" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/popup_instruction_swipe.xml" value="0.17527173913043478" />
         <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/popup_mystats.xml" value="0.17527173913043478" />
         <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/popup_success_datasent.xml" value="0.17527173913043478" />
-        <entry key="..\:/git/MapABLE-App/app/src/main/res/drawable/bottom_navigation_background.xml" value="0.25" />
-        <entry key="..\:/git/MapABLE-App/app/src/main/res/drawable/bottom_navigation_color_selector.xml" value="0.25" />
-        <entry key="..\:/git/MapABLE-App/app/src/main/res/drawable/tab_indicator_default.xml" value="0.23489583333333333" />
-        <entry key="..\:/git/MapABLE-App/app/src/main/res/drawable/tab_indicator_selected.xml" value="0.25" />
-        <entry key="..\:/git/MapABLE-App/app/src/main/res/drawable/tab_selector.xml" value="0.23489583333333333" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/popup_success_registration.xml" value="0.17527173913043478" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/user_report_item.xml" value="0.2346014492753623" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.25677083333333334" />
         <entry key="..\:/git/MapABLE-App/app/src/main/res/layout/activity_about.xml" value="0.21927083333333333" />
         <entry key="..\:/git/MapABLE-App/app/src/main/res/layout/activity_aboutmanilabay.xml" value="0.21927083333333333" />
-        <entry key="..\:/git/MapABLE-App/app/src/main/res/layout/activity_camera.xml" value="0.36096014492753625" />
-        <entry key="..\:/git/MapABLE-App/app/src/main/res/layout/activity_devteam.xml" value="0.31725021349274124" />
-        <entry key="..\:/git/MapABLE-App/app/src/main/res/layout/activity_disclosure.xml" value="0.23385416666666667" />
         <entry key="..\:/git/MapABLE-App/app/src/main/res/layout/activity_login.xml" value="0.16259057971014493" />
         <entry key="..\:/git/MapABLE-App/app/src/main/res/layout/activity_main.xml" value="0.14260385005065856" />
         <entry key="..\:/git/MapABLE-App/app/src/main/res/layout/activity_register.xml" value="0.14260385005065856" />
@@ -30,13 +57,7 @@
         <entry key="..\:/git/MapABLE-App/app/src/main/res/layout/dialog_eula.xml" value="0.1" />
         <entry key="..\:/git/MapABLE-App/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/git/MapABLE-App/app/src/main/res/layout/fragment_report.xml" value="0.14260385005065856" />
-        <entry key="..\:/git/MapABLE-App/app/src/main/res/layout/fragment_support.xml" value="0.21875" />
         <entry key="..\:/git/MapABLE-App/app/src/main/res/layout/fragment_user.xml" value="0.21927083333333333" />
-        <entry key="..\:/git/MapABLE-App/app/src/main/res/layout/popup_disclosure_location.xml" value="0.23385416666666667" />
-        <entry key="..\:/git/MapABLE-App/app/src/main/res/layout/popup_disclosure_report.xml" value="0.23385416666666667" />
-        <entry key="..\:/git/MapABLE-App/app/src/main/res/layout/popup_instruction_swipe.xml" value="0.23385416666666667" />
-        <entry key="..\:/git/MapABLE-App/app/src/main/res/layout/popup_success_registration.xml" value="0.21875" />
-        <entry key="..\:/git/MapABLE-App/app/src/main/res/layout/user_report_item.xml" value="0.23385416666666667" />
         <entry key="..\:/git/MapABLE-App/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.23333333333333334" />
       </map>
     </option>

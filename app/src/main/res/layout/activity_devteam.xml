@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorText"
+    android:background="@color/colorAccent02"
     android:orientation="vertical"
     tools:context=".ui.support.DevTeamActivity">
 
     <!-- Top Navigation Menu -->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/colorText">
 
         <!-- Back button -->
         <ImageView
@@ -41,12 +42,11 @@
             android:textStyle="bold"
             android:fontFamily="@font/amplesoftpro_medium"/>
 
-
     </RelativeLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:fillViewport="true">
 
         <LinearLayout

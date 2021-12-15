@@ -8,7 +8,6 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-
   <!-- Project logo -->
   <ImageView
       android:id="@+id/imageView_mainMenu_logo"

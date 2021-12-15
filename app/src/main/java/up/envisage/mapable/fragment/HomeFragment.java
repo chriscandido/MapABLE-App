@@ -49,6 +49,7 @@ import up.envisage.mapable.R;
 import up.envisage.mapable.adapter.MainMenuAdapter;
 import up.envisage.mapable.ui.home.AboutActivity;
 import up.envisage.mapable.ui.home.AboutManilaBayActivity;
+import up.envisage.mapable.ui.home.InformationActivity;
 
 
 public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClickListener,
@@ -65,7 +66,7 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
 
     // View
     ImageView imageView_mainMenu_alaminnatin, imageView_mainMenu_im4manilabay;
-    TextView textView_homeLocation;
+    TextView textView_homeLocation, textView_tingnanLahat;
     ImageView imageView_home_pin;
 
     // Variable
@@ -131,6 +132,7 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
         imageView_home_pin = view.findViewById(R.id.imageview_home_pin);
 
         textView_homeLocation = view.findViewById(R.id.textView_homeLocation);
+        textView_tingnanLahat = view.findViewById(R.id.textView_mainMenu_tignanLahat);
 
         imageView_mainMenu_alaminnatin.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -155,6 +157,15 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
             @Override
             public void onClick(View view) {
                 updateUI();
+            }
+        });
+
+        // View all links
+        textView_tingnanLahat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent information = new Intent(listener, InformationActivity.class);
+                startActivity(information);
             }
         });
     }

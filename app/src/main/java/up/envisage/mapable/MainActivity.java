@@ -33,6 +33,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import javax.net.ssl.SSLEngineResult;
 
 import up.envisage.mapable.fragment.HomeFragment;
+import up.envisage.mapable.fragment.IncidentListFragment;
 import up.envisage.mapable.fragment.MapFragment;
 import up.envisage.mapable.fragment.ReportFragment;
 import up.envisage.mapable.fragment.SupportFragment;
@@ -81,7 +82,9 @@ public class MainActivity extends AppCompatActivity {
                     fragment = new UserFragment();
                     break;
                 case R.id.mainMenu_report:
-                    fragment = new ReportFragment();
+                    fragment = new IncidentListFragment();
+                    Intent incidentFragment = new Intent(MainActivity.this, IncidentListFragment.class);
+                    incidentFragment.putExtra("userID", userID);
                     break;
                 case R.id.mainMenu_map:
                     fragment = new MapFragment();
@@ -93,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragmentLayout_container, fragment)
                     .commit();
+
             return true;
         }
     };

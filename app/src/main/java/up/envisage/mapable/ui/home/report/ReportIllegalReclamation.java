@@ -53,7 +53,6 @@ public class ReportIllegalReclamation extends AppCompatActivity implements Adapt
         Spinner spinner_reportIllegalReclamation_q04 = findViewById(R.id.spinner_reportIllegalReclamation_q04);
         Spinner spinner_reportIllegalReclamation_q05 = findViewById(R.id.spinner_reportIllegalReclamation_q05);
 
-        textInputLayout_reportIllegalReclamation_q00 = findViewById(R.id.textInputLayout_reportIllegalReclamation);
         textInputLayout_reportIllegalReclamation_q06 = findViewById(R.id.textInputLayout_reportIllegalReclamation_q06);
 
         MaterialButton button_reportIllegalReclamation_next = findViewById(R.id.button_reportIllegalReclamation_next);
@@ -116,10 +115,9 @@ public class ReportIllegalReclamation extends AppCompatActivity implements Adapt
             @Override
             public void onClick(View v) {
 
-                input00 = textInputLayout_reportIllegalReclamation_q00.getEditText().getText().toString();
                 input06 = textInputLayout_reportIllegalReclamation_q06.getEditText().getText().toString();
 
-                String ans = input00 + "|" + input01 + "|" + input02 + "|" + input03 + "|" + input04+ "|" + input05+ "|" + input06;
+                String ans = input01 + "|" + input02 + "|" + input03 + "|" + input04+ "|" + input05+ "|" + input06;
 
                 Log.v("[ ReportIllegalReclamation.java ]", "ANSWER: " + ans);
 

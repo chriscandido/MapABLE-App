@@ -52,7 +52,6 @@ public class ReportAlgalBloom extends AppCompatActivity implements AdapterView.O
         Spinner spinner_reportAlgalBloom_q02 = findViewById(R.id.spinner_reportAgalBloom_q02);
         Spinner spinner_reportAlgalBloom_q03 = findViewById(R.id.spinner_reportAgalBloom_q03);
 
-        textInputLayout_reportAlgalBloom_q00 = findViewById(R.id.textInputLayout_reportAlgalBloom);
         textInputLayout_reportAlgalBloom_q04 = findViewById(R.id.textInputLayout_reportAlgalBloom_q04);
 
         button_reportAlgalBloom_ok = findViewById(R.id.button_reportAlgalBloom_ok);
@@ -94,10 +93,9 @@ public class ReportAlgalBloom extends AppCompatActivity implements AdapterView.O
             @Override
             public void onClick(View view) {
 
-                input00 = textInputLayout_reportAlgalBloom_q00.getEditText().getText().toString();
                 input04 = textInputLayout_reportAlgalBloom_q04.getEditText().getText().toString();
 
-                String ans = input00 + "|" + input01 + "|" +input02 + "|" +input03 + "|" +input04;
+                String ans =  input01 + "|" +input02 + "|" +input03 + "|" +input04;
 
                 Log.v("[ ReportAlgalBloom.java ]", "ANSWER: " + ans);
 

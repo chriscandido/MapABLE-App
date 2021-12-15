@@ -54,8 +54,6 @@ public class ReportSolidWaste extends AppCompatActivity implements AdapterView.O
         Spinner spinner_reportSolidWaste_q07 = findViewById(R.id.spinner_reportSolidWaste_q07);
         Spinner spinner_reportSolidWaste_q08 = findViewById(R.id.spinner_reportSolidWaste_q08);
 
-        textInputLayout_reportSolidWaste_q00 = findViewById(R.id.textInputLayout_reportSolidWaste);
-
         button_reportSolidWaste_next = findViewById(R.id.button_reportSolidWaste_next);
 
         //Question 01 spinner element
@@ -151,9 +149,8 @@ public class ReportSolidWaste extends AppCompatActivity implements AdapterView.O
             @SuppressLint("LongLogTag")
             @Override
             public void onClick(View v) {
-                input00 = textInputLayout_reportSolidWaste_q00.getEditText().getText().toString();
 
-                String ans = input00 + "|" + input01 + "|" + input02 + "|" + input03 + "|" + input04+ "|" + input05+ "|" + input06 + "|" + input07 + "|" + input08;
+                String ans = input01 + "|" + input02 + "|" + input03 + "|" + input04+ "|" + input05+ "|" + input06 + "|" + input07 + "|" + input08;
 
                 Log.v("[ ReportSolidWaste.java ]", "ANSWER: " + ans);
 

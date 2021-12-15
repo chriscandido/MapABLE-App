@@ -9,6 +9,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import up.envisage.mapable.MainActivity;
@@ -21,17 +22,12 @@ public class AboutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
-        /*TextView textView_aboutUs_back = findViewById(R.id.textView_aboutUs_back);
+        ImageView imageView_aboutUs_back = findViewById(R.id.imageView_aboutUs_back);
+        /*
         TextView textView_aboutUs_im4manilbayLink = findViewById(R.id.textView_aboutUs_im4manilabayLink);
         TextView textView_aboutUs_iwasto = findViewById(R.id.textView_aboutUs_iwasto);
         TextView textView_aboutUs_esmart = findViewById(R.id.textView_aboutUs_esmart);
         TextView textView_aboutUs_mapableLink = findViewById(R.id.textView_aboutUs_mapableLink);
-
-        //Button go back
-        textView_aboutUs_back.setOnClickListener(v -> {
-            Intent back = new Intent(AboutActivity.this, MainActivity.class);
-            startActivity(back);
-        });
 
         //Button go to IM4ManilaBay link
         textView_aboutUs_im4manilbayLink.setOnClickListener(v -> {
@@ -86,6 +82,10 @@ public class AboutActivity extends AppCompatActivity {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
         }
     }*/
+        //Button go back
+        imageView_aboutUs_back.setOnClickListener(v -> {
+            finish();
+        });
     }
 
     public void onStart(){
@@ -102,7 +102,6 @@ public class AboutActivity extends AppCompatActivity {
 
     public void onBackPressed(){
         super.onBackPressed();
-        Intent intent = new Intent(AboutActivity.this, MainActivity.class);
-        startActivity(intent);
+        finish();
     }
 }

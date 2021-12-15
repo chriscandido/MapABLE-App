@@ -71,7 +71,7 @@ public class CameraActivity extends AppCompatActivity {
             }
         });
 
-        //Button go to gallery
+        // Button go to gallery
         button_reportGallery = findViewById(R.id.button_report_photoGallery);
         button_reportGallery.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,7 +80,7 @@ public class CameraActivity extends AppCompatActivity {
             }
         });
 
-        //Button save photo
+        // Button save photo
         button_reportSave = findViewById(R.id.button_report_savePhoto);
         button_reportSave.setOnClickListener(new View.OnClickListener() {
             @Override

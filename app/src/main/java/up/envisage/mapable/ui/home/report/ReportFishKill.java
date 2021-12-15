@@ -54,7 +54,6 @@ public class ReportFishKill extends AppCompatActivity implements AdapterView.OnI
         Spinner spinner_reportFishKill_q04 = findViewById(R.id.spinner_reportFishKill_q04);
         Spinner spinner_reportFishKill_q06 = findViewById(R.id.spinner_reportFishKill_q06);
 
-        textInputLayout_reportFishKill_q00 = findViewById(R.id.textInputLayout_reportFishKill);
         textInputLayout_reportFishKill_q03 = findViewById(R.id.textInputLayout_reportFishKill_q03);
         textInputLayout_reportFishKill_q05 = findViewById(R.id.textInputLayout_reportFishKill_q05);
 
@@ -105,12 +104,11 @@ public class ReportFishKill extends AppCompatActivity implements AdapterView.OnI
         //Next Button
         button_reportFishKill_next.setOnClickListener(view -> {
 
-            input00 = textInputLayout_reportFishKill_q00.getEditText().getText().toString();
             input03 = textInputLayout_reportFishKill_q03.getEditText().getText().toString();
             input05 = textInputLayout_reportFishKill_q05.getEditText().getText().toString();
 
             //String answers
-            String ans = input00 + "|" + input01 + "|" +input02 + "|" +input03 + "|" +input04 + "|" + input05 + "|" + input06;
+            String ans = input01 + "|" +input02 + "|" +input03 + "|" +input04 + "|" + input05 + "|" + input06;
 
             Log.v("[ ReportFishKill.java ]", "ANSWER: " + ans);
 

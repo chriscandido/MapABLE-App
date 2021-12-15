@@ -36,7 +36,6 @@ public class ReportIbaPa extends AppCompatActivity implements AdapterView.OnItem
         lat = prevIntent.getStringExtra("Latitude");
         image = prevIntent.getStringExtra("image");
 
-        TextInputLayout textInputLayout_reportIbaPa_q00 = findViewById(R.id.textInputLayout_reportIbaPa_q00);
         TextInputLayout textInputLayout_reportIbaPa_q01 = findViewById(R.id.textInputLayout_reportIbaPa_q01);
         TextInputLayout textInputLayout_reportIbaPa_q02 = findViewById(R.id.textInputLayout_reportIbaPa_q02);
 
@@ -45,11 +44,10 @@ public class ReportIbaPa extends AppCompatActivity implements AdapterView.OnItem
             @Override
             public void onClick(View v) {
 
-                input00 = textInputLayout_reportIbaPa_q00.getEditText().getText().toString();
                 input01 = textInputLayout_reportIbaPa_q01.getEditText().getText().toString();
                 input02 = textInputLayout_reportIbaPa_q02.getEditText().getText().toString();
 
-                String ans = input00 + "|" + input01 + "|" +input02;
+                String ans =  input01 + "|" +input02;
 
                 Log.v("[ ReportIbaPa.java ]", "ANSWER: " + ans);
 

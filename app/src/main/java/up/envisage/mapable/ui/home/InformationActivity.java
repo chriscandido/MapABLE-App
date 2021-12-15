@@ -15,6 +15,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import up.envisage.mapable.BuildConfig;
@@ -39,12 +40,11 @@ import up.envisage.mapable.adapter.ReportIncidentAdapter;
          RecyclerView.Adapter adapter = new InformationAdapter(getApplicationContext(), this);
          recyclerView.setAdapter(adapter);
 
-         TextView textView_information_back = findViewById(R.id.textView_information_back);
-         textView_information_back.setOnClickListener(new View.OnClickListener() {
+         ImageView imageView_information_back = findViewById(R.id.imageView_information_back);
+         imageView_information_back.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 Intent back = new Intent(InformationActivity.this, MainActivity.class);
-                 startActivity(back);
+                 finish();
              }
          });
      }
@@ -122,8 +122,7 @@ import up.envisage.mapable.adapter.ReportIncidentAdapter;
 
      public void onBackPressed() {
         super.onBackPressed();
-         Intent intent = new Intent(InformationActivity.this, MainActivity.class);
-         startActivity(intent);
+         finish();
      }
  }
 

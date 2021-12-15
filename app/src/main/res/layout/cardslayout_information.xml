@@ -14,7 +14,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        app:cardBackgroundColor="@color/colorBackground"
+        app:cardBackgroundColor="@color/colorAccent02"
         app:cardCornerRadius="10dp"
         app:cardPreventCornerOverlap="true"
         app:cardElevation="10dp">
@@ -48,10 +48,10 @@
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="25dp"
                     android:text="Battle of Manila Bay . . . "
-                    android:textSize="20sp"
-                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp"
+                    android:textColor="@color/colorBlack"
                     android:textStyle="bold"
-                    android:fontFamily="@font/montserrat"/>
+                    android:fontFamily="@font/montserrat_extrabold"/>
 
             </LinearLayout>
 

@@ -114,19 +114,39 @@
             </androidx.cardview.widget.CardView>
 
             <!-- Laws and Policies -->
-            <TextView
-                android:id="@+id/textView_mainMenu_lawsPolicies"
-                android:layout_width="wrap_content"
+
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/cardView_mainMenu_manilaBay"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/montserrat"
-                android:gravity="center"
-                android:text="Laws and Policies"
-                android:textColor="@color/colorBlack"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/textView_mainMenu_lawsPolicies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:text="Laws and Policies"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView_mainMenu_tignanLahat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toEndOf="@+id/textView_mainMenu_lawsPolicies"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="end"
+                    android:text="Tingnan Lahat >"
+                    android:textColor="@color/colorText"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView_mainMenu"

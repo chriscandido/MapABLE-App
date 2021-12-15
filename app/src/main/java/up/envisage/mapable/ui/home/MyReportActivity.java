@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -285,8 +286,8 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
             }
         });
 
-        TextView textView_myReport_back = findViewById(R.id.textView_myReport_back);
-        textView_myReport_back.setOnClickListener(new View.OnClickListener() {
+        ImageView imageView_unsentReport_back = findViewById(R.id.imageView_unsentReport_back);
+        imageView_unsentReport_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -320,6 +321,7 @@ public class MyReportActivity extends AppCompatActivity implements MyReportAdapt
         return img;
     }
 
+    //----------------------------------------------------------------------------------------------Check Network Availability
     private Boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();

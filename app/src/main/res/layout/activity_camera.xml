@@ -53,22 +53,22 @@
     <!-- Gallery Button -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_report_photoGallery"
+        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_below="@+id/button_report_camera"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:backgroundTint="@color/colorAccent"
-        android:text="Photo Gallery"
-        android:textSize="15sp"
-        android:textColor="@color/colorSecondary"
         android:fontFamily="@font/montserrat"
+        android:text="Photo Gallery"
+        android:textColor="@color/colorSecondary"
+        android:textSize="15sp"
+        app:cornerRadius="20dp"
         app:icon="@drawable/ic_report_photogallery"
         app:iconGravity="textStart"
-        app:iconTint="@color/colorSecondary"
         app:iconSize="25dp"
-        app:cornerRadius="20dp"
-        style="@style/Widget.MaterialComponents.Button"/>
+        app:iconTint="@color/colorSecondary" />
 
     <!-- Photo -->
     <ImageView

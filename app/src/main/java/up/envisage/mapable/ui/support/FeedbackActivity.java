@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
@@ -45,6 +46,7 @@ public class FeedbackActivity extends AppCompatActivity implements AdapterView.O
     private String BASE_URL = "http://ec2-54-91-89-105.compute-1.amazonaws.com/";
 
     private TextInputLayout textInputLayout_feedback_q01;
+    private ImageView imageView_feedback_back;
 
     private String input00;
     private String outUserId;
@@ -93,7 +95,7 @@ public class FeedbackActivity extends AppCompatActivity implements AdapterView.O
 
         retrofitInterface = retrofit.create(RetrofitInterface.class);
 
-        TextView textView_feedback_back = findViewById(R.id.textView_feedback_back);
+        imageView_feedback_back = findViewById(R.id.imageView_feedback_back);
 
         textInputLayout_feedback_q01 = findViewById(R.id.textInputLayout_feedback_q01);
 
@@ -148,11 +150,10 @@ public class FeedbackActivity extends AppCompatActivity implements AdapterView.O
             }
         });
 
-        textView_feedback_back.setOnClickListener(new View.OnClickListener() {
+        imageView_feedback_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent back = new Intent(FeedbackActivity.this, MainActivity.class);
-                startActivity(back);
+                finish();
             }
         });
 
@@ -179,9 +180,7 @@ public class FeedbackActivity extends AppCompatActivity implements AdapterView.O
 
     public void onBackPressed(){
         super.onBackPressed();
-        Intent back = new Intent(FeedbackActivity.this, MainActivity.class);
-        startActivity(back);
-
+        finish();
     }
 
     //----------------------------------------------------------------------------------------------Popup for successful data sending

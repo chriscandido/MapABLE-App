@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorText"
     android:orientation="vertical"
     tools:context=".ui.support.FeedbackActivity">
 
@@ -13,92 +13,87 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorSecondary">
+        android:background="@color/colorText">
 
-        <TextView
-            android:id="@+id/textView_feedback_back"
+        <!-- Back button -->
+        <ImageView
+            android:id="@+id/imageView_feedback_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:layout_alignParentLeft="true"
-            android:text="Back"
-            android:clickable="true"
-            style="@style/navigationText"/>
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/ic_arrow_back"/>
 
     </RelativeLayout>
 
-    <androidx.core.widget.NestedScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:fillViewport="true">
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            app:cardBackgroundColor="@color/colorBackground"
+            app:cardCornerRadius="10dp"
+            app:cardPreventCornerOverlap="true">
 
-            <androidx.cardview.widget.CardView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                app:cardBackgroundColor="@color/colorBackground"
-                app:cardCornerRadius="10dp"
-                app:cardPreventCornerOverlap="true">
+                android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <!-- Question01 -->
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="I-type ang inyong feedback, tanong, o suhestyon para sa MASDAN. Amin itong ikokonsidera sa mga gagawin pang improvement ng app."
+                    android:textSize="15sp"
+                    android:textColor="@color/colorSecondary"
+                    android:fontFamily="@font/montserrat"/>
 
-                    <!-- Question01 -->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:text="I-type ang inyong feedback, tanong, o suhestyon para sa MASDAN. Amin itong ikokonsidera sa mga gagawin pang improvement ng app."
-                        android:textSize="15sp"
-                        android:textColor="@color/colorSecondary"
-                        android:fontFamily="@font/montserrat"/>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/textInputLayout_feedback_q01"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout_feedback_q01"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    app:boxBackgroundColor="@color/colorBackground"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+                    <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_margin="10dp"
-                        app:boxBackgroundColor="@color/colorBackground"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:fontFamily="@font/montserrat"
-                            android:minHeight="100dp"/>
-                    </com.google.android.material.textfield.TextInputLayout>
+                        android:fontFamily="@font/montserrat"
+                        android:minHeight="200dp"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
-                </LinearLayout>
+            </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_feedback_send"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:backgroundTint="@color/colorText"
-                android:text="IPASA"
-                android:textSize="15sp"
-                android:textColor="@color/colorSecondary"
-                android:fontFamily="@font/montserrat_extrabold"
-                app:cornerRadius="20dp"
-                app:icon="@drawable/ic_report_send"
-                app:iconTint="@color/colorSecondary"
-                app:iconSize="25dp"
-                app:iconGravity="textStart"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_feedback_send"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:backgroundTint="@color/colorBackground"
+            android:text="Submit"
+            android:textSize="15sp"
+            android:textColor="@color/colorSecondary"
+            android:textStyle="bold"
+            android:fontFamily="@font/montserrat"
+            app:cornerRadius="10dp" />
 
-        </LinearLayout>
+    </LinearLayout>
 
-    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

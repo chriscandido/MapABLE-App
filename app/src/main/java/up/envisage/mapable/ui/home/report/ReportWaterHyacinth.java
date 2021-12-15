@@ -51,8 +51,6 @@ public class ReportWaterHyacinth extends AppCompatActivity implements AdapterVie
         Spinner spinner_reportWaterHyacinth_q05 = findViewById(R.id.spinner_reportWaterHyacinth_q05);
         Spinner spinner_reportWaterHyacinth_q06 = findViewById(R.id.spinner_reportWaterHyacinth_q06);
 
-        textInputLayout_reportWaterHyacinth_q00 = findViewById(R.id.textInputLayout_reportWaterHyacinth);
-
         button_reportWaterHyacinth_ok = findViewById(R.id.button_reportWaterHyacinth_next);
 
         //Question 01 spinner element
@@ -121,9 +119,8 @@ public class ReportWaterHyacinth extends AppCompatActivity implements AdapterVie
             @SuppressLint("LongLogTag")
             @Override
             public void onClick(View v) {
-                input00 = textInputLayout_reportWaterHyacinth_q00.getEditText().getText().toString();
 
-                String ans = input00 + "|" + input01 + "|" + input02 + "|" + input03 + "|" + input04+ "|" + input05+ "|" + input06;
+                String ans = input01 + "|" + input02 + "|" + input03 + "|" + input04+ "|" + input05+ "|" + input06;
 
                 Log.v("[ ReportWaterHyacinth.java ]", "ANSWER: " + ans);
 

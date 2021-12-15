@@ -52,9 +52,9 @@
                     android:layout_marginEnd="10dp"
                     android:text="Title"
                     android:textSize="15sp"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/colorPrimary"
                     android:textStyle="bold"
-                    android:fontFamily="@font/montserrat"/>
+                    android:fontFamily="@font/montserrat_extrabold"/>
 
                 <!-- Date and Time -->
                 <TextView
