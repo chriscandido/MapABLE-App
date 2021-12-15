@@ -202,4 +202,9 @@ public class GoogleMapFragment extends FragmentActivity
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) { }
 
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
 }

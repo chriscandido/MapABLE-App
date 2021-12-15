@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,11 +23,13 @@ import java.util.List;
 
 import up.envisage.mapable.R;
 import up.envisage.mapable.fragment.GoogleMapFragment;
+import up.envisage.mapable.fragment.IncidentListFragment;
 
 public class ReportFishKill extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private MaterialButton button_reportFishKill_next;
     private TextInputLayout textInputLayout_reportFishKill_q00, textInputLayout_reportFishKill_q03, textInputLayout_reportFishKill_q05;
+    private ImageView imageView_fishkill_back;
 
     private String input00, input01, input02, input03, input04, input05, input06;
 
@@ -121,6 +124,14 @@ public class ReportFishKill extends AppCompatActivity implements AdapterView.OnI
             intent.putExtra("Latitude", lat);
             intent.putExtra("image", image);
             startActivity(intent);
+        });
+
+        imageView_fishkill_back = findViewById(R.id.imageView_fishkill_back);
+        imageView_fishkill_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
         });
     }
 

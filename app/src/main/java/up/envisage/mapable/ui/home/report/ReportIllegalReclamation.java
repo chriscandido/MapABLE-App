@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,9 +27,8 @@ import up.envisage.mapable.fragment.GoogleMapFragment;
 public class ReportIllegalReclamation extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private TextInputLayout textInputLayout_reportIllegalReclamation_q00, textInputLayout_reportIllegalReclamation_q06;
-
+    private ImageView imageView_reclamation_back;
     private String input00, input01, input02, input03, input04, input05, input06;
-
     private List<String> out = new ArrayList<>();
 
     String userID, dateTime, incidentType, Report, lon, lat, image, imageID2;
@@ -131,6 +131,14 @@ public class ReportIllegalReclamation extends AppCompatActivity implements Adapt
                 intent.putExtra("image", image);
                 startActivity(intent);
 
+            }
+        });
+
+        imageView_reclamation_back = findViewById(R.id.imageView_reclamation_back);
+        imageView_reclamation_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 

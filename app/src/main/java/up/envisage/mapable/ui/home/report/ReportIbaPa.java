@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,8 +20,9 @@ import up.envisage.mapable.fragment.GoogleMapFragment;
 
 public class ReportIbaPa extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    String userID, dateTime, incidentType, Report, lon, lat, image, imageID2;
+    private String userID, dateTime, incidentType, Report, lon, lat, image, imageID2;
     private String input00, input01, input02;
+    private ImageView imageView_ibapa_back;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -60,6 +62,14 @@ public class ReportIbaPa extends AppCompatActivity implements AdapterView.OnItem
                 intent.putExtra("Latitude", lat);
                 intent.putExtra("image", image);
                 startActivity(intent);
+            }
+        });
+
+        imageView_ibapa_back = findViewById(R.id.imageView_ibapa_back);
+        imageView_ibapa_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

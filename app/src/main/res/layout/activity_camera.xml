@@ -5,50 +5,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorBackground"
     android:orientation="vertical"
     tools:context=".ui.home.CameraActivity">
 
-    <!-- Top Navigation Menu -->
+    <!-- Main Header -->
     <RelativeLayout
-        android:id="@+id/camera_mainTitle"
+        android:id="@+id/relativeLayout_mainHeader"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorSecondary">
+        android:layout_height="100dp">
+
+        <ImageView
+            android:id="@+id/imageView_mainHeader_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/bg_box04"
+            android:transitionName="imageView_mainHeader_transition" />
 
         <!-- Back button -->
-        <TextView
-            android:id="@+id/textView_camera_back"
+        <ImageView
+            android:id="@+id/imageView_camera_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
-            android:text="Back"
-            android:clickable="true"
-            style="@style/navigationText"/>
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/ic_arrow_back"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/amplesoftpro_medium"
+            android:gravity="center"
+            android:text="May Report Ako!"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
     <!-- Camera Button -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_report_camera"
+        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeLayout_mainHeader"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_below="@+id/camera_mainTitle"
-        android:backgroundTint="@color/colorAccent"
-        android:text="Camera"
-        android:textSize="15sp"
-        android:textColor="@color/colorSecondary"
+        android:backgroundTint="@color/colorText"
         android:fontFamily="@font/montserrat"
+        android:text="Camera"
+        android:textColor="@color/colorBlack"
+        android:textSize="15sp"
+        app:cornerRadius="10dp"
         app:icon="@drawable/ic_report_camera"
         app:iconGravity="textStart"
-        app:iconTint="@color/colorSecondary"
         app:iconSize="25dp"
-        app:cornerRadius="20dp"
-        style="@style/Widget.MaterialComponents.Button"/>
+        app:iconTint="@color/colorBlack" />
 
     <!-- Gallery Button -->
     <com.google.android.material.button.MaterialButton
@@ -59,16 +83,16 @@
         android:layout_below="@+id/button_report_camera"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:backgroundTint="@color/colorAccent"
+        android:backgroundTint="@color/colorText"
         android:fontFamily="@font/montserrat"
         android:text="Photo Gallery"
-        android:textColor="@color/colorSecondary"
+        android:textColor="@color/colorBlack"
         android:textSize="15sp"
-        app:cornerRadius="20dp"
+        app:cornerRadius="10dp"
         app:icon="@drawable/ic_report_photogallery"
         app:iconGravity="textStart"
         app:iconSize="25dp"
-        app:iconTint="@color/colorSecondary" />
+        app:iconTint="@color/colorBlack" />
 
     <!-- Photo -->
     <ImageView
@@ -84,17 +108,18 @@
     <!-- Save Button -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_report_savePhoto"
+        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_alignParentBottom="true"
+        android:layout_marginLeft="80dp"
+        android:layout_marginRight="80dp"
         android:backgroundTint="@color/colorText"
-        android:text="SAVE"
-        android:textSize="15sp"
-        android:textColor="@color/colorSecondary"
         android:fontFamily="@font/montserrat_extrabold"
-        app:cornerRadius="20dp"
-        style="@style/Widget.MaterialComponents.Button"/>
+        android:gravity="center"
+        android:text="SEND REPORT"
+        android:textColor="@color/colorBlack"
+        android:textSize="15sp"
+        app:cornerRadius="10dp" />
 
 </RelativeLayout>

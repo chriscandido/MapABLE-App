@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,10 +26,10 @@ import up.envisage.mapable.fragment.GoogleMapFragment;
 public class ReportSolidWaste extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     MaterialButton button_reportSolidWaste_next;
-    TextInputLayout textInputLayout_reportSolidWaste_q00;
-
-    String input00, input01, input02, input03, input04, input05, input06, input07, input08;
-    String userID, dateTime, incidentType, Report, lon, lat, image, imageID2;
+    private TextInputLayout textInputLayout_reportSolidWaste_q00;
+    private ImageView imageView_solidwaste_back;
+    private String input00, input01, input02, input03, input04, input05, input06, input07, input08;
+    private String userID, dateTime, incidentType, Report, lon, lat, image, imageID2;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -163,6 +164,14 @@ public class ReportSolidWaste extends AppCompatActivity implements AdapterView.O
                 intent.putExtra("Latitude", lat);
                 intent.putExtra("image", image);
                 startActivity(intent);
+            }
+        });
+
+        imageView_solidwaste_back = findViewById(R.id.imageView_solidwaste_back);
+        imageView_solidwaste_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

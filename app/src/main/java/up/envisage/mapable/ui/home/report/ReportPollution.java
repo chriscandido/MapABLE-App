@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,9 +28,8 @@ import up.envisage.mapable.fragment.GoogleMapFragment;
 public class ReportPollution extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private TextInputLayout textInputLayout_reportPollution_q00, textInputLayout_reportPollution_q05, textInputLayout_reportPollution_q07;
-
+    private ImageView imageView_waterpollution_back;
     private String input00, input01, input02, input03, input04, input05, input06, input07;
-
     private List<String> out = new ArrayList<>();
 
     String userID, dateTime, incidentType, Report, lon, lat, image, imageID2;
@@ -134,6 +134,14 @@ public class ReportPollution extends AppCompatActivity implements AdapterView.On
                 intent.putExtra("Latitude", lat);
                 intent.putExtra("image", image);
                 startActivity(intent);
+            }
+        });
+
+        imageView_waterpollution_back = findViewById(R.id.imageView_waterpollution_back);
+        imageView_waterpollution_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

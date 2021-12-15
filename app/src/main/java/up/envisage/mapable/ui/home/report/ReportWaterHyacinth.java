@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,10 +26,10 @@ import up.envisage.mapable.fragment.GoogleMapFragment;
 public class ReportWaterHyacinth extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     MaterialButton button_reportWaterHyacinth_ok;
-    TextInputLayout textInputLayout_reportWaterHyacinth_q00;
+    private ImageView imageView_hyacinth_back;
 
-    String input00, input01, input02, input03, input04, input05, input06;
-    String userID, dateTime, incidentType, Report, lon, lat, image, imageID2;
+    private String input00, input01, input02, input03, input04, input05, input06;
+    private String userID, dateTime, incidentType, Report, lon, lat, image, imageID2;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -133,6 +134,14 @@ public class ReportWaterHyacinth extends AppCompatActivity implements AdapterVie
                 intent.putExtra("Latitude", lat);
                 intent.putExtra("image", image);
                 startActivity(intent);
+            }
+        });
+
+        imageView_hyacinth_back = findViewById(R.id.imageView_hyacinth_back);
+        imageView_hyacinth_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 

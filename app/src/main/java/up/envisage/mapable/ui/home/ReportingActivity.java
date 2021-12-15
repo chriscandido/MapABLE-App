@@ -236,9 +236,10 @@ public class ReportingActivity extends AppCompatActivity {
                             reportViewModel.insert(report);
                         }
                     });
-                } else { //if no internet connection, report is stored in the local database
+                } else {
+                    //if no internet connection, report is stored in the local database
                     //Toast.makeText(ReportingActivity.this, "No Internet Connection. Report will be saved in the device!",
-                            //Toast.LENGTH_LONG).show();
+                    //Toast.LENGTH_LONG).show();
                     ReportTable report = new ReportTable();
                     report.setUniqueId(outUserId);
                     report.setDateTime(dateTime);

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 import com.google.android.material.button.MaterialButton;
@@ -21,12 +22,15 @@ import java.util.Calendar;
 import java.util.List;
 
 import up.envisage.mapable.R;
+import up.envisage.mapable.adapter.IncidentListAdapter;
 import up.envisage.mapable.fragment.GoogleMapFragment;
+import up.envisage.mapable.fragment.IncidentListFragment;
 
 public class ReportAlgalBloom extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     MaterialButton button_reportAlgalBloom_ok;
     TextInputLayout textInputLayout_reportAlgalBloom_q00, textInputLayout_reportAlgalBloom_q04;
+    ImageView imageView_algalbloom_back;
 
     String input00, input01, input02, input03, input04;
     String userID, dateTime, incidentType, Report, lon, lat, image, imageID2;
@@ -108,6 +112,14 @@ public class ReportAlgalBloom extends AppCompatActivity implements AdapterView.O
                 intent.putExtra("Latitude", lat);
                 intent.putExtra("image", image);
                 startActivity(intent);
+            }
+        });
+
+        imageView_algalbloom_back = findViewById(R.id.imageView_algalbloom_back);
+        imageView_algalbloom_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }
