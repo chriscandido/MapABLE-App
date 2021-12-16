@@ -1,6 +1,7 @@
 package up.envisage.mapable.fragment;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -14,6 +15,7 @@ import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.view.ViewCompat;
@@ -112,7 +114,7 @@ public class UserFragment extends Fragment implements GoogleApiClient.Connection
     ReportViewModel reportViewModel;
     UserViewModel userViewModel;
 
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         if (context instanceof Activity){
             this.listener = (FragmentActivity) context;
@@ -218,6 +220,7 @@ public class UserFragment extends Fragment implements GoogleApiClient.Connection
                     @Override
                     public void onResponse(Call<StatsResult> call, Response<StatsResult> response) {
                         if(response.code() == 200) {
+                            assert response.body() != null;
                             algalBloom = response.body().getAlgalBloom();
                             fishKill = response.body().getFishKill();
                             waterPollution = response.body().getWaterPollution();
@@ -251,7 +254,7 @@ public class UserFragment extends Fragment implements GoogleApiClient.Connection
                     }
 
                     @Override
-                    public void onFailure(Call<StatsResult> call, Throwable t) {
+                    public void onFailure(@NonNull Call<StatsResult> call, Throwable t) {
 
                     }
                 });
@@ -355,6 +358,7 @@ public class UserFragment extends Fragment implements GoogleApiClient.Connection
     public void userDetails() {
         userViewModel = ViewModelProviders.of(listener).get(UserViewModel.class);
         userViewModel.getLastUser().observe(listener, new Observer<UserTable>() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onChanged(UserTable userTable) {
                 String name = userTable.getName();
@@ -369,7 +373,7 @@ public class UserFragment extends Fragment implements GoogleApiClient.Connection
 
     public static void printHashKey(Context pContext) {
         try {
-            PackageInfo info = pContext.getPackageManager().getPackageInfo(pContext.getPackageName(), PackageManager.GET_SIGNATURES);
+            @SuppressLint("PackageManagerGetSignatures") PackageInfo info = pContext.getPackageManager().getPackageInfo(pContext.getPackageName(), PackageManager.GET_SIGNATURES);
             for (Signature signature : info.signatures) {
                 MessageDigest md = MessageDigest.getInstance("SHA");
                 md.update(signature.toByteArray());
@@ -451,14 +455,22 @@ public class UserFragment extends Fragment implements GoogleApiClient.Connection
                 addresses = geocoder.getFromLocation(currentLocation.getLatitude(), currentLocation.getLongitude(), 1);
                 if (addresses != null) {
                     try {
+                        if (addresses.get(0).getSubLocality() != null && addresses.get(0).getLocality() != null) {
+                            textView_userLocation.setText(addresses.get(0).getSubLocality() + ", " + addresses.get(0).getLocality());
+                        } else if (addresses.get(0).getSubLocality() == null && addresses.get(0).getLocality() != null){
+                            textView_userLocation.setText(addresses.get(0).getLocality());
+                        } else if (addresses.get(0).getSubLocality() != null && addresses.get(0).getLocality() == null) {
+                            textView_userLocation.setText(addresses.get(0).getSubLocality());
+                        } else {
+                            textView_userLocation.setText(addresses.get(0).getCountryName());
+                        }
                         address_string[0] = String.valueOf(addresses.get(0).getAddressLine(0));
                     } catch (IndexOutOfBoundsException e) {
                         address_string[0] = "NO ADDRESS LINE MATCHED";
                     }
-                } else {
+                }  else {
                     address_string[0] = "NO ADDRESS MATCHES WERE FOUND";
                 }
-                textView_userLocation.setText(addresses.get(0).getSubLocality() + ", " + addresses.get(0).getLocality());
                 Log.v("[ HomeFragment.java ]", lat);
             } catch (IOException e) {
                 e.printStackTrace();

@@ -5,35 +5,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     tools:context=".fragment.MapFragment">
-
-    <LinearLayout
-        android:id="@+id/linearLayout_mapTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:background="@color/colorSecondary"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/mapBox_mapView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="center"
-            android:text="MAP"
-            style="@style/navigationText"/>
-
-    </LinearLayout>
 
     <!-- Map -->
     <com.mapbox.mapboxsdk.maps.MapView
         android:id="@+id/mapBox_mapView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout_mapTitle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -49,7 +28,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
@@ -65,17 +44,19 @@
                 android:backgroundTint="@color/colorBackground"
                 android:text="My Reports"
                 android:textSize="10sp"
-                android:textColor="@color/colorSecondary"
+                android:textColor="@color/colorBlack"
                 android:textAlignment="viewStart"
                 android:textAllCaps="false"
                 android:fontFamily="@font/montserrat"
                 app:icon="@drawable/ic_map_marker60x60"
                 app:iconSize="18dp"
+                app:iconTint="@color/colorBlack"
                 app:cornerRadius="20dp"
                 app:rippleColor="@color/colorPrimary"
-                app:strokeColor="@color/colorSecondary"
+                app:strokeColor="@color/colorBlack"
                 app:strokeWidth="1dp"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                tools:ignore="HardcodedText" />
 
             <!-- Send Button -->
             <com.google.android.material.button.MaterialButton
@@ -89,16 +70,17 @@
                 android:backgroundTint="@color/colorBackground"
                 android:text="Offshore Stations"
                 android:textSize="10sp"
-                android:textColor="@color/colorSecondary"
+                android:textColor="@color/colorBlack"
                 android:textAlignment="center"
                 android:textAllCaps="false"
                 android:fontFamily="@font/montserrat"
                 app:iconSize="25dp"
                 app:cornerRadius="20dp"
                 app:rippleColor="@color/colorPrimary"
-                app:strokeColor="@color/colorSecondary"
+                app:strokeColor="@color/colorBlack"
                 app:strokeWidth="1dp"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                tools:ignore="HardcodedText" />
 
             <!-- Send Button -->
             <com.google.android.material.button.MaterialButton
@@ -112,16 +94,17 @@
                 android:backgroundTint="@color/colorBackground"
                 android:text="Pasig River Stations"
                 android:textSize="10sp"
-                android:textColor="@color/colorSecondary"
+                android:textColor="@color/colorBlack"
                 android:textAlignment="center"
                 android:textAllCaps="false"
                 android:fontFamily="@font/montserrat"
                 app:iconSize="25dp"
                 app:cornerRadius="20dp"
                 app:rippleColor="@color/colorPrimary"
-                app:strokeColor="@color/colorSecondary"
+                app:strokeColor="@color/colorBlack"
                 app:strokeWidth="1dp"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                tools:ignore="HardcodedText" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_mapBathingBeachesStation"
@@ -134,16 +117,17 @@
                 android:backgroundTint="@color/colorBackground"
                 android:text="Bathing Beaches Stations"
                 android:textSize="10sp"
-                android:textColor="@color/colorSecondary"
+                android:textColor="@color/colorBlack"
                 android:textAlignment="center"
                 android:textAllCaps="false"
                 android:fontFamily="@font/montserrat"
                 app:iconSize="25dp"
                 app:cornerRadius="20dp"
                 app:rippleColor="@color/colorPrimary"
-                app:strokeColor="@color/colorSecondary"
+                app:strokeColor="@color/colorBlack"
                 app:strokeWidth="1dp"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                tools:ignore="HardcodedText" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_mapRiverOutfallStation"
@@ -156,16 +140,17 @@
                 android:backgroundTint="@color/colorBackground"
                 android:text="River Outfall Stations"
                 android:textSize="10sp"
-                android:textColor="@color/colorSecondary"
+                android:textColor="@color/colorBlack"
                 android:textAlignment="center"
                 android:textAllCaps="false"
                 android:fontFamily="@font/montserrat"
                 app:iconSize="25dp"
                 app:cornerRadius="20dp"
                 app:rippleColor="@color/colorPrimary"
-                app:strokeColor="@color/colorSecondary"
+                app:strokeColor="@color/colorBlack"
                 app:strokeWidth="1dp"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                tools:ignore="HardcodedText" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_mapLagunaDeBayStation"
@@ -178,16 +163,17 @@
                 android:backgroundTint="@color/colorBackground"
                 android:text="Laguna de Bay Stations"
                 android:textSize="10sp"
-                android:textColor="@color/colorSecondary"
+                android:textColor="@color/colorBlack"
                 android:textAlignment="center"
                 android:textAllCaps="false"
                 android:fontFamily="@font/montserrat"
                 app:iconSize="25dp"
                 app:cornerRadius="20dp"
                 app:rippleColor="@color/colorPrimary"
-                app:strokeColor="@color/colorSecondary"
+                app:strokeColor="@color/colorBlack"
                 app:strokeWidth="1dp"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                tools:ignore="HardcodedText" />
 
         </LinearLayout>
 

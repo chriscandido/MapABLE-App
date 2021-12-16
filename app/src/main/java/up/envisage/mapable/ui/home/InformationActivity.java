@@ -56,30 +56,26 @@ import up.envisage.mapable.adapter.ReportIncidentAdapter;
          Log.d("[ InformationActivity.java ]", "onInformationClick: clicked - " + position);
          switch (position) {
              case 0:
-                 Intent intent = new Intent(InformationActivity.this, AboutManilaBayActivity.class);
-                 startActivity(intent);
-                 break;
-             case 1:
                  String facebookLink01 = "https://www.facebook.com/ProjectMapABLE/photos/a.143299490614286/224398339171067/";
                  openFacebookPageIntent(facebookLink01);
                  break;
-             case 2:
+             case 1:
                  String facebookLink02 = "https://www.facebook.com/ProjectMapABLE/photos/a.143299490614286/228755065402061/";
                  openFacebookPageIntent(facebookLink02);
                  break;
-             case 3:
+             case 2:
                  String facebookLink03 = "https://www.facebook.com/ProjectMapABLE/photos/pcb.232793878331513/232792664998301/";
                  openFacebookPageIntent(facebookLink03);
                  break;
-             case 4:
+             case 3:
                  String facebookLink04 = "https://www.facebook.com/ProjectMapABLE/photos/a.143299490614286/236249687985932/";
                  openFacebookPageIntent(facebookLink04);
                  break;
-             case 5:
+             case 4:
                  String facebookLink05 = "https://www.facebook.com/ProjectMapABLE/photos/a.143299490614286/240185767592324/";
                  openFacebookPageIntent(facebookLink05);
                  break;
-             case 6:
+             case 5:
                  String facebookLink06 = "https://www.facebook.com/ProjectMapABLE/photos/a.143299490614286/248369220107312/";
                  openFacebookPageIntent(facebookLink06);
                  break;

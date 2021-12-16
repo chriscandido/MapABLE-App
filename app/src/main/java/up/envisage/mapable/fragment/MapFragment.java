@@ -25,6 +25,12 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.internal.LinkedTreeMap;
 import com.mapbox.android.core.location.LocationEngine;
 import com.mapbox.android.core.location.LocationEngineCallback;
 import com.mapbox.android.core.location.LocationEngineProvider;
@@ -48,10 +54,14 @@ import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.maps.Style;
 
+import java.io.BufferedReader;
 import java.lang.ref.WeakReference;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -100,7 +110,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
 
     private String outUserId;
 
-    public ArrayList<List> reportsArrayList = new ArrayList<List>();
+    public ArrayList<LinkedTreeMap> reportsArrayList = new ArrayList<>();
 
     private View rootView;
     private LocationChangeListeningActivityLocationCallback callback =
@@ -201,7 +211,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
                                         if(response2.isSuccessful()) {
 
                                             for(int i=0; i<response2.body().size(); i++) {
-                                                reportsArrayList.add((List) response2.body().get(i));
+                                                Log.v("[ MapFragment.java ]", response2.body().get(i).toString());
+                                                LinkedTreeMap linkedTreeMap = (LinkedTreeMap) response2.body().get(i);
+                                                reportsArrayList.add(linkedTreeMap);
                                             }
 
 //                                            Toast.makeText(getActivity(),"My Reports Retrieved!",Toast.LENGTH_SHORT).show();
@@ -271,6 +283,20 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
                 });
     }
 
+    public static <T> List<T> getObjectList(String jsonString,Class<T> cls){
+        List<T> list = new ArrayList<T>();
+        try {
+            Gson gson = new Gson();
+            JsonArray arry = new JsonParser().parse(jsonString).getAsJsonArray();
+            for (JsonElement jsonElement : arry) {
+                list.add(gson.fromJson(jsonElement, cls));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
     //----------------------------------------------------------------------------------------------Get data from local db
     public void setupData (MapboxMap mapboxMap){
         Icon iconAlgalBloom = drawableToIcon(getApplicationContext(), R.drawable.ic_map_algalbloom120x120);
@@ -282,51 +308,68 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
         Icon iconIbaPa = drawableToIcon(getApplicationContext(), R.drawable.ic_map_ibapa120x120);
 
         for (int i = 0; i <reportsArrayList.size(); i++){
-            String incidentType = reportsArrayList.get(i).get(0).toString();
-            double latitude = (double) reportsArrayList.get(i).get(2);
-            double longitude = (double) reportsArrayList.get(i).get(1);
+            // Extract properties and geometry
+            LinkedTreeMap properties = (LinkedTreeMap) reportsArrayList.get(i).get("properties");
+            LinkedTreeMap geometry = (LinkedTreeMap) reportsArrayList.get(i).get("geometry");
+
+            // Convert to String and List
+            String incidentType = properties.get("type").toString();
+            String status = properties.get("status").toString();
+            List coordinates = (List) geometry.get("coordinates");
+
+            // Extract latitude and longitude from List
+            double latitude = (double) coordinates.get(1);
+            double longitude = (double) coordinates.get(0);
+            Log.v("[ MapFragment.java ]","data: " + String.valueOf(latitude) + " " + String.valueOf(longitude));
 
             switch (incidentType) {
                 case "Algal Bloom":
                     mapboxMap.addMarker(new MarkerOptions()
                             .position(new LatLng(latitude, longitude))
                             .title(incidentType)
+                            .snippet(status)
                             .icon(iconAlgalBloom));
                     break;
                 case "Fish Kill":
                     mapboxMap.addMarker(new MarkerOptions()
                             .position(new LatLng(latitude, longitude))
                             .title(incidentType)
+                            .snippet(status)
                             .icon(iconFishKill));
                     break;
                 case "Water Pollution":
                     mapboxMap.addMarker(new MarkerOptions()
                             .position(new LatLng(latitude, longitude))
                             .title(incidentType)
+                            .snippet(status)
                             .icon(iconPollution));
                     break;
                 case "Ongoing Reclamation":
                     mapboxMap.addMarker(new MarkerOptions()
                             .position(new LatLng(latitude, longitude))
                             .title(incidentType)
+                            .snippet(status)
                             .icon(iconIllegalRec));
                     break;
                 case "Water Hyacinth":
                     mapboxMap.addMarker(new MarkerOptions()
                             .position(new LatLng(latitude, longitude))
                             .title(incidentType)
+                            .snippet(status)
                             .icon(iconWaterHyacinth));
                     break;
                 case "Solid Waste":
                     mapboxMap.addMarker(new MarkerOptions()
                             .position(new LatLng(latitude, longitude))
                             .title(incidentType)
+                            .snippet(status)
                             .icon(iconSolidWaste));
                     break;
                 case "Iba Pa":
                     mapboxMap.addMarker(new MarkerOptions()
                             .position(new LatLng(latitude, longitude))
                             .title(incidentType)
+                            .snippet(status)
                             .icon(iconIbaPa));
                     break;
             }

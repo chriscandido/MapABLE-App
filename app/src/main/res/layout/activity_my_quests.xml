@@ -2,6 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -95,12 +96,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
+                        android:fontFamily="@font/montserrat"
                         android:gravity="center"
                         android:text="Basic Level"
                         android:textColor="@color/colorPrimary"
                         android:textSize="24sp"
                         android:textStyle="bold"
-                        android:fontFamily="@font/montserrat"/>
+                        tools:ignore="HardcodedText" />
 
                     <LinearLayout
                         android:id="@+id/linearLayout_myquest_basiclevel"
@@ -114,13 +116,15 @@
                             android:id="@+id/linearLayout_myquest_tutorial"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
                             android:orientation="vertical">
 
                             <ImageView
                                 android:id="@+id/imageView_myquest_tutorial"
-                                android:layout_width="90dp"
-                                android:layout_height="90dp"
-                                android:layout_margin="2dp"
+                                android:layout_width="85dp"
+                                android:layout_height="85dp"
+                                android:layout_margin="5dp"
                                 android:src="@drawable/ic_badge_lock"/>
 
                             <TextView
@@ -131,7 +135,7 @@
                                 android:gravity="center"
                                 android:text="Completed App Tutorial"
                                 android:textColor="@color/colorPrimary"
-                                android:textSize="12sp"
+                                android:textSize="10sp"
                                 android:textStyle="bold"
                                 android:fontFamily="@font/montserrat"/>
 
@@ -141,13 +145,15 @@
                             android:id="@+id/linearLayout_myquest_firstreport"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
                             android:orientation="vertical">
 
                             <ImageView
                                 android:id="@+id/imageView_myquest_firstreport"
-                                android:layout_width="90dp"
-                                android:layout_height="90dp"
-                                android:layout_margin="2dp"
+                                android:layout_width="85dp"
+                                android:layout_height="85dp"
+                                android:layout_margin="5dp"
                                 android:src="@drawable/ic_badge_lock"/>
 
                             <TextView
@@ -158,7 +164,7 @@
                                 android:gravity="center"
                                 android:text="Completed First Report"
                                 android:textColor="@color/colorPrimary"
-                                android:textSize="12sp"
+                                android:textSize="10sp"
                                 android:textStyle="bold"
                                 android:fontFamily="@font/montserrat"/>
 
@@ -168,14 +174,16 @@
                             android:id="@+id/linearLayout_myquest_verifiedreport"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
                             android:layout_toEndOf="@+id/linearLayout_myquest_firstreport"
                             android:orientation="vertical">
 
                             <ImageView
                                 android:id="@+id/imageView_myquest_verifiedreport"
-                                android:layout_width="90dp"
-                                android:layout_height="90dp"
-                                android:layout_margin="2dp"
+                                android:layout_width="85dp"
+                                android:layout_height="85dp"
+                                android:layout_margin="5dp"
                                 android:src="@drawable/ic_badge_lock" />
 
                             <TextView
@@ -187,7 +195,7 @@
                                 android:gravity="center"
                                 android:text="First Verified Report"
                                 android:textColor="@color/colorPrimary"
-                                android:textSize="12sp"
+                                android:textSize="10sp"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -223,11 +231,12 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:layout_gravity="center"
-                        android:text="Citizen Science"
+                        android:text="Citizen Scientists"
                         android:textColor="@color/colorPrimary"
                         android:textSize="24sp"
                         android:textStyle="bold"
-                        android:fontFamily="@font/montserrat"/>
+                        android:fontFamily="@font/montserrat"
+                        tools:ignore="HardcodedText" />
 
                     <LinearLayout
                         android:id="@+id/linearLayout_myquest_citizenscience"
@@ -240,13 +249,15 @@
                             android:id="@+id/linearLayout_myquest_junior"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
                             android:orientation="vertical">
 
                             <ImageView
                                 android:id="@+id/imageView_myquest_junior"
-                                android:layout_width="90dp"
-                                android:layout_height="90dp"
-                                android:layout_margin="2dp"
+                                android:layout_width="85dp"
+                                android:layout_height="85dp"
+                                android:layout_margin="5dp"
                                 android:src="@drawable/ic_badge_lock"/>
 
                             <TextView
@@ -257,7 +268,7 @@
                                 android:gravity="center"
                                 android:text="Junior Citizen Science"
                                 android:textColor="@color/colorPrimary"
-                                android:textSize="12sp"
+                                android:textSize="10sp"
                                 android:textStyle="bold"
                                 android:fontFamily="@font/montserrat"/>
 
@@ -267,14 +278,16 @@
                             android:id="@+id/linearLayout_myquest_senior"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
                             android:layout_toEndOf="@+id/linearLayout_myquest_junior"
                             android:orientation="vertical">
 
                             <ImageView
                                 android:id="@+id/imageView_myquest_senior"
-                                android:layout_width="90dp"
-                                android:layout_height="90dp"
-                                android:layout_margin="2dp"
+                                android:layout_width="85dp"
+                                android:layout_height="85dp"
+                                android:layout_margin="5dp"
                                 android:src="@drawable/ic_badge_lock"/>
 
                             <TextView
@@ -285,7 +298,7 @@
                                 android:gravity="center"
                                 android:text="Senior Citizen Science"
                                 android:textColor="@color/colorPrimary"
-                                android:textSize="12sp"
+                                android:textSize="10sp"
                                 android:textStyle="bold"
                                 android:fontFamily="@font/montserrat"/>
 
@@ -295,13 +308,15 @@
                             android:id="@+id/linearLayout_myquest_professional"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
                             android:orientation="vertical">
 
                             <ImageView
                                 android:id="@+id/imageView_myquest_professional"
-                                android:layout_width="90dp"
-                                android:layout_height="90dp"
-                                android:layout_margin="2dp"
+                                android:layout_width="85dp"
+                                android:layout_height="85dp"
+                                android:layout_margin="5dp"
                                 android:src="@drawable/ic_badge_lock" />
 
                             <TextView
@@ -313,7 +328,7 @@
                                 android:gravity="center"
                                 android:text="Professional Citizen Science"
                                 android:textColor="@color/colorPrimary"
-                                android:textSize="12sp"
+                                android:textSize="10sp"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -331,13 +346,15 @@
                             android:id="@+id/linearLayout_myquest_master"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
                             android:orientation="vertical">
 
                             <ImageView
                                 android:id="@+id/imageView_myquest_master"
-                                android:layout_width="90dp"
-                                android:layout_height="90dp"
-                                android:layout_margin="2dp"
+                                android:layout_width="85dp"
+                                android:layout_height="85dp"
+                                android:layout_margin="5dp"
                                 android:src="@drawable/ic_badge_lock"/>
 
                             <TextView
@@ -348,7 +365,7 @@
                                 android:gravity="center"
                                 android:text="Master Citizen Science"
                                 android:textColor="@color/colorPrimary"
-                                android:textSize="12sp"
+                                android:textSize="10sp"
                                 android:textStyle="bold"
                                 android:fontFamily="@font/montserrat"/>
 
@@ -358,13 +375,15 @@
                             android:id="@+id/linearLayout_myquest_great"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
                             android:orientation="vertical">
 
                             <ImageView
                                 android:id="@+id/imageView_myquest_great"
-                                android:layout_width="90dp"
-                                android:layout_height="90dp"
-                                android:layout_margin="2dp"
+                                android:layout_width="85dp"
+                                android:layout_height="85dp"
+                                android:layout_margin="5dp"
                                 android:src="@drawable/ic_badge_lock"/>
 
                             <TextView
@@ -375,7 +394,7 @@
                                 android:gravity="center"
                                 android:text="The Great Citizen Science"
                                 android:textColor="@color/colorPrimary"
-                                android:textSize="12sp"
+                                android:textSize="10sp"
                                 android:textStyle="bold"
                                 android:fontFamily="@font/montserrat"/>
 
@@ -429,13 +448,15 @@
                             android:id="@+id/linearLayout_myquest_algalbloom"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
                             android:orientation="vertical">
 
                             <ImageView
                                 android:id="@+id/imageView_myquest_algalbloom"
-                                android:layout_width="90dp"
-                                android:layout_height="90dp"
-                                android:layout_margin="2dp"
+                                android:layout_width="85dp"
+                                android:layout_height="85dp"
+                                android:layout_margin="5dp"
                                 android:src="@drawable/ic_badge_lock"/>
 
                             <TextView
@@ -446,7 +467,7 @@
                                 android:gravity="center"
                                 android:text="Algal Bloom"
                                 android:textColor="@color/colorPrimary"
-                                android:textSize="12sp"
+                                android:textSize="10sp"
                                 android:textStyle="bold"
                                 android:fontFamily="@font/montserrat"/>
 
@@ -456,13 +477,15 @@
                             android:id="@+id/linearLayout_myquest_fishkill"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
                             android:orientation="vertical">
 
                             <ImageView
                                 android:id="@+id/imageView_myquest_fishkill"
-                                android:layout_width="90dp"
-                                android:layout_height="90dp"
-                                android:layout_margin="2dp"
+                                android:layout_width="85dp"
+                                android:layout_height="85dp"
+                                android:layout_margin="5dp"
                                 android:src="@drawable/ic_badge_lock"/>
 
                             <TextView
@@ -473,7 +496,7 @@
                                 android:gravity="center"
                                 android:text="Fish Kill"
                                 android:textColor="@color/colorPrimary"
-                                android:textSize="12sp"
+                                android:textSize="10sp"
                                 android:textStyle="bold"
                                 android:fontFamily="@font/montserrat"/>
 
@@ -483,13 +506,15 @@
                             android:id="@+id/linearLayout_myquest_hyacinth"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
                             android:orientation="vertical">
 
                             <ImageView
                                 android:id="@+id/imageView_myquest_hyacinth"
-                                android:layout_width="90dp"
-                                android:layout_height="90dp"
-                                android:layout_margin="2dp"
+                                android:layout_width="85dp"
+                                android:layout_height="85dp"
+                                android:layout_margin="5dp"
                                 android:src="@drawable/ic_badge_lock" />
 
                             <TextView
@@ -501,7 +526,7 @@
                                 android:gravity="center"
                                 android:text="Water Hyacinth"
                                 android:textColor="@color/colorPrimary"
-                                android:textSize="12sp"
+                                android:textSize="10sp"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
@@ -519,13 +544,15 @@
                             android:id="@+id/linearLayout_myquest_solidwaste"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
                             android:orientation="vertical">
 
                             <ImageView
                                 android:id="@+id/imageView_myquest_solidwaste"
-                                android:layout_width="90dp"
-                                android:layout_height="90dp"
-                                android:layout_margin="2dp"
+                                android:layout_width="85dp"
+                                android:layout_height="85dp"
+                                android:layout_margin="5dp"
                                 android:src="@drawable/ic_badge_lock"/>
 
                             <TextView
@@ -536,7 +563,7 @@
                                 android:gravity="center"
                                 android:text="Solid Waste"
                                 android:textColor="@color/colorPrimary"
-                                android:textSize="12sp"
+                                android:textSize="10sp"
                                 android:textStyle="bold"
                                 android:fontFamily="@font/montserrat"/>
 
@@ -546,13 +573,15 @@
                             android:id="@+id/linearLayout_myquest_waterpollution"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
                             android:orientation="vertical">
 
                             <ImageView
                                 android:id="@+id/imageView_myquest_waterpollution"
-                                android:layout_width="90dp"
-                                android:layout_height="90dp"
-                                android:layout_margin="2dp"
+                                android:layout_width="85dp"
+                                android:layout_height="85dp"
+                                android:layout_margin="5dp"
                                 android:src="@drawable/ic_badge_lock"/>
 
                             <TextView
@@ -563,7 +592,7 @@
                                 android:gravity="center"
                                 android:text="Water Pollution"
                                 android:textColor="@color/colorPrimary"
-                                android:textSize="12sp"
+                                android:textSize="10sp"
                                 android:textStyle="bold"
                                 android:fontFamily="@font/montserrat"/>
 
@@ -573,13 +602,15 @@
                             android:id="@+id/linearLayout_myquest_reclamation"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
                             android:orientation="vertical">
 
                             <ImageView
                                 android:id="@+id/imageView_myquest_reclamation"
-                                android:layout_width="90dp"
-                                android:layout_height="90dp"
-                                android:layout_margin="2dp"
+                                android:layout_width="85dp"
+                                android:layout_height="85dp"
+                                android:layout_margin="5dp"
                                 android:src="@drawable/ic_badge_lock"/>
 
                             <TextView
@@ -590,7 +621,7 @@
                                 android:gravity="center"
                                 android:text="Ongoing Reclamation"
                                 android:textColor="@color/colorPrimary"
-                                android:textSize="12sp"
+                                android:textSize="10sp"
                                 android:textStyle="bold"
                                 android:fontFamily="@font/montserrat"/>
 
@@ -609,13 +640,15 @@
                             android:id="@+id/linearLayout_myquest_certified"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
                             android:orientation="vertical">
 
                             <ImageView
                                 android:id="@+id/imageView_myquest_certified"
-                                android:layout_width="90dp"
-                                android:layout_height="90dp"
-                                android:layout_margin="2dp"
+                                android:layout_width="85dp"
+                                android:layout_height="85dp"
+                                android:layout_margin="5dp"
                                 android:src="@drawable/ic_badge_lock"/>
 
                             <TextView
@@ -626,7 +659,7 @@
                                 android:gravity="center"
                                 android:text="Certified Tagapagmasid"
                                 android:textColor="@color/colorPrimary"
-                                android:textSize="12sp"
+                                android:textSize="10sp"
                                 android:textStyle="bold"
                                 android:fontFamily="@font/montserrat"/>
 

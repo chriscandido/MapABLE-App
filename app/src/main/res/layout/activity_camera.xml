@@ -15,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp">
 
+        <!-- Background -->
         <ImageView
             android:id="@+id/imageView_mainHeader_home"
             android:layout_width="match_parent"

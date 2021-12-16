@@ -20,7 +20,7 @@
             android:id="@+id/imageView_unsentReport_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
@@ -54,15 +54,12 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/colorText"
-        android:text="IPASA"
+        android:fontFamily="@font/montserrat_extrabold"
+        android:text="SUBMIT"
         android:textColor="@color/colorBlack"
         android:textSize="15sp"
-        android:fontFamily="@font/montserrat_extrabold"
-        app:cornerRadius="20dp"
-        app:icon="@drawable/ic_report_send"
-        app:iconGravity="textStart"
-        app:iconSize="25dp"
-        app:iconTint="@color/colorBlack"
-        tools:targetApi="lollipop" />
+        app:cornerRadius="10dp"
+        tools:targetApi="lollipop"
+        tools:ignore="HardcodedText" />
 
 </RelativeLayout>

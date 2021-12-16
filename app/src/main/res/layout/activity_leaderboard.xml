@@ -29,7 +29,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/amplesoftpro_medium"
                 android:gravity="center"
                 android:text="Citizen Science"
                 android:textColor="@color/colorPrimary"
@@ -39,10 +39,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/amplesoftpro_medium"
                 android:gravity="center"
-                android:text="Leadeboard"
+                android:text="Leaderboard"
                 android:textColor="@color/colorPrimary"
                 android:textSize="25sp"
                 android:textStyle="bold" />

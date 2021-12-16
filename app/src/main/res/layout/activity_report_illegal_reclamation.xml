@@ -304,9 +304,11 @@
                 android:backgroundTint="@color/colorText"
                 android:text="NEXT"
                 android:textSize="15sp"
-                android:textColor="@color/colorSecondary"
+                android:textColor="@color/colorBlack"
                 android:fontFamily="@font/montserrat_extrabold"
-                app:cornerRadius="10dp"/>
+                app:cornerRadius="10dp"
+                tools:targetApi="lollipop"
+                tools:ignore="HardcodedText" />
 
         </LinearLayout>
 

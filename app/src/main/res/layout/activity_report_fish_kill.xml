@@ -312,7 +312,9 @@
                 android:textSize="15sp"
                 android:textColor="@color/colorBlack"
                 android:fontFamily="@font/montserrat_extrabold"
-                app:cornerRadius="10dp"/>
+                app:cornerRadius="10dp"
+                tools:targetApi="lollipop"
+                tools:ignore="HardcodedText" />
 
         </LinearLayout>
 

@@ -14,10 +14,10 @@
         android:layout_marginBottom="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        app:cardBackgroundColor="@color/colorAccent02"
+        app:cardBackgroundColor="@color/colorBackground"
         app:cardCornerRadius="10dp"
         app:cardPreventCornerOverlap="true"
-        app:cardElevation="10dp">
+        app:cardElevation="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,9 +29,9 @@
                 android:id="@+id/imageView_informationBackground"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:src="@drawable/img_policy_battleofmanilabay"
                 android:scaleType="centerCrop"
-                android:adjustViewBounds="true"/>
+                android:adjustViewBounds="true"
+                android:src="@drawable/img_policy_battleofmanilabay"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
