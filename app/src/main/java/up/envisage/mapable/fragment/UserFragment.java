@@ -48,6 +48,7 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.material.button.MaterialButton;
 
 import java.io.IOException;
+import java.net.Inet4Address;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
@@ -65,10 +66,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import up.envisage.mapable.R;
 import up.envisage.mapable.db.table.UserTable;
 import up.envisage.mapable.model.ReportViewModel;
+import up.envisage.mapable.model.UserReport;
 import up.envisage.mapable.model.UserViewModel;
+import up.envisage.mapable.ui.home.InformationActivity;
 import up.envisage.mapable.ui.home.LeaderboardActivity;
 import up.envisage.mapable.ui.home.MyQuestActivity;
 import up.envisage.mapable.ui.home.MyReportActivity;
+import up.envisage.mapable.ui.home.MyReportsListActivity;
 import up.envisage.mapable.ui.home.UserStatisticsActivity;
 import retrofitInterface.RetrofitInterface;
 import up.envisage.mapable.model.StatsResult;
@@ -210,55 +214,10 @@ public class UserFragment extends Fragment implements GoogleApiClient.Connection
             @Override
             public void onClick(View v) {
 
-                HashMap<String, String> map = new HashMap<>();
-                map.put("userID", outUserId);
+                Intent userReport = new Intent(listener, MyReportsListActivity.class);
+                userReport.putExtra("userID", outUserId);
+                startActivity(userReport);
 
-                Call<StatsResult> call = retrofitInterface.getStats(map);
-
-                call.enqueue(new Callback<StatsResult>() {
-
-                    @Override
-                    public void onResponse(Call<StatsResult> call, Response<StatsResult> response) {
-                        if(response.code() == 200) {
-                            assert response.body() != null;
-                            algalBloom = response.body().getAlgalBloom();
-                            fishKill = response.body().getFishKill();
-                            waterPollution = response.body().getWaterPollution();
-                            ongoingReclamation = response.body().getOngoingReclamation();
-                            waterHyacinth = response.body().getWaterHyacinth();
-                            solidWaste = response.body().getSolidWaste();
-                            otherIssues = response.body().getOthers();
-                            verified = response.body().getVerified();
-                            unverified = response.body().getUnverified();
-                            falsePositive = response.body().getFalsePositive();
-                            total = response.body().getTotal();
-
-                            Intent userStatsIntent = new Intent(listener, UserStatisticsActivity.class);
-
-                            userStatsIntent.putExtra("algalBloom", algalBloom.toString());
-                            userStatsIntent.putExtra("fishKill", fishKill.toString());
-                            userStatsIntent.putExtra("waterPollution", waterPollution.toString());
-                            userStatsIntent.putExtra("ongoingReclamation", ongoingReclamation.toString());
-                            userStatsIntent.putExtra("waterHyacinth", waterHyacinth.toString());
-                            userStatsIntent.putExtra("solidWaste", solidWaste.toString());
-                            userStatsIntent.putExtra("otherIssues", otherIssues.toString());
-                            userStatsIntent.putExtra("verified", verified.toString());
-                            userStatsIntent.putExtra("unverified", unverified.toString());
-                            userStatsIntent.putExtra("falsePositive", falsePositive.toString());
-                            userStatsIntent.putExtra("total", total.toString());
-                            userStatsIntent.putExtra("userID", outUserId);
-
-                            startActivity(userStatsIntent);
-
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(@NonNull Call<StatsResult> call, Throwable t) {
-
-                    }
-                });
-//                myStatsDialog();
             }
         });
 

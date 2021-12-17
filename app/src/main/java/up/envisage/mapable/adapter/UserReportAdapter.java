@@ -1,10 +1,15 @@
 package up.envisage.mapable.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,9 +17,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.util.List;
 
-import retrofit2.Callback;
 import up.envisage.mapable.R;
 import up.envisage.mapable.model.UserReport;
 
@@ -32,7 +38,8 @@ public class UserReportAdapter extends RecyclerView.Adapter<UserReportAdapter.My
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView type, date, city, prov, status, priority, closed, reg;
+        private TextView type, date, city, prov, status, priority, closed, reg;
+        private ImageView image;
 
         OnReportClickListener onReportClickListener;
 
@@ -45,9 +52,7 @@ public class UserReportAdapter extends RecyclerView.Adapter<UserReportAdapter.My
             status = itemView.findViewById(R.id.textView_status);
             priority = itemView.findViewById(R.id.textView_priority);
             closed = itemView.findViewById(R.id.textView_closed);
-            city = itemView.findViewById(R.id.textView_lat);
-            prov = itemView.findViewById(R.id.textView_lon);
-            reg = itemView.findViewById(R.id.textView_reg);
+            image = itemView.findViewById(R.id.imageView_userReport_report);
 
             this.onReportClickListener = onReportClickListener;
 
@@ -72,6 +77,7 @@ public class UserReportAdapter extends RecyclerView.Adapter<UserReportAdapter.My
         return new MyViewHolder(v, mOnReportClickListener);
     }
 
+    @SuppressLint("LongLogTag")
     @Override
     public void onBindViewHolder(@NonNull @NotNull MyViewHolder holder, int position) {
 
@@ -79,9 +85,8 @@ public class UserReportAdapter extends RecyclerView.Adapter<UserReportAdapter.My
         holder.date.setText(userReportList.get(position).getDate());
         holder.status.setText(userReportList.get(position).getStatus());
         holder.priority.setText(userReportList.get(position).getPriority());
-        holder.city.setText(userReportList.get(position).getMuni());
-        holder.prov.setText(userReportList.get(position).getProv());
-        holder.reg.setText(userReportList.get(position).getReg());
+
+        //holder.image.setImageResource();
 
         if(userReportList.get(position).getClosed().equals("false")) {
             holder.closed.setVisibility(View.GONE);
@@ -89,7 +94,6 @@ public class UserReportAdapter extends RecyclerView.Adapter<UserReportAdapter.My
             holder.closed.setVisibility(View.VISIBLE);
             holder.closed.setText("Closed");
         }
-
     }
 
     @Override
