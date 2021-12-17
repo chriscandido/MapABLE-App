@@ -22,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -39,6 +40,7 @@ import retrofitInterface.RetrofitInterface;
 import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
 import up.envisage.mapable.adapter.IncidentListAdapter;
+import up.envisage.mapable.model.Image;
 import up.envisage.mapable.model.ReportViewModel;
 import up.envisage.mapable.model.UserViewModel;
 import up.envisage.mapable.ui.home.ReportIncidentActivity;
@@ -65,6 +67,7 @@ public class IncidentListFragment extends Fragment {
     private UserViewModel userViewModel;
 
     private String userID, dateTime, incidentType, Report, lon, lat, image, imageID2, outPhoto, imageString, outUserId;
+    private ImageView imageView_incidentList_back;
 
     GridView gridView_incidentList;
 
@@ -223,6 +226,15 @@ public class IncidentListFragment extends Fragment {
                         startActivity(ibaPaOk);
                         break;
                 }
+            }
+        });
+
+        imageView_incidentList_back = view.findViewById(R.id.imageView_incidentlist_back);
+        imageView_incidentList_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(listener, MainActivity.class);
+                startActivity(intent);
             }
         });
 

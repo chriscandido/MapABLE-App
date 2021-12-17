@@ -316,7 +316,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
             String incidentType = properties.get("type").toString();
             String date = properties.get("date").toString();
             String status = properties.get("status").toString();
+            String snippet = "Date: " + date + "\n" + "Status: " + status;
+
             List coordinates = (List) geometry.get("coordinates");
+
 
             // Extract latitude and longitude from List
             double latitude = (double) coordinates.get(1);
@@ -331,49 +334,49 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
                     mapboxMap.addMarker(new MarkerOptions()
                             .position(new LatLng(latitude, longitude))
                             .title(incidentType)
-                            .snippet(status)
+                            .snippet(snippet)
                             .icon(iconAlgalBloom));
                     break;
                 case "Fish Kill":
                     mapboxMap.addMarker(new MarkerOptions()
                             .position(new LatLng(latitude, longitude))
                             .title(incidentType)
-                            .snippet(status)
+                            .snippet(snippet)
                             .icon(iconFishKill));
                     break;
                 case "Water Pollution":
                     mapboxMap.addMarker(new MarkerOptions()
                             .position(new LatLng(latitude, longitude))
                             .title(incidentType)
-                            .snippet(status)
+                            .snippet(snippet)
                             .icon(iconPollution));
                     break;
                 case "Ongoing Reclamation":
                     mapboxMap.addMarker(new MarkerOptions()
                             .position(new LatLng(latitude, longitude))
                             .title(incidentType)
-                            .snippet(status)
+                            .snippet(snippet)
                             .icon(iconIllegalRec));
                     break;
                 case "Water Hyacinth":
                     mapboxMap.addMarker(new MarkerOptions()
                             .position(new LatLng(latitude, longitude))
                             .title(incidentType)
-                            .snippet(status)
+                            .snippet(snippet)
                             .icon(iconWaterHyacinth));
                     break;
                 case "Solid Waste":
                     mapboxMap.addMarker(new MarkerOptions()
                             .position(new LatLng(latitude, longitude))
                             .title(incidentType)
-                            .snippet(status)
+                            .snippet(snippet)
                             .icon(iconSolidWaste));
                     break;
                 case "Iba Pa":
                     mapboxMap.addMarker(new MarkerOptions()
                             .position(new LatLng(latitude, longitude))
                             .title(incidentType)
-                            .snippet(status)
+                            .snippet(snippet)
                             .icon(iconIbaPa));
                     break;
             }

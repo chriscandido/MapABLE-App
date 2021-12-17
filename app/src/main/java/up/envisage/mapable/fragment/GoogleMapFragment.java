@@ -203,8 +203,8 @@ public class GoogleMapFragment extends FragmentActivity
     public void onPointerCaptureChanged(boolean hasCapture) { }
 
     public void onBackPressed() {
-        super.onBackPressed();
         finish();
+
     }
 
 }

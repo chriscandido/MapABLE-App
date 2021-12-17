@@ -463,5 +463,7 @@ public class CameraActivity extends AppCompatActivity {
     }
 
     public void onBackPressed(){
+        finish();
     }
+
 }
