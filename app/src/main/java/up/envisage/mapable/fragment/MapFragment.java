@@ -314,13 +314,17 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
 
             // Convert to String and List
             String incidentType = properties.get("type").toString();
+            String date = properties.get("date").toString();
             String status = properties.get("status").toString();
             List coordinates = (List) geometry.get("coordinates");
 
             // Extract latitude and longitude from List
             double latitude = (double) coordinates.get(1);
             double longitude = (double) coordinates.get(0);
-            Log.v("[ MapFragment.java ]","data: " + String.valueOf(latitude) + " " + String.valueOf(longitude));
+            Log.v("[ MapFragment.java ]","data: " + "\n"
+                    + "Incident type: " + incidentType + "\n"
+                    + "Latitude: " + String.valueOf(latitude) + "\n"
+                    + "Longitude: " + String.valueOf(longitude));
 
             switch (incidentType) {
                 case "Algal Bloom":
