@@ -143,7 +143,7 @@ public class MyReportsListActivity extends AppCompatActivity implements UserRepo
     @Override
     public void onReportClick(int position) {
 
-/*        UserReportList.get(position);
+        UserReportList.get(position);
         Log.v("MyReportsListActivity", UserReportList.get(position).getType());
 
         Intent intent = new Intent(MyReportsListActivity.this, ViewReportActivity.class);
@@ -157,7 +157,7 @@ public class MyReportsListActivity extends AppCompatActivity implements UserRepo
         intent.putExtra("remarks", UserReportList.get(position).getRemarks());
         intent.putExtra("userID", userID);
 
-        startActivity(intent);*/
+        startActivity(intent);
         //navigate to activity
         //start intent
         //put extra

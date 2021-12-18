@@ -14,6 +14,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.ByteArrayOutputStream;
+import java.nio.ByteBuffer;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
@@ -170,9 +171,6 @@ public class ViewReportActivity extends AppCompatActivity {
         textView_closed = findViewById(R.id.textView_closed2);
         textView_remarks = findViewById(R.id.textView_remarks);
         textView_date = findViewById(R.id.textView_date2);
-        textView_region = findViewById(R.id.textView_region2);
-        textView_province = findViewById(R.id.textView_province2);
-        textView_city = findViewById(R.id.textView_city2);
 
         textView_report.setText(description);
         textView_type.setText(type);
@@ -180,9 +178,6 @@ public class ViewReportActivity extends AppCompatActivity {
         textView_priority.setText(priority);
         textView_remarks.setText(remarks);
         textView_date.setText(date);
-        textView_region.setText(region);
-        textView_province.setText(province);
-        textView_city.setText(city);
 
         if(closed.equals("false")) {
             textView_closed.setVisibility(View.GONE);
