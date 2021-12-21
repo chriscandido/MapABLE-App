@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -94,9 +95,8 @@ public class MyReportsListActivity extends AppCompatActivity implements UserRepo
 
                 List<UserReport> reports = response.body();
 
-                for(UserReport report : reports) {
-                    UserReportList.add(report);
-                }
+                assert reports != null;
+                UserReportList.addAll(reports);
 
                 PutDataIntoRecyclerView(UserReportList);
             }
@@ -116,8 +116,8 @@ public class MyReportsListActivity extends AppCompatActivity implements UserRepo
         });
 
         //back to Main Menu Text Button
-        TextView textView_reportBack = findViewById(R.id.textView_report_back);
-        textView_reportBack.setOnClickListener(new View.OnClickListener() {
+        ImageView imageView_reportlist_back = findViewById(R.id.imageView_reportlist_back);
+        imageView_reportlist_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
@@ -139,6 +139,11 @@ public class MyReportsListActivity extends AppCompatActivity implements UserRepo
         super.onPause();
     }
 
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
 
     @Override
     public void onReportClick(int position) {
@@ -155,6 +160,10 @@ public class MyReportsListActivity extends AppCompatActivity implements UserRepo
         intent.putExtra("priority", UserReportList.get(position).getPriority());
         intent.putExtra("closed", UserReportList.get(position).getClosed());
         intent.putExtra("remarks", UserReportList.get(position).getRemarks());
+        intent.putExtra("region", UserReportList.get(position).getReg());
+        intent.putExtra("province", UserReportList.get(position).getProv());
+        intent.putExtra("city", UserReportList.get(position).getMuni());
+
         intent.putExtra("userID", userID);
 
         startActivity(intent);

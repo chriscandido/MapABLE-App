@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.graphics.drawable.AnimationDrawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -114,6 +115,7 @@ public class UserFragment extends Fragment implements GoogleApiClient.Connection
     private Object data;
 
     MaterialButton button_userMyStats_ok;
+    AnimationDrawable animationDrawable;
 
     ReportViewModel reportViewModel;
     UserViewModel userViewModel;
@@ -225,8 +227,10 @@ public class UserFragment extends Fragment implements GoogleApiClient.Connection
         textView_userprofile_leaderboard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(listener, LeaderboardActivity.class);
-                startActivity(intent);
+
+                Intent leaderBoardIntent = new Intent(listener, LeaderboardActivity.class);
+                leaderBoardIntent.putExtra("userID", outUserId);
+                startActivity(leaderBoardIntent);
             }
         });
 
@@ -234,51 +238,6 @@ public class UserFragment extends Fragment implements GoogleApiClient.Connection
         textView_userprofile_myyquests.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-/*                HashMap<String, String> map = new HashMap<>();
-                map.put("userID", outUserId);
-
-                Call<List<UserReport>> call = retrofitInterface.getUserReportsList(map);
-
-                Intent intent = new Intent(listener, MyReportsListActivity.class);
-
-                intent.putExtra("userID", outUserId);
-                startActivity(intent);*/
-
-/*                HashMap<String, String> map = new HashMap<>();
-                map.put("userID", outUserId);
-
-                Call<StatsResult> call = retrofitInterface.getStats(map);
-
-                call.enqueue(new Callback<StatsResult>() {
-
-                    @Override
-                    public void onResponse(Call<StatsResult> call, Response<StatsResult> response) {
-                        if(response.code() == 200) {
-                            algalBloom = response.body().getAlgalBloom();
-                            fishKill = response.body().getFishKill();
-                            waterPollution = response.body().getWaterPollution();
-                            ongoingReclamation = response.body().getOngoingReclamation();
-                            waterHyacinth = response.body().getWaterHyacinth();
-                            solidWaste = response.body().getSolidWaste();
-                            otherIssues = response.body().getOthers();
-                            verified = response.body().getVerified();
-                            unverified = response.body().getUnverified();
-                            falsePositive = response.body().getFalsePositive();
-                            total = response.body().getTotal();
-
-                            Intent myQuestIntent = new Intent(listener, MyQuestActivity.class);
-                            myQuestIntent.putExtra("userID", outUserId);
-
-                            startActivity(myQuestIntent);
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<StatsResult> call, Throwable t) {
-
-                    }
-                });*/
 
                 Intent myQuestIntent = new Intent(listener, MyQuestActivity.class);
                 myQuestIntent.putExtra("userID", outUserId);
@@ -292,24 +251,6 @@ public class UserFragment extends Fragment implements GoogleApiClient.Connection
                 updateUI();
             }
         });
-    }
-
-    //----------------------------------------------------------------------------------------------Get report stats of user
-    public void myStatsDialog() {
-        dialog = new Dialog(listener);
-        dialog.setContentView(R.layout.popup_mystats);
-
-        textView_myStats_submittedReports = dialog.findViewById(R.id.textView_myStats_submittedReports);
-        textView_myStats_submittedReports.setText(total.toString());
-        button_userMyStats_ok = dialog.findViewById(R.id.button_userMyStats_ok);
-        button_userMyStats_ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-
-        dialog.show();
     }
 
 

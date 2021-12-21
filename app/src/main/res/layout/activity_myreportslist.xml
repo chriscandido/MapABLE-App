@@ -9,44 +9,54 @@
     android:background="@color/colorBackground"
     tools:context=".ui.home.ReportingActivity">
 
-    <!-- Top Navigation Menu -->
+    <!-- Main Header -->
     <RelativeLayout
+        android:id="@+id/relativeLayout_mainHeader"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorSecondary">
+        android:layout_height="100dp">
+
+        <ImageView
+            android:id="@+id/imageView_mainHeader_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/bg_box04"
+            android:transitionName="imageView_mainHeader_transition" />
 
         <!-- Back button -->
+        <ImageView
+            android:id="@+id/imageView_reportlist_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/ic_arrow_back"/>
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="197dp"
-            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="122dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="91dp"
-            android:text="MY REPORTS"
-            android:textAlignment="textStart"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/amplesoftpro_medium"
+            android:gravity="center"
+            android:text="My Reports"
+            android:textColor="@color/colorPrimary"
             android:textSize="24sp"
             android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/textView_report_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_alignParentStart="true"
-            android:text="Back"
-            android:clickable="true"
-            style="@style/navigationText"/>
 
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/UserReports_Recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"/>
 
 </LinearLayout>

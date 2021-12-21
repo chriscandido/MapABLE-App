@@ -29,6 +29,7 @@ public class MyQuestActivity extends AppCompatActivity {
     private ImageView imageView_myquest_tutorial, imageView_myquest_firstreport, imageView_myquest_verifiedreport;
     private ImageView imageView_myquest_algalbloom, imageView_myquest_fishkill, imageView_myquest_hyacinth,
                         imageView_myquest_solidwaste, imageView_myquest_waterpollution, imageView_myquest_reclamation, imageView_myquest_certified;
+    private ImageView imageView_myquest_junior, imageView_myquest_senior, imageView_myquest_professional, imageView_myquest_master, imageView_myquest_thegreat;
     private HashMap<String, Integer> userStat;
 
     @SuppressLint("LongLogTag")
@@ -95,7 +96,18 @@ public class MyQuestActivity extends AppCompatActivity {
                     Log.v("[ Call Enqueue ]", "Total: " + String.valueOf(verified));
 
                     setBasicLevelImageResource(total, verified);
+
                     setTagapagmasidImageResource(algalBloom,
+                            fishKill,
+                            waterHyacinth,
+                            solidWaste,
+                            waterPollution,
+                            ongoingReclamation);
+
+                    setCitizenScientistsImageResource(total,
+                            verified,
+                            unverified,
+                            algalBloom,
                             fishKill,
                             waterHyacinth,
                             solidWaste,
@@ -131,6 +143,50 @@ public class MyQuestActivity extends AppCompatActivity {
             imageView_myquest_verifiedreport.setImageResource(R.drawable.ic_badge_firstverified);
         } else {
             imageView_myquest_verifiedreport.setImageResource(R.drawable.ic_badge_lock);
+        }
+
+    }
+
+    @SuppressLint("CutPasteId")
+    public void setCitizenScientistsImageResource(Integer total,
+                                                  Integer verified,
+                                                  Integer unverified,
+                                                  Integer algalbloom,
+                                                  Integer fishkill,
+                                                  Integer hyacinth,
+                                                  Integer solidwaste,
+                                                  Integer waterpollution,
+                                                  Integer reclamation) {
+
+        imageView_myquest_junior = findViewById(R.id.imageView_myquest_junior);
+        imageView_myquest_senior = findViewById(R.id.imageView_myquest_senior);
+        imageView_myquest_professional = findViewById(R.id.imageView_myquest_professional);
+        imageView_myquest_master = findViewById(R.id.imageView_myquest_master);
+        imageView_myquest_thegreat = findViewById(R.id.imageView_myquest_great);
+
+        // Junior Citizen Scientist
+        if (total != null || total > 0) {
+            imageView_myquest_junior.setImageResource(R.drawable.ic_badge_junior);
+        }
+
+        // Senior Citizen Scientist
+        if (total > 1000) {
+            imageView_myquest_senior.setImageResource(R.drawable.ic_badge_senior);
+        }
+
+        // Professional Citizen Scientists
+        if (total > 1000 && (verified != null || verified > 0)) {
+            imageView_myquest_professional.setImageResource(R.drawable.ic_badge_professional);
+        }
+
+        // Master Citizen Scientists
+        if (total > 1000 && verified > 10) {
+            imageView_myquest_master.setImageResource(R.drawable.ic_badge_master);
+        }
+
+        // The Great Citizen Scientists
+        if (total > 1000 && verified > 10 && algalbloom > 0 && fishkill > 0 && hyacinth > 0 && solidwaste > 0 && waterpollution > 0 && reclamation > 0) {
+            imageView_myquest_thegreat.setImageResource(R.drawable.ic_badge_great);
         }
 
     }

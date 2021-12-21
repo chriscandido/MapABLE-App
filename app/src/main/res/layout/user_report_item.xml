@@ -4,18 +4,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:paddingBottom="10dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView_mainMenu"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="10dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:cardBackgroundColor="@color/colorBackground"
-        app:cardCornerRadius="10dp"
+        app:cardBackgroundColor="@color/colorAccent02"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp"
         app:cardPreventCornerOverlap="true">
 
         <LinearLayout
@@ -26,15 +28,16 @@
             <ImageView
                 android:id="@+id/imageView_userReport_report"
                 android:layout_width="80dp"
-                android:layout_height="100dp"
+                android:layout_height="80dp"
                 android:layout_margin="10dp"
                 app:srcCompat="@drawable/bg_box01" />
 
             <LinearLayout
                 android:id="@+id/linearLayout"
-                android:layout_width="275dp"
-                android:layout_height="120dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="5dp"
+                android:layout_gravity="center_vertical"
                 android:orientation="vertical">
 
                 <TextView
@@ -45,7 +48,7 @@
                     android:textSize="20sp"
                     android:textColor="@color/colorBlack"
                     android:textStyle="bold"
-                    android:fontFamily="@font/montserrat"/>
+                    android:fontFamily="@font/montserrat_extrabold"/>
 
                 <TextView
                     android:id="@+id/textView_date"

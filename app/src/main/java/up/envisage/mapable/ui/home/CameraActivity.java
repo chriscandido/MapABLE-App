@@ -185,7 +185,7 @@ public class CameraActivity extends AppCompatActivity {
                                     "LONGITUDE: " + longitude + "\n" +
                                     "IMAGE: " + imageString + "\n" ); //imageString
 
-                    if(isNetworkAvailable() == true){
+                    if(isNetworkAvailable()){
 
                         Call<ReportClassResult> call = retrofitInterface.executeReportSubmit(map);
 

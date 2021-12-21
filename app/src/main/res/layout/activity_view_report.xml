@@ -4,50 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorBackground"
     android:orientation="vertical"
     tools:context=".ui.home.ReportingActivity">
 
-    <!-- Top Navigation Menu -->
+    <!-- Main Header -->
     <RelativeLayout
+        android:id="@+id/relativeLayout_mainHeader"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorSecondary">
+        android:layout_height="100dp">
+
+        <ImageView
+            android:id="@+id/imageView_mainHeader_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/bg_box04" />
 
         <!-- Back button -->
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="197dp"
-            android:layout_height="30dp"
-            android:layout_alignParentStart="true"
+        <ImageView
+            android:id="@+id/imageView_reportsummary_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="102dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="71dp"
-            android:text="REPORT SUMMARY"
-            android:textAlignment="center"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/ic_arrow_back"/>
 
         <TextView
-            android:id="@+id/textView_report_back"
-            style="@style/navigationText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_margin="10dp"
-            android:clickable="true"
-            android:text="Back" />
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/amplesoftpro_medium"
+            android:gravity="center"
+            android:text="Report Summary"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp">
+        android:layout_margin="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -64,42 +71,44 @@
                 <ImageView
                     android:id="@+id/imageView_report"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="100dp"
                     android:layout_gravity="center"
-                    tools:srcCompat="@tools:sample/backgrounds/scenic" />
+                    tools:srcCompat="@drawable/ic_incident_algalbloom" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_margin="10dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textView5"
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:paddingStart="16dp"
+                    android:layout_height="wrap_content"
                     android:text="Report Description"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/montserrat"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/textView_report"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="15dp"
                     android:layout_weight="1"
-                    android:paddingStart="16dp"
-                    android:paddingTop="4dp"
-                    android:paddingEnd="16dp"
-                    android:text="TextView" />
+                    android:text="Description"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/montserrat"
+                    tools:ignore="HardcodedText"/>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:orientation="horizontal"
                 android:paddingStart="16dp"
@@ -110,17 +119,22 @@
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="Report Type"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/montserrat"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/textView_type2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="16dp"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/montserrat"/>
+
             </LinearLayout>
 
             <LinearLayout
@@ -135,8 +149,9 @@
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="Location"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/montserrat"/>
 
             </LinearLayout>
 
@@ -153,15 +168,20 @@
                     android:layout_width="100dp"
                     android:layout_height="20dp"
                     android:text="Region"
-                    android:textAlignment="textEnd" />
+                    android:textAlignment="textEnd"
+                    android:fontFamily="@font/montserrat"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/textView_region2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="20dp"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:fontFamily="@font/montserrat"
+                    tools:ignore="HardcodedText" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -176,7 +196,9 @@
                     android:layout_width="100dp"
                     android:layout_height="20dp"
                     android:text="Province"
-                    android:textAlignment="textEnd" />
+                    android:textAlignment="textEnd"
+                    android:fontFamily="@font/montserrat"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/textView_province2"
@@ -184,7 +206,10 @@
                     android:layout_height="20dp"
                     android:layout_marginStart="16dp"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:fontFamily="@font/montserrat"
+                    tools:ignore="HardcodedText" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -199,7 +224,9 @@
                     android:layout_width="100dp"
                     android:layout_height="20dp"
                     android:text="City"
-                    android:textAlignment="textEnd" />
+                    android:textAlignment="textEnd"
+                    android:fontFamily="@font/montserrat"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/textView_city2"
@@ -207,7 +234,10 @@
                     android:layout_height="20dp"
                     android:layout_marginStart="16dp"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:fontFamily="@font/montserrat"
+                    tools:ignore="HardcodedText" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -224,16 +254,21 @@
                     android:layout_height="wrap_content"
                     android:text="Timestamp"
                     android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:fontFamily="@font/montserrat"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/textView_date2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:fontFamily="@font/montserrat"
+                    tools:ignore="HardcodedText" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -248,7 +283,9 @@
                     android:layout_height="wrap_content"
                     android:text="Status"
                     android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:fontFamily="@font/montserrat"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/textView_status2"
@@ -257,7 +294,9 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="16dp"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:fontFamily="@font/montserrat"
+                    tools:ignore="HardcodedText" />
 
             </LinearLayout>
 
@@ -273,16 +312,20 @@
                     android:layout_height="wrap_content"
                     android:text="Priority"
                     android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:fontFamily="@font/montserrat"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/textView_priority2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="16dp"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:fontFamily="@font/montserrat"
+                    tools:ignore="HardcodedText" />
 
             </LinearLayout>
 
@@ -305,17 +348,21 @@
                     android:paddingStart="16dp"
                     android:text="Remarks"
                     android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:fontFamily="@font/montserrat"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/textView_remarks"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:paddingStart="16dp"
+                    android:paddingStart="20dp"
                     android:paddingTop="4dp"
                     android:paddingEnd="16dp"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:fontFamily="@font/montserrat"
+                    tools:ignore="HardcodedText" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -330,11 +377,16 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center_horizontal|center_vertical"
                         android:gravity="center_horizontal"
-                        android:text="TextView" />
+                        android:text="TextView"
+                        android:fontFamily="@font/montserrat"
+                        tools:ignore="HardcodedText" />
+
                 </LinearLayout>
 
             </LinearLayout>
+
         </LinearLayout>
+
     </ScrollView>
 
 </LinearLayout>

@@ -15,7 +15,7 @@
         android:layout_marginBottom="5dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        app:cardBackgroundColor="@color/colorPrimary"
+        app:cardBackgroundColor="@color/colorAccent02"
         app:cardCornerRadius="10dp"
         app:cardPreventCornerOverlap="true">
 
@@ -52,7 +52,7 @@
                     android:layout_marginEnd="10dp"
                     android:text="Title"
                     android:textSize="15sp"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorBlack"
                     android:textStyle="bold"
                     android:fontFamily="@font/montserrat_extrabold"/>
 
@@ -66,7 +66,7 @@
                     android:layout_marginEnd="10dp"
                     android:text="Lorem Ipsum"
                     android:textSize="12sp"
-                    android:textColor="@color/colorSecondary"
+                    android:textColor="@color/colorBlack"
                     android:fontFamily="@font/montserrat"/>
 
                 <LinearLayout
@@ -82,7 +82,7 @@
                         android:layout_marginEnd="10dp"
                         android:text="Latitude"
                         android:textSize="12sp"
-                        android:textColor="@color/colorSecondary"
+                        android:textColor="@color/colorBlack"
                         android:fontFamily="@font/montserrat"/>
 
                     <!-- Longitude -->
@@ -93,7 +93,7 @@
                         android:layout_marginEnd="10dp"
                         android:text="Longitude"
                         android:textSize="12sp"
-                        android:textColor="@color/colorSecondary"
+                        android:textColor="@color/colorBlack"
                         android:fontFamily="@font/montserrat"/>
 
                 </LinearLayout>

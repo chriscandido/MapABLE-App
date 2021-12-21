@@ -27,8 +27,8 @@ import up.envisage.mapable.model.UserReport;
 public class UserReportAdapter extends RecyclerView.Adapter<UserReportAdapter.MyViewHolder> {
 
     Context context;
-    private List<UserReport> userReportList;
-    private OnReportClickListener mOnReportClickListener;
+    private final List<UserReport> userReportList;
+    private final OnReportClickListener mOnReportClickListener;
 
     public UserReportAdapter(Context context, List<UserReport> userReportList, OnReportClickListener onReportClickListener) {
         this.context = context;
@@ -36,7 +36,7 @@ public class UserReportAdapter extends RecyclerView.Adapter<UserReportAdapter.My
         this.mOnReportClickListener = onReportClickListener;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView type, date, city, prov, status, priority, closed, reg;
         private ImageView image;
@@ -86,7 +86,29 @@ public class UserReportAdapter extends RecyclerView.Adapter<UserReportAdapter.My
         holder.status.setText(userReportList.get(position).getStatus());
         holder.priority.setText(userReportList.get(position).getPriority());
 
-        //holder.image.setImageResource();
+        switch (userReportList.get(position).getType()) {
+            case "Algal Bloom":
+                holder.image.setImageResource(R.drawable.ic_incident_algalbloom);
+                break;
+            case "Fish Kill":
+                holder.image.setImageResource(R.drawable.ic_incident_fishkill);
+                break;
+            case "Water Pollution":
+                holder.image.setImageResource(R.drawable.ic_incident_waterpollution);
+                break;
+            case "Ongoing Reclamation":
+                holder.image.setImageResource(R.drawable.ic_incident_reclamation);
+                break;
+            case "Water Hyacinth":
+                holder.image.setImageResource(R.drawable.ic_incident_waterhyacinth);
+                break;
+            case "Solid Waste":
+                holder.image.setImageResource(R.drawable.ic_incident_solidwaste);
+                break;
+            default:
+                holder.image.setImageResource(R.drawable.ic_incident_ibapa);
+                break;
+        }
 
         if(userReportList.get(position).getClosed().equals("false")) {
             holder.closed.setVisibility(View.GONE);

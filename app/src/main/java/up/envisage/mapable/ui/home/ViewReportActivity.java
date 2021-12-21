@@ -87,52 +87,73 @@ public class ViewReportActivity extends AppCompatActivity {
 
         reportArr = report.split("\\|");
 
-        if(type.equals("Algal Bloom")) {
+        switch (type) {
+            case "Algal Bloom":
 
-            description = reportArr[1] + " nang naoobserbahan. " + (reportArr[2].equals("Mayroon") ? " Mayroong " : " Walang ") +
-                    "kakaibang amoy ang tubig. " + (reportArr[3].equals("Oo") ? "Mayroong" : "Walang") +
-                    " patay na isdang namataan." + "\n\n\nIba pang detalye: \n\n" + reportArr[0] + "\n" +
-                    (reportArr.length == 5 ? reportArr[4] : ' ') ;
+                description = reportArr[1] + " nang naoobserbahan. " + (reportArr[2].equals("Mayroon") ? " Mayroong " : " Walang ") +
+                        "kakaibang amoy ang tubig. " + (reportArr[3].equals("Oo") ? "Mayroong" : "Walang") +
+                        " patay na isdang namataan." + "\n\n\nIba pang detalye: \n\n" + reportArr[0] + "\n" +
+                        (reportArr.length == 5 ? reportArr[4] : ' ');
 
-        } else if (type.equals("Fish Kill")) {
+                imageView_report.setImageResource(R.drawable.ic_incident_algalbloom);
 
-            description = reportArr[1] + " nang naoobserbahan. " + (reportArr[2].equals("Mayroon") ? " Mayroong " : " Walang ") +
-                    "kakaibang amoy ang tubig. " + reportArr[6] +
-                    " ang dami ng isdang namatay na." + "\n\n\nIba pang detalye: \n\n" + reportArr[0] + "\nTubig: " +
-                    reportArr[3] + "\nApektadong Isda: " + (reportArr.length == 6 ? reportArr[5] : " ")  ;
+                break;
+            case "Fish Kill":
 
-        } else if (type.equals("Water Pollution")) {
+                description = reportArr[1] + " nang naoobserbahan. " + (reportArr[2].equals("Mayroon") ? " Mayroong " : " Walang ") +
+                        "kakaibang amoy ang tubig. " + reportArr[6] +
+                        " ang dami ng isdang namatay na." + "\n\n\nIba pang detalye: \n\n" + reportArr[0] + "\nTubig: " +
+                        reportArr[3] + "\nApektadong Isda: " + (reportArr.length == 6 ? reportArr[5] : " ");
 
-            description = "Naobserbahan sa " + reportArr[1] + " ang " +reportArr[2] +" "+ reportArr[3]+" na ang nakaraan. "+
-                    (reportArr[4].equals("Mayroon") ? "Mayroong " : "Walang ") + "kakaibang amoy ang tubig. "+ (reportArr[6].equals("Oo") ? "Mayroong " : "Walang ") +
-                    "ibang isyung naidulot." + "\n\n\nIba pang detalye: \n\n" + reportArr[0] + "\nTubig: " +
-                    reportArr[5] + "\nPinagmumulan ng polusyon: " + (reportArr.length == 8 ? reportArr[7] : " ");
+                imageView_report.setImageResource(R.drawable.ic_incident_fishkill);
 
-        } else if (type.equals("Ongoing Reclamation")) {
+                break;
+            case "Water Pollution":
 
-            description = "Unang naobserbahan ang pagtatambak ng "+reportArr[2]+" "+reportArr[1]+". Ang lawak ay "+reportArr[3]+" at "+
-                    (reportArr[4].equals("Mayroon") ? "Mayroong ": "Walang ")+"istrukturang nakatayo sa lugar. "+(reportArr[5].equals("Mayroon")? "Mayroong ": "Walang ")+
-                    "namamalagi/nagbabantay sa lugar na tinambakan." + "\n\n\nIba pang detalye: \n\n" + reportArr[0] + "\nMay-ari/nagbabantay sa tinambakang lugar: " +
-                    (reportArr.length == 7 ? reportArr[6] : " ");
+                description = "Naobserbahan sa " + reportArr[1] + " ang " + reportArr[2] + " " + reportArr[3] + " na ang nakaraan. " +
+                        (reportArr[4].equals("Mayroon") ? "Mayroong " : "Walang ") + "kakaibang amoy ang tubig. " + (reportArr[6].equals("Oo") ? "Mayroong " : "Walang ") +
+                        "ibang isyung naidulot." + "\n\n\nIba pang detalye: \n\n" + reportArr[0] + "\nTubig: " +
+                        reportArr[5] + "\nPinagmumulan ng polusyon: " + (reportArr.length == 8 ? reportArr[7] : " ");
 
-        } else if (type.equals("Water Hyacinth")) {
+                imageView_report.setImageResource(R.drawable.ic_incident_waterpollution);
 
-            description = reportArr[1]+" nang naoobserbahan ang "+reportArr[2]+" na water hyacinth. Ang lawak ay "+reportArr[3]+" at ito ay "+
-                    (reportArr[4].equals("Oo")? "gumagalaw ": "hindi gumagalaw ")+"kasabay ng agos ng tubig. Ito ay "+(reportArr[5].equals("Oo") ? "nakakaharang ":"hindi nakakaharang ")+
-                    "sa daluyan ng tubig." + "\n\n\nIba pang detalye: \n\n" + reportArr[0] + "\n"+
-                    (reportArr[6].equals("Oo") ? "Naipaalam " : "hindi pa naipaalam ") + "sa lokal na awtoridad.";
+                break;
+            case "Ongoing Reclamation":
 
-        } else if (type.equals("Solid Waste")) {
+                description = "Unang naobserbahan ang pagtatambak ng " + reportArr[2] + " " + reportArr[1] + ". Ang lawak ay " + reportArr[3] + " at " +
+                        (reportArr[4].equals("Mayroon") ? "Mayroong " : "Walang ") + "istrukturang nakatayo sa lugar. " + (reportArr[5].equals("Mayroon") ? "Mayroong " : "Walang ") +
+                        "namamalagi/nagbabantay sa lugar na tinambakan." + "\n\n\nIba pang detalye: \n\n" + reportArr[0] + "\nMay-ari/nagbabantay sa tinambakang lugar: " +
+                        (reportArr.length == 7 ? reportArr[6] : " ");
 
-            description = "Namataan ang "+reportArr[1]+" sa "+reportArr[2]+" "+reportArr[5]+" na ang nakakaraan. "+reportArr[3]+" ang "+reportArr[4]+" basurang nakatambak. "+
-                    (reportArr[6].equals("Mayroon")?"Mayroong ": "Walang ")+"mga insekto at hayop na namumugad o nagkakalkal ng basura. " + "\n\n\nIba pang detalye: \n\n" + reportArr[0] + "\n"+
-                    (reportArr[8].equals("Oo ngunit wala pang aksyon") ? "Naipaalam " : "hindi pa naipaalam ") + "sa lokal na awtoridad.";
+                imageView_report.setImageResource(R.drawable.ic_incident_reclamation);
 
-        } else if (type.equals("Iba Pa")) {
+                break;
+            case "Water Hyacinth":
 
-//            description = report;
-            description = "Isyu: "+(reportArr.length > 1 ? reportArr[1] : " ") + "\n\n\nDetalye: \n\n" + (reportArr.length > 1 ? reportArr[0] : " ") + "\n"+ (reportArr.length == 3 ? reportArr[2] : " ");
+                description = reportArr[1] + " nang naoobserbahan ang " + reportArr[2] + " na water hyacinth. Ang lawak ay " + reportArr[3] + " at ito ay " +
+                        (reportArr[4].equals("Oo") ? "gumagalaw " : "hindi gumagalaw ") + "kasabay ng agos ng tubig. Ito ay " + (reportArr[5].equals("Oo") ? "nakakaharang " : "hindi nakakaharang ") +
+                        "sa daluyan ng tubig." + "\n\n\nIba pang detalye: \n\n" + reportArr[0] + "\n" +
+                        (reportArr[6].equals("Oo") ? "Naipaalam " : "hindi pa naipaalam ") + "sa lokal na awtoridad.";
 
+                imageView_report.setImageResource(R.drawable.ic_incident_waterhyacinth);
+
+                break;
+            case "Solid Waste":
+
+                description = "Namataan ang " + reportArr[1] + " sa " + reportArr[2] + " " + reportArr[5] + " na ang nakakaraan. " + reportArr[3] + " ang " + reportArr[4] + " basurang nakatambak. " +
+                        (reportArr[6].equals("Mayroon") ? "Mayroong " : "Walang ") + "mga insekto at hayop na namumugad o nagkakalkal ng basura. " + "\n\n\nIba pang detalye: \n\n" + reportArr[0] + "\n" +
+                        (reportArr[8].equals("Oo ngunit wala pang aksyon") ? "Naipaalam " : "hindi pa naipaalam ") + "sa lokal na awtoridad.";
+
+                imageView_report.setImageResource(R.drawable.ic_incident_solidwaste);
+
+                break;
+            case "Iba Pa":
+
+                description = "Isyu: " + (reportArr.length > 1 ? reportArr[1] : " ") + "\n\n\nDetalye: \n\n" + (reportArr.length > 1 ? reportArr[0] : " ") + "\n" + (reportArr.length == 3 ? reportArr[2] : " ");
+
+                imageView_report.setImageResource(R.drawable.ic_incident_ibapa);
+
+                break;
         }
 
         HashMap<String, String> map = new HashMap<>();
@@ -171,13 +192,20 @@ public class ViewReportActivity extends AppCompatActivity {
         textView_closed = findViewById(R.id.textView_closed2);
         textView_remarks = findViewById(R.id.textView_remarks);
         textView_date = findViewById(R.id.textView_date2);
+        textView_region = findViewById(R.id.textView_region2);
+        textView_province = findViewById(R.id.textView_province2);
+        textView_city = findViewById(R.id.textView_city2);
 
         textView_report.setText(description);
         textView_type.setText(type);
         textView_status.setText(status);
         textView_priority.setText(priority);
+        textView_closed.setText(closed);
         textView_remarks.setText(remarks);
         textView_date.setText(date);
+        textView_region.setText(region);
+        textView_city.setText(city);
+        textView_province.setText(province);
 
         if(closed.equals("false")) {
             textView_closed.setVisibility(View.GONE);
@@ -187,8 +215,8 @@ public class ViewReportActivity extends AppCompatActivity {
             textView_closed.setText("REPORT IS CLOSED!");
         };
 
-        TextView textView_reportBack = findViewById(R.id.textView_report_back);
-        textView_reportBack.setOnClickListener(new View.OnClickListener() {
+        ImageView imageView_reportsummary_back = findViewById(R.id.imageView_reportsummary_back);
+        imageView_reportsummary_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();

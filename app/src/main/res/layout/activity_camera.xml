@@ -100,11 +100,11 @@
         android:id="@+id/imageView_reportCamera"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
+        android:layout_below="@+id/button_report_photoGallery"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="75dp"
-        android:layout_below="@+id/button_report_photoGallery" />
+        android:layout_marginBottom="75dp" />
 
     <!-- Save Button -->
     <com.google.android.material.button.MaterialButton
