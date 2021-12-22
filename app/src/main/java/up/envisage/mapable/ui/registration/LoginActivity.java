@@ -70,13 +70,13 @@ public class LoginActivity extends AppCompatActivity  {
 
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
 
-        //set your desired log level
+        // set your desired log level
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-        //add your other interceptors …
+        // add your other interceptors …
 
-        //add logging as last interceptor
+        // add logging as last interceptor
         httpClient.addInterceptor(logging);  // <-- this is the important line!
 
         retrofit = new Retrofit.Builder()
@@ -93,16 +93,16 @@ public class LoginActivity extends AppCompatActivity  {
         sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
         userIdPreferences = getSharedPreferences("userID", MODE_PRIVATE);
 
-        //Shared preference for one time login
+        // Shared preference for one time login
         if (sharedPreferences.getBoolean("logged", false) == true ) {
             Log.v("[UserID]",  userIdPreferences.getString("userID", "Invalid User ID"));
             goToDisclosureActivity();
         }
 
-        //Initialize Terms of Use using Dialog Box
+        // Initialize Terms of Use using Dialog Box
         initializeTermsOfUse();
 
-        //Check username and password in local db
+        // Check username and password in local db
         button_login = findViewById(R.id.button_login);
         button_login.setOnClickListener(new View.OnClickListener() {
             @Override

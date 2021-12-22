@@ -138,7 +138,7 @@ public class CameraActivity extends AppCompatActivity {
             }
         });
 
-        // Button save photo
+        // Button send report
         button_reportSave = findViewById(R.id.button_report_savePhoto);
         button_reportSave.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("LongLogTag")
@@ -266,7 +266,7 @@ public class CameraActivity extends AppCompatActivity {
             }
         });
 
-        //Text Button back to Main Menu
+        // Back button
         imageView_camera_back = findViewById(R.id.imageView_camera_back);
         imageView_camera_back.setOnClickListener(new View.OnClickListener() {
             @Override

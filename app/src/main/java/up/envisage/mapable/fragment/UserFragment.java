@@ -200,7 +200,7 @@ public class UserFragment extends Fragment implements GoogleApiClient.Connection
                 .addOnConnectionFailedListener(this)
                 .build();
 
-        //Pending reports button
+        // Pending reports button
         textView_userprofile_unsentreports = view.findViewById(R.id.textView_userprofile_unsentreports);
         textView_userprofile_unsentreports.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -210,7 +210,7 @@ public class UserFragment extends Fragment implements GoogleApiClient.Connection
             }
         });
 
-        //Stats button
+        // Report Status button
         textView_userprofile_reportstatus = view.findViewById(R.id.textView_userprofile_reportstatus);
         textView_userprofile_reportstatus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -223,6 +223,7 @@ public class UserFragment extends Fragment implements GoogleApiClient.Connection
             }
         });
 
+        // Leaderboard button
         textView_userprofile_leaderboard = view.findViewById(R.id.textView_userprofile_leaderboard);
         textView_userprofile_leaderboard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -234,6 +235,7 @@ public class UserFragment extends Fragment implements GoogleApiClient.Connection
             }
         });
 
+        // My Quest button
         textView_userprofile_myyquests = view.findViewById(R.id.textView_userprofile_myquests);
         textView_userprofile_myyquests.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -245,6 +247,7 @@ public class UserFragment extends Fragment implements GoogleApiClient.Connection
             }
         });
 
+        // Location UI
         imageView_user_pin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -295,6 +298,7 @@ public class UserFragment extends Fragment implements GoogleApiClient.Connection
         locationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
     }
 
+    //----------------------------------------------------------------------------------------------Check Google Play Service Availability
     private boolean isGooglePlayServicesAvailable() {
         int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(listener);
         if (ConnectionResult.SUCCESS == status) {
@@ -342,7 +346,7 @@ public class UserFragment extends Fragment implements GoogleApiClient.Connection
         updateUI();
     }
 
-    //----------------------------------------------------------------------------------------------Update TextView
+    //----------------------------------------------------------------------------------------------Geocode
     private void updateUI() {
         Log.d(TAG, "UI update initiated .............");
         final String[] address_string = new String[1];
@@ -371,7 +375,7 @@ public class UserFragment extends Fragment implements GoogleApiClient.Connection
                 }  else {
                     address_string[0] = "NO ADDRESS MATCHES WERE FOUND";
                 }
-                Log.v("[ HomeFragment.java ]", lat);
+                Log.v("[ UserFragment.java ]", "Address: " + address_string[0]);
             } catch (IOException e) {
                 e.printStackTrace();
             }

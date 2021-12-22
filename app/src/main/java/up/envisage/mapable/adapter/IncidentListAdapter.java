@@ -25,6 +25,7 @@ public class IncidentListAdapter extends BaseAdapter {
         this.context = context;
     }
 
+    // Incident icons
     public int[] logos = {
             R.drawable.ic_incident_algalbloom,
             R.drawable.ic_incident_fishkill,
@@ -35,6 +36,7 @@ public class IncidentListAdapter extends BaseAdapter {
             R.drawable.ic_incident_ibapa
     };
 
+    // Incident titles
     public String[] incidentTitle = {
             "Algal Bloom",
             "Fish Kill",
@@ -50,7 +52,6 @@ public class IncidentListAdapter extends BaseAdapter {
         return logos.length;
     }
 
-
     @Override
     public Object getItem(int position) {
         return null;
@@ -64,6 +65,7 @@ public class IncidentListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View view, ViewGroup parent) {
         ViewHolderItem viewHolderItem;
+
         if (view == null) {
             LayoutInflater layoutInflater = ((Activity) context).getLayoutInflater();
             view = layoutInflater.inflate(R.layout.cardslayout_incident_list, parent, false);

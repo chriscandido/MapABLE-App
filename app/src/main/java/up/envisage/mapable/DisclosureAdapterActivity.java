@@ -40,7 +40,6 @@ public class DisclosureAdapterActivity extends AppCompatActivity {
 
     private TextView[] dots;
 
-    private DisclosureAdapter disclosureAdapter;
     private MaterialButton button_disclosure_ok, button_disclosure_cancel;
 
     String userID;
@@ -56,7 +55,7 @@ public class DisclosureAdapterActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.linearLayout_dots);
         tabLayout.setupWithViewPager(viewPager, true);
 
-        disclosureAdapter = new DisclosureAdapter(this);
+        DisclosureAdapter disclosureAdapter = new DisclosureAdapter(this);
         viewPager.setAdapter(disclosureAdapter);
         viewPager.addOnPageChangeListener(viewListener);
 
@@ -92,22 +91,7 @@ public class DisclosureAdapterActivity extends AppCompatActivity {
 
     }
 
-/*    public void addDotsIndicator(int position){
-        dots = new TextView[2];
-        tabLayout.removeAllViews();
-        for (int i = 0; i < dots.length; i++){
-            //dots[i] = new TextView(this);
-            //dots[i].setText(Html.fromHtml("&#8226;"));
-            //dots[i].setTextSize(30);
-            //dots[i].setTextColor(getResources().getColor(R.color.colorSecondary));
-            tabLayout.addView(dots[i]);
-        }
-        if (dots.length > 0) {
-            //dots[position].setTextColor(getResources().getColor(R.color.colorBlack));
-            //dots[position].setTextSize(20);
-        }
-    }*/
-
+    //----------------------------------------------------------------------------------------------View pager
     ViewPager.OnPageChangeListener viewListener = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -259,6 +243,7 @@ public class DisclosureAdapterActivity extends AppCompatActivity {
         }
     }
 
+    //----------------------------------------------------------------------------------------------Launch application and load permissions
     public void LaunchApp() {
         Thread background = new Thread() {
             public void run() {

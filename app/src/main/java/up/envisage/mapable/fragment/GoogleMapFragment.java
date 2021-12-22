@@ -47,7 +47,6 @@ public class GoogleMapFragment extends FragmentActivity
     private GoogleMap map;
     private Dialog dialog;
 
-    private MaterialButton button_reportMap_ok;
     private String userID, incidentType, dateTime, report, lat, lon, image;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +77,7 @@ public class GoogleMapFragment extends FragmentActivity
         final LatLng[] pinnedLocation = new LatLng[1];
 
         // Marker icon
-        Drawable userLoc = getResources().getDrawable(R.drawable.ic_report_userlocation_90x90);
+        @SuppressLint("UseCompatLoadingForDrawables") Drawable userLoc = getResources().getDrawable(R.drawable.ic_report_userlocation_90x90);
         final BitmapDescriptor userIcon = getMarkerIconFromDrawable(userLoc);
 
         // Get current location using FusedLocation
@@ -105,8 +104,8 @@ public class GoogleMapFragment extends FragmentActivity
                     }
                 });
 
-        //Marker icon
-        Drawable drawable = getResources().getDrawable(R.drawable.ic_report_userlocation_target_90x90);
+        // Marker icon
+        @SuppressLint("UseCompatLoadingForDrawables") Drawable drawable = getResources().getDrawable(R.drawable.ic_report_userlocation_target_90x90);
         final BitmapDescriptor icon = getMarkerIconFromDrawable(drawable);
 
         googleMap.setOnMapLongClickListener(
@@ -124,7 +123,7 @@ public class GoogleMapFragment extends FragmentActivity
                 }
         );
 
-        //Check Permission
+        // Check Permission
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -136,7 +135,7 @@ public class GoogleMapFragment extends FragmentActivity
         map.setOnMyLocationButtonClickListener(GoogleMapFragment.this);
         map.setOnMyLocationClickListener(GoogleMapFragment.this);
 
-        //Get coordinates of the marker
+        // Get coordinates of the marker
         Button button_googleMaps_submitLocation = findViewById(R.id.button_googleMap_submit);
         button_googleMaps_submitLocation.setOnClickListener(
                 new View.OnClickListener() {
@@ -152,8 +151,8 @@ public class GoogleMapFragment extends FragmentActivity
                             submitLocation.putExtra("Date and Time", dateTime);
                             submitLocation.putExtra("Incident Type", incidentType);
                             submitLocation.putExtra("Report", report);
-                            submitLocation.putExtra("Latitude",  String.valueOf(pinnedLocation[0].latitude)); //
-                            submitLocation.putExtra("Longitude", String.valueOf(pinnedLocation[0].longitude)); //
+                            submitLocation.putExtra("Latitude",  String.valueOf(pinnedLocation[0].latitude)); // Latitude
+                            submitLocation.putExtra("Longitude", String.valueOf(pinnedLocation[0].longitude)); // Longitude
                             submitLocation.putExtra("image", image);
                             startActivity(submitLocation);
                             Toast.makeText(GoogleMapFragment.this, "Coordinates successfully saved", Toast.LENGTH_LONG).show();
@@ -180,7 +179,7 @@ public class GoogleMapFragment extends FragmentActivity
         dialog = new Dialog(this);
         dialog.setContentView(R.layout.popup_error_nolocation);
 
-        button_reportMap_ok = dialog.findViewById(R.id.button_reportMap_ok);
+        MaterialButton button_reportMap_ok = dialog.findViewById(R.id.button_reportMap_ok);
         button_reportMap_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -204,7 +203,6 @@ public class GoogleMapFragment extends FragmentActivity
 
     public void onBackPressed() {
         finish();
-
     }
 
 }

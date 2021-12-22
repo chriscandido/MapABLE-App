@@ -115,7 +115,7 @@ public class MyReportsListActivity extends AppCompatActivity implements UserRepo
             }
         });
 
-        //back to Main Menu Text Button
+        // Back button
         ImageView imageView_reportlist_back = findViewById(R.id.imageView_reportlist_back);
         imageView_reportlist_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,7 +125,6 @@ public class MyReportsListActivity extends AppCompatActivity implements UserRepo
         });
 
     }
-
 
     public void onStart(){
         super.onStart();

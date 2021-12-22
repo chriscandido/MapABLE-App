@@ -136,7 +136,7 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
                     map.put("username", username);
                     map.put("password", password);
 
-                    if(connection == true) {
+                    if(connection) {
 
                         Call<Void> call = retrofitInterface.executeSignup(map);
 

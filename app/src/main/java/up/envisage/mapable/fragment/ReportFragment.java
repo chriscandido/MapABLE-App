@@ -297,7 +297,7 @@ public class ReportFragment extends Fragment {
 
         Bitmap galleryPhoto = BitmapFactory.decodeFile(filePath);
 
-        //Get the base 64 string
+        // Get the base 64 string
         String img = Base64.encodeToString(getBytesFromBitmap(galleryPhoto),
                 Base64.NO_WRAP);
         return img;

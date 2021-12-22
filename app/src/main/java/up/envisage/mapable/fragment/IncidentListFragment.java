@@ -229,6 +229,7 @@ public class IncidentListFragment extends Fragment {
             }
         });
 
+        // Back button
         imageView_incidentList_back = view.findViewById(R.id.imageView_incidentlist_back);
         imageView_incidentList_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -240,20 +241,21 @@ public class IncidentListFragment extends Fragment {
 
     }
 
+    //----------------------------------------------------------------------------------------------Check network availability
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
-    //----------------------------------------------------------------------------------------------convert from bitmap to byte array
+    //----------------------------------------------------------------------------------------------Convert from bitmap to byte array
     public byte[] getBytesFromBitmap(Bitmap bitmap) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
         return stream.toByteArray();
     }
 
-    //----------------------------------------------------------------------------------------------convert image to string
+    //----------------------------------------------------------------------------------------------Convert image to string
     public String imageConvertToString(String image) {
         Uri selectedImage = Uri.parse(image);
         String[] filePathColumn = {MediaStore.Images.Media.DATA};

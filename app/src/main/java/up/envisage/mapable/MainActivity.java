@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //----------------------------------------------------------------------------------------------Bottom Navigation
     private BottomNavigationView.OnNavigationItemSelectedListener bottomNavigation = new BottomNavigationView.OnNavigationItemSelectedListener() {
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
             Fragment fragment = null;

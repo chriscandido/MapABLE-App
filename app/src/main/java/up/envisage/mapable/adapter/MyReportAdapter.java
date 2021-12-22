@@ -23,9 +23,8 @@ public class MyReportAdapter extends RecyclerView.Adapter<MyReportAdapter.ViewHo
 
     Context context;
 
-    private OnReportClickListener onReportClickListener;
-    private LayoutInflater layoutInflater;
-    private List<ReportTable> reportTable;
+    private final OnReportClickListener onReportClickListener;
+    private final List<ReportTable> reportTable;
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -65,7 +64,7 @@ public class MyReportAdapter extends RecyclerView.Adapter<MyReportAdapter.ViewHo
         this.context = context;
         this.onReportClickListener = onReportClickListener;
         this.reportTable = reportTable;
-        layoutInflater = LayoutInflater.from(context);
+        LayoutInflater layoutInflater = LayoutInflater.from(context);
     }
 
     @Override
@@ -73,8 +72,10 @@ public class MyReportAdapter extends RecyclerView.Adapter<MyReportAdapter.ViewHo
         //holder.imageView_myReportImage.setImageResource(reportTable.get(position).getPhoto());
         holder.textView_myReportTitle.setText(reportTable.get(position).getIncidentType());
         holder.textView_myReportDescription.setText(reportTable.get(position).getDateTime());
+
         float lat = BigDecimal.valueOf(reportTable.get(position).getLatitude()).setScale(3, BigDecimal.ROUND_HALF_UP).floatValue();
         float lon = BigDecimal.valueOf(reportTable.get(position).getLongitude()).setScale(3, BigDecimal.ROUND_HALF_UP).floatValue();
+
         holder.textView_myReportLat.setText(String.valueOf(lat));
         holder.textView_myReportLon.setText(String.valueOf(lon));
 

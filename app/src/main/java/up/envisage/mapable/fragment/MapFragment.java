@@ -112,8 +112,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
 
     public ArrayList<LinkedTreeMap> reportsArrayList = new ArrayList<>();
 
-    private View rootView;
-    private LocationChangeListeningActivityLocationCallback callback =
+    private final LocationChangeListeningActivityLocationCallback callback =
             new LocationChangeListeningActivityLocationCallback(this);
 
     public void onAttach(Context context) {
@@ -163,12 +162,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
                              Bundle savedInstanceState) {
         Mapbox.getInstance(getActivity(), getString(R.string.mapbox_access_token));
         // Inflate the layout for this fragment
-        rootView = inflater.inflate(R.layout.fragment_map, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_map, container, false);
 
         return rootView;
     }
 
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         button_mapReports = view.findViewById(R.id.button_mapMyReports);
@@ -193,8 +192,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
                     @Override
                     public void onStyleLoaded(@NonNull Style style) {
                         enableLocationComponent(style);
-//                        setupData(mapboxMap);
-
                         button_mapReports.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -210,21 +207,17 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
                                     public void onResponse(Call<List> call2, Response<List> response2) {
                                         if(response2.isSuccessful()) {
 
+                                            // Extract data and put to LinkedTreeMap
                                             for(int i=0; i<response2.body().size(); i++) {
                                                 Log.v("[ MapFragment.java ]", response2.body().get(i).toString());
                                                 LinkedTreeMap linkedTreeMap = (LinkedTreeMap) response2.body().get(i);
                                                 reportsArrayList.add(linkedTreeMap);
                                             }
-
-//                                            Toast.makeText(getActivity(),"My Reports Retrieved!",Toast.LENGTH_SHORT).show();
-
                                             setupData(mapboxMap);
                                         }
                                     }
-
                                     @Override
                                     public void onFailure(Call<List> call, Throwable t) {
-
                                     }
                                 });
                                 mapboxMap.removeAnnotations();
@@ -283,20 +276,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
                 });
     }
 
-    public static <T> List<T> getObjectList(String jsonString,Class<T> cls){
-        List<T> list = new ArrayList<T>();
-        try {
-            Gson gson = new Gson();
-            JsonArray arry = new JsonParser().parse(jsonString).getAsJsonArray();
-            for (JsonElement jsonElement : arry) {
-                list.add(gson.fromJson(jsonElement, cls));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
-
     //----------------------------------------------------------------------------------------------Get data from local db
     public void setupData (MapboxMap mapboxMap){
         Icon iconAlgalBloom = drawableToIcon(getApplicationContext(), R.drawable.ic_map_algalbloom120x120);
@@ -322,6 +301,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
 
 
             // Extract latitude and longitude from List
+            assert coordinates != null;
             double latitude = (double) coordinates.get(1);
             double longitude = (double) coordinates.get(0);
             Log.v("[ MapFragment.java ]","data: " + "\n"
@@ -329,6 +309,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
                     + "Latitude: " + String.valueOf(latitude) + "\n"
                     + "Longitude: " + String.valueOf(longitude));
 
+            // Setup map pin
             switch (incidentType) {
                 case "Algal Bloom":
                     mapboxMap.addMarker(new MarkerOptions()
@@ -399,12 +380,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
         Icon iconLagunaDeBayStation = drawableToIcon(getApplicationContext(), R.drawable.ic_map_station36x36);
 
         for (String station : lagunaDeBayStation.keySet()) {
-            String stationName = station;
-            double latitude = lagunaDeBayStation.get(station).getLatitude();
-            double longitude = lagunaDeBayStation.get(station).getLongitude();
+            double latitude = Objects.requireNonNull(lagunaDeBayStation.get(station)).getLatitude();
+            double longitude = Objects.requireNonNull(lagunaDeBayStation.get(station)).getLongitude();
             mapboxMap.addMarker(new MarkerOptions()
                     .position(new LatLng(latitude, longitude))
-                    .title(stationName)
+                    .title(station)
                     .snippet("Laguna de Bay Station").icon(iconLagunaDeBayStation));
         }
     }
@@ -435,12 +415,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
         Icon iconPRUMStation = drawableToIcon(getApplicationContext(), R.drawable.ic_map_station36x36);
 
         for (String station : prumStation.keySet()) {
-            String stationName = station;
-            double latitude = prumStation.get(station).getLatitude();
-            double longitude = prumStation.get(station).getLongitude();
+            double latitude = Objects.requireNonNull(prumStation.get(station)).getLatitude();
+            double longitude = Objects.requireNonNull(prumStation.get(station)).getLongitude();
             mapboxMap.addMarker(new MarkerOptions()
                     .position(new LatLng(latitude, longitude))
-                    .title(stationName)
+                    .title(station)
                     .snippet("Pasig River Unified Monitoring Station").icon(iconPRUMStation));
         }
 
@@ -461,12 +440,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
         Icon iconRiverOutfallStation = drawableToIcon(getApplicationContext(), R.drawable.ic_map_station36x36);
 
         for (String station : riverOutfallStation.keySet()) {
-            String stationName = station;
-            double latitude = riverOutfallStation.get(station).getLatitude();
-            double longitude = riverOutfallStation.get(station).getLongitude();
+            double latitude = Objects.requireNonNull(riverOutfallStation.get(station)).getLatitude();
+            double longitude = Objects.requireNonNull(riverOutfallStation.get(station)).getLongitude();
             mapboxMap.addMarker(new MarkerOptions()
                     .position(new LatLng(latitude, longitude))
-                    .title(stationName)
+                    .title(station)
                     .snippet("River Outfall Station").icon(iconRiverOutfallStation));
         }
 
@@ -484,12 +462,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
         Icon iconBathingBeachesStation = drawableToIcon(getApplicationContext(), R.drawable.ic_map_station36x36);
 
         for (String station : bathingBeachesStation.keySet()) {
-            String stationName = station;
-            double latitude = bathingBeachesStation.get(station).getLatitude();
-            double longitude = bathingBeachesStation.get(station).getLongitude();
+            double latitude = Objects.requireNonNull(bathingBeachesStation.get(station)).getLatitude();
+            double longitude = Objects.requireNonNull(bathingBeachesStation.get(station)).getLongitude();
             mapboxMap.addMarker(new MarkerOptions()
                     .position(new LatLng(latitude, longitude))
-                    .title(stationName)
+                    .title(station)
                     .snippet("Bathing Beaches Station").icon(iconBathingBeachesStation));
         }
 
@@ -510,12 +487,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
         Icon iconOffshoreStation = drawableToIcon(getApplicationContext(), R.drawable.ic_map_station36x36);
 
         for (String station : offshoreStation.keySet()) {
-            String stationName = station;
-            double latitude = offshoreStation.get(station).getLatitude();
-            double lonigtude = offshoreStation.get(station).getLongitude();
+            double latitude = Objects.requireNonNull(offshoreStation.get(station)).getLatitude();
+            double lonigtude = Objects.requireNonNull(offshoreStation.get(station)).getLongitude();
             mapboxMap.addMarker(new MarkerOptions()
                     .position(new LatLng(latitude, lonigtude))
-                    .title(stationName)
+                    .title(station)
                     .snippet("Manila Bay Offshore Station").icon(iconOffshoreStation));
         }
     }

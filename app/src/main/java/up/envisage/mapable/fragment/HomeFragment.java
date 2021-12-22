@@ -134,6 +134,7 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
         textView_homeLocation = view.findViewById(R.id.textView_homeLocation);
         textView_tingnanLahat = view.findViewById(R.id.textView_mainMenu_tignanLahat);
 
+        // Alamin natin button
         imageView_mainMenu_alaminnatin.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
@@ -144,6 +145,7 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
             }
         });
 
+        // About Im4ManilaBay button
         imageView_mainMenu_im4manilabay.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
@@ -153,6 +155,7 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
             }
         });
 
+        // Update location pin
         imageView_home_pin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -208,7 +211,7 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
         }
     }
 
-    //----------------------------------------------------------------------------------------------facebook link of program
+    //----------------------------------------------------------------------------------------------facebook links
     private void openFacebookPageIntent(String url) {
         Context context = null;
         try {
@@ -238,6 +241,7 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
         locationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
     }
 
+    //----------------------------------------------------------------------------------------------Check Google Play Services
     private boolean isGooglePlayServicesAvailable() {
         int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(listener);
         if (ConnectionResult.SUCCESS == status) {
@@ -286,7 +290,7 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
         updateUI();
     }
 
-    //----------------------------------------------------------------------------------------------Update TextView
+    //----------------------------------------------------------------------------------------------Geocoder
     private void updateUI() {
         Log.d(TAG, "UI update initiated .............");
         final String[] address_string = new String[1];
@@ -299,6 +303,15 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
                 addresses = geocoder.getFromLocation(currentLocation.getLatitude(), currentLocation.getLongitude(), 1);
                 if (addresses != null) {
                     try {
+                        if (addresses.get(0).getSubLocality() != null && addresses.get(0).getLocality() != null) {
+                            textView_homeLocation.setText(addresses.get(0).getSubLocality() + ", " + addresses.get(0).getLocality());
+                        } else if (addresses.get(0).getSubLocality() == null && addresses.get(0).getLocality() != null){
+                            textView_homeLocation.setText(addresses.get(0).getLocality());
+                        } else if (addresses.get(0).getSubLocality() != null && addresses.get(0).getLocality() == null) {
+                            textView_homeLocation.setText(addresses.get(0).getSubLocality());
+                        } else {
+                            textView_homeLocation.setText(addresses.get(0).getCountryName());
+                        }
                         address_string[0] = String.valueOf(addresses.get(0).getAddressLine(0));
                     } catch (IndexOutOfBoundsException e) {
                         address_string[0] = "NO ADDRESS LINE MATCHED";
@@ -306,8 +319,7 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
                 } else {
                     address_string[0] = "NO ADDRESS MATCHES WERE FOUND";
                 }
-                textView_homeLocation.setText(addresses.get(0).getSubLocality() + ", " + addresses.get(0).getLocality());
-                Log.v("[ HomeFragment.java ]", lat);
+                Log.v("[ HomeFragment.java ]", "Address: " + address_string[0]);
             } catch (IOException e) {
                 e.printStackTrace();
             }

@@ -73,6 +73,7 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
         holder.username.setText(filteredList.get(position).getUsername());
         holder.points.setText(filteredList.get(position).getPoints());
 
+        // Set image resource for every position in leaderboard
         if (position == 0) {
             holder.badge.setImageResource(R.drawable.ic_userprofile_leaderoardtop1);
         } else if (position == 1) {

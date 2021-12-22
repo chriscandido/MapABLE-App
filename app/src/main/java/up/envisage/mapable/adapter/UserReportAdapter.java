@@ -73,11 +73,10 @@ public class UserReportAdapter extends RecyclerView.Adapter<UserReportAdapter.My
 
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_report_item, parent, false);
 //        v = layoutInflater.inflate(R.layout.user_report_item, parent, false);
-
         return new MyViewHolder(v, mOnReportClickListener);
     }
 
-    @SuppressLint("LongLogTag")
+    @SuppressLint({"LongLogTag", "SetTextI18n"})
     @Override
     public void onBindViewHolder(@NonNull @NotNull MyViewHolder holder, int position) {
 

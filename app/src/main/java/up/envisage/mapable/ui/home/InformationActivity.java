@@ -118,7 +118,7 @@ import up.envisage.mapable.adapter.ReportIncidentAdapter;
 
      public void onBackPressed() {
         super.onBackPressed();
-         finish();
+        finish();
      }
  }
 

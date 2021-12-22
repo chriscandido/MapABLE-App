@@ -127,6 +127,7 @@ public class MyQuestActivity extends AppCompatActivity {
 
     }
 
+    //----------------------------------------------------------------------------------------------Set condition of Basic Level badges
     @SuppressLint("LongLogTag")
     public void setBasicLevelImageResource(Integer total, Integer verified) {
 
@@ -147,6 +148,7 @@ public class MyQuestActivity extends AppCompatActivity {
 
     }
 
+    //----------------------------------------------------------------------------------------------Set condition of Citizen Scientists badges
     @SuppressLint("CutPasteId")
     public void setCitizenScientistsImageResource(Integer total,
                                                   Integer verified,
@@ -191,6 +193,7 @@ public class MyQuestActivity extends AppCompatActivity {
 
     }
 
+    //----------------------------------------------------------------------------------------------Set condition of Tagapagmasid badges
     public void setTagapagmasidImageResource(Integer algalbloom,
                                              Integer fishkill,
                                              Integer hyacinth,

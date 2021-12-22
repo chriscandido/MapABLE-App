@@ -19,8 +19,7 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.ViewHo
 
     Context context;
 
-    private OnMenuClickListener onMenuClickListener;
-    private LayoutInflater layoutInflater;
+    private final OnMenuClickListener onMenuClickListener;
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView textView_mainTitle, textView_mainContent;
@@ -47,10 +46,10 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.ViewHo
     public MainMenuAdapter(Context context, OnMenuClickListener onMenuClickListener) {
         this.context = context;
         this.onMenuClickListener = onMenuClickListener;
-        layoutInflater = LayoutInflater.from(context);
+        LayoutInflater layoutInflater = LayoutInflater.from(context);
     }
 
-    // Title
+    // Maine menu title
     public String[] mainMenu_title = {
             "Pormal na idineklara and BATTLE FOR ...",
             "Ang G.R. No. 171947-48, o mas kilala ...",
@@ -60,7 +59,7 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.ViewHo
             "Alam niyo ba kung anong batas ang nagsasaad ..."
     };
 
-    // Icon
+    // Main menu icon
     public int[] mainMenu_icon = {
             R.drawable.img_policy_battleofmanilabay,
             R.drawable.img_policy_manilabaymandamus,

@@ -16,8 +16,7 @@ public class ReportIncidentAdapter extends RecyclerView.Adapter<ReportIncidentAd
 
     Context context;
 
-    private OnIncidentClickListener onIncidentClickListener;
-    private LayoutInflater layoutInflater;
+    private final OnIncidentClickListener onIncidentClickListener;
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -50,10 +49,10 @@ public class ReportIncidentAdapter extends RecyclerView.Adapter<ReportIncidentAd
     public ReportIncidentAdapter(Context context, OnIncidentClickListener onIncidentClickListener){
         this.context = context;
         this.onIncidentClickListener = onIncidentClickListener;
-        layoutInflater = LayoutInflater.from(context);
+        LayoutInflater layoutInflater = LayoutInflater.from(context);
     }
 
-    //Title
+    // Incident report title
     public int[] incidentReport_Title = {
             R.string.title_algalBloom,
             R.string.title_fishKill,
@@ -64,7 +63,7 @@ public class ReportIncidentAdapter extends RecyclerView.Adapter<ReportIncidentAd
             R.string.title_ibapa
     };
 
-    //Image
+    // Incident report icon
     public int[] incidentReport_Image = {
             R.drawable.ic_map_algalbloom,
             R.drawable.ic_map_fishkill,

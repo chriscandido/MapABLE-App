@@ -50,7 +50,7 @@ public class InformationAdapter extends RecyclerView.Adapter<InformationAdapter.
         LayoutInflater layoutInflater = LayoutInflater.from(context);
     }
 
-    //Information Title
+    // Information Title
     public String[] informationTitle = {
             "Pormal na idineklara ang BATTLE OF . . .",
             "Ang G.R. Nos. 171947-48, o mas kilala . . .",
@@ -60,7 +60,7 @@ public class InformationAdapter extends RecyclerView.Adapter<InformationAdapter.
             "Alam niyo ba kung anong batas ang nagsasaad . . ."
     };
 
-    //Information Images
+    // Information Images
     public int[] img_informationBackground = {
             R.drawable.img_policy_battleofmanilabay,
             R.drawable.img_policy_manilabaymandamus,
