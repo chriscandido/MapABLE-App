@@ -69,7 +69,7 @@ public class MyReportAdapter extends RecyclerView.Adapter<MyReportAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull MyReportAdapter.ViewHolder holder, int position) {
-        //holder.imageView_myReportImage.setImageResource(reportTable.get(position).getPhoto());
+
         holder.textView_myReportTitle.setText(reportTable.get(position).getIncidentType());
         holder.textView_myReportDescription.setText(reportTable.get(position).getDateTime());
 

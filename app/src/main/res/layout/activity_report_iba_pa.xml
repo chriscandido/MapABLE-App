@@ -65,6 +65,13 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <!-- Line Separator -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_margin="10dp"
+                android:background="@color/colorGray"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -111,6 +118,13 @@
                     android:fontFamily="@font/montserrat"/>
 
             </LinearLayout>
+
+            <!-- Line Separator -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_margin="10dp"
+                android:background="@color/colorGray"/>
 
             <!-- Report Questions -->
             <LinearLayout

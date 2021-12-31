@@ -23,11 +23,11 @@ public class AboutActivity extends AppCompatActivity {
         setContentView(R.layout.activity_about);
 
         ImageView imageView_aboutUs_back = findViewById(R.id.imageView_aboutUs_back);
-        /*
-        TextView textView_aboutUs_im4manilbayLink = findViewById(R.id.textView_aboutUs_im4manilabayLink);
+
+        TextView textView_aboutUs_im4manilbayLink = findViewById(R.id.textView_aboutUs_im4manilabay);
         TextView textView_aboutUs_iwasto = findViewById(R.id.textView_aboutUs_iwasto);
         TextView textView_aboutUs_esmart = findViewById(R.id.textView_aboutUs_esmart);
-        TextView textView_aboutUs_mapableLink = findViewById(R.id.textView_aboutUs_mapableLink);
+        TextView textView_aboutUs_mapableLink = findViewById(R.id.textView_aboutUs_mapable);
 
         //Button go to IM4ManilaBay link
         textView_aboutUs_im4manilbayLink.setOnClickListener(v -> {
@@ -81,12 +81,8 @@ public class AboutActivity extends AppCompatActivity {
         } catch (Exception e) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
         }
-    }*/
-        //Button go back
-        imageView_aboutUs_back.setOnClickListener(v -> {
-            finish();
-        });
     }
+
 
     public void onStart(){
         super.onStart();

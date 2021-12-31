@@ -406,6 +406,7 @@ public class CameraActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    //----------------------------------------------------------------------------------------------check network availability
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();

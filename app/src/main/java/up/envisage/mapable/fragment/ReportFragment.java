@@ -50,19 +50,21 @@ import retrofitInterface.RetrofitInterface;
 
 public class ReportFragment extends Fragment {
 
+    // Fragment activity
     private FragmentActivity listener;
 
+    // Server
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
     private String BASE_URL = "http://ec2-54-91-89-105.compute-1.amazonaws.com/";
 
+    // User and Report room database
     private ReportViewModel reportViewModel;
     private UserViewModel userViewModel;
 
-    String userID, dateTime, incidentType, Report, lon, lat, image, imageString, outUserId;
-
+    // Variables
+    private String userID, dateTime, incidentType, Report, lon, lat, image, imageString, outUserId;
     public Boolean connection;
-
     private Dialog dialog;
 
     public void onAttach(Context context) {
@@ -99,17 +101,17 @@ public class ReportFragment extends Fragment {
 
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
 
-        //Set your desired log level
+        // Set desired log level
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-        //Add your other interceptors …
+        // Add other interceptors …
         httpClient.callTimeout(2, TimeUnit.MINUTES)
                 .connectTimeout(30, TimeUnit.SECONDS) // connect timeout
                 .writeTimeout(30, TimeUnit.SECONDS) // write timeout
                 .readTimeout(30, TimeUnit.SECONDS); // read timeout
 
-        //Add logging as last interceptor
+        // Add logging as last interceptor
         httpClient.addInterceptor(logging);  // <-- this is the important line!
 
         retrofit = new Retrofit.Builder()
@@ -130,7 +132,7 @@ public class ReportFragment extends Fragment {
         lat = reportAct.getStringExtra("Latitude");
         image = reportAct.getStringExtra("image");
 
-        //Button take survey
+        // Button take survey
         MaterialButton button_takeSurvey = view.findViewById(R.id.button_report_takeSurvey);
         button_takeSurvey.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,7 +143,7 @@ public class ReportFragment extends Fragment {
             }
         });
 
-        //back to Main Menu Text Button
+        // Back to Main Menu text button
         TextView textView_reportBack = view.findViewById(R.id.textView_report_back);
         textView_reportBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,7 +153,7 @@ public class ReportFragment extends Fragment {
             }
         });
 
-        //Send to server Button
+        // Send to server button
         MaterialButton button_reportSend = view.findViewById(R.id.button_report_send);
         if (dateTime == null) {
             button_reportSend.setVisibility(View.GONE);
@@ -159,14 +161,14 @@ public class ReportFragment extends Fragment {
             button_reportSend.setVisibility(View.VISIBLE);
         }
 
-        //checks for internet connection
+        // Checks for internet connection
         connection = isNetworkAvailable();
 
         button_reportSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                //Insert report details to server
+                // Insert report details to server
                 Log.v("[ReportingActivity.java ]", "Image Path: " + image  + "\n");
 
                 imageString = imageConvertToString(image);
@@ -191,7 +193,7 @@ public class ReportFragment extends Fragment {
                                 "LONGITUDE: " + lon + "\n" +
                                 "IMAGE: " + imageString + "\n" ); //imageString
 
-                if(isNetworkAvailable() == true){
+                if(isNetworkAvailable()){
 
                     Call<ReportClassResult> call = retrofitInterface.executeReportSubmit(map);
 
@@ -235,7 +237,7 @@ public class ReportFragment extends Fragment {
                                     Toast.LENGTH_LONG).show();
                             Log.v("OnFailure Error Message", t.getMessage());
 
-                            //if onFailure, report is stored in the local database
+                            // If onFailure, report is stored in the local database
                             ReportTable report = new ReportTable();
                             report.setUniqueId(outUserId);
                             report.setDateTime(dateTime);
@@ -247,9 +249,8 @@ public class ReportFragment extends Fragment {
                             reportViewModel.insert(report);
                         }
                     });
-                } else { //if no internet connection, report is stored in the local database
-                    //Toast.makeText(ReportingActivity.this, "No Internet Connection. Report will be saved in the device!",
-                    //Toast.LENGTH_LONG).show();
+                } else {
+                    // If no internet connection, report is stored in the local database
                     ReportTable report = new ReportTable();
                     report.setUniqueId(outUserId);
                     report.setDateTime(dateTime);
@@ -270,20 +271,21 @@ public class ReportFragment extends Fragment {
         });
     }
 
+    //----------------------------------------------------------------------------------------------Check network connectivity
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
-    //----------------------------------------------------------------------------------------------convert from bitmap to byte array
+    //----------------------------------------------------------------------------------------------Convert from bitmap to byte array
     public byte[] getBytesFromBitmap(Bitmap bitmap) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
         return stream.toByteArray();
     }
 
-    //----------------------------------------------------------------------------------------------convert image to string
+    //----------------------------------------------------------------------------------------------Convert image to string
     public String imageConvertToString(String image) {
         Uri selectedImage = Uri.parse(image);
         String[] filePathColumn = {MediaStore.Images.Media.DATA};
@@ -317,7 +319,6 @@ public class ReportFragment extends Fragment {
         dialog.setContentView(R.layout.popup_error_nointernet);
 
         dialog.show();
-
     }
 
     //----------------------------------------------------------------------------------------------Popup for prominent disclosure
@@ -334,7 +335,6 @@ public class ReportFragment extends Fragment {
         });
 
         dialog.show();
-
     }
 
     public void onStart(){

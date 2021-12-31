@@ -222,8 +222,5 @@ public class ViewReportActivity extends AppCompatActivity {
                 finish();
             }
         });
-
     }
-
-
 }

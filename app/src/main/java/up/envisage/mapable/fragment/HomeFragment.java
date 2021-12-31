@@ -65,9 +65,8 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
     private RelativeLayout relativeLayout_mainHeader;
 
     // View
-    ImageView imageView_mainMenu_alaminnatin, imageView_mainMenu_im4manilabay;
+    ImageView imageView_mainMenu_alaminnatin, imageView_mainMenu_im4manilabay, imageView_home_pin;
     TextView textView_homeLocation, textView_tingnanLahat;
-    ImageView imageView_home_pin;
 
     // Variable
     String userID;
@@ -93,15 +92,13 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
 
         Intent homeFragment = requireActivity().getIntent();
         userID = homeFragment.getStringExtra("userID");
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //Inflate the layout for this fragment
+        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false);
-
     }
 
     public void onViewCreated(@NotNull View view, @Nullable Bundle savedInstanceState) {
@@ -121,6 +118,7 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
         isGooglePlayServicesAvailable();
         createLocationRequest();
 
+        // Google API client
         googleApiClient = new GoogleApiClient.Builder(listener)
                 .addApi(LocationServices.API)
                 .addConnectionCallbacks(this)
@@ -145,7 +143,7 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
             }
         });
 
-        // About Im4ManilaBay button
+        // Im4ManilaBay button
         imageView_mainMenu_im4manilabay.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
@@ -174,7 +172,7 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
     }
 
 
-    //----------------------------------------------------------------------------------------------Features for
+    //----------------------------------------------------------------------------------------------Facebook links for laws and policies on Manila bay
     public void onClick(int position) {
         Log.d("[ HomeFragment.java ]", "onMenuClick: clicked - " + position);
         switch (position) {
@@ -211,7 +209,7 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
         }
     }
 
-    //----------------------------------------------------------------------------------------------facebook links
+    //----------------------------------------------------------------------------------------------Open facebook link activity
     private void openFacebookPageIntent(String url) {
         Context context = null;
         try {
@@ -254,7 +252,7 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
 
     @Override
     public void onConnected(Bundle bundle) {
-        Log.d(TAG, "onConnected - isConnected ..........................: " + googleApiClient.isConnected());
+        Log.d(TAG, "onConnected - isConnected: " + googleApiClient.isConnected());
         startLocationUpdates();
     }
 
@@ -270,7 +268,7 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
             return;
         }
         PendingResult<Status> pendingResult = LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient, locationRequest, this);
-        Log.d(TAG, "Location update started ...........................: ");
+        Log.d(TAG, "Location update started: ");
     }
 
     @Override
@@ -285,14 +283,14 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
 
     @Override
     public void onLocationChanged(Location location) {
-        Log.d(TAG, "Firing onLocationChanged..............................................");
+        Log.d(TAG, "Firing onLocationChanged!");
         currentLocation = location;
         updateUI();
     }
 
     //----------------------------------------------------------------------------------------------Geocoder
     private void updateUI() {
-        Log.d(TAG, "UI update initiated .............");
+        Log.d(TAG, "UI update initiated");
         final String[] address_string = new String[1];
         if (null != currentLocation) {
             String lat = String.valueOf(currentLocation.getLatitude());
@@ -323,23 +321,23 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Log.d(TAG, "location is null ...............");
+            Log.d(TAG, "location is null");
         }
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        Log.d(TAG, "onStart fired ..........................");
+        Log.d(TAG, "onStart fired");
         googleApiClient.connect();
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        Log.d(TAG, "onStop fired ..........................");
+        Log.d(TAG, "onStop fired");
         googleApiClient.disconnect();
-        Log.d(TAG, "isConnected ..........................: " + googleApiClient.isConnected());
+        Log.d(TAG, "isConnected: " + googleApiClient.isConnected());
     }
 
     @Override
@@ -351,7 +349,7 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
     protected void stopLocationUpdates() {
         LocationServices.FusedLocationApi.removeLocationUpdates(
                 googleApiClient, this);
-        Log.d(TAG, "Location update stopped .......................");
+        Log.d(TAG, "Location update stopped");
     }
 
     @Override
@@ -359,7 +357,7 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
         super.onResume();
         if (googleApiClient.isConnected()) {
             startLocationUpdates();
-            Log.d(TAG, "Location update resumed .....................");
+            Log.d(TAG, "Location update resumed");
         }
     }
 

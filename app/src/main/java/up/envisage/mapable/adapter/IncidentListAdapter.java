@@ -82,7 +82,6 @@ public class IncidentListAdapter extends BaseAdapter {
         viewHolderItem.textView_incident_title.setText(incidentTitle[position]);
 
         return view;
-
     }
 
     static class ViewHolderItem {

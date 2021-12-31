@@ -22,7 +22,8 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.ViewHo
     private final OnMenuClickListener onMenuClickListener;
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView textView_mainTitle, textView_mainContent;
+
+        TextView textView_mainTitle;
         ImageView imageView_mainIcon;
         OnMenuClickListener onMenuClickListener;
 

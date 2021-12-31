@@ -2,6 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
@@ -38,18 +39,8 @@
 
                 </androidx.viewpager.widget.ViewPager>
 
-<!--                <LinearLayout
-                    android:id="@+id/linearLayout_dots"
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:orientation="horizontal">
-
-                </LinearLayout>-->
-
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/linearLayout_dots"
-                    android:layout_alignParentBottom="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -79,7 +70,8 @@
                         android:fontFamily="@font/montserrat_extrabold"
                         android:visibility="invisible"
                         app:cornerRadius="20dp"
-                        style="@style/Widget.MaterialComponents.Button"/>
+                        style="@style/Widget.MaterialComponents.Button"
+                        tools:ignore="HardcodedText" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/button_disclosure_turnon"
@@ -89,13 +81,14 @@
                         android:layout_marginEnd="10dp"
                         android:layout_gravity="center"
                         android:backgroundTint="@color/colorText"
-                        android:text="Turn on"
+                        android:text="Allow"
                         android:textSize="12sp"
                         android:textColor="@color/colorBlack"
                         android:fontFamily="@font/montserrat_extrabold"
                         android:visibility="invisible"
                         app:cornerRadius="20dp"
-                        style="@style/Widget.MaterialComponents.Button"/>
+                        style="@style/Widget.MaterialComponents.Button"
+                        tools:ignore="HardcodedText" />
 
                 </LinearLayout>
 

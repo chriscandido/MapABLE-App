@@ -65,7 +65,6 @@ public class MyQuestActivity extends AppCompatActivity {
         String userID = intent.getStringExtra("userID");
 
         setBadges(userID);
-
     }
 
     public void setBadges(String userID) {

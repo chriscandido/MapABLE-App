@@ -262,4 +262,19 @@ public class DisclosureAdapterActivity extends AppCompatActivity {
         background.start();
     }
 
+    public void onStart(){
+        super.onStart();
+    }
+
+    public void onResume(){
+        super.onResume();
+    }
+
+    public void onPause(){
+        super.onPause();
+    }
+
+    public void onBackPressed(){
+    }
+
 }

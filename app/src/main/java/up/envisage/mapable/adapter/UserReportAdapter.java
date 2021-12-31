@@ -38,15 +38,13 @@ public class UserReportAdapter extends RecyclerView.Adapter<UserReportAdapter.My
 
     public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private TextView type, date, city, prov, status, priority, closed, reg;
+        private TextView type, date, status, priority, closed;
         private ImageView image;
 
         OnReportClickListener onReportClickListener;
 
         public MyViewHolder(@NonNull View view, OnReportClickListener onReportClickListener) {
-
             super(view);
-
             type = itemView.findViewById(R.id.textView_type);
             date = itemView.findViewById(R.id.textView_date);
             status = itemView.findViewById(R.id.textView_status);
@@ -57,9 +55,7 @@ public class UserReportAdapter extends RecyclerView.Adapter<UserReportAdapter.My
             this.onReportClickListener = onReportClickListener;
 
             itemView.setOnClickListener(this);
-
         }
-
         @Override
         public void onClick(View v) {
             onReportClickListener.onReportClick(getAdapterPosition());
@@ -70,9 +66,7 @@ public class UserReportAdapter extends RecyclerView.Adapter<UserReportAdapter.My
     @NotNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_report_item, parent, false);
-//        v = layoutInflater.inflate(R.layout.user_report_item, parent, false);
         return new MyViewHolder(v, mOnReportClickListener);
     }
 

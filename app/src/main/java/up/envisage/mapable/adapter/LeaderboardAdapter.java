@@ -95,7 +95,6 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
         } else {
             holder.badge.setImageResource(R.drawable.ic_userprofile_leaderboardtop10);
         }
-
     }
 
     @Override

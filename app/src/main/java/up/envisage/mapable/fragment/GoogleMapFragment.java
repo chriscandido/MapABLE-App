@@ -44,15 +44,17 @@ public class GoogleMapFragment extends FragmentActivity
     FusedLocationProviderClient fusedLocationProviderClient;
     private static final int REQUEST_CODE = 101;
 
+    // Variables
+    private String userID, incidentType, dateTime, report, lat, lon, image;
     private GoogleMap map;
     private Dialog dialog;
 
-    private String userID, incidentType, dateTime, report, lat, lon, image;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_google_maps);
 
+        // Get intent
         Intent location = getIntent();
 
         userID = location.getStringExtra("userID");
@@ -146,6 +148,7 @@ public class GoogleMapFragment extends FragmentActivity
                             Log.v("[ GoogleMapFragment.java ]", "Pinned Location - latitude: " +
                                     pinnedLocation[0].latitude + " and " + "longitude: "+
                                     pinnedLocation[0].longitude);
+                            // Pass information to next activity
                             Intent submitLocation = new Intent(GoogleMapFragment.this, CameraActivity.class);
                             submitLocation.putExtra("userID", userID);
                             submitLocation.putExtra("Date and Time", dateTime);
@@ -186,7 +189,6 @@ public class GoogleMapFragment extends FragmentActivity
                 dialog.dismiss();
             }
         });
-
         dialog.show();
     }
 

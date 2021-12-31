@@ -180,7 +180,7 @@ public class ReportingActivity extends AppCompatActivity {
                                 "LONGITUDE: " + lon + "\n" +
                                 "IMAGE: " + imageString + "\n" ); //imageString
 
-                if(isNetworkAvailable() == true){
+                if(isNetworkAvailable()){
 
                     Call<ReportClassResult> call = retrofitInterface.executeReportSubmit(map);
 
@@ -258,7 +258,6 @@ public class ReportingActivity extends AppCompatActivity {
                 startActivity(goToMain);
             }
         });
-
     }
 
     private boolean isNetworkAvailable() {
@@ -308,7 +307,6 @@ public class ReportingActivity extends AppCompatActivity {
         dialog.setContentView(R.layout.popup_error_nointernet);
 
         dialog.show();
-
     }
 
     public void onStart(){

@@ -126,24 +126,7 @@ public class MyReportsListActivity extends AppCompatActivity implements UserRepo
 
     }
 
-    public void onStart(){
-        super.onStart();
-    }
-
-    public void onResume(){
-        super.onResume();
-    }
-
-    public void onPause(){
-        super.onPause();
-    }
-
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
-    }
-
-
+    //----------------------------------------------------------------------------------------------Pass report data to ViewReportActivity
     @Override
     public void onReportClick(int position) {
 
@@ -169,5 +152,22 @@ public class MyReportsListActivity extends AppCompatActivity implements UserRepo
         //navigate to activity
         //start intent
         //put extra
+    }
+
+    public void onStart(){
+        super.onStart();
+    }
+
+    public void onResume(){
+        super.onResume();
+    }
+
+    public void onPause(){
+        super.onPause();
+    }
+
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

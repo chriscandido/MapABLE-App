@@ -80,15 +80,18 @@ import up.envisage.mapable.model.StatsResult;
 
 public class UserFragment extends Fragment implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
+    // Layout
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private FragmentActivity listener;
 
+    // Server
     private Retrofit retrofit;
     public RetrofitInterface retrofitInterface;
     private String BASE_URL = "http://ec2-54-91-89-105.compute-1.amazonaws.com/";
 
+    // Variables
     private Dialog dialog;
     private CallbackManager callbackManager;
     private ShareDialog shareDialog;
@@ -101,22 +104,16 @@ public class UserFragment extends Fragment implements GoogleApiClient.Connection
     GoogleApiClient googleApiClient;
     Location currentLocation;
 
-    TextView textView_user_name, textView_user_username, textView_user_email, textView_user_myReport,
-            textView_user_myStats, textView_myStats_submittedReports, textView_user_myReportsList, textView_user_leaderboard;
-    TextView textView_userprofile_unsentreports, textView_userprofile_reportstatus, textView_userprofile_leaderboard,
+    // View
+    private TextView textView_user_name, textView_user_username, textView_user_email;
+    private TextView textView_userprofile_unsentreports, textView_userprofile_reportstatus, textView_userprofile_leaderboard,
             textView_userprofile_myyquests;
-    TextView textView_userLocation;
-    ImageView imageView_user_pin;
+    private TextView textView_userLocation;
+    private ImageView imageView_user_pin;
 
     private String outUserId;
-    private Integer algalBloom, fishKill, waterPollution, ongoingReclamation,
-                    waterHyacinth, solidWaste, otherIssues, verified, unverified, falsePositive, total;
 
-    private Object data;
-
-    MaterialButton button_userMyStats_ok;
-    AnimationDrawable animationDrawable;
-
+    // User and Report room databae
     ReportViewModel reportViewModel;
     UserViewModel userViewModel;
 
@@ -165,7 +162,7 @@ public class UserFragment extends Fragment implements GoogleApiClient.Connection
 
         retrofitInterface = retrofit.create(RetrofitInterface.class);
 
-        total = 0;
+        Integer total = 0;
         Log.v("[UserFragment.java]", total.toString());
     }
 
@@ -274,22 +271,6 @@ public class UserFragment extends Fragment implements GoogleApiClient.Connection
         });
     }
 
-    public static void printHashKey(Context pContext) {
-        try {
-            @SuppressLint("PackageManagerGetSignatures") PackageInfo info = pContext.getPackageManager().getPackageInfo(pContext.getPackageName(), PackageManager.GET_SIGNATURES);
-            for (Signature signature : info.signatures) {
-                MessageDigest md = MessageDigest.getInstance("SHA");
-                md.update(signature.toByteArray());
-                String hashKey = new String(Base64.encode(md.digest(), 0));
-                Log.i("[ UserFragment.java ]", "printHashKey() Hash Key: " + hashKey);
-            }
-        } catch (NoSuchAlgorithmException e) {
-            Log.e("[ UserFragment.java ] ", "printHashKey()", e);
-        } catch (Exception e) {
-            Log.e(" [ UserFragment.java ] ", "printHashKey()", e);
-        }
-    }
-
     //----------------------------------------------------------------------------------------------Location request
     protected void createLocationRequest() {
         locationRequest = new LocationRequest();
@@ -310,7 +291,7 @@ public class UserFragment extends Fragment implements GoogleApiClient.Connection
     }
 
     public void onConnected(Bundle bundle) {
-        Log.d(TAG, "onConnected - isConnected ..........................: " + googleApiClient.isConnected());
+        Log.d(TAG, "onConnected - isConnected: " + googleApiClient.isConnected());
         startLocationUpdates();
     }
 
@@ -326,7 +307,7 @@ public class UserFragment extends Fragment implements GoogleApiClient.Connection
             return;
         }
         PendingResult<Status> pendingResult = LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient, locationRequest, this::onLocationChanged);
-        Log.d(TAG, "Location update started ...........................: ");
+        Log.d(TAG, "Location update started: ");
     }
 
 
@@ -341,14 +322,14 @@ public class UserFragment extends Fragment implements GoogleApiClient.Connection
 
 
     public void onLocationChanged(Location location) {
-        Log.d(TAG, "Firing onLocationChanged..............................................");
+        Log.d(TAG, "Firing onLocationChanged");
         currentLocation = location;
         updateUI();
     }
 
     //----------------------------------------------------------------------------------------------Geocode
     private void updateUI() {
-        Log.d(TAG, "UI update initiated .............");
+        Log.d(TAG, "UI update initiated");
         final String[] address_string = new String[1];
         if (null != currentLocation) {
             String lat = String.valueOf(currentLocation.getLatitude());
@@ -379,23 +360,23 @@ public class UserFragment extends Fragment implements GoogleApiClient.Connection
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Log.d(TAG, "location is null ...............");
+            Log.d(TAG, "location is null");
         }
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        Log.d(TAG, "onStart fired ..........................");
+        Log.d(TAG, "onStart fired");
         googleApiClient.connect();
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        Log.d(TAG, "onStop fired ..........................");
+        Log.d(TAG, "onStop fired");
         googleApiClient.disconnect();
-        Log.d(TAG, "isConnected ..........................: " + googleApiClient.isConnected());
+        Log.d(TAG, "isConnected: " + googleApiClient.isConnected());
     }
 
     @Override
@@ -407,7 +388,7 @@ public class UserFragment extends Fragment implements GoogleApiClient.Connection
     protected void stopLocationUpdates() {
         LocationServices.FusedLocationApi.removeLocationUpdates(
                 googleApiClient, this::onLocationChanged);
-        Log.d(TAG, "Location update stopped .......................");
+        Log.d(TAG, "Location update stopped");
     }
 
     @Override
@@ -415,7 +396,7 @@ public class UserFragment extends Fragment implements GoogleApiClient.Connection
         super.onResume();
         if (googleApiClient.isConnected()) {
             startLocationUpdates();
-            Log.d(TAG, "Location update resumed .....................");
+            Log.d(TAG, "Location update resumed");
         }
     }
 

@@ -111,7 +111,7 @@ public class LeaderboardActivity extends AppCompatActivity {
 
     }
 
-
+    //----------------------------------------------------------------------------------------------check network availability
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
