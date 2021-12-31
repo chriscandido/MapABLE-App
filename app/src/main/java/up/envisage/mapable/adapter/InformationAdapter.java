@@ -35,7 +35,6 @@ public class InformationAdapter extends RecyclerView.Adapter<InformationAdapter.
             this.onInformationClickListener = onInformationClickListener;
 
             view.setOnClickListener(this);
-
         }
 
         @Override
@@ -50,7 +49,7 @@ public class InformationAdapter extends RecyclerView.Adapter<InformationAdapter.
         LayoutInflater layoutInflater = LayoutInflater.from(context);
     }
 
-    // Information Title
+    // Information title
     public String[] informationTitle = {
             "Pormal na idineklara ang BATTLE OF . . .",
             "Ang G.R. Nos. 171947-48, o mas kilala . . .",
@@ -60,7 +59,7 @@ public class InformationAdapter extends RecyclerView.Adapter<InformationAdapter.
             "Alam niyo ba kung anong batas ang nagsasaad . . ."
     };
 
-    // Information Images
+    // Information images
     public int[] img_informationBackground = {
             R.drawable.img_policy_battleofmanilabay,
             R.drawable.img_policy_manilabaymandamus,

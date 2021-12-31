@@ -82,16 +82,18 @@ import static com.mapbox.mapboxsdk.Mapbox.getApplicationContext;
 public class MapFragment extends Fragment implements OnMapReadyCallback, PermissionsListener,
         OnCameraTrackingChangedListener {
 
+    // Server
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
     private String BASE_URL = "http://ec2-54-91-89-105.compute-1.amazonaws.com/";
 
+    // User room database
     private UserViewModel userViewModel;
 
     private static final long DEFAULT_INTERVAL_IN_MILLISECONDS = 1000L;
     private static final long DEFAULT_MAX_WAIT_TIME = DEFAULT_INTERVAL_IN_MILLISECONDS * 5;
 
-    //    private final HashMap<String, LatLng> myReports = new HashMap<>();
+    // Station list variable
     private final HashMap<String, LatLng> offshoreStation = new HashMap<>();
     private final HashMap<String, LatLng> prumStation = new HashMap<>();
     private final HashMap<String, LatLng> bathingBeachesStation = new HashMap<>();
@@ -101,19 +103,21 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
     private PermissionsManager permissionsManager;
     private FragmentActivity listener;
 
+    // Mapbox
     private MapView mapView;
     private MapboxMap mapboxMap;
     private LocationEngine locationEngine;
+    private final LocationChangeListeningActivityLocationCallback callback =
+            new LocationChangeListeningActivityLocationCallback(this);
 
+    // Buttons
     private MaterialButton button_mapReports, button_mapOffshoreStation, button_mapBathingBeachesStation,
             button_mapRiverOutfallStation, button_mapPRUMStation, button_mapLagunaDeBayStation;
 
+    // Variables
     private String outUserId;
 
     public ArrayList<LinkedTreeMap> reportsArrayList = new ArrayList<>();
-
-    private final LocationChangeListeningActivityLocationCallback callback =
-            new LocationChangeListeningActivityLocationCallback(this);
 
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -135,11 +139,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
 
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
 
-        //Set your desired log level
+        // Set desired log level
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-        //Add your other interceptors …
+        // Add other interceptors …
         httpClient.callTimeout(2, TimeUnit.MINUTES)
                 .connectTimeout(30, TimeUnit.SECONDS) // connect timeout
                 .writeTimeout(30, TimeUnit.SECONDS) // write timeout
@@ -180,7 +184,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
         mapView = view.findViewById(R.id.mapBox_mapView);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
-
     }
 
     @Override
@@ -207,8 +210,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
                                     public void onResponse(Call<List> call2, Response<List> response2) {
                                         if(response2.isSuccessful()) {
 
-                                            // Extract data and put to LinkedTreeMap
-                                            for(int i=0; i<response2.body().size(); i++) {
+                                            // Extract data from url and put to LinkedTreeMap
+                                            for(int i = 0; i< (response2.body() != null ? response2.body().size() : 0); i++) {
                                                 Log.v("[ MapFragment.java ]", response2.body().get(i).toString());
                                                 LinkedTreeMap linkedTreeMap = (LinkedTreeMap) response2.body().get(i);
                                                 reportsArrayList.add(linkedTreeMap);
@@ -422,7 +425,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
                     .title(station)
                     .snippet("Pasig River Unified Monitoring Station").icon(iconPRUMStation));
         }
-
     }
 
     //----------------------------------------------------------------------------------------------View Bathing Beaches Station
@@ -447,7 +449,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
                     .title(station)
                     .snippet("River Outfall Station").icon(iconRiverOutfallStation));
         }
-
     }
 
     //----------------------------------------------------------------------------------------------View Bathing Beaches Station
@@ -469,7 +470,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
                     .title(station)
                     .snippet("Bathing Beaches Station").icon(iconBathingBeachesStation));
         }
-
     }
 
     //----------------------------------------------------------------------------------------------View Offshore Station
@@ -514,22 +514,22 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
                     .foregroundDrawable(R.drawable.ic_report_userlocation_90x90)
                     .build();
 
-            //Get instance of the component
+            // Get instance of the component
             LocationComponent locationComponent = mapboxMap.getLocationComponent();
 
-            //Activate with options
+            // Activate with options
             locationComponent.activateLocationComponent(
                     LocationComponentActivationOptions.builder(listener, loadedMapStyle)
                             .useDefaultLocationEngine(false)
                             .locationComponentOptions(customLocationComponentOptions)
                             .build());
-            //Enable to make component visible
+            // Enable to make component visible
             locationComponent.setLocationComponentEnabled(true);
 
-            //Set the component's camera mode
+            // Set the component's camera mode
             locationComponent.setCameraMode(CameraMode.TRACKING);
 
-            //Set the component's render mode
+            // Set the component's render mode
             locationComponent.setRenderMode(RenderMode.NORMAL);
 
             locationComponent.addOnCameraTrackingChangedListener(this);
@@ -537,7 +537,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
             // Add the location icon click listener
             locationComponent.addOnLocationClickListener(this::initLocationEngine);
 
-            //Set the component's zoom
+            // Set the component's zoom
             locationComponent.zoomWhileTracking(12.0, 10000);
 
             initLocationEngine();
@@ -576,7 +576,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
 
     @Override
     public void onCameraTrackingDismissed() {
-
     }
 
     @Override
@@ -667,7 +666,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
         mapView.onStop();
     }
 
-    public void onSaveInstanceState(Bundle savedInstanceState){
+    public void onSaveInstanceState(@NonNull Bundle savedInstanceState){
         super.onSaveInstanceState(savedInstanceState);
         mapView.onSaveInstanceState(savedInstanceState);
     }

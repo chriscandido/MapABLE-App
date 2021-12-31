@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 
@@ -23,19 +24,19 @@ public class DisclosureAdapter extends PagerAdapter {
         this.context = context;
     }
 
-    //Disclosure icons
+    // Disclosure icons
     public int[] disclosureImages = {
             R.drawable.ic_disclosure_locationservice,
             R.drawable.ic_disclosure_media
     };
 
-    //Disclosure headings
+    // Disclosure headings
     public String[] disclosureHeadings = {
             "Allow MASDAN to access your location?",
             "Allow MASDAN to access camera and photo gallery on your device?"
     };
 
-    //Disclosure body
+    // Disclosure body
     public String[] disclosureBody = {
             "MASDAN collects location in the background to customize your experience with the app. MASDAN will use this location in the report module to accurately geotag your submitted reports. " +
                     "The map interface will also show your current location.",
@@ -50,6 +51,7 @@ public class DisclosureAdapter extends PagerAdapter {
         return view == (LinearLayout) object;
     }
 
+    @NonNull
     public Object instantiateItem(ViewGroup viewGroup, int position) {
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.popup_disclosure_location, viewGroup, false);

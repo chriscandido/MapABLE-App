@@ -22,9 +22,12 @@ import up.envisage.mapable.ui.support.FeedbackActivity;
 
 public class SupportFragment extends Fragment {
 
+    // Layout
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
+
+    // Activity
     private FragmentActivity listener;
 
     public void onAttach(Context context) {
