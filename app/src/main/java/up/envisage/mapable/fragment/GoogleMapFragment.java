@@ -7,11 +7,12 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -73,6 +74,7 @@ public class GoogleMapFragment extends FragmentActivity
     }
 
     //----------------------------------------------------------------------------------------------Google map
+    @SuppressLint("LongLogTag")
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
@@ -111,17 +113,14 @@ public class GoogleMapFragment extends FragmentActivity
         final BitmapDescriptor icon = getMarkerIconFromDrawable(drawable);
 
         googleMap.setOnMapLongClickListener(
-                new GoogleMap.OnMapLongClickListener() {
-                    @Override
-                    public void onMapLongClick(LatLng latLng){
-                        map.clear();
-                        Marker marker;
-                        marker = map.addMarker(new MarkerOptions()
-                                        .position(latLng)
-                                        .icon(icon)
-                                        .draggable(true));
-                        pinnedLocation[0] = latLng;
-                    }
+                latLng -> {
+                    map.clear();
+                    Marker marker;
+                    marker = map.addMarker(new MarkerOptions()
+                                    .position(latLng)
+                                    .icon(icon)
+                                    .draggable(true));
+                    pinnedLocation[0] = latLng;
                 }
         );
 
@@ -140,28 +139,24 @@ public class GoogleMapFragment extends FragmentActivity
         // Get coordinates of the marker
         Button button_googleMaps_submitLocation = findViewById(R.id.button_googleMap_submit);
         button_googleMaps_submitLocation.setOnClickListener(
-                new View.OnClickListener() {
-                    @SuppressLint("LongLogTag")
-                    @Override
-                    public void onClick(View view) {
-                        if (pinnedLocation[0] != null) {
-                            Log.v("[ GoogleMapFragment.java ]", "Pinned Location - latitude: " +
-                                    pinnedLocation[0].latitude + " and " + "longitude: "+
-                                    pinnedLocation[0].longitude);
-                            // Pass information to next activity
-                            Intent submitLocation = new Intent(GoogleMapFragment.this, CameraActivity.class);
-                            submitLocation.putExtra("userID", userID);
-                            submitLocation.putExtra("Date and Time", dateTime);
-                            submitLocation.putExtra("Incident Type", incidentType);
-                            submitLocation.putExtra("Report", report);
-                            submitLocation.putExtra("Latitude",  String.valueOf(pinnedLocation[0].latitude)); // Latitude
-                            submitLocation.putExtra("Longitude", String.valueOf(pinnedLocation[0].longitude)); // Longitude
-                            submitLocation.putExtra("image", image);
-                            startActivity(submitLocation);
-                            Toast.makeText(GoogleMapFragment.this, "Coordinates successfully saved", Toast.LENGTH_LONG).show();
-                         } else {
-                            errorMapCoordinates();
-                        }
+                view -> {
+                    if (pinnedLocation[0] != null) {
+                        Log.v("[ GoogleMapFragment.java ]", "Pinned Location - latitude: " +
+                                pinnedLocation[0].latitude + " and " + "longitude: "+
+                                pinnedLocation[0].longitude);
+                        // Pass information to next activity
+                        Intent submitLocation = new Intent(GoogleMapFragment.this, CameraActivity.class);
+                        submitLocation.putExtra("userID", userID);
+                        submitLocation.putExtra("Date and Time", dateTime);
+                        submitLocation.putExtra("Incident Type", incidentType);
+                        submitLocation.putExtra("Report", report);
+                        submitLocation.putExtra("Latitude",  String.valueOf(pinnedLocation[0].latitude)); // Latitude
+                        submitLocation.putExtra("Longitude", String.valueOf(pinnedLocation[0].longitude)); // Longitude
+                        submitLocation.putExtra("image", image);
+                        startActivity(submitLocation);
+                        Toast.makeText(GoogleMapFragment.this, "Coordinates successfully saved", Toast.LENGTH_LONG).show();
+                     } else {
+                        errorMapCoordinates();
                     }
                 }
         );
@@ -181,14 +176,10 @@ public class GoogleMapFragment extends FragmentActivity
     private void errorMapCoordinates(){
         dialog = new Dialog(this);
         dialog.setContentView(R.layout.popup_error_nolocation);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         MaterialButton button_reportMap_ok = dialog.findViewById(R.id.button_reportMap_ok);
-        button_reportMap_ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+        button_reportMap_ok.setOnClickListener(v -> dialog.dismiss());
         dialog.show();
     }
 

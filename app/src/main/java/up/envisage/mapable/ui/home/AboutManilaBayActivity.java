@@ -1,13 +1,11 @@
 package up.envisage.mapable.ui.home;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
 
 public class AboutManilaBayActivity extends AppCompatActivity {
@@ -20,9 +18,7 @@ public class AboutManilaBayActivity extends AppCompatActivity {
         ImageView imageView_aboutManilaBay_back = findViewById(R.id.imageView_aboutManilaBay_back);
 
         // Go Back Button
-        imageView_aboutManilaBay_back.setOnClickListener(v -> {
-            finish();
-        });
+        imageView_aboutManilaBay_back.setOnClickListener(this::onClick);
     }
 
     public void onStart(){
@@ -39,6 +35,10 @@ public class AboutManilaBayActivity extends AppCompatActivity {
 
     public void onBackPressed(){
         super.onBackPressed();
+        finish();
+    }
+
+    private void onClick(View v) {
         finish();
     }
 }

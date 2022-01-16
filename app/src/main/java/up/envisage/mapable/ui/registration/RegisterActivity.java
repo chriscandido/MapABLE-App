@@ -8,10 +8,8 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -102,7 +100,6 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
                 binding.textInputLayoutRegisterPassword.getEditText().setOnEditorActionListener(editorActionListener);
 
                 //Validation
-                UserTable user = new UserTable();
                 if (TextUtils.isEmpty(name)) {
                     binding.textInputLayoutRegisterName.setError("Please Enter Your Name");
                 }
@@ -226,26 +223,18 @@ public class RegisterActivity extends AppCompatActivity implements Listener {
         dialog.setContentView(R.layout.popup_success_registration);
 
         MaterialButton button_registrationSuccess_ok = dialog.findViewById(R.id.button_registrationSuccess_ok);
-        button_registrationSuccess_ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+        button_registrationSuccess_ok.setOnClickListener(v -> dialog.dismiss());
 
         dialog.show();
     }
 
     //----------------------------------------------------------------------------------------------Set Action for Keyboard Keys
-    private TextInputEditText.OnEditorActionListener editorActionListener = new TextInputEditText.OnEditorActionListener() {
-        @Override
-        public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-            switch (actionId) {
-                case EditorInfo.IME_ACTION_NEXT:
-                case EditorInfo.IME_ACTION_DONE:
-                    break;
-            }
-            return false;
+    private final TextInputEditText.OnEditorActionListener editorActionListener = (v, actionId, event) -> {
+        switch (actionId) {
+            case EditorInfo.IME_ACTION_NEXT:
+            case EditorInfo.IME_ACTION_DONE:
+                break;
         }
+        return false;
     };
 }

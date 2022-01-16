@@ -1,16 +1,11 @@
 package up.envisage.mapable.ui.support;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
-import up.envisage.mapable.ui.home.ReportingActivity;
 
 public class DevTeamActivity extends AppCompatActivity {
 
@@ -21,12 +16,7 @@ public class DevTeamActivity extends AppCompatActivity {
 
         //back to Main Menu Text Button
         ImageView imageView_devTeam_back = findViewById(R.id.imageView_devTeam_back);
-        imageView_devTeam_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        imageView_devTeam_back.setOnClickListener(view -> finish());
 
     }
 

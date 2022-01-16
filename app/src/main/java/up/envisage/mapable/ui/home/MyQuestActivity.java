@@ -26,7 +26,6 @@ import up.envisage.mapable.model.StatsResult;
 public class MyQuestActivity extends AppCompatActivity {
 
     RetrofitInterface retrofitInterface;
-    private ImageView imageView_myquest_tutorial, imageView_myquest_firstreport, imageView_myquest_verifiedreport;
     private ImageView imageView_myquest_algalbloom, imageView_myquest_fishkill, imageView_myquest_hyacinth,
                         imageView_myquest_solidwaste, imageView_myquest_waterpollution, imageView_myquest_reclamation, imageView_myquest_certified;
     private ImageView imageView_myquest_junior, imageView_myquest_senior, imageView_myquest_professional, imageView_myquest_master, imageView_myquest_thegreat;
@@ -92,7 +91,7 @@ public class MyQuestActivity extends AppCompatActivity {
                     Integer falsePositive = response.body().getFalsePositive();
                     Integer total = response.body().getTotal();
 
-                    Log.v("[ Call Enqueue ]", "Total: " + String.valueOf(verified));
+                    Log.v("[ Call Enqueue ]", "Total: " + verified);
 
                     setBasicLevelImageResource(total, verified);
 
@@ -130,8 +129,8 @@ public class MyQuestActivity extends AppCompatActivity {
     @SuppressLint("LongLogTag")
     public void setBasicLevelImageResource(Integer total, Integer verified) {
 
-        imageView_myquest_firstreport = findViewById(R.id.imageView_myquest_firstreport);
-        imageView_myquest_verifiedreport = findViewById(R.id.imageView_myquest_verifiedreport);
+        ImageView imageView_myquest_firstreport = findViewById(R.id.imageView_myquest_firstreport);
+        ImageView imageView_myquest_verifiedreport = findViewById(R.id.imageView_myquest_verifiedreport);
 
         if (total != null){
             imageView_myquest_firstreport.setImageResource(R.drawable.ic_badge_firstreport);

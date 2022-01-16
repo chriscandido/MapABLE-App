@@ -12,14 +12,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import android.net.ConnectivityManager;
@@ -51,14 +48,13 @@ public class FeedbackActivity extends AppCompatActivity implements AdapterView.O
     private String input00;
     private String outUserId;
 
-    private List<String> out = new ArrayList<>();
-
     private UserViewModel userViewModel;
 
     public Boolean connection;
 
     private Dialog dialog;
 
+    @SuppressLint("LongLogTag")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,9 +64,7 @@ public class FeedbackActivity extends AppCompatActivity implements AdapterView.O
 
         userViewModel = ViewModelProviders.of(FeedbackActivity.this).get(UserViewModel.class);
 
-        userViewModel.getLastUser().observe(FeedbackActivity.this, UserTable -> {
-            outUserId = UserTable.getUniqueId();
-        });
+        userViewModel.getLastUser().observe(FeedbackActivity.this, UserTable -> outUserId = UserTable.getUniqueId());
 
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
 
@@ -100,62 +94,53 @@ public class FeedbackActivity extends AppCompatActivity implements AdapterView.O
         textInputLayout_feedback_q01 = findViewById(R.id.textInputLayout_feedback_q01);
 
         MaterialButton button_feedback_send = findViewById(R.id.button_feedback_send);
-        button_feedback_send.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("LongLogTag")
-            @Override
-            public void onClick(View v) {
-                input00 = textInputLayout_feedback_q01.getEditText().getText().toString();
+        button_feedback_send.setOnClickListener(v -> {
+            input00 = textInputLayout_feedback_q01.getEditText().getText().toString();
 
-                String answer = input00;
+            String answer = input00;
 
-                HashMap<String, String> map = new HashMap<>();
-                map.put("userID", outUserId);
-                map.put("model", input00);
-                map.put("feedback", answer);
-                Log.v("[ FeedbackActivity.java ]", "Feedback:" + answer);
+            HashMap<String, String> map = new HashMap<>();
+            map.put("userID", outUserId);
+            map.put("model", input00);
+            map.put("feedback", answer);
+            Log.v("[ FeedbackActivity.java ]", "Feedback:" + answer);
 
-                if(connection == true){
-                    Call<FeedbackResult> call = retrofitInterface.submitFeedback(map);
+            if(connection){
+                Call<FeedbackResult> call = retrofitInterface.submitFeedback(map);
 
-                    call.enqueue(new Callback<FeedbackResult>() {
-                        @Override
-                        public void onResponse(Call<FeedbackResult> call, Response<FeedbackResult> response) {
-                            if (response.code() == 200) {
-                                Toast.makeText(FeedbackActivity.this, "Feedback Sent Successfully",
-                                        Toast.LENGTH_LONG).show();
-                                successDataSending();
-                                Intent intent = new Intent(FeedbackActivity.this, MainActivity.class);
-                                startActivity(intent);
-                            } else if (response.code() == 400){
-                                Toast.makeText(FeedbackActivity.this, "Error Sending Feedback",
-                                        Toast.LENGTH_LONG).show();
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<FeedbackResult> call, Throwable t) {
-                            Toast.makeText(FeedbackActivity.this, t.getMessage(),
+                call.enqueue(new Callback<FeedbackResult>() {
+                    @Override
+                    public void onResponse(Call<FeedbackResult> call, Response<FeedbackResult> response) {
+                        if (response.code() == 200) {
+                            Toast.makeText(FeedbackActivity.this, "Feedback Sent Successfully",
                                     Toast.LENGTH_LONG).show();
-                            Log.v("OnFailure Error Message", t.getMessage());
+                            successDataSending();
+                            Intent intent = new Intent(FeedbackActivity.this, MainActivity.class);
+                            startActivity(intent);
+                        } else if (response.code() == 400){
+                            Toast.makeText(FeedbackActivity.this, "Error Sending Feedback",
+                                    Toast.LENGTH_LONG).show();
                         }
+                    }
+
+                    @Override
+                    public void onFailure(Call<FeedbackResult> call, Throwable t) {
+                        Toast.makeText(FeedbackActivity.this, t.getMessage(),
+                                Toast.LENGTH_LONG).show();
+                        Log.v("OnFailure Error Message", t.getMessage());
+                    }
 
 
-                    });
-                } else {
-                    Toast.makeText(FeedbackActivity.this, "No Internet Connection",
-                            Toast.LENGTH_LONG).show();
-                    errorNoConnection();
-                }
-
+                });
+            } else {
+                Toast.makeText(FeedbackActivity.this, "No Internet Connection",
+                        Toast.LENGTH_LONG).show();
+                errorNoConnection();
             }
+
         });
 
-        imageView_feedback_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        imageView_feedback_back.setOnClickListener(v -> finish());
 
 
     }

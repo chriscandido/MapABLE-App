@@ -14,15 +14,10 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-import up.envisage.mapable.BuildConfig;
-import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
 import up.envisage.mapable.adapter.InformationAdapter;
-import up.envisage.mapable.adapter.ReportIncidentAdapter;
 
  public class InformationActivity extends AppCompatActivity implements InformationAdapter.OnInformationClickListener {
      @RequiresApi(api = Build.VERSION_CODES.N)
@@ -41,12 +36,7 @@ import up.envisage.mapable.adapter.ReportIncidentAdapter;
          recyclerView.setAdapter(adapter);
 
          ImageView imageView_information_back = findViewById(R.id.imageView_information_back);
-         imageView_information_back.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 finish();
-             }
-         });
+         imageView_information_back.setOnClickListener(v -> finish());
      }
 
      //---------------------------------------------------------------------------------------------Different layout for each facebook posts

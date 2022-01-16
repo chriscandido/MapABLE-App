@@ -24,7 +24,6 @@ import retrofitInterface.RetrofitInterface;
 import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
 import up.envisage.mapable.model.Badges;
-import up.envisage.mapable.model.StatsResult;
 
 public class UserStatisticsActivity extends AppCompatActivity {
 
@@ -223,12 +222,7 @@ public class UserStatisticsActivity extends AppCompatActivity {
 
         //back to Main Menu Text Button
         TextView textView_reportBack = findViewById(R.id.textView_report_back);
-        textView_reportBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        textView_reportBack.setOnClickListener(view -> finish());
 
     }
 

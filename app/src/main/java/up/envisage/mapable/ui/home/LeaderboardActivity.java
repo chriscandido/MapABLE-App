@@ -7,16 +7,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.drawable.AnimatedImageDrawable;
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.Drawable;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,11 +26,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import retrofitInterface.LeaderboardAPI;
-import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
 import up.envisage.mapable.adapter.LeaderboardAdapter;
 import up.envisage.mapable.model.Leaderboard;
-import up.envisage.mapable.ui.registration.LoginActivity;
 
 public class LeaderboardActivity extends AppCompatActivity {
 
@@ -45,6 +38,8 @@ public class LeaderboardActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     List<Leaderboard> leaderboardList;
+
+    private Dialog dialog;
 
     @SuppressLint("LongLogTag")
     @Override
@@ -76,38 +71,44 @@ public class LeaderboardActivity extends AppCompatActivity {
                 .client(httpClient.build())
                 .build();
 
-        LeaderboardAPI leaderboardAPI = retrofit.create(LeaderboardAPI.class);
+        if (isNetworkAvailable()) {
 
-        Call<List<Leaderboard>> call = leaderboardAPI.getLeaderboard();
+            LeaderboardAPI leaderboardAPI = retrofit.create(LeaderboardAPI.class);
 
-        call.enqueue(new Callback<List<Leaderboard>>() {
+            Call<List<Leaderboard>> call = leaderboardAPI.getLeaderboard();
 
-            @Override
-            public void onResponse(Call<List<Leaderboard>> call, Response<List<Leaderboard>> response) {
+            call.enqueue(new Callback<List<Leaderboard>>() {
 
-                if (response.code() !=  200) {
-                    return;
+                @Override
+                public void onResponse(Call<List<Leaderboard>> call, Response<List<Leaderboard>> response) {
+
+                    if (response.code() !=  200) {
+                        return;
+                    }
+
+                    List<Leaderboard> leaders = response.body();
+
+                    assert leaders != null;
+                    leaderboardList.addAll(leaders);
+
+                    PutDataIntoRecyclerView(leaderboardList);
                 }
 
-                List<Leaderboard> leaders = response.body();
+                @Override
+                public void onFailure(Call<List<Leaderboard>> call, Throwable t) {
+                }
 
-                assert leaders != null;
-                leaderboardList.addAll(leaders);
+                private void PutDataIntoRecyclerView(List<Leaderboard> leaderboardList) {
 
-                PutDataIntoRecyclerView(leaderboardList);
-            }
+                    LeaderboardAdapter leaderboardAdapter = new LeaderboardAdapter(getApplicationContext(), leaderboardList);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                    recyclerView.setAdapter(leaderboardAdapter);
+                }
+            });
 
-            @Override
-            public void onFailure(Call<List<Leaderboard>> call, Throwable t) {
-            }
-
-            private void PutDataIntoRecyclerView(List<Leaderboard> leaderboardList) {
-
-                LeaderboardAdapter leaderboardAdapter = new LeaderboardAdapter(getApplicationContext(), leaderboardList);
-                recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                recyclerView.setAdapter(leaderboardAdapter);
-            }
-        });
+        } else {
+            errorNoConnection();
+        }
 
     }
 
@@ -116,6 +117,14 @@ public class LeaderboardActivity extends AppCompatActivity {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
+    //----------------------------------------------------------------------------------------------Popup for internet connection failure
+    private void errorNoConnection(){
+        dialog = new Dialog(LeaderboardActivity.this);
+        dialog.setContentView(R.layout.popup_error_nointernet);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
     }
 
     public void onStart(){

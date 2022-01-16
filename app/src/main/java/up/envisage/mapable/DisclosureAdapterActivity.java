@@ -9,13 +9,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
-import android.text.Html;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TableLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,12 +33,10 @@ import up.envisage.mapable.adapter.DisclosureAdapter;
 
 public class DisclosureAdapterActivity extends AppCompatActivity {
 
-    final private int REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS = 124;
+    private final int REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS = 124;
 
     private ViewPager viewPager;
     private TabLayout tabLayout;
-
-    private TextView[] dots;
 
     private MaterialButton button_disclosure_ok, button_disclosure_cancel;
 
@@ -62,31 +60,22 @@ public class DisclosureAdapterActivity extends AppCompatActivity {
         //addDotsIndicator(0);
 
         button_disclosure_ok = findViewById(R.id.button_disclosure_turnon);
-        button_disclosure_ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (Build.VERSION.SDK_INT >= 23) {
-                            permissionCheck();
-                        } else {
-                            LaunchApp();
-                        }
-                    }
-                }, 1000);
-            }
+        button_disclosure_ok.setOnClickListener(v -> {
+            final Handler handler = new Handler();
+            handler.postDelayed(() -> {
+                if (Build.VERSION.SDK_INT >= 23) {
+                    permissionCheck();
+                } else {
+                    LaunchApp();
+                }
+            }, 1000);
         });
 
         button_disclosure_cancel = findViewById(R.id.button_disclosure_cancel);
-        button_disclosure_cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(DisclosureAdapterActivity.this, MainActivity.class);
-                intent.putExtra("userID", userID);
-                startActivity(intent);
-            }
+        button_disclosure_cancel.setOnClickListener(v -> {
+            Intent intent = new Intent(DisclosureAdapterActivity.this, MainActivity.class);
+            intent.putExtra("userID", userID);
+            startActivity(intent);
         });
 
     }
@@ -136,25 +125,17 @@ public class DisclosureAdapterActivity extends AppCompatActivity {
                 String message = "You need to grant access to " + permissionNeeded.get(0);
                 for (int i = 1; i < permissionNeeded.size(); i++) {
                     message = message + ", " + permissionNeeded.get(i);
-                    showMessageOKCancel(message, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            if (Build.VERSION.SDK_INT >= 23) {
-                                requestPermissions(permissionList.toArray(new String[permissionList.size()]),
-                                        REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS);
-                            } else {
-
-                            }
+                    showMessageOKCancel(message, (dialog, which) -> {
+                        if (Build.VERSION.SDK_INT >= 23) {
+                            requestPermissions(permissionList.toArray(new String[permissionList.size()]),
+                                    REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS);
                         }
                     });
                 } return;
             } if (Build.VERSION.SDK_INT >= 23) {
                 requestPermissions(permissionList.toArray(new String[permissionList.size()]),
                         REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS);
-            } else {
-
             }
-            return;
         } else {
             LaunchApp();
         }
@@ -162,20 +143,17 @@ public class DisclosureAdapterActivity extends AppCompatActivity {
 
     private boolean addPermission(List<String> permissionsList, String permission) {
 
-        Boolean condition;
+        boolean condition;
         if (Build.VERSION.SDK_INT >= 23) {
             // Marshmallow+
             if (checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
                 permissionsList.add(permission);
                 // Check for Rationale Option
-                if (!shouldShowRequestPermissionRationale(permission))
-                    condition = false;
+                shouldShowRequestPermissionRationale(permission);
             }
-            condition = true;
-        } else {
-            condition = true;
         }
-        return condition;
+        condition = true;
+        return true;
     }
 
     private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
@@ -205,7 +183,7 @@ public class DisclosureAdapterActivity extends AppCompatActivity {
             }
         }
         if (requestCode == REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS) {
-            Map<String, Integer> perms = new HashMap<String, Integer>();
+            Map<String, Integer> perms = new HashMap<>();
             // Initial
             perms.put(Manifest.permission.READ_EXTERNAL_STORAGE, PackageManager.PERMISSION_GRANTED);
             perms.put(Manifest.permission.WRITE_EXTERNAL_STORAGE, PackageManager.PERMISSION_GRANTED);
@@ -227,21 +205,31 @@ public class DisclosureAdapterActivity extends AppCompatActivity {
                         .show();
 
                 final Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        //Do something after 100
-                        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                        Uri uri = Uri.fromParts("package", getPackageName(), null);
-                        intent.setData(uri);
-                        startActivityForResult(intent, REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS);
-                        finish();
-                    }
+                handler.postDelayed(() -> {
+                    //Do something after 100
+                    Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                    Uri uri = Uri.fromParts("package", getPackageName(), null);
+                    intent.setData(uri);
+                    getResult.launch(intent);
+                    finish();
                 }, 1000);
             }
 
         }
     }
+
+    ActivityResultLauncher<Intent> getResult = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                private static final int REQUEST_CODE_ASK_MULTIPLE_PERMISSION = 124;
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == REQUEST_CODE_ASK_MULTIPLE_PERMISSION) {
+                        Intent data = result.getData();
+                    }
+                }
+            });
+
 
     //----------------------------------------------------------------------------------------------Launch application and load permissions
     public void LaunchApp() {
@@ -255,7 +243,7 @@ public class DisclosureAdapterActivity extends AppCompatActivity {
                     startActivity(intent);
 
                     finish();
-                } catch (Exception e) {
+                } catch (Exception ignored) {
                 }
             }
         };

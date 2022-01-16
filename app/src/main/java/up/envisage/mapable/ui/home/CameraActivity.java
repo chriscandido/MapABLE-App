@@ -10,6 +10,8 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -19,9 +21,12 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -55,8 +60,7 @@ import up.envisage.mapable.util.Constant;
 
 public class CameraActivity extends AppCompatActivity {
 
-    private ImageView imageView_reportImage, imageView_camera_back;
-    private MaterialButton button_reportCamera, button_reportGallery, button_reportSave;
+    private ImageView imageView_reportImage;
 
     private ReportViewModel reportViewModel;
     private UserViewModel userViewModel;
@@ -64,7 +68,6 @@ public class CameraActivity extends AppCompatActivity {
     String userID, dateTime, incidentType, answer, latitude, longitude, imgPath, outUserId;
     public static String imageString;
     Bitmap galleryPhoto;
-    byte[] byteArray;
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
@@ -121,115 +124,70 @@ public class CameraActivity extends AppCompatActivity {
         imageView_reportImage = findViewById(R.id.imageView_reportCamera);
 
         //Button camera
-        button_reportCamera = findViewById(R.id.button_report_camera);
-        button_reportCamera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                askCameraPermissions();
-            }
-        });
+        MaterialButton button_reportCamera = findViewById(R.id.button_report_camera);
+        button_reportCamera.setOnClickListener(view -> askCameraPermissions());
 
         // Button go to gallery
-        button_reportGallery = findViewById(R.id.button_report_photoGallery);
-        button_reportGallery.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                askGalleryPermission();
-            }
-        });
+        MaterialButton button_reportGallery = findViewById(R.id.button_report_photoGallery);
+        button_reportGallery.setOnClickListener(view -> askGalleryPermission());
 
         // Button send report
-        button_reportSave = findViewById(R.id.button_report_savePhoto);
-        button_reportSave.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("LongLogTag")
-            @Override
-            public void onClick(View view) {
-                if (imgPath == null) {
-                    selectPhoto();
-                } else {
-/*                    Intent save = new Intent(CameraActivity.this, ReportingActivity.class);
+        MaterialButton button_reportSave = findViewById(R.id.button_report_savePhoto);
+        button_reportSave.setOnClickListener(view -> {
+            if (imgPath == null) {
+                selectPhoto();
+            } else {
 
-                    Log.v("[ CameraActivity.java ]", "Image Path: " + imgPath  + "\n");
+                Log.v("[ReportingActivity.java ]", "Image Path: " + imgPath  + "\n");
 
-                    save.putExtra("userID", userID);
-                    save.putExtra("Date and Time", dateTime);
-                    save.putExtra("Incident Type", incidentType);
-                    save.putExtra("Report", answer);
-                    save.putExtra("Latitude", latitude);
-                    save.putExtra("Longitude", longitude);
-                    save.putExtra("image", imgPath);
+                imageString = imageConvertToString(imgPath);
+                Log.v("[ ReportingActivity.java ]",
+                        "IMAGE STRING: " + imageString);
 
-                    startActivity(save);
-                    Toast.makeText(CameraActivity.this, "Photo successfully saved", Toast.LENGTH_LONG).show();*/
-                    Log.v("[ReportingActivity.java ]", "Image Path: " + imgPath  + "\n");
+                HashMap<String, String> map = new HashMap<>();
+                map.put("userID", userID);
+                map.put("date", dateTime);
+                map.put("type", incidentType);
+                map.put("report", answer);
+                map.put("lon", longitude);
+                map.put("lat", latitude);
+                map.put("image", imageString); //imageString
 
-                    imageString = imageConvertToString(imgPath);
-                    Log.v("[ ReportingActivity.java ]",
-                            "IMAGE STRING: " + imageString);
+                Log.v("[ ReportingActivity.java ]",
+                        "DATE & TIME: " + dateTime + "\n" +
+                                "USER ID: " + userID + "\n" +
+                                "INCIDENT TYPE: " + incidentType + "\n" +
+                                "REPORT: " + answer + "\n" +
+                                "LATITUDE: " + latitude + "\n" +
+                                "LONGITUDE: " + longitude + "\n" +
+                                "IMAGE: " + imageString + "\n" ); //imageString
 
-                    HashMap<String, String> map = new HashMap<>();
-                    map.put("userID", userID);
-                    map.put("date", dateTime);
-                    map.put("type", incidentType);
-                    map.put("report", answer);
-                    map.put("lon", longitude);
-                    map.put("lat", latitude);
-                    map.put("image", imageString); //imageString
+                if(isNetworkAvailable()){
 
-                    Log.v("[ ReportingActivity.java ]",
-                            "DATE & TIME: " + dateTime + "\n" +
-                                    "USER ID: " + userID + "\n" +
-                                    "INCIDENT TYPE: " + incidentType + "\n" +
-                                    "REPORT: " + answer + "\n" +
-                                    "LATITUDE: " + latitude + "\n" +
-                                    "LONGITUDE: " + longitude + "\n" +
-                                    "IMAGE: " + imageString + "\n" ); //imageString
+                    Call<ReportClassResult> call = retrofitInterface.executeReportSubmit(map);
 
-                    if(isNetworkAvailable()){
+                    call.enqueue(new Callback<ReportClassResult>() {
+                        @Override
 
-                        Call<ReportClassResult> call = retrofitInterface.executeReportSubmit(map);
-
-                        call.enqueue(new Callback<ReportClassResult>() {
-                            @Override
-
-                            public void onResponse(Call<ReportClassResult> call, Response<ReportClassResult> response) {
-                                if (response.code() == 200) {
-                                    Toast.makeText(CameraActivity.this, "Report Sent Successfully",
-                                            Toast.LENGTH_LONG).show();
-                                } else if (response.code() == 400){
-                                    Toast.makeText(CameraActivity.this, "Error Sending Report",
-                                            Toast.LENGTH_LONG).show();
-                                    ReportTable report = new ReportTable();
-                                    report.setUniqueId(outUserId);
-                                    report.setDateTime(dateTime);
-                                    report.setIncidentType(incidentType);
-                                    report.setReport(answer);
-                                    report.setLatitude(Double.parseDouble(latitude));
-                                    report.setLongitude(Double.parseDouble(longitude));
-                                    report.setPhoto(imgPath);
-                                    reportViewModel.insert(report);
-                                } else if (response.code() == 504){
-                                    Toast.makeText(CameraActivity.this, "Timeout",
-                                            Toast.LENGTH_LONG).show();
-                                    ReportTable report = new ReportTable();
-                                    report.setUniqueId(outUserId);
-                                    report.setDateTime(dateTime);
-                                    report.setIncidentType(incidentType);
-                                    report.setReport(answer);
-                                    report.setLatitude(Double.parseDouble(latitude));
-                                    report.setLongitude(Double.parseDouble(longitude));
-                                    report.setPhoto(imgPath);
-                                    reportViewModel.insert(report);
-                                }
-                            }
-
-                            @Override
-                            public void onFailure(Call<ReportClassResult> call, Throwable t) {
-                                Toast.makeText(CameraActivity.this, t.getMessage(),
+                        public void onResponse(Call<ReportClassResult> call, Response<ReportClassResult> response) {
+                            if (response.code() == 200) {
+                                Toast.makeText(CameraActivity.this, "Report Sent Successfully",
                                         Toast.LENGTH_LONG).show();
-                                Log.v("OnFailure Error Message", t.getMessage());
-
-                                //if onFailure, report is stored in the local database
+                            } else if (response.code() == 400){
+                                Toast.makeText(CameraActivity.this, "Error Sending Report",
+                                        Toast.LENGTH_LONG).show();
+                                ReportTable report = new ReportTable();
+                                report.setUniqueId(outUserId);
+                                report.setDateTime(dateTime);
+                                report.setIncidentType(incidentType);
+                                report.setReport(answer);
+                                report.setLatitude(Double.parseDouble(latitude));
+                                report.setLongitude(Double.parseDouble(longitude));
+                                report.setPhoto(imgPath);
+                                reportViewModel.insert(report);
+                            } else if (response.code() == 504){
+                                Toast.makeText(CameraActivity.this, "Timeout",
+                                        Toast.LENGTH_LONG).show();
                                 ReportTable report = new ReportTable();
                                 report.setUniqueId(outUserId);
                                 report.setDateTime(dateTime);
@@ -240,34 +198,52 @@ public class CameraActivity extends AppCompatActivity {
                                 report.setPhoto(imgPath);
                                 reportViewModel.insert(report);
                             }
-                        });
-                    } else {
-                        //if no internet connection, report is stored in the local database
-                        //Toast.makeText(ReportingActivity.this, "No Internet Connection. Report will be saved in the device!",
-                        //Toast.LENGTH_LONG).show();
-                        ReportTable report = new ReportTable();
-                        report.setUniqueId(outUserId);
-                        report.setDateTime(dateTime);
-                        report.setIncidentType(incidentType);
-                        report.setReport(answer);
-                        report.setLatitude(Double.parseDouble(latitude));
-                        report.setLongitude(Double.parseDouble(longitude));
-                        report.setPhoto(imgPath);
-                        reportViewModel.insert(report);
+                        }
 
-                        errorNoConnection();
-                    }
+                        @Override
+                        public void onFailure(Call<ReportClassResult> call, Throwable t) {
+                            Toast.makeText(CameraActivity.this, t.getMessage(),
+                                    Toast.LENGTH_LONG).show();
+                            Log.v("OnFailure Error Message", t.getMessage());
 
-                    Intent goToMain = new Intent(CameraActivity.this, MainActivity.class);
-                    goToMain.putExtra("userID", userID);
-                    startActivity(goToMain);
+                            //if onFailure, report is stored in the local database
+                            ReportTable report = new ReportTable();
+                            report.setUniqueId(outUserId);
+                            report.setDateTime(dateTime);
+                            report.setIncidentType(incidentType);
+                            report.setReport(answer);
+                            report.setLatitude(Double.parseDouble(latitude));
+                            report.setLongitude(Double.parseDouble(longitude));
+                            report.setPhoto(imgPath);
+                            reportViewModel.insert(report);
+                        }
+                    });
+                } else {
+                    //if no internet connection, report is stored in the local database
+                    //Toast.makeText(ReportingActivity.this, "No Internet Connection. Report will be saved in the device!",
+                    //Toast.LENGTH_LONG).show();
+                    ReportTable report = new ReportTable();
+                    report.setUniqueId(outUserId);
+                    report.setDateTime(dateTime);
+                    report.setIncidentType(incidentType);
+                    report.setReport(answer);
+                    report.setLatitude(Double.parseDouble(latitude));
+                    report.setLongitude(Double.parseDouble(longitude));
+                    report.setPhoto(imgPath);
+                    reportViewModel.insert(report);
 
+                    errorNoConnection();
                 }
+
+                Intent goToMain = new Intent(CameraActivity.this, MainActivity.class);
+                goToMain.putExtra("userID", userID);
+                startActivity(goToMain);
+
             }
         });
 
         // Back button
-        imageView_camera_back = findViewById(R.id.imageView_camera_back);
+        ImageView imageView_camera_back = findViewById(R.id.imageView_camera_back);
         imageView_camera_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -319,6 +295,7 @@ public class CameraActivity extends AppCompatActivity {
         Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(gallery, Constant.ACTIVITY_SELECT_IMAGE);
     }
+
 
     //----------------------------------------------------------------------------------------------Load Photo from Camera/Gallery
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
@@ -382,26 +359,14 @@ public class CameraActivity extends AppCompatActivity {
         return stream.toByteArray();
     }
 
-    //----------------------------------------------------------------------------------------------convert from bitmap to byte array (without compression)
-    public static byte[] convertBitmapToByteArrayUncompressed(Bitmap bitmap){
-        ByteBuffer byteBuffer = ByteBuffer.allocate(bitmap.getByteCount());
-        bitmap.copyPixelsToBuffer(byteBuffer);
-        byteBuffer.rewind();
-        return byteBuffer.array();
-    }
-
     //----------------------------------------------------------------------------------------------Popup for no selected photo
     private void selectPhoto(){
         dialog = new Dialog(this);
         dialog.setContentView(R.layout.popup_error_nophoto);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         MaterialButton button_reportSelectPhoto_ok = dialog.findViewById(R.id.button_reportSelectPhoto_ok);
-        button_reportSelectPhoto_ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+        button_reportSelectPhoto_ok.setOnClickListener(v -> dialog.dismiss());
 
         dialog.show();
     }
@@ -429,24 +394,15 @@ public class CameraActivity extends AppCompatActivity {
         Bitmap galleryPhoto = BitmapFactory.decodeFile(filePath);
 
         //Get the base 64 string
-        String img = Base64.encodeToString(getBytesFromBitmap(galleryPhoto),
+        return Base64.encodeToString(getBytesFromBitmap(galleryPhoto),
                 Base64.NO_WRAP);
-        return img;
-    }
-
-    //----------------------------------------------------------------------------------------------Popup for successful data sending
-    private void successDataSending(){
-        dialog = new Dialog(CameraActivity.this);
-        dialog.setContentView(R.layout.popup_success_datasent);
-
-        dialog.show();
     }
 
     //----------------------------------------------------------------------------------------------Popup for internet connection failure
     private void errorNoConnection(){
         dialog = new Dialog(CameraActivity.this);
         dialog.setContentView(R.layout.popup_error_nointernet);
-
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
 
     }

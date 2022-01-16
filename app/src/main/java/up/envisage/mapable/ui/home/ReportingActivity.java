@@ -10,6 +10,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -53,7 +55,7 @@ public class ReportingActivity extends AppCompatActivity {
     private ReportViewModel reportViewModel;
     private UserViewModel userViewModel;
 
-    String userID, dateTime, incidentType, Report, lon, lat, image, imageID2, outPhoto, imageString, outUserId;
+    String userID, dateTime, incidentType, Report, lon, lat, image, imageString, outUserId;
 
     public Boolean connection;
 
@@ -109,35 +111,26 @@ public class ReportingActivity extends AppCompatActivity {
 
        //Button take survey
         MaterialButton button_takeSurvey = findViewById(R.id.button_report_takeSurvey);
-        button_takeSurvey.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog = new Dialog(ReportingActivity.this);
-                dialog.setContentView(R.layout.popup_disclosure_report);
+        button_takeSurvey.setOnClickListener(v -> {
+            dialog = new Dialog(ReportingActivity.this);
+            dialog.setContentView(R.layout.popup_disclosure_report);
 
-                MaterialButton button_disclosure_close = dialog.findViewById(R.id.button_disclosure_close);
-                button_disclosure_close.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent survey = new Intent(ReportingActivity.this, ReportIncidentActivity.class);
-                        survey.putExtra("userID", outUserId);
-                        startActivity(survey);
-                        dialog.dismiss();
-                    }
-                });
+            MaterialButton button_disclosure_close = dialog.findViewById(R.id.button_disclosure_close);
+            button_disclosure_close.setOnClickListener(v1 -> {
+                Intent survey = new Intent(ReportingActivity.this, ReportIncidentActivity.class);
+                survey.putExtra("userID", outUserId);
+                startActivity(survey);
+                dialog.dismiss();
+            });
 
-                dialog.show();
-            }
+            dialog.show();
         });
 
         //back to Main Menu Text Button
         TextView textView_reportBack = findViewById(R.id.textView_report_back);
-        textView_reportBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent back = new Intent(ReportingActivity.this, MainActivity.class);
-                startActivity(back);
-            }
+        textView_reportBack.setOnClickListener(view -> {
+            Intent back = new Intent(ReportingActivity.this, MainActivity.class);
+            startActivity(back);
         });
 
         //Send to server Button
@@ -151,80 +144,59 @@ public class ReportingActivity extends AppCompatActivity {
         //checks for internet connection
         connection = isNetworkAvailable();
 
-        button_reportSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        button_reportSend.setOnClickListener(view -> {
 
-                //Insert report details to server
-                Log.v("[ReportingActivity.java ]", "Image Path: " + image  + "\n");
+            //Insert report details to server
+            Log.v("[ReportingActivity.java ]", "Image Path: " + image  + "\n");
 
-                imageString = imageConvertToString(image);
-                Log.v("[ ReportingActivity.java ]",
-                        "IMAGE STRING: " + imageString);
+            imageString = imageConvertToString(image);
+            Log.v("[ ReportingActivity.java ]",
+                    "IMAGE STRING: " + imageString);
 
-                HashMap<String, String> map = new HashMap<>();
-                map.put("userID", outUserId);
-                map.put("date", dateTime);
-                map.put("type", incidentType);
-                map.put("report", Report);
-                map.put("lon", lon);
-                map.put("lat", lat);
-                map.put("image", imageString); //imageString
+            HashMap<String, String> map = new HashMap<>();
+            map.put("userID", outUserId);
+            map.put("date", dateTime);
+            map.put("type", incidentType);
+            map.put("report", Report);
+            map.put("lon", lon);
+            map.put("lat", lat);
+            map.put("image", imageString); //imageString
 
-                Log.v("[ ReportingActivity.java ]",
-                        "DATE & TIME: " + dateTime + "\n" +
-                                "USER ID: " + userID + "\n" +
-                                "INCIDENT TYPE: " + incidentType + "\n" +
-                                "REPORT: " + Report + "\n" +
-                                "LATITUDE: " + lat + "\n" +
-                                "LONGITUDE: " + lon + "\n" +
-                                "IMAGE: " + imageString + "\n" ); //imageString
+            Log.v("[ ReportingActivity.java ]",
+                    "DATE & TIME: " + dateTime + "\n" +
+                            "USER ID: " + userID + "\n" +
+                            "INCIDENT TYPE: " + incidentType + "\n" +
+                            "REPORT: " + Report + "\n" +
+                            "LATITUDE: " + lat + "\n" +
+                            "LONGITUDE: " + lon + "\n" +
+                            "IMAGE: " + imageString + "\n" ); //imageString
 
-                if(isNetworkAvailable()){
+            if(isNetworkAvailable()){
 
-                    Call<ReportClassResult> call = retrofitInterface.executeReportSubmit(map);
+                Call<ReportClassResult> call = retrofitInterface.executeReportSubmit(map);
 
-                    call.enqueue(new Callback<ReportClassResult>() {
-                        @Override
+                call.enqueue(new Callback<ReportClassResult>() {
+                    @Override
 
-                        public void onResponse(Call<ReportClassResult> call, Response<ReportClassResult> response) {
-                            if (response.code() == 200) {
-                                Toast.makeText(ReportingActivity.this, "Report Sent Successfully",
-                                        Toast.LENGTH_LONG).show();
-                            } else if (response.code() == 400){
-                                Toast.makeText(ReportingActivity.this, "Error Sending Report",
-                                        Toast.LENGTH_LONG).show();
-                                ReportTable report = new ReportTable();
-                                report.setUniqueId(outUserId);
-                                report.setDateTime(dateTime);
-                                report.setIncidentType(incidentType);
-                                report.setReport(Report);
-                                report.setLatitude(Double.parseDouble(lat));
-                                report.setLongitude(Double.parseDouble(lon));
-                                report.setPhoto(image);
-                                reportViewModel.insert(report);
-                            } else if (response.code() == 504){
-                                Toast.makeText(ReportingActivity.this, "Timeout",
-                                        Toast.LENGTH_LONG).show();
-                                ReportTable report = new ReportTable();
-                                report.setUniqueId(outUserId);
-                                report.setDateTime(dateTime);
-                                report.setIncidentType(incidentType);
-                                report.setReport(Report);
-                                report.setLatitude(Double.parseDouble(lat));
-                                report.setLongitude(Double.parseDouble(lon));
-                                report.setPhoto(image);
-                                reportViewModel.insert(report);
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<ReportClassResult> call, Throwable t) {
-                            Toast.makeText(ReportingActivity.this, t.getMessage(),
+                    public void onResponse(Call<ReportClassResult> call, Response<ReportClassResult> response) {
+                        if (response.code() == 200) {
+                            Toast.makeText(ReportingActivity.this, "Report Sent Successfully",
                                     Toast.LENGTH_LONG).show();
-                            Log.v("OnFailure Error Message", t.getMessage());
-
-                            //if onFailure, report is stored in the local database
+                        } else if (response.code() == 400){
+                            Toast.makeText(ReportingActivity.this, "Error Sending Report",
+                                    Toast.LENGTH_LONG).show();
+                            ReportTable report = new ReportTable();
+                            report.setUniqueId(outUserId);
+                            report.setDateTime(dateTime);
+                            report.setIncidentType(incidentType);
+                            report.setReport(Report);
+                            report.setLatitude(Double.parseDouble(lat));
+                            report.setLongitude(Double.parseDouble(lon));
+                            report.setPhoto(image);
+                            reportViewModel.insert(report);
+                        } else if (response.code() == 504){
+                            Toast.makeText(ReportingActivity.this, "Timeout",
+                                    Toast.LENGTH_LONG).show();
                             ReportTable report = new ReportTable();
                             report.setUniqueId(outUserId);
                             report.setDateTime(dateTime);
@@ -235,28 +207,44 @@ public class ReportingActivity extends AppCompatActivity {
                             report.setPhoto(image);
                             reportViewModel.insert(report);
                         }
-                    });
-                } else {
-                    //if no internet connection, report is stored in the local database
-                    //Toast.makeText(ReportingActivity.this, "No Internet Connection. Report will be saved in the device!",
-                    //Toast.LENGTH_LONG).show();
-                    ReportTable report = new ReportTable();
-                    report.setUniqueId(outUserId);
-                    report.setDateTime(dateTime);
-                    report.setIncidentType(incidentType);
-                    report.setReport(Report);
-                    report.setLatitude(Double.parseDouble(lat));
-                    report.setLongitude(Double.parseDouble(lon));
-                    report.setPhoto(image);
-                    reportViewModel.insert(report);
+                    }
 
-                    errorNoConnection();
-                }
+                    @Override
+                    public void onFailure(Call<ReportClassResult> call, Throwable t) {
+                        Toast.makeText(ReportingActivity.this, t.getMessage(),
+                                Toast.LENGTH_LONG).show();
+                        Log.v("OnFailure Error Message", t.getMessage());
 
-                Intent goToMain = new Intent(ReportingActivity.this, MainActivity.class);
-                goToMain.putExtra("userID", userID);
-                startActivity(goToMain);
+                        //if onFailure, report is stored in the local database
+                        ReportTable report = new ReportTable();
+                        report.setUniqueId(outUserId);
+                        report.setDateTime(dateTime);
+                        report.setIncidentType(incidentType);
+                        report.setReport(Report);
+                        report.setLatitude(Double.parseDouble(lat));
+                        report.setLongitude(Double.parseDouble(lon));
+                        report.setPhoto(image);
+                        reportViewModel.insert(report);
+                    }
+                });
+            } else {
+                //if no internet connection, report is stored in the local database
+                ReportTable report = new ReportTable();
+                report.setUniqueId(outUserId);
+                report.setDateTime(dateTime);
+                report.setIncidentType(incidentType);
+                report.setReport(Report);
+                report.setLatitude(Double.parseDouble(lat));
+                report.setLongitude(Double.parseDouble(lon));
+                report.setPhoto(image);
+                reportViewModel.insert(report);
+
+                errorNoConnection();
             }
+
+            Intent goToMain = new Intent(ReportingActivity.this, MainActivity.class);
+            goToMain.putExtra("userID", userID);
+            startActivity(goToMain);
         });
     }
 
@@ -288,16 +276,15 @@ public class ReportingActivity extends AppCompatActivity {
         Bitmap galleryPhoto = BitmapFactory.decodeFile(filePath);
 
         //Get the base 64 string
-        String img = Base64.encodeToString(getBytesFromBitmap(galleryPhoto),
+        return Base64.encodeToString(getBytesFromBitmap(galleryPhoto),
                 Base64.NO_WRAP);
-        return img;
     }
 
     //----------------------------------------------------------------------------------------------Popup for successful data sending
     private void successDataSending(){
         dialog = new Dialog(ReportingActivity.this);
         dialog.setContentView(R.layout.popup_success_datasent);
-
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
     }
 
@@ -305,7 +292,7 @@ public class ReportingActivity extends AppCompatActivity {
     private void errorNoConnection(){
         dialog = new Dialog(ReportingActivity.this);
         dialog.setContentView(R.layout.popup_error_nointernet);
-
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
     }
 

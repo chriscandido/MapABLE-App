@@ -34,11 +34,9 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
 
-    private TextView textView_reportIncident_back;
-
     private Retrofit retrofit;
     private String BASE_URL = "http://ec2-54-91-89-105.compute-1.amazonaws.com/";
-    private String userID, dateTime, incidentType, Report, lon, lat, image, imageID2;
+    private String userID, dateTime, incidentType, Report, lon, lat, image;
 
     Dialog dialog;
 
@@ -84,13 +82,10 @@ public class ReportIncidentActivity extends AppCompatActivity implements ReportI
         adapter = new ReportIncidentAdapter(getApplicationContext(), this);
         recyclerView.setAdapter(adapter);
 
-        textView_reportIncident_back = findViewById(R.id.textView_reportIncident_back);
-        textView_reportIncident_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent back = new Intent(ReportIncidentActivity.this, ReportingActivity.class);
-                startActivity(back);
-            }
+        TextView textView_reportIncident_back = findViewById(R.id.textView_reportIncident_back);
+        textView_reportIncident_back.setOnClickListener(view -> {
+            Intent back = new Intent(ReportIncidentActivity.this, ReportingActivity.class);
+            startActivity(back);
         });
     }
 

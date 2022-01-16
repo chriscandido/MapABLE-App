@@ -6,14 +6,10 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.Signature;
-import android.graphics.drawable.AnimationDrawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -26,15 +22,11 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.transition.Transition;
-import android.transition.TransitionInflater;
-import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.facebook.CallbackManager;
@@ -46,44 +38,29 @@ import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.material.button.MaterialButton;
 
 import java.io.IOException;
-import java.net.Inet4Address;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import up.envisage.mapable.R;
 import up.envisage.mapable.db.table.UserTable;
 import up.envisage.mapable.model.ReportViewModel;
-import up.envisage.mapable.model.UserReport;
 import up.envisage.mapable.model.UserViewModel;
-import up.envisage.mapable.ui.home.InformationActivity;
 import up.envisage.mapable.ui.home.LeaderboardActivity;
 import up.envisage.mapable.ui.home.MyQuestActivity;
 import up.envisage.mapable.ui.home.MyReportActivity;
 import up.envisage.mapable.ui.home.MyReportsListActivity;
-import up.envisage.mapable.ui.home.UserStatisticsActivity;
 import retrofitInterface.RetrofitInterface;
-import up.envisage.mapable.model.StatsResult;
 
 public class UserFragment extends Fragment implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     // Layout
-    private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
-    private RecyclerView.LayoutManager layoutManager;
     private FragmentActivity listener;
 
     // Server
@@ -92,9 +69,7 @@ public class UserFragment extends Fragment implements GoogleApiClient.Connection
     private String BASE_URL = "http://ec2-54-91-89-105.compute-1.amazonaws.com/";
 
     // Variables
-    private Dialog dialog;
     private CallbackManager callbackManager;
-    private ShareDialog shareDialog;
 
     // GPS
     private static final String TAG = "LocationActivity";
@@ -113,8 +88,7 @@ public class UserFragment extends Fragment implements GoogleApiClient.Connection
 
     private String outUserId;
 
-    // User and Report room databae
-    ReportViewModel reportViewModel;
+    // User and Report room database
     UserViewModel userViewModel;
 
     public void onAttach(@NonNull Context context) {
@@ -199,75 +173,54 @@ public class UserFragment extends Fragment implements GoogleApiClient.Connection
 
         // Pending reports button
         textView_userprofile_unsentreports = view.findViewById(R.id.textView_userprofile_unsentreports);
-        textView_userprofile_unsentreports.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myReport = new Intent(listener, MyReportActivity.class);
-                startActivity(myReport);
-            }
+        textView_userprofile_unsentreports.setOnClickListener(v -> {
+            Intent myReport = new Intent(listener, MyReportActivity.class);
+            startActivity(myReport);
         });
 
         // Report Status button
         textView_userprofile_reportstatus = view.findViewById(R.id.textView_userprofile_reportstatus);
-        textView_userprofile_reportstatus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        textView_userprofile_reportstatus.setOnClickListener(v -> {
 
-                Intent userReport = new Intent(listener, MyReportsListActivity.class);
-                userReport.putExtra("userID", outUserId);
-                startActivity(userReport);
+            Intent userReport = new Intent(listener, MyReportsListActivity.class);
+            userReport.putExtra("userID", outUserId);
+            startActivity(userReport);
 
-            }
         });
 
         // Leaderboard button
         textView_userprofile_leaderboard = view.findViewById(R.id.textView_userprofile_leaderboard);
-        textView_userprofile_leaderboard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        textView_userprofile_leaderboard.setOnClickListener(v -> {
 
-                Intent leaderBoardIntent = new Intent(listener, LeaderboardActivity.class);
-                leaderBoardIntent.putExtra("userID", outUserId);
-                startActivity(leaderBoardIntent);
-            }
+            Intent leaderBoardIntent = new Intent(listener, LeaderboardActivity.class);
+            leaderBoardIntent.putExtra("userID", outUserId);
+            startActivity(leaderBoardIntent);
         });
 
         // My Quest button
         textView_userprofile_myyquests = view.findViewById(R.id.textView_userprofile_myquests);
-        textView_userprofile_myyquests.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        textView_userprofile_myyquests.setOnClickListener(v -> {
 
-                Intent myQuestIntent = new Intent(listener, MyQuestActivity.class);
-                myQuestIntent.putExtra("userID", outUserId);
-                startActivity(myQuestIntent);
-            }
+            Intent myQuestIntent = new Intent(listener, MyQuestActivity.class);
+            myQuestIntent.putExtra("userID", outUserId);
+            startActivity(myQuestIntent);
         });
 
         // Location UI
-        imageView_user_pin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                updateUI();
-            }
-        });
+        imageView_user_pin.setOnClickListener(view1 -> updateUI());
     }
 
 
     //----------------------------------------------------------------------------------------------Get user details from local db
     public void userDetails() {
         userViewModel = ViewModelProviders.of(listener).get(UserViewModel.class);
-        userViewModel.getLastUser().observe(listener, new Observer<UserTable>() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onChanged(UserTable userTable) {
-                String name = userTable.getName();
-                String username = userTable.getUsername();
-                String email = userTable.getEmail();
-                textView_user_name.setText(name);
-                textView_user_username.setText("@" + username);
-                textView_user_email.setText(email);
-            }
+        userViewModel.getLastUser().observe(listener, userTable -> {
+            String name = userTable.getName();
+            String username = userTable.getUsername();
+            String email = userTable.getEmail();
+            textView_user_name.setText(name);
+            textView_user_username.setText("@" + username);
+            textView_user_email.setText(email);
         });
     }
 
@@ -328,12 +281,11 @@ public class UserFragment extends Fragment implements GoogleApiClient.Connection
     }
 
     //----------------------------------------------------------------------------------------------Geocode
+    @SuppressLint("SetTextI18n")
     private void updateUI() {
         Log.d(TAG, "UI update initiated");
         final String[] address_string = new String[1];
         if (null != currentLocation) {
-            String lat = String.valueOf(currentLocation.getLatitude());
-            String lng = String.valueOf(currentLocation.getLongitude());
             Geocoder geocoder = new Geocoder(listener, Locale.getDefault());
             List<Address> addresses;
             try {

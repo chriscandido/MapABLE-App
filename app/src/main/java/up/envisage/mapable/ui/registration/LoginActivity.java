@@ -45,7 +45,6 @@ public class LoginActivity extends AppCompatActivity  {
 
     private UserViewModel registerViewModel;
     private TextInputLayout textInputLayout_loginUsername, textInputLayout_loginPassword;
-    private TextView textView_signUp;
     private Button button_eulaAgree, button_login;
     private CheckBox checkBox_eulaAgree;
 
@@ -94,7 +93,7 @@ public class LoginActivity extends AppCompatActivity  {
         userIdPreferences = getSharedPreferences("userID", MODE_PRIVATE);
 
         // Shared preference for one time login
-        if (sharedPreferences.getBoolean("logged", false) == true ) {
+        if (sharedPreferences.getBoolean("logged", false)) {
             Log.v("[UserID]",  userIdPreferences.getString("userID", "Invalid User ID"));
             goToDisclosureActivity();
         }
@@ -104,74 +103,71 @@ public class LoginActivity extends AppCompatActivity  {
 
         // Check username and password in local db
         button_login = findViewById(R.id.button_login);
-        button_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        button_login.setOnClickListener(view -> {
 
-                connection = isNetworkAvailable();
-                username = textInputLayout_loginUsername.getEditText().getText().toString().trim();
-                password = textInputLayout_loginPassword.getEditText().getText().toString().trim();
+            connection = isNetworkAvailable();
+            username = textInputLayout_loginUsername.getEditText().getText().toString().trim();
+            password = textInputLayout_loginPassword.getEditText().getText().toString().trim();
 
-                textInputLayout_loginUsername.getEditText().setOnEditorActionListener(editorActionListener);
-                textInputLayout_loginPassword.getEditText().setOnEditorActionListener(editorActionListener);
+            textInputLayout_loginUsername.getEditText().setOnEditorActionListener(editorActionListener);
+            textInputLayout_loginPassword.getEditText().setOnEditorActionListener(editorActionListener);
 
-                //function to do what it does when login button is clicked
-                HashMap<String, String> map = new HashMap<>();
-                map.put("username", username);
-                map.put("password", password);
+            //function to do what it does when login button is clicked
+            HashMap<String, String> map = new HashMap<>();
+            map.put("username", username);
+            map.put("password", password);
 
-                if(connection == true){
-                    Call<LoginResult> call = retrofitInterface.executeLogin(map);
+            if(connection){
+                Call<LoginResult> call = retrofitInterface.executeLogin(map);
 
-                    call.enqueue(new Callback<LoginResult>() {
-                        @Override
+                call.enqueue(new Callback<LoginResult>() {
+                    @Override
 
-                        public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
-                            if (response.code() == 200) {
+                    public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
+                        if (response.code() == 200) {
 
-                                String userID2 = response.body().get_id();
-                                String name2 = response.body().getName();
-                                String number2 = response.body().getNumber();
-                                String email2 = response.body().getEmail();
+                            String userID2 = response.body().get_id();
+                            String name2 = response.body().getName();
+                            String number2 = response.body().getNumber();
+                            String email2 = response.body().getEmail();
 
-                                UserTable user = new UserTable();
-                                user.setUniqueId(userID2);
-                                user.setName(name2);
-                                user.setNumber(number2);
-                                user.setEmail(email2);
-                                user.setUsername(username);
-                                user.setPassword(password);
-                                registerViewModel.insert(user);
+                            UserTable user = new UserTable();
+                            user.setUniqueId(userID2);
+                            user.setName(name2);
+                            user.setNumber(number2);
+                            user.setEmail(email2);
+                            user.setUsername(username);
+                            user.setPassword(password);
+                            registerViewModel.insert(user);
 
-                                Log.v("[ LoginActivity.java ]",
-                                        "Name:" + name2 + "\n" +
-                                                "Number: " + number2 + "\n" +
-                                                "Email: " + email2 + "\n");
+                            Log.v("[ LoginActivity.java ]",
+                                    "Name:" + name2 + "\n" +
+                                            "Number: " + number2 + "\n" +
+                                            "Email: " + email2 + "\n");
 
-                                Log.i("Get ID Response [LOGIN]", userID2);
+                            Log.i("Get ID Response [LOGIN]", userID2);
 
-                                Intent intent = new Intent(LoginActivity.this, DisclosureAdapterActivity.class);
-                                intent.putExtra("userID", userID2);
-                                startActivity(intent);
-                                sharedPreferences.edit().putBoolean("logged", true).apply();
-                                userIdPreferences.edit().putString("userID", response.body().get_id()).apply();
+                            Intent intent = new Intent(LoginActivity.this, DisclosureAdapterActivity.class);
+                            intent.putExtra("userID", userID2);
+                            startActivity(intent);
+                            sharedPreferences.edit().putBoolean("logged", true).apply();
+                            userIdPreferences.edit().putString("userID", response.body().get_id()).apply();
 
 
-                            } else if (response.code() == 400){
-                                Toast.makeText(LoginActivity.this, "Wrong Credentials",
-                                        Toast.LENGTH_LONG).show();
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<LoginResult> call, Throwable t) {
-                            Toast.makeText(LoginActivity.this, t.getMessage(),
+                        } else if (response.code() == 400){
+                            Toast.makeText(LoginActivity.this, "Wrong Credentials",
                                     Toast.LENGTH_LONG).show();
                         }
-                    });
-                } else {
-                    errorNoConnection();
-                }
+                    }
+
+                    @Override
+                    public void onFailure(Call<LoginResult> call, Throwable t) {
+                        Toast.makeText(LoginActivity.this, t.getMessage(),
+                                Toast.LENGTH_LONG).show();
+                    }
+                });
+            } else {
+                errorNoConnection();
             }
         });
     }
@@ -187,7 +183,7 @@ public class LoginActivity extends AppCompatActivity  {
     public void initializeTermsOfUse(){
 
         final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        Boolean agreed = sharedPreferences.getBoolean("agreed", false);
+        boolean agreed = sharedPreferences.getBoolean("agreed", false);
 
         if (!agreed) {
 
@@ -196,20 +192,16 @@ public class LoginActivity extends AppCompatActivity  {
 
             button_eulaAgree = dialog.findViewById(R.id.button_eulaAgree);
             checkBox_eulaAgree = dialog.findViewById(R.id.checkBox_eulaAgree);
-            TextView textView_eulaTitle = dialog.findViewById(R.id.textView_eulaTitle);
 
             //Set agree button to visible or invisible
             checkBox_eulaAgree.setOnCheckedChangeListener(new onCheckListener());
 
             //Shared preference
-            button_eulaAgree.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putBoolean("agreed", true);
-                    editor.apply();
-                    dialog.dismiss();
-                }
+            button_eulaAgree.setOnClickListener(view -> {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("agreed", true);
+                editor.apply();
+                dialog.dismiss();
             });
             dialog.show();
         }
@@ -228,16 +220,13 @@ public class LoginActivity extends AppCompatActivity  {
     }
 
     //----------------------------------------------------------------------------------------------Set Action for Keyboard Keys
-    private TextInputEditText.OnEditorActionListener editorActionListener = new TextInputEditText.OnEditorActionListener() {
-        @Override
-        public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-            switch (actionId) {
-                case EditorInfo.IME_ACTION_NEXT:
-                case EditorInfo.IME_ACTION_DONE:
-                    break;
-            }
-            return false;
+    private final TextInputEditText.OnEditorActionListener editorActionListener = (v, actionId, event) -> {
+        switch (actionId) {
+            case EditorInfo.IME_ACTION_NEXT:
+            case EditorInfo.IME_ACTION_DONE:
+                break;
         }
+        return false;
     };
 
     //----------------------------------------------------------------------------------------------Popup for No Internet Connection

@@ -2,50 +2,47 @@ package up.envisage.mapable;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.ViewCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
-import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.Build;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.transition.TransitionInflater;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.PendingResult;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.common.api.Status;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
-import com.google.android.gms.location.LocationSettingsResult;
+import com.google.android.gms.location.LocationSettingsResponse;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
+import com.google.android.gms.location.SettingsClient;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import javax.net.ssl.SSLEngineResult;
+import com.google.android.material.navigation.NavigationBarView;
 
 import up.envisage.mapable.fragment.HomeFragment;
 import up.envisage.mapable.fragment.IncidentListFragment;
 import up.envisage.mapable.fragment.MapFragment;
-import up.envisage.mapable.fragment.ReportFragment;
 import up.envisage.mapable.fragment.SupportFragment;
 import up.envisage.mapable.fragment.UserFragment;
-import up.envisage.mapable.ui.home.ReportIncidentActivity;
-import up.envisage.mapable.ui.home.ReportingActivity;
-import up.envisage.mapable.util.Constant;
 
 public class MainActivity extends AppCompatActivity {
 
     String userID;
     private RelativeLayout relativeLayout_mainHeader;
+    private GoogleSignInClient mSignInClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +53,12 @@ public class MainActivity extends AppCompatActivity {
 
         userID = login.getStringExtra("userID");
 
+        GoogleSignInOptions options = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build();
+        mSignInClient = GoogleSignIn.getClient(this, options);
+
         //Bottom bar navigation
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomnavigation_menu);
-        bottomNavigationView.setOnNavigationItemSelectedListener(bottomNavigation);
+        bottomNavigationView.setOnItemSelectedListener(bottomNavigation);
 
         //Fragment
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentLayout_container, new HomeFragment())
@@ -70,7 +70,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //----------------------------------------------------------------------------------------------Bottom Navigation
-    private BottomNavigationView.OnNavigationItemSelectedListener bottomNavigation = new BottomNavigationView.OnNavigationItemSelectedListener() {
+    private final NavigationBarView.OnItemSelectedListener bottomNavigation = new NavigationBarView.OnItemSelectedListener() {
+        @SuppressLint("NonConstantResourceId")
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
             Fragment fragment = null;
             switch (menuItem.getItemId()) {
@@ -104,9 +105,6 @@ public class MainActivity extends AppCompatActivity {
 
     //----------------------------------------------------------------------------------------------Location settings
     public void displayLocationSettingsRequest(Context context){
-        GoogleApiClient googleApiClient = new GoogleApiClient.Builder(context)
-                .addApi(LocationServices.API).build();
-        googleApiClient.connect();
 
         LocationRequest locationRequest = LocationRequest.create();
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
@@ -117,26 +115,35 @@ public class MainActivity extends AppCompatActivity {
                 .addLocationRequest(locationRequest);
         locationSettingsRequest.setAlwaysShow(true);
 
-        final PendingResult<LocationSettingsResult> result = LocationServices.SettingsApi.checkLocationSettings(googleApiClient, locationSettingsRequest.build());
-        result.setResultCallback(new ResultCallback<LocationSettingsResult>() {
+        SettingsClient client = LocationServices.getSettingsClient(this);
+        Task<LocationSettingsResponse> task = client.checkLocationSettings(locationSettingsRequest.build());
+
+        // check location settings
+        task.addOnCompleteListener(new OnCompleteListener<LocationSettingsResponse>() {
             @Override
-            public void onResult(@NonNull LocationSettingsResult locationSettingsResult) {
-                final Status status = locationSettingsResult.getStatus();
-                switch (status.getStatusCode()){
-                    case LocationSettingsStatusCodes.SUCCESS:
+            public void onComplete(@NonNull Task<LocationSettingsResponse> task) {
+                try {
+                    LocationSettingsResponse response = task.getResult(ApiException.class);
+                    if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                         Log.i("[ MainActivity.java ]", "Settings - LOCATION SETTINGS: All locations settings are satisfied");
-                        break;
-                    case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
-                        Log.i("[ MainActivity.java ]", "Settings - LOCATION SETTINGS: Location settings are not satisfied. Show the user a dialog to upgrade location settings");
-                        try {
-                            //Show the dialog by calling startResolutionForResult(), and check the result in onActivityResult()
-                            status.startResolutionForResult(MainActivity.this, Constant.REQUEST_CHECK_SETTINGS);
-                        } catch (IntentSender.SendIntentException e) {
-                            Log.i("[ MainActivity.java ]", "Settings - LOCATION SETTINGS: PendingIntent unable to execute request");
-                        }
-                        break;
-                    case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
-                        Log.i("[ MainActivity.java ]", "Settings - LOCATION SETTINGS: Location settings are inadequate, and cannot be fixed here. Dialog not created");
+                    }
+                } catch (ApiException exception) {
+                    exception.printStackTrace();
+                    switch (exception.getStatusCode()) {
+                        case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
+                            Log.i("[ MainActivity.java ]", "Settings - LOCATION SETTINGS: Location settings are not satisfied. Show the user a dialog to upgrade location settings");
+                            try {
+                                ResolvableApiException resolvableApiException = (ResolvableApiException) exception;
+                                resolvableApiException.startResolutionForResult(MainActivity.this, 2001);
+                            } catch (IntentSender.SendIntentException e) {
+                                Log.i("[ MainActivity.java ]", "Settings - LOCATION SETTINGS: PendingIntent unable to execute request");
+                            } catch (ClassCastException e) {
+                                //ignored error
+                            } break;
+                        case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
+                            Log.i("[ MainActivity.java ]", "Settings - LOCATION SETTINGS: Location settings are inadequate, and cannot be fixed here. Dialog not created");
+                            break;
+                    }
                 }
             }
         });

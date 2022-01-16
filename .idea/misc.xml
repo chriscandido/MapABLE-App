@@ -4,6 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.27291666666666664" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/drawable/bg_box01.xml" value="0.27291666666666664" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/drawable/bg_box02.xml" value="0.27291666666666664" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/drawable/bg_box03.xml" value="0.27291666666666664" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/drawable/bg_cardslayout.xml" value="0.27291666666666664" />
         <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/drawable/bg_round_button.xml" value="0.27291666666666664" />
         <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/drawable/bottom_navigation_background.xml" value="0.27291666666666664" />
         <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/drawable/bottom_navigation_color_selector.xml" value="0.27291666666666664" />
@@ -54,11 +58,11 @@
         <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/fragment_user.xml" value="0.264" />
         <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/image_policyandlaw.xml" value="0.17527173913043478" />
         <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/leaderboard_item.xml" value="0.264" />
-        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/popup_disclosure_location.xml" value="0.17527173913043478" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/popup_disclosure_location.xml" value="0.4" />
         <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/popup_disclosure_report.xml" value="0.17527173913043478" />
-        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/popup_error_nointernet.xml" value="0.17527173913043478" />
-        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/popup_error_nolocation.xml" value="0.17527173913043478" />
-        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/popup_error_nophoto.xml" value="0.17527173913043478" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/popup_error_nointernet.xml" value="0.2" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/popup_error_nolocation.xml" value="0.264" />
+        <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/popup_error_nophoto.xml" value="0.176" />
         <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/popup_instruction_swipe.xml" value="0.17527173913043478" />
         <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/popup_mystats.xml" value="0.17527173913043478" />
         <entry key="..\:/Android Projects/MapABLE-App/app/src/main/res/layout/popup_success_datasent.xml" value="0.17527173913043478" />

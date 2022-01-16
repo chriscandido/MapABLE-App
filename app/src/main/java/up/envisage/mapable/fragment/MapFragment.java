@@ -25,11 +25,6 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.google.gson.internal.LinkedTreeMap;
 import com.mapbox.android.core.location.LocationEngine;
 import com.mapbox.android.core.location.LocationEngineCallback;
@@ -55,11 +50,8 @@ import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.maps.Style;
 
-import java.io.BufferedReader;
 import java.lang.ref.WeakReference;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
@@ -192,108 +184,87 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, Permiss
         MapFragment.this.mapboxMap = mapboxMap;
 
         mapboxMap.setStyle(Style.OUTDOORS,
-                new Style.OnStyleLoaded() {
-                    @Override
-                    public void onStyleLoaded(@NonNull Style style) {
-                        enableLocationComponent(style);
-                        button_mapReports.setOnClickListener(new View.OnClickListener() {
+                style -> {
+                    enableLocationComponent(style);
+                    button_mapReports.setOnClickListener(v -> {
+
+                        HashMap<String, String> map = new HashMap<>();
+                        map.put("userID", outUserId);
+
+                        Call<List> call2 = retrofitInterface.getUserReports(map);
+
+                        call2.enqueue(new Callback<List>() {
+
                             @Override
-                            public void onClick(View v) {
+                            public void onResponse(Call<List> call2, Response<List> response2) {
+                                if(response2.isSuccessful()) {
 
-                                HashMap<String, String> map = new HashMap<>();
-                                map.put("userID", outUserId);
-
-                                Call<List> call2 = retrofitInterface.getUserReports(map);
-
-                                call2.enqueue(new Callback<List>() {
-
-                                    @Override
-                                    public void onResponse(Call<List> call2, Response<List> response2) {
-                                        if(response2.isSuccessful()) {
-
-                                            // Extract data from url and put to LinkedTreeMap
-                                            for(int i = 0; i< (response2.body() != null ? response2.body().size() : 0); i++) {
-                                                Log.v("[ MapFragment.java ]", response2.body().get(i).toString());
-                                                LinkedTreeMap linkedTreeMap = (LinkedTreeMap) response2.body().get(i);
-                                                reportsArrayList.add(linkedTreeMap);
-                                            }
-                                            setupData(mapboxMap);
-                                        }
+                                    // Extract data from url and put to LinkedTreeMap
+                                    for(int i = 0; i< (response2.body() != null ? response2.body().size() : 0); i++) {
+                                        Log.v("[ MapFragment.java ]", response2.body().get(i).toString());
+                                        LinkedTreeMap linkedTreeMap = (LinkedTreeMap) response2.body().get(i);
+                                        reportsArrayList.add(linkedTreeMap);
                                     }
-                                    @Override
-                                    public void onFailure(Call<List> call, Throwable t) {
-                                    }
-                                });
-                                mapboxMap.removeAnnotations();
+                                    setupData(mapboxMap);
+                                }
                             }
-                        });
-
-                        // Offshore Station
-                        button_mapOffshoreStation.setOnClickListener(new View.OnClickListener() {
                             @Override
-                            public void onClick(View view) {
-                                mapboxMap.removeAnnotations();
-                                mapboxMap.setCameraPosition(new CameraPosition.Builder()
-                                        .target(new LatLng(14.6593, 120.86031))
-                                        .zoom(8)
-                                        .build());
-                                viewOffshoreStation(mapboxMap);
+                            public void onFailure(Call<List> call, Throwable t) {
                             }
                         });
+                        mapboxMap.removeAnnotations();
+                    });
 
-                        // Bathing Beaches Station
-                        button_mapBathingBeachesStation.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                mapboxMap.removeAnnotations();
-                                mapboxMap.setCameraPosition(new CameraPosition.Builder()
-                                        .target(new LatLng(14.5419, 120.9803))
-                                        .zoom(10)
-                                        .build());
-                                viewBathingBeachesStation(mapboxMap);
-                            }
-                        });
+                    // Offshore Station
+                    button_mapOffshoreStation.setOnClickListener(view -> {
+                        mapboxMap.removeAnnotations();
+                        mapboxMap.setCameraPosition(new CameraPosition.Builder()
+                                .target(new LatLng(14.6593, 120.86031))
+                                .zoom(8)
+                                .build());
+                        viewOffshoreStation(mapboxMap);
+                    });
 
-                        // River Outfall Station
-                        button_mapRiverOutfallStation.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                mapboxMap.removeAnnotations();
-                                mapboxMap.setCameraPosition(new CameraPosition.Builder()
-                                        .target(new LatLng(14.5476833, 120.9894))
-                                        .zoom(10)
-                                        .build());
-                                viewRiverOutfallStation(mapboxMap);
-                            }
-                        });
+                    // Bathing Beaches Station
+                    button_mapBathingBeachesStation.setOnClickListener(v -> {
+                        mapboxMap.removeAnnotations();
+                        mapboxMap.setCameraPosition(new CameraPosition.Builder()
+                                .target(new LatLng(14.5419, 120.9803))
+                                .zoom(10)
+                                .build());
+                        viewBathingBeachesStation(mapboxMap);
+                    });
 
-                        // PRUM Station
-                        button_mapPRUMStation.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                mapboxMap.removeAnnotations();
-                                mapboxMap.setCameraPosition(new CameraPosition.Builder()
-                                        .target(new LatLng(14.5675, 121.0402))
-                                        .zoom(10)
-                                        .build());
-                                viewPRUMStation(mapboxMap);
-                            }
-                        });
+                    // River Outfall Station
+                    button_mapRiverOutfallStation.setOnClickListener(v -> {
+                        mapboxMap.removeAnnotations();
+                        mapboxMap.setCameraPosition(new CameraPosition.Builder()
+                                .target(new LatLng(14.5476833, 120.9894))
+                                .zoom(10)
+                                .build());
+                        viewRiverOutfallStation(mapboxMap);
+                    });
 
-                        // Laguna de Bay Station
-                        button_mapLagunaDeBayStation.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                mapboxMap.removeAnnotations();
-                                mapboxMap.setCameraPosition(new CameraPosition.Builder()
-                                        .target(new LatLng(14.3837166666667, 121.286716666667))
-                                        .zoom(8)
-                                        .build());
-                                viewLagunaDeBayStation(mapboxMap);
-                            }
-                        });
+                    // PRUM Station
+                    button_mapPRUMStation.setOnClickListener(v -> {
+                        mapboxMap.removeAnnotations();
+                        mapboxMap.setCameraPosition(new CameraPosition.Builder()
+                                .target(new LatLng(14.5675, 121.0402))
+                                .zoom(10)
+                                .build());
+                        viewPRUMStation(mapboxMap);
+                    });
 
-                    }
+                    // Laguna de Bay Station
+                    button_mapLagunaDeBayStation.setOnClickListener(v -> {
+                        mapboxMap.removeAnnotations();
+                        mapboxMap.setCameraPosition(new CameraPosition.Builder()
+                                .target(new LatLng(14.3837166666667, 121.286716666667))
+                                .zoom(8)
+                                .build());
+                        viewLagunaDeBayStation(mapboxMap);
+                    });
+
                 });
     }
 

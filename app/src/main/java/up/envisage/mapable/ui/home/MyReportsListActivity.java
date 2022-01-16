@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,7 +25,6 @@ import retrofit2.Retrofit;
 
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofitInterface.RetrofitInterface;
-import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
 import up.envisage.mapable.adapter.UserReportAdapter;
 import up.envisage.mapable.model.UserReport;
@@ -103,7 +101,7 @@ public class MyReportsListActivity extends AppCompatActivity implements UserRepo
 
             private void PutDataIntoRecyclerView(List<UserReport> userReportList) {
 
-                UserReportAdapter userReportAdapter = new UserReportAdapter(getApplicationContext(), userReportList, MyReportsListActivity.this::onReportClick);
+                UserReportAdapter userReportAdapter = new UserReportAdapter(getApplicationContext(), userReportList, MyReportsListActivity.this);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 recyclerView.setAdapter(userReportAdapter);
 

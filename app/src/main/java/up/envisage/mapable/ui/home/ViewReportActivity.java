@@ -1,5 +1,6 @@
 package up.envisage.mapable.ui.home;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -13,8 +14,6 @@ import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.ByteArrayOutputStream;
-import java.nio.ByteBuffer;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
@@ -44,6 +43,7 @@ public class ViewReportActivity extends AppCompatActivity {
     String BASE_URL = "http://ec2-54-91-89-105.compute-1.amazonaws.com/";
 //    private String BASE_URL = "http://10.0.2.2:5000/";
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -213,14 +213,9 @@ public class ViewReportActivity extends AppCompatActivity {
         else if(closed.equals("true")) {
             textView_closed.setVisibility(View.VISIBLE);
             textView_closed.setText("REPORT IS CLOSED!");
-        };
+        }
 
         ImageView imageView_reportsummary_back = findViewById(R.id.imageView_reportsummary_back);
-        imageView_reportsummary_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        imageView_reportsummary_back.setOnClickListener(view -> finish());
     }
 }

@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.R;
 
 public class AboutActivity extends AppCompatActivity {
@@ -21,8 +20,6 @@ public class AboutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
-
-        ImageView imageView_aboutUs_back = findViewById(R.id.imageView_aboutUs_back);
 
         TextView textView_aboutUs_im4manilbayLink = findViewById(R.id.textView_aboutUs_im4manilabay);
         TextView textView_aboutUs_iwasto = findViewById(R.id.textView_aboutUs_iwasto);
@@ -36,21 +33,15 @@ public class AboutActivity extends AppCompatActivity {
         });
 
         //Button go to iWASTO
-        textView_aboutUs_iwasto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String facebookLink = "https://www.facebook.com/projectiwasto";
-                openFacebookIntent(facebookLink);
-            }
+        textView_aboutUs_iwasto.setOnClickListener(v -> {
+            String facebookLink = "https://www.facebook.com/projectiwasto";
+            openFacebookIntent(facebookLink);
         });
 
         //Button go to eSMART
-        textView_aboutUs_esmart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String facebookLink = "https://www.facebook.com/esmart.im4manilabay";
-                openFacebookIntent(facebookLink);
-            }
+        textView_aboutUs_esmart.setOnClickListener(v -> {
+            String facebookLink = "https://www.facebook.com/esmart.im4manilabay";
+            openFacebookIntent(facebookLink);
         });
 
         //Button go to Project MapABLE link

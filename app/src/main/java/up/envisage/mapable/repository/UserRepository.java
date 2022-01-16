@@ -1,30 +1,22 @@
 package up.envisage.mapable.repository;
 
 import android.app.Application;
-import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.provider.ContactsContract;
-import android.service.autofill.UserData;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
-import androidx.loader.content.AsyncTaskLoader;
 
 import java.util.List;
 
-import up.envisage.mapable.MainActivity;
 import up.envisage.mapable.db.Database;
 import up.envisage.mapable.db.dao.UserDAO;
 import up.envisage.mapable.db.table.UserTable;
-import up.envisage.mapable.ui.registration.LoginActivity;
 
 public class UserRepository {
 
-    private UserDAO userDAO;
-    private LiveData<List<UserTable>> allUsers;
-    private LiveData<UserTable> lastUser;
+    private final UserDAO userDAO;
+    private final LiveData<List<UserTable>> allUsers;
+    private final LiveData<UserTable> lastUser;
 
     public UserRepository (Application application) {
         Database db = Database.getInstance(application);
@@ -41,10 +33,6 @@ public class UserRepository {
         return lastUser;
     }
 
-    public LiveData<UserTable> getUsername(String username, String password) {
-        return userDAO.verifyUserLogin(username, password);
-    }
-
     public void insertUser(UserTable userTable) {
         new insertUserAsyncTask(userDAO).execute(userTable);
     }
@@ -52,7 +40,7 @@ public class UserRepository {
     //----------------------------------------------------------------------------------------------Inserting User Data to local DB
     public static class insertUserAsyncTask extends AsyncTask<UserTable, Void, Void> {
 
-        private UserDAO userDAO;
+        private final UserDAO userDAO;
 
         private insertUserAsyncTask(UserDAO dao) {
             userDAO = dao;

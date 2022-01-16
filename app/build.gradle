@@ -8,17 +8,33 @@ android {
         applicationId "up.envisage.mapable"
         minSdkVersion 19
         targetSdkVersion 31
-        versionCode 5
+        versionCode 6
         versionName "V2.0"
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            debugSymbolLevel 'FULL'
+        }
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            // Enables code shrinking, obfuscation, and optimization for only
+            // your project's release build type.
+            minifyEnabled true
+
+            // Enables resource shrinking, which is performed by the
+            // Android Gradle plugin.
+            shrinkResources true
+
+            // Includes the default ProGuard rules files that are packaged with
+            // the Android Gradle plugin. To learn more, go to the section about
+            // R8 configuration files.
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles 'proguard-google-play-services.pro'
+
         }
     }
 
@@ -27,7 +43,6 @@ android {
     }
 
     repositories {
-        jcenter()
         mavenCentral()
         //  maven { url "https://maven.fabric.io/public" }
         maven {
@@ -74,7 +89,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
     implementation 'androidx.drawerlayout:drawerlayout:1.1.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'com.google.android.gms:play-services-maps:18.0.1'
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
@@ -85,12 +100,10 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
 
     //Room Database
-    def room_version = "2.2.5"
-    implementation "androidx.room:room-runtime:2.3.0"
-    annotationProcessor "androidx.room:room-compiler:2.3.0"
+    implementation "androidx.room:room-runtime:2.4.0"
+    annotationProcessor "androidx.room:room-compiler:2.4.0"
 
     //Live Data
-    def life_version = "1.1.1"
     implementation "android.arch.lifecycle:extensions:1.1.1"
     //noinspection LifecycleAnnotationProcessorWithJava8
     annotationProcessor "android.arch.lifecycle:compiler:1.1.1"
@@ -101,10 +114,10 @@ dependencies {
     implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-annotation-v9:0.9.0'
 
     //Google Play Services
-    implementation 'com.google.android.gms:play-services-location:19.0.0'
+    implementation 'com.google.android.gms:play-services-location:19.0.1'
     implementation "com.google.android.gms:play-services-places:17.0.0"
-    implementation 'com.google.android.gms:play-services-auth:20.0.0'
-    implementation 'com.google.android.gms:play-services-maps:18.0.1'
+    implementation 'com.google.android.gms:play-services-auth:20.0.1'
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
     implementation 'com.google.android.libraries.places:places:2.5.0'
 
     //For calling HTTP requests: Back-end
@@ -115,6 +128,5 @@ dependencies {
 
     //Facebook App
     implementation 'com.facebook.android:facebook-share:4.42.0'
-
 
 }

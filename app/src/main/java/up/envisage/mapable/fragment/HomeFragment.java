@@ -1,6 +1,7 @@
 package up.envisage.mapable.fragment;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -10,11 +11,9 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -133,41 +132,25 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
         textView_tingnanLahat = view.findViewById(R.id.textView_mainMenu_tignanLahat);
 
         // Alamin natin button
-        imageView_mainMenu_alaminnatin.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-            @Override
-            public void onClick(View v) {
-                Intent alaminIntent = new Intent(listener, AboutManilaBayActivity.class);
+        imageView_mainMenu_alaminnatin.setOnClickListener(v -> {
+            Intent alaminIntent = new Intent(listener, AboutManilaBayActivity.class);
 
-                startActivity(alaminIntent);
-            }
+            startActivity(alaminIntent);
         });
 
         // Im4ManilaBay button
-        imageView_mainMenu_im4manilabay.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-            @Override
-            public void onClick(View v) {
-                Intent ima4manilaBayIntent = new Intent(listener, AboutActivity.class);
-                startActivity(ima4manilaBayIntent);
-            }
+        imageView_mainMenu_im4manilabay.setOnClickListener(v -> {
+            Intent ima4manilaBayIntent = new Intent(listener, AboutActivity.class);
+            startActivity(ima4manilaBayIntent);
         });
 
         // Update location pin
-        imageView_home_pin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                updateUI();
-            }
-        });
+        imageView_home_pin.setOnClickListener(view1 -> updateUI());
 
         // View all links
-        textView_tingnanLahat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent information = new Intent(listener, InformationActivity.class);
-                startActivity(information);
-            }
+        textView_tingnanLahat.setOnClickListener(v -> {
+            Intent information = new Intent(listener, InformationActivity.class);
+            startActivity(information);
         });
     }
 
@@ -289,6 +272,7 @@ public class HomeFragment extends Fragment implements MainMenuAdapter.OnMenuClic
     }
 
     //----------------------------------------------------------------------------------------------Geocoder
+    @SuppressLint("SetTextI18n")
     private void updateUI() {
         Log.d(TAG, "UI update initiated");
         final String[] address_string = new String[1];

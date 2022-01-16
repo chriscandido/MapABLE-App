@@ -12,13 +12,12 @@ import java.util.List;
 import up.envisage.mapable.db.Database;
 import up.envisage.mapable.db.dao.ReportDAO;
 import up.envisage.mapable.db.table.ReportTable;
-import up.envisage.mapable.db.table.UserTable;
 
 public class ReportRepository {
 
-    private ReportDAO reportDAO;
-    private LiveData<List<ReportTable>> allReports;
-    private LiveData<ReportTable> lastReport;
+    private final ReportDAO reportDAO;
+    private final LiveData<List<ReportTable>> allReports;
+    private final LiveData<ReportTable> lastReport;
 
     public ReportRepository (Application application) {
         Database db = Database.getInstance(application);
@@ -45,7 +44,7 @@ public class ReportRepository {
 
     public static class insertReportAsyncTask extends AsyncTask<ReportTable, Void, Void> {
 
-        private ReportDAO reportDAO;
+        private final ReportDAO reportDAO;
 
         private insertReportAsyncTask(ReportDAO dao) {
             reportDAO = dao;
@@ -62,7 +61,7 @@ public class ReportRepository {
 
     public static class deleteReportAsyncTask extends AsyncTask<ReportTable, Void, Void> {
 
-        private ReportDAO reportDAO;
+        private final ReportDAO reportDAO;
 
         private deleteReportAsyncTask(ReportDAO dao) {
             reportDAO = dao;

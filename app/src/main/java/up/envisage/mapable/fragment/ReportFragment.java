@@ -134,23 +134,17 @@ public class ReportFragment extends Fragment {
 
         // Button take survey
         MaterialButton button_takeSurvey = view.findViewById(R.id.button_report_takeSurvey);
-        button_takeSurvey.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent survey = new Intent(listener, ReportIncidentActivity.class);
-                survey.putExtra("userID", outUserId);
-                startActivity(survey);
-            }
+        button_takeSurvey.setOnClickListener(v -> {
+            Intent survey = new Intent(listener, ReportIncidentActivity.class);
+            survey.putExtra("userID", outUserId);
+            startActivity(survey);
         });
 
         // Back to Main Menu text button
         TextView textView_reportBack = view.findViewById(R.id.textView_report_back);
-        textView_reportBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent back = new Intent(listener, MainActivity.class);
-                startActivity(back);
-            }
+        textView_reportBack.setOnClickListener(view1 -> {
+            Intent back = new Intent(listener, MainActivity.class);
+            startActivity(back);
         });
 
         // Send to server button
@@ -164,80 +158,59 @@ public class ReportFragment extends Fragment {
         // Checks for internet connection
         connection = isNetworkAvailable();
 
-        button_reportSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        button_reportSend.setOnClickListener(view12 -> {
 
-                // Insert report details to server
-                Log.v("[ReportingActivity.java ]", "Image Path: " + image  + "\n");
+            // Insert report details to server
+            Log.v("[ReportingActivity.java ]", "Image Path: " + image  + "\n");
 
-                imageString = imageConvertToString(image);
-                Log.v("[ ReportingActivity.java ]",
-                        "IMAGE STRING: " + imageString);
+            imageString = imageConvertToString(image);
+            Log.v("[ ReportingActivity.java ]",
+                    "IMAGE STRING: " + imageString);
 
-                HashMap<String, String> map = new HashMap<>();
-                map.put("userID", outUserId);
-                map.put("date", dateTime);
-                map.put("type", incidentType);
-                map.put("report", Report);
-                map.put("lon", lon);
-                map.put("lat", lat);
-                map.put("image", imageString); //imageString
+            HashMap<String, String> map = new HashMap<>();
+            map.put("userID", outUserId);
+            map.put("date", dateTime);
+            map.put("type", incidentType);
+            map.put("report", Report);
+            map.put("lon", lon);
+            map.put("lat", lat);
+            map.put("image", imageString); //imageString
 
-                Log.v("[ ReportingActivity.java ]",
-                        "DATE & TIME: " + dateTime + "\n" +
-                                "USER ID: " + userID + "\n" +
-                                "INCIDENT TYPE: " + incidentType + "\n" +
-                                "REPORT: " + Report + "\n" +
-                                "LATITUDE: " + lat + "\n" +
-                                "LONGITUDE: " + lon + "\n" +
-                                "IMAGE: " + imageString + "\n" ); //imageString
+            Log.v("[ ReportingActivity.java ]",
+                    "DATE & TIME: " + dateTime + "\n" +
+                            "USER ID: " + userID + "\n" +
+                            "INCIDENT TYPE: " + incidentType + "\n" +
+                            "REPORT: " + Report + "\n" +
+                            "LATITUDE: " + lat + "\n" +
+                            "LONGITUDE: " + lon + "\n" +
+                            "IMAGE: " + imageString + "\n" ); //imageString
 
-                if(isNetworkAvailable()){
+            if(isNetworkAvailable()){
 
-                    Call<ReportClassResult> call = retrofitInterface.executeReportSubmit(map);
+                Call<ReportClassResult> call = retrofitInterface.executeReportSubmit(map);
 
-                    call.enqueue(new Callback<ReportClassResult>() {
-                        @Override
+                call.enqueue(new Callback<ReportClassResult>() {
+                    @Override
 
-                        public void onResponse(Call<ReportClassResult> call, Response<ReportClassResult> response) {
-                            if (response.code() == 200) {
-                                Toast.makeText(listener, "Report Sent Successfully",
-                                        Toast.LENGTH_LONG).show();
-                            } else if (response.code() == 400){
-                                Toast.makeText(listener, "Error Sending Report",
-                                        Toast.LENGTH_LONG).show();
-                                ReportTable report = new ReportTable();
-                                report.setUniqueId(outUserId);
-                                report.setDateTime(dateTime);
-                                report.setIncidentType(incidentType);
-                                report.setReport(Report);
-                                report.setLatitude(Double.parseDouble(lat));
-                                report.setLongitude(Double.parseDouble(lon));
-                                report.setPhoto(image);
-                                reportViewModel.insert(report);
-                            } else if (response.code() == 504){
-                                Toast.makeText(listener, "Timeout",
-                                        Toast.LENGTH_LONG).show();
-                                ReportTable report = new ReportTable();
-                                report.setUniqueId(outUserId);
-                                report.setDateTime(dateTime);
-                                report.setIncidentType(incidentType);
-                                report.setReport(Report);
-                                report.setLatitude(Double.parseDouble(lat));
-                                report.setLongitude(Double.parseDouble(lon));
-                                report.setPhoto(image);
-                                reportViewModel.insert(report);
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<ReportClassResult> call, Throwable t) {
-                            Toast.makeText(listener, t.getMessage(),
+                    public void onResponse(Call<ReportClassResult> call, Response<ReportClassResult> response) {
+                        if (response.code() == 200) {
+                            Toast.makeText(listener, "Report Sent Successfully",
                                     Toast.LENGTH_LONG).show();
-                            Log.v("OnFailure Error Message", t.getMessage());
-
-                            // If onFailure, report is stored in the local database
+                        } else if (response.code() == 400){
+                            Toast.makeText(listener, "Error Sending Report",
+                                    Toast.LENGTH_LONG).show();
+                            ReportTable report = new ReportTable();
+                            report.setUniqueId(outUserId);
+                            report.setDateTime(dateTime);
+                            report.setIncidentType(incidentType);
+                            report.setReport(Report);
+                            report.setLatitude(Double.parseDouble(lat));
+                            report.setLongitude(Double.parseDouble(lon));
+                            report.setPhoto(image);
+                            reportViewModel.insert(report);
+                        } else if (response.code() == 504){
+                            Toast.makeText(listener, "Timeout",
+                                    Toast.LENGTH_LONG).show();
                             ReportTable report = new ReportTable();
                             report.setUniqueId(outUserId);
                             report.setDateTime(dateTime);
@@ -248,26 +221,44 @@ public class ReportFragment extends Fragment {
                             report.setPhoto(image);
                             reportViewModel.insert(report);
                         }
-                    });
-                } else {
-                    // If no internet connection, report is stored in the local database
-                    ReportTable report = new ReportTable();
-                    report.setUniqueId(outUserId);
-                    report.setDateTime(dateTime);
-                    report.setIncidentType(incidentType);
-                    report.setReport(Report);
-                    report.setLatitude(Double.parseDouble(lat));
-                    report.setLongitude(Double.parseDouble(lon));
-                    report.setPhoto(image);
-                    reportViewModel.insert(report);
+                    }
 
-                    errorNoConnection();
-                }
+                    @Override
+                    public void onFailure(Call<ReportClassResult> call, Throwable t) {
+                        Toast.makeText(listener, t.getMessage(),
+                                Toast.LENGTH_LONG).show();
+                        Log.v("OnFailure Error Message", t.getMessage());
 
-                Intent goToMain = new Intent(listener, MainActivity.class);
-                goToMain.putExtra("userID", userID);
-                startActivity(goToMain);
+                        // If onFailure, report is stored in the local database
+                        ReportTable report = new ReportTable();
+                        report.setUniqueId(outUserId);
+                        report.setDateTime(dateTime);
+                        report.setIncidentType(incidentType);
+                        report.setReport(Report);
+                        report.setLatitude(Double.parseDouble(lat));
+                        report.setLongitude(Double.parseDouble(lon));
+                        report.setPhoto(image);
+                        reportViewModel.insert(report);
+                    }
+                });
+            } else {
+                // If no internet connection, report is stored in the local database
+                ReportTable report = new ReportTable();
+                report.setUniqueId(outUserId);
+                report.setDateTime(dateTime);
+                report.setIncidentType(incidentType);
+                report.setReport(Report);
+                report.setLatitude(Double.parseDouble(lat));
+                report.setLongitude(Double.parseDouble(lon));
+                report.setPhoto(image);
+                reportViewModel.insert(report);
+
+                errorNoConnection();
             }
+
+            Intent goToMain = new Intent(listener, MainActivity.class);
+            goToMain.putExtra("userID", userID);
+            startActivity(goToMain);
         });
     }
 
@@ -300,17 +291,8 @@ public class ReportFragment extends Fragment {
         Bitmap galleryPhoto = BitmapFactory.decodeFile(filePath);
 
         // Get the base 64 string
-        String img = Base64.encodeToString(getBytesFromBitmap(galleryPhoto),
+        return Base64.encodeToString(getBytesFromBitmap(galleryPhoto),
                 Base64.NO_WRAP);
-        return img;
-    }
-
-    //----------------------------------------------------------------------------------------------Popup for successful data sending
-    private void successDataSending(){
-        dialog = new Dialog(listener);
-        dialog.setContentView(R.layout.popup_success_datasent);
-
-        dialog.show();
     }
 
     //----------------------------------------------------------------------------------------------Popup for internet connection failure
@@ -327,12 +309,7 @@ public class ReportFragment extends Fragment {
         dialog.setContentView(R.layout.popup_disclosure_report);
 
         MaterialButton button_disclosure_close = dialog.findViewById(R.id.button_disclosure_close);
-        button_disclosure_close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+        button_disclosure_close.setOnClickListener(v -> dialog.dismiss());
 
         dialog.show();
     }
